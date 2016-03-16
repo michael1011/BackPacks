@@ -1,0 +1,118 @@
+# Here you can configure the names of the backs, enable / disable it and customice the crafting recipes.
+
+# You can find all materials here: http://bit.ly/21vbetj
+
+LittleBackPack:
+  Enable: true
+  Slots: 18
+# Must be divisible by 9.
+  Name: "&eLittle &6BackPack"
+  Desc1: "&eThis is a &elittle &6Backpack"
+  Desc2: "&fRight click to open it"
+
+  Material: "COMPASS"
+# Wich item should be the LittleBackPack?
+
+  Crafting:
+    Line1: "*@*"
+    Line2: "@+@"
+    Line3: "*@*"
+
+    Material1: "IRON_INGOT"
+    # All * will be replaced with this material.
+    Material2: "LEATHER"
+    # All @ will be replaced with this material.
+    Material3: "COMPASS"
+    # All + will be replaced with this material.
+    Material4: "null"
+    # All % will be replaced with this material.
+    Material5: "null"
+    # All & will be replaced with this material.
+
+  # If you don't need a material set it to "null"!
+
+
+NormalBackPack:
+  Enable: true
+  Slots: 36
+# Must be divisible by 9.
+  Name: "&6Normal &cBackPack"
+  Desc1: "&eThis is a &6normal &cBackpack"
+  Desc2: "&fRight click to open it"
+
+  Material: "WATCH"
+# Wich item should be the LittleBackPack?
+
+  Crafting:
+    Line1: "*@*"
+    Line2: "@+@"
+    Line3: "*@*"
+
+    Material1: "REDSTONE"
+    # All * will be replaced with this material.
+    Material2: "GOLD_BLOCK"
+    # All @ will be replaced with this material.
+    Material3: "WATCH"
+    # All + will be replaced with this material.
+    Material4: "null"
+    # All % will be replaced with this material.
+    Material5: "null"
+    # All & will be replaced with this material.
+
+  # If you don't need a material set it to "null"!
+
+
+EnderBackPack:
+  Enable: true
+  Name: "&5Ender &dBackPack"
+  Desc1: "&eThis is a &5Ender &dBackPack"
+  Desc2: "&fRight click to open it"
+
+  Material: "ENDER_CHEST"
+  # Wich item should be the LittleBackPack?
+
+  Crafting:
+    Line1: "*@*"
+    Line2: "@+@"
+    Line3: "*@*"
+
+    Material1: "OBSIDIAN"
+    # All * will be replaced with this material.
+    Material2: "ENDER_PEARL"
+    # All @ will be replaced with this material.
+    Material3: "ENDER_CHEST"
+    # All + will be replaced with this material.
+    Material4: "null"
+    # All % will be replaced with this material.
+    Material5: "null"
+    # All & will be replaced with this material.
+
+  # If you don't need a material set it to "null"!
+
+
+WorkbenchBackPack:
+  Enable: true
+  Name: "&eWorkbench &6BackPack"
+  Desc1: "&eThis is a &eWorkbench &6BackPack"
+  Desc2: "&fRight click to open it"
+
+  Material: "WORKBENCH"
+  # Wich item should be the LittleBackPack?
+
+  Crafting:
+    Line1: "*@*"
+    Line2: "@@@"
+    Line3: "*@*"
+
+    Material1: "REDSTONE"
+    # All * will be replaced with this material.
+    Material2: "WORKBENCH"
+    # All @ will be replaced with this material.
+    Material3: "null"
+    # All + will be replaced with this material.
+    Material4: "null"
+    # All % will be replaced with this material.
+    Material5: "null"
+    # All & will be replaced with this material.
+
+  # If you don't need a material set it to "null"!

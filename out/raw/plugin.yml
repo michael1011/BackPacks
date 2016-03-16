@@ -1,0 +1,50 @@
+main: main.main
+name: BackPacks-1.9
+version: 1.2.1
+description: This is a simple plugin for bagpacks
+author: Michael1011
+
+commands:
+  bp:
+    usage: /bp
+    description: "main command"
+  bpgive:
+    usage: /bpgive <arg>
+    description: "to give anyone a backpack"
+  bpreload:
+    usage: /bpreload
+    description: "to reload the config files"
+
+permissions:
+  backpacks.*:
+    description: "all access (for admins)"
+    default: op
+    children:
+      backpack.help: true
+      backpacks.enderBackPack: true
+      backpacks.workbenchBackPack: true
+      backpacks.littleBackPack: true
+      backpacks.normalBackPack: true
+      backpacks.give: true
+      backpacks.reload: true
+  backpacks.help:
+    description: "for /backpacks help"
+    default: true
+  backpacks.enderBackPack:
+    description: "to use the ender backpack"
+    default: true
+  backpacks.workbenchBackPack:
+    description: "to use the workbench back pack"
+    default: true
+  backpacks.littleBackPack:
+    description: "to use the little backpack"
+    default: true
+  backpacks.normalBackPack:
+    description: "to use the normal backpack"
+    default: true
+  backpacks.give:
+    description: "to give anyone a backpack"
+    default: op
+  backpacks.reload:
+    description: "for the /bpreload command"
+    default: op
