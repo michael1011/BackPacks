@@ -10,13 +10,13 @@ LittleBackPack:
   Desc1: "&eThis is a &elittle &6Backpack"
   Desc2: "&fRight click to open it"
 
-  Material: "WOOL"
+  Material: "COMPASS"
 # Wich item should be the LittleBackPack?
 
   Crafting:
     Line1: "*@*"
     Line2: "@+@"
-    Line3: "*@%"
+    Line3: "*@*"
 
     Material1: "IRON_INGOT"
     # All * will be replaced with this material.
@@ -24,7 +24,7 @@ LittleBackPack:
     # All @ will be replaced with this material.
     Material3: "COMPASS"
     # All + will be replaced with this material.
-    Material4: "IRON_BLOCK"
+    Material4: "null"
     # All % will be replaced with this material.
     Material5: "null"
     # All & will be replaced with this material.
