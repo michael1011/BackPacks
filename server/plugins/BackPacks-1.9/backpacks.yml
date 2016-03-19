@@ -1,16 +1,4 @@
 littleB:
-  ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8:
-    '1':
-      type: IRON_PICKAXE
-      amount: 1
-      dur: 202
-    '2':
-      type: TORCH
-      amount: 20
-      dur: 0
-    '3':
-      type: SHIELD
-      amount: 1
-      dur: 17
+  ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8: {}
 normalB:
   ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8: {}

@@ -19,7 +19,7 @@ public class Give implements CommandExecutor {
         plugin.getCommand("bpgive").setExecutor(this);
     }
 
-    String pre = Pref.p;
+    private String pre = Pref.p;
 
     private void helpG(CommandSender sender) {
         sender.sendMessage(pre+ ChatColor.translateAlternateColorCodes('&', main.config.getString("Usage")));
@@ -80,7 +80,7 @@ public class Give implements CommandExecutor {
                         p.sendMessage(pre + ChatColor.translateAlternateColorCodes('&', gaveM));
 
                     } else {
-                        notFound = notFound.replace("%target%", args[0]);
+                        notFound = notFound.replace("%backpack%", args[0]);
                         p.sendMessage(pre+notFound);
                     }
 

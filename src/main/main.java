@@ -21,18 +21,17 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.*;
 import java.sql.*;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 import listeners.SaveLoad;
 
 public class main extends JavaPlugin {
 
-    public static main instance;
+    private static main instance;
 
     public static File configF, namesF, backpacksF;
     public static FileConfiguration config, names, backpacks;
 
-    static Connection connection;
+    private static Connection connection;
     private String host, port, database, username, password;
 
     public static HashMap<UUID, Inventory> littleB = new HashMap<UUID, Inventory>();
@@ -103,36 +102,12 @@ public class main extends JavaPlugin {
     @Override
     public void onDisable() {
 
-        for(Map.Entry<UUID, Inventory> entry : littleB.entrySet()) {
-            if(!backpacks.contains("littleB."+entry.getKey())) {
-                backpacks.createSection("littleB."+entry.getKey());
+        if(config.getBoolean("MySQL.enable")) {
+            try {
+                backpacks.save(backpacksF);
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
-
-            int i = 1;
-            for (ItemStack stack : entry.getValue()) {
-                if(stack != null) {
-                    listeners.SaveLoad.save(main.backpacks.createSection("littleB."+entry.getKey()+"."+i++), stack);
-                }
-            }
-        }
-
-        for(Map.Entry<UUID, Inventory> entry : normalB.entrySet()) {
-            if(!backpacks.contains("normalB."+entry.getKey())) {
-                backpacks.createSection("normalB."+entry.getKey());
-            }
-
-            int i = 1;
-            for (ItemStack stack : entry.getValue()) {
-                if(stack != null) {
-                    listeners.SaveLoad.save(main.backpacks.createSection("normalB."+entry.getKey()+"."+i++), stack);
-                }
-            }
-        }
-
-        try {
-            backpacks.save(backpacksF);
-        } catch (Exception ex) {
-            ex.printStackTrace();
         }
 
         if(connection != null) {

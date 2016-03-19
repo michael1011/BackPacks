@@ -26,10 +26,11 @@ public class SaveLoad implements Listener {
         this.plugin.getServer().getPluginManager().registerEvents(this, main);
     }
 
-    public static void save(ConfigurationSection sec, ItemStack stack) {
+    public static void save(ConfigurationSection sec, ItemStack stack, int slot) {
         sec.set("type", stack.getType().name());
         sec.set("amount", stack.getAmount());
         sec.set("dur", stack.getDurability());
+        sec.set("slot", slot);
 
         if(stack.getItemMeta().hasEnchants()) {
 
@@ -90,7 +91,8 @@ public class SaveLoad implements Listener {
 
                 if(main.backpacks.contains("littleB."+id)) {
                     for(String item : main.backpacks.getConfigurationSection("littleB."+id).getKeys(false)) {
-                        inv.addItem(load(main.backpacks.getConfigurationSection("littleB."+id+"."+item)));
+                        ConfigurationSection sec = main.backpacks.getConfigurationSection("littleB."+id+"."+item);
+                        inv.setItem(sec.getInt("slot") ,load(sec));
                     }
                 }
 
@@ -102,7 +104,8 @@ public class SaveLoad implements Listener {
 
                 if(main.backpacks.contains("normalB."+id)) {
                     for(String item : main.backpacks.getConfigurationSection("normalB."+id).getKeys(false)) {
-                        inv.addItem(load(main.backpacks.getConfigurationSection("normalB."+id+"."+item)));
+                        ConfigurationSection sec = main.backpacks.getConfigurationSection("normalB."+id+"."+item);
+                        inv.setItem(sec.getInt("slot"),load(sec));
                     }
                 }
 
@@ -118,7 +121,7 @@ public class SaveLoad implements Listener {
             UUID id = p.getUniqueId();
 
             if(p.hasPermission("backpacks.littleBackPack")) {
-                for(int in = 1; in < main.names.getInt("LittleBackPack.Slots"); in++) {
+                for(int in = 0; in < main.names.getInt("LittleBackPack.Slots"); in++) {
                     if(main.backpacks.get("littleB."+id+"."+in) != null) {
                         main.backpacks.set("littleB."+id+"."+in, null);
                     }
@@ -128,16 +131,15 @@ public class SaveLoad implements Listener {
                     main.backpacks.createSection("littleB."+id);
                 }
 
-                int i = 1;
-                for(ItemStack stack : main.littleB.get(id)) {
-                    if(stack != null) {
-                        save(main.backpacks.createSection("littleB."+id+"."+i++), stack);
+                for(int i = 0; i < main.names.getInt("LittleBackPack.Slots") ; i++) {
+                    if(main.littleB.get(id).getItem(i) != null) {
+                        save(main.backpacks.createSection("littleB."+id+"."+i), main.littleB.get(id).getItem(i), i);
                     }
                 }
             }
 
             if(p.hasPermission("backpacks.normalBackPack")) {
-                for(int in2 = 1; in2 < main.names.getInt("NormalBackPack.Slots"); in2++) {
+                for(int in2 = 0; in2 < main.names.getInt("NormalBackPack.Slots"); in2++) {
                     if(main.backpacks.get("normalB."+id+"."+in2) != null) {
                         main.backpacks.set("normalB."+id+"."+in2, null);
                     }
@@ -147,10 +149,9 @@ public class SaveLoad implements Listener {
                     main.backpacks.createSection("normalB."+id);
                 }
 
-                int i = 1;
-                for(ItemStack stack : main.normalB.get(id)) {
-                    if(stack != null) {
-                        save(main.backpacks.createSection("normalB."+id+"."+i++), stack);
+                for(int i = 0; i < main.names.getInt("NormalBackPack.Slots") ; i++) {
+                    if(main.normalB.get(id).getItem(i) != null) {
+                        save(main.backpacks.createSection("normalB."+id+"."+i), main.normalB.get(id).getItem(i), i);
                     }
                 }
             }
