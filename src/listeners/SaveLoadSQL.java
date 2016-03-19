@@ -31,15 +31,11 @@ public class SaveLoadSQL implements Listener {
         this.plugin.getServer().getPluginManager().registerEvents(this, main);
     }
 
-    public static void createTableLB(String ID) {
-        main.update("create table if not exists littleBP_"+ID+" (type VARCHAR(200),amount INT(100),dur INT(200),displayname VARCHAR(2000),lore VARCHAR(2000),enchantname VARCHAR(2000))");
+    public static void createTableLB(String ID, String bp) {
+        main.update("create table if not exists "+bp+"_"+ID+" (type VARCHAR(200),amount INT(100),dur INT(200),slot INT(100), displayname VARCHAR(2000),lore VARCHAR(2000),enchantname VARCHAR(2000))");
     }
 
-    public static void createTableNB(String ID) {
-        main.update("create table if not exists normalBP_"+ID+" (type VARCHAR(200),amount INT(100),dur INT(200),displayname VARCHAR(2000),lore VARCHAR(2000),enchantname VARCHAR(2000))");
-    }
-
-    private void save(ItemStack stack, String id, String bp) {
+    private void save(ItemStack stack, String id, String bp, int slot) {
         String type, lore = "doesnotexist", name = "null";
         int amount, durability;
 
@@ -73,7 +69,7 @@ public class SaveLoadSQL implements Listener {
 
         String enchantstring = StringUtils.join(enchantname, '/');
 
-        main.update("insert into "+bp+id+" (type,amount,dur,displayname,lore,enchantname) values ('"+type+"','"+amount+"','"+durability+"','"+name+"','"+lore+"','"+enchantstring+"')");
+        main.update("insert into "+bp+id+" (type,amount,dur,slot,displayname,lore,enchantname) values ('"+type+"','"+amount+"','"+durability+"','"+slot+"','"+name+"','"+lore+"','"+enchantstring+"')");
     }
 
     public static ItemStack load(String type, int amount, int durability, String displayname, String lore, String enchantments) {
@@ -124,7 +120,7 @@ public class SaveLoadSQL implements Listener {
 
 
             if(p.hasPermission("backpacks.littleBackPack")) {
-                createTableLB(trimmedID);
+                createTableLB(trimmedID, "littleBP");
 
                 Inventory inv = Bukkit.getServer().createInventory(p, main.names.getInt("LittleBackPack.Slots"), ChatColor.translateAlternateColorCodes('&', main.names.getString("LittleBackPack.Name")));
 
@@ -133,7 +129,7 @@ public class SaveLoadSQL implements Listener {
 
                     assert rs != null;
                     while(rs.next()) {
-                        inv.addItem(load(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6)));
+                        inv.setItem(rs.getInt(4), load(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getString(5), rs.getString(6), rs.getString(7)));
                     }
 
                 } catch(SQLException e1) {
@@ -144,7 +140,7 @@ public class SaveLoadSQL implements Listener {
             }
 
             if(p.hasPermission("backpacks.normalBackPack")) {
-                createTableNB(trimmedID);
+                createTableLB(trimmedID, "normalBP");
 
                 Inventory inv = Bukkit.getServer().createInventory(p, main.names.getInt("NormalBackPack.Slots"), ChatColor.translateAlternateColorCodes('&', main.names.getString("NormalBackPack.Name")));
 
@@ -153,7 +149,7 @@ public class SaveLoadSQL implements Listener {
 
                     assert rs != null;
                     while(rs.next()) {
-                        inv.addItem(load(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6)));
+                        inv.setItem(rs.getInt(4),load(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getString(5), rs.getString(6), rs.getString(7)));
                     }
 
                 } catch(SQLException e2) {
@@ -176,25 +172,25 @@ public class SaveLoadSQL implements Listener {
             String trimmedID = ID.replaceAll("-", "");
 
             if(p.hasPermission("backpacks.littleBackPack")) {
-                createTableLB(trimmedID);
+                createTableLB(trimmedID, "littleBP");
 
                 main.update("delete from littleBP_"+trimmedID);
 
-                for(ItemStack stack : main.littleB.get(id)) {
-                    if(stack != null) {
-                        save(stack, trimmedID, "littleBP_");
+                for(int i = 0; i < main.names.getInt("LittleBackPack.Slots") ; i++) {
+                    if(main.littleB.get(id).getItem(i) != null) {
+                        save(main.littleB.get(id).getItem(i), trimmedID, "littleBP_", i);
                     }
                 }
             }
 
             if(p.hasPermission("backpacks.normalBackPack")) {
-                createTableNB(trimmedID);
+                createTableLB(trimmedID, "normalBP");
 
                 main.update("delete from normalBP_"+trimmedID);
 
-                for(ItemStack stack : main.normalB.get(id)) {
-                    if(stack != null) {
-                        save(stack, trimmedID, "normalBP_");
+                for(int i = 0; i < main.names.getInt("NormalBackPack.Slots") ; i++) {
+                    if(main.normalB.get(id).getItem(i) != null) {
+                        save(main.normalB.get(id).getItem(i), trimmedID, "normalBP_", i);
                     }
                 }
             }

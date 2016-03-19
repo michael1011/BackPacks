@@ -234,7 +234,7 @@ public class main extends JavaPlugin {
             String trimmedID = ID.replaceAll("-", "");
 
             if(p.hasPermission("backpacks.littleBackPack")) {
-                SaveLoadSQL.createTableLB(trimmedID);
+                SaveLoadSQL.createTableLB(trimmedID, "littleBP");
 
                 Inventory inv = Bukkit.getServer().createInventory(p, names.getInt("LittleBackPack.Slots"), ChatColor.translateAlternateColorCodes('&', names.getString("LittleBackPack.Name")));
 
@@ -254,7 +254,7 @@ public class main extends JavaPlugin {
             }
 
             if(p.hasPermission("backpacks.normalBackPack")) {
-                SaveLoadSQL.createTableNB(trimmedID);
+                SaveLoadSQL.createTableLB(trimmedID, "normalBP");
 
                 Inventory inv = Bukkit.getServer().createInventory(p, names.getInt("NormalBackPack.Slots"), ChatColor.translateAlternateColorCodes('&', names.getString("NormalBackPack.Name")));
 
