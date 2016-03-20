@@ -1,6 +1,6 @@
 main: main.main
 name: BackPacks-1.9
-version: 1.2.4
+version: 1.2.5
 description: This is a simple plugin for bagpacks
 author: Michael1011
 
@@ -30,6 +30,9 @@ permissions:
   backpacks.help:
     description: "for /backpacks help"
     default: true
+  backpacks.enchantingBackPack:
+    description: "to use the enchanting backpack"
+    default: true
   backpacks.enderBackPack:
     description: "to use the ender backpack"
     default: true
@@ -43,8 +46,8 @@ permissions:
     description: "to use the normal backpack"
     default: true
   backpacks.give:
-    description: "to give anyone a backpack"
+    description: "to give anyone a backpack (the /bpgive command)"
     default: op
   backpacks.reload:
-    description: "for the /bpreload command"
+    description: "to use the /bpreload command"
     default: op

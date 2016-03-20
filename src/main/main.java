@@ -77,7 +77,6 @@ public class main extends JavaPlugin {
             e.printStackTrace();
             Bukkit.getConsoleSender().sendMessage(Pref.p+ChatColor.RED+"Failed to connect to Metrics!");
         }
-
     }
 
     public static void update(String s) {
@@ -135,9 +134,7 @@ public class main extends JavaPlugin {
         try {
             openConnection();
             Statement statement = connection.createStatement();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
     }

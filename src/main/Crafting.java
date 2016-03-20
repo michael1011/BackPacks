@@ -21,6 +21,7 @@ public class Crafting {
     public static ItemStack normalB = new ItemStack(Material.getMaterial(main.names.getString("NormalBackPack.Material")), 1);
     public static ItemStack enderB = new ItemStack(Material.getMaterial(main.names.getString("EnderBackPack.Material")), 1);
     public static ItemStack craftingB = new ItemStack(Material.getMaterial(main.names.getString("WorkbenchBackPack.Material")), 1);
+    public static ItemStack enchantingB = new ItemStack(Material.getMaterial(main.names.getString("EnchantingBackPack.Material")));
 
     static void CraftingB() {
         if(main.names.getBoolean("LittleBackPack.Enable")) {
@@ -65,13 +66,13 @@ public class Crafting {
 
 
         if(main.names.getBoolean("NormalBackPack.Enable")) {
-            String NameN = ChatColor.translateAlternateColorCodes('&', main.names.getString("NormalBackPack.Name"));
-            String Lore1N = ChatColor.translateAlternateColorCodes('&', main.names.getString("NormalBackPack.Desc1"));
-            String Lore2N = ChatColor.translateAlternateColorCodes('&', main.names.getString("NormalBackPack.Desc2"));
+            String Name = ChatColor.translateAlternateColorCodes('&', main.names.getString("NormalBackPack.Name"));
+            String Lore1 = ChatColor.translateAlternateColorCodes('&', main.names.getString("NormalBackPack.Desc1"));
+            String Lore2 = ChatColor.translateAlternateColorCodes('&', main.names.getString("NormalBackPack.Desc2"));
 
             ItemMeta normalBM = normalB.getItemMeta();
-            normalBM.setDisplayName(NameN);
-            normalBM.setLore(Arrays.asList("", Lore1N, Lore2N));
+            normalBM.setDisplayName(Name);
+            normalBM.setLore(Arrays.asList("", Lore1, Lore2));
             normalB.setItemMeta(normalBM);
 
             ShapedRecipe normalBR = new ShapedRecipe(normalB);
@@ -106,13 +107,13 @@ public class Crafting {
 
 
         if(main.names.getBoolean("EnderBackPack.Enable")) {
-            String NameE = ChatColor.translateAlternateColorCodes('&', main.names.getString("EnderBackPack.Name"));
-            String Lore1E = ChatColor.translateAlternateColorCodes('&', main.names.getString("EnderBackPack.Desc1"));
-            String Lore2E = ChatColor.translateAlternateColorCodes('&', main.names.getString("EnderBackPack.Desc2"));
+            String Name = ChatColor.translateAlternateColorCodes('&', main.names.getString("EnderBackPack.Name"));
+            String Lore1 = ChatColor.translateAlternateColorCodes('&', main.names.getString("EnderBackPack.Desc1"));
+            String Lore2 = ChatColor.translateAlternateColorCodes('&', main.names.getString("EnderBackPack.Desc2"));
 
             ItemMeta enderBM = enderB.getItemMeta();
-            enderBM.setDisplayName(NameE);
-            enderBM.setLore(Arrays.asList("", Lore1E, Lore2E));
+            enderBM.setDisplayName(Name);
+            enderBM.setLore(Arrays.asList("", Lore1, Lore2));
             enderB.setItemMeta(enderBM);
 
             ShapedRecipe enderBR = new ShapedRecipe(enderB);
@@ -147,13 +148,13 @@ public class Crafting {
 
 
         if(main.names.getBoolean("WorkbenchBackPack.Enable")) {
-            String NameE = ChatColor.translateAlternateColorCodes('&', main.names.getString("WorkbenchBackPack.Name"));
-            String Lore1E = ChatColor.translateAlternateColorCodes('&', main.names.getString("WorkbenchBackPack.Desc1"));
-            String Lore2E = ChatColor.translateAlternateColorCodes('&', main.names.getString("WorkbenchBackPack.Desc2"));
+            String Name = ChatColor.translateAlternateColorCodes('&', main.names.getString("WorkbenchBackPack.Name"));
+            String Lore1 = ChatColor.translateAlternateColorCodes('&', main.names.getString("WorkbenchBackPack.Desc1"));
+            String Lore2 = ChatColor.translateAlternateColorCodes('&', main.names.getString("WorkbenchBackPack.Desc2"));
 
             ItemMeta craftingBM = craftingB.getItemMeta();
-            craftingBM.setDisplayName(NameE);
-            craftingBM.setLore(Arrays.asList("", Lore1E, Lore2E));
+            craftingBM.setDisplayName(Name);
+            craftingBM.setLore(Arrays.asList("", Lore1, Lore2));
             craftingB.setItemMeta(craftingBM);
 
             ShapedRecipe craftingBR = new ShapedRecipe(craftingB);
@@ -185,5 +186,46 @@ public class Crafting {
 
             Bukkit.getServer().addRecipe(craftingBR);
         }
+
+        if(main.names.getBoolean("EnchantingBackPack.Enable")) {
+            String Name = ChatColor.translateAlternateColorCodes('&', main.names.getString("EnchantingBackPack.Name"));
+            String Lore1 = ChatColor.translateAlternateColorCodes('&', main.names.getString("EnchantingBackPack.Desc1"));
+            String Lore2 = ChatColor.translateAlternateColorCodes('&', main.names.getString("EnchantingBackPack.Desc2"));
+
+            ItemMeta enchantingBM = enchantingB.getItemMeta();
+            enchantingBM.setDisplayName(Name);
+            enchantingBM.setLore(Arrays.asList("", Lore1, Lore2));
+            enchantingB.setItemMeta(enchantingBM);
+
+            ShapedRecipe enchantingBR = new ShapedRecipe(enchantingB);
+            enchantingBR.shape(
+                    main.names.getString("EnchantingBackPack.Crafting.Line1"),
+                    main.names.getString("EnchantingBackPack.Crafting.Line2"),
+                    main.names.getString("EnchantingBackPack.Crafting.Line3")
+            );
+
+            if(!main.names.getString("EnchantingBackPack.Crafting.Material1").equals("null")) {
+                enchantingBR.setIngredient('*', Material.getMaterial(main.names.getString("EnchantingBackPack.Crafting.Material1")));
+            }
+
+            if(!main.names.getString("EnchantingBackPack.Crafting.Material2").equals("null")) {
+                enchantingBR.setIngredient('@', Material.getMaterial(main.names.getString("EnchantingBackPack.Crafting.Material2")));
+            }
+
+            if(!main.names.getString("EnchantingBackPack.Crafting.Material3").equals("null")) {
+                enchantingBR.setIngredient('+', Material.getMaterial(main.names.getString("EnchantingBackPack.Crafting.Material3")));
+            }
+
+            if(!main.names.getString("EnchantingBackPack.Crafting.Material4").equals("null")) {
+                enchantingBR.setIngredient('%', Material.getMaterial(main.names.getString("EnchantingBackPack.Crafting.Material4")));
+            }
+
+            if(!main.names.getString("EnchantingBackPack.Crafting.Material5").equals("null")) {
+                enchantingBR.setIngredient('&', Material.getMaterial(main.names.getString("EnchantingBackPack.Crafting.Material5")));
+            }
+
+            Bukkit.getServer().addRecipe(enchantingBR);
+        }
+
     }
 }

@@ -11,7 +11,7 @@ LittleBackPack:
   Desc2: "&fRight click to open it"
 
   Material: "COMPASS"
-# Wich item should be the LittleBackPack?
+  # Wich item should be the LittleBackPack?
 
   Crafting:
     Line1: "*@*"
@@ -41,7 +41,7 @@ NormalBackPack:
   Desc2: "&fRight click to open it"
 
   Material: "WATCH"
-# Wich item should be the LittleBackPack?
+  # Wich item should be the NormalBackPack?
 
   Crafting:
     Line1: "*@*"
@@ -69,7 +69,7 @@ EnderBackPack:
   Desc2: "&fRight click to open it"
 
   Material: "ENDER_CHEST"
-  # Wich item should be the LittleBackPack?
+  # Wich item should be the EnderBackPack?
 
   Crafting:
     Line1: "*@*"
@@ -97,7 +97,7 @@ WorkbenchBackPack:
   Desc2: "&fRight click to open it"
 
   Material: "WORKBENCH"
-  # Wich item should be the LittleBackPack?
+  # Wich item should be the WorkBenchBackPack?
 
   Crafting:
     Line1: "*@*"
@@ -109,6 +109,33 @@ WorkbenchBackPack:
     Material2: "WORKBENCH"
     # All @ will be replaced with this material.
     Material3: "null"
+    # All + will be replaced with this material.
+    Material4: "null"
+    # All % will be replaced with this material.
+    Material5: "null"
+    # All & will be replaced with this material.
+
+  # If you don't need a material set it to "null"!
+
+EnchantingBackPack:
+  Enable: true
+  Name: "&cEnchanting &9BackPack"
+  Desc1: "&eThis is a &cEnchanting &9BackPack"
+  Desc2: "&fRight click to open it"
+
+  Material: "ENCHANTMENT_TABLE"
+  # Wich item should be the EnchantingBackPack?
+
+  Crafting:
+    Line1: "*+*"
+    Line2: "+@+"
+    Line3: "*+*"
+
+    Material1: "LAPIS_BLOCK"
+    # All * will be replaced with this material.
+    Material2: "ENCHANTMENT_TABLE"
+    # All @ will be replaced with this material.
+    Material3: "REDSTONE_BLOCK"
     # All + will be replaced with this material.
     Material4: "null"
     # All % will be replaced with this material.

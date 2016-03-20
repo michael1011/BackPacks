@@ -13,6 +13,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.*;
@@ -26,57 +27,83 @@ public class SaveLoad implements Listener {
         this.plugin.getServer().getPluginManager().registerEvents(this, main);
     }
 
-    public static void save(ConfigurationSection sec, ItemStack stack, int slot) {
+    private static void save(ConfigurationSection sec, ItemStack stack, int slot) {
         sec.set("type", stack.getType().name());
         sec.set("amount", stack.getAmount());
         sec.set("dur", stack.getDurability());
         sec.set("slot", slot);
 
-        if(stack.getItemMeta().hasEnchants()) {
+        if(stack.getType() != Material.ENCHANTED_BOOK)  {
+            if(stack.getItemMeta().hasEnchants()) {
 
-            for (Enchantment enchantment : stack.getEnchantments().keySet()) {
-                sec.set("enchantments."+enchantment.getName()+".lvl", stack.getEnchantmentLevel(enchantment));
+                for (Enchantment enchantment : stack.getEnchantments().keySet()) {
+                    sec.set("enchantments."+enchantment.getName()+".lvl", stack.getEnchantmentLevel(enchantment));
+                }
+            }
+
+            if(stack.hasItemMeta()) {
+                if(stack.getItemMeta().hasDisplayName()) {
+                    sec.set("name", stack.getItemMeta().getDisplayName());
+                }
+                if(stack.getItemMeta().hasLore()) {
+                    sec.set("lore", stack.getItemMeta().getLore());
+                }
+            }
+
+        } else {
+            EnchantmentStorageMeta book = (EnchantmentStorageMeta) stack.getItemMeta();
+            Map<Enchantment, Integer> enchants = book.getStoredEnchants();
+
+            for(Enchantment enchantment : enchants.keySet()) {
+                sec.set("enchantments."+enchantment.getName()+".lvl", book.getStoredEnchantLevel(enchantment));
             }
         }
 
-        if(stack.hasItemMeta()) {
-            if(stack.getItemMeta().hasDisplayName()) {
-                sec.set("name", stack.getItemMeta().getDisplayName());
-            }
-            if(stack.getItemMeta().hasLore()) {
-                sec.set("lore", stack.getItemMeta().getLore());
-            }
-        }
     }
 
     private ItemStack load(ConfigurationSection sec) {
         Short dur = (short) sec.getLong("dur");
 
         ItemStack item = new ItemStack(Material.valueOf(sec.getString("type")));
-        ItemMeta itemM = item.getItemMeta();
         item.setAmount(sec.getInt("amount"));
         item.setDurability(dur);
 
-        if(sec.get("enchantments") != null) {
-            for (String enchantmentStr : sec.getConfigurationSection("enchantments").getKeys(false)) {
+        if(!sec.getString("type").equals("ENCHANTED_BOOK")) {
+            ItemMeta itemM = item.getItemMeta();
 
-                Enchantment ench = Enchantment.getByName(enchantmentStr);
-                int level = sec.getInt("enchantments." + enchantmentStr + ".lvl");
+            if(sec.get("enchantments") != null) {
+                for(String enchantmentStr : sec.getConfigurationSection("enchantments").getKeys(false)) {
+                    Enchantment ench = Enchantment.getByName(enchantmentStr);
+                    int level = sec.getInt("enchantments."+enchantmentStr+".lvl");
 
-                item.addEnchantment(ench, level);
-                itemM.addEnchant(ench, level, true);
+                    item.addEnchantment(ench, level);
+                    itemM.addEnchant(ench, level, true);
+                }
             }
+
+            if(sec.getString("name") != null) {
+                itemM.setDisplayName(sec.getString("name"));
+            }
+
+            if(sec.getString("lore") != null) {
+                itemM.setLore(sec.getStringList("lore"));
+            }
+
+            item.setItemMeta(itemM);
+
+        } else {
+            EnchantmentStorageMeta enchantments = (EnchantmentStorageMeta) item.getItemMeta();
+
+            for(String enchStr : sec.getConfigurationSection("enchantments").getKeys(false)) {
+                Enchantment ench = Enchantment.getByName(enchStr);
+                int lvl = sec.getInt("enchantments."+enchStr+".lvl");
+
+                enchantments.addStoredEnchant(ench, lvl, true);
+            }
+
+            item.setItemMeta(enchantments);
         }
 
-        if(sec.getString("name") != null) {
-            itemM.setDisplayName(sec.getString("name"));
-        }
-
-        if(sec.getString("lore") != null) {
-            itemM.setLore(sec.getStringList("lore"));
-        }
-
-        item.setItemMeta(itemM);
         return new ItemStack(item);
     }
 

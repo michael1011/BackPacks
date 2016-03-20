@@ -32,6 +32,8 @@ public class Give implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
+        // todo: add enchanting backpack
+
         String NoPermission = ChatColor.translateAlternateColorCodes('&', main.config.getString("NoPermission"));
         String OnlyPlayers = ChatColor.translateAlternateColorCodes('&', main.config.getString("OnlyPlayers"));
 
