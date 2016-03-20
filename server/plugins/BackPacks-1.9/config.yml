@@ -1,5 +1,5 @@
 # BackPacks by Michael1011
-# Version 1.2.5
+# Version 1.2.6
 
 OnlyPlayers: "&4Only players &ccan execute this command!"
 # When the console wants to execute a command wich is only for players.
@@ -46,9 +46,9 @@ MySQL:
 # IP adress or domain of you MySQL host.
   port: "3306"
 # Port of your MySQL Server.
-  database: "database"
+  database: "test"
 # Wich database do you want to use?
   username: "root"
 # The user must have all permission on the database above!
-  password: "password"
+  password: ""
 # The password of the player above.

@@ -27,7 +27,7 @@ public class SaveLoad implements Listener {
         this.plugin.getServer().getPluginManager().registerEvents(this, main);
     }
 
-    private static void save(ConfigurationSection sec, ItemStack stack, int slot) {
+    public static void save(ConfigurationSection sec, ItemStack stack, int slot) {
         sec.set("type", stack.getType().name());
         sec.set("amount", stack.getAmount());
         sec.set("dur", stack.getDurability());
@@ -61,7 +61,7 @@ public class SaveLoad implements Listener {
 
     }
 
-    private ItemStack load(ConfigurationSection sec) {
+    public static ItemStack load(ConfigurationSection sec) {
         Short dur = (short) sec.getLong("dur");
 
         ItemStack item = new ItemStack(Material.valueOf(sec.getString("type")));

@@ -13,14 +13,12 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class SaveLoadSQL implements Listener {
 
@@ -35,7 +33,7 @@ public class SaveLoadSQL implements Listener {
         main.update("create table if not exists "+bp+"_"+ID+" (type VARCHAR(200),amount INT(100),dur INT(200),slot INT(100), displayname VARCHAR(2000),lore VARCHAR(2000),enchantname VARCHAR(2000))");
     }
 
-    private void save(ItemStack stack, String id, String bp, int slot) {
+    public static void save(ItemStack stack, String id, String bp, int slot) {
         String type, lore = "doesnotexist", name = "null";
         int amount, durability;
 
@@ -46,25 +44,36 @@ public class SaveLoadSQL implements Listener {
         amount = stack.getAmount();
         durability = stack.getDurability();
 
-        if(stack.hasItemMeta()) {
-            if(stack.getItemMeta().hasDisplayName()) {
-                name = stack.getItemMeta().getDisplayName();
+        if(!stack.getType().equals(Material.ENCHANTED_BOOK)) {
+            if(stack.hasItemMeta()) {
+                if(stack.getItemMeta().hasDisplayName()) {
+                    name = stack.getItemMeta().getDisplayName();
+                }
+
+                if(stack.getItemMeta().hasLore()) {
+                    loreName = stack.getItemMeta().getLore();
+
+                    lore = StringUtils.join(loreName, '~');
+                }
             }
 
-            if(stack.getItemMeta().hasLore()) {
-                loreName = stack.getItemMeta().getLore();
-
-                lore = StringUtils.join(loreName, '~');
+            if(stack.getItemMeta().hasEnchants()) {
+                for(Enchantment ench : stack.getEnchantments().keySet()) {
+                    String enchantment = ench.getName()+":"+stack.getEnchantmentLevel(ench);
+                    enchantname.add(enchantment);
+                }
+            } else {
+                enchantname.add("null");
             }
-        }
 
-        if(stack.getItemMeta().hasEnchants()) {
-            for(Enchantment ench : stack.getEnchantments().keySet()) {
-                String enchantment = ench.getName()+":"+stack.getEnchantmentLevel(ench);
+        } else {
+            EnchantmentStorageMeta book = (EnchantmentStorageMeta) stack.getItemMeta();
+            Map<Enchantment, Integer> enchants = book.getStoredEnchants();
+
+            for(Enchantment ench : enchants.keySet()) {
+                String enchantment = ench.getName()+":"+book.getStoredEnchantLevel(ench);
                 enchantname.add(enchantment);
             }
-        } else {
-            enchantname.add("null");
         }
 
         String enchantstring = StringUtils.join(enchantname, '/');
@@ -76,35 +85,53 @@ public class SaveLoadSQL implements Listener {
         Short dur = (short) durability;
 
         ItemStack item = new ItemStack(Material.valueOf(type));
-        ItemMeta meta = item.getItemMeta();
-
         item.setAmount(amount);
         item.setDurability(dur);
 
-        if(!displayname.equals("null")) {
-            meta.setDisplayName(displayname);
-        }
+        if(!type.equals("ENCHANTED_BOOK")) {
+            ItemMeta meta = item.getItemMeta();
 
-        if(!lore.equals("doesnotexist")) {
-            List<String> loreList = new ArrayList<String>(Arrays.asList(lore.split("~")));
-            meta.setLore(loreList);
-        }
+            if(!displayname.equals("null")) {
+                meta.setDisplayName(displayname);
+            }
 
-        if(!enchantments.equals("null")) {
+            if(!lore.equals("doesnotexist")) {
+                List<String> loreList = new ArrayList<String>(Arrays.asList(lore.split("~")));
+                meta.setLore(loreList);
+            }
+
+            if(!enchantments.equals("null")) {
+                List<String> enchantmentsList = new ArrayList<String>(Arrays.asList(enchantments.split("/")));
+
+                for(String enchantment : enchantmentsList) {
+                    String[] parts = enchantment.split(":");
+
+                    Enchantment ench = Enchantment.getByName(parts[0]);
+                    int enchLvl = Integer.parseInt(parts[1]);
+
+                    item.addEnchantment(ench, enchLvl);
+                    meta.addEnchant(ench, enchLvl, true);
+                }
+            }
+
+            item.setItemMeta(meta);
+
+        } else {
+            EnchantmentStorageMeta enchantmentsMeta = (EnchantmentStorageMeta) item.getItemMeta();
             List<String> enchantmentsList = new ArrayList<String>(Arrays.asList(enchantments.split("/")));
 
-            for(String enchantment : enchantmentsList) {
-                String[] parts = enchantment.split(":");
+            for(String ench : enchantmentsList) {
+                String[] parts = ench.split(":");
 
-                Enchantment ench = Enchantment.getByName(parts[0]);
-                int enchLvl = Integer.parseInt(parts[1]);
+                Enchantment enchant = Enchantment.getByName(parts[0]);
+                int enchantLvl = Integer.parseInt(parts[1]);
 
-                item.addEnchantment(ench, enchLvl);
-                meta.addEnchant(ench, enchLvl, true);
+                enchantmentsMeta.addStoredEnchant(enchant, enchantLvl, true);
             }
+
+            item.setItemMeta(enchantmentsMeta);
         }
 
-        item.setItemMeta(meta);
         return new ItemStack(item);
     }
 

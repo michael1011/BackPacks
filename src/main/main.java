@@ -7,15 +7,10 @@ import listeners.BackPack;
 import listeners.SaveLoadSQL;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.*;
@@ -100,6 +95,9 @@ public class main extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        for(Player p : Bukkit.getOnlinePlayers()) {
+            save(p);
+        }
 
         if(config.getBoolean("MySQL.enable")) {
             try {
@@ -147,59 +145,28 @@ public class main extends JavaPlugin {
         return connection;
     }
 
-    private ItemStack load(ConfigurationSection sec) {
-        Short dur = (short) sec.getLong("dur");
-
-        ItemStack item = new ItemStack(Material.valueOf(sec.getString("type")));
-        ItemMeta itemM = item.getItemMeta();
-        item.setAmount(sec.getInt("amount"));
-        item.setDurability(dur);
-
-        if(sec.get("enchantments") != null) {
-            for (String enchantmentStr : sec.getConfigurationSection("enchantments").getKeys(false)) {
-
-                Enchantment ench = Enchantment.getByName(enchantmentStr);
-                int level = sec.getInt("enchantments." + enchantmentStr + ".lvl");
-
-                item.addEnchantment(ench, level);
-                itemM.addEnchant(ench, level, true);
-            }
-        }
-
-        if(sec.getString("name") != null) {
-            itemM.setDisplayName(sec.getString("name"));
-        }
-
-        if(sec.getString("lore") != null) {
-            itemM.setLore(sec.getStringList("lore"));
-        }
-
-        item.setItemMeta(itemM);
-        return new ItemStack(item);
-    }
-
     private void createInv(Player p) {
 
         UUID id = p.getUniqueId();
 
         if(!config.getBoolean("MySQL.enable")) {
-            Inventory inv = Bukkit.getServer().createInventory(p, main.names.getInt("LittleBackPack.Slots"), ChatColor.translateAlternateColorCodes('&', main.names.getString("LittleBackPack.Name")));
-            Inventory invN = Bukkit.getServer().createInventory(p, main.names.getInt("NormalBackPack.Slots"), ChatColor.translateAlternateColorCodes('&', main.names.getString("NormalBackPack.Name")));
+            Inventory inv = Bukkit.getServer().createInventory(p, names.getInt("LittleBackPack.Slots"), ChatColor.translateAlternateColorCodes('&', names.getString("LittleBackPack.Name")));
+            Inventory invN = Bukkit.getServer().createInventory(p, names.getInt("NormalBackPack.Slots"), ChatColor.translateAlternateColorCodes('&', names.getString("NormalBackPack.Name")));
 
-            if(main.backpacks.contains("littleB."+id)) {
-                for(String item : main.backpacks.getConfigurationSection("littleB."+id).getKeys(false)) {
-                    inv.addItem(load(main.backpacks.getConfigurationSection("littleB."+id+"."+item)));
+            if(backpacks.contains("littleB."+id)) {
+                for(String item : backpacks.getConfigurationSection("littleB."+id).getKeys(false)) {
+                    inv.addItem(SaveLoad.load(backpacks.getConfigurationSection("littleB."+id+"."+item)));
                 }
             }
 
-            if(main.backpacks.contains("normalB."+id)) {
-                for(String item : main.backpacks.getConfigurationSection("normalB."+id).getKeys(false)) {
-                    invN.addItem(load(main.backpacks.getConfigurationSection("normalB."+id+"."+item)));
+            if(backpacks.contains("normalB."+id)) {
+                for(String item : backpacks.getConfigurationSection("normalB."+id).getKeys(false)) {
+                    invN.addItem(SaveLoad.load(backpacks.getConfigurationSection("normalB."+id+"."+item)));
                 }
             }
 
-            main.littleB.put(id, inv);
-            main.normalB.put(id, invN);
+            littleB.put(id, inv);
+            normalB.put(id, invN);
 
         } else {
             String ID = id.toString();
@@ -215,14 +182,14 @@ public class main extends JavaPlugin {
 
                     assert rs != null;
                     while(rs.next()) {
-                        inv.addItem(SaveLoadSQL.load(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6)));
+                        inv.setItem(rs.getInt(4), SaveLoadSQL.load(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getString(5), rs.getString(6), rs.getString(7)));
                     }
 
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
 
-                main.littleB.put(id, inv);
+                littleB.put(id, inv);
             }
 
             if(p.hasPermission("backpacks.normalBackPack")) {
@@ -235,17 +202,94 @@ public class main extends JavaPlugin {
 
                     assert rs != null;
                     while(rs.next()) {
-                        inv.addItem(SaveLoadSQL.load(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6)));
+                        inv.setItem(rs.getInt(4), SaveLoadSQL.load(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getString(5), rs.getString(6), rs.getString(7)));
                     }
 
                 } catch(SQLException e) {
                     e.printStackTrace();
                 }
 
-                main.normalB.put(id, inv);
+                normalB.put(id, inv);
             }
 
         }
+    }
+
+    private void save(Player p) {
+        UUID id = p.getUniqueId();
+
+        if(!config.getBoolean("MySQL.enable")) {
+            if(p.hasPermission("backpacks.littleBackPack")) {
+                for(int in = 0; in < names.getInt("LittleBackPack.Slots"); in++) {
+                    if(backpacks.get("littleB."+id+"."+in) != null) {
+                        backpacks.set("littleB."+id+"."+in, null);
+                    }
+                }
+
+                if(!backpacks.contains("littleB."+id)) {
+                    backpacks.createSection("littleB."+id);
+                }
+
+                for(int i = 0; i < names.getInt("LittleBackPack.Slots") ; i++) {
+                    if(littleB.get(id).getItem(i) != null) {
+                        SaveLoad.save(backpacks.createSection("littleB."+id+"."+i), littleB.get(id).getItem(i), i);
+                    }
+                }
+            }
+
+            if(p.hasPermission("backpacks.normalBackPack")) {
+                for(int in2 = 0; in2 < names.getInt("NormalBackPack.Slots"); in2++) {
+                    if(backpacks.get("normalB."+id+"."+in2) != null) {
+                        backpacks.set("normalB."+id+"."+in2, null);
+                    }
+                }
+
+                if(!backpacks.contains("normalB."+id)) {
+                    backpacks.createSection("normalB."+id);
+                }
+
+                for(int i = 0; i < names.getInt("NormalBackPack.Slots") ; i++) {
+                    if(normalB.get(id).getItem(i) != null) {
+                        SaveLoad.save(backpacks.createSection("normalB."+id+"."+i), normalB.get(id).getItem(i), i);
+                    }
+                }
+            }
+
+            try {
+                backpacks.save(backpacksF);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+
+        } else {
+            String ID = id.toString();
+            String trimmedID = ID.replaceAll("-", "");
+
+            if(p.hasPermission("backpacks.littleBackPack")) {
+                SaveLoadSQL.createTableLB(trimmedID, "littleBP");
+
+                update("delete from littleBP_"+trimmedID);
+
+                for(int i = 0; i < names.getInt("LittleBackPack.Slots") ; i++) {
+                    if(littleB.get(id).getItem(i) != null) {
+                        SaveLoadSQL.save(littleB.get(id).getItem(i), trimmedID, "littleBP_", i);
+                    }
+                }
+            }
+
+            if(p.hasPermission("backpacks.normalBackPack")) {
+                SaveLoadSQL.createTableLB(trimmedID, "normalBP");
+
+                update("delete from normalBP_"+trimmedID);
+
+                for(int i = 0; i < names.getInt("NormalBackPack.Slots") ; i++) {
+                    if(normalB.get(id).getItem(i) != null) {
+                        SaveLoadSQL.save(normalB.get(id).getItem(i), trimmedID, "normalBP_", i);
+                    }
+                }
+            }
+        }
+
     }
 
     private void createFiles() {
