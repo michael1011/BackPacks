@@ -1,5 +1,5 @@
 # BackPacks by Michael1011
-# Version 1.2.5
+# Version 1.2.6
 
 OnlyPlayers: "&4Only players &ccan execute this command!"
 # When the console wants to execute a command wich is only for players.
@@ -22,7 +22,7 @@ BPHelp:
 BPGiveHelp:
   1: "&6/bpgive <item>: &eto give you the backpack <item>"
   2: "&6/bpgive <item> <player>: &eto give <player> the backpkack <item>"
-  3: "&6Available Items are: &elittlebp ; normalbp ; enderbp ; workbenchbp"
+  3: "&6Available Items are: &elittlebp ; normalbp ; enderbp ; workbenchbp ; enchantingbp"
 # Help of /bp give
 
 GaveBackPack: "&eAdded the &6backpack %backpack% &eto your inventory!"

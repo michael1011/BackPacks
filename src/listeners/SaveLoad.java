@@ -15,6 +15,10 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.PotionMeta;
+import org.bukkit.potion.PotionData;
+import org.bukkit.potion.PotionType;
+import org.bukkit.potion.Potion;
 
 import java.util.*;
 
@@ -27,81 +31,145 @@ public class SaveLoad implements Listener {
         this.plugin.getServer().getPluginManager().registerEvents(this, main);
     }
 
+    private static void noPotion(ItemStack stack, ConfigurationSection sec) {
+        if(stack.getItemMeta().hasEnchants()) {
+            for (Enchantment enchantment : stack.getEnchantments().keySet()) {
+                sec.set("enchantments."+enchantment.getName()+".lvl", stack.getEnchantmentLevel(enchantment));
+            }
+        }
+
+        if(stack.hasItemMeta()) {
+            if(stack.getItemMeta().hasDisplayName()) {
+                sec.set("name", stack.getItemMeta().getDisplayName());
+            }
+            if(stack.getItemMeta().hasLore()) {
+                sec.set("lore", stack.getItemMeta().getLore());
+            }
+        }
+    }
+
+    @SuppressWarnings("deprecation")
+    private static void saveP_1_8(ItemStack stack, ConfigurationSection sec) {
+        Potion potion = Potion.fromItemStack(stack);
+
+        if(potion.getType().getEffectType() != null) {
+            sec.set("potion.type", potion.getType().toString());
+            sec.set("potion.level", potion.getLevel());
+            sec.set("potion.splash", potion.isSplash());
+
+            if(!potion.isSplash()) {
+                sec.set("potion.dur", potion.hasExtendedDuration());
+
+            } else {
+                sec.set("potion.dur", false);
+            }
+        }
+    }
+
     public static void save(ConfigurationSection sec, ItemStack stack, int slot) {
-        sec.set("type", stack.getType().name());
+        Material type = stack.getType();
+
+        sec.set("type", type.name());
         sec.set("amount", stack.getAmount());
         sec.set("dur", stack.getDurability());
         sec.set("slot", slot);
 
-        if(stack.getType() != Material.ENCHANTED_BOOK)  {
-            if(stack.getItemMeta().hasEnchants()) {
-
-                for (Enchantment enchantment : stack.getEnchantments().keySet()) {
-                    sec.set("enchantments."+enchantment.getName()+".lvl", stack.getEnchantmentLevel(enchantment));
-                }
-            }
-
-            if(stack.hasItemMeta()) {
-                if(stack.getItemMeta().hasDisplayName()) {
-                    sec.set("name", stack.getItemMeta().getDisplayName());
-                }
-                if(stack.getItemMeta().hasLore()) {
-                    sec.set("lore", stack.getItemMeta().getLore());
-                }
-            }
-
-        } else {
+        if(type == Material.ENCHANTED_BOOK) {
             EnchantmentStorageMeta book = (EnchantmentStorageMeta) stack.getItemMeta();
             Map<Enchantment, Integer> enchants = book.getStoredEnchants();
 
-            for(Enchantment enchantment : enchants.keySet()) {
-                sec.set("enchantments."+enchantment.getName()+".lvl", book.getStoredEnchantLevel(enchantment));
+            for (Enchantment enchantment : enchants.keySet()) {
+                sec.set("enchantments." + enchantment.getName() + ".lvl", book.getStoredEnchantLevel(enchantment));
+            }
+
+        } else if(main.version.equals("1.9")) {
+            if(type == Material.POTION || type == Material.SPLASH_POTION || type == Material.LINGERING_POTION || type == Material.TIPPED_ARROW) {
+                PotionMeta potion = (PotionMeta) stack.getItemMeta();
+
+                if(potion.getBasePotionData().getType().getEffectType() != null) {
+                    PotionData pData = potion.getBasePotionData();
+
+                    sec.set("potion.type", pData.getType().toString());
+                    sec.set("potion.extended", pData.isExtended());
+                    sec.set("potion.upgraded", pData.isUpgraded());
+                }
+
+                // todo: add custom potions
+
+            } else {
+                noPotion(stack, sec);
+            }
+
+        } else {
+            if(type == Material.POTION) {
+                saveP_1_8(stack, sec);
+            } else {
+                noPotion(stack, sec);
             }
         }
-
     }
 
     public static ItemStack load(ConfigurationSection sec) {
+
         Short dur = (short) sec.getLong("dur");
+        String type = sec.getString("type");
 
         ItemStack item = new ItemStack(Material.valueOf(sec.getString("type")));
         item.setAmount(sec.getInt("amount"));
         item.setDurability(dur);
 
-        if(!sec.getString("type").equals("ENCHANTED_BOOK")) {
+        if(type.equals("ENCHANTED_BOOK")) {
+            EnchantmentStorageMeta enchantments = (EnchantmentStorageMeta) item.getItemMeta();
+
+            for (String enchStr : sec.getConfigurationSection("enchantments").getKeys(false)) {
+                Enchantment ench = Enchantment.getByName(enchStr);
+                int lvl = sec.getInt("enchantments." + enchStr + ".lvl");
+
+                enchantments.addStoredEnchant(ench, lvl, true);
+            }
+
+            item.setItemMeta(enchantments);
+
+        } else if(type.equals("POTION") || type.equals("SPLASH_POTION") || type.equals("LINGERING_POTION") || type.equals("TIPPED_ARROW")) {
+            if(main.version.equals("1.9")) {
+                if(sec.getString("potion.type") != null) {
+                    PotionMeta potionM = (PotionMeta) item.getItemMeta();
+
+                    PotionData potionD = new PotionData(PotionType.valueOf(sec.getString("potion.type")), sec.getBoolean("potion.extended"), sec.getBoolean("potion.upgraded"));
+
+                    potionM.setBasePotionData(potionD);
+                    item.setItemMeta(potionM);
+                }
+
+            } else {
+                @SuppressWarnings("deprecation")
+                Potion potion = new Potion(PotionType.valueOf(sec.getString("potion.type")), sec.getInt("potion.level"), sec.getBoolean("potion.splash"), sec.getBoolean("potion.dur"));
+
+                item = potion.toItemStack(sec.getInt("amount"));
+            }
+
+        } else {
             ItemMeta itemM = item.getItemMeta();
 
-            if(sec.get("enchantments") != null) {
-                for(String enchantmentStr : sec.getConfigurationSection("enchantments").getKeys(false)) {
+            if (sec.get("enchantments") != null) {
+                for (String enchantmentStr : sec.getConfigurationSection("enchantments").getKeys(false)) {
                     Enchantment ench = Enchantment.getByName(enchantmentStr);
-                    int level = sec.getInt("enchantments."+enchantmentStr+".lvl");
+                    int level = sec.getInt("enchantments." + enchantmentStr + ".lvl");
 
                     item.addEnchantment(ench, level);
                     itemM.addEnchant(ench, level, true);
                 }
             }
 
-            if(sec.getString("name") != null) {
+            if (sec.getString("name") != null) {
                 itemM.setDisplayName(sec.getString("name"));
             }
 
-            if(sec.getString("lore") != null) {
+            if (sec.getString("lore") != null) {
                 itemM.setLore(sec.getStringList("lore"));
             }
 
             item.setItemMeta(itemM);
-
-        } else {
-            EnchantmentStorageMeta enchantments = (EnchantmentStorageMeta) item.getItemMeta();
-
-            for(String enchStr : sec.getConfigurationSection("enchantments").getKeys(false)) {
-                Enchantment ench = Enchantment.getByName(enchStr);
-                int lvl = sec.getInt("enchantments."+enchStr+".lvl");
-
-                enchantments.addStoredEnchant(ench, lvl, true);
-            }
-
-            item.setItemMeta(enchantments);
         }
 
         return new ItemStack(item);

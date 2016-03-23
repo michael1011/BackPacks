@@ -32,13 +32,15 @@ public class main extends JavaPlugin {
     public static HashMap<UUID, Inventory> littleB = new HashMap<UUID, Inventory>();
     public static HashMap<UUID, Inventory> normalB = new HashMap<UUID, Inventory>();
 
+    public static String version = Bukkit.getBukkitVersion().substring(0, 3);
+
     @Override
     public void onEnable() {
         instance = this;
 
         createFiles();
 
-        Boolean SQLenable = config.getBoolean("MySQL.enable");
+        final Boolean SQLenable = config.getBoolean("MySQL.enable");
 
         if(SQLenable) {
             establishMySQL();
@@ -67,6 +69,7 @@ public class main extends JavaPlugin {
 
         try {
             Metrics metrics = new Metrics(this);
+
             metrics.start();
         } catch (IOException e) {
             e.printStackTrace();
@@ -182,7 +185,7 @@ public class main extends JavaPlugin {
 
                     assert rs != null;
                     while(rs.next()) {
-                        inv.setItem(rs.getInt(4), SaveLoadSQL.load(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getString(5), rs.getString(6), rs.getString(7)));
+                        inv.setItem(rs.getInt(4), SaveLoadSQL.load(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)));
                     }
 
                 } catch (SQLException e) {
@@ -202,7 +205,7 @@ public class main extends JavaPlugin {
 
                     assert rs != null;
                     while(rs.next()) {
-                        inv.setItem(rs.getInt(4), SaveLoadSQL.load(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getString(5), rs.getString(6), rs.getString(7)));
+                        inv.setItem(rs.getInt(4), SaveLoadSQL.load(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)));
                     }
 
                 } catch(SQLException e) {

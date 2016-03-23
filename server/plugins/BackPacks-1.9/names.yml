@@ -6,7 +6,7 @@ LittleBackPack:
   Enable: true
   Slots: 18
 # Must be divisible by 9.
-  Name: "&eLittle &6BackPack"
+  Name: "&e&lLittle &6BackPack"
   Desc1: "&eThis is a &elittle &6Backpack"
   Desc2: "&fRight click to open it"
 
@@ -36,7 +36,7 @@ NormalBackPack:
   Enable: true
   Slots: 36
 # Must be divisible by 9.
-  Name: "&6Normal &cBackPack"
+  Name: "&6&lNormal &cBackPack"
   Desc1: "&eThis is a &6normal &cBackpack"
   Desc2: "&fRight click to open it"
 
@@ -64,7 +64,7 @@ NormalBackPack:
 
 EnderBackPack:
   Enable: true
-  Name: "&5Ender &dBackPack"
+  Name: "&5&lEnder &dBackPack"
   Desc1: "&eThis is a &5Ender &dBackPack"
   Desc2: "&fRight click to open it"
 
@@ -92,7 +92,7 @@ EnderBackPack:
 
 WorkbenchBackPack:
   Enable: true
-  Name: "&eWorkbench &6BackPack"
+  Name: "&e&lWorkbench &6BackPack"
   Desc1: "&eThis is a &eWorkbench &6BackPack"
   Desc2: "&fRight click to open it"
 
@@ -117,9 +117,10 @@ WorkbenchBackPack:
 
   # If you don't need a material set it to "null"!
 
+
 EnchantingBackPack:
   Enable: true
-  Name: "&cEnchanting &9BackPack"
+  Name: "&c&lEnchanting &9BackPack"
   Desc1: "&eThis is a &cEnchanting &9BackPack"
   Desc2: "&fRight click to open it"
 

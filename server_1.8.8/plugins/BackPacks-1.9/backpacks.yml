@@ -1,4 +1,144 @@
 littleB:
-  ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8: {}
+  ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8:
+    '0':
+      type: GHAST_TEAR
+      amount: 1
+      dur: 0
+      slot: 0
+    '1':
+      type: POTION
+      amount: 1
+      dur: 16428
+      slot: 1
+      potion:
+        type: INSTANT_DAMAGE
+        level: 2
+        splash: true
+        dur: false
+    '2':
+      type: GLASS_BOTTLE
+      amount: 1
+      dur: 0
+      slot: 2
+    '3':
+      type: POTION
+      amount: 1
+      dur: 16395
+      slot: 3
+      potion:
+        type: JUMP
+        level: 1
+        splash: true
+        dur: false
+    '4':
+      type: POTION
+      amount: 1
+      dur: 75
+      slot: 4
+      potion:
+        type: JUMP
+        level: 1
+        splash: false
+        dur: true
+    '5':
+      type: POTION
+      amount: 1
+      dur: 16398
+      slot: 5
+      potion:
+        type: INVISIBILITY
+        level: 1
+        splash: true
+        dur: false
+    '6':
+      type: POTION
+      amount: 1
+      dur: 75
+      slot: 6
+      potion:
+        type: JUMP
+        level: 1
+        splash: false
+        dur: true
+    '7':
+      type: POTION
+      amount: 1
+      dur: 1
+      slot: 7
+      potion:
+        type: REGEN
+        level: 1
+        splash: false
+        dur: false
+    '8':
+      type: POTION
+      amount: 1
+      dur: 16386
+      slot: 8
+      potion:
+        type: SPEED
+        level: 1
+        splash: true
+        dur: false
+    '9':
+      type: POTION
+      amount: 1
+      dur: 16418
+      slot: 9
+      potion:
+        type: SPEED
+        level: 2
+        splash: true
+        dur: false
+    '10':
+      type: POTION
+      amount: 1
+      dur: 42
+      slot: 10
+      potion:
+        type: SLOWNESS
+        level: 2
+        splash: false
+        dur: false
+    '11':
+      type: POTION
+      amount: 1
+      dur: 65
+      slot: 11
+      potion:
+        type: REGEN
+        level: 1
+        splash: false
+        dur: true
+    '12':
+      type: POTION
+      amount: 1
+      dur: 16393
+      slot: 12
+      potion:
+        type: STRENGTH
+        level: 1
+        splash: true
+        dur: false
 normalB:
-  ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8: {}
+  ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8:
+    '0':
+      type: POTION
+      amount: 1
+      dur: 68
+      slot: 0
+      potion:
+        type: POISON
+        level: 1
+        splash: false
+        dur: true
+    '35':
+      type: POTION
+      amount: 1
+      dur: 16393
+      slot: 35
+      potion:
+        type: STRENGTH
+        level: 1
+        splash: true
+        dur: false

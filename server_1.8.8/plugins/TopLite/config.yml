@@ -1,0 +1,33 @@
+####################################
+#
+#    TopLite v1.0
+#    (c) Maxim Van de Wynckel
+#    http://www.mvdw-software.be
+#
+####################################
+
+## THIS IS THE LITE VERSION OF TOP
+## FOR MORE FEATURES SEE: http://mvdw-software.be/downloads/top
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# GENERAL PLUGIN SETTINGS
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+
+## Config version (DO NOT EDIT)
+config: 1
+
+## Language file
+lang: 'en'
+
+## Debug mode
+debug: false
+
+## Log to file
+log: true
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# TOP PLUGIN SETTINGS
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+  
+dateFormat: 'dd MMMM yyyy HH:mm'

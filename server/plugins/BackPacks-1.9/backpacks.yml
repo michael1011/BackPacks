@@ -1,17 +1,4 @@
 littleB:
-  ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8:
-    '0':
-      type: POTION
-      amount: 1
-      dur: 0
-      slot: 0
-    '1':
-      type: ENCHANTED_BOOK
-      amount: 1
-      dur: 0
-      slot: 1
-      enchantments:
-        PROTECTION_FALL:
-          lvl: 1
+  ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8: {}
 normalB:
   ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8: {}

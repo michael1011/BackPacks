@@ -32,8 +32,6 @@ public class Give implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-        // todo: add enchanting backpack
-
         String NoPermission = ChatColor.translateAlternateColorCodes('&', main.config.getString("NoPermission"));
         String OnlyPlayers = ChatColor.translateAlternateColorCodes('&', main.config.getString("OnlyPlayers"));
 
@@ -44,6 +42,7 @@ public class Give implements CommandExecutor {
         String normalBN = ChatColor.translateAlternateColorCodes('&', main.names.getString("NormalBackPack.Name"));
         String enderBN = ChatColor.translateAlternateColorCodes('&', main.names.getString("EnderBackPack.Name"));
         String craftingBN = ChatColor.translateAlternateColorCodes('&', main.names.getString("WorkbenchBackPack.Name"));
+        String enchantBN = ChatColor.translateAlternateColorCodes('&', main.names.getString("EnchantingBackPack.Name"));
 
         String notFound = ChatColor.translateAlternateColorCodes('&', main.config.getString("GiveNotFound"));
 
@@ -57,37 +56,45 @@ public class Give implements CommandExecutor {
 
                 if (p.hasPermission("backpacks.give")) {
 
-                    if (args[0].equalsIgnoreCase("littlebp")) {
+                    String bp = args[0];
+
+                    if(bp.equalsIgnoreCase("littlebp")) {
                         p.getInventory().addItem(Crafting.littleB);
 
                         gaveM = gaveM.replace("%backpack%", littleBN);
-                        p.sendMessage(pre + ChatColor.translateAlternateColorCodes('&', gaveM));
+                        p.sendMessage(pre+ChatColor.translateAlternateColorCodes('&', gaveM));
 
-                    } else if (args[0].equalsIgnoreCase("normalbp")) {
+                    } else if(bp.equalsIgnoreCase("normalbp")) {
                         p.getInventory().addItem(Crafting.normalB);
 
                         gaveM = gaveM.replace("%backpack%", normalBN);
-                        p.sendMessage(pre + ChatColor.translateAlternateColorCodes('&', gaveM));
+                        p.sendMessage(pre+ChatColor.translateAlternateColorCodes('&', gaveM));
 
-                    } else if (args[0].equalsIgnoreCase("enderbp")) {
+                    } else if(bp.equalsIgnoreCase("enderbp")) {
                         p.getInventory().addItem(Crafting.enderB);
 
                         gaveM = gaveM.replace("%backpack%", enderBN);
-                        p.sendMessage(pre + ChatColor.translateAlternateColorCodes('&', gaveM));
+                        p.sendMessage(pre+ChatColor.translateAlternateColorCodes('&', gaveM));
 
-                    } else if (args[0].equalsIgnoreCase("workbenchbp")) {
+                    } else if(bp.equalsIgnoreCase("workbenchbp")) {
                         p.getInventory().addItem(Crafting.craftingB);
 
                         gaveM = gaveM.replace("%backpack%", craftingBN);
-                        p.sendMessage(pre + ChatColor.translateAlternateColorCodes('&', gaveM));
+                        p.sendMessage(pre+ChatColor.translateAlternateColorCodes('&', gaveM));
+
+                    } else if(bp.equalsIgnoreCase("enchantingbp")) {
+                        p.getInventory().addItem(Crafting.enchantingB);
+
+                        gaveM = gaveM.replace("%backpack%", enchantBN);
+                        p.sendMessage(pre+ChatColor.translateAlternateColorCodes('&', gaveM));
 
                     } else {
-                        notFound = notFound.replace("%backpack%", args[0]);
+                        notFound = notFound.replace("%backpack%", bp);
                         p.sendMessage(pre+notFound);
                     }
 
                 } else {
-                    p.sendMessage(pre + NoPermission);
+                    p.sendMessage(pre+NoPermission);
                 }
 
             } else {
@@ -101,7 +108,9 @@ public class Give implements CommandExecutor {
 
                 if(target != null) {
 
-                    if (args[0].equalsIgnoreCase("littlebp")) {
+                    String bp = args[0];
+
+                    if(bp.equalsIgnoreCase("littlebp")) {
                         target.getInventory().addItem(Crafting.littleB);
 
                         gaveO = gaveO.replace("%backpack%", littleBN);
@@ -109,7 +118,7 @@ public class Give implements CommandExecutor {
 
                         sender.sendMessage(pre+gaveO);
 
-                    } else if (args[0].equalsIgnoreCase("normalbp")) {
+                    } else if(bp.equalsIgnoreCase("normalbp")) {
                         target.getInventory().addItem(Crafting.normalB);
 
                         gaveO = gaveO.replace("%backpack%", normalBN);
@@ -117,7 +126,7 @@ public class Give implements CommandExecutor {
 
                         sender.sendMessage(pre+gaveO);
 
-                    } else if (args[0].equalsIgnoreCase("enderbp")) {
+                    } else if(bp.equalsIgnoreCase("enderbp")) {
                         target.getInventory().addItem(Crafting.enderB);
 
                         gaveO = gaveO.replace("%backpack%", enderBN);
@@ -125,7 +134,7 @@ public class Give implements CommandExecutor {
 
                         sender.sendMessage(pre+gaveO);
 
-                    } else if (args[0].equalsIgnoreCase("workbenchbp")) {
+                    } else if(bp.equalsIgnoreCase("workbenchbp")) {
                         target.getInventory().addItem(Crafting.craftingB);
 
                         gaveO = gaveO.replace("%backpack%", craftingBN);
@@ -133,8 +142,16 @@ public class Give implements CommandExecutor {
 
                         sender.sendMessage(pre+gaveO);
 
+                    } else if(bp.equalsIgnoreCase("enchantingbp")) {
+                        target.getInventory().addItem(Crafting.enchantingB);
+
+                        gaveO = gaveO.replace("%backpack%", enchantBN);
+                        gaveO = gaveO.replace("%target%", args[1]);
+
+                        sender.sendMessage(pre+gaveO);
+
                     } else {
-                        notFound = notFound.replace("%backpack%", args[0]);
+                        notFound = notFound.replace("%backpack%", bp);
                         sender.sendMessage(pre+notFound);
                     }
 
@@ -145,6 +162,8 @@ public class Give implements CommandExecutor {
                     sender.sendMessage(pre+notFoundP);
                 }
 
+            } else {
+                sender.sendMessage(pre+NoPermission);
             }
 
         } else {

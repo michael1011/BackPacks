@@ -93,7 +93,7 @@ public class BackPack implements Listener {
                         x = player.getBlockX();
                         z = player.getBlockZ();
 
-                        Block change = w.getBlockAt(x, 1, z);
+                        Block change = w.getBlockAt(x, -1, z);
                         oldBlock = change.getType().toString();
 
                         change.setType(Material.ENCHANTMENT_TABLE);
@@ -120,19 +120,16 @@ public class BackPack implements Listener {
         if(p.hasPermission("backpacks.enchantingBackPack")) {
             UUID id = p.getUniqueId();
 
-            String FullVersion = Bukkit.getBukkitVersion();
-            String version = FullVersion.substring(0, 3);
-
             String enchName = ChatColor.translateAlternateColorCodes('&', main.names.getString("EnchantingBackPack.Name"));
 
             World w = p.getWorld();
             Location player = p.getLocation();
 
-            if(version.equals("1.9")) {
+            if(main.version.equals("1.9")) {
                 if(p.getInventory().getItemInMainHand().hasItemMeta()) {
                     if(p.getInventory().getItemInMainHand().getItemMeta().hasDisplayName()) {
                         if (p.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals(enchName)) {
-                            w.getBlockAt(x, 1, z).setType(Material.getMaterial(oldBlock));
+                            w.getBlockAt(x, -1, z).setType(Material.getMaterial(oldBlock));
 
                         } else {
                             offHand(p, enchName, w, player);
