@@ -39,7 +39,7 @@ GivePlayerNotFound: "&cThe player &4%target% couldn't &cbe found!"
 
 
 MySQL:
-  enable: true
+  enable: false
 # When its false the plugin will use a config file. Before you enable this setup the MySQL host below!
 
   host: "localhost"

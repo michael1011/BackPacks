@@ -152,14 +152,17 @@ public class SaveLoadSQL implements Listener {
 
         } else if(type.contains("POTION") || type.equals("TIPPED_ARROW")) {
             if(main.version.equals("1.9")) {
-                String[] parts = potion.split("/");
+                if(!potion.equals("null")) {
 
-                PotionMeta potionM = (PotionMeta) item.getItemMeta();
+                    String[] parts = potion.split("/");
 
-                PotionData potionD = new PotionData(PotionType.valueOf(parts[0]), Boolean.parseBoolean(parts[1]), Boolean.parseBoolean(parts[2]));
+                   PotionMeta potionM = (PotionMeta) item.getItemMeta();
 
-                potionM.setBasePotionData(potionD);
-                item.setItemMeta(potionM);
+                    PotionData potionD = new PotionData(PotionType.valueOf(parts[0]), Boolean.parseBoolean(parts[1]), Boolean.parseBoolean(parts[2]));
+
+                    potionM.setBasePotionData(potionD);
+                    item.setItemMeta(potionM);
+                }
 
             } else {
                 String[] parts = potion.split("/");
