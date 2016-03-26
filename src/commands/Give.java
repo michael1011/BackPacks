@@ -9,6 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import main.Pref;
 import main.Crafting;
+import org.bukkit.inventory.Inventory;
 
 public class Give implements CommandExecutor {
 
@@ -43,6 +44,7 @@ public class Give implements CommandExecutor {
         String enderBN = ChatColor.translateAlternateColorCodes('&', main.names.getString("EnderBackPack.Name"));
         String craftingBN = ChatColor.translateAlternateColorCodes('&', main.names.getString("WorkbenchBackPack.Name"));
         String enchantBN = ChatColor.translateAlternateColorCodes('&', main.names.getString("EnchantingBackPack.Name"));
+        String furnaceBN = ChatColor.translateAlternateColorCodes('&', main.names.getString("FurnaceBackPack.Name"));
 
         String notFound = ChatColor.translateAlternateColorCodes('&', main.config.getString("GiveNotFound"));
 
@@ -57,36 +59,43 @@ public class Give implements CommandExecutor {
                 if (p.hasPermission("backpacks.give")) {
 
                     String bp = args[0];
+                    Inventory inv = p.getInventory();
 
                     if(bp.equalsIgnoreCase("littlebp")) {
-                        p.getInventory().addItem(Crafting.littleB);
+                        inv.addItem(Crafting.littleB);
 
                         gaveM = gaveM.replace("%backpack%", littleBN);
                         p.sendMessage(pre+ChatColor.translateAlternateColorCodes('&', gaveM));
 
                     } else if(bp.equalsIgnoreCase("normalbp")) {
-                        p.getInventory().addItem(Crafting.normalB);
+                        inv.addItem(Crafting.normalB);
 
                         gaveM = gaveM.replace("%backpack%", normalBN);
                         p.sendMessage(pre+ChatColor.translateAlternateColorCodes('&', gaveM));
 
                     } else if(bp.equalsIgnoreCase("enderbp")) {
-                        p.getInventory().addItem(Crafting.enderB);
+                        inv.addItem(Crafting.enderB);
 
                         gaveM = gaveM.replace("%backpack%", enderBN);
                         p.sendMessage(pre+ChatColor.translateAlternateColorCodes('&', gaveM));
 
                     } else if(bp.equalsIgnoreCase("workbenchbp")) {
-                        p.getInventory().addItem(Crafting.craftingB);
+                        inv.addItem(Crafting.craftingB);
 
                         gaveM = gaveM.replace("%backpack%", craftingBN);
                         p.sendMessage(pre+ChatColor.translateAlternateColorCodes('&', gaveM));
 
                     } else if(bp.equalsIgnoreCase("enchantingbp")) {
-                        p.getInventory().addItem(Crafting.enchantingB);
+                        inv.addItem(Crafting.enchantingB);
 
                         gaveM = gaveM.replace("%backpack%", enchantBN);
-                        p.sendMessage(pre+ChatColor.translateAlternateColorCodes('&', gaveM));
+                        p.sendMessage(pre + ChatColor.translateAlternateColorCodes('&', gaveM));
+
+                    } else if(bp.equalsIgnoreCase("furnacebp")) {
+                        inv.addItem(Crafting.furnaceB);
+
+                        gaveM = gaveM.replace("%backpack%", furnaceBN);
+                        p.sendMessage(pre + ChatColor.translateAlternateColorCodes('&', gaveM));
 
                     } else {
                         notFound = notFound.replace("%backpack%", bp);
@@ -109,9 +118,10 @@ public class Give implements CommandExecutor {
                 if(target != null) {
 
                     String bp = args[0];
+                    Inventory inv = target.getInventory();
 
                     if(bp.equalsIgnoreCase("littlebp")) {
-                        target.getInventory().addItem(Crafting.littleB);
+                        inv.addItem(Crafting.littleB);
 
                         gaveO = gaveO.replace("%backpack%", littleBN);
                         gaveO = gaveO.replace("%target%", args[1]);
@@ -119,7 +129,7 @@ public class Give implements CommandExecutor {
                         sender.sendMessage(pre+gaveO);
 
                     } else if(bp.equalsIgnoreCase("normalbp")) {
-                        target.getInventory().addItem(Crafting.normalB);
+                        inv.addItem(Crafting.normalB);
 
                         gaveO = gaveO.replace("%backpack%", normalBN);
                         gaveO = gaveO.replace("%target%", args[1]);
@@ -127,7 +137,7 @@ public class Give implements CommandExecutor {
                         sender.sendMessage(pre+gaveO);
 
                     } else if(bp.equalsIgnoreCase("enderbp")) {
-                        target.getInventory().addItem(Crafting.enderB);
+                        inv.addItem(Crafting.enderB);
 
                         gaveO = gaveO.replace("%backpack%", enderBN);
                         gaveO = gaveO.replace("%target%", args[1]);
@@ -135,7 +145,7 @@ public class Give implements CommandExecutor {
                         sender.sendMessage(pre+gaveO);
 
                     } else if(bp.equalsIgnoreCase("workbenchbp")) {
-                        target.getInventory().addItem(Crafting.craftingB);
+                        inv.addItem(Crafting.craftingB);
 
                         gaveO = gaveO.replace("%backpack%", craftingBN);
                         gaveO = gaveO.replace("%target%", args[1]);
@@ -143,9 +153,17 @@ public class Give implements CommandExecutor {
                         sender.sendMessage(pre+gaveO);
 
                     } else if(bp.equalsIgnoreCase("enchantingbp")) {
-                        target.getInventory().addItem(Crafting.enchantingB);
+                        inv.addItem(Crafting.enchantingB);
 
                         gaveO = gaveO.replace("%backpack%", enchantBN);
+                        gaveO = gaveO.replace("%target%", args[1]);
+
+                        sender.sendMessage(pre+gaveO);
+
+                    } else if(bp.equals("furnacebp")) {
+                        inv.addItem(Crafting.furnaceB);
+
+                        gaveO = gaveO.replace("%backpack%", furnaceBN);
                         gaveO = gaveO.replace("%target%", args[1]);
 
                         sender.sendMessage(pre+gaveO);

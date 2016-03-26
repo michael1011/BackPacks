@@ -24,16 +24,16 @@ settings:
       max: 2048.0
     attackDamage:
       max: 2048.0
-  netty-threads: 4
   bungeecord: false
+  late-bind: false
   sample-count: 12
+  int-cache-limit: 1024
+  user-cache-size: 1000
+  player-shuffle: 0
   timeout-time: 60
   restart-on-crash: true
   restart-script: ./start.sh
-  late-bind: false
-  player-shuffle: 0
-  int-cache-limit: 1024
-  user-cache-size: 1000
+  netty-threads: 4
 commands:
   tab-complete: 0
   spam-exclusions:
@@ -61,13 +61,15 @@ world-settings:
     merge-radius:
       item: 2.5
       exp: 3.0
-    item-despawn-rate: 6000
     arrow-despawn-rate: 1200
-    view-distance: 10
-    wither-spawn-sound-radius: 0
     enable-zombie-pigmen-portal-spawns: true
+    item-despawn-rate: 6000
+    wither-spawn-sound-radius: 0
+    view-distance: 10
     hanging-tick-frequency: 100
     zombie-aggressive-towards-villager: true
+    dragon-death-sound-radius: 0
+    nerf-spawner-mobs: false
     growth:
       cactus-modifier: 100
       cane-modifier: 100
@@ -84,27 +86,25 @@ world-settings:
     max-entity-collisions: 8
     seed-village: 10387312
     seed-feature: 14357617
-    nerf-spawner-mobs: false
-    mob-spawn-range: 4
-    ticks-per:
-      hopper-transfer: 8
-      hopper-check: 8
-    hopper-amount: 1
-    hunger:
-      walk-exhaustion: 0.2
-      sprint-exhaustion: 0.8
-      combat-exhaustion: 0.3
-      regen-exhaustion: 3.0
-    random-light-updates: false
-    save-structure-info: true
     entity-tracking-range:
       players: 48
       animals: 48
       monsters: 48
       misc: 32
       other: 64
+    random-light-updates: false
+    ticks-per:
+      hopper-transfer: 8
+      hopper-check: 8
+    hopper-amount: 1
+    mob-spawn-range: 4
+    save-structure-info: true
+    hunger:
+      walk-exhaustion: 0.2
+      sprint-exhaustion: 0.8
+      combat-exhaustion: 0.3
+      regen-exhaustion: 3.0
+    max-tnt-per-tick: 100
     max-tick-time:
       tile: 50
       entity: 50
-    max-tnt-per-tick: 100
-    dragon-death-sound-radius: 0

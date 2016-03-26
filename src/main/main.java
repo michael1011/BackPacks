@@ -4,6 +4,7 @@ import commands.Give;
 import commands.Help;
 import commands.Reload;
 import listeners.BackPack;
+import listeners.Furnace;
 import listeners.SaveLoadSQL;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -49,6 +50,7 @@ public class main extends JavaPlugin {
             new SaveLoad(this);
         }
 
+        new Furnace(this);
         new Reload(this);
         new Give(this);
         new Help(this);
@@ -149,7 +151,6 @@ public class main extends JavaPlugin {
     }
 
     private void createInv(Player p) {
-
         UUID id = p.getUniqueId();
 
         if(!config.getBoolean("MySQL.enable")) {

@@ -22,7 +22,7 @@ BPHelp:
 BPGiveHelp:
   1: "&6/bpgive <item>: &eto give you the backpack <item>"
   2: "&6/bpgive <item> <player>: &eto give <player> the backpkack <item>"
-  3: "&6Available Items are: &elittlebp ; normalbp ; enderbp ; workbenchbp ; enchantingbp"
+  3: "&6Available Items are: &elittlebp ; normalbp ; enderbp ; workbenchbp ; enchantingbp ; furnacebp"
 # Help of /bp give
 
 GaveBackPack: "&eAdded the &6backpack %backpack% &eto your inventory!"
@@ -46,9 +46,9 @@ MySQL:
 # IP adress or domain of you MySQL host.
   port: "3306"
 # Port of your MySQL Server.
-  database: "test"
+  database: "database"
 # Wich database do you want to use?
   username: "root"
 # The user must have all permission on the database above!
-  password: ""
+  password: "password"
 # The password of the player above.

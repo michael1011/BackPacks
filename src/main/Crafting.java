@@ -21,7 +21,8 @@ public class Crafting {
     public static ItemStack normalB = new ItemStack(Material.getMaterial(main.names.getString("NormalBackPack.Material")), 1);
     public static ItemStack enderB = new ItemStack(Material.getMaterial(main.names.getString("EnderBackPack.Material")), 1);
     public static ItemStack craftingB = new ItemStack(Material.getMaterial(main.names.getString("WorkbenchBackPack.Material")), 1);
-    public static ItemStack enchantingB = new ItemStack(Material.getMaterial(main.names.getString("EnchantingBackPack.Material")));
+    public static ItemStack enchantingB = new ItemStack(Material.getMaterial(main.names.getString("EnchantingBackPack.Material")), 1);
+    public static ItemStack furnaceB = new ItemStack(Material.getMaterial(main.names.getString("FurnaceBackPack.Material")), 1);
 
     static void CraftingB() {
         if(main.names.getBoolean("LittleBackPack.Enable")) {
@@ -225,6 +226,46 @@ public class Crafting {
             }
 
             Bukkit.getServer().addRecipe(enchantingBR);
+        }
+
+        if(main.names.getBoolean("FurnaceBackPack.Enable")) {
+            String Name = ChatColor.translateAlternateColorCodes('&', main.names.getString("FurnaceBackPack.Name"));
+            String Lore1 = ChatColor.translateAlternateColorCodes('&', main.names.getString("FurnaceBackPack.Desc1"));
+            String Lore2 = ChatColor.translateAlternateColorCodes('&', main.names.getString("FurnaceBackPack.Desc2"));
+
+            ItemMeta furnaceBM = furnaceB.getItemMeta();
+            furnaceBM.setDisplayName(Name);
+            furnaceBM.setLore(Arrays.asList("", Lore1, Lore2));
+            furnaceB.setItemMeta(furnaceBM);
+
+            ShapedRecipe furnaceBR = new ShapedRecipe(furnaceB);
+            furnaceBR.shape(
+                    main.names.getString("FurnaceBackPack.Crafting.Line1"),
+                    main.names.getString("FurnaceBackPack.Crafting.Line2"),
+                    main.names.getString("FurnaceBackPack.Crafting.Line3")
+            );
+
+            if(!main.names.getString("FurnaceBackPack.Crafting.Material1").equals("null")) {
+                furnaceBR.setIngredient('*', Material.getMaterial(main.names.getString("FurnaceBackPack.Crafting.Material1")));
+            }
+
+            if(!main.names.getString("FurnaceBackPack.Crafting.Material2").equals("null")) {
+                furnaceBR.setIngredient('@', Material.getMaterial(main.names.getString("FurnaceBackPack.Crafting.Material2")));
+            }
+
+            if(!main.names.getString("FurnaceBackPack.Crafting.Material3").equals("null")) {
+                furnaceBR.setIngredient('+', Material.getMaterial(main.names.getString("FurnaceBackPack.Crafting.Material3")));
+            }
+
+            if(!main.names.getString("FurnaceBackPack.Crafting.Material4").equals("null")) {
+                furnaceBR.setIngredient('%', Material.getMaterial(main.names.getString("FurnaceBackPack.Crafting.Material4")));
+            }
+
+            if(!main.names.getString("FurnaceBackPack.Crafting.Material5").equals("null")) {
+                furnaceBR.setIngredient('&', Material.getMaterial(main.names.getString("FurnaceBackPack.Crafting.Material5")));
+            }
+
+            Bukkit.getServer().addRecipe(furnaceBR);
         }
 
     }

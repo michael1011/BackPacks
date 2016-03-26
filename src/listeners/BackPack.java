@@ -6,13 +6,13 @@ import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 import java.util.UUID;
-
 
 public class BackPack implements Listener {
 
@@ -36,7 +36,7 @@ public class BackPack implements Listener {
         }
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGH)
     public void Craft(PlayerInteractEvent e) {
         Player p = e.getPlayer();
         UUID id = p.getUniqueId();
@@ -105,6 +105,9 @@ public class BackPack implements Listener {
                     } else {
                         p.sendMessage(Pref.p+NoPermission);
                     }
+
+                } else if(var.equals(ChatColor.translateAlternateColorCodes('&', main.names.getString("FurnaceBackPack.Name")))) {
+                    e.setCancelled(true);
                 }
 
             }

@@ -321,3 +321,37 @@
 22/03/2016 09:29:45 [DEBUG] Getting plugin timings ...
 22/03/2016 09:29:45 [DEBUG] Getting world timings ...
 22/03/2016 09:29:45 [DEBUG] Server information refreshed!
+26/03/2016 15:08:45 [INFO] Loading messages ...
+26/03/2016 15:08:45 [INFO] Loading language file: lang_en
+26/03/2016 15:08:45 [DEBUG] 	Adding sub command 'help'
+26/03/2016 15:08:45 [DEBUG] 	Adding sub command 'reset'
+26/03/2016 15:08:45 [DEBUG] 	Adding sub command 'uploadlog'
+26/03/2016 15:08:45 [DEBUG] 	Adding sub command 'permissions'
+26/03/2016 15:08:45 [DEBUG] 	Adding sub command 'uploadconfig'
+26/03/2016 15:08:45 [DEBUG] 	Adding sub command 'resetconfig'
+26/03/2016 15:08:45 [DEBUG] 	Adding sub command 'reload'
+26/03/2016 15:08:45 [DEBUG] 	Adding sub command 'changelog'
+26/03/2016 15:08:45 [INFO] Initializing monitors ...
+26/03/2016 15:08:45 [DEBUG] 	Adding sub command 'plugin'
+26/03/2016 15:08:45 [DEBUG] 	Adding sub command 'about'
+26/03/2016 15:08:45 [INFO] Adding command 'top'
+26/03/2016 15:09:28 [DEBUG] 	Adding sub command 'changelog'
+26/03/2016 15:09:28 [DEBUG] 	Adding sub command 'resetconfig'
+26/03/2016 15:09:28 [DEBUG] 	Adding sub command 'uploadconfig'
+26/03/2016 15:09:28 [INFO] Loading messages ...
+26/03/2016 15:09:28 [DEBUG] 	Adding sub command 'help'
+26/03/2016 15:09:28 [DEBUG] 	Adding sub command 'permissions'
+26/03/2016 15:09:28 [DEBUG] 	Adding sub command 'about'
+26/03/2016 15:09:28 [DEBUG] 	Adding sub command 'reload'
+26/03/2016 15:09:28 [DEBUG] 	Adding sub command 'uploadlog'
+26/03/2016 15:09:28 [INFO] Adding command 'top'
+26/03/2016 15:09:28 [DEBUG] 	Adding sub command 'reset'
+26/03/2016 15:09:28 [DEBUG] 	Adding sub command 'plugin'
+26/03/2016 15:09:28 [INFO] Initializing monitors ...
+26/03/2016 15:09:28 [INFO] Loading language file: lang_en
+26/03/2016 15:13:10 [DEBUG] Starting refreshing timings data ...
+26/03/2016 15:13:10 [DEBUG] Performing garbage collect ...
+26/03/2016 15:13:10 [DEBUG] Getting player pings ...
+26/03/2016 15:13:10 [DEBUG] Getting plugin timings ...
+26/03/2016 15:13:10 [DEBUG] Getting world timings ...
+26/03/2016 15:13:10 [DEBUG] Server information refreshed!

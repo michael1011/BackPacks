@@ -5,7 +5,7 @@
 		<groupId>eu.michael1011.backpacks</groupId>
 		<packaging>jar</packaging>
 		<artifactId>BackPacks-1.9</artifactId>
-		<version>1.2.6</version>
+		<version>1.2.7-beta</version>
 		
 		<properties>
 			<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
