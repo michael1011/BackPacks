@@ -1,13 +1,16 @@
 package main;
 
+import GUI.CreateInv;
 import commands.Give;
 import commands.Help;
 import commands.Reload;
 import listeners.BackPack;
 import listeners.Furnace;
 import listeners.SaveLoadSQL;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -24,14 +27,15 @@ public class main extends JavaPlugin {
 
     private static main instance;
 
-    public static File configF, namesF, backpacksF;
-    public static FileConfiguration config, names, backpacks;
+    public static File configF, namesF, backpacksF, GUIF;
+    public static FileConfiguration config, names, backpacks, GUI;
 
     private static Connection connection;
     private String host, port, database, username, password;
 
-    public static HashMap<UUID, Inventory> littleB = new HashMap<UUID, Inventory>();
-    public static HashMap<UUID, Inventory> normalB = new HashMap<UUID, Inventory>();
+    public static HashMap<UUID, Inventory> littleB = new HashMap<>();
+    public static HashMap<UUID, Inventory> normalB = new HashMap<>();
+    public static HashMap<UUID, Inventory> furnaceB = new HashMap<>();
 
     public static String version = Bukkit.getBukkitVersion().substring(0, 3);
 
@@ -50,6 +54,7 @@ public class main extends JavaPlugin {
             new SaveLoad(this);
         }
 
+        new CreateInv(this);
         new Furnace(this);
         new Reload(this);
         new Give(this);
@@ -153,24 +158,41 @@ public class main extends JavaPlugin {
     private void createInv(Player p) {
         UUID id = p.getUniqueId();
 
+        if(p.hasPermission("backpacks.furnaceBackPack")) {
+            if(GUI.getBoolean("FurnaceBackPackGUI.Enable")) {
+                Inventory inv = Bukkit.getServer().createInventory(p, 36, ChatColor.translateAlternateColorCodes('&', names.getString("FurnaceBackPack.Name")));
+                ConfigurationSection sec = backpacks.getConfigurationSection("furnaceB."+id);
+
+                CreateInv.load(sec, inv);
+
+                furnaceB.put(id, inv);
+            }
+        }
+
         if(!config.getBoolean("MySQL.enable")) {
-            Inventory inv = Bukkit.getServer().createInventory(p, names.getInt("LittleBackPack.Slots"), ChatColor.translateAlternateColorCodes('&', names.getString("LittleBackPack.Name")));
-            Inventory invN = Bukkit.getServer().createInventory(p, names.getInt("NormalBackPack.Slots"), ChatColor.translateAlternateColorCodes('&', names.getString("NormalBackPack.Name")));
+            if(p.hasPermission("backpacks.littleBackPack")) {
+                Inventory inv = Bukkit.getServer().createInventory(p, names.getInt("LittleBackPack.Slots"), ChatColor.translateAlternateColorCodes('&', names.getString("LittleBackPack.Name")));
 
-            if(backpacks.contains("littleB."+id)) {
-                for(String item : backpacks.getConfigurationSection("littleB."+id).getKeys(false)) {
-                    inv.addItem(SaveLoad.load(backpacks.getConfigurationSection("littleB."+id+"."+item)));
+                if(backpacks.contains("littleB."+id)) {
+                    for(String item : backpacks.getConfigurationSection("littleB."+id).getKeys(false)) {
+                        inv.addItem(SaveLoad.load(backpacks.getConfigurationSection("littleB."+id+"."+item)));
+                    }
                 }
+
+                littleB.put(id, inv);
             }
 
-            if(backpacks.contains("normalB."+id)) {
-                for(String item : backpacks.getConfigurationSection("normalB."+id).getKeys(false)) {
-                    invN.addItem(SaveLoad.load(backpacks.getConfigurationSection("normalB."+id+"."+item)));
-                }
-            }
+            if(p.hasPermission("backpacks.normalBackPack")) {
+                Inventory invN = Bukkit.getServer().createInventory(p, names.getInt("NormalBackPack.Slots"), ChatColor.translateAlternateColorCodes('&', names.getString("NormalBackPack.Name")));
 
-            littleB.put(id, inv);
-            normalB.put(id, invN);
+                if(backpacks.contains("normalB."+id)) {
+                    for(String item : backpacks.getConfigurationSection("normalB."+id).getKeys(false)) {
+                        invN.addItem(SaveLoad.load(backpacks.getConfigurationSection("normalB."+id+"."+item)));
+                    }
+                }
+
+                normalB.put(id, invN);
+            }
 
         } else {
             String ID = id.toString();
@@ -297,10 +319,10 @@ public class main extends JavaPlugin {
     }
 
     private void createFiles() {
-
         configF = new File(getDataFolder(), "config.yml");
         namesF = new File(getDataFolder(), "names.yml");
         backpacksF = new File(getDataFolder(), "backpacks.yml");
+        GUIF = new File(getDataFolder(), "GUI.yml");
 
         if(!configF.exists()) {
             configF.getParentFile().mkdirs();
@@ -316,14 +338,21 @@ public class main extends JavaPlugin {
             copy(getResource("backpacks.yml"), backpacksF);
         }
 
+        if(!GUIF.exists()) {
+            GUIF.getParentFile().mkdirs();
+            copy(getResource("GUI.yml"), GUIF);
+        }
+
         config = new YamlConfiguration();
         names = new YamlConfiguration();
         backpacks = new YamlConfiguration();
+        GUI = new YamlConfiguration();
 
         try {
             config.load(configF);
             names.load(namesF);
             backpacks.load(backpacksF);
+            GUI.load(GUIF);
         } catch (Exception e) {
             e.printStackTrace();
         }

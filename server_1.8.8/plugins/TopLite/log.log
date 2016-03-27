@@ -355,3 +355,17 @@
 26/03/2016 15:13:10 [DEBUG] Getting plugin timings ...
 26/03/2016 15:13:10 [DEBUG] Getting world timings ...
 26/03/2016 15:13:10 [DEBUG] Server information refreshed!
+26/03/2016 16:20:49 [INFO] Loading messages ...
+26/03/2016 16:20:49 [DEBUG] 	Adding sub command 'help'
+26/03/2016 16:20:49 [DEBUG] 	Adding sub command 'about'
+26/03/2016 16:20:49 [DEBUG] 	Adding sub command 'changelog'
+26/03/2016 16:20:49 [DEBUG] 	Adding sub command 'permissions'
+26/03/2016 16:20:49 [DEBUG] 	Adding sub command 'resetconfig'
+26/03/2016 16:20:49 [DEBUG] 	Adding sub command 'plugin'
+26/03/2016 16:20:49 [DEBUG] 	Adding sub command 'uploadlog'
+26/03/2016 16:20:49 [DEBUG] 	Adding sub command 'uploadconfig'
+26/03/2016 16:20:49 [DEBUG] 	Adding sub command 'reload'
+26/03/2016 16:20:49 [INFO] Adding command 'top'
+26/03/2016 16:20:49 [DEBUG] 	Adding sub command 'reset'
+26/03/2016 16:20:49 [INFO] Loading language file: lang_en
+26/03/2016 16:20:49 [INFO] Initializing monitors ...

@@ -110,7 +110,6 @@ public class SaveLoad implements Listener {
     }
 
     public static ItemStack load(ConfigurationSection sec) {
-
         Short dur = (short) sec.getLong("dur");
         String type = sec.getString("type");
 

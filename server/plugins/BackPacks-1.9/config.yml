@@ -1,5 +1,5 @@
 # BackPacks by Michael1011
-# Version 1.2.6
+# Version 1.2.7-beta
 
 OnlyPlayers: "&4Only players &ccan execute this command!"
 # When the console wants to execute a command wich is only for players.
@@ -36,7 +36,6 @@ GiveNotFound: "&cThe backpack &4%backpack% couldn't &cbe found!"
 
 GivePlayerNotFound: "&cThe player &4%target% couldn't &cbe found!"
 # When you want to give a backpack to a player but the player isn't online. %target% is the player.
-
 
 MySQL:
   enable: false

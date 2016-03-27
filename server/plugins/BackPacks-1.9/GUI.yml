@@ -1,0 +1,21 @@
+FurnaceBackPackGUI:
+  Enable: true
+  # Enable the GUI for the FurnaceBackPack?
+
+  Names:
+  # Define the names of the items
+
+    OresN: "&7&lOres"
+    # Name of the ores block
+    OresD: "\n&eShould &7&lores &r&ebe smelt automatically? \n&fToggle with the item below!"
+    # Description of the ores block. New line with \n.
+
+    MeatN: "&c&lMeat"
+    # Name of the cooked beef in the inventory.
+    MeatD: "\n&eShould &c&lmeat &k&ebe smelt automatically? \n&fToggle wiht the item below!"
+    # Description of the cooked beef. New line with \n.
+
+    Enabled: "&2Enabled"
+    # When "ores" or "animals" is enabled (the name of the green wool block).
+    Disabled: "&4Disabled"
+    # The oposite of the above. When the wool block is red.

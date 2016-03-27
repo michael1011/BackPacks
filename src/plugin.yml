@@ -21,29 +21,16 @@ permissions:
     default: op
     children:
       backpack.help: true
-      backpacks.enderBackPack: true
-      backpacks.workbenchBackPack: true
       backpacks.littleBackPack: true
       backpacks.normalBackPack: true
+      backpacks.enderBackPack: true
+      backpacks.workbenchBackPack: true
+      backpacks.enchantingBackPack: true
+      backpacks.furnaceBackPack: true
       backpacks.give: true
       backpacks.reload: true
   backpacks.help:
     description: "for /backpacks help"
-    default: true
-  backpacks.enchantingBackPack:
-    description: "to use the enchanting backpack"
-    default: true
-  backpacks.enderBackPack:
-    description: "to use the ender backpack"
-    default: true
-  backpacks.workbenchBackPack:
-    description: "to use the workbench back pack"
-    default: true
-  backpacks.littleBackPack:
-    description: "to use the little backpack"
-    default: true
-  backpacks.normalBackPack:
-    description: "to use the normal backpack"
     default: true
   backpacks.give:
     description: "to give anyone a backpack (the /bpgive command)"
@@ -51,3 +38,21 @@ permissions:
   backpacks.reload:
     description: "to use the /bpreload command"
     default: op
+  backpacks.littleBackPack:
+    description: "to use the little backpack"
+    default: true
+  backpacks.normalBackPack:
+    description: "to use the normal backpack"
+    default: true
+  backpacks.enderBackPack:
+    description: "to use the ender backpack"
+    default: true
+  backpacks.workbenchBackPack:
+    description: "to use the workbench back pack"
+    default: true
+  backpacks.enchantingBackPack:
+    description: "to use the enchanting backpack"
+    default: true
+  backpacks.furnaceBackPack:
+    description: "to use the furnace backpack"
+    default: true

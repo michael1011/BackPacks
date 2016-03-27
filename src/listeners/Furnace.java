@@ -16,6 +16,7 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Random;
+import java.util.UUID;
 
 public class Furnace implements Listener {
 
@@ -27,8 +28,6 @@ public class Furnace implements Listener {
     }
 
     private int random(int min, int max) {
-        // todo: fix that
-
         Random rand = new Random();
 
         return rand.nextInt((max-min)+1)+min;
@@ -38,31 +37,34 @@ public class Furnace implements Listener {
     public void blockBreak(BlockBreakEvent e) {
         if(e.getPlayer() != null) {
             Player p = e.getPlayer();
+            UUID id = p.getUniqueId();
 
-            if(p.getGameMode() == GameMode.SURVIVAL) {
-                if(p.getInventory().contains(Crafting.furnaceB)) {
-                    Block broke = e.getBlock();
-                    Material mat = broke.getType();
+            if(!main.GUI.getBoolean("FurnaceBackPackGUI.Enable") || (main.GUI.getBoolean("FurnaceBackPackGUI.Enable") && main.backpacks.getBoolean("furnaceB."+id+".ores"))) {
+                if(p.getGameMode() == GameMode.SURVIVAL) {
+                    if(p.getInventory().contains(Crafting.furnaceB)) {
+                        Block broke = e.getBlock();
+                        Material mat = broke.getType();
 
-                    World w = broke.getWorld();
-                    Location loc = broke.getLocation();
+                        World w = broke.getWorld();
+                        Location loc = broke.getLocation();
 
-                    if(mat.equals(Material.IRON_ORE)) {
-                        e.setCancelled(true);
-                        broke.setType(Material.AIR);
+                        if(mat.equals(Material.IRON_ORE)) {
+                            e.setCancelled(true);
+                            broke.setType(Material.AIR);
 
-                        ExperienceOrb exp = w.spawn(loc, ExperienceOrb.class);
-                        exp.setExperience(1);
+                            ExperienceOrb exp = w.spawn(loc, ExperienceOrb.class);
+                            exp.setExperience(1);
 
-                        w.dropItem(loc, new ItemStack(Material.IRON_INGOT));
-                    } else if(mat.equals(Material.GOLD_ORE)) {
-                        e.setCancelled(true);
-                        broke.setType(Material.AIR);
+                            w.dropItem(loc, new ItemStack(Material.IRON_INGOT));
+                        } else if(mat.equals(Material.GOLD_ORE)) {
+                            e.setCancelled(true);
+                            broke.setType(Material.AIR);
 
-                        ExperienceOrb exp = w.spawn(loc, ExperienceOrb.class);
-                        exp.setExperience(2);
+                            ExperienceOrb exp = w.spawn(loc, ExperienceOrb.class);
+                            exp.setExperience(2);
 
-                        w.dropItem(loc, new ItemStack(Material.GOLD_INGOT));
+                            w.dropItem(loc, new ItemStack(Material.GOLD_INGOT));
+                        }
                     }
                 }
             }
@@ -73,83 +75,84 @@ public class Furnace implements Listener {
     public void entityKill(EntityDeathEvent e) {
         if(e.getEntity().getKiller() != null) {
             Player p = e.getEntity().getKiller();
+            UUID id = p.getUniqueId();
 
-            if(p.getInventory().contains(Crafting.furnaceB)) {
-                if (e.getEntity() instanceof Ageable) {
-                    Ageable killed = (Ageable) e.getEntity();
-                    EntityType type = killed.getType();
+            if(!main.GUI.getBoolean("FurnaceBackPackGUI.Enable") || (main.GUI.getBoolean("FurnaceBackPackGUI.Enable") && main.backpacks.getBoolean("furnaceB."+id+".animals"))) {
+                if(p.getInventory().contains(Crafting.furnaceB)) {
+                    if (e.getEntity() instanceof Ageable) {
+                        Ageable killed = (Ageable) e.getEntity();
+                        EntityType type = killed.getType();
 
-                    World w = killed.getWorld();
-                    Location loc = killed.getLocation();
+                        World w = killed.getWorld();
+                        Location loc = killed.getLocation();
 
-                    int dXP = e.getDroppedExp();
+                        int dXP = e.getDroppedExp();
 
-                    if(type.equals(EntityType.CHICKEN)) {
-                        if(killed.isAdult()) {
-                            e.getDrops().clear();
+                        if(type.equals(EntityType.CHICKEN)) {
+                            if(killed.isAdult()) {
+                                e.getDrops().clear();
 
-                            e.setDroppedExp(dXP*2);
-                            w.dropItem(loc, new ItemStack(Material.COOKED_CHICKEN, random(1, 3)));
+                                e.setDroppedExp(dXP*2);
+                                w.dropItem(loc, new ItemStack(Material.COOKED_CHICKEN, random(1, 3)));
 
-                            int rand = random(0, 3);
+                                int rand = random(0, 3);
 
-                            if(rand != 0) {
-                                w.dropItem(loc, new ItemStack(Material.FEATHER, rand));
+                                if(rand != 0) {
+                                    w.dropItem(loc, new ItemStack(Material.FEATHER, rand));
+                                }
+                            }
+
+                        } else if(type.equals(EntityType.COW)) {
+                            if(killed.isAdult()) {
+                                e.getDrops().clear();
+
+                                e.setDroppedExp(dXP*2);
+                                w.dropItem(loc, new ItemStack(Material.COOKED_BEEF, random(1, 3)));
+
+                                int rand = random(0, 1);
+
+                                if(rand != 0) {
+                                    w.dropItem(loc, new ItemStack(Material.LEATHER, rand));
+                                }
+                            }
+
+                        } else if(type.equals(EntityType.MUSHROOM_COW)) {
+                            if(killed.isAdult()) {
+                                e.getDrops().clear();
+
+                                e.setDroppedExp(dXP*2);
+                                w.dropItem(loc, new ItemStack(Material.COOKED_BEEF, random(1, 3)));
+
+                                int rand = random(0, 1);
+
+                                if(rand != 0) {
+                                    w.dropItem(loc, new ItemStack(Material.LEATHER, rand));
+                                }
+                            }
+
+                        } else if(type.equals(EntityType.PIG)) {
+                            if(killed.isAdult()) {
+                                e.getDrops().clear();
+
+                                e.setDroppedExp(dXP*2);
+                                w.dropItem(loc, new ItemStack(Material.GRILLED_PORK, random(1 ,3)));
+                            }
+
+                        } else if(type.equals(EntityType.SHEEP)) {
+                            if(killed.isAdult()) {
+                                e.getDrops().clear();
+
+                                e.setDroppedExp(dXP*2);
+                                w.dropItem(loc, new ItemStack(Material.COOKED_MUTTON, random(1, 2)));
+                                w.dropItem(loc, new ItemStack(Material.WOOL, 1));
                             }
                         }
 
-                    } else if(type.equals(EntityType.COW)) {
-                        if(killed.isAdult()) {
-                            e.getDrops().clear();
-
-                            e.setDroppedExp(dXP*2);
-                            w.dropItem(loc, new ItemStack(Material.COOKED_BEEF, random(1, 3)));
-
-                            int rand = random(0, 3);
-
-                            if(rand != 0) {
-                                w.dropItem(loc, new ItemStack(Material.LEATHER, rand));
-                            }
-                        }
-
-                    } else if(type.equals(EntityType.MUSHROOM_COW)) {
-                        if(killed.isAdult()) {
-                            e.getDrops().clear();
-
-                            e.setDroppedExp(dXP*2);
-                            w.dropItem(loc, new ItemStack(Material.COOKED_BEEF, random(1, 3)));
-
-                            int rand = random(0, 3);
-
-                            if(rand != 0) {
-                                w.dropItem(loc, new ItemStack(Material.LEATHER, rand));
-                            }
-                        }
-
-                    } else if(type.equals(EntityType.PIG)) {
-                        if(killed.isAdult()) {
-                            e.getDrops().clear();
-
-                            e.setDroppedExp(dXP*2);
-                            w.dropItem(loc, new ItemStack(Material.GRILLED_PORK, random(1 ,3)));
-                        }
-
-                    } else if(type.equals(EntityType.SHEEP)) {
-                        if(killed.isAdult()) {
-                            e.getDrops().clear();
-
-                            e.setDroppedExp(dXP*2);
-                            w.dropItem(loc, new ItemStack(Material.COOKED_MUTTON, random(1, 2)));
-                            w.dropItem(loc, new ItemStack(Material.WOOL, 1));
-                        }
                     }
-
                 }
             }
+
         }
     }
-
-
-    // todo: add animals
 
 }

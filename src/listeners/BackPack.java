@@ -1,5 +1,6 @@
 package listeners;
 
+import com.sun.org.apache.bcel.internal.generic.NOP;
 import main.Pref;
 import main.main;
 import org.bukkit.*;
@@ -48,8 +49,8 @@ public class BackPack implements Listener {
                 String var = e.getItem().getItemMeta().getDisplayName();
 
                 if(var.equals(ChatColor.translateAlternateColorCodes('&', main.names.getString("EnderBackPack.Name")))) {
+                    e.setCancelled(true);
                     if(p.hasPermission("backpacks.enderBackPack")) {
-                        e.setCancelled(true);
                         p.openInventory(p.getEnderChest());
 
                     } else {
@@ -57,8 +58,8 @@ public class BackPack implements Listener {
                     }
 
                 } else if(var.equals(ChatColor.translateAlternateColorCodes('&', main.names.getString("WorkbenchBackPack.Name")))) {
+                    e.setCancelled(true);
                     if(p.hasPermission("backpacks.workbenchBackPack")) {
-                        e.setCancelled(true);
                         p.openWorkbench(null, true);
 
                     } else {
@@ -66,8 +67,8 @@ public class BackPack implements Listener {
                     }
 
                 } else if(var.equals(ChatColor.translateAlternateColorCodes('&', main.names.getString("LittleBackPack.Name")))) {
+                    e.setCancelled(true);
                     if(p.hasPermission("backpacks.littleBackPack")) {
-                        e.setCancelled(true);
                         p.openInventory(main.littleB.get(id));
 
                     } else {
@@ -75,8 +76,8 @@ public class BackPack implements Listener {
                     }
 
                 } else if(var.equals(ChatColor.translateAlternateColorCodes('&', main.names.getString("NormalBackPack.Name")))) {
+                    e.setCancelled(true);
                     if(p.hasPermission("backpacks.normalBackPack")) {
-                        e.setCancelled(true);
                         p.openInventory(main.normalB.get(id));
 
                     } else {
@@ -84,9 +85,8 @@ public class BackPack implements Listener {
                     }
 
                 } else if(var.equals(ChatColor.translateAlternateColorCodes('&', main.names.getString("EnchantingBackPack.Name")))) {
+                    e.setCancelled(true);
                     if(p.hasPermission("backpacks.enchantingBackPack")) {
-                        e.setCancelled(true);
-
                         World w = p.getWorld();
                         Location player = p.getLocation();
 
@@ -108,6 +108,11 @@ public class BackPack implements Listener {
 
                 } else if(var.equals(ChatColor.translateAlternateColorCodes('&', main.names.getString("FurnaceBackPack.Name")))) {
                     e.setCancelled(true);
+                    if(p.hasPermission("backpacks.furnaceBackPack")) {
+                        p.openInventory(main.furnaceB.get(id));
+                    } else {
+                        p.sendMessage(Pref.p+NoPermission);
+                    }
                 }
 
             }

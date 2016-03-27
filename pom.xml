@@ -64,6 +64,7 @@
 				<include>config.yml</include>
 				<include>backpacks.yml</include>
 				<include>names.yml</include>
+				<include>GUI.yml</include>
 				<include>plugin.yml</include>
         </includes>
 		  </resource>
