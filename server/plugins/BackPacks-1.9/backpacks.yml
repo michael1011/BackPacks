@@ -2,6 +2,7 @@ furnaceB:
   ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8:
     ores: true
     animals: true
+    fuel: 149
 littleB:
   ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8: {}
 normalB:

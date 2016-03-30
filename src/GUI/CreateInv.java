@@ -8,16 +8,13 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.*;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class CreateInv implements Listener {
 
@@ -70,9 +67,9 @@ public class CreateInv implements Listener {
         }
 
         ItemStack greyG = new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte) 7);
-        ItemMeta none = greyG.getItemMeta();
-        none.setDisplayName(ChatColor.BLACK+"");
-        greyG.setItemMeta(none);
+        ItemMeta gMeta = greyG.getItemMeta();
+        gMeta.setDisplayName(ChatColor.GRAY+"");
+        greyG.setItemMeta(gMeta);
 
         for (int i = 0; i < 35 ; i++) {
             inv.setItem(i, greyG);
@@ -108,8 +105,94 @@ public class CreateInv implements Listener {
                 ConfigurationSection sec = main.backpacks.getConfigurationSection("furnaceB."+id);
 
                 load(sec, inv);
-                main.furnaceB.put(id, inv);
 
+                int fuel = sec.getInt("fuel");
+
+                if(fuel >= 64) {
+                    ItemStack g = new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte) 5);
+                    ItemMeta gMeta = g.getItemMeta();
+                    gMeta.setDisplayName(ChatColor.GREEN+"11%");
+                    g.setItemMeta(gMeta);
+
+                    inv.setItem(27, g);
+                }
+
+                if(fuel >= 128) {
+                    ItemStack g = new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte) 5);
+                    ItemMeta gMeta = g.getItemMeta();
+                    gMeta.setDisplayName(ChatColor.GREEN+"22%");
+                    g.setItemMeta(gMeta);
+
+                    inv.setItem(28, g);
+                }
+
+                if(fuel >= 192) {
+                    ItemStack g = new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte) 5);
+                    ItemMeta gMeta = g.getItemMeta();
+                    gMeta.setDisplayName(ChatColor.GREEN+"33%");
+                    g.setItemMeta(gMeta);
+
+                    inv.setItem(29, g);
+                }
+
+                if(fuel >= 265) {
+                    ItemStack g = new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte) 5);
+                    ItemMeta gMeta = g.getItemMeta();
+                    gMeta.setDisplayName(ChatColor.GREEN+"44%");
+                    g.setItemMeta(gMeta);
+
+                    inv.setItem(30, g);
+                }
+
+                if(fuel >= 320) {
+                    ItemStack g = new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte) 5);
+                    ItemMeta gMeta = g.getItemMeta();
+                    gMeta.setDisplayName(ChatColor.GREEN+"55%");
+                    g.setItemMeta(gMeta);
+
+                    inv.setItem(31, g);
+                }
+
+                if(fuel >= 384) {
+                    ItemStack g = new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte) 5);
+                    ItemMeta gMeta = g.getItemMeta();
+                    gMeta.setDisplayName(ChatColor.GREEN+"66%");
+                    g.setItemMeta(gMeta);
+
+                    inv.setItem(32, g);
+                }
+
+                if(fuel >= 448) {
+                    ItemStack g = new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte) 5);
+                    ItemMeta gMeta = g.getItemMeta();
+                    gMeta.setDisplayName(ChatColor.GREEN+"77%");
+                    g.setItemMeta(gMeta);
+
+                    inv.setItem(33, g);
+                }
+
+                if(fuel >= 512) {
+                    ItemStack g = new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte) 5);
+                    ItemMeta gMeta = g.getItemMeta();
+                    gMeta.setDisplayName(ChatColor.GREEN+"88%");
+                    g.setItemMeta(gMeta);
+
+                    inv.setItem(34, g);
+                }
+
+                if(fuel >= 576) {
+                    ItemStack g = new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte) 5);
+                    ItemMeta gMeta = g.getItemMeta();
+                    gMeta.setDisplayName(ChatColor.GREEN+"100%");
+                    g.setItemMeta(gMeta);
+
+                    inv.setItem(35, g);
+                }
+
+                // todo: inventory open event
+                // todo: make it intelligent
+
+                main.furnaceB.put(id, inv);
             }
         }
     }
@@ -125,13 +208,9 @@ public class CreateInv implements Listener {
                 ItemStack item = e.getCurrentItem();
                 Inventory inv = e.getInventory();
 
-                e.setCancelled(true);
-
                 if(item != null) {
                     if(item.hasItemMeta()) {
                         if(item.getItemMeta().hasDisplayName()) {
-                            String name = item.getItemMeta().getDisplayName();
-                            List<String> lore = item.getItemMeta().getLore();
                             e.setCancelled(true);
 
                             String path = "furnaceB."+id;
@@ -192,9 +271,32 @@ public class CreateInv implements Listener {
                                     }
                                 }
                             }
-
                         }
                     }
+                }
+            }
+        }
+    }
+
+    @EventHandler
+    public void close(InventoryCloseEvent e) {
+        Player p = (Player) e.getPlayer();
+        UUID id = p.getUniqueId();
+
+        if(p.hasPermission("backpacks.furnaceBackPack")) {
+            Inventory inv = main.furnaceB.get(id);
+
+            if(inv.getItem(35) != null) {
+                ItemStack item = inv.getItem(35);
+
+                p.sendMessage(item.getType().toString());
+                if(item.getType().equals(Material.COAL)) {
+                    String path = "furnaceB."+id+".";
+
+                    int exists = main.backpacks.getInt(path+"fuel");
+                    main.backpacks.set(path+"fuel", exists+item.getAmount()*9);
+
+                    // todo: not more than a stack
                 }
             }
         }
