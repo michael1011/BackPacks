@@ -69,7 +69,7 @@ public class Furnace implements Listener {
                             ExperienceOrb exp = w.spawn(loc, ExperienceOrb.class);
                             exp.setExperience(1);
 
-                            w.dropItemNaturally(loc, new ItemStack(Material.IRON_INGOT));
+                            w.dropItem(loc, new ItemStack(Material.IRON_INGOT));
 
                             save(id);
 
@@ -80,7 +80,7 @@ public class Furnace implements Listener {
                             ExperienceOrb exp = w.spawn(loc, ExperienceOrb.class);
                             exp.setExperience(2);
 
-                            w.dropItemNaturally(loc, new ItemStack(Material.GOLD_INGOT));
+                            w.dropItem(loc, new ItemStack(Material.GOLD_INGOT));
 
                             save(id);
                         }
@@ -114,12 +114,12 @@ public class Furnace implements Listener {
                                 e.getDrops().clear();
 
                                 e.setDroppedExp(dXP*2);
-                                w.dropItemNaturally(loc, new ItemStack(Material.COOKED_CHICKEN, random(1, 3)));
+                                w.dropItem(loc, new ItemStack(Material.COOKED_CHICKEN, random(1, 3)));
 
                                 int rand = random(0, 3);
 
                                 if(rand != 0) {
-                                    w.dropItemNaturally(loc, new ItemStack(Material.FEATHER, rand));
+                                    w.dropItem(loc, new ItemStack(Material.FEATHER, rand));
                                 }
 
                                 save(id);
@@ -130,12 +130,12 @@ public class Furnace implements Listener {
                                 e.getDrops().clear();
 
                                 e.setDroppedExp(dXP*2);
-                                w.dropItemNaturally(loc, new ItemStack(Material.COOKED_BEEF, random(1, 3)));
+                                w.dropItem(loc, new ItemStack(Material.COOKED_BEEF, random(1, 3)));
 
                                 int rand = random(0, 1);
 
                                 if(rand != 0) {
-                                    w.dropItemNaturally(loc, new ItemStack(Material.LEATHER, rand));
+                                    w.dropItem(loc, new ItemStack(Material.LEATHER, rand));
                                 }
 
                                 save(id);
@@ -146,12 +146,12 @@ public class Furnace implements Listener {
                                 e.getDrops().clear();
 
                                 e.setDroppedExp(dXP*2);
-                                w.dropItemNaturally(loc, new ItemStack(Material.COOKED_BEEF, random(1, 3)));
+                                w.dropItem(loc, new ItemStack(Material.COOKED_BEEF, random(1, 3)));
 
                                 int rand = random(0, 1);
 
                                 if(rand != 0) {
-                                    w.dropItemNaturally(loc, new ItemStack(Material.LEATHER, rand));
+                                    w.dropItem(loc, new ItemStack(Material.LEATHER, rand));
                                 }
 
                                 save(id);
@@ -162,7 +162,7 @@ public class Furnace implements Listener {
                                 e.getDrops().clear();
 
                                 e.setDroppedExp(dXP*2);
-                                w.dropItemNaturally(loc, new ItemStack(Material.GRILLED_PORK, random(1 ,3)));
+                                w.dropItem(loc, new ItemStack(Material.GRILLED_PORK, random(1 ,3)));
 
                                 save(id);
                             }
@@ -172,8 +172,8 @@ public class Furnace implements Listener {
                                 e.getDrops().clear();
 
                                 e.setDroppedExp(dXP*2);
-                                w.dropItemNaturally(loc, new ItemStack(Material.COOKED_MUTTON, random(1, 2)));
-                                w.dropItemNaturally(loc, new ItemStack(Material.WOOL, 1));
+                                w.dropItem(loc, new ItemStack(Material.COOKED_MUTTON, random(1, 2)));
+                                w.dropItem(loc, new ItemStack(Material.WOOL, 1));
 
                                 save(id);
                             }

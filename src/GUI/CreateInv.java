@@ -20,6 +20,8 @@ public class CreateInv implements Listener {
 
     public main plugin;
 
+    // todo: mysql compatibility
+
     public CreateInv(main main) {
         this.plugin = main;
         this.plugin.getServer().getPluginManager().registerEvents(this, main);
@@ -106,97 +108,38 @@ public class CreateInv implements Listener {
 
                 load(sec, inv);
 
-                int fuel = sec.getInt("fuel");
-
-                if(fuel >= 64) {
-                    ItemStack g = new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte) 5);
-                    ItemMeta gMeta = g.getItemMeta();
-                    gMeta.setDisplayName(ChatColor.GREEN+"11%");
-                    g.setItemMeta(gMeta);
-
-                    inv.setItem(27, g);
-                }
-
-                if(fuel >= 128) {
-                    ItemStack g = new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte) 5);
-                    ItemMeta gMeta = g.getItemMeta();
-                    gMeta.setDisplayName(ChatColor.GREEN+"22%");
-                    g.setItemMeta(gMeta);
-
-                    inv.setItem(28, g);
-                }
-
-                if(fuel >= 192) {
-                    ItemStack g = new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte) 5);
-                    ItemMeta gMeta = g.getItemMeta();
-                    gMeta.setDisplayName(ChatColor.GREEN+"33%");
-                    g.setItemMeta(gMeta);
-
-                    inv.setItem(29, g);
-                }
-
-                if(fuel >= 265) {
-                    ItemStack g = new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte) 5);
-                    ItemMeta gMeta = g.getItemMeta();
-                    gMeta.setDisplayName(ChatColor.GREEN+"44%");
-                    g.setItemMeta(gMeta);
-
-                    inv.setItem(30, g);
-                }
-
-                if(fuel >= 320) {
-                    ItemStack g = new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte) 5);
-                    ItemMeta gMeta = g.getItemMeta();
-                    gMeta.setDisplayName(ChatColor.GREEN+"55%");
-                    g.setItemMeta(gMeta);
-
-                    inv.setItem(31, g);
-                }
-
-                if(fuel >= 384) {
-                    ItemStack g = new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte) 5);
-                    ItemMeta gMeta = g.getItemMeta();
-                    gMeta.setDisplayName(ChatColor.GREEN+"66%");
-                    g.setItemMeta(gMeta);
-
-                    inv.setItem(32, g);
-                }
-
-                if(fuel >= 448) {
-                    ItemStack g = new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte) 5);
-                    ItemMeta gMeta = g.getItemMeta();
-                    gMeta.setDisplayName(ChatColor.GREEN+"77%");
-                    g.setItemMeta(gMeta);
-
-                    inv.setItem(33, g);
-                }
-
-                if(fuel >= 512) {
-                    ItemStack g = new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte) 5);
-                    ItemMeta gMeta = g.getItemMeta();
-                    gMeta.setDisplayName(ChatColor.GREEN+"88%");
-                    g.setItemMeta(gMeta);
-
-                    inv.setItem(34, g);
-                }
-
-                if(fuel >= 576) {
-                    ItemStack g = new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte) 5);
-                    ItemMeta gMeta = g.getItemMeta();
-                    gMeta.setDisplayName(ChatColor.GREEN+"100%");
-                    g.setItemMeta(gMeta);
-
-                    inv.setItem(35, g);
-                }
-
-                // todo: inventory open event
-                // todo: make it intelligent
-
                 main.furnaceB.put(id, inv);
             }
         }
     }
 
+    @EventHandler
+    public void openInv(InventoryOpenEvent e) {
+        Player p = (Player) e.getPlayer();
+        UUID id = p.getUniqueId();
+
+        if(p.hasPermission("backpacks.furnaceBackPack")) {
+            if(e.getInventory().equals(main.furnaceB.get(id))) {
+                Inventory inv = e.getInventory();
+                ConfigurationSection sec = main.backpacks.getConfigurationSection("furnaceB."+id);
+
+                load(sec, inv);
+
+                int fuel = sec.getInt("fuel")/64;
+
+                for(int i = 0; i < fuel; i++) {
+                    int per = i+1;
+
+                    ItemStack g = new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte) 5);
+                    ItemMeta gMeta = g.getItemMeta();
+                    gMeta.setDisplayName(ChatColor.GREEN+""+per+per+"%");
+                    g.setItemMeta(gMeta);
+
+                    inv.setItem(26+1+i, g);
+                }
+            }
+        }
+    }
 
     @EventHandler
     public void interact(InventoryClickEvent e) {
@@ -289,14 +232,26 @@ public class CreateInv implements Listener {
             if(inv.getItem(35) != null) {
                 ItemStack item = inv.getItem(35);
 
-                p.sendMessage(item.getType().toString());
                 if(item.getType().equals(Material.COAL)) {
                     String path = "furnaceB."+id+".";
 
-                    int exists = main.backpacks.getInt(path+"fuel");
-                    main.backpacks.set(path+"fuel", exists+item.getAmount()*9);
+                    if(main.backpacks.get(path+"fuel") != null) {
+                        int amount = main.backpacks.getInt(path+"fuel")+item.getAmount()*9;
 
-                    // todo: not more than a stack
+                        if(amount < 567) {
+                            main.backpacks.set(path+"fuel", amount);
+
+                        } else {
+                            int overflow = amount-567;
+
+                            main.backpacks.set(path+"fuel", amount-overflow);
+                            main.backpacks.set(path+"coal", overflow/9);
+                        }
+
+                    } else {
+                        main.backpacks.set(path+"fuel", item.getAmount()*9);
+                    }
+
                 }
             }
         }
