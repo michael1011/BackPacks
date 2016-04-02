@@ -18,9 +18,10 @@ import java.util.*;
 
 public class CreateInv implements Listener {
 
-    public main plugin;
-
     // todo: mysql compatibility
+    // todo: coal made of wood, lava bucket
+
+    private main plugin;
 
     public CreateInv(main main) {
         this.plugin = main;
@@ -114,34 +115,6 @@ public class CreateInv implements Listener {
     }
 
     @EventHandler
-    public void openInv(InventoryOpenEvent e) {
-        Player p = (Player) e.getPlayer();
-        UUID id = p.getUniqueId();
-
-        if(p.hasPermission("backpacks.furnaceBackPack")) {
-            if(e.getInventory().equals(main.furnaceB.get(id))) {
-                Inventory inv = e.getInventory();
-                ConfigurationSection sec = main.backpacks.getConfigurationSection("furnaceB."+id);
-
-                load(sec, inv);
-
-                int fuel = sec.getInt("fuel")/64;
-
-                for(int i = 0; i < fuel; i++) {
-                    int per = i+1;
-
-                    ItemStack g = new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte) 5);
-                    ItemMeta gMeta = g.getItemMeta();
-                    gMeta.setDisplayName(ChatColor.GREEN+""+per+per+"%");
-                    g.setItemMeta(gMeta);
-
-                    inv.setItem(26+1+i, g);
-                }
-            }
-        }
-    }
-
-    @EventHandler
     public void interact(InventoryClickEvent e) {
         Player p = (Player) e.getWhoClicked();
         UUID id = p.getUniqueId();
@@ -222,6 +195,49 @@ public class CreateInv implements Listener {
     }
 
     @EventHandler
+    public void openInv(InventoryOpenEvent e) {
+        Player p = (Player) e.getPlayer();
+        UUID id = p.getUniqueId();
+
+        if(p.hasPermission("backpacks.furnaceBackPack")) {
+            if(e.getInventory().equals(main.furnaceB.get(id))) {
+                Inventory inv = e.getInventory();
+                ConfigurationSection sec = main.backpacks.getConfigurationSection("furnaceB."+id);
+
+                load(sec, inv);
+
+                int fuel = sec.getInt("fuel")/64;
+
+                if(fuel <= 9) {
+                    for(int i = 0; i < fuel; i++) {
+                        int per = i+1;
+
+                        ItemStack g = new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte) 5);
+                        ItemMeta gMeta = g.getItemMeta();
+                        gMeta.setDisplayName(ChatColor.GREEN+""+per+per+"%");
+                        g.setItemMeta(gMeta);
+
+                        inv.setItem(26+1+i, g);
+                    }
+                } else {
+                    fuel = 9;
+
+                    for(int i = 0; i < fuel; i++) {
+                        int per = i+1;
+
+                        ItemStack g = new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte) 5);
+                        ItemMeta gMeta = g.getItemMeta();
+                        gMeta.setDisplayName(ChatColor.GREEN+""+per+per+"%");
+                        g.setItemMeta(gMeta);
+
+                        inv.setItem(26+1+i, g);
+                    }
+                }
+            }
+        }
+    }
+
+    @EventHandler
     public void close(InventoryCloseEvent e) {
         Player p = (Player) e.getPlayer();
         UUID id = p.getUniqueId();
@@ -233,25 +249,17 @@ public class CreateInv implements Listener {
                 ItemStack item = inv.getItem(35);
 
                 if(item.getType().equals(Material.COAL)) {
-                    String path = "furnaceB."+id+".";
 
-                    if(main.backpacks.get(path+"fuel") != null) {
-                        int amount = main.backpacks.getInt(path+"fuel")+item.getAmount()*9;
+                    int exists = main.backpacks.getInt("furnaceB."+id+".fuel");
+                    main.backpacks.set("furnaceB."+id+".fuel", exists+item.getAmount()*9);
 
-                        if(amount < 567) {
-                            main.backpacks.set(path+"fuel", amount);
-
-                        } else {
-                            int overflow = amount-567;
-
-                            main.backpacks.set(path+"fuel", amount-overflow);
-                            main.backpacks.set(path+"coal", overflow/9);
-                        }
-
-                    } else {
-                        main.backpacks.set(path+"fuel", item.getAmount()*9);
+                    try {
+                        main.backpacks.save(main.backpacksF);
+                    } catch(Exception e1) {
+                        e1.printStackTrace();
                     }
 
+                    inv.setItem(35, new ItemStack(Material.AIR));
                 }
             }
         }

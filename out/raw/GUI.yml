@@ -10,9 +10,9 @@ FurnaceBackPackGUI:
     OresD: "\n&eShould &7&lores &r&ebe smelt automatically? \n&fToggle with the item below!"
     # Description of the wool block under the iron ore. New line with \n.
 
-    MeatN: "&c&lMeat"
+    MeatN: "&c&lFood"
     # Name of the cooked beef in the inventory.
-    MeatD: "\n&eShould &c&lmeat &k&ebe smelt automatically? \n&fToggle with the item below!"
+    MeatD: "\n&eShould &c&lfood &k&ebe smelt automatically? \n&fToggle with the item below!"
     # Description of the wool under the cooked beef. New line with \n.
 
     Enabled: "&2Enabled"

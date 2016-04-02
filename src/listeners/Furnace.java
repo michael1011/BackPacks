@@ -1,10 +1,7 @@
 package listeners;
 
 import main.main;
-import org.bukkit.GameMode;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
@@ -14,6 +11,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 import main.Crafting;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.material.Crops;
 
 import java.util.Random;
 import java.util.UUID;
@@ -43,8 +41,6 @@ public class Furnace implements Listener {
         } catch(Exception e) {
             e.printStackTrace();
         }
-
-        // todo: global int instead of saving every time
     }
 
     @EventHandler
@@ -83,6 +79,20 @@ public class Furnace implements Listener {
                             w.dropItem(loc, new ItemStack(Material.GOLD_INGOT));
 
                             save(id);
+
+                        } else if(mat.equals(Material.POTATO)) {
+                            Crops crops = (Crops) broke.getState().getData();
+                            if(crops.getState().equals(CropState.RIPE)) {
+                                e.setCancelled(true);
+                                broke.setType(Material.AIR);
+
+                                ExperienceOrb exp = w.spawn(loc, ExperienceOrb.class);
+                                exp.setExperience(2);
+
+                                w.dropItem(loc, new ItemStack(Material.BAKED_POTATO, random(1, 3)));
+
+                                save(id);
+                            }
                         }
                     }
                 }
@@ -92,11 +102,12 @@ public class Furnace implements Listener {
 
     @EventHandler
     public void entityKill(EntityDeathEvent e) {
+
         if(e.getEntity().getKiller() != null) {
             Player p = e.getEntity().getKiller();
             UUID id = p.getUniqueId();
+            String version = main.version;
 
-            // todo: add potatoes && rabbit
 
             if(!main.GUI.getBoolean("FurnaceBackPackGUI.Enable") || (main.GUI.getBoolean("FurnaceBackPackGUI.Enable") && main.backpacks.getBoolean("furnaceB."+id+".animals"))) {
                 if(p.getInventory().contains(Crafting.furnaceB)) {
@@ -176,6 +187,23 @@ public class Furnace implements Listener {
                                 w.dropItem(loc, new ItemStack(Material.WOOL, 1));
 
                                 save(id);
+                            }
+
+                        } else if(version.equals("1.9") ||version.equals("1.8")) {
+                            if(type.equals(EntityType.RABBIT)) {
+                                if (killed.isAdult()) {
+                                    e.getDrops().clear();
+
+                                    e.setDroppedExp(dXP*2);
+
+                                    int rand = random(0, 10);
+
+                                    w.dropItem(loc, new ItemStack(Material.RABBIT_HIDE));
+
+                                    if(rand != 0) {
+                                        w.dropItem(loc, new ItemStack(Material.COOKED_RABBIT, rand));
+                                    }
+                                }
                             }
                         }
 
