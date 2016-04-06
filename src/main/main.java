@@ -1,6 +1,7 @@
 package main;
 
 import GUI.CreateInv;
+import GUI.CreateInvSQL;
 import commands.Give;
 import commands.Help;
 import commands.Reload;
@@ -50,11 +51,12 @@ public class main extends JavaPlugin {
         if(SQLenable) {
             establishMySQL();
             new SaveLoadSQL(this);
+            new CreateInvSQL(this);
         } else {
             new SaveLoad(this);
+            new CreateInv(this);
         }
 
-        new CreateInv(this);
         new Furnace(this);
         new Reload(this);
         new Give(this);

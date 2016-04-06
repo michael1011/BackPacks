@@ -18,7 +18,6 @@ import java.util.*;
 
 public class CreateInv implements Listener {
 
-    // todo: mysql compatibility
     // todo: coal made of wood, lava bucket
 
     private main plugin;
@@ -243,25 +242,28 @@ public class CreateInv implements Listener {
         UUID id = p.getUniqueId();
 
         if(p.hasPermission("backpacks.furnaceBackPack")) {
-            Inventory inv = main.furnaceB.get(id);
+            if(main.GUI.getBoolean("FurnaceBackPackGUI.Enable")) {
+                Inventory inv = main.furnaceB.get(id);
 
-            if(inv.getItem(35) != null) {
-                ItemStack item = inv.getItem(35);
+                if(inv.getItem(35) != null) {
+                    ItemStack item = inv.getItem(35);
 
-                if(item.getType().equals(Material.COAL)) {
+                    if(item.getType().equals(Material.COAL)) {
 
-                    int exists = main.backpacks.getInt("furnaceB."+id+".fuel");
-                    main.backpacks.set("furnaceB."+id+".fuel", exists+item.getAmount()*9);
+                        int exists = main.backpacks.getInt("furnaceB."+id+".fuel");
+                        main.backpacks.set("furnaceB."+id+".fuel", exists+item.getAmount()*9);
 
-                    try {
-                        main.backpacks.save(main.backpacksF);
-                    } catch(Exception e1) {
-                        e1.printStackTrace();
+                        try {
+                            main.backpacks.save(main.backpacksF);
+                        } catch(Exception e1) {
+                            e1.printStackTrace();
+                        }
+
+                        inv.setItem(35, new ItemStack(Material.AIR));
                     }
-
-                    inv.setItem(35, new ItemStack(Material.AIR));
                 }
             }
+
         }
     }
 
