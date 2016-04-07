@@ -238,7 +238,7 @@ public class CreateInvSQL implements Listener {
                     assert rs != null;
 
                     if(rs.next()) {
-                        load(rs.getInt(1), rs.getInt(2), inv);
+                        load(rs.getInt(2), rs.getInt(1), inv);
 
                         int fuel = rs.getInt(3) / 64;
 

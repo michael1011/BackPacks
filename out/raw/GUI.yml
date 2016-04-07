@@ -19,3 +19,6 @@ FurnaceBackPackGUI:
     # When "ores" or "animals" is enabled (the name of the green wool block).
     Disabled: "&4Disabled"
     # The oposite of the above. When the wool block is red.
+
+  IsEmpty: "&cYour FurnaceBackPack &4is empty&c! Fill it with coal in the GUI!"
+  # When a player wants to smelt something with FurnaceBackPack but it's empty he will get this message.

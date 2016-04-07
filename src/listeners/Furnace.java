@@ -9,6 +9,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
 import main.Crafting;
+import main.Pref;
+
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.material.Crops;
@@ -19,8 +21,6 @@ import java.util.Random;
 import java.util.UUID;
 
 public class Furnace implements Listener {
-
-    // todo: check if fuel is > 0
 
     public main plugin;
     private Boolean MySQL = main.config.getBoolean("MySQL.enable");
@@ -77,7 +77,16 @@ public class Furnace implements Listener {
 
     }
 
-    public void blocks(Player p, BlockBreakEvent e, UUID id) {
+    private boolean checkCoal(Player p, int i) {
+        if(i > 0) {
+            return true;
+        } else {
+            p.sendMessage(Pref.p+ChatColor.translateAlternateColorCodes('&', main.GUI.getString("FurnaceBackPackGUI.IsEmpty")));
+            return false;
+        }
+    }
+
+    private void blocks(Player p, BlockBreakEvent e, UUID id, int fuel) {
         if(p.getGameMode() == GameMode.SURVIVAL) {
             if(p.getInventory().contains(Crafting.furnaceB)) {
                 Block broke = e.getBlock();
@@ -87,46 +96,53 @@ public class Furnace implements Listener {
                 Location loc = broke.getLocation();
 
                 if(mat.equals(Material.IRON_ORE)) {
-                    e.setCancelled(true);
-                    broke.setType(Material.AIR);
+                    if(checkCoal(p, fuel)) {
+                        e.setCancelled(true);
+                        broke.setType(Material.AIR);
 
-                    ExperienceOrb exp = w.spawn(loc, ExperienceOrb.class);
-                    exp.setExperience(1);
+                        ExperienceOrb exp = w.spawn(loc, ExperienceOrb.class);
+                        exp.setExperience(1);
 
-                    w.dropItem(loc, new ItemStack(Material.IRON_INGOT));
+                        w.dropItem(loc, new ItemStack(Material.IRON_INGOT));
 
-                    save(id);
+                        save(id);
+                    }
 
                 } else if(mat.equals(Material.GOLD_ORE)) {
-                    e.setCancelled(true);
-                    broke.setType(Material.AIR);
-
-                    ExperienceOrb exp = w.spawn(loc, ExperienceOrb.class);
-                    exp.setExperience(2);
-
-                    w.dropItem(loc, new ItemStack(Material.GOLD_INGOT));
-
-                    save(id);
-
-                } else if(mat.equals(Material.POTATO)) {
-                    Crops crops = (Crops) broke.getState().getData();
-                    if(crops.getState().equals(CropState.RIPE)) {
+                    if(checkCoal(p, fuel)) {
                         e.setCancelled(true);
                         broke.setType(Material.AIR);
 
                         ExperienceOrb exp = w.spawn(loc, ExperienceOrb.class);
                         exp.setExperience(2);
 
-                        w.dropItem(loc, new ItemStack(Material.BAKED_POTATO, random(1, 3)));
+                        w.dropItem(loc, new ItemStack(Material.GOLD_INGOT));
 
                         save(id);
+                    }
+
+                } else if(mat.equals(Material.POTATO)) {
+                    Crops crops = (Crops) broke.getState().getData();
+                    if(crops.getState().equals(CropState.RIPE)) {
+                        if(checkCoal(p, fuel)) {
+                            e.setCancelled(true);
+                            broke.setType(Material.AIR);
+
+                            ExperienceOrb exp = w.spawn(loc, ExperienceOrb.class);
+                            exp.setExperience(2);
+
+                            w.dropItem(loc, new ItemStack(Material.BAKED_POTATO, random(1, 3)));
+
+                            save(id);
+                        }
+
                     }
                 }
             }
         }
     }
 
-    public void kill(Player p, EntityDeathEvent e, UUID id) {
+    private void kill(Player p, EntityDeathEvent e, UUID id, int fuel) {
         String version = main.version;
 
         if(p.getInventory().contains(Crafting.furnaceB)) {
@@ -141,86 +157,98 @@ public class Furnace implements Listener {
 
                 if(type.equals(EntityType.CHICKEN)) {
                     if(killed.isAdult()) {
-                        e.getDrops().clear();
+                        if(checkCoal(p, fuel)) {
+                            e.getDrops().clear();
 
-                        e.setDroppedExp(dXP*2);
-                        w.dropItem(loc, new ItemStack(Material.COOKED_CHICKEN, random(1, 3)));
+                            e.setDroppedExp(dXP*2);
+                            w.dropItem(loc, new ItemStack(Material.COOKED_CHICKEN, random(1, 3)));
 
-                        int rand = random(0, 3);
+                            int rand = random(0, 3);
 
-                        if(rand != 0) {
-                            w.dropItem(loc, new ItemStack(Material.FEATHER, rand));
+                            if(rand != 0) {
+                                w.dropItem(loc, new ItemStack(Material.FEATHER, rand));
+                            }
+
+                            save(id);
                         }
-
-                        save(id);
                     }
 
                 } else if(type.equals(EntityType.COW)) {
                     if(killed.isAdult()) {
-                        e.getDrops().clear();
+                        if(checkCoal(p, fuel)) {
+                            e.getDrops().clear();
 
-                        e.setDroppedExp(dXP*2);
-                        w.dropItem(loc, new ItemStack(Material.COOKED_BEEF, random(1, 3)));
+                            e.setDroppedExp(dXP*2);
+                            w.dropItem(loc, new ItemStack(Material.COOKED_BEEF, random(1, 3)));
 
-                        int rand = random(0, 1);
+                            int rand = random(0, 1);
 
-                        if(rand != 0) {
-                            w.dropItem(loc, new ItemStack(Material.LEATHER, rand));
+                            if(rand != 0) {
+                                w.dropItem(loc, new ItemStack(Material.LEATHER, rand));
+                            }
+
+                            save(id);
                         }
-
-                        save(id);
                     }
 
                 } else if(type.equals(EntityType.MUSHROOM_COW)) {
                     if(killed.isAdult()) {
-                        e.getDrops().clear();
+                        if(checkCoal(p, fuel)) {
+                            e.getDrops().clear();
 
-                        e.setDroppedExp(dXP*2);
-                        w.dropItem(loc, new ItemStack(Material.COOKED_BEEF, random(1, 3)));
+                            e.setDroppedExp(dXP*2);
+                            w.dropItem(loc, new ItemStack(Material.COOKED_BEEF, random(1, 3)));
 
-                        int rand = random(0, 1);
+                            int rand = random(0, 1);
 
-                        if(rand != 0) {
-                            w.dropItem(loc, new ItemStack(Material.LEATHER, rand));
+                            if(rand != 0) {
+                                w.dropItem(loc, new ItemStack(Material.LEATHER, rand));
+                            }
+
+                            save(id);
                         }
-
-                        save(id);
                     }
 
                 } else if(type.equals(EntityType.PIG)) {
                     if(killed.isAdult()) {
-                        e.getDrops().clear();
+                        if(checkCoal(p, fuel)) {
+                            e.getDrops().clear();
 
-                        e.setDroppedExp(dXP*2);
-                        w.dropItem(loc, new ItemStack(Material.GRILLED_PORK, random(1 ,3)));
+                            e.setDroppedExp(dXP*2);
+                            w.dropItem(loc, new ItemStack(Material.GRILLED_PORK, random(1 ,3)));
 
-                        save(id);
+                            save(id);
+                        }
                     }
 
                 } else if(type.equals(EntityType.SHEEP)) {
                     if(killed.isAdult()) {
-                        e.getDrops().clear();
+                        if(checkCoal(p, fuel)) {
+                            e.getDrops().clear();
 
-                        e.setDroppedExp(dXP*2);
-                        w.dropItem(loc, new ItemStack(Material.COOKED_MUTTON, random(1, 2)));
-                        w.dropItem(loc, new ItemStack(Material.WOOL, 1));
+                            e.setDroppedExp(dXP*2);
+                            w.dropItem(loc, new ItemStack(Material.COOKED_MUTTON, random(1, 2)));
+                            w.dropItem(loc, new ItemStack(Material.WOOL, 1));
 
-                        save(id);
+                            save(id);
+                        }
                     }
 
                 } else if(version.equals("1.9") ||version.equals("1.8")) {
                     if(type.equals(EntityType.RABBIT)) {
                         if (killed.isAdult()) {
-                            e.getDrops().clear();
+                            if(checkCoal(p, fuel)) {
+                                e.getDrops().clear();
 
-                            e.setDroppedExp(dXP*2);
+                                e.setDroppedExp(dXP*2);
 
-                            int rand = random(0, 10);
+                                int rand = random(0, 10);
 
-                            w.dropItem(loc, new ItemStack(Material.RABBIT_HIDE));
+                                w.dropItem(loc, new ItemStack(Material.RABBIT_HIDE));
 
-                            if(rand != 0) {
-                                w.dropItem(loc, new ItemStack(Material.COOKED_RABBIT, rand));
+                                if(rand != 0) {
+                                    w.dropItem(loc, new ItemStack(Material.COOKED_RABBIT, rand));
+                                }
                             }
                         }
                     }
@@ -239,7 +267,7 @@ public class Furnace implements Listener {
             if(main.GUI.getBoolean("FurnaceBackPackGUI.Enable")) {
                 if(!main.config.getBoolean("MySQL.enable")) {
                     if(main.backpacks.getBoolean("furnaceB."+id+".ores")) {
-                        blocks(p, e, id);
+                        blocks(p, e, id, main.backpacks.getInt("furnaceB."+id+".fuel"));
                     }
 
                 } else {
@@ -250,8 +278,8 @@ public class Furnace implements Listener {
                         assert rs != null;
 
                         if(rs.next()) {
-                            if(rs.getInt(1) == 1) {
-                                blocks(p, e, id);
+                            if(rs.getInt(2) == 1) {
+                                blocks(p, e, id, rs.getInt(3));
                             }
                         }
 
@@ -274,7 +302,7 @@ public class Furnace implements Listener {
             if(main.GUI.getBoolean("FurnaceBackPackGUI.Enable")) {
                 if(!main.config.getBoolean("MySQL.enable")) {
                     if(main.backpacks.getBoolean("furnaceB."+id+".animals")) {
-                        kill(p, e, id);
+                        kill(p, e, id, main.backpacks.getInt("furnaceB."+id+".fuel"));
                     }
 
                 } else {
@@ -286,7 +314,7 @@ public class Furnace implements Listener {
 
                         if(rs.next()) {
                             if(rs.getInt(1) == 1) {
-                                kill(p, e, id);
+                                kill(p, e, id, rs.getInt(3));
                             }
                         }
 
