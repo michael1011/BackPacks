@@ -59,6 +59,8 @@ stats:
 world-settings:
   default:
     verbose: true
+    mob-spawn-range: 4
+    nerf-spawner-mobs: false
     growth:
       cactus-modifier: 100
       cane-modifier: 100
@@ -83,7 +85,6 @@ world-settings:
       hopper-check: 8
     hopper-amount: 1
     random-light-updates: false
-    nerf-spawner-mobs: false
     save-structure-info: true
     max-entity-collisions: 8
     dragon-death-sound-radius: 0
@@ -98,7 +99,6 @@ world-settings:
     max-tick-time:
       tile: 50
       entity: 50
-    mob-spawn-range: 4
     merge-radius:
       item: 2.5
       exp: 3.0
