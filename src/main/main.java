@@ -18,6 +18,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.awt.*;
 import java.io.*;
 import java.sql.*;
 import java.util.HashMap;
@@ -27,17 +28,18 @@ import listeners.SaveLoad;
 public class main extends JavaPlugin {
 
     private static main instance;
+    private static ConfigurationSection sec;
 
     public static File configF, namesF, backpacksF, GUIF;
+
     public static FileConfiguration config, names, backpacks, GUI;
-
     private static Connection connection;
-    private String host, port, database, username, password;
 
+    private String host, port, database, username, password;
     public static HashMap<UUID, Inventory> littleB = new HashMap<>();
     public static HashMap<UUID, Inventory> normalB = new HashMap<>();
-    public static HashMap<UUID, Inventory> furnaceB = new HashMap<>();
 
+    public static HashMap<UUID, Inventory> furnaceB = new HashMap<>();
     public static String version = Bukkit.getBukkitVersion().substring(0, 3);
 
     @Override
@@ -162,8 +164,14 @@ public class main extends JavaPlugin {
 
         if(p.hasPermission("backpacks.furnaceBackPack")) {
             if(GUI.getBoolean("FurnaceBackPackGUI.Enable")) {
-                Inventory inv = Bukkit.getServer().createInventory(p, 36, ChatColor.translateAlternateColorCodes('&', names.getString("FurnaceBackPack.Name")));
-                ConfigurationSection sec = backpacks.getConfigurationSection("furnaceB."+id);
+                Inventory inv = Bukkit.getServer().createInventory(p, 45, ChatColor.translateAlternateColorCodes('&', names.getString("FurnaceBackPack.Name")));
+                sec = backpacks.getConfigurationSection("furnaceB."+id);
+
+                if(sec.get("ores") == null || sec.get("animals") == null) {
+                    sec.set("ores", true);
+                    sec.set("animals", true);
+                    sec = backpacks.getConfigurationSection("furnaceB."+id);
+                }
 
                 CreateInv.load(sec, inv);
 

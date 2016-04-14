@@ -148,9 +148,8 @@ EnchantingBackPack:
 
 FurnaceBackPack:
   Enable: true
-  ExtendedUI: true
   Name: "&7&lFurnace &8BackPack"
-  Desc1: "&eThis is a &7Furnace &8BackPack"
+  Desc1: "&eThis is a &7Furnace &8BackPack."
   Desc2: "&fPut it in your inventar to use it."
 
   Material: "FURNACE"

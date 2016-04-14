@@ -24,8 +24,6 @@ import java.util.UUID;
 
 public class CreateInvSQL implements Listener {
 
-    // todo: fix crazy bug
-
     private int animals, ores, fuel;
     private ResultSet rs;
     private main plugin;
@@ -82,7 +80,7 @@ public class CreateInvSQL implements Listener {
         gMeta.setDisplayName(ChatColor.GRAY+"");
         greyG.setItemMeta(gMeta);
 
-        for (int i = 0; i < 35 ; i++) {
+        for (int i = 0; i < 44 ; i++) {
             inv.setItem(i, greyG);
         }
 
@@ -107,7 +105,7 @@ public class CreateInvSQL implements Listener {
                     main.update("create table if not exists furnaceBP_"+trimmedID+" (animals INT(10),ores INT(10),fuel BIGINT(255))");
                     rs = main.getResult("select * from furnaceBP_"+trimmedID);
 
-                    Inventory inv = Bukkit.getServer().createInventory(p, 36, ChatColor.translateAlternateColorCodes('&', main.names.getString("FurnaceBackPack.Name")));
+                    Inventory inv = Bukkit.getServer().createInventory(p, 45, ChatColor.translateAlternateColorCodes('&', main.names.getString("FurnaceBackPack.Name")));
 
                     assert rs != null;
 
@@ -251,7 +249,7 @@ public class CreateInvSQL implements Listener {
                                 gMeta.setDisplayName(ChatColor.GREEN + "" + per + per + "%");
                                 g.setItemMeta(gMeta);
 
-                                inv.setItem(26 + 1 + i, g);
+                                inv.setItem(35 + 1 + i, g);
                             }
                         } else {
                             fuel = 9;
@@ -264,7 +262,7 @@ public class CreateInvSQL implements Listener {
                                 gMeta.setDisplayName(ChatColor.GREEN + "" + per + per + "%");
                                 g.setItemMeta(gMeta);
 
-                                inv.setItem(26 + 1 + i, g);
+                                inv.setItem(35 + 1 + i, g);
                             }
                         }
                     }
@@ -288,8 +286,8 @@ public class CreateInvSQL implements Listener {
 
                 Inventory inv = main.furnaceB.get(id);
 
-                if(inv.getItem(35) != null) {
-                    ItemStack item = inv.getItem(35);
+                if(inv.getItem(44) != null) {
+                    ItemStack item = inv.getItem(44);
 
                     if(item.getType().equals(Material.COAL)) {
 
@@ -309,7 +307,7 @@ public class CreateInvSQL implements Listener {
                             main.update("insert into furnaceBP_"+trimmedID+" (animals, ores, fuel) values ("+animals+", "+ores+", "+fuel+")");
 
 
-                            inv.setItem(35, new ItemStack(Material.AIR));
+                            inv.setItem(44, new ItemStack(Material.AIR));
                         } catch(SQLException e1) {
                             e1.printStackTrace();
                         }

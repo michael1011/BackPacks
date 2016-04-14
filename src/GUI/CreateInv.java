@@ -73,7 +73,7 @@ public class CreateInv implements Listener {
         gMeta.setDisplayName(ChatColor.GRAY+"");
         greyG.setItemMeta(gMeta);
 
-        for (int i = 0; i < 35 ; i++) {
+        for (int i = 0; i < 44 ; i++) {
             inv.setItem(i, greyG);
         }
 
@@ -103,7 +103,7 @@ public class CreateInv implements Listener {
                     }
                 }
 
-                Inventory inv = Bukkit.getServer().createInventory(p, 36, ChatColor.translateAlternateColorCodes('&', main.names.getString("FurnaceBackPack.Name")));
+                Inventory inv = Bukkit.getServer().createInventory(p, 45, ChatColor.translateAlternateColorCodes('&', main.names.getString("FurnaceBackPack.Name")));
                 ConfigurationSection sec = main.backpacks.getConfigurationSection("furnaceB."+id);
 
                 load(sec, inv);
@@ -216,7 +216,7 @@ public class CreateInv implements Listener {
                         gMeta.setDisplayName(ChatColor.GREEN+""+per+per+"%");
                         g.setItemMeta(gMeta);
 
-                        inv.setItem(26+1+i, g);
+                        inv.setItem(35+1+i, g);
                     }
                 } else {
                     fuel = 9;
@@ -229,7 +229,7 @@ public class CreateInv implements Listener {
                         gMeta.setDisplayName(ChatColor.GREEN+""+per+per+"%");
                         g.setItemMeta(gMeta);
 
-                        inv.setItem(26+1+i, g);
+                        inv.setItem(35+1+i, g);
                     }
                 }
             }
@@ -245,8 +245,8 @@ public class CreateInv implements Listener {
             if(main.GUI.getBoolean("FurnaceBackPackGUI.Enable")) {
                 Inventory inv = main.furnaceB.get(id);
 
-                if(inv.getItem(35) != null) {
-                    ItemStack item = inv.getItem(35);
+                if(inv.getItem(44) != null) {
+                    ItemStack item = inv.getItem(44);
 
                     if(item.getType().equals(Material.COAL)) {
 
@@ -259,7 +259,7 @@ public class CreateInv implements Listener {
                             e1.printStackTrace();
                         }
 
-                        inv.setItem(35, new ItemStack(Material.AIR));
+                        inv.setItem(44, new ItemStack(Material.AIR));
                     }
                 }
             }

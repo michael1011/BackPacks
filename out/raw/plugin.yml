@@ -1,7 +1,7 @@
 main: main.main
 name: BackPacks-1.9
-version: 1.2.7-beta5
-description: This is a simple plugin for bagpacks
+version: 1.2.7
+description: This is a simple plugin for BackPacks
 author: Michael1011
 
 commands:

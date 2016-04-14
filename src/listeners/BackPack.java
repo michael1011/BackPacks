@@ -109,7 +109,11 @@ public class BackPack implements Listener {
                 } else if(var.equals(ChatColor.translateAlternateColorCodes('&', main.names.getString("FurnaceBackPack.Name")))) {
                     e.setCancelled(true);
                     if(p.hasPermission("backpacks.furnaceBackPack")) {
-                        p.openInventory(main.furnaceB.get(id));
+                        if(main.names.getBoolean("FurnaceBackPack.Enable")) {
+                            if(main.GUI.getBoolean("FurnaceBackPackGUI.Enable")) {
+                                p.openInventory(main.furnaceB.get(id));
+                            }
+                        }
                     } else {
                         p.sendMessage(Pref.p+NoPermission);
                     }

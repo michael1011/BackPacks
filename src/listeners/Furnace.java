@@ -1,6 +1,10 @@
 package listeners;
 
 import main.main;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.*;
@@ -53,8 +57,6 @@ public class Furnace implements Listener {
             }
 
         } else {
-            // todo: global int?
-
             String trimmedID = id.toString().replaceAll("-", "");
 
             try {
@@ -78,10 +80,17 @@ public class Furnace implements Listener {
     }
 
     private boolean checkCoal(Player p, int i) {
-        if(i > 0) {
+        if(i > 0 || !main.GUI.getBoolean("FurnaceBackPackGUI.Enable")) {
             return true;
         } else {
-            p.sendMessage(Pref.p+ChatColor.translateAlternateColorCodes('&', main.GUI.getString("FurnaceBackPackGUI.IsEmpty")));
+            // p.sendMessage(Pref.p+ChatColor.translateAlternateColorCodes('&', main.GUI.getString("FurnaceBackPackGUI.IsEmpty")));
+
+            TextComponent tc = new TextComponent();
+            tc.setText(Pref.p+ChatColor.translateAlternateColorCodes('&', main.GUI.getString("FurnaceBackPackGUI.IsEmpty")));
+            tc.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, ""));
+            tc.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Help").create()));
+            p.spigot().sendMessage(tc);
+
             return false;
         }
     }
@@ -264,7 +273,7 @@ public class Furnace implements Listener {
             Player p = e.getPlayer();
             UUID id = p.getUniqueId();
 
-            if(main.GUI.getBoolean("FurnaceBackPackGUI.Enable")) {
+            if(main.names.getBoolean("FurnaceBackPack.Enable")) {
                 if(!main.config.getBoolean("MySQL.enable")) {
                     if(main.backpacks.getBoolean("furnaceB."+id+".ores")) {
                         blocks(p, e, id, main.backpacks.getInt("furnaceB."+id+".fuel"));
@@ -299,7 +308,7 @@ public class Furnace implements Listener {
             Player p = e.getEntity().getKiller();
             UUID id = p.getUniqueId();
 
-            if(main.GUI.getBoolean("FurnaceBackPackGUI.Enable")) {
+            if(main.names.getBoolean("FurnaceBackPack.Enable")) {
                 if(!main.config.getBoolean("MySQL.enable")) {
                     if(main.backpacks.getBoolean("furnaceB."+id+".animals")) {
                         kill(p, e, id, main.backpacks.getInt("furnaceB."+id+".fuel"));
