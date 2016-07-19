@@ -10,7 +10,7 @@ commands:
     description: "main command"
   bpgive:
     usage: /bpgive <arg>
-    description: "to give anyone a backpack"
+    description: "to give a player a backpack"
   bpreload:
     usage: /bpreload
     description: "to reload the config files"

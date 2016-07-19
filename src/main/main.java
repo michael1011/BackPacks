@@ -24,6 +24,7 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.UUID;
 import listeners.SaveLoad;
+import tasks.SQLReconnect;
 
 public class main extends JavaPlugin {
 
@@ -35,7 +36,7 @@ public class main extends JavaPlugin {
     public static FileConfiguration config, names, backpacks, GUI;
     private static Connection connection;
 
-    private String host, port, database, username, password;
+    private static String host, port, database, username, password;
     public static HashMap<UUID, Inventory> littleB = new HashMap<>();
     public static HashMap<UUID, Inventory> normalB = new HashMap<>();
 
@@ -76,6 +77,8 @@ public class main extends JavaPlugin {
 
         if(connection != null) {
             Bukkit.getConsoleSender().sendMessage(Pref.p+ChatColor.YELLOW+"MySQL connection enabled!");
+
+            new SQLReconnect(this);
         }
 
         try {
@@ -136,7 +139,7 @@ public class main extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(Pref.p + ChatColor.RED +"Plugin disabled!");
     }
 
-    private void establishMySQL() {
+    public static void establishMySQL() {
         host = config.getString("MySQL.host");
         port = config.getString("MySQL.port");
         database = config.getString("MySQL.database");
@@ -145,18 +148,28 @@ public class main extends JavaPlugin {
 
         try {
             openConnection();
-            Statement statement = connection.createStatement();
+            connection.createStatement();
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
     }
 
-    private Connection openConnection() throws SQLException, ClassNotFoundException {
+    private static Connection openConnection() throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.jdbc.Driver");
         connection = DriverManager.getConnection("jdbc:mysql://"
-                        + this.host+ ":" + this.port + "/" + this.database, this.username, this.password);
+                        + host+ ":" + port + "/" + database, username, password);
 
         return connection;
+    }
+    
+    public static void closeSQL() {
+        try {
+            if(connection != null) {
+                connection.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private void createInv(Player p) {
