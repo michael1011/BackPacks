@@ -1,11 +1,11 @@
 package commands;
 
+import main.Pref;
 import main.main;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import main.Pref;
 
 public class Reload implements CommandExecutor {
 

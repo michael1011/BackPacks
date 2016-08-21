@@ -42,15 +42,6 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.39</version>
 		</dependency>
-
-		<!--Minecraft-->
-		<dependency>
-			<groupId>spigot</groupId>
-			<artifactId>spigot</artifactId>
-			<version>1.9</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/server_1.9/spigot-1.9.jar</systemPath>
-		</dependency>
 	</dependencies>
 	
 	<build>

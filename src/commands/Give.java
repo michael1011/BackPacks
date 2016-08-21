@@ -1,5 +1,7 @@
 package commands;
 
+import main.Crafting;
+import main.Pref;
 import main.main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -7,8 +9,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import main.Pref;
-import main.Crafting;
 import org.bukkit.inventory.Inventory;
 
 public class Give implements CommandExecutor {
