@@ -1,16 +1,22 @@
 package commands;
 
+import listeners.SaveLoadSQL;
 import main.Main;
 import main.Pref;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.UUID;
+
+import static main.Main.*;
+import static main.Pref.p;
 
 public class Open implements CommandExecutor {
 
@@ -20,13 +26,13 @@ public class Open implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String s, String[] args) {
-        String pre = Pref.p;
+        String pre = p;
 
         if(sender.hasPermission("backpacks.open")) {
             if(sender instanceof Player) {
                 if(args.length == 2) {
                     try {
-                        ResultSet rs = Main.getResult("SELECT * FROM bp_users WHERE name='"+args[1]+"'");
+                        ResultSet rs = getResult("SELECT * FROM bp_users WHERE name='"+args[1]+"'");
 
                         assert rs != null;
 
@@ -35,11 +41,55 @@ public class Open implements CommandExecutor {
                         if(rs.next()) {
                             switch(args[0]) {
                                 case "little":
-                                    ((Player) sender).openInventory(Main.littleB.get(UUID.fromString(rs.getString("uuid"))));
+                                    if(littleB.get(UUID.fromString(rs.getString("uuid"))) == null) {
+                                        String trimmedID = rs.getString("uuid").replaceAll("-", "");
+
+                                        SaveLoadSQL.createTableLB(trimmedID, "littleBP");
+
+                                        Inventory inv = Bukkit.getServer().createInventory(null, names.getInt("LittleBackPack.Slots"), ChatColor.translateAlternateColorCodes('&', names.getString("LittleBackPack.Name")));
+
+                                        try {
+                                            ResultSet rs1 = getResult("select * from littleBP_"+trimmedID);
+
+                                            assert rs1 != null;
+                                            while(rs1.next()) {
+                                                inv.setItem(rs1.getInt(4), SaveLoadSQL.load(rs1.getString(1), rs1.getInt(2), rs1.getInt(3), rs1.getString(5), rs1.getString(6), rs1.getString(7), rs1.getString(8)));
+                                            }
+
+                                        } catch (SQLException e) {
+                                            e.printStackTrace();
+                                        }
+
+                                        littleB.put(UUID.fromString(rs.getString("uuid")), inv);
+                                    }
+
+                                    ((Player) sender).openInventory(littleB.get(UUID.fromString(rs.getString("uuid"))));
 
                                     break;
 
                                 case "normal":
+                                    if(normalB.get(UUID.fromString(rs.getString("uuid"))) == null) {
+                                        String trimmedID = rs.getString("uuid").replaceAll("-", "");
+
+                                        SaveLoadSQL.createTableLB(trimmedID, "normalBP");
+
+                                        Inventory inv = Bukkit.getServer().createInventory(null, names.getInt("NormalBackPack.Slots"), ChatColor.translateAlternateColorCodes('&', names.getString("NormalBackPack.Name")));
+
+                                        try {
+                                            ResultSet rs1 = getResult("select * from normalBP_"+trimmedID);
+
+                                            assert rs1 != null;
+                                            while(rs1.next()) {
+                                                inv.setItem(rs1.getInt(4), SaveLoadSQL.load(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)));
+                                            }
+
+                                        } catch(SQLException e) {
+                                            e.printStackTrace();
+                                        }
+
+                                        normalB.put(UUID.fromString(rs.getString("uuid")), inv);
+                                    }
+
                                     ((Player) sender).openInventory(Main.normalB.get(UUID.fromString(rs.getString("uuid"))));
 
                                     break;
