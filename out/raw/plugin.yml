@@ -1,16 +1,19 @@
-main: main.main
+main: main.Main
 name: BackPacks-1.9
-version: 1.2.7-enchantingFix
+version: 1.2.8
 description: This is a simple plugin for BackPacks
 author: Michael1011
 
 commands:
   bp:
     usage: /bp
-    description: "main command"
+    description: "Main command"
   bpgive:
     usage: /bpgive <arg>
     description: "to give a player a backpack"
+  bpopen:
+    usage: /bpopen <backpack> <player> (Works only if you are using a MySQL database!)
+    description: "Open the backpack of a player. Works only if you are using a MySQL database!"
   bpreload:
     usage: /bpreload
     description: "to reload the config files"
@@ -29,6 +32,7 @@ permissions:
       backpacks.furnaceBackPack: true
       backpacks.give: true
       backpacks.reload: true
+      backpacks.open: true
   backpacks.help:
     description: "for /backpacks help"
     default: true
@@ -56,3 +60,6 @@ permissions:
   backpacks.furnaceBackPack:
     description: "to use the furnace backpack"
     default: true
+  backpacks.open:
+    description: "to use /bpopen"
+    default: op

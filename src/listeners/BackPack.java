@@ -1,7 +1,7 @@
 package listeners;
 
+import main.Main;
 import main.Pref;
-import main.main;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,11 +16,11 @@ import java.util.UUID;
 
 public class BackPack implements Listener {
 
-    public main plugin;
+    public Main plugin;
 
-    public BackPack(main main) {
-        this.plugin = main;
-        plugin.getServer().getPluginManager().registerEvents(this, main);
+    public BackPack(Main Main) {
+        this.plugin = Main;
+        plugin.getServer().getPluginManager().registerEvents(this, Main);
     }
 
     private String oldBlock;
@@ -40,14 +40,14 @@ public class BackPack implements Listener {
     public void Craft(PlayerInteractEvent e) {
         Player p = e.getPlayer();
         UUID id = p.getUniqueId();
-        String NoPermission = ChatColor.translateAlternateColorCodes('&', main.config.getString("NoPermission"));
+        String NoPermission = ChatColor.translateAlternateColorCodes('&', Main.config.getString("NoPermission"));
 
         if (e.getItem() != null && (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK)) {
             if(e.getItem().getItemMeta().hasDisplayName()) {
 
                 String var = e.getItem().getItemMeta().getDisplayName();
 
-                if(var.equals(ChatColor.translateAlternateColorCodes('&', main.names.getString("EnderBackPack.Name")))) {
+                if(var.equals(ChatColor.translateAlternateColorCodes('&', Main.names.getString("EnderBackPack.Name")))) {
                     e.setCancelled(true);
                     if(p.hasPermission("backpacks.enderBackPack")) {
                         p.openInventory(p.getEnderChest());
@@ -56,7 +56,7 @@ public class BackPack implements Listener {
                         p.sendMessage(Pref.p+NoPermission);
                     }
 
-                } else if(var.equals(ChatColor.translateAlternateColorCodes('&', main.names.getString("WorkbenchBackPack.Name")))) {
+                } else if(var.equals(ChatColor.translateAlternateColorCodes('&', Main.names.getString("WorkbenchBackPack.Name")))) {
                     e.setCancelled(true);
                     if(p.hasPermission("backpacks.workbenchBackPack")) {
                         p.openWorkbench(null, true);
@@ -65,40 +65,39 @@ public class BackPack implements Listener {
                         p.sendMessage(Pref.p+NoPermission);
                     }
 
-                } else if(var.equals(ChatColor.translateAlternateColorCodes('&', main.names.getString("LittleBackPack.Name")))) {
+                } else if(var.equals(ChatColor.translateAlternateColorCodes('&', Main.names.getString("LittleBackPack.Name")))) {
                     e.setCancelled(true);
                     if(p.hasPermission("backpacks.littleBackPack")) {
-                        p.openInventory(main.littleB.get(id));
+                        p.openInventory(Main.littleB.get(id));
 
                     } else {
                         p.sendMessage(Pref.p+NoPermission);
                     }
 
-                } else if(var.equals(ChatColor.translateAlternateColorCodes('&', main.names.getString("NormalBackPack.Name")))) {
+                } else if(var.equals(ChatColor.translateAlternateColorCodes('&', Main.names.getString("NormalBackPack.Name")))) {
                     e.setCancelled(true);
                     if(p.hasPermission("backpacks.normalBackPack")) {
-                        p.openInventory(main.normalB.get(id));
+                        p.openInventory(Main.normalB.get(id));
 
                     } else {
                         p.sendMessage(Pref.p+NoPermission);
                     }
 
-                } else if(var.equals(ChatColor.translateAlternateColorCodes('&', main.names.getString("EnchantingBackPack.Name")))) {
+                } else if(var.equals(ChatColor.translateAlternateColorCodes('&', Main.names.getString("EnchantingBackPack.Name")))) {
                     e.setCancelled(true);
                     if(p.hasPermission("backpacks.enchantingBackPack")) {
-
-                        e.getPlayer().openInventory(Bukkit.createInventory(null, InventoryType.ENCHANTING));
+                        p.openInventory(Bukkit.createInventory(null, InventoryType.ENCHANTING));
 
                     } else {
                         p.sendMessage(Pref.p+NoPermission);
                     }
 
-                } else if(var.equals(ChatColor.translateAlternateColorCodes('&', main.names.getString("FurnaceBackPack.Name")))) {
+                } else if(var.equals(ChatColor.translateAlternateColorCodes('&', Main.names.getString("FurnaceBackPack.Name")))) {
                     e.setCancelled(true);
                     if(p.hasPermission("backpacks.furnaceBackPack")) {
-                        if(main.names.getBoolean("FurnaceBackPack.Enable")) {
-                            if(main.GUI.getBoolean("FurnaceBackPackGUI.Enable")) {
-                                p.openInventory(main.furnaceB.get(id));
+                        if(Main.names.getBoolean("FurnaceBackPack.Enable")) {
+                            if(Main.GUI.getBoolean("FurnaceBackPackGUI.Enable")) {
+                                p.openInventory(Main.furnaceB.get(id));
                             }
                         }
                     } else {
@@ -119,12 +118,12 @@ public class BackPack implements Listener {
         /*if(p.hasPermission("backpacks.enchantingBackPack")) {
             UUID id = p.getUniqueId();
 
-            String enchName = ChatColor.translateAlternateColorCodes('&', main.names.getString("EnchantingBackPack.Name"));
+            String enchName = ChatColor.translateAlternateColorCodes('&', Main.names.getString("EnchantingBackPack.Name"));
 
             World w = p.getWorld();
             Location player = p.getLocation();
 
-            if(main.version.equals("1.9")) {
+            if(Main.version.equals("1.9")) {
                 if(p.getInventory().getItemInMainHand().hasItemMeta()) {
                     if(p.getInventory().getItemInMainHand().getItemMeta().hasDisplayName()) {
                         if (p.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals(enchName)) {

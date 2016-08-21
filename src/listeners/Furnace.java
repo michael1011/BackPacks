@@ -1,8 +1,8 @@
 package listeners;
 
 import main.Crafting;
+import main.Main;
 import main.Pref;
-import main.main;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
@@ -27,14 +27,12 @@ import java.util.UUID;
 
 public class Furnace implements Listener {
 
-    public main plugin;
-    private Boolean MySQL = main.config.getBoolean("MySQL.enable");
+    private Boolean MySQL = Main.config.getBoolean("MySQL.enable");
 
     private ResultSet rs;
 
-    public Furnace(main main) {
-        this.plugin = main;
-        plugin.getServer().getPluginManager().registerEvents(this, main);
+    public Furnace(Main main) {
+        main.getServer().getPluginManager().registerEvents(this, main);
     }
 
     private int random(int min, int max) {
@@ -48,11 +46,11 @@ public class Furnace implements Listener {
         if(!MySQL) {
             String path = "furnaceB."+id+".";
 
-            int exists = main.backpacks.getInt(path+"fuel");
-            main.backpacks.set(path+"fuel", exists-1);
+            int exists = Main.backpacks.getInt(path+"fuel");
+            Main.backpacks.set(path+"fuel", exists-1);
 
             try {
-                main.backpacks.save(main.backpacksF);
+                Main.backpacks.save(Main.backpacksF);
             } catch(Exception e) {
                 e.printStackTrace();
             }
@@ -61,7 +59,7 @@ public class Furnace implements Listener {
             String trimmedID = id.toString().replaceAll("-", "");
 
             try {
-                ResultSet rs = main.getResult("select * from furnaceBP_"+trimmedID);
+                ResultSet rs = Main.getResult("select * from furnaceBP_"+trimmedID);
                 assert rs != null;
 
                 if(rs.next()) {
@@ -69,8 +67,8 @@ public class Furnace implements Listener {
                     int ores = rs.getInt(2);
                     int fuel = rs.getInt(3)-1;
 
-                    main.update("delete from furnaceBP_"+trimmedID);
-                    main.update("insert into furnaceBP_"+trimmedID+" (animals, ores, fuel) values ("+animals+", "+ores+", "+fuel+")");
+                    Main.update("delete from furnaceBP_"+trimmedID);
+                    Main.update("insert into furnaceBP_"+trimmedID+" (animals, ores, fuel) values ("+animals+", "+ores+", "+fuel+")");
                 }
 
             } catch(SQLException e) {
@@ -81,13 +79,13 @@ public class Furnace implements Listener {
     }
 
     private boolean checkCoal(Player p, int i) {
-        if(i > 0 || !main.GUI.getBoolean("FurnaceBackPackGUI.Enable")) {
+        if(i > 0 || !Main.GUI.getBoolean("FurnaceBackPackGUI.Enable")) {
             return true;
         } else {
-            // p.sendMessage(Pref.p+ChatColor.translateAlternateColorCodes('&', main.GUI.getString("FurnaceBackPackGUI.IsEmpty")));
+            // p.sendMessage(Pref.p+ChatColor.translateAlternateColorCodes('&', Main.GUI.getString("FurnaceBackPackGUI.IsEmpty")));
 
             TextComponent tc = new TextComponent();
-            tc.setText(Pref.p+ChatColor.translateAlternateColorCodes('&', main.GUI.getString("FurnaceBackPackGUI.IsEmpty")));
+            tc.setText(Pref.p+ChatColor.translateAlternateColorCodes('&', Main.GUI.getString("FurnaceBackPackGUI.IsEmpty")));
             tc.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, ""));
             tc.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Help").create()));
             p.spigot().sendMessage(tc);
@@ -153,7 +151,7 @@ public class Furnace implements Listener {
     }
 
     private void kill(Player p, EntityDeathEvent e, UUID id, int fuel) {
-        String version = main.version;
+        String version = Main.version;
 
         if(p.getInventory().contains(Crafting.furnaceB)) {
             if (e.getEntity() instanceof Ageable) {
@@ -274,17 +272,17 @@ public class Furnace implements Listener {
             Player p = e.getPlayer();
             UUID id = p.getUniqueId();
 
-            if(main.names.getBoolean("FurnaceBackPack.Enable")) {
-                if(!main.config.getBoolean("MySQL.enable")) {
-                    if(main.backpacks.getBoolean("furnaceB."+id+".ores")) {
-                        blocks(p, e, id, main.backpacks.getInt("furnaceB."+id+".fuel"));
+            if(Main.names.getBoolean("FurnaceBackPack.Enable")) {
+                if(!Main.config.getBoolean("MySQL.enable")) {
+                    if(Main.backpacks.getBoolean("furnaceB."+id+".ores")) {
+                        blocks(p, e, id, Main.backpacks.getInt("furnaceB."+id+".fuel"));
                     }
 
                 } else {
                     String trimmedID = id.toString().replaceAll("-", "");
 
                     try {
-                        rs = main.getResult("select * from furnaceBP_"+trimmedID);
+                        rs = Main.getResult("select * from furnaceBP_"+trimmedID);
                         assert rs != null;
 
                         if(rs.next()) {
@@ -309,17 +307,17 @@ public class Furnace implements Listener {
             Player p = e.getEntity().getKiller();
             UUID id = p.getUniqueId();
 
-            if(main.names.getBoolean("FurnaceBackPack.Enable")) {
-                if(!main.config.getBoolean("MySQL.enable")) {
-                    if(main.backpacks.getBoolean("furnaceB."+id+".animals")) {
-                        kill(p, e, id, main.backpacks.getInt("furnaceB."+id+".fuel"));
+            if(Main.names.getBoolean("FurnaceBackPack.Enable")) {
+                if(!Main.config.getBoolean("MySQL.enable")) {
+                    if(Main.backpacks.getBoolean("furnaceB."+id+".animals")) {
+                        kill(p, e, id, Main.backpacks.getInt("furnaceB."+id+".fuel"));
                     }
 
                 } else {
                     String trimmedID = id.toString().replaceAll("-", "");
 
                     try {
-                        rs = main.getResult("select * from furnaceBP_"+trimmedID);
+                        rs = Main.getResult("select * from furnaceBP_"+trimmedID);
                         assert rs != null;
 
                         if(rs.next()) {

@@ -1,8 +1,8 @@
 package commands;
 
 import main.Crafting;
+import main.Main;
 import main.Pref;
-import main.main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -13,40 +13,40 @@ import org.bukkit.inventory.Inventory;
 
 public class Give implements CommandExecutor {
 
-    public main plugin;
+    public Main plugin;
 
-    public Give(main main) {
-        this.plugin = main;
+    public Give(Main Main) {
+        this.plugin = Main;
         plugin.getCommand("bpgive").setExecutor(this);
     }
 
     private String pre = Pref.p;
 
     private void helpG(CommandSender sender) {
-        sender.sendMessage(pre+ ChatColor.translateAlternateColorCodes('&', main.config.getString("Usage")));
-        sender.sendMessage(pre+ChatColor.translateAlternateColorCodes('&', main.config.getString("BPGiveHelp.1")));
-        sender.sendMessage(pre+ChatColor.translateAlternateColorCodes('&', main.config.getString("BPGiveHelp.2")));
+        sender.sendMessage(pre+ ChatColor.translateAlternateColorCodes('&', Main.config.getString("Usage")));
+        sender.sendMessage(pre+ChatColor.translateAlternateColorCodes('&', Main.config.getString("BPGiveHelp.1")));
+        sender.sendMessage(pre+ChatColor.translateAlternateColorCodes('&', Main.config.getString("BPGiveHelp.2")));
         sender.sendMessage(pre);
-        sender.sendMessage(pre+ChatColor.translateAlternateColorCodes('&', main.config.getString("BPGiveHelp.3")));
+        sender.sendMessage(pre+ChatColor.translateAlternateColorCodes('&', Main.config.getString("BPGiveHelp.3")));
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-        String NoPermission = ChatColor.translateAlternateColorCodes('&', main.config.getString("NoPermission"));
-        String OnlyPlayers = ChatColor.translateAlternateColorCodes('&', main.config.getString("OnlyPlayers"));
+        String NoPermission = ChatColor.translateAlternateColorCodes('&', Main.config.getString("NoPermission"));
+        String OnlyPlayers = ChatColor.translateAlternateColorCodes('&', Main.config.getString("OnlyPlayers"));
 
-        String gaveM = main.config.getString("GaveBackPack");
-        String gaveO = ChatColor.translateAlternateColorCodes('&', main.config.getString("GaveBackPackOthers"));
+        String gaveM = Main.config.getString("GaveBackPack");
+        String gaveO = ChatColor.translateAlternateColorCodes('&', Main.config.getString("GaveBackPackOthers"));
 
-        String littleBN = ChatColor.translateAlternateColorCodes('&', main.names.getString("LittleBackPack.Name"));
-        String normalBN = ChatColor.translateAlternateColorCodes('&', main.names.getString("NormalBackPack.Name"));
-        String enderBN = ChatColor.translateAlternateColorCodes('&', main.names.getString("EnderBackPack.Name"));
-        String craftingBN = ChatColor.translateAlternateColorCodes('&', main.names.getString("WorkbenchBackPack.Name"));
-        String enchantBN = ChatColor.translateAlternateColorCodes('&', main.names.getString("EnchantingBackPack.Name"));
-        String furnaceBN = ChatColor.translateAlternateColorCodes('&', main.names.getString("FurnaceBackPack.Name"));
+        String littleBN = ChatColor.translateAlternateColorCodes('&', Main.names.getString("LittleBackPack.Name"));
+        String normalBN = ChatColor.translateAlternateColorCodes('&', Main.names.getString("NormalBackPack.Name"));
+        String enderBN = ChatColor.translateAlternateColorCodes('&', Main.names.getString("EnderBackPack.Name"));
+        String craftingBN = ChatColor.translateAlternateColorCodes('&', Main.names.getString("WorkbenchBackPack.Name"));
+        String enchantBN = ChatColor.translateAlternateColorCodes('&', Main.names.getString("EnchantingBackPack.Name"));
+        String furnaceBN = ChatColor.translateAlternateColorCodes('&', Main.names.getString("FurnaceBackPack.Name"));
 
-        String notFound = ChatColor.translateAlternateColorCodes('&', main.config.getString("GiveNotFound"));
+        String notFound = ChatColor.translateAlternateColorCodes('&', Main.config.getString("GiveNotFound"));
 
         if(args.length == 0) {
             helpG(sender);
@@ -174,7 +174,7 @@ public class Give implements CommandExecutor {
                     }
 
                 } else {
-                    String notFoundP = ChatColor.translateAlternateColorCodes('&', main.config.getString("GivePlayerNotFound"));
+                    String notFoundP = ChatColor.translateAlternateColorCodes('&', Main.config.getString("GivePlayerNotFound"));
                     notFoundP = notFoundP.replace("%target%", args[1]);
 
                     sender.sendMessage(pre+notFoundP);

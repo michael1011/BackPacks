@@ -1,10 +1,10 @@
 # BackPacks by Michael1011
-# Version: 1.2.7
+# Version: 1.2.8
 
 OnlyPlayers: "&4Only players &ccan execute this command!"
 # When the console wants to execute a command wich is only for players.
 
-NoPermission: "&4You dont have enought permissions!"
+NoPermission: "&4You do not have enought permissions!"
 # If a player has not enough permission he will get this message
 
 Reload: "&eReloaded config files &6successfully&e!"
@@ -17,6 +17,7 @@ BPHelp:
   1: "&6/bp: &eshows this page"
   2: "&6/bpreload: &eto reload the config files"
   3: "&6/bpgive: &eto give anyone a backpack"
+  4: "&6/bpopen: &eto open the backpack of someone"
 # The help of /bp
 
 BPGiveHelp:
@@ -37,17 +38,19 @@ GiveNotFound: "&cThe backpack &4%backpack% couldn't &cbe found!"
 GivePlayerNotFound: "&cThe player &4%target% couldn't &cbe found!"
 # When you want to give a backpack to a player but the player isn't online. %target% is the player.
 
+OpenHelp: "&6/bpopen <backpack> <player>: &eto open backpack <backpack> (little, normal) of player <player>"
+
 MySQL:
-  enable: false
+  enable: true
 # When its false the plugin will use a config file. Before you enable this setup the MySQL host below!
 
   host: "localhost"
 # IP adress or domain of you MySQL host.
   port: "3306"
 # Port of your MySQL Server.
-  database: "database"
+  database: "bp"
 # Wich database do you want to use?
-  username: "root"
+  username: "bp"
 # The user must have all permission on the database above!
-  password: "password"
+  password: "7EljLgVpFitCy0Jq"
 # The password of the player above.

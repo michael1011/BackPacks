@@ -1,6 +1,6 @@
 package listeners;
 
-import main.main;
+import main.Main;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -26,15 +26,15 @@ import java.util.*;
 
 public class SaveLoadSQL implements Listener {
 
-    public main plugin;
+    public Main plugin;
 
-    public SaveLoadSQL(main main) {
-        this.plugin = main;
-        this.plugin.getServer().getPluginManager().registerEvents(this, main);
+    public SaveLoadSQL(Main Main) {
+        this.plugin = Main;
+        this.plugin.getServer().getPluginManager().registerEvents(this, Main);
     }
 
     public static void createTableLB(String ID, String bp) {
-        main.update("create table if not exists "+bp+"_"+ID+" (type VARCHAR(200),amount INT(100),dur INT(200),slot INT(100),displayname VARCHAR(2000),lore VARCHAR(2000),enchantname VARCHAR(2000),potion VARCHAR(5000))");
+        Main.update("create table if not exists "+bp+"_"+ID+" (type VARCHAR(200),amount INT(100),dur INT(200),slot INT(100),displayname VARCHAR(2000),lore VARCHAR(2000),enchantname VARCHAR(2000),potion VARCHAR(5000))");
     }
 
     private static void noPotion(ItemStack stack, String name, List<String> loreName, String lore, List<String> enchantname ) {
@@ -81,7 +81,7 @@ public class SaveLoadSQL implements Listener {
                 enchantname.add(enchantment);
             }
 
-        } else if(main.version.equals("1.9")) {
+        } else if(Main.version.equals("1.9")) {
             if(typeM == Material.POTION || typeM == Material.SPLASH_POTION || typeM == Material.LINGERING_POTION || typeM == Material.TIPPED_ARROW) {
                 PotionMeta potionM = (PotionMeta) stack.getItemMeta();
 
@@ -125,7 +125,7 @@ public class SaveLoadSQL implements Listener {
 
         String enchantstring = StringUtils.join(enchantname, '/');
 
-        main.update("insert into "+bp+id+" (type,amount,dur,slot,displayname,lore,enchantname,potion) values ('"+type+"','"+amount+"','"+durability+"','"+slot+"','"+name+"','"+lore+"','"+enchantstring+"','"+potion+"')");
+        Main.update("insert into "+bp+id+" (type,amount,dur,slot,displayname,lore,enchantname,potion) values ('"+type+"','"+amount+"','"+durability+"','"+slot+"','"+name+"','"+lore+"','"+enchantstring+"','"+potion+"')");
     }
 
     public static ItemStack load(String type, int amount, int durability, String displayname, String lore, String enchantments, String potion) {
@@ -151,7 +151,7 @@ public class SaveLoadSQL implements Listener {
             item.setItemMeta(enchantmentsMeta);
 
         } else if(type.contains("POTION") || type.equals("TIPPED_ARROW")) {
-            if(main.version.equals("1.9")) {
+            if(Main.version.equals("1.9")) {
                 if(!potion.equals("null")) {
 
                     String[] parts = potion.split("/");
@@ -208,7 +208,7 @@ public class SaveLoadSQL implements Listener {
 
     @EventHandler
     public void join(PlayerJoinEvent e) {
-        if(main.config.getBoolean("MySQL.enable")) {
+        if(Main.config.getBoolean("MySQL.enable")) {
             Player p = e.getPlayer();
             UUID id = p.getUniqueId();
 
@@ -219,10 +219,10 @@ public class SaveLoadSQL implements Listener {
             if(p.hasPermission("backpacks.littleBackPack")) {
                 createTableLB(trimmedID, "littleBP");
 
-                Inventory inv = Bukkit.getServer().createInventory(p, main.names.getInt("LittleBackPack.Slots"), ChatColor.translateAlternateColorCodes('&', main.names.getString("LittleBackPack.Name")));
+                Inventory inv = Bukkit.getServer().createInventory(p, Main.names.getInt("LittleBackPack.Slots"), ChatColor.translateAlternateColorCodes('&', Main.names.getString("LittleBackPack.Name")));
 
                 try {
-                    ResultSet rs = main.getResult("select * from littleBP_"+trimmedID);
+                    ResultSet rs = Main.getResult("select * from littleBP_"+trimmedID);
 
                     assert rs != null;
                     while(rs.next()) {
@@ -233,16 +233,16 @@ public class SaveLoadSQL implements Listener {
                     e1.printStackTrace();
                 }
 
-                main.littleB.put(id, inv);
+                Main.littleB.put(id, inv);
             }
 
             if(p.hasPermission("backpacks.normalBackPack")) {
                 createTableLB(trimmedID, "normalBP");
 
-                Inventory inv = Bukkit.getServer().createInventory(p, main.names.getInt("NormalBackPack.Slots"), ChatColor.translateAlternateColorCodes('&', main.names.getString("NormalBackPack.Name")));
+                Inventory inv = Bukkit.getServer().createInventory(p, Main.names.getInt("NormalBackPack.Slots"), ChatColor.translateAlternateColorCodes('&', Main.names.getString("NormalBackPack.Name")));
 
                 try {
-                    ResultSet rs = main.getResult("select * from normalBP_"+trimmedID);
+                    ResultSet rs = Main.getResult("select * from normalBP_"+trimmedID);
 
                     assert rs != null;
                     while(rs.next()) {
@@ -253,7 +253,7 @@ public class SaveLoadSQL implements Listener {
                     e2.printStackTrace();
                 }
 
-                main.normalB.put(id, inv);
+                Main.normalB.put(id, inv);
             }
 
         }
@@ -261,7 +261,7 @@ public class SaveLoadSQL implements Listener {
 
     @EventHandler
     public void leave(PlayerQuitEvent e) {
-        if(main.config.getBoolean("MySQL.enable")) {
+        if(Main.config.getBoolean("MySQL.enable")) {
             Player p = e.getPlayer();
             UUID id = p.getUniqueId();
 
@@ -271,11 +271,11 @@ public class SaveLoadSQL implements Listener {
             if(p.hasPermission("backpacks.littleBackPack")) {
                 createTableLB(trimmedID, "littleBP");
 
-                main.update("delete from littleBP_"+trimmedID);
+                Main.update("delete from littleBP_"+trimmedID);
 
-                for(int i = 0; i < main.names.getInt("LittleBackPack.Slots") ; i++) {
-                    if(main.littleB.get(id).getItem(i) != null) {
-                        save(main.littleB.get(id).getItem(i), trimmedID, "littleBP_", i);
+                for(int i = 0; i < Main.names.getInt("LittleBackPack.Slots") ; i++) {
+                    if(Main.littleB.get(id).getItem(i) != null) {
+                        save(Main.littleB.get(id).getItem(i), trimmedID, "littleBP_", i);
                     }
                 }
             }
@@ -283,11 +283,11 @@ public class SaveLoadSQL implements Listener {
             if(p.hasPermission("backpacks.normalBackPack")) {
                 createTableLB(trimmedID, "normalBP");
 
-                main.update("delete from normalBP_"+trimmedID);
+                Main.update("delete from normalBP_"+trimmedID);
 
-                for(int i = 0; i < main.names.getInt("NormalBackPack.Slots") ; i++) {
-                    if(main.normalB.get(id).getItem(i) != null) {
-                        save(main.normalB.get(id).getItem(i), trimmedID, "normalBP_", i);
+                for(int i = 0; i < Main.names.getInt("NormalBackPack.Slots") ; i++) {
+                    if(Main.normalB.get(id).getItem(i) != null) {
+                        save(Main.normalB.get(id).getItem(i), trimmedID, "normalBP_", i);
                     }
                 }
             }

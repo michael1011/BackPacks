@@ -3,8 +3,8 @@ package tasks;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 
-import static main.main.closeSQL;
-import static main.main.establishMySQL;
+import static main.Main.closeSQL;
+import static main.Main.establishMySQL;
 
 public class SQLReconnect {
 

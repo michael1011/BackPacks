@@ -1,6 +1,6 @@
 package listeners;
 
-import main.main;
+import main.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -25,11 +25,11 @@ import java.util.UUID;
 
 public class SaveLoad implements Listener {
 
-    public main plugin;
+    public Main plugin;
 
-    public SaveLoad(main main) {
-        this.plugin = main;
-        this.plugin.getServer().getPluginManager().registerEvents(this, main);
+    public SaveLoad(Main Main) {
+        this.plugin = Main;
+        this.plugin.getServer().getPluginManager().registerEvents(this, Main);
     }
 
     private static void noPotion(ItemStack stack, ConfigurationSection sec) {
@@ -83,7 +83,7 @@ public class SaveLoad implements Listener {
                 sec.set("enchantments." + enchantment.getName() + ".lvl", book.getStoredEnchantLevel(enchantment));
             }
 
-        } else if(main.version.equals("1.9")) {
+        } else if(Main.version.equals("1.9")) {
             if(type == Material.POTION || type == Material.SPLASH_POTION || type == Material.LINGERING_POTION || type == Material.TIPPED_ARROW) {
                 PotionMeta potion = (PotionMeta) stack.getItemMeta();
 
@@ -131,7 +131,7 @@ public class SaveLoad implements Listener {
             item.setItemMeta(enchantments);
 
         } else if(type.equals("POTION") || type.equals("SPLASH_POTION") || type.equals("LINGERING_POTION") || type.equals("TIPPED_ARROW")) {
-            if(main.version.equals("1.9")) {
+            if(Main.version.equals("1.9")) {
                 if(sec.getString("potion.type") != null) {
                     PotionMeta potionM = (PotionMeta) item.getItemMeta();
 
@@ -177,82 +177,82 @@ public class SaveLoad implements Listener {
 
     @EventHandler
     public void join(PlayerJoinEvent e) {
-        if(!main.config.getBoolean("MySQL.enable")) {
+        if(!Main.config.getBoolean("MySQL.enable")) {
             Player p = e.getPlayer();
             UUID id = p.getUniqueId();
 
             if(p.hasPermission("backpacks.littleBackPack")) {
-                Inventory inv = Bukkit.getServer().createInventory(p, main.names.getInt("LittleBackPack.Slots"), ChatColor.translateAlternateColorCodes('&', main.names.getString("LittleBackPack.Name")));
+                Inventory inv = Bukkit.getServer().createInventory(p, Main.names.getInt("LittleBackPack.Slots"), ChatColor.translateAlternateColorCodes('&', Main.names.getString("LittleBackPack.Name")));
 
-                if(main.backpacks.contains("littleB."+id)) {
-                    for(String item : main.backpacks.getConfigurationSection("littleB."+id).getKeys(false)) {
-                        ConfigurationSection sec = main.backpacks.getConfigurationSection("littleB."+id+"."+item);
+                if(Main.backpacks.contains("littleB."+id)) {
+                    for(String item : Main.backpacks.getConfigurationSection("littleB."+id).getKeys(false)) {
+                        ConfigurationSection sec = Main.backpacks.getConfigurationSection("littleB."+id+"."+item);
                         inv.setItem(sec.getInt("slot") ,load(sec));
                     }
                 }
 
-                main.littleB.put(id, inv);
+                Main.littleB.put(id, inv);
             }
 
             if(p.hasPermission("backpacks.normalBackPack")) {
-                Inventory inv = Bukkit.getServer().createInventory(p, main.names.getInt("NormalBackPack.Slots"), ChatColor.translateAlternateColorCodes('&', main.names.getString("NormalBackPack.Name")));
+                Inventory inv = Bukkit.getServer().createInventory(p, Main.names.getInt("NormalBackPack.Slots"), ChatColor.translateAlternateColorCodes('&', Main.names.getString("NormalBackPack.Name")));
 
-                if(main.backpacks.contains("normalB."+id)) {
-                    for(String item : main.backpacks.getConfigurationSection("normalB."+id).getKeys(false)) {
-                        ConfigurationSection sec = main.backpacks.getConfigurationSection("normalB."+id+"."+item);
+                if(Main.backpacks.contains("normalB."+id)) {
+                    for(String item : Main.backpacks.getConfigurationSection("normalB."+id).getKeys(false)) {
+                        ConfigurationSection sec = Main.backpacks.getConfigurationSection("normalB."+id+"."+item);
                         inv.setItem(sec.getInt("slot"),load(sec));
                     }
                 }
 
-                main.normalB.put(id, inv);
+                Main.normalB.put(id, inv);
             }
         }
     }
 
     @EventHandler
     public void leave(PlayerQuitEvent e) {
-        if(!main.config.getBoolean("MySQL.enable")) {
+        if(!Main.config.getBoolean("MySQL.enable")) {
             Player p = e.getPlayer();
             UUID id = p.getUniqueId();
 
             if(p.hasPermission("backpacks.littleBackPack")) {
-                for(int in = 0; in < main.names.getInt("LittleBackPack.Slots"); in++) {
-                    if(main.backpacks.get("littleB."+id+"."+in) != null) {
-                        main.backpacks.set("littleB."+id+"."+in, null);
+                for(int in = 0; in < Main.names.getInt("LittleBackPack.Slots"); in++) {
+                    if(Main.backpacks.get("littleB."+id+"."+in) != null) {
+                        Main.backpacks.set("littleB."+id+"."+in, null);
                     }
                 }
 
-                if(!main.backpacks.contains("littleB."+id)) {
-                    main.backpacks.createSection("littleB."+id);
+                if(!Main.backpacks.contains("littleB."+id)) {
+                    Main.backpacks.createSection("littleB."+id);
                 }
 
-                for(int i = 0; i < main.names.getInt("LittleBackPack.Slots") ; i++) {
-                    if(main.littleB.get(id).getItem(i) != null) {
-                        save(main.backpacks.createSection("littleB."+id+"."+i), main.littleB.get(id).getItem(i), i);
+                for(int i = 0; i < Main.names.getInt("LittleBackPack.Slots") ; i++) {
+                    if(Main.littleB.get(id).getItem(i) != null) {
+                        save(Main.backpacks.createSection("littleB."+id+"."+i), Main.littleB.get(id).getItem(i), i);
                     }
                 }
             }
 
             if(p.hasPermission("backpacks.normalBackPack")) {
-                for(int in2 = 0; in2 < main.names.getInt("NormalBackPack.Slots"); in2++) {
-                    if(main.backpacks.get("normalB."+id+"."+in2) != null) {
-                        main.backpacks.set("normalB."+id+"."+in2, null);
+                for(int in2 = 0; in2 < Main.names.getInt("NormalBackPack.Slots"); in2++) {
+                    if(Main.backpacks.get("normalB."+id+"."+in2) != null) {
+                        Main.backpacks.set("normalB."+id+"."+in2, null);
                     }
                 }
 
-                if(!main.backpacks.contains("normalB."+id)) {
-                    main.backpacks.createSection("normalB."+id);
+                if(!Main.backpacks.contains("normalB."+id)) {
+                    Main.backpacks.createSection("normalB."+id);
                 }
 
-                for(int i = 0; i < main.names.getInt("NormalBackPack.Slots") ; i++) {
-                    if(main.normalB.get(id).getItem(i) != null) {
-                        save(main.backpacks.createSection("normalB."+id+"."+i), main.normalB.get(id).getItem(i), i);
+                for(int i = 0; i < Main.names.getInt("NormalBackPack.Slots") ; i++) {
+                    if(Main.normalB.get(id).getItem(i) != null) {
+                        save(Main.backpacks.createSection("normalB."+id+"."+i), Main.normalB.get(id).getItem(i), i);
                     }
                 }
             }
 
             try {
-                main.backpacks.save(main.backpacksF);
+                Main.backpacks.save(Main.backpacksF);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }

@@ -1,6 +1,6 @@
 package GUI;
 
-import main.main;
+import main.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -26,21 +26,21 @@ public class CreateInvSQL implements Listener {
 
     private int animals, ores, fuel;
     private ResultSet rs;
-    private main plugin;
+    private Main plugin;
 
-    public CreateInvSQL(main main) {
-        this.plugin = main;
-        this.plugin.getServer().getPluginManager().registerEvents(this, main);
+    public CreateInvSQL(Main Main) {
+        this.plugin = Main;
+        this.plugin.getServer().getPluginManager().registerEvents(this, Main);
     }
 
 
     private static void setItemM(ItemStack item, String name, String lore) {
         ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', main.GUI.getString("FurnaceBackPackGUI.Names."+name)));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', Main.GUI.getString("FurnaceBackPackGUI.Names."+name)));
         item.setItemMeta(meta);
 
         if(!lore.equals("null")) {
-            String loreS = ChatColor.translateAlternateColorCodes('&', main.GUI.getString("FurnaceBackPackGUI.Names."+lore));
+            String loreS = ChatColor.translateAlternateColorCodes('&', Main.GUI.getString("FurnaceBackPackGUI.Names."+lore));
             List<String> loreL = new ArrayList<>(Arrays.asList(loreS.split("\n")));
             meta.setLore(loreL);
         }
@@ -93,7 +93,7 @@ public class CreateInvSQL implements Listener {
     @EventHandler
     public void join(PlayerJoinEvent e) {
         if(e.getPlayer().hasPermission("backpacks.furnaceBackPack")) {
-            if(main.GUI.getBoolean("FurnaceBackPackGUI.Enable")) {
+            if(Main.GUI.getBoolean("FurnaceBackPackGUI.Enable")) {
                 Player p = e.getPlayer();
                 UUID id = p.getUniqueId();
                 String trimmedID = id.toString().replaceAll("-", "");
@@ -102,10 +102,10 @@ public class CreateInvSQL implements Listener {
                 int ores = 1;
 
                 try {
-                    main.update("create table if not exists furnaceBP_"+trimmedID+" (animals INT(10),ores INT(10),fuel BIGINT(255))");
-                    rs = main.getResult("select * from furnaceBP_"+trimmedID);
+                    Main.update("create table if not exists furnaceBP_"+trimmedID+" (animals INT(10),ores INT(10),fuel BIGINT(255))");
+                    rs = Main.getResult("select * from furnaceBP_"+trimmedID);
 
-                    Inventory inv = Bukkit.getServer().createInventory(p, 45, ChatColor.translateAlternateColorCodes('&', main.names.getString("FurnaceBackPack.Name")));
+                    Inventory inv = Bukkit.getServer().createInventory(p, 45, ChatColor.translateAlternateColorCodes('&', Main.names.getString("FurnaceBackPack.Name")));
 
                     assert rs != null;
 
@@ -114,12 +114,12 @@ public class CreateInvSQL implements Listener {
                         ores = rs.getInt(2);
 
                     } else {
-                        main.update("insert into furnaceBP_"+trimmedID+" (animals, ores, fuel) values ('1', '1', '0')");
+                        Main.update("insert into furnaceBP_"+trimmedID+" (animals, ores, fuel) values ('1', '1', '0')");
                     }
 
                     load(ores, animals, inv);
 
-                    main.furnaceB.put(id, inv);
+                    Main.furnaceB.put(id, inv);
                 } catch(SQLException e1) {
                     e1.printStackTrace();
                 }
@@ -134,7 +134,7 @@ public class CreateInvSQL implements Listener {
         UUID id = p.getUniqueId();
 
         if(p.hasPermission("backpacks.furnaceBackPack")) {
-            if(e.getInventory().equals(main.furnaceB.get(id))) {
+            if(e.getInventory().equals(Main.furnaceB.get(id))) {
                 ItemStack item = e.getCurrentItem();
                 Inventory inv = e.getInventory();
 
@@ -146,7 +146,7 @@ public class CreateInvSQL implements Listener {
                             e.setCancelled(true);
 
                             try {
-                                rs = main.getResult("select * from furnaceBP_"+trimmedID);
+                                rs = Main.getResult("select * from furnaceBP_"+trimmedID);
                                 assert rs != null;
 
                                 if(rs.next()) {
@@ -161,23 +161,23 @@ public class CreateInvSQL implements Listener {
 
                             if(e.getSlot() == 20) {
                                 if(ores == 1) {
-                                    main.update("delete from furnaceBP_"+trimmedID);
-                                    main.update("insert into furnaceBP_"+trimmedID+" (animals, ores, fuel) values ("+animals+",0,"+fuel+")");
+                                    Main.update("delete from furnaceBP_"+trimmedID);
+                                    Main.update("insert into furnaceBP_"+trimmedID+" (animals, ores, fuel) values ("+animals+",0,"+fuel+")");
 
                                     item = new ItemStack(Material.WOOL, 1, (byte) 14);
                                     setItemM(item, "Disabled", "null");
                                     inv.setItem(20, item);
 
                                 } else {
-                                    main.update("delete from furnaceBP_"+trimmedID);
-                                    main.update("insert into furnaceBP_"+trimmedID+" (animals, ores, fuel) values ("+animals+",1,"+fuel+")");
+                                    Main.update("delete from furnaceBP_"+trimmedID);
+                                    Main.update("insert into furnaceBP_"+trimmedID+" (animals, ores, fuel) values ("+animals+",1,"+fuel+")");
 
                                     item = new ItemStack(Material.WOOL, 1, (byte) 5);
                                     setItemM(item, "Enabled", "null");
                                     inv.setItem(20, item);
 
                                     try {
-                                        main.backpacks.save(main.backpacksF);
+                                        Main.backpacks.save(Main.backpacksF);
                                     } catch(Exception e1) {
                                         e1.printStackTrace();
                                     }
@@ -185,29 +185,29 @@ public class CreateInvSQL implements Listener {
 
                             } else if(e.getSlot() == 24) {
                                 if(animals == 1) {
-                                    main.update("delete from furnaceBP_"+trimmedID);
-                                    main.update("insert into furnaceBP_"+trimmedID+" (animals, ores, fuel) values (0,"+ores+","+fuel+")");
+                                    Main.update("delete from furnaceBP_"+trimmedID);
+                                    Main.update("insert into furnaceBP_"+trimmedID+" (animals, ores, fuel) values (0,"+ores+","+fuel+")");
 
                                     item = new ItemStack(Material.WOOL, 1, (byte) 14);
                                     setItemM(item, "Disabled", "null");
                                     inv.setItem(24, item);
 
                                     try {
-                                        main.backpacks.save(main.backpacksF);
+                                        Main.backpacks.save(Main.backpacksF);
                                     } catch(Exception e1) {
                                         e1.printStackTrace();
                                     }
 
                                 } else {
-                                    main.update("delete from furnaceBP_"+trimmedID);
-                                    main.update("insert into furnaceBP_"+trimmedID+" (animals, ores, fuel) values (1,"+ores+","+fuel+")");
+                                    Main.update("delete from furnaceBP_"+trimmedID);
+                                    Main.update("insert into furnaceBP_"+trimmedID+" (animals, ores, fuel) values (1,"+ores+","+fuel+")");
 
                                     item = new ItemStack(Material.WOOL, 1, (byte) 5);
                                     setItemM(item, "Enabled", "null");
                                     inv.setItem(24, item);
 
                                     try {
-                                        main.backpacks.save(main.backpacksF);
+                                        Main.backpacks.save(Main.backpacksF);
                                     } catch(Exception e1) {
                                         e1.printStackTrace();
                                     }
@@ -227,12 +227,12 @@ public class CreateInvSQL implements Listener {
         if(p.hasPermission("backpacks.furnaceBackPack")) {
             UUID id = p.getUniqueId();
 
-            if(e.getInventory().equals(main.furnaceB.get(id))) {
+            if(e.getInventory().equals(Main.furnaceB.get(id))) {
                 String trimmedID = id.toString().replace("-", "");
                 Inventory inv = e.getInventory();
 
                 try {
-                    rs = main.getResult("select * from furnaceBP_"+trimmedID);
+                    rs = Main.getResult("select * from furnaceBP_"+trimmedID);
                     assert rs != null;
 
                     if(rs.next()) {
@@ -280,11 +280,11 @@ public class CreateInvSQL implements Listener {
         Player p = (Player) e.getPlayer();
 
         if(p.hasPermission("backpacks.furnaceBackPack")) {
-            if(main.GUI.getBoolean("FurnaceBackPackGUI.Enable")) {
+            if(Main.GUI.getBoolean("FurnaceBackPackGUI.Enable")) {
                 UUID id = p.getUniqueId();
                 String trimmedID = id.toString().replaceAll("-", "");
 
-                Inventory inv = main.furnaceB.get(id);
+                Inventory inv = Main.furnaceB.get(id);
 
                 if(inv.getItem(44) != null) {
                     ItemStack item = inv.getItem(44);
@@ -292,7 +292,7 @@ public class CreateInvSQL implements Listener {
                     if(item.getType().equals(Material.COAL)) {
 
                         try {
-                            rs = main.getResult("select * from furnaceBP_"+trimmedID);
+                            rs = Main.getResult("select * from furnaceBP_"+trimmedID);
                             assert rs != null;
 
                             if(rs.next()) {
@@ -303,8 +303,8 @@ public class CreateInvSQL implements Listener {
                             int exists = rs.getInt(3);
                             int fuel = exists+item.getAmount()*9;
 
-                            main.update("delete from furnaceBP_"+trimmedID);
-                            main.update("insert into furnaceBP_"+trimmedID+" (animals, ores, fuel) values ("+animals+", "+ores+", "+fuel+")");
+                            Main.update("delete from furnaceBP_"+trimmedID);
+                            Main.update("insert into furnaceBP_"+trimmedID+" (animals, ores, fuel) values ("+animals+", "+ores+", "+fuel+")");
 
 
                             inv.setItem(44, new ItemStack(Material.AIR));

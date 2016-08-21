@@ -1,6 +1,6 @@
 package GUI;
 
-import main.main;
+import main.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -25,20 +25,20 @@ public class CreateInv implements Listener {
 
     // todo: coal made of wood, lava bucket
 
-    private main plugin;
+    private Main plugin;
 
-    public CreateInv(main main) {
-        this.plugin = main;
-        this.plugin.getServer().getPluginManager().registerEvents(this, main);
+    public CreateInv(Main Main) {
+        this.plugin = Main;
+        this.plugin.getServer().getPluginManager().registerEvents(this, Main);
     }
 
     private static void setItemM(ItemStack item, String name, String lore) {
         ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', main.GUI.getString("FurnaceBackPackGUI.Names."+name)));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', Main.GUI.getString("FurnaceBackPackGUI.Names."+name)));
         item.setItemMeta(meta);
 
         if(!lore.equals("null")) {
-            String loreS = ChatColor.translateAlternateColorCodes('&', main.GUI.getString("FurnaceBackPackGUI.Names."+lore));
+            String loreS = ChatColor.translateAlternateColorCodes('&', Main.GUI.getString("FurnaceBackPackGUI.Names."+lore));
             List<String> loreL = new ArrayList<>(Arrays.asList(loreS.split("\n")));
             meta.setLore(loreL);
         }
@@ -91,29 +91,29 @@ public class CreateInv implements Listener {
     @EventHandler
     public void join(PlayerJoinEvent e) {
         if(e.getPlayer().hasPermission("backpacks.furnaceBackPack")) {
-            if(main.GUI.getBoolean("FurnaceBackPackGUI.Enable")) {
+            if(Main.GUI.getBoolean("FurnaceBackPackGUI.Enable")) {
                 Player p = e.getPlayer();
                 UUID id = p.getUniqueId();
 
-                if(!main.backpacks.contains("furnaceB."+id)) {
-                    ConfigurationSection sec = main.backpacks.createSection("furnaceB."+id);
+                if(!Main.backpacks.contains("furnaceB."+id)) {
+                    ConfigurationSection sec = Main.backpacks.createSection("furnaceB."+id);
 
                     sec.set("ores", true);
                     sec.set("animals", true);
 
                     try {
-                        main.backpacks.save(main.backpacksF);
+                        Main.backpacks.save(Main.backpacksF);
                     } catch (Exception ex) {
                         ex.printStackTrace();
                     }
                 }
 
-                Inventory inv = Bukkit.getServer().createInventory(p, 45, ChatColor.translateAlternateColorCodes('&', main.names.getString("FurnaceBackPack.Name")));
-                ConfigurationSection sec = main.backpacks.getConfigurationSection("furnaceB."+id);
+                Inventory inv = Bukkit.getServer().createInventory(p, 45, ChatColor.translateAlternateColorCodes('&', Main.names.getString("FurnaceBackPack.Name")));
+                ConfigurationSection sec = Main.backpacks.getConfigurationSection("furnaceB."+id);
 
                 load(sec, inv);
 
-                main.furnaceB.put(id, inv);
+                Main.furnaceB.put(id, inv);
             }
         }
     }
@@ -124,7 +124,7 @@ public class CreateInv implements Listener {
         UUID id = p.getUniqueId();
 
         if(p.hasPermission("backpacks.furnaceBackPack")) {
-            if(e.getInventory().equals(main.furnaceB.get(p.getUniqueId()))) {
+            if(e.getInventory().equals(Main.furnaceB.get(p.getUniqueId()))) {
                 ItemStack item = e.getCurrentItem();
                 Inventory inv = e.getInventory();
 
@@ -136,56 +136,56 @@ public class CreateInv implements Listener {
                             String path = "furnaceB."+id;
 
                             if(e.getSlot() == 20) {
-                                if(main.backpacks.getBoolean(path+".ores")) {
-                                    main.backpacks.set(path+".ores", false);
+                                if(Main.backpacks.getBoolean(path+".ores")) {
+                                    Main.backpacks.set(path+".ores", false);
 
                                     item = new ItemStack(Material.WOOL, 1, (byte) 14);
                                     setItemM(item, "Disabled", "null");
                                     inv.setItem(20, item);
 
                                     try {
-                                        main.backpacks.save(main.backpacksF);
+                                        Main.backpacks.save(Main.backpacksF);
                                     } catch(Exception e1) {
                                         e1.printStackTrace();
                                     }
 
                                 } else {
-                                    main.backpacks.set(path+".ores", true);
+                                    Main.backpacks.set(path+".ores", true);
 
                                     item = new ItemStack(Material.WOOL, 1, (byte) 5);
                                     setItemM(item, "Enabled", "null");
                                     inv.setItem(20, item);
 
                                     try {
-                                        main.backpacks.save(main.backpacksF);
+                                        Main.backpacks.save(Main.backpacksF);
                                     } catch(Exception e1) {
                                         e1.printStackTrace();
                                     }
                                 }
 
                             } else if(e.getSlot() == 24) {
-                                if(main.backpacks.getBoolean(path+".animals")) {
-                                    main.backpacks.set(path+".animals", false);
+                                if(Main.backpacks.getBoolean(path+".animals")) {
+                                    Main.backpacks.set(path+".animals", false);
 
                                     item = new ItemStack(Material.WOOL, 1, (byte) 14);
                                     setItemM(item, "Disabled", "null");
                                     inv.setItem(24, item);
 
                                     try {
-                                        main.backpacks.save(main.backpacksF);
+                                        Main.backpacks.save(Main.backpacksF);
                                     } catch(Exception e1) {
                                         e1.printStackTrace();
                                     }
 
                                 } else {
-                                    main.backpacks.set(path+".animals", true);
+                                    Main.backpacks.set(path+".animals", true);
 
                                     item = new ItemStack(Material.WOOL, 1, (byte) 5);
                                     setItemM(item, "Enabled", "null");
                                     inv.setItem(24, item);
 
                                     try {
-                                        main.backpacks.save(main.backpacksF);
+                                        Main.backpacks.save(Main.backpacksF);
                                     } catch(Exception e1) {
                                         e1.printStackTrace();
                                     }
@@ -204,9 +204,9 @@ public class CreateInv implements Listener {
         UUID id = p.getUniqueId();
 
         if(p.hasPermission("backpacks.furnaceBackPack")) {
-            if(e.getInventory().equals(main.furnaceB.get(id))) {
+            if(e.getInventory().equals(Main.furnaceB.get(id))) {
                 Inventory inv = e.getInventory();
-                ConfigurationSection sec = main.backpacks.getConfigurationSection("furnaceB."+id);
+                ConfigurationSection sec = Main.backpacks.getConfigurationSection("furnaceB."+id);
 
                 load(sec, inv);
 
@@ -247,19 +247,19 @@ public class CreateInv implements Listener {
         UUID id = p.getUniqueId();
 
         if(p.hasPermission("backpacks.furnaceBackPack")) {
-            if(main.GUI.getBoolean("FurnaceBackPackGUI.Enable")) {
-                Inventory inv = main.furnaceB.get(id);
+            if(Main.GUI.getBoolean("FurnaceBackPackGUI.Enable")) {
+                Inventory inv = Main.furnaceB.get(id);
 
                 if(inv.getItem(44) != null) {
                     ItemStack item = inv.getItem(44);
 
                     if(item.getType().equals(Material.COAL)) {
 
-                        int exists = main.backpacks.getInt("furnaceB."+id+".fuel");
-                        main.backpacks.set("furnaceB."+id+".fuel", exists+item.getAmount()*9);
+                        int exists = Main.backpacks.getInt("furnaceB."+id+".fuel");
+                        Main.backpacks.set("furnaceB."+id+".fuel", exists+item.getAmount()*9);
 
                         try {
-                            main.backpacks.save(main.backpacksF);
+                            Main.backpacks.save(Main.backpacksF);
                         } catch(Exception e1) {
                             e1.printStackTrace();
                         }

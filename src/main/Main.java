@@ -4,11 +4,9 @@ import GUI.CreateInv;
 import GUI.CreateInvSQL;
 import commands.Give;
 import commands.Help;
+import commands.Open;
 import commands.Reload;
-import listeners.BackPack;
-import listeners.Furnace;
-import listeners.SaveLoad;
-import listeners.SaveLoadSQL;
+import listeners.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
@@ -24,10 +22,7 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.UUID;
 
-public class main extends JavaPlugin {
-
-    private static main instance;
-    private static ConfigurationSection sec;
+public class Main extends JavaPlugin {
 
     public static File configF, namesF, backpacksF, GUIF;
 
@@ -43,16 +38,20 @@ public class main extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        instance = this;
-
         createFiles();
 
         final Boolean SQLenable = config.getBoolean("MySQL.enable");
 
         if(SQLenable) {
             establishMySQL();
+
+            update("CREATE TABLE IF NOT EXISTS bp_users(name VARCHAR(100), uuid VARCHAR(100))");
+
             new SaveLoadSQL(this);
             new CreateInvSQL(this);
+
+            new Join(this);
+            new Open(this);
         } else {
             new SaveLoad(this);
             new CreateInv(this);
@@ -132,8 +131,6 @@ public class main extends JavaPlugin {
             Bukkit.getConsoleSender().sendMessage(Pref.p+ChatColor.YELLOW+"MySQL connection disabled!");
         }
 
-        instance = null;
-
         Bukkit.getConsoleSender().sendMessage(Pref.p + ChatColor.RED +"Plugin disabled!");
     }
 
@@ -176,7 +173,7 @@ public class main extends JavaPlugin {
         if(p.hasPermission("backpacks.furnaceBackPack")) {
             if(GUI.getBoolean("FurnaceBackPackGUI.Enable")) {
                 Inventory inv = Bukkit.getServer().createInventory(p, 45, ChatColor.translateAlternateColorCodes('&', names.getString("FurnaceBackPack.Name")));
-                sec = backpacks.getConfigurationSection("furnaceB."+id);
+                ConfigurationSection sec = backpacks.getConfigurationSection("furnaceB." + id);
 
                 if(sec.get("ores") == null || sec.get("animals") == null) {
                     sec.set("ores", true);
@@ -339,6 +336,7 @@ public class main extends JavaPlugin {
 
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     private void createFiles() {
         configF = new File(getDataFolder(), "config.yml");
         namesF = new File(getDataFolder(), "names.yml");
