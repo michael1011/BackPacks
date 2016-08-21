@@ -1,0 +1,1000 @@
+[15:56:13] [Server thread/INFO]: Starting minecraft server version 1.9
+[15:56:13] [Server thread/INFO]: Loading properties
+[15:56:13] [Server thread/INFO]: Default game type: SURVIVAL
+[15:56:13] [Server thread/INFO]: This server is running CraftBukkit version git-Spigot-d20369f-7fc5cd8 (MC: 1.9) (Implementing API version 1.9-R0.1-SNAPSHOT)
+[15:56:13] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[15:56:13] [Server thread/INFO]: Using 4 threads for Netty based IO
+[15:56:13] [Server thread/INFO]: Debug logging is disabled
+[15:56:13] [Server thread/INFO]: Generating keypair
+[15:56:13] [Server thread/INFO]: Starting Minecraft server on *:25565
+[15:56:13] [Server thread/INFO]: Using epoll channel type
+[15:56:13] [Server thread/INFO]: Set PluginClassLoader as parallel capable
+[15:56:13] [Server thread/INFO]: [BackPacks-1.9] Loading BackPacks-1.9 v1.2.7-enchantingFix
+[15:56:13] [Server thread/INFO]: **** Beginning UUID conversion, this may take A LONG time ****
+[15:56:14] [Server thread/INFO]: Preparing level "world"
+[15:56:14] [Server thread/INFO]: -------- World Settings For [world] --------
+[15:56:14] [Server thread/INFO]: Mob Spawn Range: 4
+[15:56:14] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
+[15:56:14] [Server thread/INFO]: Cactus Growth Modifier: 100%
+[15:56:14] [Server thread/INFO]: Cane Growth Modifier: 100%
+[15:56:14] [Server thread/INFO]: Melon Growth Modifier: 100%
+[15:56:14] [Server thread/INFO]: Mushroom Growth Modifier: 100%
+[15:56:14] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
+[15:56:14] [Server thread/INFO]: Sapling Growth Modifier: 100%
+[15:56:14] [Server thread/INFO]: Wheat Growth Modifier: 100%
+[15:56:14] [Server thread/INFO]: NetherWart Growth Modifier: 100%
+[15:56:14] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
+[15:56:14] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
+[15:56:14] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
+[15:56:14] [Server thread/INFO]: Random Lighting Updates: false
+[15:56:14] [Server thread/INFO]: Structure Info Saving: true
+[15:56:14] [Server thread/INFO]: Max Entity Collisions: 8
+[15:56:14] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
+[15:56:14] [Server thread/INFO]: Max TNT Explosions: 100
+[15:56:14] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
+[15:56:14] [Server thread/INFO]: Item Despawn Rate: 6000
+[15:56:14] [Server thread/INFO]: Item Merge Radius: 2.5
+[15:56:14] [Server thread/INFO]: Arrow Despawn Rate: 1200
+[15:56:14] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
+[15:56:14] [Server thread/INFO]: View Distance: 10
+[15:56:14] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
+[15:56:14] [Server thread/INFO]: Experience Merge Radius: 3.0
+[15:56:14] [Server thread/INFO]: -------- World Settings For [world_nether] --------
+[15:56:14] [Server thread/INFO]: Mob Spawn Range: 4
+[15:56:14] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
+[15:56:14] [Server thread/INFO]: Cactus Growth Modifier: 100%
+[15:56:14] [Server thread/INFO]: Cane Growth Modifier: 100%
+[15:56:14] [Server thread/INFO]: Melon Growth Modifier: 100%
+[15:56:14] [Server thread/INFO]: Mushroom Growth Modifier: 100%
+[15:56:14] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
+[15:56:14] [Server thread/INFO]: Sapling Growth Modifier: 100%
+[15:56:14] [Server thread/INFO]: Wheat Growth Modifier: 100%
+[15:56:14] [Server thread/INFO]: NetherWart Growth Modifier: 100%
+[15:56:14] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
+[15:56:14] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
+[15:56:14] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
+[15:56:14] [Server thread/INFO]: Random Lighting Updates: false
+[15:56:14] [Server thread/INFO]: Structure Info Saving: true
+[15:56:14] [Server thread/INFO]: Max Entity Collisions: 8
+[15:56:14] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
+[15:56:14] [Server thread/INFO]: Max TNT Explosions: 100
+[15:56:14] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
+[15:56:14] [Server thread/INFO]: Item Despawn Rate: 6000
+[15:56:14] [Server thread/INFO]: Item Merge Radius: 2.5
+[15:56:14] [Server thread/INFO]: Arrow Despawn Rate: 1200
+[15:56:14] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
+[15:56:14] [Server thread/INFO]: View Distance: 10
+[15:56:14] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
+[15:56:14] [Server thread/INFO]: Experience Merge Radius: 3.0
+[15:56:14] [Server thread/INFO]: -------- World Settings For [world_the_end] --------
+[15:56:14] [Server thread/INFO]: Mob Spawn Range: 4
+[15:56:14] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
+[15:56:14] [Server thread/INFO]: Cactus Growth Modifier: 100%
+[15:56:14] [Server thread/INFO]: Cane Growth Modifier: 100%
+[15:56:14] [Server thread/INFO]: Melon Growth Modifier: 100%
+[15:56:14] [Server thread/INFO]: Mushroom Growth Modifier: 100%
+[15:56:14] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
+[15:56:14] [Server thread/INFO]: Sapling Growth Modifier: 100%
+[15:56:14] [Server thread/INFO]: Wheat Growth Modifier: 100%
+[15:56:14] [Server thread/INFO]: NetherWart Growth Modifier: 100%
+[15:56:14] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
+[15:56:14] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
+[15:56:14] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
+[15:56:14] [Server thread/INFO]: Random Lighting Updates: false
+[15:56:14] [Server thread/INFO]: Structure Info Saving: true
+[15:56:14] [Server thread/INFO]: Max Entity Collisions: 8
+[15:56:14] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
+[15:56:14] [Server thread/INFO]: Max TNT Explosions: 100
+[15:56:14] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
+[15:56:14] [Server thread/INFO]: Item Despawn Rate: 6000
+[15:56:14] [Server thread/INFO]: Item Merge Radius: 2.5
+[15:56:14] [Server thread/INFO]: Arrow Despawn Rate: 1200
+[15:56:14] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
+[15:56:14] [Server thread/INFO]: View Distance: 10
+[15:56:14] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
+[15:56:14] [Server thread/INFO]: Experience Merge Radius: 3.0
+[15:56:14] [Server thread/INFO]: Preparing start region for level 0 (Seed: 3784080034973773967)
+[15:56:15] [Server thread/INFO]: Preparing spawn area: 2%
+[15:56:15] [User Authenticator #1/INFO]: UUID of player michael1011at is ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8
+[15:56:16] [Server thread/INFO]: Preparing start region for level 1 (Seed: 3784080034973773967)
+[15:56:17] [Server thread/INFO]: Preparing start region for level 2 (Seed: 3784080034973773967)
+[15:56:17] [Server thread/INFO]: [BackPacks-1.9] Enabling BackPacks-1.9 v1.2.7-enchantingFix
+[15:56:17] [Server thread/INFO]: [0;31;22m[BackPacks] [0;31;1mPlugin enabled![m
+[15:56:17] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[15:56:17] [Server thread/INFO]: Done (3,529s)! For help, type "help" or "?"
+[15:56:17] [Server thread/INFO]: michael1011at[/127.0.0.1:59042] logged in with entity id 245 at ([world]-145.96677563577538, 72.0, 13.992806010962866)
+[15:56:21] [Server thread/INFO]: Plugins (1): [0;32;1mBackPacks-1.9[m
+[15:56:24] [Server thread/INFO]: [0;32;1mBackPacks-1.9[0;37;1m version [0;32;1m1.2.7-enchantingFix[m
+[15:56:24] [Server thread/INFO]: This is a simple plugin for BackPacks[m
+[15:56:24] [Server thread/INFO]: Author: [0;32;1mMichael1011[m
+[15:56:27] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to BackPacks-1.9 v1.2.7-enchantingFix
+org.bukkit.event.EventException
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.craftbukkit.v1_9_R1.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:231) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerInteractManager.a(PlayerInteractManager.java:482) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnection.a(PlayerConnection.java:888) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:55) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:11) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnectionUtils$1.run(SourceFile:13) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_91]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_91]
+	at net.minecraft.server.v1_9_R1.SystemUtils.a(SourceFile:45) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.D(MinecraftServer.java:721) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.DedicatedServer.D(DedicatedServer.java:400) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.C(MinecraftServer.java:660) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.run(MinecraftServer.java:559) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_91]
+Caused by: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.internal.Streams.parse(Streams.java:56) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+Caused by: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1505) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.checkLenient(JsonReader.java:1386) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:572) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.peek(JsonReader.java:414) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.internal.Streams.parse(Streams.java:42) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+[15:59:11] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to BackPacks-1.9 v1.2.7-enchantingFix
+org.bukkit.event.EventException
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.craftbukkit.v1_9_R1.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:231) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerInteractManager.a(PlayerInteractManager.java:482) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnection.a(PlayerConnection.java:888) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:55) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:11) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnectionUtils$1.run(SourceFile:13) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_91]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_91]
+	at net.minecraft.server.v1_9_R1.SystemUtils.a(SourceFile:45) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.D(MinecraftServer.java:721) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.DedicatedServer.D(DedicatedServer.java:400) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.C(MinecraftServer.java:660) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.run(MinecraftServer.java:559) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_91]
+Caused by: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.internal.Streams.parse(Streams.java:56) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+Caused by: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1505) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.checkLenient(JsonReader.java:1386) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:572) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.peek(JsonReader.java:414) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.internal.Streams.parse(Streams.java:42) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+[15:59:12] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to BackPacks-1.9 v1.2.7-enchantingFix
+org.bukkit.event.EventException
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.craftbukkit.v1_9_R1.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:231) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerInteractManager.a(PlayerInteractManager.java:482) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnection.a(PlayerConnection.java:888) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:55) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:11) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnectionUtils$1.run(SourceFile:13) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_91]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_91]
+	at net.minecraft.server.v1_9_R1.SystemUtils.a(SourceFile:45) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.D(MinecraftServer.java:721) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.DedicatedServer.D(DedicatedServer.java:400) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.C(MinecraftServer.java:660) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.run(MinecraftServer.java:559) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_91]
+Caused by: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.internal.Streams.parse(Streams.java:56) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+Caused by: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1505) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.checkLenient(JsonReader.java:1386) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:572) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.peek(JsonReader.java:414) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.internal.Streams.parse(Streams.java:42) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+[15:59:12] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to BackPacks-1.9 v1.2.7-enchantingFix
+org.bukkit.event.EventException
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.craftbukkit.v1_9_R1.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:231) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerInteractManager.a(PlayerInteractManager.java:482) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnection.a(PlayerConnection.java:888) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:55) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:11) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnectionUtils$1.run(SourceFile:13) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_91]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_91]
+	at net.minecraft.server.v1_9_R1.SystemUtils.a(SourceFile:45) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.D(MinecraftServer.java:721) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.DedicatedServer.D(DedicatedServer.java:400) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.C(MinecraftServer.java:660) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.run(MinecraftServer.java:559) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_91]
+Caused by: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.internal.Streams.parse(Streams.java:56) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+Caused by: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1505) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.checkLenient(JsonReader.java:1386) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:572) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.peek(JsonReader.java:414) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.internal.Streams.parse(Streams.java:42) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+[15:59:13] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to BackPacks-1.9 v1.2.7-enchantingFix
+org.bukkit.event.EventException
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.craftbukkit.v1_9_R1.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:231) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerInteractManager.a(PlayerInteractManager.java:482) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnection.a(PlayerConnection.java:888) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:55) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:11) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnectionUtils$1.run(SourceFile:13) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_91]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_91]
+	at net.minecraft.server.v1_9_R1.SystemUtils.a(SourceFile:45) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.D(MinecraftServer.java:721) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.DedicatedServer.D(DedicatedServer.java:400) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.C(MinecraftServer.java:660) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.run(MinecraftServer.java:559) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_91]
+Caused by: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.internal.Streams.parse(Streams.java:56) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+Caused by: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1505) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.checkLenient(JsonReader.java:1386) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:572) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.peek(JsonReader.java:414) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.internal.Streams.parse(Streams.java:42) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+[15:59:13] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to BackPacks-1.9 v1.2.7-enchantingFix
+org.bukkit.event.EventException
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.craftbukkit.v1_9_R1.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:231) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerInteractManager.a(PlayerInteractManager.java:482) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnection.a(PlayerConnection.java:888) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:55) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:11) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnectionUtils$1.run(SourceFile:13) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_91]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_91]
+	at net.minecraft.server.v1_9_R1.SystemUtils.a(SourceFile:45) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.D(MinecraftServer.java:721) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.DedicatedServer.D(DedicatedServer.java:400) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.C(MinecraftServer.java:660) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.run(MinecraftServer.java:559) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_91]
+Caused by: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.internal.Streams.parse(Streams.java:56) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+Caused by: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1505) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.checkLenient(JsonReader.java:1386) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:572) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.peek(JsonReader.java:414) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.internal.Streams.parse(Streams.java:42) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+[15:59:13] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to BackPacks-1.9 v1.2.7-enchantingFix
+org.bukkit.event.EventException
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.craftbukkit.v1_9_R1.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:231) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerInteractManager.a(PlayerInteractManager.java:482) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnection.a(PlayerConnection.java:888) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:55) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:11) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnectionUtils$1.run(SourceFile:13) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_91]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_91]
+	at net.minecraft.server.v1_9_R1.SystemUtils.a(SourceFile:45) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.D(MinecraftServer.java:721) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.DedicatedServer.D(DedicatedServer.java:400) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.C(MinecraftServer.java:660) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.run(MinecraftServer.java:559) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_91]
+Caused by: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.internal.Streams.parse(Streams.java:56) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+Caused by: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1505) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.checkLenient(JsonReader.java:1386) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:572) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.peek(JsonReader.java:414) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.internal.Streams.parse(Streams.java:42) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+[15:59:14] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to BackPacks-1.9 v1.2.7-enchantingFix
+org.bukkit.event.EventException
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.craftbukkit.v1_9_R1.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:231) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerInteractManager.a(PlayerInteractManager.java:482) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnection.a(PlayerConnection.java:888) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:55) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:11) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnectionUtils$1.run(SourceFile:13) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_91]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_91]
+	at net.minecraft.server.v1_9_R1.SystemUtils.a(SourceFile:45) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.D(MinecraftServer.java:721) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.DedicatedServer.D(DedicatedServer.java:400) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.C(MinecraftServer.java:660) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.run(MinecraftServer.java:559) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_91]
+Caused by: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.internal.Streams.parse(Streams.java:56) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+Caused by: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1505) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.checkLenient(JsonReader.java:1386) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:572) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.peek(JsonReader.java:414) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.internal.Streams.parse(Streams.java:42) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+[15:59:15] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to BackPacks-1.9 v1.2.7-enchantingFix
+org.bukkit.event.EventException
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.craftbukkit.v1_9_R1.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:231) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerInteractManager.a(PlayerInteractManager.java:482) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnection.a(PlayerConnection.java:888) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:55) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:11) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnectionUtils$1.run(SourceFile:13) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_91]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_91]
+	at net.minecraft.server.v1_9_R1.SystemUtils.a(SourceFile:45) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.D(MinecraftServer.java:721) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.DedicatedServer.D(DedicatedServer.java:400) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.C(MinecraftServer.java:660) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.run(MinecraftServer.java:559) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_91]
+Caused by: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.internal.Streams.parse(Streams.java:56) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+Caused by: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1505) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.checkLenient(JsonReader.java:1386) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:572) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.peek(JsonReader.java:414) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.internal.Streams.parse(Streams.java:42) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+[15:59:15] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to BackPacks-1.9 v1.2.7-enchantingFix
+org.bukkit.event.EventException
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.craftbukkit.v1_9_R1.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:231) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerInteractManager.a(PlayerInteractManager.java:482) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnection.a(PlayerConnection.java:888) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:55) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:11) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnectionUtils$1.run(SourceFile:13) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_91]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_91]
+	at net.minecraft.server.v1_9_R1.SystemUtils.a(SourceFile:45) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.D(MinecraftServer.java:721) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.DedicatedServer.D(DedicatedServer.java:400) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.C(MinecraftServer.java:660) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.run(MinecraftServer.java:559) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_91]
+Caused by: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.internal.Streams.parse(Streams.java:56) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+Caused by: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1505) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.checkLenient(JsonReader.java:1386) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:572) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.peek(JsonReader.java:414) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.internal.Streams.parse(Streams.java:42) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+[15:59:15] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to BackPacks-1.9 v1.2.7-enchantingFix
+org.bukkit.event.EventException
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.craftbukkit.v1_9_R1.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:231) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerInteractManager.a(PlayerInteractManager.java:482) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnection.a(PlayerConnection.java:888) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:55) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:11) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnectionUtils$1.run(SourceFile:13) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_91]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_91]
+	at net.minecraft.server.v1_9_R1.SystemUtils.a(SourceFile:45) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.D(MinecraftServer.java:721) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.DedicatedServer.D(DedicatedServer.java:400) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.C(MinecraftServer.java:660) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.run(MinecraftServer.java:559) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_91]
+Caused by: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.internal.Streams.parse(Streams.java:56) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+Caused by: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1505) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.checkLenient(JsonReader.java:1386) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:572) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.peek(JsonReader.java:414) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.internal.Streams.parse(Streams.java:42) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+[15:59:16] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to BackPacks-1.9 v1.2.7-enchantingFix
+org.bukkit.event.EventException
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.craftbukkit.v1_9_R1.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:231) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerInteractManager.a(PlayerInteractManager.java:482) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnection.a(PlayerConnection.java:888) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:55) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:11) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnectionUtils$1.run(SourceFile:13) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_91]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_91]
+	at net.minecraft.server.v1_9_R1.SystemUtils.a(SourceFile:45) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.D(MinecraftServer.java:721) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.DedicatedServer.D(DedicatedServer.java:400) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.C(MinecraftServer.java:660) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.run(MinecraftServer.java:559) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_91]
+Caused by: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.internal.Streams.parse(Streams.java:56) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+Caused by: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1505) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.checkLenient(JsonReader.java:1386) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:572) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.peek(JsonReader.java:414) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.internal.Streams.parse(Streams.java:42) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+[15:59:16] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to BackPacks-1.9 v1.2.7-enchantingFix
+org.bukkit.event.EventException
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.craftbukkit.v1_9_R1.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:231) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerInteractManager.a(PlayerInteractManager.java:482) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnection.a(PlayerConnection.java:888) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:55) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:11) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnectionUtils$1.run(SourceFile:13) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_91]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_91]
+	at net.minecraft.server.v1_9_R1.SystemUtils.a(SourceFile:45) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.D(MinecraftServer.java:721) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.DedicatedServer.D(DedicatedServer.java:400) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.C(MinecraftServer.java:660) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.run(MinecraftServer.java:559) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_91]
+Caused by: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.internal.Streams.parse(Streams.java:56) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+Caused by: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1505) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.checkLenient(JsonReader.java:1386) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:572) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.peek(JsonReader.java:414) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.internal.Streams.parse(Streams.java:42) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+[15:59:17] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to BackPacks-1.9 v1.2.7-enchantingFix
+org.bukkit.event.EventException
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.craftbukkit.v1_9_R1.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:231) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerInteractManager.a(PlayerInteractManager.java:482) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnection.a(PlayerConnection.java:888) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:55) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:11) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnectionUtils$1.run(SourceFile:13) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_91]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_91]
+	at net.minecraft.server.v1_9_R1.SystemUtils.a(SourceFile:45) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.D(MinecraftServer.java:721) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.DedicatedServer.D(DedicatedServer.java:400) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.C(MinecraftServer.java:660) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.run(MinecraftServer.java:559) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_91]
+Caused by: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.internal.Streams.parse(Streams.java:56) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+Caused by: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1505) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.checkLenient(JsonReader.java:1386) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:572) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.peek(JsonReader.java:414) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.internal.Streams.parse(Streams.java:42) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+[15:59:17] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to BackPacks-1.9 v1.2.7-enchantingFix
+org.bukkit.event.EventException
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.craftbukkit.v1_9_R1.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:231) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerInteractManager.a(PlayerInteractManager.java:482) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnection.a(PlayerConnection.java:888) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:55) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:11) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnectionUtils$1.run(SourceFile:13) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_91]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_91]
+	at net.minecraft.server.v1_9_R1.SystemUtils.a(SourceFile:45) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.D(MinecraftServer.java:721) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.DedicatedServer.D(DedicatedServer.java:400) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.C(MinecraftServer.java:660) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.run(MinecraftServer.java:559) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_91]
+Caused by: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.internal.Streams.parse(Streams.java:56) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+Caused by: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1505) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.checkLenient(JsonReader.java:1386) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:572) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.peek(JsonReader.java:414) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.internal.Streams.parse(Streams.java:42) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+[15:59:17] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to BackPacks-1.9 v1.2.7-enchantingFix
+org.bukkit.event.EventException
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.craftbukkit.v1_9_R1.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:231) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerInteractManager.a(PlayerInteractManager.java:482) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnection.a(PlayerConnection.java:888) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:55) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:11) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnectionUtils$1.run(SourceFile:13) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_91]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_91]
+	at net.minecraft.server.v1_9_R1.SystemUtils.a(SourceFile:45) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.D(MinecraftServer.java:721) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.DedicatedServer.D(DedicatedServer.java:400) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.C(MinecraftServer.java:660) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.run(MinecraftServer.java:559) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_91]
+Caused by: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.internal.Streams.parse(Streams.java:56) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+Caused by: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1505) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.checkLenient(JsonReader.java:1386) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:572) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.peek(JsonReader.java:414) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.internal.Streams.parse(Streams.java:42) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+[15:59:18] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to BackPacks-1.9 v1.2.7-enchantingFix
+org.bukkit.event.EventException
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at org.bukkit.craftbukkit.v1_9_R1.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:231) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerInteractManager.a(PlayerInteractManager.java:482) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnection.a(PlayerConnection.java:888) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:55) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PacketPlayInUseItem.a(SourceFile:11) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.PlayerConnectionUtils$1.run(SourceFile:13) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_91]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_91]
+	at net.minecraft.server.v1_9_R1.SystemUtils.a(SourceFile:45) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.D(MinecraftServer.java:721) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.DedicatedServer.D(DedicatedServer.java:400) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.C(MinecraftServer.java:660) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.MinecraftServer.run(MinecraftServer.java:559) [spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_91]
+Caused by: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.internal.Streams.parse(Streams.java:56) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+Caused by: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1505) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.checkLenient(JsonReader.java:1386) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:572) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.stream.JsonReader.peek(JsonReader.java:414) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.internal.Streams.parse(Streams.java:42) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:54) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:501) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.ChatDeserializer.a(SourceFile:512) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at net.minecraft.server.v1_9_R1.IChatBaseComponent$ChatSerializer.a(SourceFile:205) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	at listeners.EnchantingTable.open(EnchantingTable.java:27) ~[?:?]
+	at listeners.BackPack.Craft(BackPack.java:100) ~[?:?]
+	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.9.jar:git-Spigot-d20369f-7fc5cd8]
+	... 17 more
+[15:59:19] [Server thread/INFO]: michael1011at lost connection: Disconnected
+[15:59:19] [Server thread/INFO]: michael1011at left the game.
+[15:59:22] [Server thread/INFO]: Stopping the server
+[15:59:22] [Server thread/INFO]: Stopping server
+[15:59:22] [Server thread/INFO]: [BackPacks-1.9] Disabling BackPacks-1.9 v1.2.7-enchantingFix
+[15:59:22] [Server thread/INFO]: [0;31;22m[BackPacks] [0;31;1mPlugin disabled![m
+[15:59:22] [Server thread/INFO]: Saving players
+[15:59:22] [Server thread/INFO]: Saving worlds
+[15:59:22] [Server thread/INFO]: Saving chunks for level 'world'/Overworld
+[15:59:22] [Server thread/INFO]: Saving chunks for level 'world_nether'/Nether
+[15:59:22] [Server thread/INFO]: Saving chunks for level 'world_the_end'/The End

@@ -1,10 +1,11 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="BagPacks // 1.8.8 // J1.7">
-    <output-path>$PROJECT_DIR$/server_1.8.8/plugins</output-path>
-    <root id="archive" name="BagPacks-1.9.jar">
-      <element id="module-output" name="BagPacks" />
+  <artifact type="jar" name="Spigot 1.9">
+    <output-path>$PROJECT_DIR$/out/artifacts/Spigot_1_9</output-path>
+    <root id="archive" name="Spigot 1.9.jar">
+      <element id="module-output" name="BackPacks" />
       <element id="file-copy" path="$PROJECT_DIR$/src/backpacks.yml" />
       <element id="file-copy" path="$PROJECT_DIR$/src/config.yml" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/GUI.yml" />
       <element id="file-copy" path="$PROJECT_DIR$/src/names.yml" />
       <element id="file-copy" path="$PROJECT_DIR$/src/plugin.yml" />
     </root>

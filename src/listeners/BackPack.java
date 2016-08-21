@@ -1,10 +1,15 @@
 package listeners;
 
-import com.sun.org.apache.bcel.internal.generic.NOP;
 import main.Pref;
 import main.main;
-import org.bukkit.*;
+import net.minecraft.server.v1_9_R1.IChatBaseComponent;
+import net.minecraft.server.v1_9_R1.PacketPlayOutOpenWindow;
+import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.craftbukkit.v1_9_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -87,20 +92,12 @@ public class BackPack implements Listener {
                 } else if(var.equals(ChatColor.translateAlternateColorCodes('&', main.names.getString("EnchantingBackPack.Name")))) {
                     e.setCancelled(true);
                     if(p.hasPermission("backpacks.enchantingBackPack")) {
-                        World w = p.getWorld();
-                        Location player = p.getLocation();
 
-                        x = player.getBlockX();
-                        z = player.getBlockZ();
+                        EnchantingTable table = new EnchantingTable(p);
 
-                        Block change = w.getBlockAt(x, -1, z);
-                        oldBlock = change.getType().toString();
+                        table.setTitle(main.names.getString("EnchantingBackPack.Name"));
 
-                        change.setType(Material.ENCHANTMENT_TABLE);
-
-                        Location ench = new Location(w, player.getBlockX(), 1, player.getBlockZ());
-
-                        p.openEnchanting(ench, true);
+                        table.open();
 
                     } else {
                         p.sendMessage(Pref.p+NoPermission);
@@ -129,7 +126,7 @@ public class BackPack implements Listener {
 
         Player p = (Player) e.getPlayer();
 
-        if(p.hasPermission("backpacks.enchantingBackPack")) {
+        /*if(p.hasPermission("backpacks.enchantingBackPack")) {
             UUID id = p.getUniqueId();
 
             String enchName = ChatColor.translateAlternateColorCodes('&', main.names.getString("EnchantingBackPack.Name"));
@@ -165,7 +162,7 @@ public class BackPack implements Listener {
                 }
             }
 
-        }
+        }*/
     }
 
 }
