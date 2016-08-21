@@ -68,6 +68,7 @@ public class Main extends JavaPlugin {
 
         for(Player p : Bukkit.getOnlinePlayers()) {
             createInv(p);
+            Join.addToTable(p);
         }
 
         Bukkit.getConsoleSender().sendMessage(Pref.p+ChatColor.RED+"Plugin enabled!");

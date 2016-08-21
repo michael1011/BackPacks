@@ -1,7 +1,6 @@
 package listeners;
 
 import main.Main;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,8 +17,10 @@ public class Join implements Listener {
 
     @EventHandler
     public void join(PlayerJoinEvent e) {
-        Player p = e.getPlayer();
+        addToTable(e.getPlayer());
+    }
 
+    public static void addToTable(Player p) {
         String uuid = p.getUniqueId().toString();
         String name = p.getName();
 
