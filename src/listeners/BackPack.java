@@ -4,10 +4,7 @@ import main.Pref;
 import main.main;
 import net.minecraft.server.v1_9_R1.IChatBaseComponent;
 import net.minecraft.server.v1_9_R1.PacketPlayOutOpenWindow;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.craftbukkit.v1_9_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
@@ -16,6 +13,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 import java.util.UUID;
@@ -93,11 +91,7 @@ public class BackPack implements Listener {
                     e.setCancelled(true);
                     if(p.hasPermission("backpacks.enchantingBackPack")) {
 
-                        EnchantingTable table = new EnchantingTable(p);
-
-                        table.setTitle(main.names.getString("EnchantingBackPack.Name"));
-
-                        table.open();
+                        e.getPlayer().openInventory(Bukkit.createInventory(null, InventoryType.ENCHANTING));
 
                     } else {
                         p.sendMessage(Pref.p+NoPermission);
