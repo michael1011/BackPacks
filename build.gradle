@@ -11,6 +11,7 @@ group 'at.michael1011'
 version '1.0.0-ALPHA'
 
 apply plugin: 'java'
+apply from: 'cobertura.gradle'
 
 configurations {
     provided

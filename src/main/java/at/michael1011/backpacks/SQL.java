@@ -9,12 +9,24 @@ public class SQL {
 
     static Connection con;
 
-    public static ResultSet getResult(final String query) throws SQLException {
-        return con.prepareStatement(query).executeQuery();
+    public static ResultSet getResult(final String query) {
+        try {
+            return con.prepareStatement(query).executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
-    public static Boolean executeQuery(final String query) throws SQLException {
-        return con.prepareStatement(query).execute();
+    public static Boolean query(final String query) {
+        try {
+            return con.prepareStatement(query).execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
     public static void createCon(String host, String port, String database, String username, String password) {

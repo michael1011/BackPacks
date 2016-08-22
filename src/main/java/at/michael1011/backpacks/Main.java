@@ -1,5 +1,6 @@
 package at.michael1011.backpacks;
 
+import at.michael1011.backpacks.listeners.Join;
 import at.michael1011.backpacks.tasks.Reconnect;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -30,7 +31,12 @@ public class Main extends JavaPlugin {
             Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                     messages.getString("MySQL.connected")));
 
+            SQL.query("CREATE TABLE IF NOT EXISTS bp_users(name VARCHAR(100), "+
+                    "displayName VARCHAR(100), uuid VARCHAR(100))");
+
             new Reconnect(this);
+
+            new Join().register(this);
 
         } else {
             Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
