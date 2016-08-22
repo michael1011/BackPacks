@@ -1,14 +1,19 @@
 package at.michael1011.backpacks;
 
+import org.junit.Assert;
 import org.junit.Test;
+
+import java.sql.SQLException;
 
 import static org.junit.Assert.assertTrue;
 
 public class SQLTest {
 
     @Test
-    public void testSQL() throws Exception {
-        Class.forName("com.mysql.jdbc.Driver");
+    public void testSQL() {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+
         SQL.createCon("sql7.freemysqlhosting.net", "3306", "sql7132378", "sql7132378", "Ag8WeWFa1h");
 
         assertTrue(SQL.checkCon());
@@ -19,6 +24,11 @@ public class SQLTest {
         SQL.closeCon();
 
         assertTrue(SQL.con.isClosed());
+
+        } catch (ClassNotFoundException | SQLException e) {
+            Assert.fail(e.getCause().toString());
+        }
+
     }
 
 }

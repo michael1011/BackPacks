@@ -10,6 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class Main extends JavaPlugin {
 
@@ -23,25 +24,31 @@ public class Main extends JavaPlugin {
 
         prefix = ChatColor.translateAlternateColorCodes('&', messages.getString("prefix"));
 
-        SQL.createCon(config.getString("MySQL.host"), config.getString("MySQL.port"),
-                config.getString("MySQL.database"), config.getString("MySQL.username"),
-                config.getString("MySQL.password"));
+        try {
+            SQL.createCon(config.getString("MySQL.host"), config.getString("MySQL.port"),
+                    config.getString("MySQL.database"), config.getString("MySQL.username"),
+                    config.getString("MySQL.password"));
 
-        if(SQL.checkCon()) {
-            Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                    messages.getString("MySQL.connected")));
 
-            SQL.query("CREATE TABLE IF NOT EXISTS bp_users(name VARCHAR(100), "+
-                    "displayName VARCHAR(100), uuid VARCHAR(100))");
+            if(SQL.checkCon()) {
+                Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                        messages.getString("MySQL.connected")));
 
-            new Reconnect(this);
+                SQL.query("CREATE TABLE IF NOT EXISTS bp_users(name VARCHAR(100), "+
+                        "displayName VARCHAR(100), uuid VARCHAR(100))");
 
-            new Join().register(this);
+                new Reconnect(this);
 
-        } else {
-            Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                    messages.getString("MySQL.failedToConnect")));
+                new Join().register(this);
 
+            } else {
+                Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                        messages.getString("MySQL.failedToConnect")));
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
     }
@@ -49,7 +56,11 @@ public class Main extends JavaPlugin {
     @Override
     public void onDisable() {
         if(SQL.con != null) {
-            SQL.closeCon();
+            try {
+                SQL.closeCon();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
             Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                     messages.getString("MySQL.closedConnection")));
