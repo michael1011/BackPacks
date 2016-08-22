@@ -3,11 +3,53 @@
 # By michael1011
 #
 
+# Don"t touch this variable! It would destroy you config files!
 configVersion: 0
 
+# Setup you MySQL connection here
 MySQL:
   host: "localhost"
   port: "3306"
   database: "bp"
   username: "bp"
   password: "psswrd"
+
+# Delete the defaults and create your own backpacks here
+# Find all materials here: http://bit.ly/21vbetj
+BackPacks:
+  enabled:
+    1: "littleBackPack"
+    2: "normalBackPack"
+  # List all BackPacks here that should be enabled
+
+  littleBackPack:
+    name: "&bLittle &3BackPack"
+    description:
+      1: "&fThis is the &bLittle &3BackPack&f."
+      2: "&8Right click to open it."
+
+    # Must be divisible by 9
+    slots: 9
+
+    material: "COMPASS"
+
+    crafting:
+      1: "IRON_INGOT+LEATHER+IRON_INGOT"
+      2: "LEATHER+COMPASS+LEATHER"
+      3: "IRON_INGOT+LEATHER+IRON_INGOT"
+
+  normalBackPack:
+    name: "&eNormal &6BackPack"
+    description:
+      - "&fThis is the &eNormal &6BackPack&f."
+      - "&8Right click to open it."
+
+    # Must be divisible by 9
+    slots: 27
+
+    material: "WATCH"
+
+    crafting:
+      1: "REDSTONE_BLOCK+GOLD_BLOCK+REDSTONE_BLOCK"
+      2: "GOLD_BLOCK+WATCH+GOLD_BLOCK"
+      3: "REDSTONE_BLOCK+GOLD_BLOCK+REDSTONE_BLOCK"

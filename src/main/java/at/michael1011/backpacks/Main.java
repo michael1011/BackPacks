@@ -37,6 +37,8 @@ public class Main extends JavaPlugin {
                 SQL.query("CREATE TABLE IF NOT EXISTS bp_users(name VARCHAR(100), "+
                         "displayName VARCHAR(100), uuid VARCHAR(100))");
 
+                Crafting.initCrafting();
+
                 new Reconnect(this);
 
                 new Join().register(this);
@@ -48,6 +50,9 @@ public class Main extends JavaPlugin {
             }
 
         } catch (SQLException e) {
+            Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                    messages.getString("MySQL.failedToConnect")));
+
             e.printStackTrace();
         }
 

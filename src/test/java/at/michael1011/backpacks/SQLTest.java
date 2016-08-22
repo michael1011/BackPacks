@@ -14,16 +14,16 @@ public class SQLTest {
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
-        SQL.createCon("sql7.freemysqlhosting.net", "3306", "sql7132378", "sql7132378", "Ag8WeWFa1h");
+            SQL.createCon("sql7.freemysqlhosting.net", "3306", "sql7132378", "sql7132378", "Ag8WeWFa1h");
 
-        assertTrue(SQL.checkCon());
+            assertTrue(SQL.checkCon());
 
-        SQL.query("CREATE TABLE IF NOT EXISTS bp_users(name VARCHAR(100), "+
-                "displayName VARCHAR(100), uuid VARCHAR(100))");
+            SQL.query("CREATE TABLE IF NOT EXISTS bp_users(name VARCHAR(100), "+
+                    "displayName VARCHAR(100), uuid VARCHAR(100))");
 
-        SQL.closeCon();
+            SQL.closeCon();
 
-        assertTrue(SQL.con.isClosed());
+            assertTrue(SQL.con.isClosed());
 
         } catch (ClassNotFoundException | SQLException e) {
             Assert.fail(e.getCause().toString());

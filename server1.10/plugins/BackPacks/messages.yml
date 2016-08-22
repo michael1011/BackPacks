@@ -5,3 +5,7 @@ MySQL:
   connected: "&eConnected to MySQL database"
   failedToConnect: "&4Could not connect to MySQL database"
   closedConnection: "&eClosed MySQL connection"
+
+BackPacks:
+  couldFindConfig: "&cCould &4not &cfind BackPack &4%backpack%"
+  # When you enable a backpack that doesn't exist (%backpack% is the backpack that couldn't be found)
