@@ -1,0 +1,6 @@
+name: BackPacks
+author: michael1011
+version: 1.0.0-ALPHA
+description: A backpack plugin for Bukkit/Spigot 1.10 and 1.9
+
+main: at.michael1011.backpacks.Main

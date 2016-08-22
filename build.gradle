@@ -8,13 +8,21 @@ buildScan {
 }
 
 group 'at.michael1011'
-version '0.0.0-ALPHA'
+version '1.0.0-ALPHA'
 
 apply plugin: 'java'
 
 configurations {
     provided
     compile.extendsFrom provided
+}
+
+task copy {
+    copy {
+        from "build/libs/"
+        into "server/server1.10/plugins"
+        exclude "*.war"
+    }
 }
 
 repositories {
