@@ -17,6 +17,10 @@ configurations {
     compile.extendsFrom provided
 }
 
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.0'
+}
+
 task copy {
     copy {
         from "build/libs/"

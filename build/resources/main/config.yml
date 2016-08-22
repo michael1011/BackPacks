@@ -8,6 +8,6 @@ configVersion: 0
 MySQL:
   host: "localhost"
   port: "3306"
-  databse: "bp"
+  database: "bp"
   username: "bp"
   password: "psswrd"

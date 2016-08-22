@@ -1,6 +1,7 @@
-prefix: "&c[&4BackPacks&c]&r "
+prefix: "&7[&4BackPacks&7]&r "
 # The prefix of the plugin
 
 MySQL:
-  connected: "&6Connected to MySQL database"
+  connected: "&eConnected to MySQL database"
   failedToConnect: "&4Could not connect to MySQL database"
+  closedConnection: "&eClosed MySQL connection"

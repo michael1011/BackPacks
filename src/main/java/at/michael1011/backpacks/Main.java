@@ -1,5 +1,6 @@
 package at.michael1011.backpacks;
 
+import at.michael1011.backpacks.tasks.Reconnect;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.InvalidConfigurationException;
@@ -29,10 +30,23 @@ public class Main extends JavaPlugin {
             Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                     messages.getString("MySQL.connected")));
 
+            new Reconnect(this);
+
         } else {
             Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                     messages.getString("MySQL.failedToConnect")));
 
+        }
+
+    }
+
+    @Override
+    public void onDisable() {
+        if(SQL.con != null) {
+            SQL.closeCon();
+
+            Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                    messages.getString("MySQL.closedConnection")));
         }
 
     }

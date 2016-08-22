@@ -1,0 +1,13 @@
+#
+# BackPacks 1.0.0-ALPHA
+# By michael1011
+#
+
+configVersion: 0
+
+MySQL:
+  host: "localhost"
+  port: "3306"
+  database: "bp"
+  username: "bp"
+  password: "xzkUd7p47ca7CEZJ"

@@ -19,7 +19,7 @@ public class SQL {
 
     public static void createCon(String host, String port, String database, String username, String password) {
         try {
-            con = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + database,
+            con = DriverManager.getConnection("jdbc:mysql://"+host+":"+port+"/"+database,
                     username, password);
         } catch (SQLException e) {
             e.printStackTrace();
