@@ -1,0 +1,6 @@
+prefix: "&c[&4BackPacks&c]&r "
+# The prefix of the plugin
+
+MySQL:
+  connected: "&6Connected to MySQL database"
+  failedToConnect: "&4Could not connect to MySQL database"
