@@ -26,22 +26,24 @@ public class Join implements Listener {
         try {
             ResultSet rs = SQL.getResult("SELECT * FROM bp_users WHERE uuid='"+uuid+"'");
 
-            assert rs != null;
+            if (rs != null) {
+                String name = p.getName();
+                String displayName = p.getDisplayName();
 
-            String name = p.getName();
-            String displayName = p.getDisplayName();
+                if(rs.first()) {
+                    if(!rs.getString("name").equals(name)) {
+                        SQL.query("UPDATE bp_users SET name='"+name+"' WHERE uuid='"+uuid+"'");
 
-            if(rs.first()) {
-                if(!rs.getString("name").equals(name)) {
-                    SQL.query("UPDATE bp_users SET name='"+name+"' WHERE uuid='"+uuid+"'");
+                    }
 
-                } else if(!rs.getString("displayName").equals(displayName)){
-                    SQL.query("UPDATE bp_users SET displayName='"+displayName+"' WHERE uuid='"+uuid+"'");
+                    if(!rs.getString("displayName").equals(displayName)){
+                        SQL.query("UPDATE bp_users SET displayName='"+displayName+"' WHERE uuid='"+uuid+"'");
+                    }
+
+                } else {
+                    SQL.query("INSERT INTO bp_users (name, displayName, uuid) values ('"+name+"', "+
+                            "'"+displayName+"', '"+uuid+"')");
                 }
-
-            } else {
-                SQL.query("INSERT INTO bp_users (name, displayName, uuid) values ('"+name+"', " +
-                        "'"+displayName+"', '"+uuid+"')");
             }
 
         } catch (SQLException e1) {

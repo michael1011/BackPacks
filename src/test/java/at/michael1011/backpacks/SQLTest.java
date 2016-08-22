@@ -2,27 +2,23 @@ package at.michael1011.backpacks;
 
 import org.junit.Test;
 
-import java.sql.SQLException;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 public class SQLTest {
 
     @Test
-    public void testSQL() {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            SQL.createCon("sql7.freemysqlhosting.net", "3306", "sql7132378", "sql7132378", "Ag8WeWFa1h");
+    public void testSQL() throws Exception {
+        Class.forName("com.mysql.jdbc.Driver");
+        SQL.createCon("sql7.freemysqlhosting.net", "3306", "sql7132378", "sql7132378", "Ag8WeWFa1h");
 
-            assertTrue(SQL.con != null);
+        assertTrue(SQL.checkCon());
 
-            SQL.closeCon();
+        SQL.query("CREATE TABLE IF NOT EXISTS bp_users(name VARCHAR(100), "+
+                "displayName VARCHAR(100), uuid VARCHAR(100))");
 
-            assertTrue(SQL.con.isClosed());
+        SQL.closeCon();
 
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        assertTrue(SQL.con.isClosed());
     }
 
 }

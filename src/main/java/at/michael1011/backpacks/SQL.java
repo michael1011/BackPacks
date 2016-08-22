@@ -49,4 +49,8 @@ public class SQL {
 
     }
 
+    public static boolean checkCon() {
+        return con != null;
+    }
+
 }

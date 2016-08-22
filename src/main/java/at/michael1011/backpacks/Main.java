@@ -27,7 +27,7 @@ public class Main extends JavaPlugin {
                 config.getString("MySQL.database"), config.getString("MySQL.username"),
                 config.getString("MySQL.password"));
 
-        if(SQL.con != null) {
+        if(SQL.checkCon()) {
             Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                     messages.getString("MySQL.connected")));
 
