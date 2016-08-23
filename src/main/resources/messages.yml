@@ -9,3 +9,6 @@ MySQL:
 BackPacks:
   couldFindConfig: "&cCould &4not &cfind BackPack &4%backpack%"
   # When you enable a backpack that doesn't exist (%backpack% is the backpack that couldn't be found)
+  enabled: "&eEnabled backpack &6%backpack%"
+  # When a server starts/reloads this message comes for every backpack that is enabled
+  # (%backpack% is the enabled backpack)

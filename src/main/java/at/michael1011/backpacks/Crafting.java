@@ -43,14 +43,14 @@ public class Crafting {
         ItemStack craft = new ItemStack(Material.getMaterial(
                 config.getString(backPackPath+"material")));
 
-        String name = config.getString(backPackPath+"name");
+        String name = ChatColor.translateAlternateColorCodes('&', config.getString(backPackPath+"name"));
 
         String lore = null;
 
         Map<String, Object> loreSec = config.getConfigurationSection(backPackPath+"description").getValues(true);
 
         for(Map.Entry<String, Object> ent : loreSec.entrySet()) {
-            lore = lore+","+ent.getValue();
+            lore = lore+","+ChatColor.translateAlternateColorCodes('&', ent.getValue().toString());
         }
 
         ItemMeta craftM = craft.getItemMeta();
@@ -66,9 +66,9 @@ public class Crafting {
         ShapedRecipe recipe = new ShapedRecipe(craft);
 
         recipe.shape(
-                config.getString(backPackPath+"crafting.1"),
-                config.getString(backPackPath+"crafting.2"),
-                config.getString(backPackPath+"crafting.3"));
+                config.getString(backPackPath+"crafting.1").replaceAll("\\+", ""),
+                config.getString(backPackPath+"crafting.2").replaceAll("\\+", ""),
+                config.getString(backPackPath+"crafting.3").replaceAll("\\+", ""));
 
         Map<String, Object> ingredients = config.getConfigurationSection(backPackPath+
                 "crafting.materials").getValues(true);
@@ -76,6 +76,9 @@ public class Crafting {
         for(Map.Entry<String, Object> ing : ingredients.entrySet()) {
             recipe.setIngredient(ing.getKey().charAt(0), Material.valueOf(ing.getValue().toString()));
         }
+
+        Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                messages.getString("BackPacks.enabled").replaceAll("%backpack%", name)));
 
         items.put(name, craft);
 

@@ -46,8 +46,8 @@ BackPacks:
   normalBackPack:
     name: "&eNormal &6BackPack"
     description:
-      - "&fThis is the &eNormal &6BackPack&f."
-      - "&8Right click to open it."
+      1: "&fThis is the &eNormal &6BackPack&f."
+      2: "&8Right click to open it."
 
     # Must be divisible by 9
     slots: 27
