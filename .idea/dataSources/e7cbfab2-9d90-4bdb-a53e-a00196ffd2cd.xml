@@ -7,5 +7,15 @@
     <schema id="3" name="mysql" />
     <schema id="4" name="performance_schema" />
     <schema id="5" name="sys" />
+    <table id="6" parent="1" name="bp_users" />
+    <column id="7" parent="6" name="name">
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="8" parent="6" name="displayName">
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="9" parent="6" name="uuid">
+      <data-type>varchar(100)|0</data-type>
+    </column>
   </database-model>
 </dataSource>

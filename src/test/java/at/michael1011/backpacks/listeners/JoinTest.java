@@ -17,49 +17,54 @@ import static org.junit.Assert.assertTrue;
 public class JoinTest {
 
     @Test
-    public void join() throws Exception {
-        Class.forName("com.mysql.jdbc.Driver");
-        SQL.createCon("sql7.freemysqlhosting.net", "3306", "sql7132524", "sql7132524", "Ekll7fuBGU");
+    public void join() {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            SQL.createCon("sql7.freemysqlhosting.net", "3306", "sql7132524", "sql7132524", "Ekll7fuBGU");
 
-        assertTrue(SQL.checkCon());
+            assertTrue(SQL.checkCon());
 
-        SQL.query("CREATE TABLE IF NOT EXISTS bp_users(name VARCHAR(100), "+
-                "displayName VARCHAR(100), uuid VARCHAR(100))");
+            SQL.query("CREATE TABLE IF NOT EXISTS bp_users(name VARCHAR(100), "+
+                    "displayName VARCHAR(100), uuid VARCHAR(100))");
 
-        SecureRandom random = new SecureRandom();
+            SecureRandom random = new SecureRandom();
 
-        String randomName = new BigInteger(130, random).toString(20);
-        String randomNewName = new BigInteger(130, random).toString(20);
+            String randomName = new BigInteger(130, random).toString(20);
+            String randomNewName = new BigInteger(130, random).toString(20);
 
-        UUID uuid = UUID.randomUUID();
+            UUID uuid = UUID.randomUUID();
 
-        String trimmedId = uuid.toString().replaceAll("-", "");
+            String trimmedId = uuid.toString().replaceAll("-", "");
 
-        Player player = PowerMockito.mock(Player.class);
+            Player player = PowerMockito.mock(Player.class);
 
-        PowerMockito.when(player.getName()).thenReturn(randomName);
-        PowerMockito.when(player.getDisplayName()).thenReturn(randomName);
-        PowerMockito.when(player.getUniqueId()).thenReturn(uuid);
+            PowerMockito.when(player.getName()).thenReturn(randomName);
+            PowerMockito.when(player.getDisplayName()).thenReturn(randomName);
+            PowerMockito.when(player.getUniqueId()).thenReturn(uuid);
 
-        PlayerJoinEvent event = new PlayerJoinEvent(player, "");
+            PlayerJoinEvent event = new PlayerJoinEvent(player, "");
 
-        Join listener = new Join();
+            Join listener = new Join();
 
-        listener.join(event);
+            listener.join(event);
 
-        checkRs(SQL.getResult("SELECT * FROM bp_users where uuid='"+trimmedId+"'"), randomName);
+            checkRs(SQL.getResult("SELECT * FROM bp_users where uuid='"+trimmedId+"'"), randomName);
 
-        Player newName = PowerMockito.mock(Player.class);
+            Player newName = PowerMockito.mock(Player.class);
 
-        PowerMockito.when(newName.getName()).thenReturn(randomNewName);
-        PowerMockito.when(newName.getDisplayName()).thenReturn(randomNewName);
-        PowerMockito.when(newName.getUniqueId()).thenReturn(uuid);
+            PowerMockito.when(newName.getName()).thenReturn(randomNewName);
+            PowerMockito.when(newName.getDisplayName()).thenReturn(randomNewName);
+            PowerMockito.when(newName.getUniqueId()).thenReturn(uuid);
 
-        PlayerJoinEvent newNameEvent = new PlayerJoinEvent(newName, "");
+            PlayerJoinEvent newNameEvent = new PlayerJoinEvent(newName, "");
 
-        listener.join(newNameEvent);
+            listener.join(newNameEvent);
 
-        checkRs(SQL.getResult("SELECT * FROM bp_users where uuid='"+trimmedId+"'"), randomNewName);
+            checkRs(SQL.getResult("SELECT * FROM bp_users where uuid='"+trimmedId+"'"), randomNewName);
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -68,7 +73,6 @@ public class JoinTest {
 
         assertTrue(rs.getString("name").equals(name));
         assertTrue(rs.getString("displayName").equals(name));
-
     }
 
 }
