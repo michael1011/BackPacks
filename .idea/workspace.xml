@@ -2,58 +2,52 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51551c69-f36d-4497-9d42-5d6b07c19936" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/michael.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/classes/main/at/michael1011/backpacks/Crafting.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/classes/main/at/michael1011/backpacks/Main.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/classes/main/at/michael1011/backpacks/SQL.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/classes/main/at/michael1011/backpacks/listeners/Join.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/classes/main/at/michael1011/backpacks/tasks/Reconnect$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/classes/main/at/michael1011/backpacks/tasks/Reconnect.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/classes/test/at/michael1011/backpacks/SQLTest.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/classes/test/at/michael1011/backpacks/listeners/JoinTest.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/jacoco/test.exec" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/libs/BackPacks-1.0.0-ALPHA.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/at.michael1011.backpacks.CraftingTest.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/at.michael1011.backpacks.SQLTest.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/at.michael1011.backpacks.listeners.JoinTest.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/reports/tests/test/css/base-style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/reports/tests/test/css/style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/reports/tests/test/js/report.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/at.michael1011.backpacks.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/at.michael1011.backpacks.listeners.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/resources/main/config.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/resources/main/messages.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/resources/main/plugin.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/resources/test/at/michael1011/backpacks/craftingTest.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/test-results/test/TEST-at.michael1011.backpacks.CraftingTest.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/test-results/test/TEST-at.michael1011.backpacks.SQLTest.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/test-results/test/TEST-at.michael1011.backpacks.listeners.JoinTest.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/tmp/expandedArchives/org.jacoco.agent-0.7.7.201606060606.jar_4xxgszq3ow0rrb5zaaq4k1o1q/META-INF/MANIFEST.MF" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/tmp/expandedArchives/org.jacoco.agent-0.7.7.201606060606.jar_4xxgszq3ow0rrb5zaaq4k1o1q/META-INF/MTNMINDS.RSA" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/tmp/expandedArchives/org.jacoco.agent-0.7.7.201606060606.jar_4xxgszq3ow0rrb5zaaq4k1o1q/META-INF/MTNMINDS.SF" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/tmp/expandedArchives/org.jacoco.agent-0.7.7.201606060606.jar_4xxgszq3ow0rrb5zaaq4k1o1q/META-INF/maven/org.jacoco/org.jacoco.agent/pom.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/tmp/expandedArchives/org.jacoco.agent-0.7.7.201606060606.jar_4xxgszq3ow0rrb5zaaq4k1o1q/META-INF/maven/org.jacoco/org.jacoco.agent/pom.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/tmp/expandedArchives/org.jacoco.agent-0.7.7.201606060606.jar_4xxgszq3ow0rrb5zaaq4k1o1q/about.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/tmp/expandedArchives/org.jacoco.agent-0.7.7.201606060606.jar_4xxgszq3ow0rrb5zaaq4k1o1q/jacocoagent.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/tmp/expandedArchives/org.jacoco.agent-0.7.7.201606060606.jar_4xxgszq3ow0rrb5zaaq4k1o1q/org/jacoco/agent/AgentJar.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/tmp/jar/MANIFEST.MF" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" afterPath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/at/michael1011/backpacks/Crafting.class" afterPath="$PROJECT_DIR$/build/classes/main/at/michael1011/backpacks/Crafting.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/test/at/michael1011/backpacks/listeners/JoinTest.class" afterPath="$PROJECT_DIR$/build/classes/test/at/michael1011/backpacks/listeners/JoinTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/jacoco/test.exec" afterPath="$PROJECT_DIR$/build/jacoco/test.exec" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/libs/BackPacks-1.0.0-ALPHA.jar" afterPath="$PROJECT_DIR$/build/libs/BackPacks-1.0.0-ALPHA.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/plugins/BackPacks-1.0.0-ALPHA.jar" afterPath="$PROJECT_DIR$/server1.10/plugins/BackPacks-1.0.0-ALPHA.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/data/villages.dat" afterPath="$PROJECT_DIR$/server1.10/world/data/villages.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/level.dat" afterPath="$PROJECT_DIR$/server1.10/world/level.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/level.dat_old" afterPath="$PROJECT_DIR$/server1.10/world/level.dat_old" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/region/r.-1.0.mca" afterPath="$PROJECT_DIR$/server1.10/world/region/r.-1.0.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/region/r.0.0.mca" afterPath="$PROJECT_DIR$/server1.10/world/region/r.0.0.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/session.lock" afterPath="$PROJECT_DIR$/server1.10/world/session.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.-1.-1.mca" afterPath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.-1.-1.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.-1.0.mca" afterPath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.-1.0.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.0.-1.mca" afterPath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.0.-1.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.0.0.mca" afterPath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.0.0.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_nether/data/villages_nether.dat" afterPath="$PROJECT_DIR$/server1.10/world_nether/data/villages_nether.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_nether/level.dat" afterPath="$PROJECT_DIR$/server1.10/world_nether/level.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_nether/level.dat_old" afterPath="$PROJECT_DIR$/server1.10/world_nether/level.dat_old" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_nether/session.lock" afterPath="$PROJECT_DIR$/server1.10/world_nether/session.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/DIM1/region/r.-1.-1.mca" afterPath="$PROJECT_DIR$/server1.10/world_the_end/DIM1/region/r.-1.-1.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/DIM1/region/r.-1.0.mca" afterPath="$PROJECT_DIR$/server1.10/world_the_end/DIM1/region/r.-1.0.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/DIM1/region/r.0.-1.mca" afterPath="$PROJECT_DIR$/server1.10/world_the_end/DIM1/region/r.0.-1.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/DIM1/region/r.0.0.mca" afterPath="$PROJECT_DIR$/server1.10/world_the_end/DIM1/region/r.0.0.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/data/villages_end.dat" afterPath="$PROJECT_DIR$/server1.10/world_the_end/data/villages_end.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/level.dat" afterPath="$PROJECT_DIR$/server1.10/world_the_end/level.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/level.dat_old" afterPath="$PROJECT_DIR$/server1.10/world_the_end/level.dat_old" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/session.lock" afterPath="$PROJECT_DIR$/server1.10/world_the_end/session.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/e7cbfab2-9d90-4bdb-a53e-a00196ffd2cd.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/e7cbfab2-9d90-4bdb-a53e-a00196ffd2cd.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/at.michael1011.backpacks.SQLTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/at.michael1011.backpacks.SQLTest.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/at.michael1011.backpacks.listeners.JoinTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/at.michael1011.backpacks.listeners.JoinTest.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/at.michael1011.backpacks.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/at.michael1011.backpacks.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/at.michael1011.backpacks.listeners.html" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/at.michael1011.backpacks.listeners.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/config.yml" afterPath="$PROJECT_DIR$/build/resources/main/config.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/messages.yml" afterPath="$PROJECT_DIR$/build/resources/main/messages.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/test-results/test/TEST-at.michael1011.backpacks.SQLTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-at.michael1011.backpacks.SQLTest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/test-results/test/TEST-at.michael1011.backpacks.listeners.JoinTest.xml" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-at.michael1011.backpacks.listeners.JoinTest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/logs/latest.log" afterPath="$PROJECT_DIR$/server1.10/logs/latest.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/server.properties" afterPath="$PROJECT_DIR$/server1.10/server.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/spigot.yml" afterPath="$PROJECT_DIR$/server1.10/spigot.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Crafting.java" afterPath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Crafting.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/config.yml" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/messages.yml" afterPath="$PROJECT_DIR$/src/main/resources/messages.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/at/michael1011/backpacks/listeners/JoinTest.java" afterPath="$PROJECT_DIR$/src/test/java/at/michael1011/backpacks/listeners/JoinTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
     </list>
     <ignored path="BackPacks.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -179,7 +173,7 @@
     <favorites_list name="BackPacks" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -612,6 +606,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -814,9 +811,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -841,7 +835,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.build">
+  <component name="RunManager" selected="Gradle.clean">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
@@ -1401,6 +1395,7 @@
       <workItem from="1471890085925" duration="7107000" />
       <workItem from="1471933469685" duration="3675000" />
       <workItem from="1471953404812" duration="9013000" />
+      <workItem from="1471964169702" duration="340000" />
     </task>
     <servers />
   </component>
@@ -1437,7 +1432,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39547000" />
+    <option name="totallyTimeSpent" value="39887000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1454,7 +1449,6 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5030303" order="1" side_tool="true" content_ui="tabs" />
@@ -1464,9 +1458,8 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23560606" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26363635" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1477,8 +1470,10 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -1535,7 +1530,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1543,7 +1537,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="8" selection-start-line="0" selection-start-column="0" selection-end-line="12" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1552,7 +1545,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1713,7 +1705,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="9" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1721,7 +1712,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1733,19 +1723,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/craftingTest.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-40">
-          <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/craftingTest.yml" />
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.spigotmc/spigot-api/1.10.2-R0.1-SNAPSHOT/9bb293017e7ef743a0879862ac2f07cc2a42e3b1/spigot-api-1.10.2-R0.1-SNAPSHOT-sources.jar!/org/bukkit/inventory/meta/ItemMeta.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1761,7 +1743,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="205">
           <caret line="844" column="16" selection-start-line="844" selection-start-column="16" selection-end-line="844" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1769,45 +1750,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="222">
           <caret line="1034" column="30" selection-start-line="1034" selection-start-column="30" selection-end-line="1034" selection-end-column="30" />
-          <folding>
-            <element signature="e#30907#30908#0" expanded="false" />
-            <element signature="e#30953#30954#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/at/michael1011/backpacks/craftingTest.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/at/michael1011/backpacks/craftingTest.yml" />
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.spigotmc/spigot-api/1.10.2-R0.1-SNAPSHOT/9bb293017e7ef743a0879862ac2f07cc2a42e3b1/spigot-api-1.10.2-R0.1-SNAPSHOT-sources.jar!/org/bukkit/inventory/ItemStack.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="188">
           <caret line="567" column="46" selection-start-line="567" selection-start-column="46" selection-end-line="567" selection-end-column="46" />
-          <folding>
-            <element signature="e#17690#17691#0" expanded="true" />
-            <element signature="e#17747#17748#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/at/michael1011/backpacks/CraftingTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="26" column="12" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/at/michael1011/backpacks/CraftingTest.java" />
     <entry file="dbDummy://dbtable:/8e4c304b/e7cbfab2-9d90-4bdb-a53e-a00196ffd2cd/bp.bp_users">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
@@ -1820,7 +1778,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-115">
           <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1838,6 +1795,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1054">
           <caret line="74" column="61" selection-start-line="74" selection-start-column="61" selection-end-line="74" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/reports/tests/test/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
