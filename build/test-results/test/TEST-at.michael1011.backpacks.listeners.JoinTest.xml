@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="at.michael1011.backpacks.listeners.JoinTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2016-08-22T20:19:01" hostname="michael" time="1.87">
+<testsuite name="at.michael1011.backpacks.listeners.JoinTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2016-08-23T07:07:42" hostname="michael" time="3.633">
   <properties/>
-  <testcase name="join" classname="at.michael1011.backpacks.listeners.JoinTest" time="1.87"/>
+  <testcase name="join" classname="at.michael1011.backpacks.listeners.JoinTest" time="3.633"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

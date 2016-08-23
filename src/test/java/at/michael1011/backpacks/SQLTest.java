@@ -13,8 +13,7 @@ public class SQLTest {
     public void testSQL() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-
-            SQL.createCon("sql7.freemysqlhosting.net", "3306", "sql7132378", "sql7132378", "Ag8WeWFa1h");
+            SQL.createCon("sql7.freemysqlhosting.net", "3306", "sql7132524", "sql7132524", "Ekll7fuBGU");
 
             assertTrue(SQL.checkCon());
 

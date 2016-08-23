@@ -34,9 +34,14 @@ BackPacks:
     material: "COMPASS"
 
     crafting:
-      1: "IRON_INGOT+LEATHER+IRON_INGOT"
-      2: "LEATHER+COMPASS+LEATHER"
-      3: "IRON_INGOT+LEATHER+IRON_INGOT"
+      1: "I+L+I"
+      2: "L+C+L"
+      3: "I+L+i"
+
+      materials:
+        I: "IRON_INGOT"
+        L: "LEATHER"
+        C: "COMPASS"
 
   normalBackPack:
     name: "&eNormal &6BackPack"
@@ -50,6 +55,11 @@ BackPacks:
     material: "WATCH"
 
     crafting:
-      1: "REDSTONE_BLOCK+GOLD_BLOCK+REDSTONE_BLOCK"
-      2: "GOLD_BLOCK+WATCH+GOLD_BLOCK"
-      3: "REDSTONE_BLOCK+GOLD_BLOCK+REDSTONE_BLOCK"
+      1: "R+G+R"
+      2: "G+W+G"
+      3: "R+G+R"
+
+      materials:
+        R: "REDSTONE_BLOCK"
+        G: "GOLD_BLOCK"
+        W: "WATCH"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="at.michael1011.backpacks.SQLTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2016-08-22T20:19:03" hostname="michael" time="0.274">
+<testsuite name="at.michael1011.backpacks.SQLTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2016-08-23T07:07:46" hostname="michael" time="0.551">
   <properties/>
-  <testcase name="testSQL" classname="at.michael1011.backpacks.SQLTest" time="0.274"/>
+  <testcase name="testSQL" classname="at.michael1011.backpacks.SQLTest" time="0.551"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
