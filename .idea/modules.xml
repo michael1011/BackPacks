@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BackPacks.iml" filepath="$PROJECT_DIR$/.idea/modules/BackPacks.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BackPacks_main.iml" filepath="$PROJECT_DIR$/.idea/modules/BackPacks_main.iml" group="BackPacks" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BackPacks_test.iml" filepath="$PROJECT_DIR$/.idea/modules/BackPacks_test.iml" group="BackPacks" />
+    </modules>
+  </component>
+</project>
