@@ -8,7 +8,7 @@ buildScan {
 }
 
 group 'at.michael1011'
-version '1.0.0-ALPHA'
+version '2.0.0-ALPHA'
 
 apply plugin: 'java'
 
