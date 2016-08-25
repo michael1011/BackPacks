@@ -17,6 +17,7 @@ import static at.michael1011.backpacks.Main.*;
 public class Crafting {
 
     public static HashMap<String, ItemStack> items = new HashMap<>();
+    public static String available;
 
     private static Boolean works = true;
 
@@ -25,7 +26,7 @@ public class Crafting {
     static void initCrafting() {
         String path = "BackPacks.";
 
-        Map<String, Object> enabled = config.getConfigurationSection(path +"enabled").getValues(true);
+        Map<String, Object> enabled = config.getConfigurationSection(path+"enabled").getValues(true);
 
         for(Map.Entry<String, Object> entry : enabled.entrySet()) {
             String backPack = entry.getValue().toString();
@@ -35,6 +36,8 @@ public class Crafting {
                 ItemStack item = getItemStack(config, backPackPath);
 
                 if(works) {
+                    items.put(backPack, item);
+
                     Bukkit.getServer().addRecipe(createShapedRecipe(item, backPackPath));
 
                     Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
@@ -49,21 +52,25 @@ public class Crafting {
 
             } else {
                 Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                        messages.getString("BackPacks.couldFindConfig").replaceAll("%backpack%", backPack)));
+                        messages.getString("BackPacks.couldNotFindConfig").replaceAll("%backpack%", backPack)));
             }
 
         }
 
+        for(Map.Entry<String, ItemStack> backpack : items.entrySet()) {
+            available = available+", "+backpack.getKey();
+        }
+
     }
 
-    static ItemStack getItemStack(YamlConfiguration config, String backPackPath) {
+    private static ItemStack getItemStack(YamlConfiguration config, String backPackPath) {
         if(config.getInt(backPackPath+"slots") % 9 == 0) {
             ItemStack craft = new ItemStack(Material.getMaterial(
                     config.getString(backPackPath+"material")), 1);
 
             String name = ChatColor.translateAlternateColorCodes('&', config.getString(backPackPath+"name"));
 
-            String lore = null;
+            String lore = "";
 
             Map<String, Object> loreSec = config.getConfigurationSection(backPackPath+"description").getValues(true);
 
@@ -75,7 +82,7 @@ public class Crafting {
 
             craftM.setDisplayName(name);
 
-            if(lore != null) {
+            if(!lore.equals("")) {
                 craftM.setLore(Arrays.asList(lore.split("\\s*,\\s*")));
             }
 
@@ -91,7 +98,7 @@ public class Crafting {
 
     }
 
-    static ShapedRecipe createShapedRecipe(ItemStack item, String backPackPath) {
+    private static ShapedRecipe createShapedRecipe(ItemStack item, String backPackPath) {
         ShapedRecipe recipe = new ShapedRecipe(item);
 
         recipe.shape(
@@ -99,10 +106,14 @@ public class Crafting {
                 config.getString(backPackPath+"crafting.2").replaceAll("\\+", ""),
                 config.getString(backPackPath+"crafting.3").replaceAll("\\+", ""));
 
+        Bukkit.getConsoleSender().sendMessage(config.getString(backPackPath+"crafting.3").replaceAll("\\+", ""));
+
         Map<String, Object> ingredients = config.getConfigurationSection(backPackPath+
                 "crafting.materials").getValues(true);
 
         for(Map.Entry<String, Object> ing : ingredients.entrySet()) {
+            Bukkit.getConsoleSender().sendMessage(ing.getKey().charAt(0)+"+"+ing.getValue().toString());
+
             recipe.setIngredient(ing.getKey().charAt(0), Material.valueOf(ing.getValue().toString()));
         }
 

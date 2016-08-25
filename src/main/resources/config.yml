@@ -37,7 +37,7 @@ BackPacks:
     crafting:
       1: "I+L+I"
       2: "L+C+L"
-      3: "I+L+i"
+      3: "I+L+I"
 
       materials:
         I: "IRON_INGOT"

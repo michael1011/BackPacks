@@ -6,9 +6,36 @@ MySQL:
   failedToConnect: "&4Could not connect to MySQL database"
   closedConnection: "&eClosed MySQL connection"
 
+Help:
+  onlyPlayers: "&4Only players &ccan use this command"
+
+  playerNotFound: "&cThe player &4%target% &ccouldn't be foubd"
+  # When you want to interact with a player that isn't online (%target% is the offline player)
+
+  bpgive:
+    onlyPlayersAlternative: "&cUse '&4/bpgive <backpack> <player>&c' to give a backpack to a player"
+    # When the console wants to give itself a backpacks it gets the 'onlyPlayers'
+    # message above and this message
+
+    backPackNotFound: "&cThe backpack &4%backpack% &ccouldn't be found"
+    # When you want to give someone a backpack that doesn't exist (%backpack% is the backpack)
+
+    gaveBackPack: "&eYou gave &6%backpack% &eto &6%target%"
+    # When you gave a backpack to a other player this message comes
+    # %backpack% is the backpack and %target% is the player you gave it
+
+    syntaxError:
+      1: "&6/bpgive <backpack>: &egive yourself the backpack '<backpack>'"
+      2: "&6/bpgive <backpack> <player>: &e give the backpack '<backpack>' to '<player>'"
+    # If someone uses /bpgive completly wrong
+
 BackPacks:
-  couldFindConfig: "&cCould &4not &cfind BackPack &4%backpack%"
+  couldNotFindConfig: "&cCould &4not &cfind BackPack &4%backpack%"
   # When you enable a backpack that doesn't exist (%backpack% is the backpack that couldn't be found)
+
+  slotsNotDivisibleBy9: "&cBackPack &4%backpack% &ccouldn't be loaded because the slots &4aren't divisible by 9"
+  # %backpack% is the backpack that couldn't be enabled
+
   enabled: "&eEnabled backpack &6%backpack%"
   # When a server starts/reloads this message comes for every backpack that is enabled
   # (%backpack% is the enabled backpack)

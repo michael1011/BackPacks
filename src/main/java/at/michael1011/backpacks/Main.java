@@ -1,5 +1,6 @@
 package at.michael1011.backpacks;
 
+import at.michael1011.backpacks.commads.Give;
 import at.michael1011.backpacks.listeners.Join;
 import at.michael1011.backpacks.tasks.Reconnect;
 import org.bukkit.Bukkit;
@@ -42,6 +43,8 @@ public class Main extends JavaPlugin {
                 new Reconnect(this);
 
                 new Join().register(this);
+
+                new Give().register(this);
 
             } else {
                 Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
