@@ -27,36 +27,42 @@ public class Give implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(args.length == 1) {
-            if(sender instanceof Player) {
-                giveBackPack(sender, (Player) sender, args[0]);
+        if(sender.hasPermission("backpacks.give")) {
+            if(args.length == 1) {
+                if(sender instanceof Player) {
+                    giveBackPack(sender, (Player) sender, args[0]);
+
+                } else {
+                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                            messages.getString("Help.onlyPlayers")));
+
+                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                            messages.getString(path+"onlyPlayersAlternative")));
+                }
+
+            } else if(args.length == 2) {
+                Player target = Bukkit.getServer().getPlayer(args[1]);
+
+                if(target != null) {
+                    giveBackPack(sender, target, args[0]);
+
+                } else {
+                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                            messages.getString("Help.playerNotFound").replaceAll("%target%", args[1])));
+                }
 
             } else {
-                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                        messages.getString("Help.onlyPlayers")));
+                Map<String, Object> syntaxError = messages.getConfigurationSection(path+"syntaxError").getValues(true);
 
-                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                        messages.getString(path+"onlyPlayersAlternative")));
-            }
+                for(Map.Entry<String, Object> error : syntaxError.entrySet()) {
+                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', (String) error.getValue()));
+                }
 
-        } else if(args.length == 2) {
-            Player target = Bukkit.getServer().getPlayer(args[1]);
-
-            if(target != null) {
-                giveBackPack(sender, target, args[0]);
-
-            } else {
-                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                        messages.getString("Help.playerNotFound").replaceAll("%target%", args[1])));
             }
 
         } else {
-            Map<String, Object> syntaxError = messages.getConfigurationSection(path+"syntaxError").getValues(true);
-
-            for(Map.Entry<String, Object> error : syntaxError.entrySet()) {
-                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', (String) error.getValue()));
-            }
-
+            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                    messages.getString("Help.noPermission")));
         }
 
         return true;

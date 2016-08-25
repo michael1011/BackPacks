@@ -2,21 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51551c69-f36d-4497-9d42-5d6b07c19936" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/inventories/Open.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/RightClick.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/plugins/BackPacks-1.0.0-ALPHA.jar" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" afterPath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/taskArtifacts.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/libs/BackPacks-2.0.0-ALPHA.jar" afterPath="$PROJECT_DIR$/build/libs/BackPacks-2.0.0-ALPHA.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/plugins/BackPacks-2.0.0-ALPHA.jar" afterPath="$PROJECT_DIR$/server1.10/plugins/BackPacks-2.0.0-ALPHA.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/spigot-1.10.2.jar" afterPath="$PROJECT_DIR$/server1.10/spigot-1.10.2.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/data/villages.dat" afterPath="$PROJECT_DIR$/server1.10/world/data/villages.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/level.dat" afterPath="$PROJECT_DIR$/server1.10/world/level.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/level.dat_old" afterPath="$PROJECT_DIR$/server1.10/world/level.dat_old" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/playerdata/ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8.dat" afterPath="$PROJECT_DIR$/server1.10/world/playerdata/ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/region/r.-1.0.mca" afterPath="$PROJECT_DIR$/server1.10/world/region/r.-1.0.mca" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/region/r.-1.1.mca" afterPath="$PROJECT_DIR$/server1.10/world/region/r.-1.1.mca" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/region/r.0.0.mca" afterPath="$PROJECT_DIR$/server1.10/world/region/r.0.0.mca" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/region/r.0.1.mca" afterPath="$PROJECT_DIR$/server1.10/world/region/r.0.1.mca" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/session.lock" afterPath="$PROJECT_DIR$/server1.10/world/session.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.-1.-1.mca" afterPath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.-1.-1.mca" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.-1.0.mca" afterPath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.-1.0.mca" />
@@ -34,18 +35,19 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/level.dat" afterPath="$PROJECT_DIR$/server1.10/world_the_end/level.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/level.dat_old" afterPath="$PROJECT_DIR$/server1.10/world_the_end/level.dat_old" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/session.lock" afterPath="$PROJECT_DIR$/server1.10/world_the_end/session.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/e7cbfab2-9d90-4bdb-a53e-a00196ffd2cd.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/e7cbfab2-9d90-4bdb-a53e-a00196ffd2cd.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/messages.yml" afterPath="$PROJECT_DIR$/build/resources/main/messages.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/plugin.yml" afterPath="$PROJECT_DIR$/build/resources/main/plugin.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/logs/latest.log" afterPath="$PROJECT_DIR$/server1.10/logs/latest.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/plugins/BackPacks/messages.yml" afterPath="$PROJECT_DIR$/server1.10/plugins/BackPacks/messages.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/server.properties" afterPath="$PROJECT_DIR$/server1.10/server.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/spigot.yml" afterPath="$PROJECT_DIR$/server1.10/spigot.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/usercache.json" afterPath="$PROJECT_DIR$/server1.10/usercache.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/stats/ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8.json" afterPath="$PROJECT_DIR$/server1.10/world/stats/ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Crafting.java" afterPath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Crafting.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Main.java" afterPath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/SQL.java" afterPath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/SQL.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/commads/Give.java" afterPath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/commads/Give.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/Join.java" afterPath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/Join.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/RightClick.java" afterPath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/RightClick.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/messages.yml" afterPath="$PROJECT_DIR$/src/main/resources/messages.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" />
     </list>
     <ignored path="BackPacks.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -143,11 +145,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Open.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/inventories/Open.java">
+      <file leaf-file-name="RightClick.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/RightClick.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="29" column="100" selection-start-line="29" selection-start-column="100" selection-end-line="29" selection-end-column="100" />
+            <state relative-caret-position="446">
+              <caret line="40" column="45" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -155,14 +157,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Crafting.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Crafting.java">
+      <file leaf-file-name="Give.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/commads/Give.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="90" column="56" selection-start-line="90" selection-start-column="56" selection-end-line="90" selection-end-column="56" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="187">
+              <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="messages.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/messages.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="14" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="plugin.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -530,20 +550,20 @@
         <option value="$PROJECT_DIR$/src/test/java/at/michael1011/backpacks/listeners/JoinTest.java" />
         <option value="$PROJECT_DIR$/src/test/resources/craftingTest.yml" />
         <option value="$PROJECT_DIR$/src/test/java/at/michael1011/backpacks/CraftingTest.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/messages.yml" />
         <option value="$PROJECT_DIR$/src/main/resources/config.yml" />
-        <option value="$PROJECT_DIR$/src/main/resources/plugin.yml" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/sql/SQL.java" />
         <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/SQL.java" />
         <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Crafting.java" />
-        <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/RightClick.java" />
         <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/Close.java" />
-        <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/commads/Give.java" />
         <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/Join.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/e7cbfab2-9d90-4bdb-a53e-a00196ffd2cd/console.sql" />
         <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/inventories/Open.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/messages.yml" />
+        <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/commads/Give.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/plugin.yml" />
+        <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/RightClick.java" />
       </list>
     </option>
   </component>
@@ -606,7 +626,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -810,7 +830,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1400,6 +1420,7 @@
       <workItem from="1472103362190" duration="5068000" />
       <workItem from="1472115116626" duration="6466000" />
       <workItem from="1472123857475" duration="2289000" />
+      <workItem from="1472127040497" duration="2861000" />
     </task>
     <servers />
   </component>
@@ -1436,7 +1457,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54915000" />
+    <option name="totallyTimeSpent" value="57776000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1449,7 +1470,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1366" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1458,13 +1479,12 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3869969" sideWeight="0.5060606" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3869969" sideWeight="0.4939394" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.249226" sideWeight="0.4939394" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20075758" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1479,6 +1499,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1698,13 +1719,6 @@
     <entry file="file://$PROJECT_DIR$/build/reports/tests/test/index.html" />
     <entry file="file://$PROJECT_DIR$/src/test/java/at/michael1011/backpacks/listeners/JoinTest.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/at/michael1011/backpacks/SQLTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/config.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -1745,54 +1759,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="205">
           <caret line="731" column="14" selection-start-line="731" selection-start-column="14" selection-end-line="731" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/Close.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/RightClick.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Crafting.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="90" column="56" selection-start-line="90" selection-start-column="56" selection-end-line="90" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/commads/Give.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="75" column="59" selection-start-line="75" selection-start-column="59" selection-end-line="75" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/messages.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="22" column="50" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/Close.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/Join.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -1818,7 +1788,6 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1826,7 +1795,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1839,17 +1807,60 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/inventories/Open.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="29" column="100" selection-start-line="29" selection-start-column="100" selection-end-line="29" selection-end-column="100" />
+        <state relative-caret-position="94">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Crafting.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="90" column="56" selection-start-line="90" selection-start-column="56" selection-end-line="90" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/messages.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="14" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/RightClick.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="446">
+          <caret line="40" column="45" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/commads/Give.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

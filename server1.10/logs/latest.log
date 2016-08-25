@@ -1,626 +1,577 @@
-[13:46:19] [Server thread/INFO]: Starting minecraft server version 1.10.2
-[13:46:19] [Server thread/INFO]: Loading properties
-[13:46:19] [Server thread/INFO]: Default game type: SURVIVAL
-[13:46:19] [Server thread/INFO]: This server is running CraftBukkit version git-Spigot-1e4dd71-4507d99 (MC: 1.10.2) (Implementing API version 1.10.2-R0.1-SNAPSHOT)
-[13:46:19] [Server thread/INFO]: Server Ping Player Sample Count: 12
-[13:46:19] [Server thread/INFO]: Using 4 threads for Netty based IO
-[13:46:19] [Server thread/INFO]: Debug logging is disabled
-[13:46:19] [Server thread/INFO]: Generating keypair
-[13:46:19] [Server thread/INFO]: Starting Minecraft server on *:25565
-[13:46:19] [Server thread/INFO]: Using epoll channel type
-[13:46:19] [Server thread/INFO]: Set PluginClassLoader as parallel capable
-[13:46:19] [Server thread/INFO]: [BackPacks] Loading BackPacks v2.0.0-ALPHA
-[13:46:19] [Server thread/INFO]: **** Beginning UUID conversion, this may take A LONG time ****
-[13:46:19] [Server thread/INFO]: Preparing level "world"
-[13:46:19] [Server thread/INFO]: -------- World Settings For [world] --------
-[13:46:19] [Server thread/INFO]: Mob Spawn Range: 4
-[13:46:19] [Server thread/INFO]: Cactus Growth Modifier: 100%
-[13:46:19] [Server thread/INFO]: Cane Growth Modifier: 100%
-[13:46:19] [Server thread/INFO]: Melon Growth Modifier: 100%
-[13:46:19] [Server thread/INFO]: Mushroom Growth Modifier: 100%
-[13:46:19] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
-[13:46:19] [Server thread/INFO]: Sapling Growth Modifier: 100%
-[13:46:19] [Server thread/INFO]: Wheat Growth Modifier: 100%
-[13:46:19] [Server thread/INFO]: NetherWart Growth Modifier: 100%
-[13:46:19] [Server thread/INFO]: Vine Growth Modifier: 100%
-[13:46:19] [Server thread/INFO]: Cocoa Growth Modifier: 100%
-[13:46:19] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
-[13:46:19] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
-[13:46:19] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
-[13:46:19] [Server thread/INFO]: Random Lighting Updates: false
-[13:46:19] [Server thread/INFO]: Structure Info Saving: true
-[13:46:19] [Server thread/INFO]: Max Entity Collisions: 8
-[13:46:19] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
-[13:46:19] [Server thread/INFO]: Max TNT Explosions: 100
-[13:46:19] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
-[13:46:19] [Server thread/INFO]: Item Despawn Rate: 6000
-[13:46:19] [Server thread/INFO]: Item Merge Radius: 2.5
-[13:46:19] [Server thread/INFO]: Arrow Despawn Rate: 1200
-[13:46:19] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
-[13:46:19] [Server thread/INFO]: View Distance: 10
-[13:46:19] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
-[13:46:19] [Server thread/INFO]: Experience Merge Radius: 3.0
-[13:46:19] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
-[13:46:19] [Server thread/INFO]: -------- World Settings For [world_nether] --------
-[13:46:19] [Server thread/INFO]: Mob Spawn Range: 4
-[13:46:19] [Server thread/INFO]: Cactus Growth Modifier: 100%
-[13:46:19] [Server thread/INFO]: Cane Growth Modifier: 100%
-[13:46:19] [Server thread/INFO]: Melon Growth Modifier: 100%
-[13:46:19] [Server thread/INFO]: Mushroom Growth Modifier: 100%
-[13:46:19] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
-[13:46:19] [Server thread/INFO]: Sapling Growth Modifier: 100%
-[13:46:19] [Server thread/INFO]: Wheat Growth Modifier: 100%
-[13:46:19] [Server thread/INFO]: NetherWart Growth Modifier: 100%
-[13:46:19] [Server thread/INFO]: Vine Growth Modifier: 100%
-[13:46:19] [Server thread/INFO]: Cocoa Growth Modifier: 100%
-[13:46:19] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
-[13:46:19] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
-[13:46:19] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
-[13:46:19] [Server thread/INFO]: Random Lighting Updates: false
-[13:46:19] [Server thread/INFO]: Structure Info Saving: true
-[13:46:19] [Server thread/INFO]: Max Entity Collisions: 8
-[13:46:19] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
-[13:46:19] [Server thread/INFO]: Max TNT Explosions: 100
-[13:46:19] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
-[13:46:19] [Server thread/INFO]: Item Despawn Rate: 6000
-[13:46:19] [Server thread/INFO]: Item Merge Radius: 2.5
-[13:46:19] [Server thread/INFO]: Arrow Despawn Rate: 1200
-[13:46:19] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
-[13:46:19] [Server thread/INFO]: View Distance: 10
-[13:46:19] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
-[13:46:19] [Server thread/INFO]: Experience Merge Radius: 3.0
-[13:46:19] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
-[13:46:19] [Server thread/INFO]: -------- World Settings For [world_the_end] --------
-[13:46:19] [Server thread/INFO]: Mob Spawn Range: 4
-[13:46:19] [Server thread/INFO]: Cactus Growth Modifier: 100%
-[13:46:19] [Server thread/INFO]: Cane Growth Modifier: 100%
-[13:46:19] [Server thread/INFO]: Melon Growth Modifier: 100%
-[13:46:19] [Server thread/INFO]: Mushroom Growth Modifier: 100%
-[13:46:19] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
-[13:46:19] [Server thread/INFO]: Sapling Growth Modifier: 100%
-[13:46:19] [Server thread/INFO]: Wheat Growth Modifier: 100%
-[13:46:19] [Server thread/INFO]: NetherWart Growth Modifier: 100%
-[13:46:19] [Server thread/INFO]: Vine Growth Modifier: 100%
-[13:46:19] [Server thread/INFO]: Cocoa Growth Modifier: 100%
-[13:46:19] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
-[13:46:19] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
-[13:46:19] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
-[13:46:19] [Server thread/INFO]: Random Lighting Updates: false
-[13:46:19] [Server thread/INFO]: Structure Info Saving: true
-[13:46:19] [Server thread/INFO]: Max Entity Collisions: 8
-[13:46:19] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
-[13:46:19] [Server thread/INFO]: Max TNT Explosions: 100
-[13:46:19] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
-[13:46:19] [Server thread/INFO]: Item Despawn Rate: 6000
-[13:46:19] [Server thread/INFO]: Item Merge Radius: 2.5
-[13:46:19] [Server thread/INFO]: Arrow Despawn Rate: 1200
-[13:46:19] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
-[13:46:19] [Server thread/INFO]: View Distance: 10
-[13:46:19] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
-[13:46:19] [Server thread/INFO]: Experience Merge Radius: 3.0
-[13:46:19] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
-[13:46:19] [Server thread/INFO]: Preparing start region for level 0 (Seed: 5035148172628248101)
-[13:46:20] [Server thread/INFO]: Preparing spawn area: 29%
-[13:46:21] [Server thread/INFO]: Preparing start region for level 1 (Seed: 5035148172628248101)
-[13:46:22] [Server thread/INFO]: Preparing start region for level 2 (Seed: 5035148172628248101)
-[13:46:22] [Server thread/INFO]: [BackPacks] Enabling BackPacks v2.0.0-ALPHA
-[13:46:22] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mConnected to MySQL database[m
-[13:46:22] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mEnabled backpack [0;33;22mlittleBackPack[m
-[13:46:22] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mEnabled backpack [0;33;22mnormalBackPack[m
-[13:46:22] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
-[13:46:22] [Server thread/INFO]: Done (3,167s)! For help, type "help" or "?"
-[13:46:42] [Server thread/INFO]: com.mojang.authlib.GameProfile@41dbb5b6[id=<null>,name=michael1011at,properties={},legacy=false] (/127.0.0.1:54734) lost connection: Disconnected
-[13:46:47] [User Authenticator #1/INFO]: UUID of player michael1011at is ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8
-[13:46:47] [Server thread/INFO]: michael1011at[/127.0.0.1:54746] logged in with entity id 272 at ([world]157.3911489627379, 78.0, 470.45841976713757)
-[13:47:27] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mYou gave [0;33;22mnormalBackPack [0;33;1mto [0;33;22m[mmichael1011at[m[m
-[13:49:28] [Server thread/INFO]: CONSOLE: [0;31;1mPlease note that this command is not supported and may cause issues when using some plugins.[m
-[13:49:28] [Server thread/INFO]: CONSOLE: [0;31;1mIf you encounter any issues please use the /stop command to restart your server.[m
-[13:49:28] [Server thread/INFO]: Server Ping Player Sample Count: 12
-[13:49:28] [Server thread/INFO]: Using 4 threads for Netty based IO
-[13:49:28] [Server thread/INFO]: Debug logging is disabled
-[13:49:28] [Server thread/INFO]: -------- World Settings For [world] --------
-[13:49:28] [Server thread/INFO]: Mob Spawn Range: 4
-[13:49:28] [Server thread/INFO]: Cactus Growth Modifier: 100%
-[13:49:28] [Server thread/INFO]: Cane Growth Modifier: 100%
-[13:49:28] [Server thread/INFO]: Melon Growth Modifier: 100%
-[13:49:28] [Server thread/INFO]: Mushroom Growth Modifier: 100%
-[13:49:28] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
-[13:49:28] [Server thread/INFO]: Sapling Growth Modifier: 100%
-[13:49:28] [Server thread/INFO]: Wheat Growth Modifier: 100%
-[13:49:28] [Server thread/INFO]: NetherWart Growth Modifier: 100%
-[13:49:28] [Server thread/INFO]: Vine Growth Modifier: 100%
-[13:49:28] [Server thread/INFO]: Cocoa Growth Modifier: 100%
-[13:49:28] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
-[13:49:28] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
-[13:49:28] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
-[13:49:28] [Server thread/INFO]: Random Lighting Updates: false
-[13:49:28] [Server thread/INFO]: Structure Info Saving: true
-[13:49:28] [Server thread/INFO]: Max Entity Collisions: 8
-[13:49:28] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
-[13:49:28] [Server thread/INFO]: Max TNT Explosions: 100
-[13:49:28] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
-[13:49:28] [Server thread/INFO]: Item Despawn Rate: 6000
-[13:49:28] [Server thread/INFO]: Item Merge Radius: 2.5
-[13:49:28] [Server thread/INFO]: Arrow Despawn Rate: 1200
-[13:49:28] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
-[13:49:28] [Server thread/INFO]: View Distance: 10
-[13:49:28] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
-[13:49:28] [Server thread/INFO]: Experience Merge Radius: 3.0
-[13:49:28] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
-[13:49:28] [Server thread/INFO]: -------- World Settings For [world_nether] --------
-[13:49:28] [Server thread/INFO]: Mob Spawn Range: 4
-[13:49:28] [Server thread/INFO]: Cactus Growth Modifier: 100%
-[13:49:28] [Server thread/INFO]: Cane Growth Modifier: 100%
-[13:49:28] [Server thread/INFO]: Melon Growth Modifier: 100%
-[13:49:28] [Server thread/INFO]: Mushroom Growth Modifier: 100%
-[13:49:28] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
-[13:49:28] [Server thread/INFO]: Sapling Growth Modifier: 100%
-[13:49:28] [Server thread/INFO]: Wheat Growth Modifier: 100%
-[13:49:28] [Server thread/INFO]: NetherWart Growth Modifier: 100%
-[13:49:28] [Server thread/INFO]: Vine Growth Modifier: 100%
-[13:49:28] [Server thread/INFO]: Cocoa Growth Modifier: 100%
-[13:49:28] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
-[13:49:28] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
-[13:49:28] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
-[13:49:28] [Server thread/INFO]: Random Lighting Updates: false
-[13:49:28] [Server thread/INFO]: Structure Info Saving: true
-[13:49:28] [Server thread/INFO]: Max Entity Collisions: 8
-[13:49:28] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
-[13:49:28] [Server thread/INFO]: Max TNT Explosions: 100
-[13:49:28] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
-[13:49:28] [Server thread/INFO]: Item Despawn Rate: 6000
-[13:49:28] [Server thread/INFO]: Item Merge Radius: 2.5
-[13:49:28] [Server thread/INFO]: Arrow Despawn Rate: 1200
-[13:49:28] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
-[13:49:28] [Server thread/INFO]: View Distance: 10
-[13:49:28] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
-[13:49:28] [Server thread/INFO]: Experience Merge Radius: 3.0
-[13:49:28] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
-[13:49:28] [Server thread/INFO]: -------- World Settings For [world_the_end] --------
-[13:49:28] [Server thread/INFO]: Mob Spawn Range: 4
-[13:49:28] [Server thread/INFO]: Cactus Growth Modifier: 100%
-[13:49:28] [Server thread/INFO]: Cane Growth Modifier: 100%
-[13:49:28] [Server thread/INFO]: Melon Growth Modifier: 100%
-[13:49:28] [Server thread/INFO]: Mushroom Growth Modifier: 100%
-[13:49:28] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
-[13:49:28] [Server thread/INFO]: Sapling Growth Modifier: 100%
-[13:49:28] [Server thread/INFO]: Wheat Growth Modifier: 100%
-[13:49:28] [Server thread/INFO]: NetherWart Growth Modifier: 100%
-[13:49:28] [Server thread/INFO]: Vine Growth Modifier: 100%
-[13:49:28] [Server thread/INFO]: Cocoa Growth Modifier: 100%
-[13:49:28] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
-[13:49:28] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
-[13:49:28] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
-[13:49:28] [Server thread/INFO]: Random Lighting Updates: false
-[13:49:28] [Server thread/INFO]: Structure Info Saving: true
-[13:49:28] [Server thread/INFO]: Max Entity Collisions: 8
-[13:49:28] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
-[13:49:28] [Server thread/INFO]: Max TNT Explosions: 100
-[13:49:28] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
-[13:49:28] [Server thread/INFO]: Item Despawn Rate: 6000
-[13:49:28] [Server thread/INFO]: Item Merge Radius: 2.5
-[13:49:28] [Server thread/INFO]: Arrow Despawn Rate: 1200
-[13:49:28] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
-[13:49:28] [Server thread/INFO]: View Distance: 10
-[13:49:28] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
-[13:49:28] [Server thread/INFO]: Experience Merge Radius: 3.0
-[13:49:28] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
-[13:49:28] [Server thread/INFO]: [BackPacks] Disabling BackPacks v2.0.0-ALPHA
-[13:49:28] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mClosed MySQL connection[m
-[13:49:28] [Server thread/INFO]: [BackPacks] Loading BackPacks v2.0.0-ALPHA
-[13:49:28] [Server thread/INFO]: [BackPacks] Enabling BackPacks v2.0.0-ALPHA
-[13:49:28] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mConnected to MySQL database[m
-[13:49:28] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mEnabled backpack [0;33;22mlittleBackPack[m
-[13:49:28] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mEnabled backpack [0;33;22mnormalBackPack[m
-[13:49:28] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
-[13:49:28] [Server thread/INFO]: CONSOLE: [0;32;1mReload complete.[m
-[13:49:31] [Server thread/INFO]: michael1011at lost connection: Disconnected
-[13:49:31] [Server thread/INFO]: michael1011at left the game
-[13:50:05] [User Authenticator #2/INFO]: UUID of player michael1011at is ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8
-[13:50:05] [Server thread/INFO]: michael1011at[/127.0.0.1:54824] logged in with entity id 933 at ([world]112.26585058137587, 70.0, 481.09034423980034)
-[13:50:14] [Server thread/INFO]: michael1011at lost connection: Disconnected
-[13:50:14] [Server thread/INFO]: michael1011at left the game
-[13:50:18] [User Authenticator #3/INFO]: UUID of player michael1011at is ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8
-[13:50:18] [Server thread/INFO]: michael1011at[/127.0.0.1:54836] logged in with entity id 1204 at ([world]112.26585058137587, 70.0, 481.09034423980034)
-[13:53:10] [Server thread/INFO]: CONSOLE: [0;31;1mPlease note that this command is not supported and may cause issues when using some plugins.[m
-[13:53:10] [Server thread/INFO]: CONSOLE: [0;31;1mIf you encounter any issues please use the /stop command to restart your server.[m
-[13:53:10] [Server thread/INFO]: Server Ping Player Sample Count: 12
-[13:53:10] [Server thread/INFO]: Using 4 threads for Netty based IO
-[13:53:10] [Server thread/INFO]: Debug logging is disabled
-[13:53:10] [Server thread/INFO]: -------- World Settings For [world] --------
-[13:53:10] [Server thread/INFO]: Mob Spawn Range: 4
-[13:53:10] [Server thread/INFO]: Cactus Growth Modifier: 100%
-[13:53:10] [Server thread/INFO]: Cane Growth Modifier: 100%
-[13:53:10] [Server thread/INFO]: Melon Growth Modifier: 100%
-[13:53:10] [Server thread/INFO]: Mushroom Growth Modifier: 100%
-[13:53:10] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
-[13:53:10] [Server thread/INFO]: Sapling Growth Modifier: 100%
-[13:53:10] [Server thread/INFO]: Wheat Growth Modifier: 100%
-[13:53:10] [Server thread/INFO]: NetherWart Growth Modifier: 100%
-[13:53:10] [Server thread/INFO]: Vine Growth Modifier: 100%
-[13:53:10] [Server thread/INFO]: Cocoa Growth Modifier: 100%
-[13:53:10] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
-[13:53:10] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
-[13:53:10] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
-[13:53:10] [Server thread/INFO]: Random Lighting Updates: false
-[13:53:10] [Server thread/INFO]: Structure Info Saving: true
-[13:53:10] [Server thread/INFO]: Max Entity Collisions: 8
-[13:53:10] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
-[13:53:10] [Server thread/INFO]: Max TNT Explosions: 100
-[13:53:10] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
-[13:53:10] [Server thread/INFO]: Item Despawn Rate: 6000
-[13:53:10] [Server thread/INFO]: Item Merge Radius: 2.5
-[13:53:10] [Server thread/INFO]: Arrow Despawn Rate: 1200
-[13:53:10] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
-[13:53:10] [Server thread/INFO]: View Distance: 10
-[13:53:10] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
-[13:53:10] [Server thread/INFO]: Experience Merge Radius: 3.0
-[13:53:10] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
-[13:53:10] [Server thread/INFO]: -------- World Settings For [world_nether] --------
-[13:53:10] [Server thread/INFO]: Mob Spawn Range: 4
-[13:53:10] [Server thread/INFO]: Cactus Growth Modifier: 100%
-[13:53:10] [Server thread/INFO]: Cane Growth Modifier: 100%
-[13:53:10] [Server thread/INFO]: Melon Growth Modifier: 100%
-[13:53:10] [Server thread/INFO]: Mushroom Growth Modifier: 100%
-[13:53:10] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
-[13:53:10] [Server thread/INFO]: Sapling Growth Modifier: 100%
-[13:53:10] [Server thread/INFO]: Wheat Growth Modifier: 100%
-[13:53:10] [Server thread/INFO]: NetherWart Growth Modifier: 100%
-[13:53:10] [Server thread/INFO]: Vine Growth Modifier: 100%
-[13:53:10] [Server thread/INFO]: Cocoa Growth Modifier: 100%
-[13:53:10] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
-[13:53:10] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
-[13:53:10] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
-[13:53:10] [Server thread/INFO]: Random Lighting Updates: false
-[13:53:10] [Server thread/INFO]: Structure Info Saving: true
-[13:53:10] [Server thread/INFO]: Max Entity Collisions: 8
-[13:53:10] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
-[13:53:10] [Server thread/INFO]: Max TNT Explosions: 100
-[13:53:10] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
-[13:53:10] [Server thread/INFO]: Item Despawn Rate: 6000
-[13:53:10] [Server thread/INFO]: Item Merge Radius: 2.5
-[13:53:10] [Server thread/INFO]: Arrow Despawn Rate: 1200
-[13:53:10] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
-[13:53:10] [Server thread/INFO]: View Distance: 10
-[13:53:10] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
-[13:53:10] [Server thread/INFO]: Experience Merge Radius: 3.0
-[13:53:10] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
-[13:53:10] [Server thread/INFO]: -------- World Settings For [world_the_end] --------
-[13:53:10] [Server thread/INFO]: Mob Spawn Range: 4
-[13:53:10] [Server thread/INFO]: Cactus Growth Modifier: 100%
-[13:53:10] [Server thread/INFO]: Cane Growth Modifier: 100%
-[13:53:10] [Server thread/INFO]: Melon Growth Modifier: 100%
-[13:53:10] [Server thread/INFO]: Mushroom Growth Modifier: 100%
-[13:53:10] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
-[13:53:10] [Server thread/INFO]: Sapling Growth Modifier: 100%
-[13:53:10] [Server thread/INFO]: Wheat Growth Modifier: 100%
-[13:53:10] [Server thread/INFO]: NetherWart Growth Modifier: 100%
-[13:53:10] [Server thread/INFO]: Vine Growth Modifier: 100%
-[13:53:10] [Server thread/INFO]: Cocoa Growth Modifier: 100%
-[13:53:10] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
-[13:53:10] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
-[13:53:10] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
-[13:53:10] [Server thread/INFO]: Random Lighting Updates: false
-[13:53:10] [Server thread/INFO]: Structure Info Saving: true
-[13:53:10] [Server thread/INFO]: Max Entity Collisions: 8
-[13:53:10] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
-[13:53:10] [Server thread/INFO]: Max TNT Explosions: 100
-[13:53:10] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
-[13:53:10] [Server thread/INFO]: Item Despawn Rate: 6000
-[13:53:10] [Server thread/INFO]: Item Merge Radius: 2.5
-[13:53:10] [Server thread/INFO]: Arrow Despawn Rate: 1200
-[13:53:10] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
-[13:53:10] [Server thread/INFO]: View Distance: 10
-[13:53:10] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
-[13:53:10] [Server thread/INFO]: Experience Merge Radius: 3.0
-[13:53:10] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
-[13:53:10] [Server thread/INFO]: [BackPacks] Disabling BackPacks v2.0.0-ALPHA
-[13:53:10] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mClosed MySQL connection[m
-[13:53:10] [Server thread/INFO]: [BackPacks] Loading BackPacks v2.0.0-ALPHA
-[13:53:10] [Server thread/INFO]: [BackPacks] Enabling BackPacks v2.0.0-ALPHA
-[13:53:10] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mConnected to MySQL database[m
-[13:53:10] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mEnabled backpack [0;33;22mlittleBackPack[m
-[13:53:10] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mEnabled backpack [0;33;22mnormalBackPack[m
-[13:53:10] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
-[13:53:10] [Server thread/INFO]: CONSOLE: [0;32;1mReload complete.[m
-[13:53:13] [Server thread/WARN]: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' amount INT, hasItemMeta BOOLEAN, name VARCHAR, lore VARCHAR)' at line 1
-[13:53:13] [Server thread/WARN]: 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-[13:53:13] [Server thread/WARN]: 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-[13:53:13] [Server thread/WARN]: 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-[13:53:13] [Server thread/WARN]: 	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
-[13:53:13] [Server thread/WARN]: 	at com.mysql.jdbc.Util.handleNewInstance(Util.java:404)
-[13:53:13] [Server thread/WARN]: 	at com.mysql.jdbc.Util.getInstance(Util.java:387)
-[13:53:13] [Server thread/WARN]: 	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:941)
-[13:53:13] [Server thread/WARN]: 	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3870)
-[13:53:13] [Server thread/WARN]: 	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3806)
-[13:53:13] [Server thread/WARN]: 	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2470)
-[13:53:13] [Server thread/WARN]: 	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2617)
-[13:53:13] [Server thread/WARN]: 	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2550)
-[13:53:13] [Server thread/WARN]: 	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1861)
-[13:53:13] [Server thread/WARN]: 	at com.mysql.jdbc.PreparedStatement.executeUpdateInternal(PreparedStatement.java:2073)
-[13:53:13] [Server thread/WARN]: 	at com.mysql.jdbc.PreparedStatement.executeUpdateInternal(PreparedStatement.java:2009)
-[13:53:13] [Server thread/WARN]: 	at com.mysql.jdbc.PreparedStatement.executeLargeUpdate(PreparedStatement.java:5094)
-[13:53:13] [Server thread/WARN]: 	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:1994)
-[13:53:13] [Server thread/WARN]: 	at at.michael1011.backpacks.SQL.query(SQL.java:22)
-[13:53:13] [Server thread/WARN]: 	at at.michael1011.backpacks.inventories.Open.<init>(Open.java:54)
-[13:53:13] [Server thread/WARN]: 	at at.michael1011.backpacks.listeners.RightClick.rightClick(RightClick.java:33)
-[13:53:13] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-[13:53:13] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-[13:53:13] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-[13:53:13] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:498)
-[13:53:13] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306)
-[13:53:13] [Server thread/WARN]: 	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
-[13:53:13] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502)
-[13:53:13] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487)
-[13:53:13] [Server thread/WARN]: 	at org.bukkit.craftbukkit.v1_10_R1.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:231)
-[13:53:13] [Server thread/WARN]: 	at org.bukkit.craftbukkit.v1_10_R1.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:198)
-[13:53:13] [Server thread/WARN]: 	at org.bukkit.craftbukkit.v1_10_R1.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:194)
-[13:53:13] [Server thread/WARN]: 	at net.minecraft.server.v1_10_R1.PlayerConnection.a(PlayerConnection.java:946)
-[13:53:13] [Server thread/WARN]: 	at net.minecraft.server.v1_10_R1.PacketPlayInBlockPlace.a(PacketPlayInBlockPlace.java:27)
-[13:53:13] [Server thread/WARN]: 	at net.minecraft.server.v1_10_R1.PacketPlayInBlockPlace.a(PacketPlayInBlockPlace.java:1)
-[13:53:13] [Server thread/WARN]: 	at net.minecraft.server.v1_10_R1.PlayerConnectionUtils$1.run(SourceFile:13)
-[13:53:13] [Server thread/WARN]: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
-[13:53:13] [Server thread/WARN]: 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
-[13:53:13] [Server thread/WARN]: 	at net.minecraft.server.v1_10_R1.SystemUtils.a(SourceFile:45)
-[13:53:13] [Server thread/WARN]: 	at net.minecraft.server.v1_10_R1.MinecraftServer.D(MinecraftServer.java:732)
-[13:53:13] [Server thread/WARN]: 	at net.minecraft.server.v1_10_R1.DedicatedServer.D(DedicatedServer.java:400)
-[13:53:13] [Server thread/WARN]: 	at net.minecraft.server.v1_10_R1.MinecraftServer.C(MinecraftServer.java:668)
-[13:53:13] [Server thread/WARN]: 	at net.minecraft.server.v1_10_R1.MinecraftServer.run(MinecraftServer.java:567)
-[13:53:13] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
-[13:54:00] [Server thread/INFO]: CONSOLE: [0;31;1mPlease note that this command is not supported and may cause issues when using some plugins.[m
-[13:54:00] [Server thread/INFO]: CONSOLE: [0;31;1mIf you encounter any issues please use the /stop command to restart your server.[m
-[13:54:00] [Server thread/INFO]: Server Ping Player Sample Count: 12
-[13:54:00] [Server thread/INFO]: Using 4 threads for Netty based IO
-[13:54:00] [Server thread/INFO]: Debug logging is disabled
-[13:54:00] [Server thread/INFO]: -------- World Settings For [world] --------
-[13:54:00] [Server thread/INFO]: Mob Spawn Range: 4
-[13:54:00] [Server thread/INFO]: Cactus Growth Modifier: 100%
-[13:54:00] [Server thread/INFO]: Cane Growth Modifier: 100%
-[13:54:00] [Server thread/INFO]: Melon Growth Modifier: 100%
-[13:54:00] [Server thread/INFO]: Mushroom Growth Modifier: 100%
-[13:54:00] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
-[13:54:00] [Server thread/INFO]: Sapling Growth Modifier: 100%
-[13:54:00] [Server thread/INFO]: Wheat Growth Modifier: 100%
-[13:54:00] [Server thread/INFO]: NetherWart Growth Modifier: 100%
-[13:54:00] [Server thread/INFO]: Vine Growth Modifier: 100%
-[13:54:00] [Server thread/INFO]: Cocoa Growth Modifier: 100%
-[13:54:00] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
-[13:54:00] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
-[13:54:00] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
-[13:54:00] [Server thread/INFO]: Random Lighting Updates: false
-[13:54:00] [Server thread/INFO]: Structure Info Saving: true
-[13:54:00] [Server thread/INFO]: Max Entity Collisions: 8
-[13:54:00] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
-[13:54:00] [Server thread/INFO]: Max TNT Explosions: 100
-[13:54:00] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
-[13:54:00] [Server thread/INFO]: Item Despawn Rate: 6000
-[13:54:00] [Server thread/INFO]: Item Merge Radius: 2.5
-[13:54:00] [Server thread/INFO]: Arrow Despawn Rate: 1200
-[13:54:00] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
-[13:54:00] [Server thread/INFO]: View Distance: 10
-[13:54:00] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
-[13:54:00] [Server thread/INFO]: Experience Merge Radius: 3.0
-[13:54:00] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
-[13:54:00] [Server thread/INFO]: -------- World Settings For [world_nether] --------
-[13:54:00] [Server thread/INFO]: Mob Spawn Range: 4
-[13:54:00] [Server thread/INFO]: Cactus Growth Modifier: 100%
-[13:54:00] [Server thread/INFO]: Cane Growth Modifier: 100%
-[13:54:00] [Server thread/INFO]: Melon Growth Modifier: 100%
-[13:54:00] [Server thread/INFO]: Mushroom Growth Modifier: 100%
-[13:54:00] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
-[13:54:00] [Server thread/INFO]: Sapling Growth Modifier: 100%
-[13:54:00] [Server thread/INFO]: Wheat Growth Modifier: 100%
-[13:54:00] [Server thread/INFO]: NetherWart Growth Modifier: 100%
-[13:54:00] [Server thread/INFO]: Vine Growth Modifier: 100%
-[13:54:00] [Server thread/INFO]: Cocoa Growth Modifier: 100%
-[13:54:00] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
-[13:54:00] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
-[13:54:00] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
-[13:54:00] [Server thread/INFO]: Random Lighting Updates: false
-[13:54:00] [Server thread/INFO]: Structure Info Saving: true
-[13:54:00] [Server thread/INFO]: Max Entity Collisions: 8
-[13:54:00] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
-[13:54:00] [Server thread/INFO]: Max TNT Explosions: 100
-[13:54:00] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
-[13:54:00] [Server thread/INFO]: Item Despawn Rate: 6000
-[13:54:00] [Server thread/INFO]: Item Merge Radius: 2.5
-[13:54:00] [Server thread/INFO]: Arrow Despawn Rate: 1200
-[13:54:00] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
-[13:54:00] [Server thread/INFO]: View Distance: 10
-[13:54:00] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
-[13:54:00] [Server thread/INFO]: Experience Merge Radius: 3.0
-[13:54:00] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
-[13:54:00] [Server thread/INFO]: -------- World Settings For [world_the_end] --------
-[13:54:00] [Server thread/INFO]: Mob Spawn Range: 4
-[13:54:00] [Server thread/INFO]: Cactus Growth Modifier: 100%
-[13:54:00] [Server thread/INFO]: Cane Growth Modifier: 100%
-[13:54:00] [Server thread/INFO]: Melon Growth Modifier: 100%
-[13:54:00] [Server thread/INFO]: Mushroom Growth Modifier: 100%
-[13:54:00] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
-[13:54:00] [Server thread/INFO]: Sapling Growth Modifier: 100%
-[13:54:00] [Server thread/INFO]: Wheat Growth Modifier: 100%
-[13:54:00] [Server thread/INFO]: NetherWart Growth Modifier: 100%
-[13:54:00] [Server thread/INFO]: Vine Growth Modifier: 100%
-[13:54:00] [Server thread/INFO]: Cocoa Growth Modifier: 100%
-[13:54:00] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
-[13:54:00] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
-[13:54:00] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
-[13:54:00] [Server thread/INFO]: Random Lighting Updates: false
-[13:54:00] [Server thread/INFO]: Structure Info Saving: true
-[13:54:00] [Server thread/INFO]: Max Entity Collisions: 8
-[13:54:00] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
-[13:54:00] [Server thread/INFO]: Max TNT Explosions: 100
-[13:54:00] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
-[13:54:00] [Server thread/INFO]: Item Despawn Rate: 6000
-[13:54:00] [Server thread/INFO]: Item Merge Radius: 2.5
-[13:54:00] [Server thread/INFO]: Arrow Despawn Rate: 1200
-[13:54:00] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
-[13:54:00] [Server thread/INFO]: View Distance: 10
-[13:54:00] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
-[13:54:00] [Server thread/INFO]: Experience Merge Radius: 3.0
-[13:54:00] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
-[13:54:00] [Server thread/INFO]: [BackPacks] Disabling BackPacks v2.0.0-ALPHA
-[13:54:00] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mClosed MySQL connection[m
-[13:54:00] [Server thread/INFO]: [BackPacks] Loading BackPacks v2.0.0-ALPHA
-[13:54:00] [Server thread/INFO]: [BackPacks] Enabling BackPacks v2.0.0-ALPHA
-[13:54:00] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mConnected to MySQL database[m
-[13:54:00] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mEnabled backpack [0;33;22mlittleBackPack[m
-[13:54:00] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mEnabled backpack [0;33;22mnormalBackPack[m
-[13:54:00] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
-[13:54:00] [Server thread/INFO]: CONSOLE: [0;32;1mReload complete.[m
-[13:54:02] [Server thread/WARN]: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(100), name VARCHAR(100), lore VARCHAR(100))' at line 1
-[13:54:02] [Server thread/WARN]: 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-[13:54:02] [Server thread/WARN]: 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-[13:54:02] [Server thread/WARN]: 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-[13:54:02] [Server thread/WARN]: 	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
-[13:54:02] [Server thread/WARN]: 	at com.mysql.jdbc.Util.handleNewInstance(Util.java:404)
-[13:54:02] [Server thread/WARN]: 	at com.mysql.jdbc.Util.getInstance(Util.java:387)
-[13:54:02] [Server thread/WARN]: 	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:941)
-[13:54:02] [Server thread/WARN]: 	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3870)
-[13:54:02] [Server thread/WARN]: 	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3806)
-[13:54:02] [Server thread/WARN]: 	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2470)
-[13:54:02] [Server thread/WARN]: 	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2617)
-[13:54:02] [Server thread/WARN]: 	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2550)
-[13:54:02] [Server thread/WARN]: 	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1861)
-[13:54:02] [Server thread/WARN]: 	at com.mysql.jdbc.PreparedStatement.executeUpdateInternal(PreparedStatement.java:2073)
-[13:54:02] [Server thread/WARN]: 	at com.mysql.jdbc.PreparedStatement.executeUpdateInternal(PreparedStatement.java:2009)
-[13:54:02] [Server thread/WARN]: 	at com.mysql.jdbc.PreparedStatement.executeLargeUpdate(PreparedStatement.java:5094)
-[13:54:02] [Server thread/WARN]: 	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:1994)
-[13:54:02] [Server thread/WARN]: 	at at.michael1011.backpacks.SQL.query(SQL.java:22)
-[13:54:02] [Server thread/WARN]: 	at at.michael1011.backpacks.inventories.Open.<init>(Open.java:56)
-[13:54:02] [Server thread/WARN]: 	at at.michael1011.backpacks.listeners.RightClick.rightClick(RightClick.java:33)
-[13:54:02] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-[13:54:02] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-[13:54:02] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-[13:54:02] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:498)
-[13:54:02] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306)
-[13:54:02] [Server thread/WARN]: 	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
-[13:54:02] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502)
-[13:54:02] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487)
-[13:54:02] [Server thread/WARN]: 	at org.bukkit.craftbukkit.v1_10_R1.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:231)
-[13:54:02] [Server thread/WARN]: 	at org.bukkit.craftbukkit.v1_10_R1.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:198)
-[13:54:02] [Server thread/WARN]: 	at org.bukkit.craftbukkit.v1_10_R1.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:194)
-[13:54:02] [Server thread/WARN]: 	at net.minecraft.server.v1_10_R1.PlayerConnection.a(PlayerConnection.java:946)
-[13:54:02] [Server thread/WARN]: 	at net.minecraft.server.v1_10_R1.PacketPlayInBlockPlace.a(PacketPlayInBlockPlace.java:27)
-[13:54:02] [Server thread/WARN]: 	at net.minecraft.server.v1_10_R1.PacketPlayInBlockPlace.a(PacketPlayInBlockPlace.java:1)
-[13:54:02] [Server thread/WARN]: 	at net.minecraft.server.v1_10_R1.PlayerConnectionUtils$1.run(SourceFile:13)
-[13:54:02] [Server thread/WARN]: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
-[13:54:02] [Server thread/WARN]: 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
-[13:54:02] [Server thread/WARN]: 	at net.minecraft.server.v1_10_R1.SystemUtils.a(SourceFile:45)
-[13:54:02] [Server thread/WARN]: 	at net.minecraft.server.v1_10_R1.MinecraftServer.D(MinecraftServer.java:732)
-[13:54:02] [Server thread/WARN]: 	at net.minecraft.server.v1_10_R1.DedicatedServer.D(DedicatedServer.java:400)
-[13:54:02] [Server thread/WARN]: 	at net.minecraft.server.v1_10_R1.MinecraftServer.C(MinecraftServer.java:668)
-[13:54:02] [Server thread/WARN]: 	at net.minecraft.server.v1_10_R1.MinecraftServer.run(MinecraftServer.java:567)
-[13:54:02] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
-[13:54:23] [Server thread/INFO]: CONSOLE: [0;31;1mPlease note that this command is not supported and may cause issues when using some plugins.[m
-[13:54:23] [Server thread/INFO]: CONSOLE: [0;31;1mIf you encounter any issues please use the /stop command to restart your server.[m
-[13:54:23] [Server thread/INFO]: Server Ping Player Sample Count: 12
-[13:54:23] [Server thread/INFO]: Using 4 threads for Netty based IO
-[13:54:23] [Server thread/INFO]: Debug logging is disabled
-[13:54:23] [Server thread/INFO]: -------- World Settings For [world] --------
-[13:54:23] [Server thread/INFO]: Mob Spawn Range: 4
-[13:54:23] [Server thread/INFO]: Cactus Growth Modifier: 100%
-[13:54:23] [Server thread/INFO]: Cane Growth Modifier: 100%
-[13:54:23] [Server thread/INFO]: Melon Growth Modifier: 100%
-[13:54:23] [Server thread/INFO]: Mushroom Growth Modifier: 100%
-[13:54:23] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
-[13:54:23] [Server thread/INFO]: Sapling Growth Modifier: 100%
-[13:54:23] [Server thread/INFO]: Wheat Growth Modifier: 100%
-[13:54:23] [Server thread/INFO]: NetherWart Growth Modifier: 100%
-[13:54:23] [Server thread/INFO]: Vine Growth Modifier: 100%
-[13:54:23] [Server thread/INFO]: Cocoa Growth Modifier: 100%
-[13:54:23] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
-[13:54:23] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
-[13:54:23] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
-[13:54:23] [Server thread/INFO]: Random Lighting Updates: false
-[13:54:23] [Server thread/INFO]: Structure Info Saving: true
-[13:54:23] [Server thread/INFO]: Max Entity Collisions: 8
-[13:54:23] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
-[13:54:23] [Server thread/INFO]: Max TNT Explosions: 100
-[13:54:23] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
-[13:54:23] [Server thread/INFO]: Item Despawn Rate: 6000
-[13:54:23] [Server thread/INFO]: Item Merge Radius: 2.5
-[13:54:23] [Server thread/INFO]: Arrow Despawn Rate: 1200
-[13:54:23] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
-[13:54:23] [Server thread/INFO]: View Distance: 10
-[13:54:23] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
-[13:54:23] [Server thread/INFO]: Experience Merge Radius: 3.0
-[13:54:23] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
-[13:54:23] [Server thread/INFO]: -------- World Settings For [world_nether] --------
-[13:54:23] [Server thread/INFO]: Mob Spawn Range: 4
-[13:54:23] [Server thread/INFO]: Cactus Growth Modifier: 100%
-[13:54:23] [Server thread/INFO]: Cane Growth Modifier: 100%
-[13:54:23] [Server thread/INFO]: Melon Growth Modifier: 100%
-[13:54:23] [Server thread/INFO]: Mushroom Growth Modifier: 100%
-[13:54:23] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
-[13:54:23] [Server thread/INFO]: Sapling Growth Modifier: 100%
-[13:54:23] [Server thread/INFO]: Wheat Growth Modifier: 100%
-[13:54:23] [Server thread/INFO]: NetherWart Growth Modifier: 100%
-[13:54:23] [Server thread/INFO]: Vine Growth Modifier: 100%
-[13:54:23] [Server thread/INFO]: Cocoa Growth Modifier: 100%
-[13:54:23] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
-[13:54:23] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
-[13:54:23] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
-[13:54:23] [Server thread/INFO]: Random Lighting Updates: false
-[13:54:23] [Server thread/INFO]: Structure Info Saving: true
-[13:54:23] [Server thread/INFO]: Max Entity Collisions: 8
-[13:54:23] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
-[13:54:23] [Server thread/INFO]: Max TNT Explosions: 100
-[13:54:23] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
-[13:54:23] [Server thread/INFO]: Item Despawn Rate: 6000
-[13:54:23] [Server thread/INFO]: Item Merge Radius: 2.5
-[13:54:23] [Server thread/INFO]: Arrow Despawn Rate: 1200
-[13:54:23] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
-[13:54:23] [Server thread/INFO]: View Distance: 10
-[13:54:23] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
-[13:54:23] [Server thread/INFO]: Experience Merge Radius: 3.0
-[13:54:23] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
-[13:54:23] [Server thread/INFO]: -------- World Settings For [world_the_end] --------
-[13:54:23] [Server thread/INFO]: Mob Spawn Range: 4
-[13:54:23] [Server thread/INFO]: Cactus Growth Modifier: 100%
-[13:54:23] [Server thread/INFO]: Cane Growth Modifier: 100%
-[13:54:23] [Server thread/INFO]: Melon Growth Modifier: 100%
-[13:54:23] [Server thread/INFO]: Mushroom Growth Modifier: 100%
-[13:54:23] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
-[13:54:23] [Server thread/INFO]: Sapling Growth Modifier: 100%
-[13:54:23] [Server thread/INFO]: Wheat Growth Modifier: 100%
-[13:54:23] [Server thread/INFO]: NetherWart Growth Modifier: 100%
-[13:54:23] [Server thread/INFO]: Vine Growth Modifier: 100%
-[13:54:23] [Server thread/INFO]: Cocoa Growth Modifier: 100%
-[13:54:23] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
-[13:54:23] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
-[13:54:23] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
-[13:54:23] [Server thread/INFO]: Random Lighting Updates: false
-[13:54:23] [Server thread/INFO]: Structure Info Saving: true
-[13:54:23] [Server thread/INFO]: Max Entity Collisions: 8
-[13:54:23] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
-[13:54:23] [Server thread/INFO]: Max TNT Explosions: 100
-[13:54:23] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
-[13:54:23] [Server thread/INFO]: Item Despawn Rate: 6000
-[13:54:23] [Server thread/INFO]: Item Merge Radius: 2.5
-[13:54:23] [Server thread/INFO]: Arrow Despawn Rate: 1200
-[13:54:23] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
-[13:54:23] [Server thread/INFO]: View Distance: 10
-[13:54:23] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
-[13:54:23] [Server thread/INFO]: Experience Merge Radius: 3.0
-[13:54:23] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
-[13:54:23] [Server thread/INFO]: [BackPacks] Disabling BackPacks v2.0.0-ALPHA
-[13:54:23] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mClosed MySQL connection[m
-[13:54:23] [Server thread/INFO]: [BackPacks] Loading BackPacks v2.0.0-ALPHA
-[13:54:23] [Server thread/INFO]: [BackPacks] Enabling BackPacks v2.0.0-ALPHA
-[13:54:23] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mConnected to MySQL database[m
-[13:54:23] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mEnabled backpack [0;33;22mlittleBackPack[m
-[13:54:23] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mEnabled backpack [0;33;22mnormalBackPack[m
-[13:54:23] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
-[13:54:23] [Server thread/INFO]: CONSOLE: [0;32;1mReload complete.[m
-[13:55:50] [Server thread/INFO]: Stopping the server
-[13:55:50] [Server thread/INFO]: Stopping server
-[13:55:50] [Server thread/INFO]: [BackPacks] Disabling BackPacks v2.0.0-ALPHA
-[13:55:50] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mClosed MySQL connection[m
-[13:55:50] [Server thread/INFO]: Saving players
-[13:55:50] [Server thread/INFO]: michael1011at lost connection: Server closed
-[13:55:50] [Server thread/INFO]: michael1011at left the game
-[13:55:50] [Server thread/INFO]: Saving worlds
-[13:55:50] [Server thread/INFO]: Saving chunks for level 'world'/Overworld
-[13:55:51] [Server thread/INFO]: Saving chunks for level 'world_nether'/Nether
-[13:55:51] [Server thread/INFO]: Saving chunks for level 'world_the_end'/The End
+[14:45:47] [Server thread/INFO]: Starting minecraft server version 1.10.2
+[14:45:47] [Server thread/INFO]: Loading properties
+[14:45:47] [Server thread/INFO]: Default game type: SURVIVAL
+[14:45:47] [Server thread/INFO]: This server is running CraftBukkit version git-Spigot-2486fb7-60c1719 (MC: 1.10.2) (Implementing API version 1.10.2-R0.1-SNAPSHOT)
+[14:45:47] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[14:45:47] [Server thread/INFO]: Using 4 threads for Netty based IO
+[14:45:47] [Server thread/INFO]: Debug logging is disabled
+[14:45:47] [Server thread/INFO]: Generating keypair
+[14:45:47] [Server thread/INFO]: Starting Minecraft server on *:25565
+[14:45:47] [Server thread/INFO]: Using epoll channel type
+[14:45:47] [Server thread/INFO]: Set PluginClassLoader as parallel capable
+[14:45:47] [Server thread/INFO]: [BackPacks] Loading BackPacks v2.0.0-ALPHA
+[14:45:47] [Server thread/INFO]: **** Beginning UUID conversion, this may take A LONG time ****
+[14:45:47] [Server thread/INFO]: Preparing level "world"
+[14:45:47] [Server thread/INFO]: -------- World Settings For [world] --------
+[14:45:47] [Server thread/INFO]: Cactus Growth Modifier: 100%
+[14:45:47] [Server thread/INFO]: Cane Growth Modifier: 100%
+[14:45:47] [Server thread/INFO]: Melon Growth Modifier: 100%
+[14:45:47] [Server thread/INFO]: Mushroom Growth Modifier: 100%
+[14:45:47] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
+[14:45:47] [Server thread/INFO]: Sapling Growth Modifier: 100%
+[14:45:47] [Server thread/INFO]: Wheat Growth Modifier: 100%
+[14:45:47] [Server thread/INFO]: NetherWart Growth Modifier: 100%
+[14:45:47] [Server thread/INFO]: Vine Growth Modifier: 100%
+[14:45:47] [Server thread/INFO]: Cocoa Growth Modifier: 100%
+[14:45:47] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
+[14:45:47] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
+[14:45:47] [Server thread/INFO]: Mob Spawn Range: 4
+[14:45:47] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
+[14:45:47] [Server thread/INFO]: Random Lighting Updates: false
+[14:45:47] [Server thread/INFO]: Structure Info Saving: true
+[14:45:47] [Server thread/INFO]: Max Entity Collisions: 8
+[14:45:47] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
+[14:45:47] [Server thread/INFO]: Max TNT Explosions: 100
+[14:45:47] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
+[14:45:47] [Server thread/INFO]: Item Despawn Rate: 6000
+[14:45:47] [Server thread/INFO]: Item Merge Radius: 2.5
+[14:45:47] [Server thread/INFO]: Arrow Despawn Rate: 1200
+[14:45:47] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
+[14:45:47] [Server thread/INFO]: View Distance: 10
+[14:45:47] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
+[14:45:47] [Server thread/INFO]: Experience Merge Radius: 3.0
+[14:45:47] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
+[14:45:47] [Server thread/INFO]: -------- World Settings For [world_nether] --------
+[14:45:47] [Server thread/INFO]: Cactus Growth Modifier: 100%
+[14:45:47] [Server thread/INFO]: Cane Growth Modifier: 100%
+[14:45:47] [Server thread/INFO]: Melon Growth Modifier: 100%
+[14:45:47] [Server thread/INFO]: Mushroom Growth Modifier: 100%
+[14:45:47] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
+[14:45:47] [Server thread/INFO]: Sapling Growth Modifier: 100%
+[14:45:47] [Server thread/INFO]: Wheat Growth Modifier: 100%
+[14:45:47] [Server thread/INFO]: NetherWart Growth Modifier: 100%
+[14:45:47] [Server thread/INFO]: Vine Growth Modifier: 100%
+[14:45:47] [Server thread/INFO]: Cocoa Growth Modifier: 100%
+[14:45:47] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
+[14:45:47] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
+[14:45:47] [Server thread/INFO]: Mob Spawn Range: 4
+[14:45:47] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
+[14:45:47] [Server thread/INFO]: Random Lighting Updates: false
+[14:45:47] [Server thread/INFO]: Structure Info Saving: true
+[14:45:47] [Server thread/INFO]: Max Entity Collisions: 8
+[14:45:47] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
+[14:45:47] [Server thread/INFO]: Max TNT Explosions: 100
+[14:45:47] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
+[14:45:47] [Server thread/INFO]: Item Despawn Rate: 6000
+[14:45:47] [Server thread/INFO]: Item Merge Radius: 2.5
+[14:45:47] [Server thread/INFO]: Arrow Despawn Rate: 1200
+[14:45:47] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
+[14:45:47] [Server thread/INFO]: View Distance: 10
+[14:45:47] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
+[14:45:47] [Server thread/INFO]: Experience Merge Radius: 3.0
+[14:45:47] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
+[14:45:47] [Server thread/INFO]: -------- World Settings For [world_the_end] --------
+[14:45:47] [Server thread/INFO]: Cactus Growth Modifier: 100%
+[14:45:47] [Server thread/INFO]: Cane Growth Modifier: 100%
+[14:45:47] [Server thread/INFO]: Melon Growth Modifier: 100%
+[14:45:47] [Server thread/INFO]: Mushroom Growth Modifier: 100%
+[14:45:47] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
+[14:45:47] [Server thread/INFO]: Sapling Growth Modifier: 100%
+[14:45:47] [Server thread/INFO]: Wheat Growth Modifier: 100%
+[14:45:47] [Server thread/INFO]: NetherWart Growth Modifier: 100%
+[14:45:47] [Server thread/INFO]: Vine Growth Modifier: 100%
+[14:45:47] [Server thread/INFO]: Cocoa Growth Modifier: 100%
+[14:45:47] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
+[14:45:47] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
+[14:45:47] [Server thread/INFO]: Mob Spawn Range: 4
+[14:45:47] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
+[14:45:47] [Server thread/INFO]: Random Lighting Updates: false
+[14:45:47] [Server thread/INFO]: Structure Info Saving: true
+[14:45:47] [Server thread/INFO]: Max Entity Collisions: 8
+[14:45:47] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
+[14:45:47] [Server thread/INFO]: Max TNT Explosions: 100
+[14:45:47] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
+[14:45:47] [Server thread/INFO]: Item Despawn Rate: 6000
+[14:45:47] [Server thread/INFO]: Item Merge Radius: 2.5
+[14:45:47] [Server thread/INFO]: Arrow Despawn Rate: 1200
+[14:45:47] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
+[14:45:47] [Server thread/INFO]: View Distance: 10
+[14:45:47] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
+[14:45:47] [Server thread/INFO]: Experience Merge Radius: 3.0
+[14:45:47] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
+[14:45:47] [Server thread/INFO]: Preparing start region for level 0 (Seed: 5035148172628248101)
+[14:45:48] [Server thread/INFO]: Preparing spawn area: 32%
+[14:45:49] [Server thread/INFO]: Preparing start region for level 1 (Seed: 5035148172628248101)
+[14:45:50] [Server thread/INFO]: Preparing start region for level 2 (Seed: 5035148172628248101)
+[14:45:50] [Server thread/INFO]: [BackPacks] Enabling BackPacks v2.0.0-ALPHA
+[14:45:50] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mConnected to MySQL database[m
+[14:45:50] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mEnabled backpack [0;33;22mlittleBackPack[m
+[14:45:50] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mEnabled backpack [0;33;22mnormalBackPack[m
+[14:45:50] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[14:45:50] [Server thread/INFO]: Done (3,003s)! For help, type "help" or "?"
+[14:46:27] [User Authenticator #1/INFO]: UUID of player michael1011at is ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8
+[14:46:27] [Server thread/INFO]: michael1011at[/127.0.0.1:56612] logged in with entity id 278 at ([world]106.8947296363622, 74.0, 478.8818544761919)
+[14:46:32] [Server thread/INFO]: michael1011at issued server command: /op
+[14:46:37] [Server thread/INFO]: michael1011at issued server command: /time set day
+[14:46:37] [Server thread/INFO]: [michael1011at: Set the time to 1000]
+[14:46:39] [Server thread/ERROR]: Exception when michael1011at attempted to tab complete /deop 
+org.bukkit.command.CommandException: Unhandled exception executing tab-completer for 'deop ' in org.bukkit.craftbukkit.v1_10_R1.command.VanillaCommandWrapper(deop)
+	at org.bukkit.command.SimpleCommandMap.tabComplete(SimpleCommandMap.java:221) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.command.SimpleCommandMap.tabComplete(SimpleCommandMap.java:169) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.craftbukkit.v1_10_R1.CraftServer.tabCompleteCommand(CraftServer.java:1610) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.craftbukkit.v1_10_R1.CraftServer.tabComplete(CraftServer.java:1588) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.tabCompleteCommand(MinecraftServer.java:1105) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.PlayerConnection.a(PlayerConnection.java:2145) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.PacketPlayInTabComplete.a(SourceFile:52) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.PacketPlayInTabComplete.a(SourceFile:11) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.PlayerConnectionUtils$1.run(SourceFile:13) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_91]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_91]
+	at net.minecraft.server.v1_10_R1.SystemUtils.a(SourceFile:45) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.D(MinecraftServer.java:732) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.DedicatedServer.D(DedicatedServer.java:400) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.C(MinecraftServer.java:668) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.run(MinecraftServer.java:567) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_91]
+Caused by: java.lang.NullPointerException
+	at org.bukkit.craftbukkit.v1_10_R1.command.VanillaCommandWrapper.tabComplete(VanillaCommandWrapper.java:46) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.command.SimpleCommandMap.tabComplete(SimpleCommandMap.java:217) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	... 16 more
+[14:46:40] [Server thread/ERROR]: Exception when michael1011at attempted to tab complete /deop 
+org.bukkit.command.CommandException: Unhandled exception executing tab-completer for 'deop ' in org.bukkit.craftbukkit.v1_10_R1.command.VanillaCommandWrapper(deop)
+	at org.bukkit.command.SimpleCommandMap.tabComplete(SimpleCommandMap.java:221) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.command.SimpleCommandMap.tabComplete(SimpleCommandMap.java:169) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.craftbukkit.v1_10_R1.CraftServer.tabCompleteCommand(CraftServer.java:1610) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.craftbukkit.v1_10_R1.CraftServer.tabComplete(CraftServer.java:1588) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.tabCompleteCommand(MinecraftServer.java:1105) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.PlayerConnection.a(PlayerConnection.java:2145) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.PacketPlayInTabComplete.a(SourceFile:52) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.PacketPlayInTabComplete.a(SourceFile:11) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.PlayerConnectionUtils$1.run(SourceFile:13) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_91]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_91]
+	at net.minecraft.server.v1_10_R1.SystemUtils.a(SourceFile:45) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.D(MinecraftServer.java:732) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.DedicatedServer.D(DedicatedServer.java:400) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.C(MinecraftServer.java:668) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.run(MinecraftServer.java:567) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_91]
+Caused by: java.lang.NullPointerException
+	at org.bukkit.craftbukkit.v1_10_R1.command.VanillaCommandWrapper.tabComplete(VanillaCommandWrapper.java:46) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.command.SimpleCommandMap.tabComplete(SimpleCommandMap.java:217) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	... 16 more
+[14:46:46] [Server thread/ERROR]: Exception when michael1011at attempted to tab complete /deop m
+org.bukkit.command.CommandException: Unhandled exception executing tab-completer for 'deop m' in org.bukkit.craftbukkit.v1_10_R1.command.VanillaCommandWrapper(deop)
+	at org.bukkit.command.SimpleCommandMap.tabComplete(SimpleCommandMap.java:221) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.command.SimpleCommandMap.tabComplete(SimpleCommandMap.java:169) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.craftbukkit.v1_10_R1.CraftServer.tabCompleteCommand(CraftServer.java:1610) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.craftbukkit.v1_10_R1.CraftServer.tabComplete(CraftServer.java:1588) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.tabCompleteCommand(MinecraftServer.java:1105) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.PlayerConnection.a(PlayerConnection.java:2145) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.PacketPlayInTabComplete.a(SourceFile:52) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.PacketPlayInTabComplete.a(SourceFile:11) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.PlayerConnectionUtils$1.run(SourceFile:13) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_91]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_91]
+	at net.minecraft.server.v1_10_R1.SystemUtils.a(SourceFile:45) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.D(MinecraftServer.java:732) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.DedicatedServer.D(DedicatedServer.java:400) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.C(MinecraftServer.java:668) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.run(MinecraftServer.java:567) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_91]
+Caused by: java.lang.NullPointerException
+	at org.bukkit.craftbukkit.v1_10_R1.command.VanillaCommandWrapper.tabComplete(VanillaCommandWrapper.java:46) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.command.SimpleCommandMap.tabComplete(SimpleCommandMap.java:217) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	... 16 more
+[14:46:49] [Server thread/INFO]: michael1011at issued server command: /deop michael1011.at
+[14:46:49] [Server thread/INFO]: [michael1011at: Could not de-op michael1011.at]
+[14:46:52] [Server thread/INFO]: michael1011at issued server command: /deop michael1011
+[14:46:52] [Server thread/INFO]: [michael1011at: Could not de-op michael1011]
+[14:46:53] [Server thread/INFO]: michael1011at issued server command: /deop michael1011at
+[14:46:53] [Server thread/INFO]: [michael1011at: De-opped michael1011at]
+[14:47:10] [Server console handler/WARN]: Unhandled exception when tab completing
+java.util.concurrent.ExecutionException: org.bukkit.command.CommandException: Unhandled exception executing tab-completer for 'op n' in org.bukkit.craftbukkit.v1_10_R1.command.VanillaCommandWrapper(op)
+	at org.bukkit.craftbukkit.v1_10_R1.util.Waitable.get(Waitable.java:42) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.craftbukkit.v1_10_R1.command.ConsoleCommandCompleter.complete(ConsoleCommandCompleter.java:35) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.craftbukkit.libs.jline.console.ConsoleReader.complete(ConsoleReader.java:3261) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.craftbukkit.libs.jline.console.ConsoleReader.readLine(ConsoleReader.java:2621) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.DedicatedServer$2.run(DedicatedServer.java:84) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+Caused by: org.bukkit.command.CommandException: Unhandled exception executing tab-completer for 'op n' in org.bukkit.craftbukkit.v1_10_R1.command.VanillaCommandWrapper(op)
+	at org.bukkit.command.SimpleCommandMap.tabComplete(SimpleCommandMap.java:221) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.command.SimpleCommandMap.tabComplete(SimpleCommandMap.java:169) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.craftbukkit.v1_10_R1.command.ConsoleCommandCompleter$1.evaluate(ConsoleCommandCompleter.java:25) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.craftbukkit.v1_10_R1.command.ConsoleCommandCompleter$1.evaluate(ConsoleCommandCompleter.java:1) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.craftbukkit.v1_10_R1.util.Waitable.run(Waitable.java:24) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.D(MinecraftServer.java:742) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.DedicatedServer.D(DedicatedServer.java:400) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.C(MinecraftServer.java:668) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.run(MinecraftServer.java:567) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at java.lang.Thread.run(Thread.java:745) ~[?:1.8.0_91]
+Caused by: java.lang.NullPointerException
+	at org.bukkit.craftbukkit.v1_10_R1.command.VanillaCommandWrapper.tabComplete(VanillaCommandWrapper.java:46) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.command.SimpleCommandMap.tabComplete(SimpleCommandMap.java:217) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.command.SimpleCommandMap.tabComplete(SimpleCommandMap.java:169) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.craftbukkit.v1_10_R1.command.ConsoleCommandCompleter$1.evaluate(ConsoleCommandCompleter.java:25) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.craftbukkit.v1_10_R1.command.ConsoleCommandCompleter$1.evaluate(ConsoleCommandCompleter.java:1) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.craftbukkit.v1_10_R1.util.Waitable.run(Waitable.java:24) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.D(MinecraftServer.java:742) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.DedicatedServer.D(DedicatedServer.java:400) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.C(MinecraftServer.java:668) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.run(MinecraftServer.java:567) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at java.lang.Thread.run(Thread.java:745) ~[?:1.8.0_91]
+[14:47:12] [Server console handler/WARN]: Unhandled exception when tab completing
+java.util.concurrent.ExecutionException: org.bukkit.command.CommandException: Unhandled exception executing tab-completer for 'op m' in org.bukkit.craftbukkit.v1_10_R1.command.VanillaCommandWrapper(op)
+	at org.bukkit.craftbukkit.v1_10_R1.util.Waitable.get(Waitable.java:42) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.craftbukkit.v1_10_R1.command.ConsoleCommandCompleter.complete(ConsoleCommandCompleter.java:35) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.craftbukkit.libs.jline.console.ConsoleReader.complete(ConsoleReader.java:3261) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.craftbukkit.libs.jline.console.ConsoleReader.readLine(ConsoleReader.java:2621) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.DedicatedServer$2.run(DedicatedServer.java:84) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+Caused by: org.bukkit.command.CommandException: Unhandled exception executing tab-completer for 'op m' in org.bukkit.craftbukkit.v1_10_R1.command.VanillaCommandWrapper(op)
+	at org.bukkit.command.SimpleCommandMap.tabComplete(SimpleCommandMap.java:221) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.command.SimpleCommandMap.tabComplete(SimpleCommandMap.java:169) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.craftbukkit.v1_10_R1.command.ConsoleCommandCompleter$1.evaluate(ConsoleCommandCompleter.java:25) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.craftbukkit.v1_10_R1.command.ConsoleCommandCompleter$1.evaluate(ConsoleCommandCompleter.java:1) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.craftbukkit.v1_10_R1.util.Waitable.run(Waitable.java:24) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.D(MinecraftServer.java:742) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.DedicatedServer.D(DedicatedServer.java:400) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.C(MinecraftServer.java:668) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.run(MinecraftServer.java:567) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at java.lang.Thread.run(Thread.java:745) ~[?:1.8.0_91]
+Caused by: java.lang.NullPointerException
+	at org.bukkit.craftbukkit.v1_10_R1.command.VanillaCommandWrapper.tabComplete(VanillaCommandWrapper.java:46) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.command.SimpleCommandMap.tabComplete(SimpleCommandMap.java:217) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.command.SimpleCommandMap.tabComplete(SimpleCommandMap.java:169) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.craftbukkit.v1_10_R1.command.ConsoleCommandCompleter$1.evaluate(ConsoleCommandCompleter.java:25) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.craftbukkit.v1_10_R1.command.ConsoleCommandCompleter$1.evaluate(ConsoleCommandCompleter.java:1) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.craftbukkit.v1_10_R1.util.Waitable.run(Waitable.java:24) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.D(MinecraftServer.java:742) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.DedicatedServer.D(DedicatedServer.java:400) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.C(MinecraftServer.java:668) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.run(MinecraftServer.java:567) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at java.lang.Thread.run(Thread.java:745) ~[?:1.8.0_91]
+[14:47:17] [Server thread/INFO]: Opped michael1011at
+[14:51:35] [Server thread/INFO]: This server is running CraftBukkit version git-Spigot-2486fb7-60c1719 (MC: 1.10.2) (Implementing API version 1.10.2-R0.1-SNAPSHOT)[m
+[14:51:35] [Server thread/INFO]: Checking version, please wait...[m
+[14:51:37] [Thread-8/INFO]: You are running the latest version[m
+[14:51:39] [Server thread/INFO]: CONSOLE: [0;31;1mPlease note that this command is not supported and may cause issues when using some plugins.[m
+[14:51:39] [Server thread/INFO]: CONSOLE: [0;31;1mIf you encounter any issues please use the /stop command to restart your server.[m
+[14:51:39] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[14:51:39] [Server thread/INFO]: Using 4 threads for Netty based IO
+[14:51:39] [Server thread/INFO]: Debug logging is disabled
+[14:51:39] [Server thread/INFO]: -------- World Settings For [world] --------
+[14:51:39] [Server thread/INFO]: Cactus Growth Modifier: 100%
+[14:51:39] [Server thread/INFO]: Cane Growth Modifier: 100%
+[14:51:39] [Server thread/INFO]: Melon Growth Modifier: 100%
+[14:51:39] [Server thread/INFO]: Mushroom Growth Modifier: 100%
+[14:51:39] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
+[14:51:39] [Server thread/INFO]: Sapling Growth Modifier: 100%
+[14:51:39] [Server thread/INFO]: Wheat Growth Modifier: 100%
+[14:51:39] [Server thread/INFO]: NetherWart Growth Modifier: 100%
+[14:51:39] [Server thread/INFO]: Vine Growth Modifier: 100%
+[14:51:39] [Server thread/INFO]: Cocoa Growth Modifier: 100%
+[14:51:39] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
+[14:51:39] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
+[14:51:39] [Server thread/INFO]: Mob Spawn Range: 4
+[14:51:39] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
+[14:51:39] [Server thread/INFO]: Random Lighting Updates: false
+[14:51:39] [Server thread/INFO]: Structure Info Saving: true
+[14:51:39] [Server thread/INFO]: Max Entity Collisions: 8
+[14:51:39] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
+[14:51:39] [Server thread/INFO]: Max TNT Explosions: 100
+[14:51:39] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
+[14:51:39] [Server thread/INFO]: Item Despawn Rate: 6000
+[14:51:39] [Server thread/INFO]: Item Merge Radius: 2.5
+[14:51:39] [Server thread/INFO]: Arrow Despawn Rate: 1200
+[14:51:39] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
+[14:51:39] [Server thread/INFO]: View Distance: 10
+[14:51:39] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
+[14:51:39] [Server thread/INFO]: Experience Merge Radius: 3.0
+[14:51:39] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
+[14:51:39] [Server thread/INFO]: -------- World Settings For [world_nether] --------
+[14:51:39] [Server thread/INFO]: Cactus Growth Modifier: 100%
+[14:51:39] [Server thread/INFO]: Cane Growth Modifier: 100%
+[14:51:39] [Server thread/INFO]: Melon Growth Modifier: 100%
+[14:51:39] [Server thread/INFO]: Mushroom Growth Modifier: 100%
+[14:51:39] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
+[14:51:39] [Server thread/INFO]: Sapling Growth Modifier: 100%
+[14:51:39] [Server thread/INFO]: Wheat Growth Modifier: 100%
+[14:51:39] [Server thread/INFO]: NetherWart Growth Modifier: 100%
+[14:51:39] [Server thread/INFO]: Vine Growth Modifier: 100%
+[14:51:39] [Server thread/INFO]: Cocoa Growth Modifier: 100%
+[14:51:39] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
+[14:51:39] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
+[14:51:39] [Server thread/INFO]: Mob Spawn Range: 4
+[14:51:39] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
+[14:51:39] [Server thread/INFO]: Random Lighting Updates: false
+[14:51:39] [Server thread/INFO]: Structure Info Saving: true
+[14:51:39] [Server thread/INFO]: Max Entity Collisions: 8
+[14:51:39] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
+[14:51:39] [Server thread/INFO]: Max TNT Explosions: 100
+[14:51:39] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
+[14:51:39] [Server thread/INFO]: Item Despawn Rate: 6000
+[14:51:39] [Server thread/INFO]: Item Merge Radius: 2.5
+[14:51:39] [Server thread/INFO]: Arrow Despawn Rate: 1200
+[14:51:39] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
+[14:51:39] [Server thread/INFO]: View Distance: 10
+[14:51:39] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
+[14:51:39] [Server thread/INFO]: Experience Merge Radius: 3.0
+[14:51:39] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
+[14:51:39] [Server thread/INFO]: -------- World Settings For [world_the_end] --------
+[14:51:39] [Server thread/INFO]: Cactus Growth Modifier: 100%
+[14:51:39] [Server thread/INFO]: Cane Growth Modifier: 100%
+[14:51:39] [Server thread/INFO]: Melon Growth Modifier: 100%
+[14:51:39] [Server thread/INFO]: Mushroom Growth Modifier: 100%
+[14:51:39] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
+[14:51:39] [Server thread/INFO]: Sapling Growth Modifier: 100%
+[14:51:39] [Server thread/INFO]: Wheat Growth Modifier: 100%
+[14:51:39] [Server thread/INFO]: NetherWart Growth Modifier: 100%
+[14:51:39] [Server thread/INFO]: Vine Growth Modifier: 100%
+[14:51:39] [Server thread/INFO]: Cocoa Growth Modifier: 100%
+[14:51:39] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
+[14:51:39] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
+[14:51:39] [Server thread/INFO]: Mob Spawn Range: 4
+[14:51:39] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
+[14:51:39] [Server thread/INFO]: Random Lighting Updates: false
+[14:51:39] [Server thread/INFO]: Structure Info Saving: true
+[14:51:39] [Server thread/INFO]: Max Entity Collisions: 8
+[14:51:39] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
+[14:51:39] [Server thread/INFO]: Max TNT Explosions: 100
+[14:51:39] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
+[14:51:39] [Server thread/INFO]: Item Despawn Rate: 6000
+[14:51:39] [Server thread/INFO]: Item Merge Radius: 2.5
+[14:51:39] [Server thread/INFO]: Arrow Despawn Rate: 1200
+[14:51:39] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
+[14:51:39] [Server thread/INFO]: View Distance: 10
+[14:51:39] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
+[14:51:39] [Server thread/INFO]: Experience Merge Radius: 3.0
+[14:51:39] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
+[14:51:39] [Server thread/INFO]: [BackPacks] Disabling BackPacks v2.0.0-ALPHA
+[14:51:39] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mClosed MySQL connection[m
+[14:51:39] [Server thread/INFO]: [BackPacks] Loading BackPacks v2.0.0-ALPHA
+[14:51:39] [Server thread/INFO]: [BackPacks] Enabling BackPacks v2.0.0-ALPHA
+[14:51:39] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mConnected to MySQL database[m
+[14:51:39] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mEnabled backpack [0;33;22mlittleBackPack[m
+[14:51:39] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mEnabled backpack [0;33;22mnormalBackPack[m
+[14:51:39] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[14:51:39] [Server thread/INFO]: CONSOLE: [0;32;1mReload complete.[m
+[14:51:48] [Server thread/ERROR]: Exception when michael1011at attempted to tab complete /deop m
+org.bukkit.command.CommandException: Unhandled exception executing tab-completer for 'deop m' in org.bukkit.craftbukkit.v1_10_R1.command.VanillaCommandWrapper(deop)
+	at org.bukkit.command.SimpleCommandMap.tabComplete(SimpleCommandMap.java:221) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.command.SimpleCommandMap.tabComplete(SimpleCommandMap.java:169) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.craftbukkit.v1_10_R1.CraftServer.tabCompleteCommand(CraftServer.java:1610) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.craftbukkit.v1_10_R1.CraftServer.tabComplete(CraftServer.java:1588) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.tabCompleteCommand(MinecraftServer.java:1105) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.PlayerConnection.a(PlayerConnection.java:2145) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.PacketPlayInTabComplete.a(SourceFile:52) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.PacketPlayInTabComplete.a(SourceFile:11) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.PlayerConnectionUtils$1.run(SourceFile:13) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_91]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_91]
+	at net.minecraft.server.v1_10_R1.SystemUtils.a(SourceFile:45) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.D(MinecraftServer.java:732) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.DedicatedServer.D(DedicatedServer.java:400) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.C(MinecraftServer.java:668) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.run(MinecraftServer.java:567) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_91]
+Caused by: java.lang.NullPointerException
+	at org.bukkit.craftbukkit.v1_10_R1.command.VanillaCommandWrapper.tabComplete(VanillaCommandWrapper.java:46) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.command.SimpleCommandMap.tabComplete(SimpleCommandMap.java:217) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	... 16 more
+[14:51:50] [Server thread/INFO]: michael1011at issued server command: /deop michael1011.at
+[14:51:50] [Server thread/INFO]: [michael1011at: Could not de-op michael1011.at]
+[14:51:52] [Server thread/INFO]: michael1011at issued server command: /deop michael1011at
+[14:51:52] [Server thread/INFO]: [michael1011at: De-opped michael1011at]
+[14:51:54] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to BackPacks v2.0.0-ALPHA
+org.bukkit.event.EventException
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.craftbukkit.v1_10_R1.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:231) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.craftbukkit.v1_10_R1.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:198) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.craftbukkit.v1_10_R1.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:194) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.PlayerConnection.a(PlayerConnection.java:946) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.PacketPlayInBlockPlace.a(PacketPlayInBlockPlace.java:27) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.PacketPlayInBlockPlace.a(PacketPlayInBlockPlace.java:1) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.PlayerConnectionUtils$1.run(SourceFile:13) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_91]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_91]
+	at net.minecraft.server.v1_10_R1.SystemUtils.a(SourceFile:45) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.D(MinecraftServer.java:732) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.DedicatedServer.D(DedicatedServer.java:400) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.C(MinecraftServer.java:668) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.run(MinecraftServer.java:567) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_91]
+Caused by: java.lang.NullPointerException
+	at org.bukkit.ChatColor.translateAlternateColorCodes(ChatColor.java:324) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at at.michael1011.backpacks.listeners.RightClick.rightClick(RightClick.java:41) ~[?:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	... 18 more
+[14:51:55] [Server thread/ERROR]: Could not pass event PlayerInteractEvent to BackPacks v2.0.0-ALPHA
+org.bukkit.event.EventException
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.craftbukkit.v1_10_R1.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:231) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.craftbukkit.v1_10_R1.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:198) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at org.bukkit.craftbukkit.v1_10_R1.event.CraftEventFactory.callPlayerInteractEvent(CraftEventFactory.java:194) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.PlayerConnection.a(PlayerConnection.java:946) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.PacketPlayInBlockPlace.a(PacketPlayInBlockPlace.java:27) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.PacketPlayInBlockPlace.a(PacketPlayInBlockPlace.java:1) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.PlayerConnectionUtils$1.run(SourceFile:13) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_91]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_91]
+	at net.minecraft.server.v1_10_R1.SystemUtils.a(SourceFile:45) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.D(MinecraftServer.java:732) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.DedicatedServer.D(DedicatedServer.java:400) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.C(MinecraftServer.java:668) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at net.minecraft.server.v1_10_R1.MinecraftServer.run(MinecraftServer.java:567) [spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_91]
+Caused by: java.lang.NullPointerException
+	at org.bukkit.ChatColor.translateAlternateColorCodes(ChatColor.java:324) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	at at.michael1011.backpacks.listeners.RightClick.rightClick(RightClick.java:41) ~[?:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_91]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot-1.10.2.jar:git-Spigot-2486fb7-60c1719]
+	... 18 more
+[14:52:21] [Server thread/INFO]: CONSOLE: [0;31;1mPlease note that this command is not supported and may cause issues when using some plugins.[m
+[14:52:21] [Server thread/INFO]: CONSOLE: [0;31;1mIf you encounter any issues please use the /stop command to restart your server.[m
+[14:52:21] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[14:52:21] [Server thread/INFO]: Using 4 threads for Netty based IO
+[14:52:21] [Server thread/INFO]: Debug logging is disabled
+[14:52:21] [Server thread/INFO]: -------- World Settings For [world] --------
+[14:52:21] [Server thread/INFO]: Cactus Growth Modifier: 100%
+[14:52:21] [Server thread/INFO]: Cane Growth Modifier: 100%
+[14:52:21] [Server thread/INFO]: Melon Growth Modifier: 100%
+[14:52:21] [Server thread/INFO]: Mushroom Growth Modifier: 100%
+[14:52:21] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
+[14:52:21] [Server thread/INFO]: Sapling Growth Modifier: 100%
+[14:52:21] [Server thread/INFO]: Wheat Growth Modifier: 100%
+[14:52:21] [Server thread/INFO]: NetherWart Growth Modifier: 100%
+[14:52:21] [Server thread/INFO]: Vine Growth Modifier: 100%
+[14:52:21] [Server thread/INFO]: Cocoa Growth Modifier: 100%
+[14:52:21] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
+[14:52:21] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
+[14:52:21] [Server thread/INFO]: Mob Spawn Range: 4
+[14:52:21] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
+[14:52:21] [Server thread/INFO]: Random Lighting Updates: false
+[14:52:21] [Server thread/INFO]: Structure Info Saving: true
+[14:52:21] [Server thread/INFO]: Max Entity Collisions: 8
+[14:52:21] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
+[14:52:21] [Server thread/INFO]: Max TNT Explosions: 100
+[14:52:21] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
+[14:52:21] [Server thread/INFO]: Item Despawn Rate: 6000
+[14:52:21] [Server thread/INFO]: Item Merge Radius: 2.5
+[14:52:21] [Server thread/INFO]: Arrow Despawn Rate: 1200
+[14:52:21] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
+[14:52:21] [Server thread/INFO]: View Distance: 10
+[14:52:21] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
+[14:52:21] [Server thread/INFO]: Experience Merge Radius: 3.0
+[14:52:21] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
+[14:52:21] [Server thread/INFO]: -------- World Settings For [world_nether] --------
+[14:52:21] [Server thread/INFO]: Cactus Growth Modifier: 100%
+[14:52:21] [Server thread/INFO]: Cane Growth Modifier: 100%
+[14:52:21] [Server thread/INFO]: Melon Growth Modifier: 100%
+[14:52:21] [Server thread/INFO]: Mushroom Growth Modifier: 100%
+[14:52:21] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
+[14:52:21] [Server thread/INFO]: Sapling Growth Modifier: 100%
+[14:52:21] [Server thread/INFO]: Wheat Growth Modifier: 100%
+[14:52:21] [Server thread/INFO]: NetherWart Growth Modifier: 100%
+[14:52:21] [Server thread/INFO]: Vine Growth Modifier: 100%
+[14:52:21] [Server thread/INFO]: Cocoa Growth Modifier: 100%
+[14:52:21] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
+[14:52:21] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
+[14:52:21] [Server thread/INFO]: Mob Spawn Range: 4
+[14:52:21] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
+[14:52:21] [Server thread/INFO]: Random Lighting Updates: false
+[14:52:21] [Server thread/INFO]: Structure Info Saving: true
+[14:52:21] [Server thread/INFO]: Max Entity Collisions: 8
+[14:52:21] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
+[14:52:21] [Server thread/INFO]: Max TNT Explosions: 100
+[14:52:21] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
+[14:52:21] [Server thread/INFO]: Item Despawn Rate: 6000
+[14:52:21] [Server thread/INFO]: Item Merge Radius: 2.5
+[14:52:21] [Server thread/INFO]: Arrow Despawn Rate: 1200
+[14:52:21] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
+[14:52:21] [Server thread/INFO]: View Distance: 10
+[14:52:21] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
+[14:52:21] [Server thread/INFO]: Experience Merge Radius: 3.0
+[14:52:21] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
+[14:52:21] [Server thread/INFO]: -------- World Settings For [world_the_end] --------
+[14:52:21] [Server thread/INFO]: Cactus Growth Modifier: 100%
+[14:52:21] [Server thread/INFO]: Cane Growth Modifier: 100%
+[14:52:21] [Server thread/INFO]: Melon Growth Modifier: 100%
+[14:52:21] [Server thread/INFO]: Mushroom Growth Modifier: 100%
+[14:52:21] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
+[14:52:21] [Server thread/INFO]: Sapling Growth Modifier: 100%
+[14:52:21] [Server thread/INFO]: Wheat Growth Modifier: 100%
+[14:52:21] [Server thread/INFO]: NetherWart Growth Modifier: 100%
+[14:52:21] [Server thread/INFO]: Vine Growth Modifier: 100%
+[14:52:21] [Server thread/INFO]: Cocoa Growth Modifier: 100%
+[14:52:21] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
+[14:52:21] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
+[14:52:21] [Server thread/INFO]: Mob Spawn Range: 4
+[14:52:21] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
+[14:52:21] [Server thread/INFO]: Random Lighting Updates: false
+[14:52:21] [Server thread/INFO]: Structure Info Saving: true
+[14:52:21] [Server thread/INFO]: Max Entity Collisions: 8
+[14:52:21] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
+[14:52:21] [Server thread/INFO]: Max TNT Explosions: 100
+[14:52:21] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
+[14:52:21] [Server thread/INFO]: Item Despawn Rate: 6000
+[14:52:21] [Server thread/INFO]: Item Merge Radius: 2.5
+[14:52:21] [Server thread/INFO]: Arrow Despawn Rate: 1200
+[14:52:21] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
+[14:52:21] [Server thread/INFO]: View Distance: 10
+[14:52:21] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
+[14:52:21] [Server thread/INFO]: Experience Merge Radius: 3.0
+[14:52:21] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
+[14:52:21] [Server thread/INFO]: [BackPacks] Disabling BackPacks v2.0.0-ALPHA
+[14:52:21] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mClosed MySQL connection[m
+[14:52:21] [Server thread/INFO]: [BackPacks] Loading BackPacks v2.0.0-ALPHA
+[14:52:21] [Server thread/INFO]: [BackPacks] Enabling BackPacks v2.0.0-ALPHA
+[14:52:21] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mConnected to MySQL database[m
+[14:52:21] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mEnabled backpack [0;33;22mlittleBackPack[m
+[14:52:21] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mEnabled backpack [0;33;22mnormalBackPack[m
+[14:52:21] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[14:52:21] [Server thread/INFO]: CONSOLE: [0;32;1mReload complete.[m
+[14:52:29] [Server thread/INFO]: michael1011at issued server command: /bpg
+[14:52:31] [Server thread/INFO]: michael1011at issued server command: /bpg
+[14:52:37] [Server thread/INFO]: michael1011at issued server command: /op michael1011.at
+[14:52:39] [Server thread/INFO]: michael1011at issued server command: /op michael1011at
+[14:52:45] [Server thread/INFO]: Opped michael1011at
+[14:52:50] [Server thread/INFO]: michael1011at issued server command: /timings
+[14:52:52] [Server thread/INFO]: michael1011at issued server command: /timings on
+[14:53:00] [Server thread/INFO]: michael1011at issued server command: /timings off
+[14:53:09] [Server thread/INFO]: michael1011at issued server command: /timings reset
+[14:53:15] [Server thread/INFO]: michael1011at issued server command: /timings on
+[14:53:21] [Server thread/INFO]: michael1011at lost connection: Disconnected
+[14:53:21] [Server thread/INFO]: michael1011at left the game
+[14:53:25] [Server thread/INFO]: Timings reset[m
+[14:53:30] [User Authenticator #2/INFO]: UUID of player michael1011at is ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8
+[14:53:30] [Server thread/INFO]: michael1011at[/127.0.0.1:56740] logged in with entity id 966 at ([world]126.69999998807907, 67.0, 423.38570257477744)
+[14:53:38] [Server thread/INFO]: michael1011at issued server command: /bpg littleBackPack
+[14:53:47] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mYou gave [0;33;22mnormalBackPack [0;33;1mto [0;33;22mmichael1011at[m
+[14:53:57] [Server thread/INFO]: michael1011at lost connection: Disconnected
+[14:53:57] [Server thread/INFO]: michael1011at left the game
+[14:54:02] [Timings paste thread/INFO]: [0;32;1mTimings results can be viewed at https://www.spigotmc.org/go/timings?url=cejulebona[m
+[14:54:07] [Server thread/INFO]: Disabled Timings[m
+[14:55:17] [Server thread/INFO]: This server is running CraftBukkit version git-Spigot-2486fb7-60c1719 (MC: 1.10.2) (Implementing API version 1.10.2-R0.1-SNAPSHOT)[m
+[14:55:17] [Server thread/INFO]: Checking version, please wait...[m
+[14:55:18] [Thread-9/INFO]: You are running the latest version[m
+[15:02:36] [Server thread/INFO]: Stopping the server
+[15:02:36] [Server thread/INFO]: Stopping server
+[15:02:36] [Server thread/INFO]: [BackPacks] Disabling BackPacks v2.0.0-ALPHA
+[15:02:36] [Server thread/INFO]: [0;37;22m[[0;31;22mBackPacks[0;37;22m][m [0;33;1mClosed MySQL connection[m
+[15:02:36] [Server thread/INFO]: Saving players
+[15:02:36] [Server thread/INFO]: Saving worlds
+[15:02:36] [Server thread/INFO]: Saving chunks for level 'world'/Overworld
+[15:02:36] [Server thread/INFO]: Saving chunks for level 'world_nether'/Nether
+[15:02:36] [Server thread/INFO]: Saving chunks for level 'world_the_end'/The End

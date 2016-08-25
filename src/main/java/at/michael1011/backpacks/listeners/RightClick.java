@@ -3,6 +3,7 @@ package at.michael1011.backpacks.listeners;
 import at.michael1011.backpacks.Crafting;
 import at.michael1011.backpacks.Main;
 import at.michael1011.backpacks.inventories.Open;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -10,6 +11,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
+
+import static at.michael1011.backpacks.Main.messages;
+import static at.michael1011.backpacks.Main.prefix;
 
 public class RightClick implements Listener {
 
@@ -30,7 +34,14 @@ public class RightClick implements Listener {
                 if(backPack != null) {
                     Player p = e.getPlayer();
 
-                    new Open(p, p.getUniqueId(), backPack, item.getItemMeta().getDisplayName());
+                    if(p.hasPermission("backpacks.use."+backPack)) {
+                        new Open(p, p.getUniqueId(), backPack, item.getItemMeta().getDisplayName());
+
+                    } else {
+                        p.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                messages.getString("Help.noPermission")));
+                    }
+
                 }
 
             }

@@ -8,6 +8,7 @@ MySQL:
 
 Help:
   onlyPlayers: "&4Only players &ccan use this command"
+  noPermission: "&cYou &4don't &chave enough permissions"
 
   playerNotFound: "&cThe player &4%target% &ccouldn't be foubd"
   # When you want to interact with a player that isn't online (%target% is the offline player)
