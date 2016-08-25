@@ -17,13 +17,11 @@ import static at.michael1011.backpacks.Main.prefix;
 
 public class Give implements CommandExecutor {
 
-    public void register(Main main) {
+    public Give(Main main) {
         main.getCommand("bpgive").setExecutor(this);
     }
 
     // todo: add autocompletion for players and backpacks
-
-    // todo: write test
 
     private static final String path = "Help.bpgive.";
 
@@ -65,7 +63,7 @@ public class Give implements CommandExecutor {
     }
 
     private static void giveBackPack(CommandSender sender, Player target, String backpack) {
-        ItemStack item = Crafting.items.get(backpack);
+        ItemStack item = Crafting.itemsInverted.get(backpack);
 
         if(item != null) {
             target.getInventory().addItem(item);
@@ -81,6 +79,8 @@ public class Give implements CommandExecutor {
         } else {
             sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                     messages.getString(path+"backPackNotFound").replaceAll("%backpack%", backpack)));
+
+            // todo: show available backpacks
         }
 
     }

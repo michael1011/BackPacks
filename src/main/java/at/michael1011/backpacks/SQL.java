@@ -1,21 +1,28 @@
 package at.michael1011.backpacks;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class SQL {
 
-    static Connection con;
+    private static Connection con;
 
-    public static ResultSet getResult(final String query) throws SQLException {
-        return con.prepareStatement(query).executeQuery();
+    public static ResultSet getResult(final String query) {
+        try {
+            return con.prepareStatement(query).executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
 
-    public static Boolean query(final String query) throws SQLException {
-        return con.prepareStatement(query).execute();
+    public static void query(final String query) {
+        try {
+            con.prepareStatement(query).executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void createCon(String host, String port, String database,
@@ -32,8 +39,24 @@ public class SQL {
 
     }
 
-    public static boolean checkCon() {
+    static boolean checkCon() {
         return con != null;
+    }
+
+    public static boolean checkTable(final String table) {
+        try {
+
+            DatabaseMetaData dmb = con.getMetaData();
+
+            ResultSet tables = dmb.getTables(null, null, table, null);
+
+            return tables.next();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
     }
 
 }

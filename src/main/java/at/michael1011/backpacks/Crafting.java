@@ -16,12 +16,14 @@ import static at.michael1011.backpacks.Main.*;
 
 public class Crafting {
 
-    public static HashMap<String, ItemStack> items = new HashMap<>();
+    public static HashMap<ItemStack, String> items = new HashMap<>();
+    public static HashMap<String, ItemStack> itemsInverted = new HashMap<>();
+
+    public static HashMap<String, Integer> slots = new HashMap<>();
+
     public static String available;
 
-    private static Boolean works = true;
-
-    // todo: write test for this
+    private static Boolean slots9 = true;
 
     static void initCrafting() {
         String path = "BackPacks.";
@@ -33,10 +35,11 @@ public class Crafting {
             String backPackPath = path+backPack+".";
 
             if(config.contains(backPackPath)) {
-                ItemStack item = getItemStack(config, backPackPath);
+                ItemStack item = getItemStack(config, backPackPath, backPack);
 
-                if(works) {
-                    items.put(backPack, item);
+                if(slots9) {
+                    items.put(item, backPack);
+                    itemsInverted.put(backPack, item);
 
                     Bukkit.getServer().addRecipe(createShapedRecipe(item, backPackPath));
 
@@ -47,7 +50,7 @@ public class Crafting {
                     Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                             messages.getString("BackPacks.slotsNotDivisibleBy9").replaceAll("%backpack%", backPack)));
 
-                    works = true;
+                    slots9 = true;
                 }
 
             } else {
@@ -57,14 +60,16 @@ public class Crafting {
 
         }
 
-        for(Map.Entry<String, ItemStack> backpack : items.entrySet()) {
-            available = available+", "+backpack.getKey();
+        for(Map.Entry<ItemStack, String> backpack : items.entrySet()) {
+            available = available+", "+backpack.getValue();
         }
 
     }
 
-    private static ItemStack getItemStack(YamlConfiguration config, String backPackPath) {
-        if(config.getInt(backPackPath+"slots") % 9 == 0) {
+    private static ItemStack getItemStack(YamlConfiguration config, String backPackPath, String backPack) {
+        int itemSlots = config.getInt(backPackPath+"slots");
+
+        if(itemSlots % 9 == 0) {
             ItemStack craft = new ItemStack(Material.getMaterial(
                     config.getString(backPackPath+"material")), 1);
 
@@ -88,10 +93,12 @@ public class Crafting {
 
             craft.setItemMeta(craftM);
 
+            slots.put(backPack, itemSlots);
+
             return craft;
 
         } else {
-            works = false;
+            slots9 = false;
 
             return null;
         }
@@ -106,14 +113,10 @@ public class Crafting {
                 config.getString(backPackPath+"crafting.2").replaceAll("\\+", ""),
                 config.getString(backPackPath+"crafting.3").replaceAll("\\+", ""));
 
-        Bukkit.getConsoleSender().sendMessage(config.getString(backPackPath+"crafting.3").replaceAll("\\+", ""));
-
         Map<String, Object> ingredients = config.getConfigurationSection(backPackPath+
                 "crafting.materials").getValues(true);
 
         for(Map.Entry<String, Object> ing : ingredients.entrySet()) {
-            Bukkit.getConsoleSender().sendMessage(ing.getKey().charAt(0)+"+"+ing.getValue().toString());
-
             recipe.setIngredient(ing.getKey().charAt(0), Material.valueOf(ing.getValue().toString()));
         }
 

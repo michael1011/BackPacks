@@ -13,12 +13,12 @@ import java.sql.SQLException;
 
 public class Join implements Listener {
 
-    public void register(Main main) {
+    public Join(Main main) {
         main.getServer().getPluginManager().registerEvents(this, main);
     }
 
     @EventHandler(priority = EventPriority.HIGH)
-    public void join(PlayerJoinEvent e) {
+    public void joinEvent(PlayerJoinEvent e) {
         Player p = e.getPlayer();
 
         String uuid = p.getUniqueId().toString().replaceAll("-", "");
@@ -28,21 +28,14 @@ public class Join implements Listener {
 
             if (rs != null) {
                 String name = p.getName();
-                String displayName = p.getDisplayName();
 
                 if(rs.first()) {
                     if(!rs.getString("name").equals(name)) {
                         SQL.query("UPDATE bp_users SET name='"+name+"' WHERE uuid='"+uuid+"'");
-
-                    }
-
-                    if(!rs.getString("displayName").equals(displayName)){
-                        SQL.query("UPDATE bp_users SET displayName='"+displayName+"' WHERE uuid='"+uuid+"'");
                     }
 
                 } else {
-                    SQL.query("INSERT INTO bp_users (name, displayName, uuid) values ('"+name+"', "+
-                            "'"+displayName+"', '"+uuid+"')");
+                    SQL.query("INSERT INTO bp_users (name, uuid) values ('"+name+"', '"+uuid+"')");
                 }
             }
 

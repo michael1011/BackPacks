@@ -2,6 +2,7 @@ package at.michael1011.backpacks;
 
 import at.michael1011.backpacks.commads.Give;
 import at.michael1011.backpacks.listeners.Join;
+import at.michael1011.backpacks.listeners.RightClick;
 import at.michael1011.backpacks.tasks.Reconnect;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -19,6 +20,11 @@ public class Main extends JavaPlugin {
 
     public static String prefix;
 
+    // todo: add cache option (load backpacks of player on join)
+    // todo: optimize database table types
+
+    // todo: make sql requests async
+
     @Override
     public void onEnable() {
         createFiles();
@@ -30,21 +36,20 @@ public class Main extends JavaPlugin {
                     config.getString("MySQL.database"), config.getString("MySQL.username"),
                     config.getString("MySQL.password"));
 
-
             if(SQL.checkCon()) {
                 Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                         messages.getString("MySQL.connected")));
 
-                SQL.query("CREATE TABLE IF NOT EXISTS bp_users(name VARCHAR(100), "+
-                        "displayName VARCHAR(100), uuid VARCHAR(100))");
+                SQL.query("CREATE TABLE IF NOT EXISTS bp_users(name VARCHAR(100), uuid VARCHAR(100))");
 
                 Crafting.initCrafting();
 
                 new Reconnect(this);
 
-                new Join().register(this);
+                new Join(this);
+                new RightClick(this);
 
-                new Give().register(this);
+                new Give(this);
 
             } else {
                 Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
@@ -63,7 +68,7 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        if(SQL.con != null) {
+        if(SQL.checkCon()) {
             try {
                 SQL.closeCon();
             } catch (SQLException e) {
