@@ -2,7 +2,6 @@ package at.michael1011.backpacks.listeners;
 
 import at.michael1011.backpacks.Crafting;
 import at.michael1011.backpacks.Main;
-import at.michael1011.backpacks.inventories.Open;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -22,7 +21,7 @@ public class RightClick implements Listener {
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void rightClick(PlayerInteractEvent e) {
+    public void rightClickEvent(PlayerInteractEvent e) {
         Action action = e.getAction();
 
         if(action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK) {
@@ -35,7 +34,7 @@ public class RightClick implements Listener {
                     Player p = e.getPlayer();
 
                     if(p.hasPermission("backpacks.use."+backPack)) {
-                        new Open(p, p.getUniqueId(), backPack, item.getItemMeta().getDisplayName());
+                        Open.open(p, p.getUniqueId(), backPack, item.getItemMeta().getDisplayName());
 
                     } else {
                         p.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',

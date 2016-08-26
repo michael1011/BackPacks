@@ -39,8 +39,8 @@ public class Join implements Listener {
                 }
             }
 
-        } catch (SQLException e1) {
-            e1.printStackTrace();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
 
     }

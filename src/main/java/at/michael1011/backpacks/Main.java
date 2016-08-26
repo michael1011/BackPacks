@@ -1,6 +1,7 @@
 package at.michael1011.backpacks;
 
 import at.michael1011.backpacks.commads.Give;
+import at.michael1011.backpacks.listeners.InventoryClose;
 import at.michael1011.backpacks.listeners.Join;
 import at.michael1011.backpacks.listeners.RightClick;
 import at.michael1011.backpacks.tasks.Reconnect;
@@ -48,6 +49,7 @@ public class Main extends JavaPlugin {
 
                 new Join(this);
                 new RightClick(this);
+                new InventoryClose(this);
 
                 new Give(this);
 

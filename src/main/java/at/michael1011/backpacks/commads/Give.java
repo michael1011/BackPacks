@@ -21,7 +21,7 @@ public class Give implements CommandExecutor {
         main.getCommand("bpgive").setExecutor(this);
     }
 
-    // todo: add autocompletion for players and backpacks
+    // todo: add autocompletion for backpacks
 
     private static final String path = "Help.bpgive.";
 
