@@ -24,8 +24,6 @@ public class InventoryClose implements Listener {
 
     // todo: add enchantments and potions
 
-    // FIXME: fix lore split
-
     @EventHandler(priority = EventPriority.HIGH)
     public void invCloseEvent(InventoryCloseEvent e) {
         Player p = (Player) e.getPlayer();
