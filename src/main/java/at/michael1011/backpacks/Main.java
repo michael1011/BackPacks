@@ -24,8 +24,6 @@ public class Main extends JavaPlugin {
     // todo: add cache option (load backpacks of player on join)
     // todo: optimize database table types
 
-    // todo: make sql requests async
-
     @Override
     public void onEnable() {
         createFiles();
@@ -33,6 +31,8 @@ public class Main extends JavaPlugin {
         prefix = ChatColor.translateAlternateColorCodes('&', messages.getString("prefix"));
 
         try {
+            new SQL(this);
+
             SQL.createCon(config.getString("MySQL.host"), config.getString("MySQL.port"),
                     config.getString("MySQL.database"), config.getString("MySQL.username"),
                     config.getString("MySQL.password"));

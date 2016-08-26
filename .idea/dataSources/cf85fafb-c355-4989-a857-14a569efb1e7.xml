@@ -7,49 +7,30 @@
     <schema id="3" name="mysql" />
     <schema id="4" name="performance_schema" />
     <schema id="5" name="sys" />
-    <table id="6" parent="1" name="bp_littleBackPack_ba9c9caa1f6c46b19c7a2ada2a844fd8" />
-    <table id="7" parent="1" name="bp_normalBackPack_ba9c9caa1f6c46b19c7a2ada2a844fd8" />
-    <table id="8" parent="1" name="bp_users" />
-    <column id="9" parent="6" name="position">
-      <data-type>int(100)|0</data-type>
-    </column>
-    <column id="10" parent="6" name="material">
+    <table id="6" parent="1" name="bp_users" />
+    <table id="7" parent="1" name="bp_littleBackPack_ba9c9caa1f6c46b19c7a2ada2a844fd8" />
+    <column id="8" parent="6" name="name">
       <data-type>varchar(100)|0</data-type>
     </column>
-    <column id="11" parent="6" name="amount">
+    <column id="9" parent="6" name="uuid">
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="10" parent="7" name="position">
       <data-type>int(100)|0</data-type>
     </column>
-    <column id="12" parent="6" name="hasItemMeta">
+    <column id="11" parent="7" name="material">
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="12" parent="7" name="amount">
+      <data-type>int(100)|0</data-type>
+    </column>
+    <column id="13" parent="7" name="hasItemMeta">
       <data-type>tinyint(1)|0</data-type>
     </column>
-    <column id="13" parent="6" name="name">
+    <column id="14" parent="7" name="name">
       <data-type>varchar(100)|0</data-type>
     </column>
-    <column id="14" parent="6" name="lore">
-      <data-type>varchar(100)|0</data-type>
-    </column>
-    <column id="15" parent="7" name="position">
-      <data-type>int(100)|0</data-type>
-    </column>
-    <column id="16" parent="7" name="material">
-      <data-type>varchar(100)|0</data-type>
-    </column>
-    <column id="17" parent="7" name="amount">
-      <data-type>int(100)|0</data-type>
-    </column>
-    <column id="18" parent="7" name="hasItemMeta">
-      <data-type>tinyint(1)|0</data-type>
-    </column>
-    <column id="19" parent="7" name="name">
-      <data-type>varchar(100)|0</data-type>
-    </column>
-    <column id="20" parent="7" name="lore">
-      <data-type>varchar(100)|0</data-type>
-    </column>
-    <column id="21" parent="8" name="name">
-      <data-type>varchar(100)|0</data-type>
-    </column>
-    <column id="22" parent="8" name="uuid">
+    <column id="15" parent="7" name="lore">
       <data-type>varchar(100)|0</data-type>
     </column>
   </database-model>

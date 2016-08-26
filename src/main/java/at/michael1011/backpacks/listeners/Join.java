@@ -19,29 +19,39 @@ public class Join implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
     public void joinEvent(PlayerJoinEvent e) {
-        Player p = e.getPlayer();
+        final Player p = e.getPlayer();
 
-        String uuid = p.getUniqueId().toString().replaceAll("-", "");
+        final String uuid = p.getUniqueId().toString().replaceAll("-", "");
 
-        try {
-            ResultSet rs = SQL.getResult("SELECT * FROM bp_users WHERE uuid='"+uuid+"'");
+        SQL.getResult("SELECT * FROM bp_users WHERE uuid='"+uuid+"'", new SQL.Callback<ResultSet>() {
+            @Override
+            public void onSuccess(ResultSet rs) {
+                try {
+                    if (rs != null) {
+                    String name = p.getName();
 
-            if (rs != null) {
-                String name = p.getName();
+                        if(rs.first()) {
+                            if(!rs.getString("name").equals(name)) {
+                                SQL.query("UPDATE bp_users SET name='"+name+"' WHERE uuid='"+uuid+"'");
+                            }
 
-                if(rs.first()) {
-                    if(!rs.getString("name").equals(name)) {
-                        SQL.query("UPDATE bp_users SET name='"+name+"' WHERE uuid='"+uuid+"'");
+                        } else {
+                            SQL.query("INSERT INTO bp_users (name, uuid) values ('"+name+"', '"+uuid+"')");
+                        }
+
+                        rs.close();
                     }
 
-                } else {
-                    SQL.query("INSERT INTO bp_users (name, uuid) values ('"+name+"', '"+uuid+"')");
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
                 }
+
             }
 
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
+            @Override
+            public void onFailure(Throwable e) {}
+
+        });
 
     }
 

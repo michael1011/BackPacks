@@ -20,51 +20,75 @@ class Open {
 
     static HashMap<Player, String> openInvs = new HashMap<>();
 
-    static void open(Player opener, UUID ownerID, String backPack, String name) {
-        String trimmedID = ownerID.toString().replaceAll("-", "");
+    static void open(final Player opener, UUID ownerID, final String backPack, final String name) {
+        final String trimmedID = ownerID.toString().replaceAll("-", "");
 
-        if(SQL.checkTable("bp_"+backPack+"_"+trimmedID)) {
-            ResultSet rs = SQL.getResult("select * from bp_"+backPack+"_"+trimmedID);
+        SQL.checkTable("bp_" + backPack + "_" + trimmedID, new SQL.Callback<Boolean>() {
+            @Override
+            public void onSuccess(Boolean rs) {
+                if(rs) {
+                    SQL.getResult("select * from bp_"+backPack+"_"+trimmedID, new SQL.Callback<ResultSet>() {
+                        @Override
+                        public void onSuccess(ResultSet rs) {
+                            if (rs != null) {
+                                try {
+                                    rs.beforeFirst();
 
-            if (rs != null) {
-                try {
-                    rs.beforeFirst();
+                                    Inventory inv = Bukkit.getServer().createInventory(opener, slots.get(backPack), name);
 
-                    Inventory inv = Bukkit.getServer().createInventory(opener, slots.get(backPack), name);
+                                    while (rs.next()) {
+                                        ItemStack item = new ItemStack(Material.valueOf(rs.getString("material")),
+                                                rs.getInt("amount"));
 
-                    while(rs.next()) {
-                        ItemStack item = new ItemStack(Material.valueOf(rs.getString("material")),
-                                rs.getInt("amount"));
+                                        if (rs.getBoolean("hasItemMeta")) {
+                                            ItemMeta meta = item.getItemMeta();
 
-                        if(rs.getBoolean("hasItemMeta")) {
-                            ItemMeta meta = item.getItemMeta();
+                                            meta.setDisplayName(rs.getString("name"));
+                                            meta.setLore(Arrays.asList(rs.getString("lore").split("~")));
 
-                            meta.setDisplayName(rs.getString("name"));
-                            meta.setLore(Arrays.asList(rs.getString("lore").split("~")));
+                                            item.setItemMeta(meta);
+                                        }
 
-                            item.setItemMeta(meta);
+                                        inv.setItem(rs.getInt("position"), item);
+                                    }
+
+                                    rs.close();
+
+                                    openInvs.put(opener, backPack);
+
+                                    opener.openInventory(inv);
+
+                                } catch (SQLException e) {
+                                    e.printStackTrace();
+                                }
+                            }
                         }
 
-                        inv.setItem(rs.getInt("position"), item);
-                    }
+                        @Override
+                        public void onFailure(Throwable e) {
+                            e.printStackTrace();
+                        }
+                    });
+
+
+                } else {
+                    SQL.query("CREATE TABLE IF NOT EXISTS bp_" + backPack + "_" + trimmedID + "(position INT(100), material VARCHAR(100), " +
+                            "amount INT(100), hasItemMeta BOOLEAN, name VARCHAR(100), lore VARCHAR(100))");
 
                     openInvs.put(opener, backPack);
 
-                    opener.openInventory(inv);
-
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                    opener.openInventory(Bukkit.getServer().createInventory(opener, slots.get(backPack), name));
                 }
+
             }
 
-        } else {
-            SQL.query("CREATE TABLE IF NOT EXISTS bp_"+backPack+"_"+trimmedID+"(position INT(100), material VARCHAR(100), "+
-                    "amount INT(100), hasItemMeta BOOLEAN, name VARCHAR(100), lore VARCHAR(100))");
+        @Override
+        public void onFailure(Throwable e) {}
 
-            openInvs.put(opener, backPack);
+        });
 
-            opener.openInventory(Bukkit.getServer().createInventory(opener, slots.get(backPack), name));
-        }
+
+
 
     }
 

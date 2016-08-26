@@ -63,9 +63,14 @@ public class InventoryClose implements Listener {
 
                         List<String> rawLore = itemM.getLore();
 
-                        for(String aRawLore : rawLore) {
-                            lore = lore+"~"+aRawLore;
+                        StringBuilder builder = new StringBuilder();
+
+                        for(String loreLine : rawLore) {
+                            builder.append(loreLine);
+                            builder.append("~");
                         }
+
+                        lore = builder.toString();
 
                     }
 

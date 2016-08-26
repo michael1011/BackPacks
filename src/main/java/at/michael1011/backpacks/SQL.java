@@ -1,28 +1,72 @@
 package at.michael1011.backpacks;
 
+import org.bukkit.scheduler.BukkitScheduler;
+
 import java.sql.*;
 
 public class SQL {
 
+    public interface Callback<par> {
+        void onSuccess(par rs);
+        void onFailure(Throwable e);
+    }
+
+    private static Main main;
+    private static BukkitScheduler scheduler;
+
     private static Connection con;
 
-    public static ResultSet getResult(final String query) {
-        try {
-            return con.prepareStatement(query).executeQuery();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    SQL(Main main) {
+        SQL.main = main;
+        scheduler = main.getServer().getScheduler();
+    }
 
-        return null;
+    public static void getResult(final String query, final Callback<ResultSet> callback) {
+        scheduler.runTaskAsynchronously(main, new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    final ResultSet rs = con.prepareStatement(query).executeQuery();
+
+                    scheduler.runTask(main, new Runnable() {
+                        @Override
+                        public void run() {
+                            callback.onSuccess(rs);
+                        }
+                    });
+
+                } catch (final SQLException e) {
+                    e.printStackTrace();
+
+                    scheduler.runTask(main, new Runnable() {
+                        @Override
+                        public void run() {
+                            callback.onFailure(e);
+                        }
+                    });
+
+                }
+
+            }
+        });
+
     }
 
 
     public static void query(final String query) {
-        try {
-            con.prepareStatement(query).executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        scheduler.runTaskAsynchronously(main, new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    con.prepareStatement(query).executeUpdate();
+
+                } catch (final SQLException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
     }
 
     public static void createCon(String host, String port, String database,
@@ -33,7 +77,7 @@ public class SQL {
     }
 
     public static void closeCon() throws SQLException {
-        if (con != null) {
+        if(con != null) {
             con.close();
         }
 
@@ -43,20 +87,50 @@ public class SQL {
         return con != null;
     }
 
-    public static boolean checkTable(final String table) {
-        try {
+    public static void checkTable(final String table, final Callback<Boolean> callback) {
+        scheduler.runTaskAsynchronously(main, new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    DatabaseMetaData dmb = con.getMetaData();
 
-            DatabaseMetaData dmb = con.getMetaData();
+                    final ResultSet rs = dmb.getTables(null, null, table, null);
 
-            ResultSet tables = dmb.getTables(null, null, table, null);
+                    scheduler.runTask(main, new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                callback.onSuccess(rs.next());
 
-            return tables.next();
+                                rs.close();
+                            } catch (final SQLException e) {
+                                e.printStackTrace();
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+                                scheduler.runTask(main, new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        callback.onFailure(e);
+                                    }
+                                });
 
-        return false;
+                            }
+                        }
+                    });
+
+                } catch (final SQLException e) {
+                    e.printStackTrace();
+
+                    scheduler.runTask(main, new Runnable() {
+                        @Override
+                        public void run() {
+                            callback.onFailure(e);
+                        }
+                    });
+
+                }
+            }
+        });
+
     }
 
 }
