@@ -16,11 +16,11 @@ import java.util.UUID;
 
 import static at.michael1011.backpacks.Crafting.slots;
 
-public class Open {
+class Open {
 
-    public static HashMap<Player, String> openInvs = new HashMap<>();
+    static HashMap<Player, String> openInvs = new HashMap<>();
 
-    public static void open(Player opener, UUID ownerID, String backPack, String name) {
+    static void open(Player opener, UUID ownerID, String backPack, String name) {
         String trimmedID = ownerID.toString().replaceAll("-", "");
 
         if(SQL.checkTable("bp_"+backPack+"_"+trimmedID)) {

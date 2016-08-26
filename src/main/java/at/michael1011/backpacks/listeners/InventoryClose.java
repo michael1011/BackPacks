@@ -24,6 +24,8 @@ public class InventoryClose implements Listener {
 
     // todo: add enchantments and potions
 
+    // FIXME: fix lore split
+
     @EventHandler(priority = EventPriority.HIGH)
     public void invCloseEvent(InventoryCloseEvent e) {
         Player p = (Player) e.getPlayer();
@@ -33,6 +35,8 @@ public class InventoryClose implements Listener {
         String backPack = openInvs.get(p);
 
         if(backPack != null) {
+            openInvs.remove(p);
+
             Inventory inv = e.getInventory();
 
             SQL.query("DROP TABLE IF EXISTS bp_"+backPack+"_"+trimmedID);
@@ -60,7 +64,7 @@ public class InventoryClose implements Listener {
                         List<String> rawLore = itemM.getLore();
 
                         for(String aRawLore : rawLore) {
-                            lore = lore + "~" + aRawLore;
+                            lore = lore+"~"+aRawLore;
                         }
 
                     }

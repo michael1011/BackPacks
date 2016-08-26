@@ -7,6 +7,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -18,10 +19,12 @@ import static at.michael1011.backpacks.Main.prefix;
 public class Give implements CommandExecutor {
 
     public Give(Main main) {
-        main.getCommand("bpgive").setExecutor(this);
+        PluginCommand command = main.getCommand("bpgive");
+
+        command.setExecutor(this);
+        command.setTabCompleter(new GiveCompleter());
     }
 
-    // todo: add autocompletion for backpacks
 
     private static final String path = "Help.bpgive.";
 
@@ -86,7 +89,10 @@ public class Give implements CommandExecutor {
             sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                     messages.getString(path+"backPackNotFound").replaceAll("%backpack%", backpack)));
 
-            // todo: show available backpacks
+            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                    messages.getString(path+"backBackNotFoundAvailable")
+                            .replaceAll("%backpacks%", Crafting.available.replaceAll(",", ", "))));
+
         }
 
     }

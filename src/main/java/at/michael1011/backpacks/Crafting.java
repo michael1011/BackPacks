@@ -10,6 +10,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static at.michael1011.backpacks.Main.*;
@@ -21,7 +22,9 @@ public class Crafting {
 
     public static HashMap<String, Integer> slots = new HashMap<>();
 
-    public static String available;
+    public static String available = "";
+    public static List<String> availableList;
+
 
     private static Boolean slots9 = true;
 
@@ -40,6 +43,13 @@ public class Crafting {
                 if(slots9) {
                     items.put(item, backPack);
                     itemsInverted.put(backPack, item);
+
+                    if(available.equals("")) {
+                        available = backPack;
+
+                    } else {
+                        available = available+","+backPack;
+                    }
 
                     Bukkit.getServer().addRecipe(createShapedRecipe(item, backPackPath));
 
@@ -60,9 +70,7 @@ public class Crafting {
 
         }
 
-        for(Map.Entry<ItemStack, String> backpack : items.entrySet()) {
-            available = available+", "+backpack.getValue();
-        }
+        availableList = Arrays.asList(Crafting.available.split(","));
 
     }
 
