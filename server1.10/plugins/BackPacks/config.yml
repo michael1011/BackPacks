@@ -1,9 +1,9 @@
 #
-# BackPacks 1.0.0-ALPHA
+# BackPacks 2.0.0-ALPHA
 # By michael1011
 #
 
-# Don"t touch this variable! It would destroy you config files!
+# Don"t touch this variable! It would destroy your config files!
 configVersion: 0
 
 # Setup you MySQL connection here
@@ -24,6 +24,7 @@ BackPacks:
 
   littleBackPack:
     name: "&bLittle &3BackPack"
+
     description:
       1: "&fThis is the &bLittle &3BackPack&f."
       2: "&8Right click to open it."
@@ -45,11 +46,11 @@ BackPacks:
 
   normalBackPack:
     name: "&eNormal &6BackPack"
+
     description:
       1: "&fThis is the &eNormal &6BackPack&f."
       2: "&8Right click to open it."
 
-    # Must be divisible by 9
     slots: 27
 
     material: "WATCH"

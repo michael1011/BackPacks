@@ -11,6 +11,7 @@ import static at.michael1011.backpacks.Main.config;
 public class Reconnect {
 
     @SuppressWarnings("deprecation")
+    @Deprecated
     public Reconnect(Main main) {
         Bukkit.getScheduler().scheduleAsyncRepeatingTask(main, new Runnable() {
             @Override
@@ -29,6 +30,7 @@ public class Reconnect {
             }
 
         }, 36000, 36000);
+
     }
 
 }

@@ -107,8 +107,6 @@ public class InventoryClose implements Listener {
 
             });
 
-
-
         }
 
     }

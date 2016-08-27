@@ -23,8 +23,14 @@ public class Main extends JavaPlugin {
 
     private static Main main;
 
+    // fixme: optimize database table types
+    // fixme: add bpOpen command
+
+    // todo: beautiful message when connection to database fails
     // todo: add cache option (load backpacks of player on join)
-    // todo: optimize database table types
+    // todo: updater
+    // todo: drop backpacks in inventory on death
+    // todo: command to create a new backpack in config
 
     @Override
     public void onEnable() {
@@ -50,6 +56,7 @@ public class Main extends JavaPlugin {
                     public void onSuccess(Boolean rs) {
                         Crafting.initCrafting();
 
+                        //noinspection deprecation
                         new Reconnect(main);
 
                         new Join(main);

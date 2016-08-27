@@ -71,7 +71,6 @@ public class Crafting {
         }
 
         availableList = Arrays.asList(Crafting.available.split(","));
-
     }
 
     private static ItemStack getItemStack(YamlConfiguration config, String backPackPath, String backPack) {

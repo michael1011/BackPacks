@@ -27,7 +27,6 @@ class GiveCompleter implements TabCompleter {
             }
 
             return filterList(args[1], players);
-
         }
 
     }

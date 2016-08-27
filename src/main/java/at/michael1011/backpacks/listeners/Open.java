@@ -18,9 +18,9 @@ import static at.michael1011.backpacks.Crafting.slots;
 
 class Open {
 
-    static HashMap<Player, String> openInvs = new HashMap<>();
+    static final HashMap<Player, String> openInvs = new HashMap<>();
 
-    static void open(final Player opener, UUID ownerID, final String backPack, final String name) {
+    static void openOwner(final Player opener, UUID ownerID, final String backPack, final String name) {
         final String trimmedID = ownerID.toString().replaceAll("-", "");
 
         SQL.checkTable("bp_" + backPack + "_" + trimmedID, new SQL.Callback<Boolean>() {
@@ -30,38 +30,7 @@ class Open {
                     SQL.getResult("select * from bp_"+backPack+"_"+trimmedID, new SQL.Callback<ResultSet>() {
                         @Override
                         public void onSuccess(ResultSet rs) {
-                            if (rs != null) {
-                                try {
-                                    rs.beforeFirst();
-
-                                    Inventory inv = Bukkit.getServer().createInventory(opener, slots.get(backPack), name);
-
-                                    while (rs.next()) {
-                                        ItemStack item = new ItemStack(Material.valueOf(rs.getString("material")),
-                                                rs.getInt("amount"));
-
-                                        if (rs.getBoolean("hasItemMeta")) {
-                                            ItemMeta meta = item.getItemMeta();
-
-                                            meta.setDisplayName(rs.getString("name"));
-                                            meta.setLore(Arrays.asList(rs.getString("lore").split("~")));
-
-                                            item.setItemMeta(meta);
-                                        }
-
-                                        inv.setItem(rs.getInt("position"), item);
-                                    }
-
-                                    rs.close();
-
-                                    openInvs.put(opener, backPack);
-
-                                    opener.openInventory(inv);
-
-                                } catch (SQLException e) {
-                                    e.printStackTrace();
-                                }
-                            }
+                            openCommand(rs, opener, backPack, name);
                         }
 
                         @Override
@@ -97,8 +66,42 @@ class Open {
 
         });
 
+    }
 
+    public static void openCommand(ResultSet rs, Player opener, String backPack, String name) {
+        if(rs != null) {
+            try {
+                rs.beforeFirst();
 
+                Inventory inv = Bukkit.getServer().createInventory(opener, slots.get(backPack), name);
+
+                while(rs.next()) {
+                    ItemStack item = new ItemStack(Material.valueOf(rs.getString("material")),
+                            rs.getInt("amount"));
+
+                    if(rs.getBoolean("hasItemMeta")) {
+                        ItemMeta meta = item.getItemMeta();
+
+                        meta.setDisplayName(rs.getString("name"));
+                        meta.setLore(Arrays.asList(rs.getString("lore").split("~")));
+
+                        item.setItemMeta(meta);
+                    }
+
+                    inv.setItem(rs.getInt("position"), item);
+                }
+
+                rs.close();
+
+                openInvs.put(opener, backPack);
+
+                opener.openInventory(inv);
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
 
     }
 

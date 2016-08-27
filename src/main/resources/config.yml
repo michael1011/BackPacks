@@ -3,7 +3,7 @@
 # By michael1011
 #
 
-# Don"t touch this variable! It would destroy you config files!
+# Don"t touch this variable! It would destroy your config files!
 configVersion: 0
 
 # Setup you MySQL connection here

@@ -34,7 +34,7 @@ public class RightClick implements Listener {
                     Player p = e.getPlayer();
 
                     if(p.hasPermission("backpacks.use."+backPack)) {
-                        Open.open(p, p.getUniqueId(), backPack, item.getItemMeta().getDisplayName());
+                        Open.openOwner(p, p.getUniqueId(), backPack, item.getItemMeta().getDisplayName());
 
                     } else {
                         p.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
