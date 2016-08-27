@@ -72,12 +72,22 @@ class Open {
 
 
                 } else {
-                    SQL.query("CREATE TABLE IF NOT EXISTS bp_" + backPack + "_" + trimmedID + "(position INT(100), material VARCHAR(100), " +
-                            "amount INT(100), hasItemMeta BOOLEAN, name VARCHAR(100), lore VARCHAR(100))");
+                    SQL.query("CREATE TABLE IF NOT EXISTS bp_"+backPack+"_"+trimmedID+"(position INT(100), material VARCHAR(100), "+
+                            "amount INT(100), hasItemMeta BOOLEAN, name VARCHAR(100), lore VARCHAR(100))", new SQL.Callback<Boolean>() {
 
-                    openInvs.put(opener, backPack);
+                        @Override
+                        public void onSuccess(Boolean rs) {
+                            openInvs.put(opener, backPack);
 
-                    opener.openInventory(Bukkit.getServer().createInventory(opener, slots.get(backPack), name));
+                            opener.openInventory(Bukkit.getServer().createInventory(opener, slots.get(backPack), name));
+                        }
+
+                        @Override
+                        public void onFailure(Throwable e) {
+
+                        }
+                    });
+
                 }
 
             }

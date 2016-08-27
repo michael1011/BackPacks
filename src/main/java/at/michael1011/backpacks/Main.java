@@ -21,12 +21,16 @@ public class Main extends JavaPlugin {
 
     public static String prefix;
 
+    private static Main main;
+
     // todo: add cache option (load backpacks of player on join)
     // todo: optimize database table types
 
     @Override
     public void onEnable() {
         createFiles();
+
+        main = this;
 
         prefix = ChatColor.translateAlternateColorCodes('&', messages.getString("prefix"));
 
@@ -41,17 +45,24 @@ public class Main extends JavaPlugin {
                 Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                         messages.getString("MySQL.connected")));
 
-                SQL.query("CREATE TABLE IF NOT EXISTS bp_users(name VARCHAR(100), uuid VARCHAR(100))");
+                SQL.query("CREATE TABLE IF NOT EXISTS bp_users(name VARCHAR(100), uuid VARCHAR(100))", new SQL.Callback<Boolean>() {
+                    @Override
+                    public void onSuccess(Boolean rs) {
+                        Crafting.initCrafting();
 
-                Crafting.initCrafting();
+                        new Reconnect(main);
 
-                new Reconnect(this);
+                        new Join(main);
+                        new RightClick(main);
+                        new InventoryClose(main);
 
-                new Join(this);
-                new RightClick(this);
-                new InventoryClose(this);
+                        new Give(main);
+                    }
 
-                new Give(this);
+                    @Override
+                    public void onFailure(Throwable e) {}
+
+                });
 
             } else {
                 Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',

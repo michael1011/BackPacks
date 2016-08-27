@@ -28,57 +28,86 @@ public class InventoryClose implements Listener {
     public void invCloseEvent(InventoryCloseEvent e) {
         Player p = (Player) e.getPlayer();
 
-        String trimmedID = p.getUniqueId().toString().replaceAll("-", "");
+        final String trimmedID = p.getUniqueId().toString().replaceAll("-", "");
 
-        String backPack = openInvs.get(p);
+        final String backPack = openInvs.get(p);
 
         if(backPack != null) {
             openInvs.remove(p);
 
-            Inventory inv = e.getInventory();
+            final Inventory inv = e.getInventory();
 
-            SQL.query("DROP TABLE IF EXISTS bp_"+backPack+"_"+trimmedID);
+            SQL.query("DROP TABLE IF EXISTS bp_" + backPack + "_" + trimmedID, new SQL.Callback<Boolean>() {
+                @Override
+                public void onSuccess(Boolean rs) {
+                    SQL.query("CREATE TABLE IF NOT EXISTS bp_"+backPack+"_"+trimmedID+"(position INT(100), material VARCHAR(100), " +
+                            "amount INT(100), hasItemMeta BOOLEAN, name VARCHAR(100), "+
+                            "lore VARCHAR(100))", new SQL.Callback<Boolean>() {
 
-            SQL.query("CREATE TABLE IF NOT EXISTS bp_"+backPack+"_"+trimmedID+"(position INT(100), material VARCHAR(100), "+
-                    "amount INT(100), hasItemMeta BOOLEAN, name VARCHAR(100), lore VARCHAR(100))");
+                        @Override
+                        public void onSuccess(Boolean bool) {
+                            for(int i = 0; i < slots.get(backPack); i++) {
+                                ItemStack item = inv.getItem(i);
 
-            for(int i = 0; i < slots.get(backPack); i++) {
-                ItemStack item = inv.getItem(i);
+                                if(item != null) {
+                                    Boolean hasItemMeta = item.hasItemMeta();
+                                    int itemMeta = 0;
 
-                if(item != null) {
-                    Boolean hasItemMeta = item.hasItemMeta();
-                    int itemMeta = 0;
+                                    String name = "";
+                                    String lore = "";
 
-                    String name = "";
-                    String lore = "";
+                                    if(hasItemMeta) {
+                                        itemMeta = 1;
 
-                    if(hasItemMeta) {
-                        itemMeta = 1;
+                                        ItemMeta itemM = item.getItemMeta();
 
-                        ItemMeta itemM = item.getItemMeta();
+                                        name = itemM.getDisplayName();
 
-                        name = itemM.getDisplayName();
+                                        List<String> rawLore = itemM.getLore();
 
-                        List<String> rawLore = itemM.getLore();
+                                        StringBuilder builder = new StringBuilder();
 
-                        StringBuilder builder = new StringBuilder();
+                                        for(String loreLine : rawLore) {
+                                            builder.append(loreLine);
+                                            builder.append("~");
+                                        }
 
-                        for(String loreLine : rawLore) {
-                            builder.append(loreLine);
-                            builder.append("~");
+                                        lore = builder.toString();
+
+                                    }
+
+                                    SQL.query("INSERT INTO bp_"+backPack+"_"+trimmedID+" (position, material, amount, hasItemMeta, "+
+                                            "name, lore) values ('"+i+"', '"+item.getType().toString()+"', '"+item.getAmount()+"',"+
+                                            "'"+itemMeta+"', '"+name+"', '"+lore+"')", new SQL.Callback<Boolean>() {
+
+                                        @Override
+                                        public void onSuccess(Boolean rs) {}
+
+                                        @Override
+                                        public void onFailure(Throwable e) {}
+
+                                    });
+
+                                }
+
+                            }
+
                         }
 
-                        lore = builder.toString();
+                        @Override
+                        public void onFailure(Throwable e) {
 
-                    }
-
-                    SQL.query("INSERT INTO bp_"+backPack+"_"+trimmedID+" (position, material, amount, hasItemMeta, "+
-                            "name, lore) values ('"+i+"', '"+item.getType().toString()+"', '"+item.getAmount()+"',"+
-                            "'"+itemMeta+"', '"+name+"', '"+lore+"')");
+                        }
+                    });
 
                 }
 
-            }
+                @Override
+                public void onFailure(Throwable e) {}
+
+            });
+
+
 
         }
 

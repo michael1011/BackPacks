@@ -53,15 +53,30 @@ public class SQL {
     }
 
 
-    public static void query(final String query) {
+    public static void query(final String query, final Callback<Boolean> callback) {
         scheduler.runTaskAsynchronously(main, new Runnable() {
             @Override
             public void run() {
                 try {
                     con.prepareStatement(query).executeUpdate();
 
+                    scheduler.runTask(main, new Runnable() {
+                        @Override
+                        public void run() {
+                            callback.onSuccess(true);
+                        }
+                    });
+
                 } catch (final SQLException e) {
                     e.printStackTrace();
+
+                    scheduler.runTask(main, new Runnable() {
+                        @Override
+                        public void run() {
+                            callback.onFailure(e);
+                        }
+                    });
+
                 }
 
             }

@@ -32,11 +32,25 @@ public class Join implements Listener {
 
                         if(rs.first()) {
                             if(!rs.getString("name").equals(name)) {
-                                SQL.query("UPDATE bp_users SET name='"+name+"' WHERE uuid='"+uuid+"'");
+                                SQL.query("UPDATE bp_users SET name='"+name+"' WHERE uuid='"+uuid+"'", new SQL.Callback<Boolean>() {
+                                    @Override
+                                    public void onSuccess(Boolean rs) {}
+
+                                    @Override
+                                    public void onFailure(Throwable e) {}
+
+                                });
                             }
 
                         } else {
-                            SQL.query("INSERT INTO bp_users (name, uuid) values ('"+name+"', '"+uuid+"')");
+                            SQL.query("INSERT INTO bp_users (name, uuid) values ('"+name+"', '"+uuid+"')", new SQL.Callback<Boolean>() {
+                                @Override
+                                public void onSuccess(Boolean rs) {}
+
+                                @Override
+                                public void onFailure(Throwable e) {}
+
+                            });
                         }
 
                         rs.close();
