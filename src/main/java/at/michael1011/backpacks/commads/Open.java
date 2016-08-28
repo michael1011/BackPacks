@@ -26,6 +26,7 @@ public class Open implements CommandExecutor {
         PluginCommand command = main.getCommand("bpopen");
 
         command.setExecutor(this);
+        command.setTabCompleter(new OpenCompleter());
     }
 
     @Override
@@ -55,7 +56,7 @@ public class Open implements CommandExecutor {
                                                     SQL.getResult("select * from bp_"+backPack+"_"+trimmedID, new SQL.Callback<ResultSet>() {
                                                         @Override
                                                         public void onSuccess(ResultSet rs) {
-                                                            open(rs,(Player) sender, backPack, item.getItemMeta().getDisplayName(), false, trimmedID);
+                                                            open(rs, (Player) sender, backPack, item.getItemMeta().getDisplayName(), false, trimmedID);
                                                         }
 
                                                         @Override

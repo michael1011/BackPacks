@@ -20,6 +20,11 @@ public class Join implements Listener {
     @EventHandler(priority = EventPriority.HIGH)
     public void joinEvent(PlayerJoinEvent e) {
         final Player p = e.getPlayer();
+        final String playerName = p.getName();
+
+        if(!Main.availablePlayers.contains(playerName)) {
+            Main.availablePlayers.add(playerName);
+        }
 
         final String uuid = p.getUniqueId().toString().replaceAll("-", "");
 
@@ -28,11 +33,9 @@ public class Join implements Listener {
             public void onSuccess(ResultSet rs) {
                 try {
                     if (rs != null) {
-                    String name = p.getName();
-
                         if(rs.first()) {
-                            if(!rs.getString("name").equals(name)) {
-                                SQL.query("UPDATE bp_users SET name='"+name+"' WHERE uuid='"+uuid+"'", new SQL.Callback<Boolean>() {
+                            if(!rs.getString("name").equals(playerName)) {
+                                SQL.query("UPDATE bp_users SET name='"+playerName+"' WHERE uuid='"+uuid+"'", new SQL.Callback<Boolean>() {
                                     @Override
                                     public void onSuccess(Boolean rs) {}
 
@@ -43,7 +46,7 @@ public class Join implements Listener {
                             }
 
                         } else {
-                            SQL.query("INSERT INTO bp_users (name, uuid) values ('"+name+"', '"+uuid+"')", new SQL.Callback<Boolean>() {
+                            SQL.query("INSERT INTO bp_users (name, uuid) values ('"+playerName+"', '"+uuid+"')", new SQL.Callback<Boolean>() {
                                 @Override
                                 public void onSuccess(Boolean rs) {}
 

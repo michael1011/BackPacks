@@ -14,7 +14,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main extends JavaPlugin {
 
@@ -22,9 +25,9 @@ public class Main extends JavaPlugin {
 
     public static String prefix;
 
-    private static Main main;
+    public static List<String> availablePlayers = new ArrayList<>();
 
-    // fixme: TabCompleter for bpOpen with every user in bp_users
+    private static Main main;
 
     // todo: beautiful message when connection to database fails
     // todo: add cache option (load backpacks of player on join)
@@ -54,6 +57,29 @@ public class Main extends JavaPlugin {
                 SQL.query("CREATE TABLE IF NOT EXISTS bp_users(name VARCHAR(100), uuid VARCHAR(100))", new SQL.Callback<Boolean>() {
                     @Override
                     public void onSuccess(Boolean rs) {
+                        SQL.getResult("SELECT * FROM bp_users", new SQL.Callback<ResultSet>() {
+                            @Override
+                            public void onSuccess(ResultSet rs) {
+                                try {
+                                    rs.beforeFirst();
+
+                                    while(rs.next()) {
+                                        availablePlayers.add(rs.getString("name"));
+                                    }
+
+                                    rs.close();
+
+                                } catch (SQLException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Throwable e) {
+
+                            }
+                        });
+
                         Crafting.initCrafting();
 
                         new Reconnect(main);

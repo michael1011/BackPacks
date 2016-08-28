@@ -15,23 +15,23 @@ class GiveCompleter implements TabCompleter {
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-
         if(args.length <= 1) {
             return filterList(args[0], availableList);
 
-        } else {
+        } else if(args.length == 2) {
             List<String> players = new ArrayList<>();
 
-            for(Player p : Bukkit.getOnlinePlayers()) {
+            for (Player p : Bukkit.getOnlinePlayers()) {
                 players.add(p.getName());
             }
 
             return filterList(args[1], players);
         }
 
+        return null;
     }
 
-    private List<String> filterList(String arg, List<String> rawData) {
+    static List<String> filterList(String arg, List<String> rawData) {
         if(!arg.equals("")) {
             List<String> filtered = new ArrayList<>();
 
