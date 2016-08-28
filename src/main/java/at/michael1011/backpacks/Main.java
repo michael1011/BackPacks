@@ -1,6 +1,7 @@
 package at.michael1011.backpacks;
 
 import at.michael1011.backpacks.commads.Give;
+import at.michael1011.backpacks.commads.Open;
 import at.michael1011.backpacks.listeners.InventoryClose;
 import at.michael1011.backpacks.listeners.Join;
 import at.michael1011.backpacks.listeners.RightClick;
@@ -24,7 +25,7 @@ public class Main extends JavaPlugin {
     private static Main main;
 
     // fixme: optimize database table types
-    // fixme: add bpOpen command
+    // fixme: TabCompleter for bpOpen with every user in bp_users
 
     // todo: beautiful message when connection to database fails
     // todo: add cache option (load backpacks of player on join)
@@ -64,6 +65,7 @@ public class Main extends JavaPlugin {
                         new InventoryClose(main);
 
                         new Give(main);
+                        new Open(main);
                     }
 
                     @Override

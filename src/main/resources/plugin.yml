@@ -8,8 +8,14 @@ main: at.michael1011.backpacks.Main
 commands:
   bpgive:
     aliases: [bpg]
-    description: "Give anyone a backpack"
+    description: "Give a backpack to everyone"
     usage: /bpgive <backpack> <player>
+
+  bpopen:
+    aliases: [bpo]
+    dedescription: "See the backpacks of everyone"
+    usage: /bpopen <backpack> <player>
+
 
 permissions:
   backpacks.*:
@@ -19,4 +25,7 @@ permissions:
 
   backpacks.give:
     description: To use /bpgive
+    default: op
+  backpacks.open:
+    description: To use /bpopen
     default: op

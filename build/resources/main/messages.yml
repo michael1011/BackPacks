@@ -13,15 +13,13 @@ Help:
   playerNotFound: "&cThe player &4%target% &ccouldn't be foubd"
   # When you want to interact with a player that isn't online (%target% is the offline player)
 
+  backPackNotFound: "&cThe backpack &4%backpack% &ccouldn't be found"
+  backPackNotFoundAvailable: "&cThe available backpacks are &4%backpacks%"
+
   bpgive:
     onlyPlayersAlternative: "&cUse '&4/bpgive <backpack> <player>&c' to give a backpack to a player"
     # When the console wants to give itself a backpacks it gets the 'onlyPlayers'
     # message above and this message
-
-    backPackNotFound: "&cThe backpack &4%backpack% &ccouldn't be found"
-    backBackNotFoundAvailable: "&cThe available backpacks are: &4%backpacks%"
-    # When you want to give someone a backpack that doesn't exist
-    # (%backpack% is the backpack and %backpacks% are the available backpacks)
 
     gaveBackPack: "&eYou gave &6%backpack% &eto &6%target%"
     # When you gave a backpack to a other player this message comes
@@ -31,6 +29,16 @@ Help:
       1: "&6/bpgive <backpack>: &egive yourself the backpack '<backpack>'"
       2: "&6/bpgive <backpack> <player>: &e give the backpack '<backpack>' to '<player>'"
     # If someone uses /bpgive completly wrong
+
+  bpopen:
+    hasNotUsedYet: "&cThe player &4%player% &chasn't used the &4%backpack% &cyet"
+    # When you want to see a backpack of a player that hasn't used it yet
+    # %player% is the player and %backpack% is the backpack
+
+    syntaxError:
+      1: "&6/bpopen <backpack> <player>: &eopen '<backpack>' of '<player>'"
+    # If someone uses /bpopen completly wrong
+
 
 BackPacks:
   couldNotFindConfig: "&cCould &4not &cfind BackPack &4%backpack%"

@@ -14,7 +14,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.List;
 
 import static at.michael1011.backpacks.Crafting.slots;
-import static at.michael1011.backpacks.listeners.Open.openInvs;
+import static at.michael1011.backpacks.listeners.RightClick.openInvs;
+import static at.michael1011.backpacks.listeners.RightClick.openInvsCommand;
 
 public class InventoryClose implements Listener {
 
@@ -22,92 +23,99 @@ public class InventoryClose implements Listener {
         main.getServer().getPluginManager().registerEvents(this, main);
     }
 
-    // todo: add enchantments and potions
+    // fixme: add enchantments and potions
+    // fixme: color of wool and grass
 
     @EventHandler(priority = EventPriority.HIGH)
     public void invCloseEvent(InventoryCloseEvent e) {
         Player p = (Player) e.getPlayer();
 
-        final String trimmedID = p.getUniqueId().toString().replaceAll("-", "");
-
         final String backPack = openInvs.get(p);
+        final String[] backPackCommand = openInvsCommand.get(p);
 
         if(backPack != null) {
             openInvs.remove(p);
 
-            final Inventory inv = e.getInventory();
+            String trimmedID = p.getUniqueId().toString().replaceAll("-", "");
 
-            SQL.query("DROP TABLE IF EXISTS bp_" + backPack + "_" + trimmedID, new SQL.Callback<Boolean>() {
-                @Override
-                public void onSuccess(Boolean rs) {
-                    SQL.query("CREATE TABLE IF NOT EXISTS bp_"+backPack+"_"+trimmedID+"(position INT(100), material VARCHAR(100), " +
-                            "amount INT(100), hasItemMeta BOOLEAN, name VARCHAR(100), "+
-                            "lore VARCHAR(100))", new SQL.Callback<Boolean>() {
+            saveBackPack(backPack, trimmedID, e.getInventory());
 
-                        @Override
-                        public void onSuccess(Boolean bool) {
-                            for(int i = 0; i < slots.get(backPack); i++) {
-                                ItemStack item = inv.getItem(i);
+        } else if(backPackCommand != null) {
+            saveBackPack(backPackCommand[0], backPackCommand[1], e.getInventory());
+        }
 
-                                if(item != null) {
-                                    Boolean hasItemMeta = item.hasItemMeta();
-                                    int itemMeta = 0;
+    }
 
-                                    String name = "";
-                                    String lore = "";
+    private void saveBackPack(final String backPack, final String trimmedID, final Inventory inv) {
+        SQL.query("DROP TABLE IF EXISTS bp_"+backPack+"_"+trimmedID, new SQL.Callback<Boolean>() {
+            @Override
+            public void onSuccess(Boolean rs) {
+                SQL.query("CREATE TABLE IF NOT EXISTS bp_"+backPack+"_"+trimmedID+"(position INT(100), material VARCHAR(100), " +
+                        "amount INT(100), hasItemMeta BOOLEAN, name VARCHAR(100), "+
+                        "lore VARCHAR(100))", new SQL.Callback<Boolean>() {
 
-                                    if(hasItemMeta) {
-                                        itemMeta = 1;
+                    @Override
+                    public void onSuccess(Boolean bool) {
+                        for(int i = 0; i < slots.get(backPack); i++) {
+                            ItemStack item = inv.getItem(i);
 
-                                        ItemMeta itemM = item.getItemMeta();
+                            if(item != null) {
+                                Boolean hasItemMeta = item.hasItemMeta();
+                                int itemMeta = 0;
 
-                                        name = itemM.getDisplayName();
+                                String name = "";
+                                String lore = "";
 
-                                        List<String> rawLore = itemM.getLore();
+                                if(hasItemMeta) {
+                                    itemMeta = 1;
 
-                                        StringBuilder builder = new StringBuilder();
+                                    ItemMeta itemM = item.getItemMeta();
 
-                                        for(String loreLine : rawLore) {
-                                            builder.append(loreLine);
-                                            builder.append("~");
-                                        }
+                                    name = itemM.getDisplayName();
 
-                                        lore = builder.toString();
+                                    List<String> rawLore = itemM.getLore();
 
+                                    StringBuilder builder = new StringBuilder();
+
+                                    for(String loreLine : rawLore) {
+                                        builder.append(loreLine);
+                                        builder.append("~");
                                     }
 
-                                    SQL.query("INSERT INTO bp_"+backPack+"_"+trimmedID+" (position, material, amount, hasItemMeta, "+
-                                            "name, lore) values ('"+i+"', '"+item.getType().toString()+"', '"+item.getAmount()+"',"+
-                                            "'"+itemMeta+"', '"+name+"', '"+lore+"')", new SQL.Callback<Boolean>() {
-
-                                        @Override
-                                        public void onSuccess(Boolean rs) {}
-
-                                        @Override
-                                        public void onFailure(Throwable e) {}
-
-                                    });
+                                    lore = builder.toString();
 
                                 }
+
+                                SQL.query("INSERT INTO bp_"+backPack+"_"+trimmedID+" (position, material, amount, hasItemMeta, "+
+                                        "name, lore) values ('"+i+"', '"+item.getType().toString()+"', '"+item.getAmount()+"',"+
+                                        "'"+itemMeta+"', '"+name+"', '"+lore+"')", new SQL.Callback<Boolean>() {
+
+                                    @Override
+                                    public void onSuccess(Boolean rs) {}
+
+                                    @Override
+                                    public void onFailure(Throwable e) {}
+
+                                });
 
                             }
 
                         }
 
-                        @Override
-                        public void onFailure(Throwable e) {
+                    }
 
-                        }
-                    });
+                    @Override
+                    public void onFailure(Throwable e) {
 
-                }
+                    }
+                });
 
-                @Override
-                public void onFailure(Throwable e) {}
+            }
 
-            });
+            @Override
+            public void onFailure(Throwable e) {}
 
-        }
+        });
 
     }
 

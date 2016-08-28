@@ -25,7 +25,6 @@ public class Give implements CommandExecutor {
         command.setTabCompleter(new GiveCompleter());
     }
 
-
     private static final String path = "Help.bpgive.";
 
     @Override
@@ -44,14 +43,16 @@ public class Give implements CommandExecutor {
                 }
 
             } else if(args.length == 2) {
-                Player target = Bukkit.getServer().getPlayer(args[1]);
+                String targetName = args[1];
+
+                Player target = Bukkit.getServer().getPlayer(targetName);
 
                 if(target != null) {
                     giveBackPack(sender, target, args[0]);
 
                 } else {
                     sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                            messages.getString("Help.playerNotFound").replaceAll("%target%", args[1])));
+                            messages.getString("Help.playerNotFound").replaceAll("%target%", targetName)));
                 }
 
             } else {
@@ -87,10 +88,10 @@ public class Give implements CommandExecutor {
 
         } else {
             sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                    messages.getString(path+"backPackNotFound").replaceAll("%backpack%", backpack)));
+                    messages.getString("Help.backPackNotFound").replaceAll("%backpack%", backpack)));
 
             sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                    messages.getString(path+"backBackNotFoundAvailable")
+                    messages.getString("Help.backPackNotFoundAvailable")
                             .replaceAll("%backpacks%", Crafting.available.replaceAll(",", ", "))));
 
         }
