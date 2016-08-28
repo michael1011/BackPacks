@@ -5,86 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51551c69-f36d-4497-9d42-5d6b07c19936" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/commads/Open.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-22-1.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-22-10.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-22-11.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-22-12.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-22-13.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-22-14.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-22-15.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-22-16.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-22-17.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-22-18.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-22-19.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-22-2.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-22-20.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-22-21.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-22-22.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-22-23.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-22-24.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-22-25.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-22-26.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-22-27.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-22-28.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-22-3.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-22-4.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-22-5.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-22-6.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-22-7.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-22-8.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-22-9.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-23-1.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-23-2.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-23-3.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-23-4.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-23-5.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-23-6.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-23-7.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-23-8.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-24-1.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-24-2.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-24-3.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-25-1.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-25-10.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-25-11.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-25-12.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-25-13.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-25-14.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-25-15.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-25-16.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-25-17.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-25-18.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-25-19.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-25-2.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-25-20.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-25-21.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-25-22.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-25-23.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-25-3.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-25-4.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-25-5.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-25-6.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-25-7.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-25-8.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-25-9.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-26-1.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-26-10.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-26-2.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-26-3.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-26-4.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-26-5.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-26-6.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-26-7.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-26-8.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-26-9.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-27-1.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-27-2.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-27-3.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-27-4.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-27-5.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-27-6.log.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/Open.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/fileSnapshots.bin" />
@@ -97,9 +17,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/level.dat_old" afterPath="$PROJECT_DIR$/server1.10/world/level.dat_old" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/playerdata/ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8.dat" afterPath="$PROJECT_DIR$/server1.10/world/playerdata/ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/region/r.-1.0.mca" afterPath="$PROJECT_DIR$/server1.10/world/region/r.-1.0.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/region/r.-1.1.mca" afterPath="$PROJECT_DIR$/server1.10/world/region/r.-1.1.mca" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/region/r.0.0.mca" afterPath="$PROJECT_DIR$/server1.10/world/region/r.0.0.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/region/r.0.1.mca" afterPath="$PROJECT_DIR$/server1.10/world/region/r.0.1.mca" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/session.lock" afterPath="$PROJECT_DIR$/server1.10/world/session.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.-1.-1.mca" afterPath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.-1.-1.mca" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.-1.0.mca" afterPath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.-1.0.mca" />
@@ -118,24 +36,16 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/level.dat_old" afterPath="$PROJECT_DIR$/server1.10/world_the_end/level.dat_old" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/session.lock" afterPath="$PROJECT_DIR$/server1.10/world_the_end/session.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/cf85fafb-c355-4989-a857-14a569efb1e7.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/cf85fafb-c355-4989-a857-14a569efb1e7.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/michael.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/michael.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/messages.yml" afterPath="$PROJECT_DIR$/build/resources/main/messages.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/plugin.yml" afterPath="$PROJECT_DIR$/build/resources/main/plugin.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/logs/latest.log" afterPath="$PROJECT_DIR$/server1.10/logs/latest.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/ops.json" afterPath="$PROJECT_DIR$/server1.10/ops.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/plugins/BackPacks/messages.yml" afterPath="$PROJECT_DIR$/server1.10/plugins/BackPacks/messages.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/server.properties" afterPath="$PROJECT_DIR$/server1.10/server.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/spigot.yml" afterPath="$PROJECT_DIR$/server1.10/spigot.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/usercache.json" afterPath="$PROJECT_DIR$/server1.10/usercache.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/stats/ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8.json" afterPath="$PROJECT_DIR$/server1.10/world/stats/ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Main.java" afterPath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/commads/Give.java" afterPath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/commads/Give.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/commads/GiveCompleter.java" afterPath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/commads/GiveCompleter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/InventoryClose.java" afterPath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/InventoryClose.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/RightClick.java" afterPath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/RightClick.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/messages.yml" afterPath="$PROJECT_DIR$/src/main/resources/messages.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/tasks/Reconnect.java" afterPath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/tasks/Reconnect.java" />
     </list>
     <ignored path="BackPacks.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -171,6 +81,16 @@
     <option name="SHOW_TABLE_DETAILS" value="true" />
     <option name="SHOW_EMPTY_GROUPS" value="false" />
     <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="localhost" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="ExternalProjectsData">
@@ -195,11 +115,40 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Main.java">
+      <file leaf-file-name="RightClick.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/RightClick.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="27" column="65" selection-start-line="27" selection-start-column="65" selection-end-line="27" selection-end-column="65" />
+            <state relative-caret-position="17">
+              <caret line="119" column="68" selection-start-line="119" selection-start-column="68" selection-end-line="119" selection-end-column="68" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InventoryClose.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/InventoryClose.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="130">
+              <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bp.bp_littleBackPack_ba9c9caa1f6c46b19c7a2ada2a844fd8" pinned="false" current-in-tab="false">
+        <entry file="dbDummy://dbtable:/8e4c304b/cf85fafb-c355-4989-a857-14a569efb1e7/bp.bp_littleBackPack_ba9c9caa1f6c46b19c7a2ada2a844fd8">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -573,19 +522,19 @@
         <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/inventories/Open.java" />
         <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/SQL.java" />
         <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/Join.java" />
-        <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Crafting.java" />
-        <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/tasks/Reconnect.java" />
         <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/commads/Give.java" />
         <option value="$PROJECT_DIR$/src/main/resources/messages.yml" />
-        <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/commads/GiveCompleter.java" />
         <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/Open.java" />
-        <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/InventoryClose.java" />
-        <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/RightClick.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/resources/plugin.yml" />
         <option value="$PROJECT_DIR$/src/main/resources/config.yml" />
         <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/commads/Open.java" />
+        <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/tasks/Reconnect.java" />
+        <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Crafting.java" />
+        <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/RightClick.java" />
+        <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/InventoryClose.java" />
       </list>
     </option>
   </component>
@@ -847,7 +796,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.build">
+  <component name="RunManager" selected="Gradle.copy">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
@@ -1426,6 +1375,8 @@
       <workItem from="1472316090749" duration="1849000" />
       <workItem from="1472319640238" duration="51000" />
       <workItem from="1472382973301" duration="6687000" />
+      <workItem from="1472395780452" duration="1514000" />
+      <workItem from="1472397332168" duration="30000" />
     </task>
     <servers />
   </component>
@@ -1462,7 +1413,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85725000" />
+    <option name="totallyTimeSpent" value="87269000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1474,7 +1425,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1366" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1488,9 +1439,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20075758" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1501,10 +1450,12 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1707,14 +1658,14 @@
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/8e4c304b/cf85fafb-c355-4989-a857-14a569efb1e7/bp.bp_normalBackPack_ba9c9caa1f6c46b19c7a2ada2a844fd8">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1728,53 +1679,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Crafting.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-187">
-          <caret line="19" column="69" selection-start-line="19" selection-start-column="69" selection-end-line="19" selection-end-column="69" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/tasks/Reconnect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
-          <folding>
-            <element signature="e#403#924#0" expanded="true" />
-            <element signature="e#923#924#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/messages.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="327">
           <caret line="33" column="17" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/Join.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/8e4c304b/cf85fafb-c355-4989-a857-14a569efb1e7/bp.bp_users">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1787,20 +1707,6 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/8e4c304b/cf85fafb-c355-4989-a857-14a569efb1e7/bp.bp_littleBackPack_ba9c9caa1f6c46b19c7a2ada2a844fd8">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -1814,36 +1720,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/Open.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/RightClick.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1100#1101#0" expanded="true" />
-            <element signature="e#1178#1179#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/InventoryClose.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="32" column="40" selection-start-line="32" selection-start-column="40" selection-end-line="32" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/Open.java" />
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -1856,7 +1733,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1864,7 +1740,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1878,21 +1753,83 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/Join.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="25" column="32" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="58" column="44" selection-start-line="58" selection-start-column="44" selection-end-line="58" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/commads/Open.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+        <state relative-caret-position="134">
+          <caret line="99" column="76" selection-start-line="99" selection-start-column="76" selection-end-line="99" selection-end-column="76" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Crafting.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="27" column="65" selection-start-line="27" selection-start-column="65" selection-end-line="27" selection-end-column="65" />
+        <state relative-caret-position="101">
+          <caret line="24" column="40" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/tasks/Reconnect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="12" column="15" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
+          <folding>
+            <element signature="e#350#871#0" expanded="true" />
+            <element signature="e#870#871#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/8e4c304b/cf85fafb-c355-4989-a857-14a569efb1e7/bp.bp_littleBackPack_ba9c9caa1f6c46b19c7a2ada2a844fd8">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/RightClick.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="119" column="68" selection-start-line="119" selection-start-column="68" selection-end-line="119" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/InventoryClose.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

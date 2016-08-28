@@ -117,6 +117,8 @@ public class RightClick implements Listener {
                     ItemStack item = new ItemStack(Material.valueOf(rs.getString("material")),
                             rs.getInt("amount"));
 
+                    item.setDurability((short) rs.getInt("durability"));
+
                     if(rs.getBoolean("hasItemMeta")) {
                         ItemMeta meta = item.getItemMeta();
 

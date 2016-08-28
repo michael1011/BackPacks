@@ -24,7 +24,6 @@ public class Main extends JavaPlugin {
 
     private static Main main;
 
-    // fixme: optimize database table types
     // fixme: TabCompleter for bpOpen with every user in bp_users
 
     // todo: beautiful message when connection to database fails
@@ -36,8 +35,6 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         createFiles();
-
-        main = this;
 
         prefix = ChatColor.translateAlternateColorCodes('&', messages.getString("prefix"));
 
@@ -52,12 +49,13 @@ public class Main extends JavaPlugin {
                 Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                         messages.getString("MySQL.connected")));
 
+                main = this;
+
                 SQL.query("CREATE TABLE IF NOT EXISTS bp_users(name VARCHAR(100), uuid VARCHAR(100))", new SQL.Callback<Boolean>() {
                     @Override
                     public void onSuccess(Boolean rs) {
                         Crafting.initCrafting();
 
-                        //noinspection deprecation
                         new Reconnect(main);
 
                         new Join(main);

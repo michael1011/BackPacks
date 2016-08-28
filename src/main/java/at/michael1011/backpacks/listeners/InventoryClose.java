@@ -24,7 +24,7 @@ public class InventoryClose implements Listener {
     }
 
     // fixme: add enchantments and potions
-    // fixme: color of wool and grass
+    // fixme: color of wool and glass
 
     @EventHandler(priority = EventPriority.HIGH)
     public void invCloseEvent(InventoryCloseEvent e) {
@@ -50,9 +50,9 @@ public class InventoryClose implements Listener {
         SQL.query("DROP TABLE IF EXISTS bp_"+backPack+"_"+trimmedID, new SQL.Callback<Boolean>() {
             @Override
             public void onSuccess(Boolean rs) {
-                SQL.query("CREATE TABLE IF NOT EXISTS bp_"+backPack+"_"+trimmedID+"(position INT(100), material VARCHAR(100), " +
-                        "amount INT(100), hasItemMeta BOOLEAN, name VARCHAR(100), "+
-                        "lore VARCHAR(100))", new SQL.Callback<Boolean>() {
+                SQL.query("CREATE TABLE IF NOT EXISTS bp_"+backPack+"_"+trimmedID+"(position INT(100), material VARCHAR(100), "+
+                        "durability INT(100), amount INT(100), hasItemMeta BOOLEAN, name VARCHAR(100), lore VARCHAR(100))",
+                        new SQL.Callback<Boolean>() {
 
                     @Override
                     public void onSuccess(Boolean bool) {
@@ -86,9 +86,10 @@ public class InventoryClose implements Listener {
 
                                 }
 
-                                SQL.query("INSERT INTO bp_"+backPack+"_"+trimmedID+" (position, material, amount, hasItemMeta, "+
-                                        "name, lore) values ('"+i+"', '"+item.getType().toString()+"', '"+item.getAmount()+"',"+
-                                        "'"+itemMeta+"', '"+name+"', '"+lore+"')", new SQL.Callback<Boolean>() {
+                                SQL.query("INSERT INTO bp_"+backPack+"_"+trimmedID+" (position, material, durability, amount, hasItemMeta, "+
+                                        "name, lore) values ('"+i+"', '"+item.getType().toString()+"', '"+item.getDurability()+"', "+
+                                        "'"+item.getAmount()+"', '"+itemMeta+"', '"+name+"', '"+lore+"')",
+                                        new SQL.Callback<Boolean>() {
 
                                     @Override
                                     public void onSuccess(Boolean rs) {}

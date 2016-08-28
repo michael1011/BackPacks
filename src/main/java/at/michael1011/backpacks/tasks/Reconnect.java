@@ -10,10 +10,8 @@ import static at.michael1011.backpacks.Main.config;
 
 public class Reconnect {
 
-    @SuppressWarnings("deprecation")
-    @Deprecated
     public Reconnect(Main main) {
-        Bukkit.getScheduler().scheduleAsyncRepeatingTask(main, new Runnable() {
+        Bukkit.getScheduler().runTaskTimerAsynchronously(main, new Runnable() {
             @Override
             public void run() {
                 try {
