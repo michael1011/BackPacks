@@ -98,7 +98,7 @@ public class SQL {
 
     }
 
-    static boolean checkCon() {
+    public static boolean checkCon() {
         return con != null;
     }
 

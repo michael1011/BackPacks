@@ -24,7 +24,6 @@ public class InventoryClose implements Listener {
     }
 
     // fixme: add enchantments and potions
-    // fixme: color of wool and glass
 
     @EventHandler(priority = EventPriority.HIGH)
     public void invCloseEvent(InventoryCloseEvent e) {

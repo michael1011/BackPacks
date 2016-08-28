@@ -29,7 +29,6 @@ public class Main extends JavaPlugin {
 
     private static Main main;
 
-    // todo: beautiful message when connection to database fails
     // todo: add cache option (load backpacks of player on join)
     // todo: updater
     // todo: drop backpacks in inventory on death
@@ -101,13 +100,18 @@ public class Main extends JavaPlugin {
                 Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                         messages.getString("MySQL.failedToConnect")));
 
+                Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                        messages.getString("MySQL.failedToConnectCheck")));
             }
 
         } catch (SQLException e) {
+            e.printStackTrace();
+
             Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                     messages.getString("MySQL.failedToConnect")));
 
-            e.printStackTrace();
+            Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                    messages.getString("MySQL.failedToConnectCheck")));
         }
 
     }
