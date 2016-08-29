@@ -27,8 +27,6 @@ public class InventoryClose implements Listener {
         main.getServer().getPluginManager().registerEvents(this, main);
     }
 
-    // fixme: add enchantments and potions
-
     @EventHandler(priority = EventPriority.HIGH)
     public void invCloseEvent(InventoryCloseEvent e) {
         Player p = (Player) e.getPlayer();
