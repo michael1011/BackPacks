@@ -26,6 +26,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 import static at.michael1011.backpacks.Crafting.slots;
+import static at.michael1011.backpacks.Crafting.type;
 import static at.michael1011.backpacks.Main.messages;
 import static at.michael1011.backpacks.Main.prefix;
 
@@ -52,49 +53,58 @@ public class RightClick implements Listener {
                     final Player p = e.getPlayer();
 
                     if(p.hasPermission("backpacks.use."+backPack)) {
-                        final String trimmedID = p.getUniqueId().toString().replaceAll("-", "");
+                        switch (type.get(backPack)) {
+                            case "normal":
+                                final String trimmedID = p.getUniqueId().toString().replaceAll("-", "");
 
-                        SQL.checkTable("bp_"+backPack+"_"+trimmedID, new SQL.Callback<Boolean>() {
-                            @Override
-                            public void onSuccess(Boolean rs) {
-                                if(rs) {
-                                    SQL.getResult("select * from bp_"+backPack+"_"+trimmedID, new SQL.Callback<ResultSet>() {
-                                        @Override
-                                        public void onSuccess(ResultSet rs) {
-                                            open(rs, p, backPack, item.getItemMeta().getDisplayName(), true, null);
+                                SQL.checkTable("bp_"+backPack+"_"+trimmedID, new SQL.Callback<Boolean>() {
+                                    @Override
+                                    public void onSuccess(Boolean rs) {
+                                        if(rs) {
+                                            SQL.getResult("select * from bp_"+backPack+"_"+trimmedID, new SQL.Callback<ResultSet>() {
+                                                @Override
+                                                public void onSuccess(ResultSet rs) {
+                                                    open(rs, p, backPack, item.getItemMeta().getDisplayName(), true, null);
+                                                }
+
+                                                @Override
+                                                public void onFailure(Throwable e) {}
+
+                                            });
+
+                                        } else {
+                                            SQL.query("CREATE TABLE IF NOT EXISTS bp_"+backPack+"_"+trimmedID+"(position INT(100), material VARCHAR(100), "+
+                                                    "amount INT(100), hasItemMeta BOOLEAN, name VARCHAR(100), lore VARCHAR(100))", new SQL.Callback<Boolean>() {
+
+                                                @Override
+                                                public void onSuccess(Boolean rs) {
+                                                    openInvs.put(p, backPack);
+
+                                                    p.openInventory(Bukkit.getServer().createInventory(p, slots.get(backPack),
+                                                            item.getItemMeta().getDisplayName()));
+                                                }
+
+                                                @Override
+                                                public void onFailure(Throwable e) {}
+
+                                            });
+
                                         }
 
-                                        @Override
-                                        public void onFailure(Throwable e) {}
+                                    }
 
-                                    });
+                                    @Override
+                                    public void onFailure(Throwable e) {}
 
-                                } else {
-                                    SQL.query("CREATE TABLE IF NOT EXISTS bp_"+backPack+"_"+trimmedID+"(position INT(100), material VARCHAR(100), "+
-                                            "amount INT(100), hasItemMeta BOOLEAN, name VARCHAR(100), lore VARCHAR(100))", new SQL.Callback<Boolean>() {
+                                });
 
-                                        @Override
-                                        public void onSuccess(Boolean rs) {
-                                            openInvs.put(p, backPack);
+                                break;
 
-                                            p.openInventory(Bukkit.getServer().createInventory(p, slots.get(backPack),
-                                                    item.getItemMeta().getDisplayName()));
-                                        }
+                            case "ender":
+                                p.openInventory(p.getEnderChest());
 
-                                        @Override
-                                        public void onFailure(Throwable e) {
-
-                                        }
-                                    });
-
-                                }
-
-                            }
-
-                            @Override
-                            public void onFailure(Throwable e) {}
-
-                        });
+                                break;
+                        }
 
                     } else {
                         p.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',

@@ -20,10 +20,12 @@ BackPacks:
   enabled:
     1: "littleBackPack"
     2: "normalBackPack"
+    3: "enderBackPack"
   # List all BackPacks here that should be enabled
 
   littleBackPack:
     name: "&bLittle &3BackPack"
+    type: "normal"
 
     description:
       1: "&fThis is the &bLittle &3BackPack&f."
@@ -46,6 +48,7 @@ BackPacks:
 
   normalBackPack:
     name: "&eNormal &6BackPack"
+    type: "normal"
 
     description:
       1: "&fThis is the &eNormal &6BackPack&f."
@@ -64,3 +67,25 @@ BackPacks:
         R: "REDSTONE_BLOCK"
         G: "GOLD_BLOCK"
         W: "WATCH"
+
+  enderBackPack:
+    name: "&5Ender &dBackPack"
+    type: "ender"
+
+    description:
+      1: "&fThis is the &5Ender &dBackPack&f."
+      2: "&8Right click to open it."
+
+    slots: 27
+
+    material: "ENDER_CHEST"
+
+    crafting:
+      1: "P+O+P"
+      2: "O+W+O"
+      3: "P+O+P"
+
+      materials:
+        P: "ENDER_PEARL"
+        W: "ENDER_CHEST"
+        O: "OBSIDIAN"

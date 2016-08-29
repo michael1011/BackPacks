@@ -3,6 +3,7 @@ package at.michael1011.backpacks.commads;
 import at.michael1011.backpacks.Crafting;
 import at.michael1011.backpacks.Main;
 import at.michael1011.backpacks.SQL;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -16,6 +17,7 @@ import java.sql.SQLException;
 import java.util.Map;
 
 import static at.michael1011.backpacks.Crafting.itemsInverted;
+import static at.michael1011.backpacks.Crafting.type;
 import static at.michael1011.backpacks.Main.messages;
 import static at.michael1011.backpacks.Main.prefix;
 import static at.michael1011.backpacks.listeners.RightClick.open;
@@ -49,33 +51,47 @@ public class Open implements CommandExecutor {
                                     if(rs.next()) {
                                         final String trimmedID = rs.getString("uuid");
 
-                                        SQL.checkTable("bp_"+backPack+"_"+trimmedID, new SQL.Callback<Boolean>() {
-                                            @Override
-                                            public void onSuccess(Boolean rs) {
-                                                if(rs) {
-                                                    SQL.getResult("select * from bp_"+backPack+"_"+trimmedID, new SQL.Callback<ResultSet>() {
-                                                        @Override
-                                                        public void onSuccess(ResultSet rs) {
-                                                            open(rs, (Player) sender, backPack, item.getItemMeta().getDisplayName(), false, trimmedID);
+                                        final Player opener = (Player) sender;
+
+                                        switch (type.get(backPack)) {
+                                            case "normal":
+                                                SQL.checkTable("bp_"+backPack+"_"+trimmedID, new SQL.Callback<Boolean>() {
+                                                    @Override
+                                                    public void onSuccess(Boolean rs) {
+                                                        if(rs) {
+                                                            SQL.getResult("select * from bp_"+backPack+"_"+trimmedID, new SQL.Callback<ResultSet>() {
+                                                                @Override
+                                                                public void onSuccess(ResultSet rs) {
+                                                                    open(rs, opener, backPack, item.getItemMeta().getDisplayName(), false, trimmedID);
+                                                                }
+
+                                                                @Override
+                                                                public void onFailure(Throwable e) {}
+
+                                                            });
+
+                                                        } else {
+                                                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                                                    messages.getString("Help.bpopen.hasNotUsedYet")
+                                                                            .replaceAll("%player%", player).replaceAll("%backpack%", backPack)));
                                                         }
 
-                                                        @Override
-                                                        public void onFailure(Throwable e) {}
+                                                    }
 
-                                                    });
+                                                    @Override
+                                                    public void onFailure(Throwable e) {}
 
-                                                } else {
-                                                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                                            messages.getString("Help.bpopen.hasNotUsedYet")
-                                                                    .replaceAll("%player%", player).replaceAll("%backpack%", backPack)));
-                                                }
+                                                });
 
-                                            }
+                                                break;
 
-                                            @Override
-                                            public void onFailure(Throwable e) {}
+                                            case "ender":
+                                                Player target = Bukkit.getPlayer(player);
 
-                                        });
+                                                opener.openInventory(target.getEnderChest());
+
+                                                break;
+                                        }
 
                                     } else {
                                         sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',

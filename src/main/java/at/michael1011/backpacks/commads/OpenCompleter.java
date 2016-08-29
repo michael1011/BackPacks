@@ -10,7 +10,7 @@ import static at.michael1011.backpacks.Crafting.availableList;
 import static at.michael1011.backpacks.Main.availablePlayers;
 import static at.michael1011.backpacks.commads.GiveCompleter.filterList;
 
-public class OpenCompleter implements TabCompleter {
+class OpenCompleter implements TabCompleter {
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {

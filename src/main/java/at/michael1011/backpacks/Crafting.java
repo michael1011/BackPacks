@@ -20,6 +20,7 @@ public class Crafting {
     public static HashMap<ItemStack, String> items = new HashMap<>();
     public static HashMap<String, ItemStack> itemsInverted = new HashMap<>();
 
+    public static HashMap<String, String> type = new HashMap<>();
     public static HashMap<String, Integer> slots = new HashMap<>();
 
     public static String available = "";
@@ -100,6 +101,7 @@ public class Crafting {
             craft.setItemMeta(craftM);
 
             slots.put(backPack, itemSlots);
+            type.put(backPack, config.getString(backPackPath+"type"));
 
             return craft;
 

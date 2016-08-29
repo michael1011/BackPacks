@@ -59,10 +59,6 @@ stats:
 world-settings:
   default:
     verbose: true
-    entity-activation-range:
-      animals: 32
-      monsters: 32
-      misc: 16
     entity-tracking-range:
       players: 48
       animals: 48
@@ -99,6 +95,10 @@ world-settings:
       netherwart-modifier: 100
       vine-modifier: 100
       cocoa-modifier: 100
+    entity-activation-range:
+      animals: 32
+      monsters: 32
+      misc: 16
     mob-spawn-range: 4
     item-despawn-rate: 6000
     merge-radius:

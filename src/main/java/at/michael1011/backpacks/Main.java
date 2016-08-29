@@ -2,6 +2,7 @@ package at.michael1011.backpacks;
 
 import at.michael1011.backpacks.commads.Give;
 import at.michael1011.backpacks.commads.Open;
+import at.michael1011.backpacks.listeners.BlockPlace;
 import at.michael1011.backpacks.listeners.InventoryClose;
 import at.michael1011.backpacks.listeners.Join;
 import at.michael1011.backpacks.listeners.RightClick;
@@ -86,6 +87,7 @@ public class Main extends JavaPlugin {
                         new Join(main);
                         new RightClick(main);
                         new InventoryClose(main);
+                        new BlockPlace(main);
 
                         new Give(main);
                         new Open(main);

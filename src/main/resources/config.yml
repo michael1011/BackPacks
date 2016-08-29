@@ -20,6 +20,7 @@ BackPacks:
   enabled:
     1: "littleBackPack"
     2: "normalBackPack"
+    3: "enderBackPack"
   # List all BackPacks here that should be enabled
 
   littleBackPack:
