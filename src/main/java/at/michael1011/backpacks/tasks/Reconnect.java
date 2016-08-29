@@ -7,9 +7,7 @@ import org.bukkit.ChatColor;
 
 import java.sql.SQLException;
 
-import static at.michael1011.backpacks.Main.config;
-import static at.michael1011.backpacks.Main.messages;
-import static at.michael1011.backpacks.Main.prefix;
+import static at.michael1011.backpacks.Main.*;
 
 public class Reconnect {
 

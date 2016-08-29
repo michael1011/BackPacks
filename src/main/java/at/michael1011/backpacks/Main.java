@@ -2,10 +2,7 @@ package at.michael1011.backpacks;
 
 import at.michael1011.backpacks.commads.Give;
 import at.michael1011.backpacks.commads.Open;
-import at.michael1011.backpacks.listeners.BlockPlace;
-import at.michael1011.backpacks.listeners.InventoryClose;
-import at.michael1011.backpacks.listeners.Join;
-import at.michael1011.backpacks.listeners.RightClick;
+import at.michael1011.backpacks.listeners.*;
 import at.michael1011.backpacks.tasks.Reconnect;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -30,9 +27,10 @@ public class Main extends JavaPlugin {
 
     private static Main main;
 
+    // fixme: furnaceBackPack
+
     // todo: add cache option (load backpacks of player on join)
     // todo: updater
-    // todo: drop backpacks in inventory on death
     // todo: command to create a new backpack in config
 
     @Override
@@ -75,9 +73,8 @@ public class Main extends JavaPlugin {
                             }
 
                             @Override
-                            public void onFailure(Throwable e) {
+                            public void onFailure(Throwable e) {}
 
-                            }
                         });
 
                         Crafting.initCrafting();
@@ -88,6 +85,7 @@ public class Main extends JavaPlugin {
                         new RightClick(main);
                         new InventoryClose(main);
                         new BlockPlace(main);
+                        new PlayerDeath(main);
 
                         new Give(main);
                         new Open(main);

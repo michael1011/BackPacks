@@ -20,7 +20,7 @@ import static at.michael1011.backpacks.Crafting.itemsInverted;
 import static at.michael1011.backpacks.Crafting.type;
 import static at.michael1011.backpacks.Main.messages;
 import static at.michael1011.backpacks.Main.prefix;
-import static at.michael1011.backpacks.listeners.RightClick.open;
+import static at.michael1011.backpacks.listeners.RightClick.getInv;
 
 public class Open implements CommandExecutor {
 
@@ -33,7 +33,7 @@ public class Open implements CommandExecutor {
 
     @Override
     public boolean onCommand(final CommandSender sender, Command command, String label, final String[] args) {
-        if(sender.hasPermission("backpacks.open")) {
+        if(sender.hasPermission("backpacks.getInv")) {
             if(sender instanceof Player) {
                 if(args.length == 2) {
                     final String backPack = args[0];
@@ -62,7 +62,7 @@ public class Open implements CommandExecutor {
                                                             SQL.getResult("select * from bp_"+backPack+"_"+trimmedID, new SQL.Callback<ResultSet>() {
                                                                 @Override
                                                                 public void onSuccess(ResultSet rs) {
-                                                                    open(rs, opener, backPack, item.getItemMeta().getDisplayName(), false, trimmedID);
+                                                                    opener.openInventory(getInv(rs, opener, backPack, item.getItemMeta().getDisplayName(), false, trimmedID));
                                                                 }
 
                                                                 @Override
