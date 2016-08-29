@@ -27,6 +27,7 @@ import java.util.HashMap;
 
 import static at.michael1011.backpacks.Crafting.slots;
 import static at.michael1011.backpacks.Crafting.type;
+import static at.michael1011.backpacks.Main.identifyOnlyByLore;
 import static at.michael1011.backpacks.Main.messages;
 import static at.michael1011.backpacks.Main.prefix;
 
@@ -47,12 +48,20 @@ public class RightClick implements Listener {
             final ItemStack item = e.getItem();
 
             if(item != null) {
-                final String backPack = Crafting.items.get(item);
+                String backPack;
+
+                if(identifyOnlyByLore) {
+                    backPack = Crafting.loreMap.get(item.getItemMeta().getLore());
+                } else {
+                    backPack = Crafting.items.get(item);
+                }
 
                 if(backPack != null) {
                     final Player p = e.getPlayer();
 
                     if(p.hasPermission("backpacks.use."+backPack)) {
+                        final String finalBackPack = backPack;
+
                         switch (type.get(backPack)) {
                             case "normal":
                                 final String trimmedID = p.getUniqueId().toString().replaceAll("-", "");
@@ -61,10 +70,10 @@ public class RightClick implements Listener {
                                     @Override
                                     public void onSuccess(Boolean rs) {
                                         if(rs) {
-                                            SQL.getResult("SELECT * FROM bp_"+backPack+"_"+trimmedID, new SQL.Callback<ResultSet>() {
+                                            SQL.getResult("SELECT * FROM bp_"+ finalBackPack +"_"+trimmedID, new SQL.Callback<ResultSet>() {
                                                 @Override
                                                 public void onSuccess(ResultSet rs) {
-                                                    p.openInventory(getInv(rs, p, backPack, item.getItemMeta().getDisplayName(), true, null));
+                                                    p.openInventory(getInv(rs, p, finalBackPack, item.getItemMeta().getDisplayName(), true, null));
                                                 }
 
                                                 @Override
@@ -73,14 +82,14 @@ public class RightClick implements Listener {
                                             });
 
                                         } else {
-                                            SQL.query("CREATE TABLE IF NOT EXISTS bp_"+backPack+"_"+trimmedID+"(position INT(100), material VARCHAR(100), "+
+                                            SQL.query("CREATE TABLE IF NOT EXISTS bp_"+ finalBackPack +"_"+trimmedID+"(position INT(100), material VARCHAR(100), "+
                                                     "amount INT(100), hasItemMeta BOOLEAN, name VARCHAR(100), lore VARCHAR(100))", new SQL.Callback<Boolean>() {
 
                                                 @Override
                                                 public void onSuccess(Boolean rs) {
-                                                    openInvs.put(p, backPack);
+                                                    openInvs.put(p, finalBackPack);
 
-                                                    p.openInventory(Bukkit.getServer().createInventory(p, slots.get(backPack),
+                                                    p.openInventory(Bukkit.getServer().createInventory(p, slots.get(finalBackPack),
                                                             item.getItemMeta().getDisplayName()));
                                                 }
 

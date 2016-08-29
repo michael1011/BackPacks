@@ -21,6 +21,8 @@ public class Main extends JavaPlugin {
 
     public static YamlConfiguration config, messages;
 
+    public static Boolean identifyOnlyByLore;
+
     public static String prefix;
 
     public static List<String> availablePlayers = new ArrayList<>();
@@ -38,6 +40,8 @@ public class Main extends JavaPlugin {
         createFiles();
 
         prefix = ChatColor.translateAlternateColorCodes('&', messages.getString("prefix"));
+
+        identifyOnlyByLore = config.getBoolean("identifyOnlyByLore");
 
         try {
             new SQL(this);

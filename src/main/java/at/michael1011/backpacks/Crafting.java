@@ -22,6 +22,7 @@ public class Crafting {
 
     public static HashMap<String, String> type = new HashMap<>();
     public static HashMap<String, Integer> slots = new HashMap<>();
+    public static HashMap<List<String>, String> loreMap = new HashMap<>();
 
     public static String available = "";
     public static List<String> availableList;
@@ -95,7 +96,11 @@ public class Crafting {
             craftM.setDisplayName(name);
 
             if(!lore.equals("")) {
-                craftM.setLore(Arrays.asList(lore.split("\\s*,\\s*")));
+                List<String> loreList = Arrays.asList(lore.split("\\s*,\\s*"));
+
+                craftM.setLore(loreList);
+
+                loreMap.put(loreList, backPack);
             }
 
             craft.setItemMeta(craftM);

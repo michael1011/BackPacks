@@ -12,6 +12,7 @@
 
 config-version: 8
 settings:
+  debug: false
   save-user-cache-on-stop-only: false
   bungeecord: false
   late-bind: false
@@ -34,9 +35,9 @@ settings:
       max: 2048.0
     attackDamage:
       max: 2048.0
-  debug: false
 commands:
   tab-complete: 0
+  log: true
   spam-exclusions:
   - /skill
   silent-commandblock-console: false
@@ -45,7 +46,6 @@ commands:
   - summon
   - testforblock
   - tellraw
-  log: true
 messages:
   whitelist: You are not whitelisted on this server!
   unknown-command: Unknown command. Type "/help" for help.
@@ -59,17 +59,6 @@ stats:
 world-settings:
   default:
     verbose: true
-    growth:
-      cactus-modifier: 100
-      cane-modifier: 100
-      melon-modifier: 100
-      mushroom-modifier: 100
-      pumpkin-modifier: 100
-      sapling-modifier: 100
-      wheat-modifier: 100
-      netherwart-modifier: 100
-      vine-modifier: 100
-      cocoa-modifier: 100
     entity-activation-range:
       animals: 32
       monsters: 32
@@ -84,9 +73,19 @@ world-settings:
       hopper-transfer: 8
       hopper-check: 8
     hopper-amount: 1
-    mob-spawn-range: 4
     random-light-updates: false
     save-structure-info: true
+    growth:
+      cactus-modifier: 100
+      cane-modifier: 100
+      melon-modifier: 100
+      mushroom-modifier: 100
+      pumpkin-modifier: 100
+      sapling-modifier: 100
+      wheat-modifier: 100
+      netherwart-modifier: 100
+      vine-modifier: 100
+      cocoa-modifier: 100
     max-entity-collisions: 8
     dragon-death-sound-radius: 0
     seed-village: 10387312
@@ -100,6 +99,7 @@ world-settings:
     max-tick-time:
       tile: 50
       entity: 50
+    mob-spawn-range: 4
     item-despawn-rate: 6000
     merge-radius:
       item: 2.5

@@ -17,8 +17,12 @@ MySQL:
   password: "psswrd"
 
 
-dropOnDeath: true
 # If this is true and a player dies with a backpack in his inventory should the content of the backpack get dropped too?
+dropOnDeath: true
+
+# That allows your players to rename their backpacks but its easier to fake them
+# (be sure that the lore of every item is set before you enable this)
+identifyOnlyByLore: false
 
 
 # Delete the defaults and create your own backpacks here
