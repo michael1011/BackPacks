@@ -2,6 +2,7 @@ package at.michael1011.backpacks.listeners;
 
 import at.michael1011.backpacks.Main;
 import at.michael1011.backpacks.SQL;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -10,8 +11,11 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.PotionMeta;
+import org.bukkit.potion.PotionData;
 
 import java.util.List;
+import java.util.Map;
 
 import static at.michael1011.backpacks.Crafting.slots;
 import static at.michael1011.backpacks.listeners.RightClick.openInvs;
@@ -50,7 +54,8 @@ public class InventoryClose implements Listener {
             @Override
             public void onSuccess(Boolean rs) {
                 SQL.query("CREATE TABLE IF NOT EXISTS bp_"+backPack+"_"+trimmedID+"(position INT(100), material VARCHAR(100), "+
-                        "durability INT(100), amount INT(100), hasItemMeta BOOLEAN, name VARCHAR(100), lore VARCHAR(100))",
+                        "durability INT(100), amount INT(100), name VARCHAR(100), lore VARCHAR(100), enchantments VARCHAR(100), "+
+                        "potion VARCHAR(100))",
                         new SQL.Callback<Boolean>() {
 
                     @Override
@@ -60,34 +65,54 @@ public class InventoryClose implements Listener {
 
                             if(item != null) {
                                 Boolean hasItemMeta = item.hasItemMeta();
-                                int itemMeta = 0;
 
                                 String name = "";
                                 String lore = "";
+                                String potion = "";
+
+                                String material = item.getType().toString();
 
                                 if(hasItemMeta) {
-                                    itemMeta = 1;
-
                                     ItemMeta itemM = item.getItemMeta();
 
-                                    name = itemM.getDisplayName();
+                                    if(itemM.hasDisplayName()) {
+                                        name = itemM.getDisplayName();
+                                    }
 
                                     List<String> rawLore = itemM.getLore();
 
                                     StringBuilder builder = new StringBuilder();
 
-                                    for(String loreLine : rawLore) {
-                                        builder.append(loreLine);
-                                        builder.append("~");
-                                    }
+                                    if(itemM.hasLore()) {
+                                        for(String loreLine : rawLore) {
+                                            builder.append(loreLine).append("~");
+                                        }
 
-                                    lore = builder.toString();
+                                        lore = builder.toString();
+                                    }
 
                                 }
 
-                                SQL.query("INSERT INTO bp_"+backPack+"_"+trimmedID+" (position, material, durability, amount, hasItemMeta, "+
-                                        "name, lore) values ('"+i+"', '"+item.getType().toString()+"', '"+item.getDurability()+"', "+
-                                        "'"+item.getAmount()+"', '"+itemMeta+"', '"+name+"', '"+lore+"')",
+                                StringBuilder enchantments = new StringBuilder();
+
+                                for(Map.Entry<Enchantment, Integer> enchantment : item.getEnchantments().entrySet()) {
+                                    enchantments.append(enchantment.getKey().getName()).append(":")
+                                            .append(enchantment.getValue()).append("/");
+                                }
+
+                                if(material.toLowerCase().contains("potion")) {
+                                    PotionMeta potionM = (PotionMeta) item.getItemMeta();
+                                    PotionData potionD = potionM.getBasePotionData();
+
+                                    if(potionD != null) {
+                                        potion = potionD.getType().name()+"/"+potionD.isExtended()+"/"+potionD.isUpgraded();
+                                    }
+
+                                }
+
+                                SQL.query("INSERT INTO bp_"+backPack+"_"+trimmedID+" (position, material, durability, amount, "+
+                                        "name, lore, enchantments, potion) values ('"+i+"', '"+material+"', '"+item.getDurability()+"', "+
+                                        "'"+item.getAmount()+"', '"+name+"', '"+lore+"', '"+enchantments.toString()+"', '"+potion+"')",
                                         new SQL.Callback<Boolean>() {
 
                                     @Override
@@ -105,9 +130,8 @@ public class InventoryClose implements Listener {
                     }
 
                     @Override
-                    public void onFailure(Throwable e) {
+                    public void onFailure(Throwable e) {}
 
-                    }
                 });
 
             }

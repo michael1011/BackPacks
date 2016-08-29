@@ -11,7 +11,7 @@ MySQL:
   host: "localhost"
   port: "3306"
   database: "bp"
-  username: "bpa"
+  username: "bp"
   password: "xzkUd7p47ca7CEZJ"
 
 # Delete the defaults and create your own backpacks here

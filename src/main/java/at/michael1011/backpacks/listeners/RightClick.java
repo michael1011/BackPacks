@@ -6,6 +6,7 @@ import at.michael1011.backpacks.SQL;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -15,6 +16,9 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.PotionMeta;
+import org.bukkit.potion.PotionData;
+import org.bukkit.potion.PotionType;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -119,13 +123,50 @@ public class RightClick implements Listener {
 
                     item.setDurability((short) rs.getInt("durability"));
 
-                    if(rs.getBoolean("hasItemMeta")) {
-                        ItemMeta meta = item.getItemMeta();
+                    ItemMeta meta = item.getItemMeta();
 
-                        meta.setDisplayName(rs.getString("name"));
+                    String nameM = rs.getString("name");
+                    String loreM = rs.getString("lore");
+                    String enchantment = rs.getString("enchantments");
+                    String potion = rs.getString("potion");
+
+                    if(!nameM.equals("")) {
+                        meta.setDisplayName(nameM);
+
+                        item.setItemMeta(meta);
+                    }
+
+                    if(!loreM.equals("")) {
                         meta.setLore(Arrays.asList(rs.getString("lore").split("~")));
 
                         item.setItemMeta(meta);
+                    }
+
+                    if(!enchantment.equals("")) {
+                        String[] enchantments = enchantment.substring(0, enchantment.length()-1).split("/");
+
+                        for(String enchant : enchantments) {
+                            String[] parts = enchant.split(":");
+
+                            Enchantment ench = Enchantment.getByName(parts[0]);
+                            int enchLvl = Integer.valueOf(parts[1]);
+
+                            item.addEnchantment(ench, enchLvl);
+                            meta.addEnchant(ench, enchLvl, true);
+                        }
+                    }
+
+                    if(!potion.equals("")) {
+                        String[] parts = potion.split("/");
+
+                        PotionMeta potionM = (PotionMeta) meta;
+
+                        PotionData potionD = new PotionData(PotionType.valueOf(parts[0]), Boolean.parseBoolean(parts[1]),
+                                Boolean.parseBoolean(parts[2]));
+
+                        potionM.setBasePotionData(potionD);
+
+                        item.setItemMeta(potionM);
                     }
 
                     inv.setItem(rs.getInt("position"), item);

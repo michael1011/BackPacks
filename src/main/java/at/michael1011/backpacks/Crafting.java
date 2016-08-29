@@ -25,7 +25,6 @@ public class Crafting {
     public static String available = "";
     public static List<String> availableList;
 
-
     private static Boolean slots9 = true;
 
     static void initCrafting() {
