@@ -19,7 +19,7 @@ import java.util.List;
 
 public class Main extends JavaPlugin {
 
-    public static YamlConfiguration config, messages;
+    public static YamlConfiguration config, messages, furnaceGui;
 
     public static Boolean identifyOnlyByLore;
 
@@ -29,7 +29,8 @@ public class Main extends JavaPlugin {
 
     private static Main main;
 
-    // fixme: furnaceBackPack
+    // todo: save furnace
+    // todo: auto smelt and fill
 
     // todo: add cache option (load backpacks of player on join)
     // todo: updater
@@ -100,6 +101,16 @@ public class Main extends JavaPlugin {
 
                 });
 
+                SQL.query("CREATE TABLE IF NOT EXISTS bp_furnaces(uuid VARCHAR(100), ores VARCHAR(100), potatoes VARCHAR(100), " +
+                        "autoFill VARCHAR(100), coal VARCHAR(100))", new SQL.Callback<Boolean>() {
+                    @Override
+                    public void onSuccess(Boolean rs) {}
+
+                    @Override
+                    public void onFailure(Throwable e) {}
+
+                });
+
             } else {
                 Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                         messages.getString("MySQL.failedToConnect")));
@@ -139,6 +150,7 @@ public class Main extends JavaPlugin {
     private void createFiles() {
         File configF = new File(getDataFolder(), "config.yml");
         File messagesF = new File(getDataFolder(), "messages.yml");
+        File furnacesF = new File(getDataFolder(), "furnaceBackPack.yml");
 
         if(!configF.exists()) {
             configF.getParentFile().mkdirs();
@@ -150,12 +162,19 @@ public class Main extends JavaPlugin {
             saveResource("messages.yml", false);
         }
 
+        if(!furnacesF.exists()) {
+            furnacesF.getParentFile().mkdirs();
+            saveResource("furnaceBackPack.yml", false);
+        }
+
         config = new YamlConfiguration();
         messages = new YamlConfiguration();
+        furnaceGui = new YamlConfiguration();
 
         try {
             config.load(configF);
             messages.load(messagesF);
+            furnaceGui.load(furnacesF);
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }

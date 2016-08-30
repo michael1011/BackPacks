@@ -28,11 +28,12 @@ identifyOnlyByLore: false
 # Delete the defaults and create your own backpacks here
 # Find all materials here: http://bit.ly/21vbetj
 BackPacks:
+# List all BackPacks here that should be enabled
   enabled:
     1: "littleBackPack"
     2: "normalBackPack"
     3: "enderBackPack"
-  # List all BackPacks here that should be enabled
+    4: "furnaceBackPack"
 
   littleBackPack:
     name: "&bLittle &3BackPack"
@@ -87,8 +88,6 @@ BackPacks:
       1: "&fThis is the &5Ender &dBackPack&f."
       2: "&8Right click to open it."
 
-    slots: 27
-
     material: "ENDER_CHEST"
 
     crafting:
@@ -109,7 +108,8 @@ BackPacks:
       1: "&fThis is the &cFurnace &4BackPack&f."
       2: "&8Right click to open it."
 
-    # configure how big a furnace backpack should be in furnace.yml
+    gui:
+      enabled: true
 
     material: "FURNACE"
 

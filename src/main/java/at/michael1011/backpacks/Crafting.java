@@ -22,6 +22,7 @@ public class Crafting {
 
     public static HashMap<String, String> type = new HashMap<>();
     public static HashMap<String, Integer> slots = new HashMap<>();
+    public static HashMap<String, String> furnaceGui = new HashMap<>();
     public static HashMap<List<String>, String> loreMap = new HashMap<>();
 
     public static String available = "";
@@ -106,7 +107,14 @@ public class Crafting {
             craft.setItemMeta(craftM);
 
             slots.put(backPack, itemSlots);
-            type.put(backPack, config.getString(backPackPath+"type"));
+
+            String rawType = config.getString(backPackPath+"type");
+
+            type.put(backPack, rawType);
+
+            if(rawType.equals("furnace")) {
+                furnaceGui.put(backPack, config.getString(backPackPath+"gui.enabled"));
+            }
 
             return craft;
 

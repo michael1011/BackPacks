@@ -46,7 +46,7 @@ public class Join implements Listener {
                             }
 
                         } else {
-                            SQL.query("INSERT INTO bp_users (name, uuid) values ('"+playerName+"', '"+uuid+"')", new SQL.Callback<Boolean>() {
+                            SQL.query("INSERT INTO bp_users (name, uuid) VALUES ('"+playerName+"', '"+uuid+"')", new SQL.Callback<Boolean>() {
                                 @Override
                                 public void onSuccess(Boolean rs) {}
 

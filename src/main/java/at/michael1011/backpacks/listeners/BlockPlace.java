@@ -1,12 +1,14 @@
 package at.michael1011.backpacks.listeners;
 
+import at.michael1011.backpacks.Crafting;
 import at.michael1011.backpacks.Main;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.inventory.ItemStack;
 
-import static at.michael1011.backpacks.Crafting.items;
+import static at.michael1011.backpacks.Main.identifyOnlyByLore;
 
 public class BlockPlace implements Listener {
 
@@ -16,7 +18,15 @@ public class BlockPlace implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void blockPlace(BlockPlaceEvent e) {
-        String backPack = items.get(e.getItemInHand());
+        ItemStack item = e.getItemInHand();
+
+        String backPack;
+
+        if(identifyOnlyByLore) {
+            backPack = Crafting.loreMap.get(item.getItemMeta().getLore());
+        } else {
+            backPack = Crafting.items.get(item);
+        }
 
         if(backPack != null) {
             e.setCancelled(true);

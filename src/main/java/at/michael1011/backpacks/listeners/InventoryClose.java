@@ -37,20 +37,11 @@ public class InventoryClose implements Listener {
         if(backPack != null) {
             openInvs.remove(p);
 
-            final String trimmedID = p.getUniqueId().toString().replaceAll("-", "");
+            // todo: switch for furnace
 
-            SQL.query("CREATE TABLE IF NOT EXISTS bp_" + backPack + "_" + trimmedID + "(position INT(100), material VARCHAR(100), " +
-                    "durability INT(100), amount INT(100), name VARCHAR(100), lore VARCHAR(100), enchantments VARCHAR(100), " +
-                    "potion VARCHAR(100))", new SQL.Callback<Boolean>() {
-                @Override
-                public void onSuccess(Boolean rs) {
-                    saveBackPack(backPack, trimmedID, e.getInventory());
-                }
+            String trimmedID = p.getUniqueId().toString().replaceAll("-", "");
 
-                @Override
-                public void onFailure(Throwable e) {}
-
-            });
+            saveBackPack(backPack, trimmedID, e.getInventory());
 
         } else if(backPackCommand != null) {
             saveBackPack(backPackCommand[0], backPackCommand[1], e.getInventory());

@@ -1,0 +1,40 @@
+# configure the GUI of every FurnaceBackPack here
+
+enabled: "&aEnabled"
+disabled: "&cDisabled"
+
+ores:
+  # let you players decide if they want to smelt ores automatically
+  enabled: true
+
+  # is important if enabled is false
+  defaultOption: true
+
+  name: "&7Ores"
+  description:
+    1: "&7Smelt &8ores &7automatically?"
+    2: "&aEnable &8and &cdisable &8with the item below."
+
+potatoes:
+  # let you players decide if they want to smelt potatoes automatically
+  enabled: true
+
+  # is important if enabled is false
+  defaultOption: true
+
+  name: "&6Potatoes"
+  description:
+    1: "&eSmelt &6potatoes &eautomatically?"
+    2: "&aEnable &8and &cdisable &8with the item below."
+
+autoFill:
+  # let you players decide if they want to fill the furnaceBackPack until it's full
+  enabled: true
+
+  # is important if enabled is false
+  defaultOption: true
+
+  name: "&0Auto fill"
+  description:
+    1: "&8Fill with &0coal &8automatically?"
+    2: "&aEnable &8and &cdisable &8with the item below."
