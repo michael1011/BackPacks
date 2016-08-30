@@ -75,17 +75,6 @@ world-settings:
     hopper-amount: 1
     random-light-updates: false
     save-structure-info: true
-    growth:
-      cactus-modifier: 100
-      cane-modifier: 100
-      melon-modifier: 100
-      mushroom-modifier: 100
-      pumpkin-modifier: 100
-      sapling-modifier: 100
-      wheat-modifier: 100
-      netherwart-modifier: 100
-      vine-modifier: 100
-      cocoa-modifier: 100
     max-entity-collisions: 8
     dragon-death-sound-radius: 0
     seed-village: 10387312
@@ -100,6 +89,17 @@ world-settings:
       tile: 50
       entity: 50
     mob-spawn-range: 4
+    growth:
+      cactus-modifier: 100
+      cane-modifier: 100
+      melon-modifier: 100
+      mushroom-modifier: 100
+      pumpkin-modifier: 100
+      sapling-modifier: 100
+      wheat-modifier: 100
+      netherwart-modifier: 100
+      vine-modifier: 100
+      cocoa-modifier: 100
     item-despawn-rate: 6000
     merge-radius:
       item: 2.5

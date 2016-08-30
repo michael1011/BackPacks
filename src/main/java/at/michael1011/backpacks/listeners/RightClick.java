@@ -27,9 +27,7 @@ import java.util.HashMap;
 
 import static at.michael1011.backpacks.Crafting.slots;
 import static at.michael1011.backpacks.Crafting.type;
-import static at.michael1011.backpacks.Main.identifyOnlyByLore;
-import static at.michael1011.backpacks.Main.messages;
-import static at.michael1011.backpacks.Main.prefix;
+import static at.michael1011.backpacks.Main.*;
 
 public class RightClick implements Listener {
 
