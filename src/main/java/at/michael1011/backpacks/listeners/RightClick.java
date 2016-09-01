@@ -97,9 +97,8 @@ public class RightClick implements Listener {
                                                 }
 
                                                 @Override
-                                                public void onFailure(Throwable e) {
+                                                public void onFailure(Throwable e) {}
 
-                                                }
                                             });
 
                                         }

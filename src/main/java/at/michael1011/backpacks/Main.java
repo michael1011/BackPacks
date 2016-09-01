@@ -29,7 +29,6 @@ public class Main extends JavaPlugin {
 
     private static Main main;
 
-    // todo: save furnace
     // todo: auto smelt and fill
 
     // todo: add cache option (load backpacks of player on join)

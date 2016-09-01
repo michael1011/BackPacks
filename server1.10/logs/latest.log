@@ -2149,3 +2149,4 @@ Caused by: java.lang.NullPointerException
 [08:03:24] [Server thread/INFO]: potatoes+false
 [08:03:44] [Server thread/INFO]: michael1011at lost connection: Disconnected
 [08:03:44] [Server thread/INFO]: michael1011at left the game
+[08:09:04] [Thread-3/INFO]: Stopping server
