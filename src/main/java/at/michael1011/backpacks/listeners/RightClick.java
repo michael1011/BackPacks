@@ -35,7 +35,9 @@ public class RightClick implements Listener {
 
     static final HashMap<Player, String> openInvs = new HashMap<>();
     static final HashMap<Player, String[]> openInvsCommand = new HashMap<>();
+
     static final HashMap<Player, String> openFurnaces = new HashMap<>();
+    static final HashMap<Player, Inventory> openFurnacesInvs = new HashMap<>();
 
     public RightClick(Main main) {
         main.getServer().getPluginManager().registerEvents(this, main);
@@ -268,7 +270,7 @@ public class RightClick implements Listener {
                              Boolean autoFillEnable, int amountCoal) {
         ItemStack ores = new ItemStack(Material.IRON_ORE);
         ItemStack potatoes = new ItemStack(Material.POTATO_ITEM);
-        ItemStack autoFill = new ItemStack(Material.COAL);
+        ItemStack autoFill = new ItemStack(Material.FURNACE);
 
         setMeta(ores, "ores");
         setMeta(potatoes, "potatoes");
@@ -313,6 +315,7 @@ public class RightClick implements Listener {
         opener.openInventory(inv);
 
         openFurnaces.put(opener, backPack);
+        openFurnacesInvs.put(opener, inv);
     }
 
     private void setMeta(ItemStack item, String name) {
@@ -324,7 +327,7 @@ public class RightClick implements Listener {
         item.setItemMeta(meta);
     }
 
-    private void setToggleMeta(ItemStack item, Boolean toggle) {
+    static void setToggleMeta(ItemStack item, Boolean toggle) {
         ItemMeta meta = item.getItemMeta();
 
         String name;
@@ -352,7 +355,7 @@ public class RightClick implements Listener {
         return Arrays.asList(lore.split("\\s*,\\s*"));
     }
 
-    private int getColor(Boolean bool) {
+    static int getColor(Boolean bool) {
         if(bool) {
             return 5;
         }

@@ -91,6 +91,7 @@ public class Main extends JavaPlugin {
                         new InventoryClose(main);
                         new BlockPlace(main);
                         new PlayerDeath(main);
+                        new FurnaceGui(main);
 
                         new Give(main);
                         new Open(main);

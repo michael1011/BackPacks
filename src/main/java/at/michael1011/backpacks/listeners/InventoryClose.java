@@ -18,8 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 import static at.michael1011.backpacks.Crafting.slots;
-import static at.michael1011.backpacks.listeners.RightClick.openInvs;
-import static at.michael1011.backpacks.listeners.RightClick.openInvsCommand;
+import static at.michael1011.backpacks.listeners.RightClick.*;
 
 public class InventoryClose implements Listener {
 
@@ -33,18 +32,39 @@ public class InventoryClose implements Listener {
 
         final String backPack = openInvs.get(p);
         final String[] backPackCommand = openInvsCommand.get(p);
+        final String furnace = openFurnaces.get(p);
+
+        final String trimmedID = p.getUniqueId().toString().replaceAll("-", "");
 
         if(backPack != null) {
             openInvs.remove(p);
-
-            // todo: switch for furnace
-
-            String trimmedID = p.getUniqueId().toString().replaceAll("-", "");
 
             saveBackPack(backPack, trimmedID, e.getInventory());
 
         } else if(backPackCommand != null) {
             saveBackPack(backPackCommand[0], backPackCommand[1], e.getInventory());
+
+        } else if(furnace != null) {
+            openFurnaces.remove(p);
+            openFurnacesInvs.remove(p);
+
+            int amount = 0;
+
+            ItemStack coal = e.getInventory().getItem(35);
+
+            if(coal != null) {
+                amount = coal.getAmount();
+            }
+
+            SQL.query("UPDATE bp_furnaces SET coal="+amount+" WHERE uuid='"+trimmedID+"'",
+                    new SQL.Callback<Boolean>() {
+                @Override
+                public void onSuccess(Boolean rs) {}
+
+                @Override
+                public void onFailure(Throwable e) {}
+
+            });
         }
 
     }
