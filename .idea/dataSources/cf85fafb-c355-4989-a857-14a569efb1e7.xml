@@ -46,7 +46,7 @@
     <column id="20" parent="8" name="ores">
       <data-type>varchar(100)|0</data-type>
     </column>
-    <column id="21" parent="8" name="potatoes">
+    <column id="21" parent="8" name="food">
       <data-type>varchar(100)|0</data-type>
     </column>
     <column id="22" parent="8" name="autoFill">

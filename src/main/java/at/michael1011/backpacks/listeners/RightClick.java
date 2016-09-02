@@ -128,20 +128,20 @@ public class RightClick implements Listener {
 
                                                     if(rs.next()) {
                                                         openFurnace(p, finalBackPack, item.getItemMeta().getDisplayName(), Boolean.valueOf(rs.getString("ores")),
-                                                                Boolean.valueOf(rs.getString("potatoes")), Boolean.valueOf(rs.getString("autoFill")), rs.getInt("coal"));
+                                                                Boolean.valueOf(rs.getString("food")), Boolean.valueOf(rs.getString("autoFill")), rs.getInt("coal"));
 
                                                     } else {
                                                         final Boolean ores = furnaceGui.getBoolean("ores.default");
-                                                        final Boolean potatoes = furnaceGui.getBoolean("potatoes.default");
+                                                        final Boolean food = furnaceGui.getBoolean("food.default");
                                                         final Boolean autoFill = furnaceGui.getBoolean("autoFill.default");
 
-                                                        SQL.query("INSERT INTO bp_furnaces (uuid, ores, potatoes, autoFill, coal) VALUES ('"+trimmedID+"', '"+
+                                                        SQL.query("INSERT INTO bp_furnaces (uuid, ores, food, autoFill, coal) VALUES ('"+trimmedID+"', '"+
                                                                 String.valueOf(ores)+"', '"+
-                                                                String.valueOf(potatoes)+"', '"+
+                                                                String.valueOf(food)+"', '"+
                                                                 String.valueOf(autoFill)+"', '0')", new SQL.Callback<Boolean>() {
                                                             @Override
                                                             public void onSuccess(Boolean rs) {
-                                                                openFurnace(p, finalBackPack, item.getItemMeta().getDisplayName(), ores, potatoes, autoFill, 0);
+                                                                openFurnace(p, finalBackPack, item.getItemMeta().getDisplayName(), ores, food, autoFill, 0);
                                                             }
 
                                                             @Override
@@ -265,22 +265,22 @@ public class RightClick implements Listener {
         return null;
     }
 
-    private void openFurnace(final Player opener, String backPack, String name, Boolean oresEnabled, Boolean potatoesEnabled,
+    private void openFurnace(final Player opener, String backPack, String name, Boolean oresEnabled, Boolean foodEnabled,
                              Boolean autoFillEnable, int amountCoal) {
         ItemStack ores = new ItemStack(Material.IRON_ORE);
-        ItemStack potatoes = new ItemStack(Material.POTATO_ITEM);
+        ItemStack food = new ItemStack(Material.POTATO_ITEM);
         ItemStack autoFill = new ItemStack(Material.FURNACE);
 
         setMeta(ores, "ores");
-        setMeta(potatoes, "potatoes");
+        setMeta(food, "food");
         setMeta(autoFill, "autoFill");
 
         ItemStack oresToggle = new ItemStack(Material.WOOL, 1, (byte) getColor(oresEnabled));
-        ItemStack potatoesToggle = new ItemStack(Material.WOOL, 1, (byte) getColor(potatoesEnabled));
+        ItemStack foodToggle = new ItemStack(Material.WOOL, 1, (byte) getColor(foodEnabled));
         ItemStack autoFillToggle = new ItemStack(Material.WOOL, 1, (byte) getColor(autoFillEnable));
 
         setToggleMeta(oresToggle, oresEnabled);
-        setToggleMeta(potatoesToggle, potatoesEnabled);
+        setToggleMeta(foodToggle, foodEnabled);
         setToggleMeta(autoFillToggle, autoFillEnable);
 
         ItemStack blank = new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte) 7);
@@ -304,11 +304,11 @@ public class RightClick implements Listener {
         }
 
         inv.setItem(3, ores);
-        inv.setItem(4, potatoes);
+        inv.setItem(4, food);
         inv.setItem(5, autoFill);
 
         inv.setItem(12, oresToggle);
-        inv.setItem(13, potatoesToggle);
+        inv.setItem(13, foodToggle);
         inv.setItem(14, autoFillToggle);
 
         opener.openInventory(inv);

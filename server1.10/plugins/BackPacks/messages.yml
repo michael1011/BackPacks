@@ -1,5 +1,5 @@
-prefix: "&7[&4BackPacks&7]&r "
 # The prefix of the plugin
+prefix: "&7[&4BackPacks&7]&r "
 
 MySQL:
   connected: "&eConnected to MySQL database"
@@ -11,43 +11,46 @@ Help:
   onlyPlayers: "&4Only players &ccan use this command"
   noPermission: "&cYou &4don't &chave enough permissions"
 
-  playerNotFound: "&cThe player &4%target% &ccouldn't be foubd"
   # When you want to interact with a player that isn't online (%target% is the offline player)
+  playerNotFound: "&cThe player &4%target% &ccouldn't be foubd"
 
   backPackNotFound: "&cThe backpack &4%backpack% &ccouldn't be found"
   backPackNotFoundAvailable: "&cThe available backpacks are &4%backpacks%"
 
   bpgive:
-    onlyPlayersAlternative: "&cUse '&4/bpgive <backpack> <player>&c' to give a backpack to a player"
     # When the console wants to give itself a backpacks it gets the 'onlyPlayers'
     # message above and this message
+    onlyPlayersAlternative: "&cUse '&4/bpgive <backpack> <player>&c' to give a backpack to a player"
 
-    gaveBackPack: "&eYou gave &6%backpack% &eto &6%target%"
     # When you gave a backpack to a other player this message comes
     # %backpack% is the backpack and %target% is the player you gave it
+    gaveBackPack: "&eYou gave &6%backpack% &eto &6%target%"
 
+    # If someone uses /bpgive completly wrong
     syntaxError:
       1: "&6/bpgive <backpack>: &egive yourself the backpack '<backpack>'"
       2: "&6/bpgive <backpack> <player>: &e give the backpack '<backpack>' to '<player>'"
-    # If someone uses /bpgive completly wrong
 
   bpopen:
-    hasNotUsedYet: "&cThe player &4%player% &chasn't used the &4%backpack% &cyet"
     # When you want to see a backpack of a player that hasn't used it yet
     # %player% is the player and %backpack% is the backpack
+    hasNotUsedYet: "&cThe player &4%player% &chasn't used the &4%backpack% &cyet"
 
+    # If someone uses /bpopen completly wrong
     syntaxError:
       1: "&6/bpopen <backpack> <player>: &eopen '<backpack>' of '<player>'"
-    # If someone uses /bpopen completly wrong
 
 
 BackPacks:
-  couldNotFindConfig: "&cCould &4not &cfind BackPack &4%backpack%"
   # When you enable a backpack that doesn't exist (%backpack% is the backpack that couldn't be found)
+  couldNotFindConfig: "&cCould &4not &cfind BackPack &4%backpack%"
 
-  slotsNotDivisibleBy9: "&cBackPack &4%backpack% &ccouldn't be loaded because the slots &4aren't divisible by 9"
   # %backpack% is the backpack that couldn't be enabled
+  slotsNotDivisibleBy9: "&cBackPack &4%backpack% &ccouldn't be loaded because the slots &4aren't divisible by 9"
 
-  enabled: "&eEnabled backpack &6%backpack%"
   # When a server starts/reloads this message comes for every backpack that is enabled
   # (%backpack% is the enabled backpack)
+  enabled: "&eEnabled backpack &6%backpack%"
+
+  furnaceBackPack:
+    noCoal: "&cYour FurnaceBackPack is empty. Fill it with coal to smelt things automatically. "

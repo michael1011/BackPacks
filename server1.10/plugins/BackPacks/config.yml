@@ -22,18 +22,18 @@ dropOnDeath: true
 
 # That allows your players to rename their backpacks but its easier to fake them
 # (be sure that the lore of every item is set before you enable this)
-identifyOnlyByLore: true
+identifyOnlyByLore: false
 
 
 # Delete the defaults and create your own backpacks here
 # Find all materials here: http://bit.ly/21vbetj
 BackPacks:
+# List all BackPacks here that should be enabled
   enabled:
     1: "littleBackPack"
     2: "normalBackPack"
     3: "enderBackPack"
     4: "furnaceBackPack"
-  # List all BackPacks here that should be enabled
 
   littleBackPack:
     name: "&bLittle &3BackPack"
@@ -110,9 +110,6 @@ BackPacks:
 
     gui:
       enabled: true
-
-      slots: 1
-      # how many coal it can contain
 
     material: "FURNACE"
 

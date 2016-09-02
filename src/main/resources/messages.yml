@@ -51,3 +51,6 @@ BackPacks:
   # When a server starts/reloads this message comes for every backpack that is enabled
   # (%backpack% is the enabled backpack)
   enabled: "&eEnabled backpack &6%backpack%"
+
+  furnaceBackPack:
+    noCoal: "&cYour FurnaceBackPack &4is empty&c. Fill it with coal to smelt things automatically"

@@ -78,7 +78,7 @@ public class FurnaceGui implements Listener {
             name = "ores";
 
         } else if(slot == 13) {
-            name = "potatoes";
+            name = "food";
 
         } else if(slot == 14) {
             name = "autoFill";

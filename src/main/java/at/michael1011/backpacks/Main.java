@@ -91,6 +91,7 @@ public class Main extends JavaPlugin {
                         new BlockPlace(main);
                         new PlayerDeath(main);
                         new FurnaceGui(main);
+                        new BlockBreak(main);
 
                         new Give(main);
                         new Open(main);
@@ -101,7 +102,7 @@ public class Main extends JavaPlugin {
 
                 });
 
-                SQL.query("CREATE TABLE IF NOT EXISTS bp_furnaces(uuid VARCHAR(100), ores VARCHAR(100), potatoes VARCHAR(100), " +
+                SQL.query("CREATE TABLE IF NOT EXISTS bp_furnaces(uuid VARCHAR(100), ores VARCHAR(100), food VARCHAR(100), " +
                         "autoFill VARCHAR(100), coal VARCHAR(100))", new SQL.Callback<Boolean>() {
                     @Override
                     public void onSuccess(Boolean rs) {}

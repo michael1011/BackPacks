@@ -15,16 +15,16 @@ ores:
     1: "&7Smelt &8ores &7automatically?"
     2: "&aEnable &8and &cdisable &8with the item below."
 
-potatoes:
-  # let you players decide if they want to smelt potatoes automatically
+food:
+  # let you players decide if they want to smelt food automatically
   enabled: true
 
   # is important if enabled is false
   defaultOption: true
 
-  name: "&6Potatoes"
+  name: "&6Food"
   description:
-    1: "&eSmelt &6potatoes &eautomatically?"
+    1: "&eSmelt &6food &eautomatically?"
     2: "&aEnable &8and &cdisable &8with the item below."
 
 autoFill:
