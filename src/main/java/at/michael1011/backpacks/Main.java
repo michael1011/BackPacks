@@ -27,9 +27,6 @@ public class Main extends JavaPlugin {
 
     private static Main main;
 
-    // todo: auto fill
-
-    // todo: add cache option (load backpacks of player on join)
     // todo: updater
     // todo: command to create a new backpack in config
 

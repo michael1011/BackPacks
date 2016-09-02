@@ -39,6 +39,12 @@ public class BlockBreak implements Listener {
              final Location location = block.getLocation();
              final World world = location.getWorld();
 
+             Crops crops = null;
+
+             if(material.equals(Material.POTATO)) {
+                 crops = (Crops) block.getState().getData();
+             }
+
              if(material.equals(Material.IRON_ORE) || material.equals(Material.GOLD_ORE) ||
                      material.equals(Material.POTATO) || material.equals(Material.COAL_ORE)) {
                  for(Map.Entry<ItemStack, String> item : items.entrySet()) {
@@ -50,6 +56,8 @@ public class BlockBreak implements Listener {
 
                          if(furnaceGui.get(item.getValue()).equals("true")) {
                              final String trimmedID = p.getUniqueId().toString().replaceAll("-", "");
+
+                             final Crops finalCrops = crops;
 
                              SQL.getResult("SELECT * FROM bp_furnaces WHERE uuid='"+trimmedID+"'", new SQL.Callback<ResultSet>() {
                                  @Override
@@ -65,7 +73,7 @@ public class BlockBreak implements Listener {
                                                                  new SQL.Callback<Boolean>() {
                                                                      @Override
                                                                      public void onSuccess(Boolean rs) {
-                                                                         smelt(e, material);
+                                                                         smelt(e, finalCrops, material);
                                                                      }
 
                                                                      @Override
@@ -106,7 +114,7 @@ public class BlockBreak implements Listener {
                                                                      @Override
                                                                      public void onFailure(Throwable e) {}
 
-                                                                 });
+                                                         });
 
                                                      } else {
                                                          ExperienceOrb exp = location.getWorld().spawn(location, ExperienceOrb.class);
@@ -151,7 +159,7 @@ public class BlockBreak implements Listener {
                              });
 
                          } else {
-                             smelt(e, material);
+                             smelt(e, crops, material);
                          }
 
                          break;
@@ -167,7 +175,7 @@ public class BlockBreak implements Listener {
     }
 
 
-    private void smelt(BlockBreakEvent e, Material material) {
+    private void smelt(BlockBreakEvent e, Crops crops, Material material) {
         Block block = e.getBlock();
         Location location = block.getLocation();
 
@@ -183,10 +191,9 @@ public class BlockBreak implements Listener {
                 break;
 
             case POTATO:
-                Crops crops = (Crops) block.getState().getData();
-
                 if(crops.getState().equals(CropState.RIPE)) {
                     drop(Material.BAKED_POTATO, random(1, 3), location);
+                    drop(Material.POTATO_ITEM, 1, location);
 
                 } else {
                     drop(Material.POTATO_ITEM, 1, location);
