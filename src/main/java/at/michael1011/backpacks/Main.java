@@ -29,7 +29,7 @@ public class Main extends JavaPlugin {
 
     private static Main main;
 
-    // todo: auto smelt potatoes and fill
+    // todo: auto fill
 
     // todo: add cache option (load backpacks of player on join)
     // todo: updater

@@ -3,6 +3,7 @@ package at.michael1011.backpacks.listeners;
 import at.michael1011.backpacks.Main;
 import at.michael1011.backpacks.SQL;
 import org.bukkit.ChatColor;
+import org.bukkit.CropState;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -12,10 +13,12 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.material.Crops;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
+import java.util.Random;
 
 import static at.michael1011.backpacks.Crafting.furnaceGui;
 import static at.michael1011.backpacks.Crafting.items;
@@ -35,7 +38,8 @@ public class BlockBreak implements Listener {
          final Block block = e.getBlock();
          final Material material = block.getType();
 
-         if(material.equals(Material.IRON_ORE) || material.equals(Material.GOLD_ORE)) {
+         if(material.equals(Material.IRON_ORE) || material.equals(Material.GOLD_ORE) ||
+                 material.equals(Material.POTATO)) {
              for(Map.Entry<ItemStack, String> item : items.entrySet()) {
                  if(p.getInventory().contains(item.getKey())) {
                      if(furnaceGui.containsKey(item.getValue())) {
@@ -67,8 +71,14 @@ public class BlockBreak implements Listener {
                                                      e.setCancelled(true);
                                                      block.setType(Material.AIR);
 
-                                                     block.getLocation().getWorld().dropItem(block.getLocation(),
-                                                             new ItemStack(material));
+                                                     if(!material.equals(Material.POTATO)) {
+                                                         block.getLocation().getWorld().dropItem(block.getLocation(),
+                                                                 new ItemStack(material));
+
+                                                     } else {
+                                                         block.getLocation().getWorld().dropItem(block.getLocation(),
+                                                                 new ItemStack(Material.POTATO_ITEM));
+                                                     }
 
                                                      p.sendMessage(prefix+ ChatColor.translateAlternateColorCodes('&',
                                                              messages.getString("BackPacks.furnaceBackPack.noCoal")));
@@ -81,8 +91,14 @@ public class BlockBreak implements Listener {
                                              e.setCancelled(true);
                                              block.setType(Material.AIR);
 
-                                             block.getLocation().getWorld().dropItem(block.getLocation(),
-                                                     new ItemStack(material));
+                                             if(!material.equals(Material.POTATO)) {
+                                                 block.getLocation().getWorld().dropItem(block.getLocation(),
+                                                         new ItemStack(material));
+
+                                             } else {
+                                                 block.getLocation().getWorld().dropItem(block.getLocation(),
+                                                         new ItemStack(Material.POTATO_ITEM));
+                                             }
 
                                              p.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                                                      messages.getString("BackPacks.furnaceBackPack.noCoal")));
@@ -116,7 +132,8 @@ public class BlockBreak implements Listener {
     }
 
     private void smelt(BlockBreakEvent e, Material material) {
-        Location location = e.getBlock().getLocation();
+        Block block = e.getBlock();
+        Location location = block.getLocation();
 
         switch (material) {
             case IRON_ORE:
@@ -128,6 +145,18 @@ public class BlockBreak implements Listener {
                 drop(Material.GOLD_INGOT, 1, location);
 
                 break;
+
+
+            case POTATO:
+                Crops crops = (Crops) block.getState().getData();
+
+                if(crops.getState().equals(CropState.RIPE)) {
+                    drop(Material.BAKED_POTATO, random(1, 3), location);
+
+                }
+
+                break;
+
         }
 
     }
@@ -137,6 +166,12 @@ public class BlockBreak implements Listener {
 
         ExperienceOrb exp = location.getWorld().spawn(location, ExperienceOrb.class);
         exp.setExperience(1);
+    }
+
+    private int random(int min, int max) {
+        Random rand = new Random();
+
+        return rand.nextInt((max-min)+1)+min;
     }
 
 }
