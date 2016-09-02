@@ -21,6 +21,10 @@ task wrapper(type: Wrapper) {
     gradleVersion = '3.0'
 }
 
+task cleanBuilds(type: Delete) {
+    delete fileTree(dir: "build/libs", exclude: "")
+}
+
 task copy {
     copy {
         from "build/libs/"
