@@ -8,8 +8,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
 
-import static at.michael1011.backpacks.Main.identifyOnlyByLore;
-
 public class BlockPlace implements Listener {
 
     public BlockPlace(Main main) {
@@ -20,13 +18,7 @@ public class BlockPlace implements Listener {
     public void blockPlace(BlockPlaceEvent e) {
         ItemStack item = e.getItemInHand();
 
-        String backPack;
-
-        if(identifyOnlyByLore) {
-            backPack = Crafting.loreMap.get(item.getItemMeta().getLore());
-        } else {
-            backPack = Crafting.items.get(item);
-        }
+        String backPack = Crafting.loreMap.get(item.getItemMeta().getLore());
 
         if(backPack != null) {
             e.setCancelled(true);

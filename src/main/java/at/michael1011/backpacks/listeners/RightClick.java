@@ -51,13 +51,7 @@ public class RightClick implements Listener {
             final ItemStack item = e.getItem();
 
             if(item != null) {
-                String backPack;
-
-                if(identifyOnlyByLore) {
-                    backPack = Crafting.loreMap.get(item.getItemMeta().getLore());
-                } else {
-                    backPack = Crafting.items.get(item);
-                }
+                String backPack = Crafting.loreMap.get(item.getItemMeta().getLore());
 
                 if(backPack != null) {
                     final Player p = e.getPlayer();

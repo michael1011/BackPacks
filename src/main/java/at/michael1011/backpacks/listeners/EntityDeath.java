@@ -35,81 +35,79 @@ public class EntityDeath implements Listener {
 
         if (p != null) {
             for(Map.Entry<ItemStack, String> item : items.entrySet()) {
-                if(p.getInventory().contains(item.getKey())) {
-                    if(furnaceGui.containsKey(item.getValue())) {
-                        final Location loc = e.getEntity().getLocation();
+                String backpack = getBackPack(item, p);
 
-                        final List<ItemStack> toDrop = new ArrayList<>();
+                if(furnaceGui.containsKey(backpack)) {
+                    final Location loc = e.getEntity().getLocation();
 
-                        for(ItemStack add : e.getDrops()) {
-                            toDrop.add(add);
-                        }
+                    final List<ItemStack> toDrop = new ArrayList<>();
 
-                        e.getDrops().clear();
+                    for(ItemStack add : e.getDrops()) {
+                        toDrop.add(add);
+                    }
 
-                        if(furnaceGui.get(item.getValue()).equals("true")) {
-                            final String trimmedID = p.getUniqueId().toString().replaceAll("-", "");
+                    e.getDrops().clear();
 
-                            SQL.getResult("SELECT * FROM bp_furnaces WHERE uuid='"+trimmedID+"'", new SQL.Callback<ResultSet>() {
-                                @Override
-                                public void onSuccess(ResultSet rs) {
-                                    try {
-                                        if(rs.first()) {
-                                            if(Boolean.valueOf(rs.getString("food"))) {
-                                                int amount = rs.getInt("coal");
+                    if(furnaceGui.get(item.getValue()).equals("true")) {
+                        final String trimmedID = p.getUniqueId().toString().replaceAll("-", "");
 
-                                                if(amount > 0) {
-                                                    SQL.query("UPDATE bp_furnaces SET coal="+String.valueOf(amount-1)+" WHERE uuid='"+trimmedID+"'",
-                                                            new SQL.Callback<Boolean>() {
-                                                                @Override
-                                                                public void onSuccess(Boolean rs) {
-                                                                    smelt(toDrop, loc);
-                                                                }
+                        SQL.getResult("SELECT * FROM bp_furnaces WHERE uuid='"+trimmedID+"'", new SQL.Callback<ResultSet>() {
+                            @Override
+                            public void onSuccess(ResultSet rs) {
+                                try {
+                                    if(rs.first()) {
+                                        if(Boolean.valueOf(rs.getString("food"))) {
+                                            int amount = rs.getInt("coal");
 
-                                                                @Override
-                                                                public void onFailure(Throwable e) {}
+                                            if(amount > 0) {
+                                                SQL.query("UPDATE bp_furnaces SET coal="+String.valueOf(amount-1)+" WHERE uuid='"+trimmedID+"'",
+                                                        new SQL.Callback<Boolean>() {
+                                                            @Override
+                                                            public void onSuccess(Boolean rs) {
+                                                                smelt(toDrop, loc);
+                                                            }
 
-                                                    });
+                                                            @Override
+                                                            public void onFailure(Throwable e) {}
 
-                                                } else {
-                                                    for(ItemStack drop : toDrop) {
-                                                        loc.getWorld().dropItem(loc, drop);
-                                                    }
+                                                });
 
-                                                    p.sendMessage(prefix+ ChatColor.translateAlternateColorCodes('&',
-                                                            messages.getString("BackPacks.furnaceBackPack.noCoal")));
-
+                                            } else {
+                                                for(ItemStack drop : toDrop) {
+                                                    loc.getWorld().dropItem(loc, drop);
                                                 }
 
+                                                p.sendMessage(prefix+ ChatColor.translateAlternateColorCodes('&',
+                                                        messages.getString("BackPacks.furnaceBackPack.noCoal")));
                                             }
 
-                                        } else {
-                                            for(ItemStack drop : toDrop) {
-                                                loc.getWorld().dropItem(loc, drop);
-                                            }
-
-                                            p.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                                    messages.getString("BackPacks.furnaceBackPack.noCoal")));
                                         }
 
-                                    } catch (SQLException e1) {
-                                        e1.printStackTrace();
+                                    } else {
+                                        for(ItemStack drop : toDrop) {
+                                            loc.getWorld().dropItem(loc, drop);
+                                        }
+
+                                        p.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                                messages.getString("BackPacks.furnaceBackPack.noCoal")));
                                     }
 
+                                } catch (SQLException e1) {
+                                    e1.printStackTrace();
                                 }
 
-                                @Override
-                                public void onFailure(Throwable e) {}
+                            }
 
-                            });
+                            @Override
+                            public void onFailure(Throwable e) {}
 
-                        } else {
-                            smelt(toDrop, loc);
-                        }
+                        });
 
-                        break;
-
+                    } else {
+                        smelt(toDrop, loc);
                     }
+
+                    break;
 
                 }
 
@@ -156,6 +154,22 @@ public class EntityDeath implements Listener {
             }
         }
 
+    }
+
+    static String getBackPack(Map.Entry<ItemStack, String> item, Player p) {
+        String backPack = null;
+
+        for(ItemStack contents : p.getInventory().getContents()) {
+            if(contents.hasItemMeta()) {
+                if(contents.getItemMeta().getLore() != null) {
+                    if(contents.getItemMeta().getLore().equals(item.getKey().getItemMeta().getLore())) {
+                        backPack = item.getValue();
+                    }
+                }
+            }
+        }
+
+        return backPack;
     }
 
 }
