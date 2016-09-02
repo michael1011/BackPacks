@@ -160,10 +160,12 @@ public class EntityDeath implements Listener {
         String backPack = null;
 
         for(ItemStack contents : p.getInventory().getContents()) {
-            if(contents.hasItemMeta()) {
-                if(contents.getItemMeta().getLore() != null) {
-                    if(contents.getItemMeta().getLore().equals(item.getKey().getItemMeta().getLore())) {
-                        backPack = item.getValue();
+            if(contents != null) {
+                if(contents.hasItemMeta()) {
+                    if(contents.getItemMeta().getLore() != null) {
+                        if(contents.getItemMeta().getLore().equals(item.getKey().getItemMeta().getLore())) {
+                            backPack = item.getValue();
+                        }
                     }
                 }
             }
