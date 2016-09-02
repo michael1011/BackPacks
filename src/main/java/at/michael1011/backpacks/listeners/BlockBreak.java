@@ -5,6 +5,7 @@ import at.michael1011.backpacks.SQL;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.entity.ExperienceOrb;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -31,75 +32,87 @@ public class BlockBreak implements Listener {
     public void blockBreak(final BlockBreakEvent e) {
          final Player p = e.getPlayer();
 
-         final Material material = e.getBlock().getType();
+         final Block block = e.getBlock();
+         final Material material = block.getType();
 
-         for(Map.Entry<ItemStack, String> item : items.entrySet()) {
-             if(p.getInventory().contains(item.getKey())) {
-                 if(furnaceGui.containsKey(item.getValue())) {
-                     if(furnaceGui.get(item.getValue()).equals("true")) {
-                         final String trimmedID = p.getUniqueId().toString().replaceAll("-", "");
+         if(material.equals(Material.IRON_ORE) || material.equals(Material.GOLD_ORE)) {
+             for(Map.Entry<ItemStack, String> item : items.entrySet()) {
+                 if(p.getInventory().contains(item.getKey())) {
+                     if(furnaceGui.containsKey(item.getValue())) {
+                         if(furnaceGui.get(item.getValue()).equals("true")) {
+                             final String trimmedID = p.getUniqueId().toString().replaceAll("-", "");
 
-                         e.setCancelled(true);
-                         e.getBlock().setType(Material.AIR);
+                             SQL.getResult("SELECT * FROM bp_furnaces WHERE uuid='"+trimmedID+"'", new SQL.Callback<ResultSet>() {
+                                 @Override
+                                 public void onSuccess(ResultSet rs) {
+                                     try {
+                                         if(rs.first()) {
+                                             if(Boolean.valueOf(rs.getString("ores"))) {
+                                                 int amount = rs.getInt("coal");
 
-                         SQL.getResult("SELECT * FROM bp_furnaces WHERE uuid='"+trimmedID+"'", new SQL.Callback<ResultSet>() {
-                             @Override
-                             public void onSuccess(ResultSet rs) {
-                                 try {
-                                     if(rs.first()) {
-                                         if(Boolean.valueOf(rs.getString("ores"))) {
-                                             int amount = rs.getInt("coal");
+                                                 if(amount > 0) {
+                                                     SQL.query("UPDATE bp_furnaces SET coal="+String.valueOf(amount-1)+" WHERE uuid='"+trimmedID+"'",
+                                                             new SQL.Callback<Boolean>() {
+                                                                 @Override
+                                                                 public void onSuccess(Boolean rs) {
+                                                                     smelt(e, material);
+                                                                 }
 
-                                             if(amount > 0) {
-                                                 SQL.query("UPDATE bp_furnaces SET coal="+String.valueOf(amount-1)+" WHERE uuid='"+trimmedID+"'",
-                                                         new SQL.Callback<Boolean>() {
-                                                             @Override
-                                                             public void onSuccess(Boolean rs) {
-                                                                 smelt(e, material);
-                                                             }
+                                                                 @Override
+                                                                 public void onFailure(Throwable e) {}
 
-                                                             @Override
-                                                             public void onFailure(Throwable e) {}
+                                                             });
 
-                                                 });
+                                                 } else {
+                                                     e.setCancelled(true);
+                                                     block.setType(Material.AIR);
 
-                                             } else {
-                                                 p.sendMessage(prefix+ ChatColor.translateAlternateColorCodes('&',
-                                                         messages.getString("BackPacks.furnaceBackPack.noCoal")));
+                                                     block.getLocation().getWorld().dropItem(block.getLocation(),
+                                                             new ItemStack(material));
+
+                                                     p.sendMessage(prefix+ ChatColor.translateAlternateColorCodes('&',
+                                                             messages.getString("BackPacks.furnaceBackPack.noCoal")));
+
+                                                 }
 
                                              }
 
+                                         } else {
+                                             e.setCancelled(true);
+                                             block.setType(Material.AIR);
+
+                                             block.getLocation().getWorld().dropItem(block.getLocation(),
+                                                     new ItemStack(material));
+
+                                             p.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                                     messages.getString("BackPacks.furnaceBackPack.noCoal")));
                                          }
 
-                                     } else {
-                                         p.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                                 messages.getString("BackPacks.furnaceBackPack.noCoal")));
+                                     } catch (SQLException e1) {
+                                         e1.printStackTrace();
                                      }
 
-                                 } catch (SQLException e1) {
-                                     e1.printStackTrace();
                                  }
 
-                             }
+                                 @Override
+                                 public void onFailure(Throwable e) {}
 
-                             @Override
-                             public void onFailure(Throwable e) {}
+                             });
 
-                         });
+                         } else {
+                             smelt(e, material);
+                         }
 
-                     } else {
-                         e.setCancelled(true);
-                         e.getBlock().setType(Material.AIR);
+                         break;
 
-                         smelt(e, material);
                      }
 
-                     break;
-
                  }
+
              }
 
          }
+
     }
 
     private void smelt(BlockBreakEvent e, Material material) {

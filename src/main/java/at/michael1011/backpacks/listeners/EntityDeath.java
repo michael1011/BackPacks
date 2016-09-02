@@ -14,6 +14,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -32,13 +33,17 @@ public class EntityDeath implements Listener {
     public void entityDeath(final EntityDeathEvent e) {
         final Player p = e.getEntity().getKiller();
 
-        final List<ItemStack> toDrop = e.getDrops();
-
         if (p != null) {
             for(Map.Entry<ItemStack, String> item : items.entrySet()) {
-                if (p.getInventory().contains(item.getKey())) {
+                if(p.getInventory().contains(item.getKey())) {
                     if(furnaceGui.containsKey(item.getValue())) {
                         final Location loc = e.getEntity().getLocation();
+
+                        final List<ItemStack> toDrop = new ArrayList<>();
+
+                        for(ItemStack add : e.getDrops()) {
+                            toDrop.add(add);
+                        }
 
                         e.getDrops().clear();
 
@@ -67,6 +72,10 @@ public class EntityDeath implements Listener {
                                                     });
 
                                                 } else {
+                                                    for(ItemStack drop : toDrop) {
+                                                        loc.getWorld().dropItem(loc, drop);
+                                                    }
+
                                                     p.sendMessage(prefix+ ChatColor.translateAlternateColorCodes('&',
                                                             messages.getString("BackPacks.furnaceBackPack.noCoal")));
 
@@ -75,6 +84,10 @@ public class EntityDeath implements Listener {
                                             }
 
                                         } else {
+                                            for(ItemStack drop : toDrop) {
+                                                loc.getWorld().dropItem(loc, drop);
+                                            }
+
                                             p.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                                                     messages.getString("BackPacks.furnaceBackPack.noCoal")));
                                         }
@@ -94,10 +107,12 @@ public class EntityDeath implements Listener {
                             smelt(toDrop, loc);
                         }
 
+                        break;
+
                     }
 
-                    break;
                 }
+
             }
 
         }
@@ -110,32 +125,32 @@ public class EntityDeath implements Listener {
         for(ItemStack smelt : toSmelt) {
             switch (smelt.getType()) {
                 case RAW_CHICKEN:
-                    world.dropItem(loc, new ItemStack(Material.COOKED_CHICKEN));
+                    world.dropItem(loc, new ItemStack(Material.COOKED_CHICKEN, smelt.getAmount()));
 
                     break;
 
                 case RAW_BEEF:
-                    world.dropItem(loc, new ItemStack(Material.COOKED_BEEF));
+                    world.dropItem(loc, new ItemStack(Material.COOKED_BEEF, smelt.getAmount()));
 
                     break;
 
                 case PORK:
-                    world.dropItem(loc, new ItemStack(Material.GRILLED_PORK));
+                    world.dropItem(loc, new ItemStack(Material.GRILLED_PORK, smelt.getAmount()));
 
                     break;
 
                 case MUTTON:
-                    world.dropItem(loc, new ItemStack(Material.COOKED_MUTTON));
+                    world.dropItem(loc, new ItemStack(Material.COOKED_MUTTON, smelt.getAmount()));
 
                     break;
 
                 case RABBIT:
-                    world.dropItem(loc, new ItemStack(Material.COOKED_RABBIT));
+                    world.dropItem(loc, new ItemStack(Material.COOKED_RABBIT, smelt.getAmount()));
 
                     break;
 
                 default:
-                    world.dropItem(loc, new ItemStack(smelt.getType()));
+                    world.dropItem(loc, new ItemStack(smelt.getType(), smelt.getAmount()));
 
                     break;
             }
