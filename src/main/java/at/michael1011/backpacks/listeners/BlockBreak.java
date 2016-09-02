@@ -15,7 +15,6 @@ import org.bukkit.inventory.ItemStack;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
-import java.util.Random;
 
 import static at.michael1011.backpacks.Crafting.furnaceGui;
 import static at.michael1011.backpacks.Crafting.items;
@@ -23,8 +22,6 @@ import static at.michael1011.backpacks.Main.messages;
 import static at.michael1011.backpacks.Main.prefix;
 
 public class BlockBreak implements Listener {
-
-    private Random random = new Random();
 
     public BlockBreak(Main main) {
         main.getServer().getPluginManager().registerEvents(this, main);
@@ -58,13 +55,13 @@ public class BlockBreak implements Listener {
                                                          new SQL.Callback<Boolean>() {
                                                              @Override
                                                              public void onSuccess(Boolean rs) {
-                                                                 smelt(e, material, p);
+                                                                 smelt(e, material);
                                                              }
 
                                                              @Override
                                                              public void onFailure(Throwable e) {}
 
-                                                         });
+                                                 });
 
                                              } else {
                                                  p.sendMessage(prefix+ ChatColor.translateAlternateColorCodes('&',
@@ -94,8 +91,10 @@ public class BlockBreak implements Listener {
                          e.setCancelled(true);
                          e.getBlock().setType(Material.AIR);
 
-                         smelt(e, material, p);
+                         smelt(e, material);
                      }
+
+                     break;
 
                  }
              }
@@ -103,16 +102,20 @@ public class BlockBreak implements Listener {
          }
     }
 
-    private void smelt(BlockBreakEvent e, Material material, Player p) {
+    private void smelt(BlockBreakEvent e, Material material) {
         Location location = e.getBlock().getLocation();
 
-        if(material.equals(Material.IRON_ORE)) {
-            drop(Material.IRON_INGOT, 1, location);
+        switch (material) {
+            case IRON_ORE:
+                drop(Material.IRON_INGOT, 1, location);
 
-        } else if(material.equals(Material.GOLD_ORE)) {
-            drop(Material.GOLD_ORE, 1, location);
+                break;
+
+            case GOLD_ORE:
+                drop(Material.GOLD_INGOT, 1, location);
+
+                break;
         }
-
 
     }
 

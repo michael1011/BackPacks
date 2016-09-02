@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51551c69-f36d-4497-9d42-5d6b07c19936" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/BlockBreak.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/EntityDeath.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/fileSnapshots.bin" />
@@ -13,49 +13,23 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/libs/BackPacks-2.0.0-ALPHA.jar" afterPath="$PROJECT_DIR$/build/libs/BackPacks-2.0.0-ALPHA.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/plugins/BackPacks-2.0.0-ALPHA.jar" afterPath="$PROJECT_DIR$/server1.10/plugins/BackPacks-2.0.0-ALPHA.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/spigot-1.10.2.jar" afterPath="$PROJECT_DIR$/server1.10/spigot-1.10.2.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/data/villages.dat" afterPath="$PROJECT_DIR$/server1.10/world/data/villages.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/level.dat" afterPath="$PROJECT_DIR$/server1.10/world/level.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/level.dat_old" afterPath="$PROJECT_DIR$/server1.10/world/level.dat_old" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/playerdata/ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8.dat" afterPath="$PROJECT_DIR$/server1.10/world/playerdata/ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/region/r.-1.0.mca" afterPath="$PROJECT_DIR$/server1.10/world/region/r.-1.0.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/region/r.-1.1.mca" afterPath="$PROJECT_DIR$/server1.10/world/region/r.-1.1.mca" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/region/r.0.0.mca" afterPath="$PROJECT_DIR$/server1.10/world/region/r.0.0.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/region/r.0.1.mca" afterPath="$PROJECT_DIR$/server1.10/world/region/r.0.1.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/session.lock" afterPath="$PROJECT_DIR$/server1.10/world/session.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.-1.-1.mca" afterPath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.-1.-1.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.-1.0.mca" afterPath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.-1.0.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.0.-1.mca" afterPath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.0.-1.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.0.0.mca" afterPath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.0.0.mca" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_nether/data/villages_nether.dat" afterPath="$PROJECT_DIR$/server1.10/world_nether/data/villages_nether.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_nether/level.dat" afterPath="$PROJECT_DIR$/server1.10/world_nether/level.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_nether/level.dat_old" afterPath="$PROJECT_DIR$/server1.10/world_nether/level.dat_old" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_nether/session.lock" afterPath="$PROJECT_DIR$/server1.10/world_nether/session.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/DIM1/region/r.-1.-1.mca" afterPath="$PROJECT_DIR$/server1.10/world_the_end/DIM1/region/r.-1.-1.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/DIM1/region/r.-1.0.mca" afterPath="$PROJECT_DIR$/server1.10/world_the_end/DIM1/region/r.-1.0.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/DIM1/region/r.0.-1.mca" afterPath="$PROJECT_DIR$/server1.10/world_the_end/DIM1/region/r.0.-1.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/DIM1/region/r.0.0.mca" afterPath="$PROJECT_DIR$/server1.10/world_the_end/DIM1/region/r.0.0.mca" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/data/villages_end.dat" afterPath="$PROJECT_DIR$/server1.10/world_the_end/data/villages_end.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/level.dat" afterPath="$PROJECT_DIR$/server1.10/world_the_end/level.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/level.dat_old" afterPath="$PROJECT_DIR$/server1.10/world_the_end/level.dat_old" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/session.lock" afterPath="$PROJECT_DIR$/server1.10/world_the_end/session.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/cf85fafb-c355-4989-a857-14a569efb1e7.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/cf85fafb-c355-4989-a857-14a569efb1e7.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/furnaceBackPack.yml" afterPath="$PROJECT_DIR$/build/resources/main/furnaceBackPack.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/logs/latest.log" afterPath="$PROJECT_DIR$/server1.10/logs/latest.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/ops.json" afterPath="$PROJECT_DIR$/server1.10/ops.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/plugins/BackPacks/config.yml" afterPath="$PROJECT_DIR$/server1.10/plugins/BackPacks/config.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/plugins/BackPacks/furnaceBackPack.yml" afterPath="$PROJECT_DIR$/server1.10/plugins/BackPacks/furnaceBackPack.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/plugins/BackPacks/messages.yml" afterPath="$PROJECT_DIR$/server1.10/plugins/BackPacks/messages.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/server.properties" afterPath="$PROJECT_DIR$/server1.10/server.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/spigot.yml" afterPath="$PROJECT_DIR$/server1.10/spigot.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/usercache.json" afterPath="$PROJECT_DIR$/server1.10/usercache.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/stats/ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8.json" afterPath="$PROJECT_DIR$/server1.10/world/stats/ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Main.java" afterPath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/FurnaceGui.java" afterPath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/FurnaceGui.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/RightClick.java" afterPath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/RightClick.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/furnaceBackPack.yml" afterPath="$PROJECT_DIR$/src/main/resources/furnaceBackPack.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/messages.yml" afterPath="$PROJECT_DIR$/src/main/resources/messages.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/BlockBreak.java" afterPath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/BlockBreak.java" />
     </list>
     <ignored path="BackPacks.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -91,16 +65,6 @@
     <option name="SHOW_TABLE_DETAILS" value="true" />
     <option name="SHOW_EMPTY_GROUPS" value="false" />
     <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="localhost" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-    </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="ExternalProjectsData">
@@ -125,27 +89,81 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="BlockBreak.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/BlockBreak.java">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
-              <caret line="112" column="47" selection-start-line="112" selection-start-column="47" selection-end-line="112" selection-end-column="47" />
+            <state relative-caret-position="288">
+              <caret line="94" column="46" selection-start-line="94" selection-start-column="46" selection-end-line="94" selection-end-column="46" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <marker date="1472802554891" expanded="true" signature="1657:1709" ph="SELECT * FRO... bp_furnaces" />
-                <marker date="1472802554891" expanded="true" signature="2228:2256" ph="UPDATE bp_fu... " />
-                <marker date="1472802554891" expanded="true" signature="2228:2311" ph="UPDATE bp_fu... " />
+                <marker date="1472803174462" expanded="true" signature="1836:1909" ph="CREATE TABLE... IF" />
+                <marker date="1472803174462" expanded="true" signature="2067:2089" ph="SELECT * FRO... bp_users" />
+                <marker date="1472803174462" expanded="true" signature="3568:3663" ph="CREATE TABLE... IF" />
+                <marker date="1472803174462" expanded="true" signature="3568:3734" ph="CREATE TABLE... IF" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="messages.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/messages.yml">
+      <file leaf-file-name="BlockBreak.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/BlockBreak.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="55" column="97" selection-start-line="55" selection-start-column="97" selection-end-line="55" selection-end-column="97" />
+            <state relative-caret-position="233">
+              <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2647#2648#0" expanded="true" />
+                <marker date="1472804776868" expanded="true" signature="1589:1641" ph="SELECT * FRO... bp_furnaces" />
+                <marker date="1472804776868" expanded="true" signature="2160:2188" ph="UPDATE bp_fu... " />
+                <marker date="1472804776868" expanded="true" signature="2160:2243" ph="UPDATE bp_fu... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bp.bp_furnaces" pinned="false" current-in-tab="false">
+        <entry file="dbDummy://dbtable:/8e4c304b/cf85fafb-c355-4989-a857-14a569efb1e7/bp.bp_furnaces">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EntityDeath.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/EntityDeath.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="60" column="77" selection-start-line="60" selection-start-column="77" selection-end-line="60" selection-end-column="77" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#831#832#0" expanded="true" />
+                <element signature="e#909#910#0" expanded="true" />
+                <marker date="1472805215600" expanded="true" signature="1664:1716" ph="SELECT * FRO... bp_furnaces" />
+                <marker date="1472805215600" expanded="true" signature="2259:2342" ph="UPDATE bp_fu... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FurnaceGui.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/FurnaceGui.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="850">
+              <caret line="80" column="24" selection-start-line="80" selection-start-column="20" selection-end-line="80" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <marker date="1472717950410" expanded="true" signature="2835:2857" ph="UPDATE bp_fu... " />
+                <marker date="1472717950410" expanded="true" signature="2835:2858" ph="UPDATE bp_fu... " />
+                <marker date="1472717950410" expanded="true" signature="2835:2868" ph="UPDATE bp_fu... " />
+                <marker date="1472717950410" expanded="true" signature="2835:2895" ph="UPDATE bp_fu... " />
+                <marker date="1472717950410" expanded="true" signature="2835:2917" ph="UPDATE bp_fu... " />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -540,10 +558,12 @@
         <option value="$PROJECT_DIR$/src/main/resources/furnaceBackPack.yml" />
         <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/RightClick.java" />
         <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/FurnaceGui.java" />
-        <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/InventoryClose.java" />
         <option value="$PROJECT_DIR$/src/main/resources/messages.yml" />
+        <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/EntityKill.java" />
         <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/BlockBreak.java" />
+        <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/EntityDeath.java" />
       </list>
     </option>
   </component>
@@ -790,7 +810,7 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/server1.10/spigot-1.10.2.jar" />
-    <property name="SearchEverywhereHistoryKey" value="joi&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/java/at/michael1011/backpacks/listeners/Join.java&#10;messages&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/resources/messages.yml&#10;confi&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/resources/config.yml&#10;main&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/java/at/michael1011/backpacks/Main.java&#10;join&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/java/at/michael1011/backpacks/listeners/Join.java&#10;jon&#9;PSI&#9;JAVA://javax.print.attribute.standard.JobName&#10;craf&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/java/at/michael1011/backpacks/Crafting.java&#10;rig&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/java/at/michael1011/backpacks/listeners/RightClick.java&#10;plugin&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/resources/plugin.yml&#10;message&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/resources/messages.yml&#10;messa&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/resources/messages.yml&#10;mess&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/resources/messages.yml" />
+    <property name="SearchEverywhereHistoryKey" value="main&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/java/at/michael1011/backpacks/Main.java&#10;joi&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/java/at/michael1011/backpacks/listeners/Join.java&#10;messages&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/resources/messages.yml&#10;confi&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/resources/config.yml&#10;join&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/java/at/michael1011/backpacks/listeners/Join.java&#10;jon&#9;PSI&#9;JAVA://javax.print.attribute.standard.JobName&#10;craf&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/java/at/michael1011/backpacks/Crafting.java&#10;rig&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/java/at/michael1011/backpacks/listeners/RightClick.java&#10;plugin&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/resources/plugin.yml&#10;message&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/resources/messages.yml&#10;messa&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/resources/messages.yml&#10;mess&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/resources/messages.yml" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
@@ -1420,7 +1440,7 @@
       <workItem from="1472713837117" duration="40000" />
       <workItem from="1472713902701" duration="193000" />
       <workItem from="1472717454001" duration="1744000" />
-      <workItem from="1472800482267" duration="2093000" />
+      <workItem from="1472800482267" duration="4733000" />
     </task>
     <servers />
   </component>
@@ -1457,7 +1477,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="142720000" />
+    <option name="totallyTimeSpent" value="145360000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1469,7 +1489,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1366" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1573,7 +1593,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.idea/dataSources/e7cbfab2-9d90-4bdb-a53e-a00196ffd2cd.xml" />
     <entry file="file://$PROJECT_DIR$/.idea/modules/BackPacks.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1768,13 +1787,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/SQL.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="127">
@@ -1809,51 +1821,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/FurnaceGui.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1101">
-          <caret line="80" column="24" selection-start-line="80" selection-start-column="20" selection-end-line="80" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1472717950410" expanded="true" signature="2835:2857" ph="UPDATE bp_fu... " />
-            <marker date="1472717950410" expanded="true" signature="2835:2858" ph="UPDATE bp_fu... " />
-            <marker date="1472717950410" expanded="true" signature="2835:2868" ph="UPDATE bp_fu... " />
-            <marker date="1472717950410" expanded="true" signature="2835:2895" ph="UPDATE bp_fu... " />
-            <marker date="1472717950410" expanded="true" signature="2835:2917" ph="UPDATE bp_fu... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="104" column="108" selection-start-line="104" selection-start-column="108" selection-end-line="104" selection-end-column="108" />
-          <folding>
-            <marker date="1472717950398" expanded="true" signature="1836:1909" ph="CREATE TABLE... IF" />
-            <marker date="1472717950398" expanded="true" signature="2067:2089" ph="SELECT * FRO... bp_users" />
-            <marker date="1472717950398" expanded="true" signature="3521:3616" ph="CREATE TABLE... IF" />
-            <marker date="1472717950398" expanded="true" signature="3521:3687" ph="CREATE TABLE... IF" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/furnaceBackPack.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/8e4c304b/cf85fafb-c355-4989-a857-14a569efb1e7/bp.bp_furnaces">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -1883,14 +1854,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/messages.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="55" column="97" selection-start-line="55" selection-start-column="97" selection-end-line="55" selection-end-column="97" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.spigotmc/spigot-api/1.10.2-R0.1-SNAPSHOT/9bb293017e7ef743a0879862ac2f07cc2a42e3b1/spigot-api-1.10.2-R0.1-SNAPSHOT-sources.jar!/org/bukkit/Material.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="205">
@@ -1899,15 +1862,87 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/BlockBreak.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/config.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="112" column="47" selection-start-line="112" selection-start-column="47" selection-end-line="112" selection-end-column="47" />
+        <state relative-caret-position="314">
+          <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/messages.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="463">
+          <caret line="55" column="97" selection-start-line="55" selection-start-column="97" selection-end-line="55" selection-end-column="97" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="94" column="46" selection-start-line="94" selection-start-column="46" selection-end-line="94" selection-end-column="46" />
+          <folding>
+            <marker date="1472803174462" expanded="true" signature="1836:1909" ph="CREATE TABLE... IF" />
+            <marker date="1472803174462" expanded="true" signature="2067:2089" ph="SELECT * FRO... bp_users" />
+            <marker date="1472803174462" expanded="true" signature="3568:3663" ph="CREATE TABLE... IF" />
+            <marker date="1472803174462" expanded="true" signature="3568:3734" ph="CREATE TABLE... IF" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/FurnaceGui.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="80" column="24" selection-start-line="80" selection-start-column="20" selection-end-line="80" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1472802554891" expanded="true" signature="1657:1709" ph="SELECT * FRO... bp_furnaces" />
-            <marker date="1472802554891" expanded="true" signature="2228:2256" ph="UPDATE bp_fu... " />
-            <marker date="1472802554891" expanded="true" signature="2228:2311" ph="UPDATE bp_fu... " />
+            <marker date="1472717950410" expanded="true" signature="2835:2857" ph="UPDATE bp_fu... " />
+            <marker date="1472717950410" expanded="true" signature="2835:2858" ph="UPDATE bp_fu... " />
+            <marker date="1472717950410" expanded="true" signature="2835:2868" ph="UPDATE bp_fu... " />
+            <marker date="1472717950410" expanded="true" signature="2835:2895" ph="UPDATE bp_fu... " />
+            <marker date="1472717950410" expanded="true" signature="2835:2917" ph="UPDATE bp_fu... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/BlockBreak.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2647#2648#0" expanded="true" />
+            <marker date="1472804776868" expanded="true" signature="1589:1641" ph="SELECT * FRO... bp_furnaces" />
+            <marker date="1472804776868" expanded="true" signature="2160:2188" ph="UPDATE bp_fu... " />
+            <marker date="1472804776868" expanded="true" signature="2160:2243" ph="UPDATE bp_fu... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/8e4c304b/cf85fafb-c355-4989-a857-14a569efb1e7/bp.bp_furnaces">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/EntityDeath.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="60" column="77" selection-start-line="60" selection-start-column="77" selection-end-line="60" selection-end-column="77" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#831#832#0" expanded="true" />
+            <element signature="e#909#910#0" expanded="true" />
+            <marker date="1472805215600" expanded="true" signature="1664:1716" ph="SELECT * FRO... bp_furnaces" />
+            <marker date="1472805215600" expanded="true" signature="2259:2342" ph="UPDATE bp_fu... " />
           </folding>
         </state>
       </provider>

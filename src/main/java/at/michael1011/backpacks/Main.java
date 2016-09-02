@@ -92,6 +92,7 @@ public class Main extends JavaPlugin {
                         new PlayerDeath(main);
                         new FurnaceGui(main);
                         new BlockBreak(main);
+                        new EntityDeath(main);
 
                         new Give(main);
                         new Open(main);
