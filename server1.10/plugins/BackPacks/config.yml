@@ -27,6 +27,8 @@ identifyOnlyByLore: false
 
 # Delete the defaults and create your own backpacks here
 # Find all materials here: http://bit.ly/21vbetj
+
+# Important: set a different description for every backpack!
 BackPacks:
 # List all BackPacks here that should be enabled
   enabled:

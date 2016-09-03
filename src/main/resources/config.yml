@@ -21,6 +21,8 @@ dropOnDeath: true
 
 # Delete the defaults and create your own backpacks here
 # Find all materials here: http://bit.ly/21vbetj
+
+# Important: every description must be unique!
 BackPacks:
   # List all BackPacks that should be enabled
   enabled:
