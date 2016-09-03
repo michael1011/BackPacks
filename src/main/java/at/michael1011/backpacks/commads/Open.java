@@ -33,7 +33,7 @@ public class Open implements CommandExecutor {
 
     @Override
     public boolean onCommand(final CommandSender sender, Command command, String label, final String[] args) {
-        if(sender.hasPermission("backpacks.getInv")) {
+        if(sender.hasPermission("backpacks.open")) {
             if(sender instanceof Player) {
                 if(args.length == 2) {
                     final String backPack = args[0];

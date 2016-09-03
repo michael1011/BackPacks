@@ -22,6 +22,7 @@ permissions:
     description: All access
     children:
       backpacks.give: true
+      backpacks.open: true
 
   backpacks.give:
     description: To use /bpgive
