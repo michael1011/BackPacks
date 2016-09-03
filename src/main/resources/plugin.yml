@@ -8,12 +8,12 @@ main: at.michael1011.backpacks.Main
 commands:
   bpgive:
     aliases: [bpg]
-    description: "Give a backpack to everyone"
+    description: "give a backpack to a player"
     usage: /bpgive <backpack> <player>
 
   bpopen:
     aliases: [bpo]
-    dedescription: "See the backpacks of everyone"
+    dedescription: "see the backpacks of a player"
     usage: /bpopen <backpack> <player>
 
 
