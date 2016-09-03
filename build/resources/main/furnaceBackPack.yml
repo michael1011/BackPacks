@@ -1,4 +1,4 @@
-# configure the Gui of every FurnaceBackPack here
+# configure the gui of every FurnaceBackPack here
 
 enabled: "&aEnabled"
 disabled: "&cDisabled"

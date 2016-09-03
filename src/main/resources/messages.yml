@@ -54,3 +54,15 @@ BackPacks:
   furnaceBackPack:
     # When a player wants to smelt something with the FurnaceBackPack but there is no coal in it
     noCoal: "&cYour FurnaceBackPack &4is empty&c. Fill it with coal to smelt things automatically"
+
+    # When someone wants to open a FurnaceBackpack with /bpopen
+    open:
+      # %backpack% is the backpack and %target% the owner of the backpack
+      title: "&6%backpack% &eof &6%target%&e:"
+
+      # %value% is the value
+      ores: "&7Ores: &r%value%"
+      food: "&6Food: &r%value%"
+      autoFill: "&0AutoFill: &r%value%"
+
+      coal: "&8Coal: &r%value%"

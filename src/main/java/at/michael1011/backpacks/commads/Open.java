@@ -59,7 +59,7 @@ public class Open implements CommandExecutor {
                                                     @Override
                                                     public void onSuccess(Boolean rs) {
                                                         if(rs) {
-                                                            SQL.getResult("select * from bp_"+backPack+"_"+trimmedID, new SQL.Callback<ResultSet>() {
+                                                            SQL.getResult("SELECT * FROM bp_"+backPack+"_"+trimmedID, new SQL.Callback<ResultSet>() {
                                                                 @Override
                                                                 public void onSuccess(ResultSet rs) {
                                                                     opener.openInventory(getInv(rs, opener, backPack, item.getItemMeta().getDisplayName(), false, trimmedID));
@@ -88,7 +88,71 @@ public class Open implements CommandExecutor {
                                             case "ender":
                                                 Player target = Bukkit.getPlayer(player);
 
-                                                opener.openInventory(target.getEnderChest());
+                                                if(target != null) {
+                                                    opener.openInventory(target.getEnderChest());
+
+                                                } else {
+                                                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                                            messages.getString("Help.bpopen.hasNotUsedYet")
+                                                                    .replaceAll("%player%", player).replaceAll("%backpack%", backPack)));
+                                                }
+
+                                                break;
+
+                                            case "furnace":
+                                                SQL.getResult("SELECT * FROM bp_furnaces WHERE uuid='"+trimmedID+"'", new SQL.Callback<ResultSet>() {
+                                                    @Override
+                                                    public void onSuccess(ResultSet rs) {
+                                                        try {
+                                                            rs.beforeFirst();
+
+                                                            if(rs.next()) {
+                                                                String ores = rs.getString("ores");
+                                                                String food = rs.getString("food");
+                                                                String autoFill = rs.getString("autoFill");
+
+                                                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                                                        messages.getString("BackPacks.furnaceBackPack.open.title")
+                                                                                .replaceAll("%target%", player).replaceAll("%backpack%", backPack)));
+
+                                                                sender.sendMessage(prefix);
+
+                                                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                                                        messages.getString("BackPacks.furnaceBackPack.open.ores")
+                                                                                .replaceAll("%value%", getColor(Boolean.valueOf(ores))+ores)));
+
+                                                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                                                        messages.getString("BackPacks.furnaceBackPack.open.food")
+                                                                                .replaceAll("%value%", getColor(Boolean.valueOf(food))+food)));
+
+                                                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                                                        messages.getString("BackPacks.furnaceBackPack.open.autoFill")
+                                                                                .replaceAll("%value%", getColor(Boolean.valueOf(autoFill))+autoFill)));
+
+                                                                sender.sendMessage(prefix);
+
+                                                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                                                        messages.getString("BackPacks.furnaceBackPack.open.coal")
+                                                                                .replaceAll("%value%", String.valueOf(rs.getInt("coal")))));
+
+                                                            } else {
+                                                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                                                        messages.getString("Help.bpopen.hasNotUsedYet")
+                                                                                .replaceAll("%player%", player).replaceAll("%backpack%", backPack)));
+                                                            }
+
+                                                            rs.close();
+
+                                                        } catch (SQLException e) {
+                                                            e.printStackTrace();
+                                                        }
+
+                                                    }
+
+                                                    @Override
+                                                    public void onFailure(Throwable e) {}
+
+                                                });
 
                                                 break;
                                         }
@@ -137,6 +201,15 @@ public class Open implements CommandExecutor {
         }
 
         return true;
+    }
+
+
+    private String getColor(Boolean bool) {
+        if(bool) {
+            return "&a";
+        }
+
+        return "&c";
     }
 
 }
