@@ -53,4 +53,4 @@ BackPacks:
   enabled: "&eEnabled backpack &6%backpack%"
 
   furnaceBackPack:
-    noCoal: "&cYour FurnaceBackPack is empty. Fill it with coal to smelt things automatically. "
+    noCoal: "&cYour FurnaceBackPack &4is empty&c. Fill it with coal to smelt things automatically"

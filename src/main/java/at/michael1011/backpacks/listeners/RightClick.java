@@ -125,9 +125,9 @@ public class RightClick implements Listener {
                                                                 Boolean.valueOf(rs.getString("food")), Boolean.valueOf(rs.getString("autoFill")), rs.getInt("coal"));
 
                                                     } else {
-                                                        final Boolean ores = furnaceGui.getBoolean("ores.default");
-                                                        final Boolean food = furnaceGui.getBoolean("food.default");
-                                                        final Boolean autoFill = furnaceGui.getBoolean("autoFill.default");
+                                                        final Boolean ores = furnaceGui.getBoolean("ores.defaultOption");
+                                                        final Boolean food = furnaceGui.getBoolean("food.defaultOption");
+                                                        final Boolean autoFill = furnaceGui.getBoolean("autoFill.defaultOption");
 
                                                         SQL.query("INSERT INTO bp_furnaces (uuid, ores, food, autoFill, coal) VALUES ('"+trimmedID+"', '"+
                                                                 String.valueOf(ores)+"', '"+
