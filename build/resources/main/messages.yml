@@ -4,7 +4,7 @@ prefix: "&7[&4BackPacks&7]&r "
 MySQL:
   connected: "&eConnected to MySQL database"
   failedToConnect: "&4Could not connect to MySQL database"
-  failedToConnectCheck: "&4Check your credentials in the config.yml file"
+  failedToConnectCheck: "&4Check your credentials in the plugins/BackPacks/config.yml file"
   closedConnection: "&eClosed MySQL connection"
 
 Help:

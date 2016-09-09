@@ -7,52 +7,78 @@
     <schema id="3" name="mysql" />
     <schema id="4" name="performance_schema" />
     <schema id="5" name="sys" />
-    <table id="6" parent="1" name="bp_users" />
-    <table id="7" parent="1" name="bp_littleBackPack_ba9c9caa1f6c46b19c7a2ada2a844fd8" />
-    <table id="8" parent="1" name="bp_furnaces" />
-    <column id="9" parent="6" name="name">
+    <schema id="6" name="stillTodo" />
+    <table id="7" parent="1" name="bp_furnaces" />
+    <table id="8" parent="1" name="bp_users" />
+    <table id="9" parent="1" name="bp_littleBackPack_ba9c9caa1f6c46b19c7a2ada2a844fd8" />
+    <table id="10" parent="1" name="bp_normalBackPack_ba9c9caa1f6c46b19c7a2ada2a844fd8" />
+    <column id="11" parent="7" name="uuid">
       <data-type>varchar(100)|0</data-type>
     </column>
-    <column id="10" parent="6" name="uuid">
+    <column id="12" parent="7" name="ores">
       <data-type>varchar(100)|0</data-type>
     </column>
-    <column id="11" parent="7" name="position">
+    <column id="13" parent="7" name="food">
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="14" parent="7" name="autoFill">
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="15" parent="7" name="coal">
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="16" parent="8" name="name">
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="17" parent="8" name="uuid">
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="18" parent="9" name="position">
       <data-type>int(100)|0</data-type>
     </column>
-    <column id="12" parent="7" name="material">
+    <column id="19" parent="9" name="material">
       <data-type>varchar(100)|0</data-type>
     </column>
-    <column id="13" parent="7" name="durability">
+    <column id="20" parent="9" name="durability">
       <data-type>int(100)|0</data-type>
     </column>
-    <column id="14" parent="7" name="amount">
+    <column id="21" parent="9" name="amount">
       <data-type>int(100)|0</data-type>
     </column>
-    <column id="15" parent="7" name="name">
+    <column id="22" parent="9" name="name">
       <data-type>varchar(100)|0</data-type>
     </column>
-    <column id="16" parent="7" name="lore">
+    <column id="23" parent="9" name="lore">
       <data-type>varchar(100)|0</data-type>
     </column>
-    <column id="17" parent="7" name="enchantments">
+    <column id="24" parent="9" name="enchantments">
       <data-type>varchar(100)|0</data-type>
     </column>
-    <column id="18" parent="7" name="potion">
+    <column id="25" parent="9" name="potion">
       <data-type>varchar(100)|0</data-type>
     </column>
-    <column id="19" parent="8" name="uuid">
+    <column id="26" parent="10" name="position">
+      <data-type>int(100)|0</data-type>
+    </column>
+    <column id="27" parent="10" name="material">
       <data-type>varchar(100)|0</data-type>
     </column>
-    <column id="20" parent="8" name="ores">
+    <column id="28" parent="10" name="durability">
+      <data-type>int(100)|0</data-type>
+    </column>
+    <column id="29" parent="10" name="amount">
+      <data-type>int(100)|0</data-type>
+    </column>
+    <column id="30" parent="10" name="name">
       <data-type>varchar(100)|0</data-type>
     </column>
-    <column id="21" parent="8" name="food">
+    <column id="31" parent="10" name="lore">
       <data-type>varchar(100)|0</data-type>
     </column>
-    <column id="22" parent="8" name="autoFill">
+    <column id="32" parent="10" name="enchantments">
       <data-type>varchar(100)|0</data-type>
     </column>
-    <column id="23" parent="8" name="coal">
+    <column id="33" parent="10" name="potion">
       <data-type>varchar(100)|0</data-type>
     </column>
   </database-model>

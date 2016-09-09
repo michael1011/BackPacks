@@ -66,40 +66,6 @@ public class BlockBreak implements Listener {
                                          if(rs.first()) {
                                              int amount = rs.getInt("coal");
 
-                                             if(Boolean.valueOf(rs.getString("ores"))) {
-                                                 if(!material.equals(Material.COAL_ORE)) {
-                                                     if(amount > 0) {
-                                                         SQL.query("UPDATE bp_furnaces SET coal="+String.valueOf(amount-1)+" WHERE uuid='"+trimmedID+"'",
-                                                                 new SQL.Callback<Boolean>() {
-                                                                     @Override
-                                                                     public void onSuccess(Boolean rs) {
-                                                                         smelt(e, finalCrops, material);
-                                                                     }
-
-                                                                     @Override
-                                                                     public void onFailure(Throwable e) {}
-
-                                                                 });
-
-                                                     } else {
-                                                         if(material.equals(Material.POTATO)) {
-                                                             world.dropItem(location, new ItemStack(Material.POTATO_ITEM));
-
-                                                         } else {
-                                                             world.dropItem(location, new ItemStack(material));
-                                                         }
-
-                                                         p.sendMessage(prefix+ ChatColor.translateAlternateColorCodes('&',
-                                                                 messages.getString("BackPacks.furnaceBackPack.noCoal")));
-
-                                                     }
-
-                                                 }
-
-                                             } else {
-                                                 world.dropItem(location, new ItemStack(material));
-                                             }
-
                                              if(material.equals(Material.COAL_ORE)) {
                                                  if(Boolean.valueOf(rs.getString("autoFill"))) {
                                                      if(amount < 64) {
@@ -114,7 +80,7 @@ public class BlockBreak implements Listener {
                                                                      @Override
                                                                      public void onFailure(Throwable e) {}
 
-                                                         });
+                                                                 });
 
                                                      } else {
                                                          ExperienceOrb exp = location.getWorld().spawn(location, ExperienceOrb.class);
@@ -130,6 +96,19 @@ public class BlockBreak implements Listener {
                                                      world.dropItem(location, new ItemStack(Material.COAL, random(1, 3)));
                                                  }
 
+                                             } else if(material.equals(Material.POTATO)) {
+                                                 if(Boolean.valueOf(rs.getString("food"))) {
+                                                     drop(amount, trimmedID, e, finalCrops, material, world, location, p);
+
+                                                 } else {
+                                                     world.dropItem(location, new ItemStack(Material.POTATO_ITEM, random(1, 3)));
+                                                 }
+
+                                             } else if(Boolean.valueOf(rs.getString("ores"))) {
+                                                 drop(amount, trimmedID, e, finalCrops, material, world, location, p);
+
+                                             } else {
+                                                 world.dropItem(location, new ItemStack(material));
                                              }
 
                                          } else {
@@ -174,6 +153,34 @@ public class BlockBreak implements Listener {
 
     }
 
+    private void drop(int amount, String trimmedID, final BlockBreakEvent e, final Crops finalCrops, final Material material,
+                      World world, Location location, Player p) {
+        if(amount > 0) {
+            SQL.query("UPDATE bp_furnaces SET coal="+String.valueOf(amount-1)+" WHERE uuid='"+trimmedID+"'",
+                    new SQL.Callback<Boolean>() {
+                        @Override
+                        public void onSuccess(Boolean rs) {
+                            smelt(e, finalCrops, material);
+                        }
+
+                        @Override
+                        public void onFailure(Throwable e) {}
+
+                    });
+
+        } else {
+            if(!material.equals(Material.POTATO)) {
+                world.dropItem(location, new ItemStack(material));
+
+            } else {
+                world.dropItem(location, new ItemStack(Material.POTATO_ITEM, random(1, 3)));
+            }
+
+            p.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                    messages.getString("BackPacks.furnaceBackPack.noCoal")));
+
+        }
+    }
 
     private void smelt(BlockBreakEvent e, Crops crops, Material material) {
         Block block = e.getBlock();

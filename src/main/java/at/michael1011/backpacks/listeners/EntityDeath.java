@@ -81,6 +81,10 @@ public class EntityDeath implements Listener {
                                                         messages.getString("BackPacks.furnaceBackPack.noCoal")));
                                             }
 
+                                        } else {
+                                            for(ItemStack drop : toDrop) {
+                                                loc.getWorld().dropItem(loc, drop);
+                                            }
                                         }
 
                                     } else {
