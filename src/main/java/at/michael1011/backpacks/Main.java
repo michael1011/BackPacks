@@ -28,6 +28,7 @@ public class Main extends JavaPlugin {
     private static Main main;
 
     // todo: updater
+    // todo: save content of craftingBackPack like craftingStation in FTB
     // todo: command to create a new backpack in config
 
     @Override

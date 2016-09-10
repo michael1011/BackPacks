@@ -22,7 +22,7 @@ food:
 autoFill:
   defaultOption: true
 
-  name: "&0Auto fill"
+  name: "&7Auto fill"
   description:
-    1: "&8Fill with &0coal &8automatically?"
+    1: "&8Fill with &7coal &8automatically?"
     2: "&aEnable &8and &cdisable &8with the item below."

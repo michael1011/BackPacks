@@ -121,6 +121,11 @@ public class RightClick implements Listener {
 
                                 break;
 
+                            case "crafting":
+                                p.openWorkbench(p.getLocation(), true);
+
+                                break;
+
                             case "furnace":
                                 if(Crafting.furnaceGui.containsKey(finalBackPack)) {
                                     if(Crafting.furnaceGui.get(finalBackPack).equals("true")) {

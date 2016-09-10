@@ -1,5 +1,5 @@
 #
-# BackPacks 2.0.0-RC5
+# BackPacks 2.0.0
 # By michael1011
 #
 
@@ -29,6 +29,7 @@ BackPacks:
     1: "littleBackPack"
     2: "normalBackPack"
     3: "enderBackPack"
+    5: "craftingBackPack"
     4: "furnaceBackPack"
 
   littleBackPack:
@@ -95,6 +96,25 @@ BackPacks:
         P: "ENDER_PEARL"
         W: "ENDER_CHEST"
         O: "OBSIDIAN"
+
+  craftingBackPack:
+    name: "&7Crafting &8BackPack"
+    type: "crafting"
+
+    description:
+      1: "&fThis is the &7Crafting &8BackPack&f."
+      2: "&8Right click to open it."
+
+    material: "WORKBENCH"
+
+    crafting:
+      1: "R+W+R"
+      2: "W+W+W"
+      3: "R+W+R"
+
+      materials:
+        R: "REDSTONE"
+        W: "WORKBENCH"
 
   furnaceBackPack:
     name: "&cFurnace &4BackPack"
