@@ -5,21 +5,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51551c69-f36d-4497-9d42-5d6b07c19936" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/libs/BackPacks-2.0.0-RC2.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/plugins/BackPacks-2.0.0-RC2.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/world/data/Temple.dat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/world/data/Village.dat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/world/playerdata/37e70bdf-2814-4f6d-8791-1f47343d9aa1.dat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/world/region/r.-1.1.mca" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/world/region/r.0.0.mca" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/world/region/r.0.1.mca" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/world/region/r.7.22.mca" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/world/region/r.8.21.mca" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/world/region/r.9.17.mca" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/world/stats/37e70bdf-2814-4f6d-8791-1f47343d9aa1.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/world_nether/data/Fortress.dat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/world_nether/data/villages_nether.dat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/world_the_end/data/villages_end.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/libs/BackPacks-2.0.0-RC4.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-29-1.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-29-2.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-29-3.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-29-4.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-29-5.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-29-6.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-29-7.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-30-1.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-30-2.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-30-3.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-30-4.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-30-5.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-08-30-6.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-09-01-1.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-09-01-2.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-09-02-1.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-09-02-10.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-09-02-2.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-09-02-3.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-09-02-4.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-09-02-5.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-09-02-6.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-09-02-7.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-09-02-8.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-09-02-9.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-09-03-1.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-09-03-2.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-09-09-1.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-09-09-2.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-09-09-3.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-09-09-4.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-09-09-5.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-09-09-6.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/logs/2016-09-09-7.log.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/plugins/BackPacks-2.0.0-RC4.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/plugins/BackPacks/furnaceBackPack.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/plugins/BackPacks/messages.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/world/region/r.-1.0.mca" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/fileSnapshots.bin" />
@@ -30,7 +54,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/level.dat" afterPath="$PROJECT_DIR$/server1.10/world/level.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/level.dat_old" afterPath="$PROJECT_DIR$/server1.10/world/level.dat_old" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/playerdata/ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8.dat" afterPath="$PROJECT_DIR$/server1.10/world/playerdata/ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/region/r.-1.0.mca" afterPath="$PROJECT_DIR$/server1.10/world/region/r.-1.0.mca" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/session.lock" afterPath="$PROJECT_DIR$/server1.10/world/session.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/uid.dat" afterPath="$PROJECT_DIR$/server1.10/world/uid.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.-1.-1.mca" afterPath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.-1.-1.mca" />
@@ -49,25 +72,21 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/level.dat_old" afterPath="$PROJECT_DIR$/server1.10/world_the_end/level.dat_old" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/session.lock" afterPath="$PROJECT_DIR$/server1.10/world_the_end/session.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/uid.dat" afterPath="$PROJECT_DIR$/server1.10/world_the_end/uid.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/cf85fafb-c355-4989-a857-14a569efb1e7.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/cf85fafb-c355-4989-a857-14a569efb1e7.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/config.yml" afterPath="$PROJECT_DIR$/build/resources/main/config.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/messages.yml" afterPath="$PROJECT_DIR$/build/resources/main/messages.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/plugin.yml" afterPath="$PROJECT_DIR$/build/resources/main/plugin.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/logs/latest.log" afterPath="$PROJECT_DIR$/server1.10/logs/latest.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/ops.json" afterPath="$PROJECT_DIR$/server1.10/ops.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/plugins/BackPacks/config.yml" afterPath="$PROJECT_DIR$/server1.10/plugins/BackPacks/config.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/plugins/BackPacks/messages.yml" afterPath="$PROJECT_DIR$/server1.10/plugins/BackPacks/messages.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/plugins/PluginMetrics/config.yml" afterPath="$PROJECT_DIR$/server1.10/plugins/PluginMetrics/config.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/server.properties" afterPath="$PROJECT_DIR$/server1.10/server.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/spigot.yml" afterPath="$PROJECT_DIR$/server1.10/spigot.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/start.sh" afterPath="$PROJECT_DIR$/server1.10/start.sh" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/usercache.json" afterPath="$PROJECT_DIR$/server1.10/usercache.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/stats/ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8.json" afterPath="$PROJECT_DIR$/server1.10/world/stats/ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/BlockBreak.java" afterPath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/BlockBreak.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/EntityDeath.java" afterPath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/EntityDeath.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/RightClick.java" afterPath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/RightClick.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/config.yml" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/messages.yml" afterPath="$PROJECT_DIR$/src/main/resources/messages.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" />
     </list>
     <ignored path="BackPacks.iws" />
@@ -127,7 +146,43 @@
     <favorites_list name="BackPacks" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="RightClick.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/RightClick.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="55" column="121" selection-start-line="55" selection-start-column="121" selection-end-line="55" selection-end-column="121" />
+              <folding>
+                <marker date="1473513146830" expanded="true" signature="3265:3300" ph="SELECT * FRO... bp_missingValue_missingValue" />
+                <marker date="1473513146830" expanded="true" signature="3986:4325" ph="CREATE TABLE... IF" />
+                <marker date="1473513146830" expanded="true" signature="5772:5824" ph="SELECT * FRO... bp_furnaces" />
+                <marker date="1473513146830" expanded="true" signature="7020:7391" ph="INSERT INTO bp_furnaces... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="25" column="70" selection-start-line="25" selection-start-column="70" selection-end-line="25" selection-end-column="70" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BlockPlace.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/BlockPlace.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -526,13 +581,13 @@
         <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Main.java" />
         <option value="$PROJECT_DIR$/src/main/resources/furnaceBackPack.yml" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/RightClick.java" />
         <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/commads/Open.java" />
         <option value="$PROJECT_DIR$/src/main/resources/messages.yml" />
         <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/EntityDeath.java" />
         <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/BlockBreak.java" />
         <option value="$PROJECT_DIR$/src/main/resources/config.yml" />
         <option value="$PROJECT_DIR$/src/main/resources/plugin.yml" />
+        <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/RightClick.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
       </list>
     </option>
@@ -596,6 +651,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -624,7 +681,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="server1.10" />
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -638,18 +695,76 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="server1.10" />
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="plugins" />
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BackPacks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BackPacks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="backpacks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BackPacks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BackPacks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="backpacks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="listeners" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -1330,6 +1445,10 @@
       <workItem from="1473007920945" duration="10000" />
       <workItem from="1473277097056" duration="1175000" />
       <workItem from="1473421256881" duration="4829000" />
+      <workItem from="1473495555672" duration="213000" />
+      <workItem from="1473504055833" duration="45000" />
+      <workItem from="1473504125318" duration="551000" />
+      <workItem from="1473511819408" duration="1849000" />
     </task>
     <servers />
   </component>
@@ -1366,7 +1485,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="166310000" />
+    <option name="totallyTimeSpent" value="168968000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1378,7 +1497,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1366" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1386,7 +1505,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3622291" sideWeight="0.5121212" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3374613" sideWeight="0.4878788" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33436534" sideWeight="0.4878788" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3374613" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1482,7 +1601,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/resources/craftingTest.yml" />
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.spigotmc/spigot-api/1.10.2-R0.1-SNAPSHOT/9bb293017e7ef743a0879862ac2f07cc2a42e3b1/spigot-api-1.10.2-R0.1-SNAPSHOT-sources.jar!/org/bukkit/Bukkit.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="222">
@@ -1506,14 +1624,14 @@
     <entry file="dbDummy://dbtable:/8e4c304b/e7cbfab2-9d90-4bdb-a53e-a00196ffd2cd/bp.bp_littleBackPack_ba9c9caa1f6c46b19c7a2ada2a844fd8" />
     <entry file="dbDummy://dbtable:/8e4c304b/e7cbfab2-9d90-4bdb-a53e-a00196ffd2cd/bp.bp_users" />
     <entry file="dbDummy://dbtable:/8e4c304b/cf85fafb-c355-4989-a857-14a569efb1e7/bp.bp_littleBackPack_37e70bdf28144f6d87911f47343d9aa1">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -1630,13 +1748,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/BlockPlace.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="20" column="77" selection-start-line="20" selection-start-column="77" selection-end-line="20" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Crafting.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="205">
@@ -1682,13 +1793,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/RightClick.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="350" column="4" selection-start-line="350" selection-start-column="4" selection-end-line="350" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/furnaceBackPack.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1708,7 +1812,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
           <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1716,37 +1819,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
           <caret line="135" column="139" selection-start-line="135" selection-start-column="139" selection-end-line="135" selection-end-column="139" />
-          <folding>
-            <marker date="1472903859941" expanded="true" signature="1569:1615" ph="SELECT * FRO... bp_users" />
-            <marker date="1472903859941" expanded="true" signature="2609:2639" ph="SELECT * FRO... bp_missingValue_missingValue" />
-            <marker date="1472903859941" expanded="true" signature="5149:5201" ph="SELECT * FRO... bp_furnaces" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/8e4c304b/cf85fafb-c355-4989-a857-14a569efb1e7/bp.bp_normalBackPack_ba9c9caa1f6c46b19c7a2ada2a844fd8">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/8e4c304b/cf85fafb-c355-4989-a857-14a569efb1e7/bp.bp_littleBackPack_ba9c9caa1f6c46b19c7a2ada2a844fd8">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -1754,33 +1850,44 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="57" column="52" selection-start-line="57" selection-start-column="52" selection-end-line="57" selection-end-column="52" />
-          <folding>
-            <marker date="1473424126762" expanded="true" signature="1791:1843" ph="SELECT * FRO... bp_furnaces" />
-            <marker date="1473424126762" expanded="true" signature="2354:2437" ph="UPDATE bp_fu... " />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/8e4c304b/cf85fafb-c355-4989-a857-14a569efb1e7/bp.bp_furnaces">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/8e4c304b/cf85fafb-c355-4989-a857-14a569efb1e7/bp.bp_users">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/BlockBreak.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="175" column="88" selection-start-line="175" selection-start-column="88" selection-end-line="175" selection-end-column="88" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#7677#7678#0" expanded="true" />
-            <element signature="e#7763#7764#0" expanded="true" />
-            <marker date="1473426125234" expanded="true" signature="2329:2381" ph="SELECT * FRO... bp_furnaces" />
-            <marker date="1473426125234" expanded="true" signature="3246:3340" ph="UPDATE bp_fu... " />
-            <marker date="1473426125234" expanded="true" signature="7449:7532" ph="UPDATE bp_fu... " />
-          </folding>
+        <state relative-caret-position="109">
+          <caret line="68" column="77" selection-start-line="68" selection-start-column="73" selection-end-line="68" selection-end-column="77" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/messages.yml">
+    <entry file="jar:///usr/lib/jvm/java-1.7.0-openjdk-amd64/jre/lib/rt.jar!/java/lang/Object.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="75" selection-start-line="6" selection-start-column="75" selection-end-line="6" selection-end-column="75" />
-          <folding />
+        <state relative-caret-position="205">
+          <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -1788,14 +1895,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
           <folding />
         </state>
       </provider>
@@ -1808,28 +1907,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/8e4c304b/cf85fafb-c355-4989-a857-14a569efb1e7/bp.bp_furnaces">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/messages.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="75" selection-start-line="6" selection-start-column="75" selection-end-line="6" selection-end-column="75" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/8e4c304b/cf85fafb-c355-4989-a857-14a569efb1e7/bp.bp_users">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/BlockPlace.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/RightClick.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="55" column="121" selection-start-line="55" selection-start-column="121" selection-end-line="55" selection-end-column="121" />
+          <folding>
+            <marker date="1473513146830" expanded="true" signature="3265:3300" ph="SELECT * FRO... bp_missingValue_missingValue" />
+            <marker date="1473513146830" expanded="true" signature="3986:4325" ph="CREATE TABLE... IF" />
+            <marker date="1473513146830" expanded="true" signature="5772:5824" ph="SELECT * FRO... bp_furnaces" />
+            <marker date="1473513146830" expanded="true" signature="7020:7391" ph="INSERT INTO bp_furnaces... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="25" column="70" selection-start-line="25" selection-start-column="70" selection-end-line="25" selection-end-column="70" />
           <folding />
         </state>
       </provider>

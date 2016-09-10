@@ -48,6 +48,16 @@ public class RightClick implements Listener {
         Action action = e.getAction();
 
         if(action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK) {
+            if(action == Action.RIGHT_CLICK_BLOCK) {
+                Material block = e.getClickedBlock().getType();
+
+                if(block.equals(Material.WORKBENCH) || block.equals(Material.FURNACE) || block.equals(Material.BURNING_FURNACE) ||
+                        block.equals(Material.CHEST) || block.equals(Material.ENDER_CHEST) || block.equals(Material.ENCHANTMENT_TABLE) ||
+                        block.equals(Material.ANVIL) || block.equals(Material.HOPPER) || block.equals(Material.DISPENSER)) {
+                    return;
+                }
+            }
+
             final ItemStack item = e.getItem();
 
             if(item != null) {
@@ -305,6 +315,7 @@ public class RightClick implements Listener {
         inv.setItem(13, foodToggle);
         inv.setItem(14, autoFillToggle);
 
+        opener.getOpenInventory().close();
         opener.openInventory(inv);
 
         openFurnaces.put(opener, backPack);
