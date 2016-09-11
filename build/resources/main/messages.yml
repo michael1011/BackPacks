@@ -35,6 +35,9 @@ Help:
     # %player% is the player and %backpack% is the backpack
     hasNotUsedYet: "&cThe player &4%player% &chasn't used the &4%backpack% &cyet"
 
+    # open a empty crafting table doesn't make sense
+    craftingBackPack: "&cOpen a empty crafting table doesn't make sense"
+
     # If someone uses /bpopen wrong
     syntaxError:
       1: "&6/bpopen <backpack> <player>: &eopen '<backpack>' of '<player>'"

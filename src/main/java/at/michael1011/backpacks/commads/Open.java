@@ -31,6 +31,8 @@ public class Open implements CommandExecutor {
         command.setTabCompleter(new OpenCompleter());
     }
 
+    // todo: allow console CraftingBackPack and FurnaceBackPack to see
+
     @Override
     public boolean onCommand(final CommandSender sender, Command command, String label, final String[] args) {
         if(sender.hasPermission("backpacks.open")) {
@@ -153,6 +155,11 @@ public class Open implements CommandExecutor {
                                                     public void onFailure(Throwable e) {}
 
                                                 });
+
+                                                break;
+
+                                            case "crafting":
+                                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', messages.getString("Help.bpopen.craftingBackPack")));
 
                                                 break;
                                         }
