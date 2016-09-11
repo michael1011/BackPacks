@@ -11,6 +11,7 @@
 This plugin contains 3 different types of backpacks:
 * normal: this type is like a chest
 * ender: opens the enderchest of the player
+* crafting: opens a crafting table
 * furnace: is a portable furnace that smelts things automatically
  
 You can create as many backpacks as you want and every backpack is customizable. Set the name, lore (description), material and the crafting recipe. If its a backpack of the type 'normal' it's also possible to set the slots of it. You can find a sample configuration [here](https://github.com/michael1011/BackPacks/blob/master/src/main/resources/config.yml).
