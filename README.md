@@ -16,4 +16,4 @@ This plugin contains 3 different types of backpacks:
  
 You can create as many backpacks as you want and every backpack is customizable. Set the name, lore (description), material and the crafting recipe. If its a backpack of the type 'normal' it's also possible to set the slots of it. You can find a sample configuration [here](https://github.com/michael1011/BackPacks/blob/master/src/main/resources/config.yml).
 
-Read about permissions and commands [here](https://github.com/michael1011/BackPacks/wiki/).
+Read more about the configuration [here](https://github.com/michael1011/BackPacks/wiki/).
