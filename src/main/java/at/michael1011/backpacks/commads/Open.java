@@ -31,7 +31,7 @@ public class Open implements CommandExecutor {
         command.setTabCompleter(new OpenCompleter());
     }
 
-    // todo: allow console CraftingBackPack and FurnaceBackPack to see
+    // todo: allow console to see CraftingBackPack and FurnaceBackPack
 
     @Override
     public boolean onCommand(final CommandSender sender, Command command, String label, final String[] args) {

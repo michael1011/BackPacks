@@ -3,7 +3,7 @@
 ## A backpack plugin for Bukkit/Spigot 1.10 and 1.9
 
 **Requirements:**
-* Bukkit/Spigot 1.8 or 1.9 (Glowstone *might* work too)
+* Bukkit/Spigot 1.9 or 1.10 (older versions *might* work too)
 * Java 8 or 7
 * A MySQL database
 
