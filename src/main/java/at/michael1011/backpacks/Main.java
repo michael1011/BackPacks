@@ -1,5 +1,6 @@
 package at.michael1011.backpacks;
 
+import at.michael1011.backpacks.commads.Create;
 import at.michael1011.backpacks.commads.Give;
 import at.michael1011.backpacks.commads.Open;
 import at.michael1011.backpacks.listeners.*;
@@ -29,7 +30,9 @@ public class Main extends JavaPlugin {
 
     // todo: updater
     // todo: save content of craftingBackPack like craftingStation in FTB
-    // todo: command to create a new backpack in config
+
+    // fixme: translations
+    // fixme: add aliases here: https://github.com/michael1011/BackPacks/wiki/Permissions-and-commands
 
     @Override
     public void onEnable() {
@@ -90,6 +93,7 @@ public class Main extends JavaPlugin {
 
                         new Give(main);
                         new Open(main);
+                        new Create(main);
                     }
 
                     @Override

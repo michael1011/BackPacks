@@ -43,8 +43,18 @@ Help:
 
     # If someone uses /bpopen wrong
     syntaxError:
-      1: "&6/bpopen <backpack> <player>: &eopen '<backpack>' of '<player>'"
+      1: "&6/bpopen <backpack> <player>: &eopens '<backpack>' of '<player>'"
 
+  bpcreate:
+    # When a unkown error occurs
+    unknownError: "&4Unknown error. &cReset to try again with &4/bpc reset confirm"
+
+    # When you reset the command for you
+    reset: "&4Reset successfully"
+
+    # If someone uses /bpopen wrong
+    syntaxError:
+      1: "&6/bpcreate <name of the new backpack>: &eto start creating a new backpack"
 
 BackPacks:
   # When you enable a backpack that doesn't exist (%backpack% is the backpack that couldn't be found)

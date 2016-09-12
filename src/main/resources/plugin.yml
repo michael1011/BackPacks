@@ -1,6 +1,6 @@
 name: BackPacks
 author: michael1011
-version: 2.0.1
+version: 2.1.0
 description: A backpack plugin for Bukkit/Spigot 1.10 and 1.9
 
 main: at.michael1011.backpacks.Main
@@ -16,17 +16,25 @@ commands:
     description: "see the backpacks of all players"
     usage: /bpopen <backpack> <player>
 
+  bpcreate:
+    aliases: [bpc]
+    description: "create new backpacks easily"
+    usage: /bpc <name of the new backpack>
 
 permissions:
   backpacks.*:
-    description: All access
+    description: all access
     children:
       backpacks.give: true
       backpacks.open: true
+      backpacks.create: true
 
   backpacks.give:
-    description: To use /bpgive
+    description: to use /bpgive
     default: op
   backpacks.open:
-    description: To use /bpopen
+    description: to use /bpopen
+    default: op
+  backpacks.create:
+    description: to use /bpcreate
     default: op

@@ -84,7 +84,6 @@ world-settings:
       hopper-transfer: 8
       hopper-check: 8
     hopper-amount: 1
-    mob-spawn-range: 4
     random-light-updates: false
     save-structure-info: true
     max-entity-collisions: 8
@@ -100,6 +99,7 @@ world-settings:
     max-tick-time:
       tile: 50
       entity: 50
+    mob-spawn-range: 4
     item-despawn-rate: 6000
     merge-radius:
       item: 2.5
