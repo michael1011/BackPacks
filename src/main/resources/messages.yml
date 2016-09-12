@@ -38,6 +38,9 @@ Help:
     # open a empty crafting table doesn't make sense
     craftingBackPack: "&cOpen a empty crafting table doesn't make sense"
 
+    # When the console wants to open a backpack with the type normal or ender
+    onlyPlayers: "&cOnly players can open backpack of the type &4%type%"
+
     # If someone uses /bpopen wrong
     syntaxError:
       1: "&6/bpopen <backpack> <player>: &eopen '<backpack>' of '<player>'"

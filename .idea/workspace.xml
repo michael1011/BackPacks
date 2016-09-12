@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51551c69-f36d-4497-9d42-5d6b07c19936" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/libs/BackPacks-2.0.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server1.10/plugins/BackPacks-2.0.0.jar" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/cache.properties.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/fileHashes.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/fileSnapshots.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" afterPath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.0/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/data/villages.dat" afterPath="$PROJECT_DIR$/server1.10/world/data/villages.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/level.dat" afterPath="$PROJECT_DIR$/server1.10/world/level.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/level.dat_old" afterPath="$PROJECT_DIR$/server1.10/world/level.dat_old" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/playerdata/ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8.dat" afterPath="$PROJECT_DIR$/server1.10/world/playerdata/ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/region/r.0.0.mca" afterPath="$PROJECT_DIR$/server1.10/world/region/r.0.0.mca" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/session.lock" afterPath="$PROJECT_DIR$/server1.10/world/session.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.-1.-1.mca" afterPath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.-1.-1.mca" />
@@ -27,15 +33,26 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/level.dat" afterPath="$PROJECT_DIR$/server1.10/world_the_end/level.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/level.dat_old" afterPath="$PROJECT_DIR$/server1.10/world_the_end/level.dat_old" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/session.lock" afterPath="$PROJECT_DIR$/server1.10/world_the_end/session.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_bukkit_bukkit_1_10_2_R0_1_SNAPSHOT.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_bukkit_bukkit_1_10_2_R0_1_SNAPSHOT.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_spigotmc_spigot_api_1_10_2_R0_1_SNAPSHOT.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_spigotmc_spigot_api_1_10_2_R0_1_SNAPSHOT.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/BackPacks.iml" afterPath="$PROJECT_DIR$/.idea/modules/BackPacks.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/BackPacks_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/BackPacks_main.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/BackPacks_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/BackPacks_test.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/config.yml" afterPath="$PROJECT_DIR$/build/resources/main/config.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/messages.yml" afterPath="$PROJECT_DIR$/build/resources/main/messages.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/plugin.yml" afterPath="$PROJECT_DIR$/build/resources/main/plugin.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/logs/latest.log" afterPath="$PROJECT_DIR$/server1.10/logs/latest.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/ops.json" afterPath="$PROJECT_DIR$/server1.10/ops.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/plugins/BackPacks/messages.yml" afterPath="$PROJECT_DIR$/server1.10/plugins/BackPacks/messages.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/server.properties" afterPath="$PROJECT_DIR$/server1.10/server.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/spigot.yml" afterPath="$PROJECT_DIR$/server1.10/spigot.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/usercache.json" afterPath="$PROJECT_DIR$/server1.10/usercache.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/stats/ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8.json" afterPath="$PROJECT_DIR$/server1.10/world/stats/ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/commads/Open.java" afterPath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/commads/Open.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/config.yml" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/messages.yml" afterPath="$PROJECT_DIR$/src/main/resources/messages.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" />
     </list>
     <ignored path="BackPacks.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -71,16 +88,6 @@
     <option name="SHOW_TABLE_DETAILS" value="true" />
     <option name="SHOW_EMPTY_GROUPS" value="false" />
     <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="localhost" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-    </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="ExternalProjectsData">
@@ -104,7 +111,23 @@
     <favorites_list name="BackPacks" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file leaf-file-name="Open.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/commads/Open.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="325">
+              <caret line="90" column="133" selection-start-line="90" selection-start-column="133" selection-end-line="90" selection-end-column="133" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <marker date="1473672878063" expanded="true" signature="1635:1681" ph="SELECT * FRO... bp_users" />
+                <marker date="1473672878063" expanded="true" signature="2717:2747" ph="SELECT * FRO... bp_missingValue_missingValue" />
+                <marker date="1473672878063" expanded="true" signature="6111:6163" ph="SELECT * FRO... bp_furnaces" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -303,7 +326,7 @@
     <option name="modificationStamps">
       <map>
         <entry key="$PROJECT_DIR$/../../Forge/CraftPad" value="1471201148000" />
-        <entry key="$PROJECT_DIR$" value="2944700498958" />
+        <entry key="$PROJECT_DIR$" value="2945375077263" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -505,12 +528,12 @@
         <option value="$PROJECT_DIR$/src/main/resources/furnaceBackPack.yml" />
         <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/RightClick.java" />
         <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Main.java" />
+        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/resources/plugin.yml" />
         <option value="$PROJECT_DIR$/src/main/resources/config.yml" />
         <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/src/main/resources/messages.yml" />
         <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/commads/Open.java" />
-        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/main/resources/messages.yml" />
       </list>
     </option>
   </component>
@@ -526,6 +549,9 @@
         <option name="mavenHome" value="Bundled (Maven 3)" />
       </MavenGeneralSettings>
     </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState />
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="24" />
@@ -573,7 +599,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -717,20 +743,20 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/server1.10/spigot-1.10.2.jar" />
     <property name="SearchEverywhereHistoryKey" value="getColor&#9;PSI&#9;JAVA://at.michael1011.backpacks.listeners.RightClick#getColor&#10;main&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/java/at/michael1011/backpacks/Main.java&#10;joi&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/java/at/michael1011/backpacks/listeners/Join.java&#10;messages&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/resources/messages.yml&#10;confi&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/resources/config.yml&#10;join&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/java/at/michael1011/backpacks/listeners/Join.java&#10;jon&#9;PSI&#9;JAVA://javax.print.attribute.standard.JobName&#10;craf&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/java/at/michael1011/backpacks/Crafting.java&#10;rig&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/java/at/michael1011/backpacks/listeners/RightClick.java&#10;plugin&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/resources/plugin.yml&#10;message&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/resources/messages.yml&#10;messa&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/resources/messages.yml&#10;mess&#9;FILE&#9;file:///home/michael/Git/Java/Spigot/BackPacks/src/main/resources/messages.yml" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="319" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
@@ -1404,6 +1430,7 @@
       <workItem from="1473518785376" duration="1255000" />
       <workItem from="1473590959309" duration="626000" />
       <workItem from="1473601194041" duration="182000" />
+      <workItem from="1473671574084" duration="1378000" />
     </task>
     <servers />
   </component>
@@ -1440,7 +1467,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171291000" />
+    <option name="totallyTimeSpent" value="172669000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1459,21 +1486,21 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3622291" sideWeight="0.5121212" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3374613" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33436534" sideWeight="0.4878788" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20075758" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20075758" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2689394" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3993808" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3993808" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1491,7 +1518,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3622291" sideWeight="0.5121212" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="combo" />
@@ -1512,7 +1539,7 @@
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20075758" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20075758" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
@@ -1581,14 +1608,14 @@
     <entry file="dbDummy://dbtable:/8e4c304b/e7cbfab2-9d90-4bdb-a53e-a00196ffd2cd/bp.bp_littleBackPack_ba9c9caa1f6c46b19c7a2ada2a844fd8" />
     <entry file="dbDummy://dbtable:/8e4c304b/e7cbfab2-9d90-4bdb-a53e-a00196ffd2cd/bp.bp_users" />
     <entry file="dbDummy://dbtable:/8e4c304b/cf85fafb-c355-4989-a857-14a569efb1e7/bp.bp_littleBackPack_37e70bdf28144f6d87911f47343d9aa1">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -1728,26 +1755,26 @@
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/8e4c304b/cf85fafb-c355-4989-a857-14a569efb1e7/bp.bp_normalBackPack_ba9c9caa1f6c46b19c7a2ada2a844fd8">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/8e4c304b/cf85fafb-c355-4989-a857-14a569efb1e7/bp.bp_littleBackPack_ba9c9caa1f6c46b19c7a2ada2a844fd8">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -1759,14 +1786,14 @@
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/8e4c304b/cf85fafb-c355-4989-a857-14a569efb1e7/bp.bp_furnaces">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -1807,14 +1834,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="15" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/RightClick.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="124">
@@ -1825,25 +1844,6 @@
             <marker date="1473519829747" expanded="true" signature="5930:5982" ph="SELECT * FRO... bp_furnaces" />
             <marker date="1473519829747" expanded="true" signature="7178:7549" ph="INSERT INTO bp_furnaces... " />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="30" column="60" selection-start-line="30" selection-start-column="60" selection-end-line="30" selection-end-column="60" />
-          <folding>
-            <marker date="1473519829755" expanded="true" signature="1693:1766" ph="CREATE TABLE... IF" />
-            <marker date="1473519829755" expanded="true" signature="1924:1946" ph="SELECT * FRO... bp_users" />
-            <marker date="1473519829755" expanded="true" signature="3425:3591" ph="CREATE TABLE... IF" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -1878,22 +1878,43 @@
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/8e4c304b/cf85fafb-c355-4989-a857-14a569efb1e7/bp.bp_users">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
         </state>
       </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="108">
+            <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/messages.yml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="37" column="7" selection-start-line="37" selection-start-column="7" selection-end-line="37" selection-end-column="7" />
+        <state relative-caret-position="72">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding>
+            <marker date="1473519829755" expanded="true" signature="1693:1766" ph="CREATE TABLE... IF" />
+            <marker date="1473519829755" expanded="true" signature="1924:1946" ph="SELECT * FRO... bp_users" />
+            <marker date="1473519829755" expanded="true" signature="3425:3591" ph="CREATE TABLE... IF" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
           <folding />
         </state>
       </provider>
@@ -1906,26 +1927,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/commads/Open.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-90">
-          <caret line="33" column="34" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
-          <folding>
-            <marker date="1473601245388" expanded="true" signature="1641:1687" ph="SELECT * FRO... bp_users" />
-            <marker date="1473601245388" expanded="true" signature="2681:2711" ph="SELECT * FRO... bp_missingValue_missingValue" />
-            <marker date="1473601245388" expanded="true" signature="5221:5273" ph="SELECT * FRO... bp_furnaces" />
-          </folding>
+        <state relative-caret-position="36">
+          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="108">
-            <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-            <folding />
-          </first_editor>
-          <second_editor />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/messages.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="738">
+          <caret line="41" column="32" selection-start-line="41" selection-start-column="32" selection-end-line="41" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/commads/Open.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="90" column="133" selection-start-line="90" selection-start-column="133" selection-end-line="90" selection-end-column="133" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1473672878063" expanded="true" signature="1635:1681" ph="SELECT * FRO... bp_users" />
+            <marker date="1473672878063" expanded="true" signature="2717:2747" ph="SELECT * FRO... bp_missingValue_missingValue" />
+            <marker date="1473672878063" expanded="true" signature="6111:6163" ph="SELECT * FRO... bp_furnaces" />
+          </folding>
         </state>
       </provider>
     </entry>

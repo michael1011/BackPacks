@@ -59,7 +59,6 @@ stats:
 world-settings:
   default:
     verbose: true
-    mob-spawn-range: 4
     growth:
       cactus-modifier: 100
       cane-modifier: 100
@@ -85,6 +84,7 @@ world-settings:
       hopper-transfer: 8
       hopper-check: 8
     hopper-amount: 1
+    mob-spawn-range: 4
     random-light-updates: false
     save-structure-info: true
     max-entity-collisions: 8

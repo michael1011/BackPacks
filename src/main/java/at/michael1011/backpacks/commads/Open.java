@@ -36,27 +36,28 @@ public class Open implements CommandExecutor {
     @Override
     public boolean onCommand(final CommandSender sender, Command command, String label, final String[] args) {
         if(sender.hasPermission("backpacks.open")) {
-            if(sender instanceof Player) {
-                if(args.length == 2) {
-                    final String backPack = args[0];
-                    final String player = args[1];
+            if(args.length == 2) {
+                final String backPack = args[0];
+                final String finalType = type.get(backPack);
+                final String player = args[1];
 
-                    final ItemStack item = itemsInverted.get(backPack);
+                final ItemStack item = itemsInverted.get(backPack);
 
-                    if(item != null) {
-                        SQL.getResult("SELECT * FROM bp_users WHERE name='"+player+"'", new SQL.Callback<ResultSet>() {
-                            @Override
-                            public void onSuccess(ResultSet rs) {
-                                try {
-                                    rs.beforeFirst();
+                if(item != null) {
+                    SQL.getResult("SELECT * FROM bp_users WHERE name='"+player+"'", new SQL.Callback<ResultSet>() {
+                        @Override
+                        public void onSuccess(ResultSet rs) {
+                            try {
+                                rs.beforeFirst();
 
-                                    if(rs.next()) {
-                                        final String trimmedID = rs.getString("uuid");
+                                if(rs.next()) {
+                                    final String trimmedID = rs.getString("uuid");
 
-                                        final Player opener = (Player) sender;
+                                    switch (finalType) {
+                                        case "normal":
+                                            if(sender instanceof Player) {
+                                                final Player opener = (Player) sender;
 
-                                        switch (type.get(backPack)) {
-                                            case "normal":
                                                 SQL.checkTable("bp_"+backPack+"_"+trimmedID, new SQL.Callback<Boolean>() {
                                                     @Override
                                                     public void onSuccess(Boolean rs) {
@@ -70,7 +71,7 @@ public class Open implements CommandExecutor {
                                                                 @Override
                                                                 public void onFailure(Throwable e) {}
 
-                                                            });
+                                                                });
 
                                                         } else {
                                                             sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
@@ -85,10 +86,18 @@ public class Open implements CommandExecutor {
 
                                                 });
 
-                                                break;
+                                            } else {
+                                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                                        messages.getString("Help.bpopen.onlyPlayers").replaceAll("%type%", finalType)));
+                                            }
 
-                                            case "ender":
-                                                Player target = Bukkit.getPlayer(player);
+                                            break;
+
+                                        case "ender":
+                                            Player target = Bukkit.getPlayer(player);
+
+                                            if(sender instanceof Player) {
+                                                final Player opener = (Player) sender;
 
                                                 if(target != null) {
                                                     opener.openInventory(target.getEnderChest());
@@ -99,107 +108,107 @@ public class Open implements CommandExecutor {
                                                                     .replaceAll("%player%", player).replaceAll("%backpack%", backPack)));
                                                 }
 
-                                                break;
+                                            }  else {
+                                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                                        messages.getString("Help.bpopen.onlyPlayers").replaceAll("%type%", finalType)));
+                                            }
 
-                                            case "furnace":
-                                                SQL.getResult("SELECT * FROM bp_furnaces WHERE uuid='"+trimmedID+"'", new SQL.Callback<ResultSet>() {
-                                                    @Override
-                                                    public void onSuccess(ResultSet rs) {
-                                                        try {
-                                                            rs.beforeFirst();
+                                            break;
 
-                                                            if(rs.next()) {
-                                                                String ores = rs.getString("ores");
-                                                                String food = rs.getString("food");
-                                                                String autoFill = rs.getString("autoFill");
+                                        case "furnace":
+                                            SQL.getResult("SELECT * FROM bp_furnaces WHERE uuid='"+trimmedID+"'", new SQL.Callback<ResultSet>() {
+                                                @Override
+                                                public void onSuccess(ResultSet rs) {
+                                                    try {
+                                                        rs.beforeFirst();
 
-                                                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                                                        messages.getString("BackPacks.furnaceBackPack.open.title")
-                                                                                .replaceAll("%target%", player).replaceAll("%backpack%", backPack)));
+                                                        if(rs.next()) {
+                                                            String ores = rs.getString("ores");
+                                                            String food = rs.getString("food");
+                                                            String autoFill = rs.getString("autoFill");
 
-                                                                sender.sendMessage(prefix);
+                                                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                                                    messages.getString("BackPacks.furnaceBackPack.open.title")
+                                                                            .replaceAll("%target%", player).replaceAll("%backpack%", backPack)));
 
-                                                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                                                        messages.getString("BackPacks.furnaceBackPack.open.ores")
-                                                                                .replaceAll("%value%", getColor(Boolean.valueOf(ores))+ores)));
+                                                            sender.sendMessage(prefix);
 
-                                                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                                                        messages.getString("BackPacks.furnaceBackPack.open.food")
-                                                                                .replaceAll("%value%", getColor(Boolean.valueOf(food))+food)));
+                                                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                                                    messages.getString("BackPacks.furnaceBackPack.open.ores")
+                                                                            .replaceAll("%value%", getColor(Boolean.valueOf(ores))+ores)));
 
-                                                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                                                        messages.getString("BackPacks.furnaceBackPack.open.autoFill")
-                                                                                .replaceAll("%value%", getColor(Boolean.valueOf(autoFill))+autoFill)));
+                                                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                                                    messages.getString("BackPacks.furnaceBackPack.open.food")
+                                                                            .replaceAll("%value%", getColor(Boolean.valueOf(food))+food)));
 
-                                                                sender.sendMessage(prefix);
+                                                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                                                    messages.getString("BackPacks.furnaceBackPack.open.autoFill")
+                                                                            .replaceAll("%value%", getColor(Boolean.valueOf(autoFill))+autoFill)));
 
-                                                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                                                        messages.getString("BackPacks.furnaceBackPack.open.coal")
-                                                                                .replaceAll("%value%", String.valueOf(rs.getInt("coal")))));
+                                                            sender.sendMessage(prefix);
 
-                                                            } else {
-                                                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                                                        messages.getString("Help.bpopen.hasNotUsedYet")
-                                                                                .replaceAll("%player%", player).replaceAll("%backpack%", backPack)));
-                                                            }
+                                                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                                                    messages.getString("BackPacks.furnaceBackPack.open.coal")
+                                                                            .replaceAll("%value%", String.valueOf(rs.getInt("coal")))));
 
-                                                            rs.close();
-
-                                                        } catch (SQLException e) {
-                                                            e.printStackTrace();
+                                                        } else {
+                                                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                                                    messages.getString("Help.bpopen.hasNotUsedYet")
+                                                                            .replaceAll("%player%", player).replaceAll("%backpack%", backPack)));
                                                         }
 
+                                                        rs.close();
+
+                                                    } catch (SQLException e) {
+                                                        e.printStackTrace();
                                                     }
 
-                                                    @Override
-                                                    public void onFailure(Throwable e) {}
+                                                }
 
-                                                });
+                                                @Override
+                                                public void onFailure(Throwable e) {}
 
-                                                break;
+                                            });
 
-                                            case "crafting":
-                                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', messages.getString("Help.bpopen.craftingBackPack")));
+                                            break;
 
-                                                break;
-                                        }
+                                        case "crafting":
+                                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', messages.getString("Help.bpopen.craftingBackPack")));
 
-                                    } else {
-                                        sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                                messages.getString("Help.playerNotFound").replaceAll("%target%", player)));
+                                            break;
                                     }
 
-                                } catch (SQLException e) {
-                                    e.printStackTrace();
+                                } else {
+                                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                                messages.getString("Help.playerNotFound").replaceAll("%target%", player)));
                                 }
+
+                            } catch (SQLException e) {
+                                e.printStackTrace();
                             }
+                        }
 
-                            @Override
-                            public void onFailure(Throwable e) {}
+                        @Override
+                        public void onFailure(Throwable e) {}
 
-                        });
-
-                    } else {
-                        sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                messages.getString("Help.backPackNotFound").replaceAll("%backpack%", backPack)));
-
-                        sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                messages.getString("Help.backPackNotFoundAvailable")
-                                        .replaceAll("%backpacks%", Crafting.available.replaceAll(",", ", "))));
-                    }
+                    });
 
                 } else {
-                    Map<String, Object> syntaxError = messages.getConfigurationSection("Help.bpopen.syntaxError").getValues(true);
+                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                            messages.getString("Help.backPackNotFound").replaceAll("%backpack%", backPack)));
 
-                    for(Map.Entry<String, Object> error : syntaxError.entrySet()) {
-                        sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', (String) error.getValue()));
-                    }
-
+                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                            messages.getString("Help.backPackNotFoundAvailable")
+                                    .replaceAll("%backpacks%", Crafting.available.replaceAll(",", ", "))));
                 }
 
             } else {
-                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                        messages.getString("Help.onlyPlayers")));
+                Map<String, Object> syntaxError = messages.getConfigurationSection("Help.bpopen.syntaxError").getValues(true);
+
+                for(Map.Entry<String, Object> error : syntaxError.entrySet()) {
+                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', (String) error.getValue()));
+                }
+
             }
 
         } else {

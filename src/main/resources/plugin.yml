@@ -1,6 +1,6 @@
 name: BackPacks
 author: michael1011
-version: 2.0.0
+version: 2.0.1
 description: A backpack plugin for Bukkit/Spigot 1.10 and 1.9
 
 main: at.michael1011.backpacks.Main
@@ -13,7 +13,7 @@ commands:
 
   bpopen:
     aliases: [bpo]
-    dedescription: "see the backpacks of a player"
+    description: "see the backpacks of all players"
     usage: /bpopen <backpack> <player>
 
 
