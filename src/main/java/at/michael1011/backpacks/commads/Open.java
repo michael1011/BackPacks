@@ -31,8 +31,6 @@ public class Open implements CommandExecutor {
         command.setTabCompleter(new OpenCompleter());
     }
 
-    // todo: allow console to see CraftingBackPack and FurnaceBackPack
-
     @Override
     public boolean onCommand(final CommandSender sender, Command command, String label, final String[] args) {
         if(sender.hasPermission("backpacks.open")) {
