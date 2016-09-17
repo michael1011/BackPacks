@@ -45,6 +45,67 @@ Help:
     syntaxError:
       1: "&6/bpopen <backpack> <player>: &eopens '<backpack>' of '<player>'"
 
+  bpcreate:
+    steps:
+      name:
+        noSpaces: "&cThe name &4can't contain spaces&c!"
+
+      displayName:
+        1: "&eSet the &6displayname &ewith &6/bpc displayname <displayname>"
+        2: "&eThe &6displayname &eis the name of the item and &6can contain spaces"
+
+      description:
+        1: "&eSet the &6description &ewith &6/bpc description <description>"
+        2: "&eCreate a new line with &6\\n"
+
+      material:
+        1: "&eSet the &6material &ewith &6/bpc material <material>"
+        2: "&eYou can find a list of materials here: &6http://bit.ly/21vbetj"
+
+      materialDoesNotExists: "&cThe material &4%material% &cdoese not exists"
+
+      crafting:
+        1: "&eSet the &6crafting recipce &ewith &6/bpc crafting <crafting recipe>"
+        2: "&eA &6crafting recipe &emust have 3 lines und has to look like this: &6C+R+C;R+W+R;C+R+C"
+
+      ingredients:
+        1: "&eSet the &6ingredients &eof the crafting recipe with &6/bpc ingredients <ingredients>"
+        2: "&eYou have to set every ingredient of the crafting recipe"
+        3: "&eIngredients have to look like this: &6C:coal;R:redstone;W:watch"
+
+      type:
+        1: "&eSet the &6type &eof the backpack with &6/bpc type <type>"
+        2: "&eThe available backpacks are: &6normal&e, &6ender&e, &6crafting&e, &6furnace"
+
+      typeNotFound: "&cThe the type &4%type% &cis not available"
+
+      slots:
+        1: "&eSet the &6slots &eof the backpack with &6/bpc slots <slots>"
+        2: "&eThe slots &6must be a number &eand &6divisible by 9"
+
+      slotsError: "&eThe slots &6must be a number &eand &6divisible by 9"
+
+      gui:
+        1: "&6Enable &ethe gui of the FurnaceBackPack with &6/bpc gui true"
+        2: "&6Disable &ethe gui of the FurnaceBackPack with &6/bpc gui false"
+
+      finish:
+        1: "&6Save and enable &ethe backpack with &6/bpc finish true"
+        2: "&6Discard &eit with &6/bpc finish false"
+
+      finishTrue:
+      # todo: add name of backpack
+      # todo: reload the server
+        1: "&eSaved backpack"
+        2: "&cReload the server to enable it"
+
+      finishFalse: "&cRemoved new backpack &4%backpack%"
+
+    # If someone uses /bpcreate wrong
+    syntaxError:
+      1: "&6/bpc name <value>: &eto start creating a backpack"
+
+
 BackPacks:
   # When you enable a backpack that doesn't exist (%backpack% is the backpack that couldn't be found)
   couldNotFindConfig: "&cCould &4not &cfind BackPack &4%backpack%"

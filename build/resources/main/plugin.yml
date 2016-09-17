@@ -15,11 +15,12 @@ commands:
     aliases: [bpo]
     description: "see the backpacks of all players"
     usage: /bpopen <backpack> <player>
-
+    
   bpcreate:
     aliases: [bpc]
     description: "create new backpacks easily"
     usage: /bpc <name of the new backpack>
+
 
 permissions:
   backpacks.*:

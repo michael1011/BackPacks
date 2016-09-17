@@ -47,53 +47,64 @@ Help:
 
   bpcreate:
     steps:
+      name:
+        noSpaces: "&cThe name &4can't contain spaces&c!"
+
+      displayName:
+        1: "&eSet the &6displayname &ewith &6/bpc displayname <displayname>"
+        2: "&eThe &6displayname &eis the name of the item and &6can contain spaces"
+
       description:
-        1: "&eSet the &6description &ewith &6/bpc <description> &enow"
+        1: "&eSet the &6description &ewith &6/bpc description <description>"
         2: "&eCreate a new line with &6\\n"
 
       material:
-        1: "&eSet the &6material &eof the backpack with &6/bpc <MATERIAL>"
-        2: "&eFind a list of all available materials here: &6http://bit.ly/21vbetj"
+        1: "&eSet the &6material &ewith &6/bpc material <material>"
+        2: "&eYou can find a list of materials here: &6http://bit.ly/21vbetj"
+
+      materialDoesNotExists: "&cThe material &4%material% &cdoese not exists"
 
       crafting:
-        1: "&eSet the &6crafting recipce &ewith &6/bpc <crafting recipe>"
-        2: "&eCrafting recipes must have 3 line and have to look like this: &6C+R+C\\nR+W+R\\nC+R+C"
-        3: "&eEvery letter can be used only once and is a own material"
-        4: "&eCreate a new line with &6\\n"
+        1: "&eSet the &6crafting recipce &ewith &6/bpc crafting <crafting recipe>"
+        2: "&eA &6crafting recipe &emust have 3 lines und has to look like this: &6C+R+C;R+W+R;C+R+C"
 
       ingredients:
-        1: "&eSet the &6ingredients &eof the crafting recipse with &6/bpc <ingredient:material>"
-        2: "&eYou have to define every ingredient you used in the crafting recipe"
-        3: "&eExample: &6C:COAL;R:REDSTONE;W:WATCH"
+        1: "&eSet the &6ingredients &eof the crafting recipe with &6/bpc ingredients <ingredients>"
+        2: "&eYou have to set every ingredient of the crafting recipe"
+        3: "&eIngredients have to look like this: &6C:coal;R:redstone;W:watch"
 
       type:
-        1: "&eSet the &6type &eof the backpack with &6/bpc <type>"
-        2: "&eThe available materials are: &6normal&e, &6ender&e, &6crafting&e, &6furnace"
+        1: "&eSet the &6type &eof the backpack with &6/bpc type <type>"
+        2: "&eThe available backpacks are: &6normal&e, &6ender&e, &6crafting&e, &6furnace"
 
-      typeNotFound: "&cThe type &4%type% &cis not available"
+      typeNotFound: "&cThe the type &4%type% &cis not available"
 
       slots:
-        1: "&eSet the &6slots &eof the backpack with &6/bpc <slots>"
-        2: "&eSlots argument must be &6a number &eand &6divisible by 9"
+        1: "&eSet the &6slots &eof the backpack with &6/bpc slots <slots>"
+        2: "&eThe slots &6must be a number &eand &6divisible by 9"
+
+      slotsError: "&eThe slots &6must be a number &eand &6divisible by 9"
 
       gui:
-        1: "&eEnable or disable the &6gui of the FurnaceBackPack &ewith &6/bpc <gui>"
-        2: "&eThis options are available: &6enable&c, &6disable"
+        1: "&6Enable &ethe gui of the FurnaceBackPack with &6/bpc gui true"
+        2: "&6Disable &ethe gui of the FurnaceBackPack with &6/bpc gui false"
 
       finish:
-        1: "&eSave the backpack &6%name%&e?"
-        2: "&6Yes &eor &6no&e?"
+        1: "&6Save and enable &ethe backpack with &6/bpc finish true"
+        2: "&6Discard &eit with &6/bpc finish false"
 
+      finishTrue:
+      # todo: add name of backpack
+      # todo: reload the server
+        1: "&eSaved backpack"
+        2: "&cReload the server to enable it"
 
-    # When a unkown error occurs
-    unknownError: "&4Unknown error. &cReset to try again with &4/bpc reset confirm"
+      finishFalse: "&cRemoved new backpack &4%backpack%"
 
-    # When you reset the command for you
-    reset: "&4Reset successfully"
-
-    # If someone uses /bpopen wrong
+    # If someone uses /bpcreate wrong
     syntaxError:
-      1: "&6/bpcreate <name of the new backpack>: &eto start creating a new backpack"
+      1: "&6/bpc name <value>: &eto start creating a backpack"
+
 
 BackPacks:
   # When you enable a backpack that doesn't exist (%backpack% is the backpack that couldn't be found)

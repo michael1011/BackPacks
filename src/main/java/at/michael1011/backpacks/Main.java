@@ -1,5 +1,6 @@
 package at.michael1011.backpacks;
 
+import at.michael1011.backpacks.commads.Create;
 import at.michael1011.backpacks.commads.Give;
 import at.michael1011.backpacks.commads.Open;
 import at.michael1011.backpacks.listeners.*;
@@ -92,6 +93,7 @@ public class Main extends JavaPlugin {
 
                         new Give(main);
                         new Open(main);
+                        new Create(main);
                     }
 
                     @Override

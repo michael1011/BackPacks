@@ -1,5 +1,5 @@
 # 
-# BackPacks 2.0.0-RC6
+# BackPacks 2.1.0
 # By michael1011
 configVersion: 0
 MySQL:
@@ -14,8 +14,9 @@ BackPacks:
     '1': littleBackPack
     '2': normalBackPack
     '3': enderBackPack
-    '4': furnaceBackPack
     '5': craftingBackPack
+    '4': furnaceBackPack
+    test: test
   littleBackPack:
     name: '&bLittle &3BackPack'
     type: normal
@@ -94,10 +95,3 @@ BackPacks:
         C: COAL
         B: COAL_BLOCK
         F: FURNACE
-  test:
-    name: test
-    type: normal
-    description:
-      '1': test
-    slots: '1'
-    material: WOOL
