@@ -1,4 +1,4 @@
-# BackPacks [![Build Status](https://michael1011.at/jenkins/buildStatus/icon?job=BackPacks)](https://michael1011.at/jenkins/job/BackPacks)
+# BackPacks [![Build Status](https://michael1011.at/jenkins/buildStatus/icon?job=BackPacks)](https://michael1011.at/jenkins/job/BackPacks) [![VersionEye](https://www.versioneye.com/user/projects/57de504e037c200040cdd689/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/57de504e037c200040cdd689)
 
 ## A backpack plugin for Bukkit/Spigot 1.10 and 1.9
 
@@ -13,7 +13,7 @@ This plugin contains 3 different types of backpacks:
 * ender: opens the enderchest of the player
 * crafting: opens a crafting table
 * furnace: is a portable furnace that smelts things automatically
- 
+
 You can create as many backpacks as you want and every backpack is customizable. Set the name, lore (description), material and the crafting recipe. If its a backpack of the type 'normal' it's also possible to set the slots of it. You can find a sample configuration [here](https://github.com/michael1011/BackPacks/blob/master/src/main/resources/config.yml).
 
 Read more about the configuration [here](https://github.com/michael1011/BackPacks/wiki/).
