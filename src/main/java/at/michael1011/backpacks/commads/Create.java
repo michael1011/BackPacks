@@ -33,6 +33,8 @@ public class Create implements CommandExecutor {
         command.setExecutor(this);
     }
 
+    // todo: if args.length == 1 send the message of arg[0]
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(sender.hasPermission("backpacks.create")) {
@@ -240,8 +242,16 @@ public class Create implements CommandExecutor {
                                             parts[1].toUpperCase());
                                 }
 
-                                // fixme: use number
-                                config.set("BackPacks.enabled."+name, name);
+                                int number = 1;
+
+                                try {
+                                    while(!config.getString("BackPacks.enabled."+number).equals("")) {
+                                        number++;
+                                    }
+
+                                } catch (NullPointerException e) {
+                                    config.set("BackPacks.enabled."+number, name);
+                                }
 
                                 try {
                                     config.save(new File(main.getDataFolder(), "config.yml"));
@@ -280,8 +290,6 @@ public class Create implements CommandExecutor {
                         break;
 
                     default:
-                        // todo: add error message
-
                         sendMap(sender, "syntaxError");
 
                         break;
