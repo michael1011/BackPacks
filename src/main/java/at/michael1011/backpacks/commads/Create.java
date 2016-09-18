@@ -33,13 +33,13 @@ public class Create implements CommandExecutor {
         command.setExecutor(this);
     }
 
-    // todo: if args.length == 1 send the message of arg[0]
+    // todo: if args.length == 1 send the message for arg[0]
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(sender.hasPermission("backpacks.create")) {
             if(args.length >= 2) {
-                String arg = args[0];
+                String arg = args[0].toLowerCase();
 
                 if(data.get(sender) == null) {
                     data.put(sender, new HashMap<String, String>());
@@ -47,7 +47,9 @@ public class Create implements CommandExecutor {
 
                 switch (arg) {
                     case "name":
-                        if(args.length == 2) {
+                        String name = argsToString(args);
+
+                        if(!name.contains(" ")) {
                             data.get(sender).put("name", args[1]);
 
                             sendMap(sender, "steps.displayName");
@@ -66,6 +68,7 @@ public class Create implements CommandExecutor {
 
                         break;
 
+                    case "desc":
                     case "description":
                         data.get(sender).put("description", argsToString(args));
 
@@ -85,25 +88,94 @@ public class Create implements CommandExecutor {
 
                         } catch (IllegalArgumentException e1) {
                             sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                    messages.getString(path+"steps.materialDoesNotExists")
+                                    messages.getString(path+"steps.materialNotValid")
                                             .replaceAll("%material%", material)));
                         }
 
                         break;
 
-                    // fixme: make sure that crafting recipe and ingredients are valid
-
                     case "crafting":
-                        data.get(sender).put("crafting", args[1]);
+                        String recipe = argsToString(args);
+                        String[] recipeSplit = recipe.split(";");
 
-                        sendMap(sender, "steps.ingredients");
+                        if(recipeSplit.length == 3) {
+                            Boolean validCrafting = true;
+
+                            for(String recipeLine : recipeSplit) {
+                                if(recipeLine.length() != 5) {
+                                    validCrafting = false;
+                                }
+                            }
+
+                            if(validCrafting) {
+                                data.get(sender).put("crafting", recipe);
+
+                                sendMap(sender, "steps.materials");
+
+                            } else {
+                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString(path+"steps.craftingNotValid")));
+
+                                sender.sendMessage(prefix+"");
+
+                                sendMap(sender, "steps.crafting");
+                            }
+
+                        } else {
+                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                    messages.getString(path+"steps.craftingNotValid")));
+
+                            sender.sendMessage(prefix+"");
+
+                            sendMap(sender, "steps.crafting");
+                        }
 
                         break;
 
-                    case "ingredients":
-                        data.get(sender).put("ingredients", args[1]);
+                    case "materials":
+                        String materials = argsToString(args);
+                        String[] materialsSplit = materials.split(";");
 
-                        sendMap(sender, "steps.type");
+                        Boolean validMaterial = true;
+                        Boolean validMaterials = true;
+
+                        for(String materialPart : materialsSplit) {
+                            if(materialPart.contains(":")) {
+                                String[] parts = materialPart.split(":");
+
+                                String part = parts[1].toUpperCase();
+
+                                try {
+                                    Material.valueOf(part);
+
+                                } catch (IllegalArgumentException e) {
+                                    validMaterial = false;
+
+                                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                            messages.getString(path+"steps.materialNotValid")
+                                                    .replaceAll("%material%", part)));
+                                }
+
+                            } else {
+                                validMaterials = false;
+                            }
+                        }
+
+                        if(validMaterials && validMaterial) {
+                            data.get(sender).put("materials", materials);
+
+                            sendMap(sender, "steps.type");
+
+                        } else {
+                            if(validMaterial) {
+                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString(path+"steps.materialsNotValid")));
+
+                                sender.sendMessage(prefix+"");
+
+                                sendMap(sender, "steps.materials");
+                            }
+                        }
 
                         break;
 
@@ -186,105 +258,110 @@ public class Create implements CommandExecutor {
 
                     case "finish":
                         // todo: add option to see preview of backpack
+                        try {
+                            switch (args[1]) {
+                                case "true":
+                                    HashMap<String, String> finishedData = data.get(sender);
 
-                        switch (args[1]) {
-                            case "true":
-                                HashMap<String, String> finishedData = data.get(sender);
+                                    String finishedName = finishedData.get("name");
+                                    String finishedPath = "BackPacks."+finishedName+".";
 
-                                String name = finishedData.get("name");
-                                String finishedPath = "BackPacks."+name+".";
+                                    String finishedType = finishedData.get("type");
 
-                                String finishedType = finishedData.get("type");
+                                    config.set(finishedPath+"name", finishedData.get("displayname"));
+                                    config.set(finishedPath+"type", finishedType);
 
-                                config.set(finishedPath+"name", finishedData.get("displayname"));
-                                config.set(finishedPath+"type", finishedType);
+                                    String[] description = finishedData.get("description").split(";");
 
-                                String[] description = finishedData.get("description").split(";");
+                                    int descLine = 1;
 
-                                int descLine = 1;
+                                    for(String descriptionLine : description) {
+                                        config.set(finishedPath+"description."+descLine, descriptionLine);
 
-                                for(String descriptionLine : description) {
-                                    config.set(finishedPath+"description."+descLine, descriptionLine);
-
-                                    descLine++;
-                                }
-
-                                switch (finishedType) {
-                                    case "normal":
-                                        config.set(finishedPath+"slots", Integer.valueOf(finishedData.get("slots")));
-
-                                        break;
-
-                                    case "furnace":
-                                        config.set(finishedPath+"gui.enabled", finishedData.get("gui"));
-
-                                        break;
-                                }
-
-                                config.set(finishedPath+"material", finishedData.get("material"));
-
-                                String[] crafting = finishedData.get("crafting").split(";");
-
-                                int line = 1;
-
-                                for(String craftingLine : crafting) {
-                                    config.set(finishedPath+"crafting."+line, craftingLine);
-
-                                    line++;
-                                }
-
-                                String[] materials = finishedData.get("ingredients").split(";");
-
-                                for(String materialLine : materials) {
-                                    String[] parts = materialLine.split(":");
-
-                                    config.set(finishedPath+"crafting.materials."+(parts[0].toUpperCase()),
-                                            parts[1].toUpperCase());
-                                }
-
-                                int number = 1;
-
-                                try {
-                                    while(!config.getString("BackPacks.enabled."+number).equals("")) {
-                                        number++;
+                                        descLine++;
                                     }
 
-                                } catch (NullPointerException e) {
-                                    config.set("BackPacks.enabled."+number, name);
-                                }
+                                    switch (finishedType) {
+                                        case "normal":
+                                            config.set(finishedPath+"slots", Integer.valueOf(finishedData.get("slots")));
 
-                                try {
-                                    config.save(new File(main.getDataFolder(), "config.yml"));
+                                            break;
 
-                                    Map<String, Object> syntaxError = messages.getConfigurationSection(path+"steps.finishTrue")
-                                            .getValues(true);
+                                        case "furnace":
+                                            config.set(finishedPath+"gui.enabled", finishedData.get("gui"));
 
-                                    for(Map.Entry<String, Object> error : syntaxError.entrySet()) {
-                                        sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                                String.valueOf(error.getValue()).replaceAll("%backpack%", name)));
+                                            break;
                                     }
 
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
+                                    config.set(finishedPath+"material", finishedData.get("material"));
 
-                                break;
+                                    String[] crafting = finishedData.get("crafting").split(";");
 
-                            case "false":
-                                String backpack = data.get(sender).get("name");
+                                    int line = 1;
 
-                                data.remove(sender);
+                                    for(String craftingLine : crafting) {
+                                        config.set(finishedPath+"crafting."+line, craftingLine.toUpperCase());
 
-                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                        messages.getString(path+"steps.finishFalse")
-                                                .replaceAll("%backpack%", backpack)));
+                                        line++;
+                                    }
 
-                                break;
+                                    String[] finishedMaterials = finishedData.get("materials").split(";");
 
-                            default:
-                                sendMap(sender, "steps.finish");
+                                    for(String materialLine : finishedMaterials) {
+                                        String[] parts = materialLine.split(":");
 
-                                break;
+                                        config.set(finishedPath+"crafting.materials."+(parts[0].toUpperCase()),
+                                                parts[1].toUpperCase());
+                                    }
+
+                                    int number = 1;
+
+                                    try {
+                                        while(!config.getString("BackPacks.enabled."+number).equals("")) {
+                                            number++;
+                                        }
+
+                                    } catch (NullPointerException e) {
+                                        config.set("BackPacks.enabled."+number, finishedName);
+                                    }
+
+                                    try {
+                                        config.save(new File(main.getDataFolder(), "config.yml"));
+
+                                        Map<String, Object> syntaxError = messages.getConfigurationSection(path+"steps.finishTrue")
+                                                .getValues(true);
+
+                                        for(Map.Entry<String, Object> error : syntaxError.entrySet()) {
+                                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                                    String.valueOf(error.getValue()).replaceAll("%backpack%", finishedName)));
+                                        }
+
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+
+                                    break;
+
+                                case "false":
+                                    String backpack = data.get(sender).get("name");
+
+                                    data.remove(sender);
+
+                                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                            messages.getString(path+"steps.finishFalse")
+                                                    .replaceAll("%backpack%", backpack)));
+
+                                    break;
+
+                                default:
+                                    sendMap(sender, "steps.finish");
+
+                                    break;
+                            }
+
+                        } catch (NullPointerException e) {
+                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                    messages.getString(path+"steps.finishNotSet")));
                         }
 
                         break;

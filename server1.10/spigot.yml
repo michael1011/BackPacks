@@ -12,6 +12,7 @@
 
 config-version: 8
 settings:
+  debug: false
   save-user-cache-on-stop-only: false
   bungeecord: false
   late-bind: false
@@ -34,7 +35,6 @@ settings:
       max: 2048.0
     attackDamage:
       max: 2048.0
-  debug: false
 commands:
   tab-complete: 0
   log: true

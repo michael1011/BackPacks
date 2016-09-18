@@ -55,23 +55,27 @@ Help:
         2: "&eThe &6displayname &eis the name of the item and &6can contain spaces"
 
       description:
-        1: "&eSet the &6description &ewith &6/bpc description <description>"
+        1: "&eSet the &6description &ewith &6/bpc desc <description>"
         2: "&eCreate a new line with &6;"
 
       material:
         1: "&eSet the &6material &ewith &6/bpc material <material>"
         2: "&eYou can find a list of materials here: &6http://bit.ly/21vbetj"
 
-      materialDoesNotExists: "&cThe material &4%material% &cdoes not exists"
+      materialNotValid: "&cThe material &4%material% &cis &4not valid"
 
       crafting:
         1: "&eSet the &6crafting recipce &ewith &6/bpc crafting <crafting recipe>"
         2: "&eA &6crafting recipe &emust have 3 lines und has to look like this: &6C+R+C;R+W+R;C+R+C"
 
-      ingredients:
-        1: "&eSet the &6ingredients &eof the crafting recipe with &6/bpc ingredients <ingredients>"
-        2: "&eYou have to set every ingredient of the crafting recipe"
-        3: "&eIngredients have to look like this: &6C:coal;R:redstone;W:watch"
+      craftingNotValid: "&cThis crafting recipe &4is not valid"
+
+      materials:
+        1: "&eSet the &6materials &eof the crafting recipe with &6/bpc materials <materials>"
+        2: "&eYou have to set every material of the crafting recipe"
+        3: "&eMaterials have to look like this: &6C:coal;R:redstone;W:watch"
+
+      materialsNotValid: "&cThis materials are &4not valid"
 
       type:
         1: "&eSet the &6type &eof the backpack with &6/bpc type <type>"
@@ -92,6 +96,8 @@ Help:
       finish:
         1: "&6Save and enable &ethe backpack with &6/bpc finish true"
         2: "&6Discard &eit with &6/bpc finish false"
+
+      finishNotSet: "&cYou have to &4set all values &cbefore you can finish"
 
       finishTrue:
         1: "&eSaved backpack &6%backpack%"
