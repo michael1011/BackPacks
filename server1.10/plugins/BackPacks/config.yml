@@ -95,3 +95,19 @@ BackPacks:
         C: COAL
         B: COAL_BLOCK
         F: FURNACE
+  test:
+    name: '&4Test'
+    type: normal
+    description:
+      '1': '&6test'
+      '2': '&4test &6test'
+    slots: 9
+    material: WOOL
+    crafting:
+      '1': C+R+C
+      '2': R+W+R
+      '3': C+R+C
+      materials:
+        C: COAL
+        R: REDSTONE
+        W: WATCH

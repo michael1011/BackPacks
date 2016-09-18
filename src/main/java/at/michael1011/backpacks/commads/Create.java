@@ -64,7 +64,6 @@ public class Create implements CommandExecutor {
 
                         break;
 
-                    // todo: more line with ';'
                     case "description":
                         data.get(sender).put("description", argsToString(args));
 
@@ -197,11 +196,20 @@ public class Create implements CommandExecutor {
 
                                 config.set(finishedPath+"name", finishedData.get("displayname"));
                                 config.set(finishedPath+"type", finishedType);
-                                config.set(finishedPath+"description.1", finishedData.get("description"));
+
+                                String[] description = finishedData.get("description").split(";");
+
+                                int descLine = 1;
+
+                                for(String descriptionLine : description) {
+                                    config.set(finishedPath+"description."+descLine, descriptionLine);
+
+                                    descLine++;
+                                }
 
                                 switch (finishedType) {
                                     case "normal":
-                                        config.set(finishedPath+"slots", finishedData.get("slots"));
+                                        config.set(finishedPath+"slots", Integer.valueOf(finishedData.get("slots")));
 
                                         break;
 
@@ -218,7 +226,7 @@ public class Create implements CommandExecutor {
                                 int line = 1;
 
                                 for(String craftingLine : crafting) {
-                                    config.set(finishedPath+"crafting."+(line-1), craftingLine);
+                                    config.set(finishedPath+"crafting."+line, craftingLine);
 
                                     line++;
                                 }
@@ -228,7 +236,8 @@ public class Create implements CommandExecutor {
                                 for(String materialLine : materials) {
                                     String[] parts = materialLine.split(":");
 
-                                    config.set(finishedPath+"crafting.materials."+parts[0], parts[1].toUpperCase());
+                                    config.set(finishedPath+"crafting.materials."+(parts[0].toUpperCase()),
+                                            parts[1].toUpperCase());
                                 }
 
                                 // fixme: use number
@@ -237,7 +246,13 @@ public class Create implements CommandExecutor {
                                 try {
                                     config.save(new File(main.getDataFolder(), "config.yml"));
 
-                                    sendMap(sender, "steps.finishTrue");
+                                    Map<String, Object> syntaxError = messages.getConfigurationSection(path+"steps.finishTrue")
+                                            .getValues(true);
+
+                                    for(Map.Entry<String, Object> error : syntaxError.entrySet()) {
+                                        sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                                String.valueOf(error.getValue()).replaceAll("%backpack%", name)));
+                                    }
 
                                 } catch (IOException e) {
                                     e.printStackTrace();

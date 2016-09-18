@@ -56,13 +56,13 @@ Help:
 
       description:
         1: "&eSet the &6description &ewith &6/bpc description <description>"
-        2: "&eCreate a new line with &6\\n"
+        2: "&eCreate a new line with &6;"
 
       material:
         1: "&eSet the &6material &ewith &6/bpc material <material>"
         2: "&eYou can find a list of materials here: &6http://bit.ly/21vbetj"
 
-      materialDoesNotExists: "&cThe material &4%material% &cdoese not exists"
+      materialDoesNotExists: "&cThe material &4%material% &cdoes not exists"
 
       crafting:
         1: "&eSet the &6crafting recipce &ewith &6/bpc crafting <crafting recipe>"
@@ -94,10 +94,8 @@ Help:
         2: "&6Discard &eit with &6/bpc finish false"
 
       finishTrue:
-      # todo: add name of backpack
-      # todo: reload the server
-        1: "&eSaved backpack"
-        2: "&cReload the server to enable it"
+        1: "&eSaved backpack &6%backpack%"
+        2: "&cReload the server &eto enable it"
 
       finishFalse: "&cRemoved new backpack &4%backpack%"
 
