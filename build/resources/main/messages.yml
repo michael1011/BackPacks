@@ -93,6 +93,20 @@ Help:
         1: "&6Enable &ethe gui of the FurnaceBackPack with &6/bpc gui true"
         2: "&6Disable &ethe gui of the FurnaceBackPack with &6/bpc gui false"
 
+      previewNotSet: "&cYou have to &4set all values &cbefore you can see a preview"
+
+      preview:
+        name: "&eName: &r%name%"
+        displayname: "&eDisplayname: &r%name%"
+        type: "&eType: &r%type%"
+
+        description:
+          title: "&eDescription:"
+          line: "&e  %lineNumber%: &r%content%"
+
+        slots: "&eSlots: &r%slots%"
+        gui: "&eGUI: &r%gui%"
+
       finish:
         1: "&6Save and enable &ethe backpack with &6/bpc finish true"
         2: "&6Discard &eit with &6/bpc finish false"

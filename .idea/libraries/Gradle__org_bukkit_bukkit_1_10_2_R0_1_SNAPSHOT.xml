@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: org.bukkit:bukkit:1.10.2-R0.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bukkit/bukkit/1.10.2-R0.1-SNAPSHOT/56f7da56c4014db7d9b7570d062f01bb6151244a/bukkit-1.10.2-R0.1-SNAPSHOT.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bukkit/bukkit/1.10.2-R0.1-SNAPSHOT/a16740862c965fe14c28218b91e6464a6c174b69/bukkit-1.10.2-R0.1-SNAPSHOT.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bukkit/bukkit/1.10.2-R0.1-SNAPSHOT/f5dd6f0d871d24ca3e36757ecb842b24a3043818/bukkit-1.10.2-R0.1-SNAPSHOT-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bukkit/bukkit/1.10.2-R0.1-SNAPSHOT/4abbd0d2ad346413a10a9ab6c4a02e58096257e5/bukkit-1.10.2-R0.1-SNAPSHOT-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

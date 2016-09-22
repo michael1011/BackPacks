@@ -13,9 +13,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static at.michael1011.backpacks.Main.config;
-import static at.michael1011.backpacks.Main.messages;
-import static at.michael1011.backpacks.Main.prefix;
+import static at.michael1011.backpacks.Main.*;
 
 public class Create implements CommandExecutor {
 
@@ -32,8 +30,6 @@ public class Create implements CommandExecutor {
 
         command.setExecutor(this);
     }
-
-    // todo: if args.length == 1 send the message for arg[0]
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -61,6 +57,7 @@ public class Create implements CommandExecutor {
 
                         break;
 
+                    case "display":
                     case "displayname":
                         data.get(sender).put("displayname", argsToString(args));
 
@@ -208,6 +205,9 @@ public class Create implements CommandExecutor {
                             default:
                                 sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                                         messages.getString(path+"steps.typeNotFound").replaceAll("%type%", type)));
+
+                                sender.sendMessage(prefix+"");
+
                                 sendMap(sender, "steps.type");
 
                                 break;
@@ -257,7 +257,6 @@ public class Create implements CommandExecutor {
                         break;
 
                     case "finish":
-                        // todo: add option to see preview of backpack
                         try {
                             switch (args[1]) {
                                 case "true":
@@ -372,6 +371,117 @@ public class Create implements CommandExecutor {
                         break;
                 }
 
+            }  else if(args.length == 1) {
+                // todo: if args.length == 1 send the message for arg[0]
+
+                // todo: give preview item
+
+                String arg = args[0].toLowerCase();
+
+                switch (arg) {
+                    case "preview":
+                        try {
+                            HashMap<String, String> finishedData = data.get(sender);
+
+                            String  name = finishedData.get("name");
+
+                            String type = finishedData.get("type");
+
+                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                    messages.getString(path+"steps.preview.name").replaceAll("%name%", name)));
+
+                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                    messages.getString(path+"steps.preview.displayname").replaceAll("%name%",
+                                            finishedData.get("displayname"))));
+
+                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                    messages.getString(path+"steps.preview.type").replaceAll("%type%",
+                                            getBackPackColor(type)+type)));
+
+                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                    messages.getString(path+"steps.preview.description.title")));
+
+                            String[] description = finishedData.get("description").split(";");
+
+                            int descLine = 1;
+
+                            for(String descriptionLine : description) {
+                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString(path+"steps.preview.description.line")
+                                        .replaceAll("%lineNumber%", String.valueOf(descLine))
+                                        .replaceAll("%content%",descriptionLine)));
+
+                                descLine++;
+                            }
+
+                            switch (type) {
+                                case "normal":
+                                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                            messages.getString(path+"steps.preview.slots")
+                                                    .replaceAll("%slots%", finishedData.get("slots"))));
+
+                                    break;
+
+                                case "furnace":
+                                    Boolean gui = Boolean.valueOf(finishedData.get("gui"));
+
+                                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                            messages.getString(path+"steps.preview.gui")
+                                                    .replaceAll("%gui%", getColor(gui)+String.valueOf(gui))));
+
+                                    break;
+                            }
+
+                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                    messages.getString(path+"steps.preview.material")
+                                            .replaceAll("%material%", finishedData.get("material"))));
+
+                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                    messages.getString(path+"steps.preview.crafting.title")));
+
+                            String[] crafting = finishedData.get("crafting").split(";");
+
+                            int line = 1;
+
+                            for(String craftingLine : crafting) {
+                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString(path+"steps.preview.line")
+                                                .replaceAll("%lineNumber%", String.valueOf(line))
+                                                .replaceAll("%content%", craftingLine.toUpperCase())));
+
+                                line++;
+                            }
+
+                            sender.sendMessage(prefix);
+
+                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                    messages.getString(path+"steps.preview.crafting.materials.title")));
+
+                            String[] finishedMaterials = finishedData.get("materials").split(";");
+
+                            for(String materialLine : finishedMaterials) {
+                                String[] parts = materialLine.split(":");
+
+                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString(path+"steps.preview.crafting.materials.line")
+                                                .replaceAll("%line%", parts[0].toUpperCase())
+                                                .replaceAll("%material%", parts[1].toUpperCase())));
+
+                            }
+
+                        } catch (NullPointerException e) {
+                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                    messages.getString(path+"steps.previewNotSet")));
+                        }
+
+                        break;
+
+                    default:
+                        sendMap(sender, "syntaxError");
+
+                        break;
+                }
+
             } else {
                 sendMap(sender, "syntaxError");
             }
@@ -382,6 +492,32 @@ public class Create implements CommandExecutor {
         }
 
         return true;
+    }
+
+    private String getBackPackColor(String type) {
+        switch (type) {
+            case "normal":
+                return "&a";
+
+            case "ender":
+                return "&d";
+
+            case "crafting":
+                return "&c";
+
+            case "furnace":
+                return "&8";
+        }
+
+        return "";
+    }
+
+    private String getColor(Boolean bool) {
+        if(bool) {
+            return "&a";
+        }
+
+        return "&c";
     }
 
     private String argsToString(String[] args) {
