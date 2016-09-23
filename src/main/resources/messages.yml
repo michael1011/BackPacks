@@ -94,8 +94,6 @@ Help:
         1: "&6Enable &ethe gui of the FurnaceBackPack with &6/bpc gui true"
         2: "&6Disable &ethe gui of the FurnaceBackPack with &6/bpc gui false"
 
-      previewNotSet: "&cYou have to &4set all values &cbefore you can see a preview"
-
       preview:
         name: "&eName: &r%name%"
         displayname: "&eDisplayname: &r%name%"
@@ -116,6 +114,9 @@ Help:
           materials:
             title: "&e  Materials:"
             line: "&e    %line%: &r%material%"
+
+        notSet: "&cYou have to &4set all values &cbefore you can see a preview"
+        missing: "&cThis values are missing: &4%values%"
 
       finish:
         1: "&6Save and enable &ethe backpack with &6/bpc finish true"

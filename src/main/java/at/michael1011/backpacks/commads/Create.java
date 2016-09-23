@@ -10,6 +10,8 @@ import org.bukkit.command.PluginCommand;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,6 +24,8 @@ public class Create implements CommandExecutor {
     private static Main main;
 
     private static HashMap<CommandSender, HashMap<String, String>> data = new HashMap<>();
+    private static ArrayList<String> missing = new ArrayList<>(Arrays.asList("name", "displayname",
+            "description", "material", "crafting", "materials", "type"));
 
     public Create(Main main) {
         Create.main = main;
@@ -130,6 +134,8 @@ public class Create implements CommandExecutor {
                         break;
 
                     case "materials":
+                        // fixme: check if contains everything from crafting recipe
+
                         String materials = argsToString(args);
                         String[] materialsSplit = materials.split(";");
 
@@ -380,12 +386,14 @@ public class Create implements CommandExecutor {
 
                 switch (arg) {
                     case "preview":
+                        ArrayList<String> missingHere = missing;
+
                         try {
                             HashMap<String, String> finishedData = data.get(sender);
 
-                            String  name = finishedData.get("name");
+                            String name = finishedData.get("name");
 
-                            String type = finishedData.get("type");
+                            missingHere.remove("name");
 
                             sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                                     messages.getString(path+"steps.preview.name").replaceAll("%name%", name)));
@@ -394,7 +402,11 @@ public class Create implements CommandExecutor {
                                     messages.getString(path+"steps.preview.displayname").replaceAll("%name%",
                                             finishedData.get("displayname"))));
 
+                            missingHere.remove("displayname");
+
                             String[] description = finishedData.get("description").split(";");
+
+                            missingHere.remove("description");
 
                             sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                                     messages.getString(path+"steps.preview.description.title")));
@@ -414,7 +426,11 @@ public class Create implements CommandExecutor {
                                     messages.getString(path+"steps.preview.material")
                                             .replaceAll("%material%", finishedData.get("material"))));
 
+                            missingHere.remove("material");
+
                             String[] crafting = finishedData.get("crafting").split(";");
+
+                            missingHere.remove("crafting");
 
                             sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                                     messages.getString(path+"steps.preview.crafting.title")));
@@ -432,6 +448,8 @@ public class Create implements CommandExecutor {
 
                             String[] finishedMaterials = finishedData.get("materials").split(";");
 
+                            missingHere.remove("materials");
+
                             sender.sendMessage(prefix);
 
                             sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
@@ -447,12 +465,18 @@ public class Create implements CommandExecutor {
 
                             }
 
+                            String type = finishedData.get("type");
+
                             sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                                     messages.getString(path+"steps.preview.type").replaceAll("%type%",
                                             getBackPackColor(type)+type)));
 
+                            missingHere.remove("type");
+
                             switch (type) {
                                 case "normal":
+                                    missingHere.add("slots");
+
                                     sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                                             messages.getString(path+"steps.preview.slots")
                                                     .replaceAll("%slots%", finishedData.get("slots"))));
@@ -460,6 +484,8 @@ public class Create implements CommandExecutor {
                                     break;
 
                                 case "furnace":
+                                    missingHere.add("slots");
+
                                     Boolean gui = Boolean.valueOf(finishedData.get("gui"));
 
                                     sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
@@ -471,7 +497,11 @@ public class Create implements CommandExecutor {
 
                         } catch (NullPointerException e) {
                             sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                    messages.getString(path+"steps.previewNotSet")));
+                                    messages.getString(path+"steps.preview.notSet")));
+
+                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                    messages.getString(path+"steps.preview.missing")
+                                            .replaceAll("%values%", arrayListToString(missingHere))));
                         }
 
                         break;
@@ -529,6 +559,21 @@ public class Create implements CommandExecutor {
 
             } else if(i > 1) {
                 builder.append(" ").append(args[i]);
+            }
+        }
+
+        return builder.toString();
+    }
+
+    private String arrayListToString(ArrayList<String> list) {
+        StringBuilder builder = new StringBuilder();
+
+        for(int i = 0; i < list.size(); i++) {
+            if(i == 0) {
+                builder.append(list.get(i));
+
+            } else {
+                builder.append(", ").append(list.get(i));
             }
         }
 
