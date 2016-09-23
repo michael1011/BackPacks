@@ -135,6 +135,7 @@ Help:
     # If someone uses /bpcreate wrong
     syntaxError:
       1: "&6/bpc name <value>: &eto start creating a backpack"
+      2: "&eOther available functions are: &6displayname&e, &6description&e, &6material&e, &6crafting&e, &6materials&e, &6type&e, &6slots&e, &6gui&e, &6preview&e, &6finish"
 
 
 BackPacks:

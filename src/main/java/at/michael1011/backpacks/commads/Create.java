@@ -573,8 +573,6 @@ public class Create implements CommandExecutor {
                         break;
 
                     default:
-                        // todo: show help instead
-
                         sendMap(sender, "syntaxError");
 
                         break;
