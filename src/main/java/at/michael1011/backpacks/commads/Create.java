@@ -96,7 +96,7 @@ public class Create implements CommandExecutor {
                         break;
 
                     case "crafting":
-                        String recipe = argsToString(args);
+                        String recipe = argsToString(args).toUpperCase();
                         String[] recipeSplit = recipe.split(";");
 
                         if(recipeSplit.length == 3) {
@@ -134,10 +134,10 @@ public class Create implements CommandExecutor {
                         break;
 
                     case "materials":
-                        // fixme: check if contains everything from crafting recipe
-
-                        String materials = argsToString(args);
+                        String materials = argsToString(args).toUpperCase();
                         String[] materialsSplit = materials.split(";");
+
+                        ArrayList<String> missingMaterials = new ArrayList<>();
 
                         Boolean validMaterial = true;
                         Boolean validMaterials = true;
@@ -146,7 +146,7 @@ public class Create implements CommandExecutor {
                             if(materialPart.contains(":")) {
                                 String[] parts = materialPart.split(":");
 
-                                String part = parts[1].toUpperCase();
+                                String part = parts[1];
 
                                 try {
                                     Material.valueOf(part);
@@ -157,11 +157,57 @@ public class Create implements CommandExecutor {
                                     sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                                             messages.getString(path+"steps.materialNotValid")
                                                     .replaceAll("%material%", part)));
+
+                                    break;
                                 }
 
                             } else {
                                 validMaterials = false;
                             }
+                        }
+
+                        if(data.get(sender).get("crafting") != null && validMaterial && validMaterials) {
+                            Boolean contains = false;
+
+                            String crafting = data.get(sender).get("crafting")
+                                    .replaceAll("\\+", "").replaceAll(";", "");
+
+                            for(char c : crafting.toCharArray()) {
+                                for(String materialPart : materialsSplit) {
+                                    String[] parts = materialPart.split(":");
+
+                                    if(parts[0].charAt(0) == c) {
+                                        contains = true;
+
+                                        break;
+                                    }
+                                }
+
+                                if(!contains) {
+                                    String add = String.valueOf(c).toUpperCase();
+
+                                    if(!missingMaterials.contains(add)) {
+                                        missingMaterials.add(add);
+                                    }
+
+                                } else {
+                                    contains = false;
+                                }
+
+                            }
+
+                        }
+
+                        if(missingMaterials.size() > 0) {
+                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                    messages.getString(path+"steps.materialsMissing")
+                                            .replaceAll("%missing%", arrayListToString(missingMaterials))));
+
+                            sender.sendMessage(prefix);
+
+                            sendMap(sender, "steps.materials");
+
+                            break;
                         }
 
                         if(validMaterials && validMaterial) {
@@ -174,7 +220,7 @@ public class Create implements CommandExecutor {
                                 sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                                         messages.getString(path+"steps.materialsNotValid")));
 
-                                sender.sendMessage(prefix+"");
+                                sender.sendMessage(prefix);
 
                                 sendMap(sender, "steps.materials");
                             }
@@ -305,7 +351,7 @@ public class Create implements CommandExecutor {
                                     int line = 1;
 
                                     for(String craftingLine : crafting) {
-                                        config.set(finishedPath+"crafting."+line, craftingLine.toUpperCase());
+                                        config.set(finishedPath+"crafting."+line, craftingLine);
 
                                         line++;
                                     }
@@ -315,8 +361,8 @@ public class Create implements CommandExecutor {
                                     for(String materialLine : finishedMaterials) {
                                         String[] parts = materialLine.split(":");
 
-                                        config.set(finishedPath+"crafting.materials."+(parts[0].toUpperCase()),
-                                                parts[1].toUpperCase());
+                                        config.set(finishedPath+"crafting.materials."+(parts[0]),
+                                                parts[1]);
                                     }
 
                                     int number = 1;
@@ -441,7 +487,7 @@ public class Create implements CommandExecutor {
                                 sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                                         messages.getString(path+"steps.preview.crafting.line")
                                                 .replaceAll("%lineNumber%", String.valueOf(line))
-                                                .replaceAll("%content%", craftingLine.toUpperCase())));
+                                                .replaceAll("%content%", craftingLine)));
 
                                 line++;
                             }
@@ -460,8 +506,8 @@ public class Create implements CommandExecutor {
 
                                 sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                                         messages.getString(path+"steps.preview.crafting.materials.line")
-                                                .replaceAll("%line%", parts[0].toUpperCase())
-                                                .replaceAll("%material%", parts[1].toUpperCase())));
+                                                .replaceAll("%line%", parts[0])
+                                                .replaceAll("%material%", parts[1])));
 
                             }
 

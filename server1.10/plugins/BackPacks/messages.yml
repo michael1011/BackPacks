@@ -78,6 +78,8 @@ Help:
 
       materialsNotValid: "&cThis materials are &4not valid"
 
+      materialsMissing: "&cThese materials are missing: &4%missing%"
+
       type:
         1: "&eSet the &6type &eof the backpack with &6/bpc type <type>"
         2: "&eThe available backpacks are: &6normal&e, &6ender&e, &6crafting&e, &6furnace"
