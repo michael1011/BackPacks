@@ -24,8 +24,6 @@ public class Create implements CommandExecutor {
     private static Main main;
 
     private static HashMap<CommandSender, HashMap<String, String>> data = new HashMap<>();
-    private static ArrayList<String> missing = new ArrayList<>(Arrays.asList("name", "displayname",
-            "description", "material", "crafting", "materials", "type"));
 
     public Create(Main main) {
         Create.main = main;
@@ -424,25 +422,47 @@ public class Create implements CommandExecutor {
                 }
 
             }  else if(args.length == 1) {
-                // todo: if args.length == 1 send the message for arg[0]
-
                 // todo: give preview item
 
                 String arg = args[0].toLowerCase();
 
                 switch (arg) {
+                    case "displayname":
+                    case "display":
+                        sendMap(sender, "steps.displayName");
+
+                        break;
+
+                    case "desc":
+                        sendMap(sender, "steps.description");
+
+                        break;
+
+                    case "description":
+                    case "material":
+                    case "crafting":
+                    case "materials":
+                    case "type":
+                    case "slots":
+                    case "gui":
+                    case "finish":
+                        sendMap(sender, "steps."+arg);
+
+                        break;
+
                     case "preview":
-                        ArrayList<String> missingHere = missing;
+                        ArrayList<String> missingHere = new ArrayList<>(Arrays.asList("name", "displayname",
+                                "description", "material", "crafting", "materials", "type"));
 
                         try {
                             HashMap<String, String> finishedData = data.get(sender);
 
                             String name = finishedData.get("name");
 
-                            missingHere.remove("name");
-
                             sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                                     messages.getString(path+"steps.preview.name").replaceAll("%name%", name)));
+
+                            missingHere.remove("name");
 
                             sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                                     messages.getString(path+"steps.preview.displayname").replaceAll("%name%",
@@ -553,6 +573,8 @@ public class Create implements CommandExecutor {
                         break;
 
                     default:
+                        // todo: show help instead
+
                         sendMap(sender, "syntaxError");
 
                         break;
