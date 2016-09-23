@@ -67,6 +67,7 @@ Help:
       crafting:
         1: "&eSet the &6crafting recipce &ewith &6/bpc crafting <crafting recipe>"
         2: "&eA &6crafting recipe &emust have 3 lines und has to look like this: &6C+R+C;R+W+R;C+R+C"
+        3: "&eCreate a new line with &6;"
 
       craftingNotValid: "&cThis crafting recipe &4is not valid"
 

@@ -67,6 +67,7 @@ Help:
       crafting:
         1: "&eSet the &6crafting recipce &ewith &6/bpc crafting <crafting recipe>"
         2: "&eA &6crafting recipe &emust have 3 lines und has to look like this: &6C+R+C;R+W+R;C+R+C"
+        3: "&eCreate a new line with &6;"
 
       craftingNotValid: "&cThis crafting recipe &4is not valid"
 
@@ -106,6 +107,15 @@ Help:
 
         slots: "&eSlots: &r%slots%"
         gui: "&eGUI: &r%gui%"
+        material: "&eMaterial: &r%material%"
+
+        crafting:
+          title: "&eCrafting recipe:"
+          line: "&e  %lineNumber%: &r%content%"
+
+          materials:
+            title: "&e  Materials:"
+            line: "&e    %line%: &r%material%"
 
       finish:
         1: "&6Save and enable &ethe backpack with &6/bpc finish true"

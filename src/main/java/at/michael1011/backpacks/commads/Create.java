@@ -394,25 +394,62 @@ public class Create implements CommandExecutor {
                                     messages.getString(path+"steps.preview.displayname").replaceAll("%name%",
                                             finishedData.get("displayname"))));
 
-                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                    messages.getString(path+"steps.preview.type").replaceAll("%type%",
-                                            getBackPackColor(type)+type)));
+                            String[] description = finishedData.get("description").split(";");
 
                             sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                                     messages.getString(path+"steps.preview.description.title")));
-
-                            String[] description = finishedData.get("description").split(";");
 
                             int descLine = 1;
 
                             for(String descriptionLine : description) {
                                 sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                                         messages.getString(path+"steps.preview.description.line")
-                                        .replaceAll("%lineNumber%", String.valueOf(descLine))
-                                        .replaceAll("%content%",descriptionLine)));
+                                                .replaceAll("%lineNumber%", String.valueOf(descLine))
+                                                .replaceAll("%content%",descriptionLine)));
 
                                 descLine++;
                             }
+
+                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                    messages.getString(path+"steps.preview.material")
+                                            .replaceAll("%material%", finishedData.get("material"))));
+
+                            String[] crafting = finishedData.get("crafting").split(";");
+
+                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                    messages.getString(path+"steps.preview.crafting.title")));
+
+                            int line = 1;
+
+                            for(String craftingLine : crafting) {
+                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString(path+"steps.preview.crafting.line")
+                                                .replaceAll("%lineNumber%", String.valueOf(line))
+                                                .replaceAll("%content%", craftingLine.toUpperCase())));
+
+                                line++;
+                            }
+
+                            String[] finishedMaterials = finishedData.get("materials").split(";");
+
+                            sender.sendMessage(prefix);
+
+                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                    messages.getString(path+"steps.preview.crafting.materials.title")));
+
+                            for(String materialLine : finishedMaterials) {
+                                String[] parts = materialLine.split(":");
+
+                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString(path+"steps.preview.crafting.materials.line")
+                                                .replaceAll("%line%", parts[0].toUpperCase())
+                                                .replaceAll("%material%", parts[1].toUpperCase())));
+
+                            }
+
+                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                    messages.getString(path+"steps.preview.type").replaceAll("%type%",
+                                            getBackPackColor(type)+type)));
 
                             switch (type) {
                                 case "normal":
@@ -430,43 +467,6 @@ public class Create implements CommandExecutor {
                                                     .replaceAll("%gui%", getColor(gui)+String.valueOf(gui))));
 
                                     break;
-                            }
-
-                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                    messages.getString(path+"steps.preview.material")
-                                            .replaceAll("%material%", finishedData.get("material"))));
-
-                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                    messages.getString(path+"steps.preview.crafting.title")));
-
-                            String[] crafting = finishedData.get("crafting").split(";");
-
-                            int line = 1;
-
-                            for(String craftingLine : crafting) {
-                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                        messages.getString(path+"steps.preview.line")
-                                                .replaceAll("%lineNumber%", String.valueOf(line))
-                                                .replaceAll("%content%", craftingLine.toUpperCase())));
-
-                                line++;
-                            }
-
-                            sender.sendMessage(prefix);
-
-                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                    messages.getString(path+"steps.preview.crafting.materials.title")));
-
-                            String[] finishedMaterials = finishedData.get("materials").split(";");
-
-                            for(String materialLine : finishedMaterials) {
-                                String[] parts = materialLine.split(":");
-
-                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                        messages.getString(path+"steps.preview.crafting.materials.line")
-                                                .replaceAll("%line%", parts[0].toUpperCase())
-                                                .replaceAll("%material%", parts[1].toUpperCase())));
-
                             }
 
                         } catch (NullPointerException e) {
