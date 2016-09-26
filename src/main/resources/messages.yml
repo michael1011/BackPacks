@@ -17,6 +17,8 @@ Help:
   backPackNotFound: "&cThe backpack &4%backpack% &ccouldn't be found"
   backPackNotFoundAvailable: "&cThe available backpacks are &4%backpacks%"
 
+  materialNotValid: "&cThe material &4%material% &cin backpack &4%backpack% &cis not valid"
+
   bpgive:
     # When the console wants to give itself a backpacks it gets the 'onlyPlayers' message and this message
     onlyPlayersAlternative: "&cUse '&4/bpgive <backpack> <player>&c' to give a backpack to a player"
