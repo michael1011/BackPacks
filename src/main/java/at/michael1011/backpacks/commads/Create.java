@@ -34,8 +34,6 @@ public class Create implements CommandExecutor {
         command.setTabCompleter(new CreateCompleter());
     }
 
-    // fixme: tab completion
-
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(sender.hasPermission("backpacks.create")) {
