@@ -31,6 +31,7 @@ public class Create implements CommandExecutor {
         PluginCommand command = main.getCommand("bpcreate");
 
         command.setExecutor(this);
+        command.setTabCompleter(new CreateCompleter());
     }
 
     // fixme: tab completion
