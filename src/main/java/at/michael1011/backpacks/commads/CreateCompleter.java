@@ -12,8 +12,8 @@ import static at.michael1011.backpacks.commads.GiveCompleter.filterList;
 
 class CreateCompleter implements TabCompleter {
 
-    private List<String> players = new ArrayList<>(Arrays.asList("description", "material", "crafting",
-            "materials", "type", "slots", "gui", "preview", "finish"));
+    private List<String> players = new ArrayList<>(Arrays.asList("displayname", "description", "material", "crafting",
+            "materials", "type", "slots", "gui", "preview", "finish", "item"));
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {

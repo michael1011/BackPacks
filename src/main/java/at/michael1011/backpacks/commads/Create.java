@@ -7,13 +7,13 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.PluginCommand;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import static at.michael1011.backpacks.Main.*;
 
@@ -60,7 +60,6 @@ public class Create implements CommandExecutor {
 
                         break;
 
-                    case "display":
                     case "displayname":
                         data.get(sender).put("displayname", argsToString(args));
 
@@ -68,7 +67,6 @@ public class Create implements CommandExecutor {
 
                         break;
 
-                    case "desc":
                     case "description":
                         data.get(sender).put("description", argsToString(args));
 
@@ -423,19 +421,11 @@ public class Create implements CommandExecutor {
                 }
 
             }  else if(args.length == 1) {
-                // todo: give preview item
-
                 String arg = args[0].toLowerCase();
 
                 switch (arg) {
                     case "displayname":
-                    case "display":
                         sendMap(sender, "steps.displayName");
-
-                        break;
-
-                    case "desc":
-                        sendMap(sender, "steps.description");
 
                         break;
 
@@ -449,6 +439,55 @@ public class Create implements CommandExecutor {
                     case "finish":
                         sendMap(sender, "steps."+arg);
 
+                        break;
+
+                    case "item":
+                        if(sender instanceof Player) {
+                            Player p = (Player) sender;
+
+                            ArrayList<String> missingHere = new ArrayList<>(Arrays.asList("displayname",
+                                    "description", "material"));
+
+                            try {
+                                HashMap<String, String> finishedData = data.get(sender);
+
+                                String displayname = ChatColor.translateAlternateColorCodes('&',
+                                        finishedData.get("displayname"));
+
+                                missingHere.remove("displayname");
+
+                                String description = ChatColor.translateAlternateColorCodes('&',
+                                        finishedData.get("description")+";;"+messages.getString(path+"steps.item.extraDescription"));
+
+                                missingHere.remove("description");
+
+                                ItemStack item = new ItemStack(Material.valueOf(finishedData.get("material")), 1);
+
+                                missingHere.remove("material");
+
+                                ItemMeta meta = item.getItemMeta();
+
+                                meta.setDisplayName(displayname);
+
+                                meta.setLore(Arrays.asList(description.split(";")));
+
+                                item.setItemMeta(meta);
+
+                                p.getInventory().addItem(item);
+
+                            } catch (NullPointerException e) {
+                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString(path+"steps.item.notSet")));
+
+                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString(path+"steps.item.missing")
+                                                .replaceAll("%values%", arrayListToString(missingHere))));
+                            }
+
+                        } else {
+                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                    messages.getString("Help.onlyPlayers")));
+                        }
                         break;
 
                     case "preview":

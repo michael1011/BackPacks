@@ -122,9 +122,16 @@ Help:
         notSet: "&cYou have to &4set all values &cbefore you can see a preview"
         missing: "&cThis values are missing: &4%values%"
 
+      item:
+        extraDescription: "&eThis is just a &4preview item&e. &cIt does not work."
+
+        notSet: "&cYou have to &4set a few values &cbefore you can get a preview item"
+        missing: "&cThis values are missing: &4%values%"
+
       finish:
         1: "&6Save and enable &ethe backpack with &6/bpc finish true"
         2: "&6Discard &eit with &6/bpc finish false"
+        3: "&eYou can see a preview with &6/bpc preview"
 
       finishNotSet: "&cYou have to &4set all values &cbefore you can finish"
 
@@ -137,7 +144,7 @@ Help:
     # If someone uses /bpcreate wrong
     syntaxError:
       1: "&6/bpc name <value>: &eto start creating a backpack"
-      2: "&eOther available functions are: &6displayname&e, &6description&e, &6material&e, &6crafting&e, &6materials&e, &6type&e, &6slots&e, &6gui&e, &6preview&e, &6finish"
+      2: "&eOther available functions are: &6displayname&e, &6description&e, &6material&e, &6crafting&e, &6materials&e, &6type&e, &6slots&e, &6gui&e, &6preview&e, &6finish&e, &6item"
 
   bpreload:
     successful: "&eReload successful"
