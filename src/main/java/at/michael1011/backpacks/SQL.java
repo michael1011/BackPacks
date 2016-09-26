@@ -86,7 +86,6 @@ public class SQL {
 
     public static void createCon(String host, String port, String database,
                                  String username, String password) throws SQLException {
-
         con = DriverManager.getConnection("jdbc:mysql://"+host+":"+port+"/"+database,
                 username, password);
     }

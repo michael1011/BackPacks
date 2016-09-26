@@ -21,17 +21,19 @@ public class Create implements CommandExecutor {
 
     private static final String path = "Help.bpcreate.";
 
-    private static Main main;
+    private Main main;
 
     private static HashMap<CommandSender, HashMap<String, String>> data = new HashMap<>();
 
     public Create(Main main) {
-        Create.main = main;
+        this.main = main;
 
         PluginCommand command = main.getCommand("bpcreate");
 
         command.setExecutor(this);
     }
+
+    // fixme: tab completion
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

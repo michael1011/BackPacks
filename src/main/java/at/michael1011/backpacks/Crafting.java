@@ -30,7 +30,7 @@ public class Crafting {
 
     private static Boolean slots9 = true;
 
-    static void initCrafting() {
+    public static void initCrafting() {
         String path = "BackPacks.";
 
         Map<String, Object> enabled = config.getConfigurationSection(path+"enabled").getValues(true);

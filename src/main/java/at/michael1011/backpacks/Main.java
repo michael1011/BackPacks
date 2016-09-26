@@ -3,6 +3,7 @@ package at.michael1011.backpacks;
 import at.michael1011.backpacks.commads.Create;
 import at.michael1011.backpacks.commads.Give;
 import at.michael1011.backpacks.commads.Open;
+import at.michael1011.backpacks.commads.Reload;
 import at.michael1011.backpacks.listeners.*;
 import at.michael1011.backpacks.tasks.Reconnect;
 import org.bukkit.Bukkit;
@@ -29,14 +30,13 @@ public class Main extends JavaPlugin {
     private static Main main;
 
     // todo: updater
-    // todo: save content of craftingBackPack like craftingStation in FTB
 
     // fixme: translations
     // fixme: add aliases here: https://github.com/michael1011/BackPacks/wiki/Permissions-and-commands
 
     @Override
     public void onEnable() {
-        createFiles();
+        loadFiles(this);
 
         prefix = ChatColor.translateAlternateColorCodes('&', messages.getString("prefix"));
 
@@ -68,6 +68,34 @@ public class Main extends JavaPlugin {
 
                                     rs.close();
 
+                                    SQL.query("CREATE TABLE IF NOT EXISTS bp_furnaces(uuid VARCHAR(100), ores VARCHAR(100), food VARCHAR(100), " +
+                                            "autoFill VARCHAR(100), coal VARCHAR(100))", new SQL.Callback<Boolean>() {
+                                        @Override
+                                        public void onSuccess(Boolean rs) {
+                                            Crafting.initCrafting();
+
+                                            new Reconnect(main);
+
+                                            new Join(main);
+                                            new RightClick(main);
+                                            new InventoryClose(main);
+                                            new BlockPlace(main);
+                                            new PlayerDeath(main);
+                                            new FurnaceGui(main);
+                                            new BlockBreak(main);
+                                            new EntityDeath(main);
+
+                                            new Give(main);
+                                            new Open(main);
+                                            new Create(main);
+                                            new Reload(main);
+                                        }
+
+                                        @Override
+                                        public void onFailure(Throwable e) {}
+
+                                    });
+
                                 } catch (SQLException e) {
                                     e.printStackTrace();
                                 }
@@ -78,33 +106,7 @@ public class Main extends JavaPlugin {
 
                         });
 
-                        Crafting.initCrafting();
-
-                        new Reconnect(main);
-
-                        new Join(main);
-                        new RightClick(main);
-                        new InventoryClose(main);
-                        new BlockPlace(main);
-                        new PlayerDeath(main);
-                        new FurnaceGui(main);
-                        new BlockBreak(main);
-                        new EntityDeath(main);
-
-                        new Give(main);
-                        new Open(main);
-                        new Create(main);
                     }
-
-                    @Override
-                    public void onFailure(Throwable e) {}
-
-                });
-
-                SQL.query("CREATE TABLE IF NOT EXISTS bp_furnaces(uuid VARCHAR(100), ores VARCHAR(100), food VARCHAR(100), " +
-                        "autoFill VARCHAR(100), coal VARCHAR(100))", new SQL.Callback<Boolean>() {
-                    @Override
-                    public void onSuccess(Boolean rs) {}
 
                     @Override
                     public void onFailure(Throwable e) {}
@@ -147,24 +149,24 @@ public class Main extends JavaPlugin {
     }
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
-    private void createFiles() {
-        File configF = new File(getDataFolder(), "config.yml");
-        File messagesF = new File(getDataFolder(), "messages.yml");
-        File furnacesF = new File(getDataFolder(), "furnaceBackPack.yml");
+    public static void loadFiles(Main main) {
+        File configF = new File(main.getDataFolder(), "config.yml");
+        File messagesF = new File(main.getDataFolder(), "messages.yml");
+        File furnacesF = new File(main.getDataFolder(), "furnaceBackPack.yml");
 
         if(!configF.exists()) {
             configF.getParentFile().mkdirs();
-            saveResource("config.yml", false);
+            main.saveResource("config.yml", false);
         }
 
         if(!messagesF.exists()) {
             messagesF.getParentFile().mkdirs();
-            saveResource("messages.yml", false);
+            main.saveResource("messages.yml", false);
         }
 
         if(!furnacesF.exists()) {
             furnacesF.getParentFile().mkdirs();
-            saveResource("furnaceBackPack.yml", false);
+            main.saveResource("furnaceBackPack.yml", false);
         }
 
         config = new YamlConfiguration();

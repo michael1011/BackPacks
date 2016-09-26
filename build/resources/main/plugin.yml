@@ -21,6 +21,10 @@ commands:
     description: "create new backpacks easily"
     usage: /bpc <name of the new backpack>
 
+  bpreload:
+    aliases: [bpr]
+    description: "reload the configuration files"
+    usage: /bpr
 
 permissions:
   backpacks.*:
@@ -29,6 +33,7 @@ permissions:
       backpacks.give: true
       backpacks.open: true
       backpacks.create: true
+      backpacks.reload: true
 
   backpacks.give:
     description: to use /bpgive
@@ -38,4 +43,7 @@ permissions:
     default: op
   backpacks.create:
     description: to use /bpcreate
+    default: op
+  backpacks.reload:
+    description: to use /bpreload
     default: op
