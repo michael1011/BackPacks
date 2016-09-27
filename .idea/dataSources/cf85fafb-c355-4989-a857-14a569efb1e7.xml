@@ -49,13 +49,13 @@
       <data-type>varchar(100)|0</data-type>
     </column>
     <column id="22" parent="9" name="lore">
-      <data-type>varchar(100)|0</data-type>
+      <data-type>varchar(200)|0</data-type>
     </column>
     <column id="23" parent="9" name="enchantments">
-      <data-type>varchar(100)|0</data-type>
+      <data-type>varchar(200)|0</data-type>
     </column>
     <column id="24" parent="9" name="potion">
-      <data-type>varchar(100)|0</data-type>
+      <data-type>varchar(1000)|0</data-type>
     </column>
   </database-model>
 </dataSource>

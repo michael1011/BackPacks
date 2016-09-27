@@ -3,6 +3,7 @@ package at.michael1011.backpacks;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
@@ -30,7 +31,7 @@ public class Crafting {
 
     private static Boolean slots9 = true;
 
-    public static void initCrafting() {
+    public static void initCrafting(CommandSender sender) {
         String path = "BackPacks.";
 
         Map<String, Object> enabled = config.getConfigurationSection(path+"enabled").getValues(true);
@@ -40,7 +41,7 @@ public class Crafting {
             String backPackPath = path+backPack+".";
 
             if(config.contains(backPackPath)) {
-                ItemStack item = getItemStack(config, backPackPath, backPack);
+                ItemStack item = getItemStack(sender, config, backPackPath, backPack);
 
                 if(item != null) {
                     if(slots9) {
@@ -55,14 +56,14 @@ public class Crafting {
                         }
 
                         if(config.getBoolean(backPackPath+"crafting.enabled")) {
-                            Bukkit.getServer().addRecipe(createShapedRecipe(item, backPackPath, backPack));
+                            Bukkit.getServer().addRecipe(createShapedRecipe(sender, item, backPackPath, backPack));
                         }
 
-                        Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                        sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                                 messages.getString("BackPacks.enabled").replaceAll("%backpack%", backPack)));
 
                     } else {
-                        Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                        sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                                 messages.getString("BackPacks.slotsNotDivisibleBy9").replaceAll("%backpack%", backPack)));
 
                         slots9 = true;
@@ -71,7 +72,7 @@ public class Crafting {
                 }
 
             } else {
-                Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                         messages.getString("BackPacks.couldNotFindConfig").replaceAll("%backpack%", backPack)));
             }
 
@@ -80,7 +81,8 @@ public class Crafting {
         availableList = Arrays.asList(Crafting.available.split(","));
     }
 
-    private static ItemStack getItemStack(YamlConfiguration config, String backPackPath, String backPack) {
+    private static ItemStack getItemStack(CommandSender sender, YamlConfiguration config, String backPackPath,
+                                          String backPack) {
         int itemSlots = config.getInt(backPackPath+"slots");
 
         String materialString = config.getString(backPackPath+"material");
@@ -128,7 +130,7 @@ public class Crafting {
                 return craft;
 
             } catch (IllegalArgumentException | NullPointerException e) {
-                Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                         messages.getString("Help.materialNotValid")
                                 .replaceAll("%material%", materialString).replaceAll("%backpack%", backPack)));
             }
@@ -143,7 +145,8 @@ public class Crafting {
 
     }
 
-    private static ShapedRecipe createShapedRecipe(ItemStack item, String backPackPath, String backPack) {
+    private static ShapedRecipe createShapedRecipe(CommandSender sender, ItemStack item, String backPackPath,
+                                                   String backPack) {
         ShapedRecipe recipe = new ShapedRecipe(item);
 
         recipe.shape(
@@ -161,7 +164,7 @@ public class Crafting {
                 recipe.setIngredient(ing.getKey().charAt(0), Material.valueOf(material));
 
             } catch (IllegalArgumentException e) {
-                Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', messages.getString("Help.materialNotValid")
+                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', messages.getString("Help.materialNotValid")
                         .replaceAll("%material%", material).replaceAll("%backpack%", backPack)));
             }
         }

@@ -20,6 +20,7 @@ import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.potion.PotionData;
 import org.bukkit.potion.PotionType;
 
+import java.lang.reflect.InvocationTargetException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -90,8 +91,8 @@ public class RightClick implements Listener {
 
                                         } else {
                                             SQL.query("CREATE TABLE IF NOT EXISTS bp_"+finalBackPack+"_"+trimmedID+"(position INT(100), material VARCHAR(100), "+
-                                                    "durability INT(100), amount INT(100), name VARCHAR(100), lore VARCHAR(100), enchantments VARCHAR(100), "+
-                                                    "potion VARCHAR(100))", new SQL.Callback<Boolean>() {
+                                                    "durability INT(100), amount INT(100), name VARCHAR(100), lore VARCHAR(1000), enchantments VARCHAR(1000), "+
+                                                    "potion VARCHAR(1000))", new SQL.Callback<Boolean>() {
                                                 @Override
                                                 public void onSuccess(Boolean rs) {
                                                     openInvs.put(p, finalBackPack);
@@ -200,7 +201,9 @@ public class RightClick implements Listener {
                 Inventory inv = Bukkit.getServer().createInventory(opener, slots.get(backPack), name);
 
                 while(rs.next()) {
-                    ItemStack item = new ItemStack(Material.valueOf(rs.getString("material")),
+                    String material = rs.getString("material");
+
+                    ItemStack item = new ItemStack(Material.valueOf(material),
                             rs.getInt("amount"));
 
                     item.setDurability((short) rs.getInt("durability"));
@@ -239,16 +242,39 @@ public class RightClick implements Listener {
                     }
 
                     if(!potion.equals("")) {
-                        String[] parts = potion.split("/");
+                        if(material.toLowerCase().contains("potion")) {
+                            String[] parts = potion.split("/");
 
-                        PotionMeta potionM = (PotionMeta) meta;
+                            PotionMeta potionM = (PotionMeta) meta;
 
-                        PotionData potionD = new PotionData(PotionType.valueOf(parts[0]), Boolean.parseBoolean(parts[1]),
-                                Boolean.parseBoolean(parts[2]));
+                            PotionData potionD = new PotionData(PotionType.valueOf(parts[0]), Boolean.parseBoolean(parts[1]),
+                                    Boolean.parseBoolean(parts[2]));
 
-                        potionM.setBasePotionData(potionD);
+                            potionM.setBasePotionData(potionD);
 
-                        item.setItemMeta(potionM);
+                            item.setItemMeta(potionM);
+
+                        } else if(material.equals("MONSTER_EGG")){
+                            try {
+                                Object nmsStack = Class.forName("org.bukkit.craftbukkit."+version+".inventory.CraftItemStack").getMethod("asNMSCopy", ItemStack.class).invoke(null, item);
+                                Object nmsCompound = nmsStack.getClass().getMethod("getTag").invoke(nmsStack);
+
+                                if(nmsCompound == null) {
+                                    nmsCompound = Class.forName("net.minecraft.server."+version+".NBTTagCompound").getConstructor().newInstance();
+                                }
+
+                                Object nmsTag = nmsCompound.getClass().getConstructor().newInstance();
+
+                                nmsTag.getClass().getMethod("setString", String.class, String.class).invoke(nmsTag, "id", potion);
+                                nmsCompound.getClass().getMethod("set", String.class, Class.forName("net.minecraft.server."+version+".NBTBase")).invoke(nmsCompound, "EntityTag", nmsTag);
+                                nmsStack.getClass().getMethod("setTag", nmsCompound.getClass()).invoke(nmsStack, nmsCompound);
+
+                                item = ((ItemStack) Class.forName("org.bukkit.craftbukkit."+version+".inventory.CraftItemStack").getMethod("asBukkitCopy", nmsStack.getClass()).invoke(null, nmsStack));
+
+                            } catch(InstantiationException | InvocationTargetException | ClassNotFoundException | IllegalAccessException | NoSuchMethodException exception) {
+                                exception.printStackTrace();
+                            }
+                        }
                     }
 
                     inv.setItem(rs.getInt("position"), item);

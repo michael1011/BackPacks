@@ -46,7 +46,7 @@ public class Reload implements CommandExecutor {
 
                     sender.sendMessage(prefix);
 
-                    Crafting.initCrafting();
+                    Crafting.initCrafting(sender);
 
                     sender.sendMessage(prefix);
 

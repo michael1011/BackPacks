@@ -21,6 +21,8 @@ import java.util.List;
 
 public class Main extends JavaPlugin {
 
+    public static String version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
+
     public static YamlConfiguration config, messages, furnaceGui;
 
     public static String prefix;
@@ -72,7 +74,7 @@ public class Main extends JavaPlugin {
                                             "autoFill VARCHAR(100), coal VARCHAR(100))", new SQL.Callback<Boolean>() {
                                         @Override
                                         public void onSuccess(Boolean rs) {
-                                            Crafting.initCrafting();
+                                            Crafting.initCrafting(Bukkit.getConsoleSender());
 
                                             new Reconnect(main);
 

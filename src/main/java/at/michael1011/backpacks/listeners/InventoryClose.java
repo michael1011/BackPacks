@@ -14,10 +14,13 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.potion.PotionData;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
 
 import static at.michael1011.backpacks.Crafting.slots;
+import static at.michael1011.backpacks.Main.version;
 import static at.michael1011.backpacks.listeners.RightClick.*;
 
 public class InventoryClose implements Listener {
@@ -120,6 +123,26 @@ public class InventoryClose implements Listener {
                             if(potionD != null) {
                                 potion = potionD.getType().name()+"/"+potionD.isExtended()+"/"+potionD.isUpgraded();
                             }
+
+                        } else if(material.equals("MONSTER_EGG")) {
+                            try {
+                                Object nmsStack = Class.forName("org.bukkit.craftbukkit."+version+".inventory.CraftItemStack").getMethod("asNMSCopy", ItemStack.class).invoke(null, item);
+                                Object nmsCompound = nmsStack.getClass().getMethod("getTag").invoke(nmsStack);
+
+                                if(nmsCompound == null) {
+                                    nmsCompound = Class.forName("net.minecraft.server."+version+".NBTTagCompound").getConstructor().newInstance();
+                                }
+
+                                Object getCompound = nmsCompound.getClass().getMethod("getCompound", String.class).invoke(nmsCompound, "EntityTag");
+
+                                Method method = getCompound.getClass().getMethod("getString", String.class);
+
+                                potion = String.valueOf(method.invoke(getCompound, "id"));
+
+                            } catch(InstantiationException | InvocationTargetException | ClassNotFoundException | IllegalAccessException | NoSuchMethodException exception) {
+                                exception.printStackTrace();
+                            }
+
                         }
 
                         SQL.query("INSERT INTO bp_"+backPack+"_"+trimmedID+" (position, material, durability, amount, "+
@@ -147,6 +170,5 @@ public class InventoryClose implements Listener {
         });
 
     }
-
 
 }
