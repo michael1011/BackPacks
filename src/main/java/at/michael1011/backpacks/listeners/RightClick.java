@@ -233,7 +233,7 @@ public class RightClick implements Listener {
                             Enchantment ench = Enchantment.getByName(parts[0]);
                             int enchLvl = Integer.valueOf(parts[1]);
 
-                            item.addEnchantment(ench, enchLvl);
+                            item.addUnsafeEnchantment(ench, enchLvl);
                             meta.addEnchant(ench, enchLvl, true);
                         }
                     }
