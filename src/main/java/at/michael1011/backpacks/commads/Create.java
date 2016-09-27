@@ -34,6 +34,8 @@ public class Create implements CommandExecutor {
         command.setTabCompleter(new CreateCompleter());
     }
 
+    // todo: add option to disable crafting recipe
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(sender.hasPermission("backpacks.create")) {
@@ -93,22 +95,34 @@ public class Create implements CommandExecutor {
                         break;
 
                     case "crafting":
-                        String recipe = argsToString(args).toUpperCase();
-                        String[] recipeSplit = recipe.split(";");
+                        String rawRecipe = argsToString(args);
 
-                        if(recipeSplit.length == 3) {
-                            Boolean validCrafting = true;
+                        if(!rawRecipe.equals("disabled")) {
+                            String recipe = rawRecipe.toUpperCase();
+                            String[] recipeSplit = recipe.split(";");
 
-                            for(String recipeLine : recipeSplit) {
-                                if(recipeLine.length() != 5) {
-                                    validCrafting = false;
+                            if(recipeSplit.length == 3) {
+                                Boolean validCrafting = true;
+
+                                for(String recipeLine : recipeSplit) {
+                                    if(recipeLine.length() != 5) {
+                                        validCrafting = false;
+                                    }
                                 }
-                            }
 
-                            if(validCrafting) {
-                                data.get(sender).put("crafting", recipe);
+                                if(validCrafting) {
+                                    data.get(sender).put("crafting", recipe);
 
-                                sendMap(sender, "steps.materials");
+                                    sendMap(sender, "steps.materials");
+
+                                } else {
+                                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                            messages.getString(path+"steps.craftingNotValid")));
+
+                                    sender.sendMessage(prefix+"");
+
+                                    sendMap(sender, "steps.crafting");
+                                }
 
                             } else {
                                 sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
@@ -120,12 +134,9 @@ public class Create implements CommandExecutor {
                             }
 
                         } else {
-                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                    messages.getString(path+"steps.craftingNotValid")));
+                            data.get(sender).put("crafting", rawRecipe);
 
-                            sender.sendMessage(prefix+"");
-
-                            sendMap(sender, "steps.crafting");
+                            sendMap(sender, "steps.type");
                         }
 
                         break;
@@ -343,23 +354,30 @@ public class Create implements CommandExecutor {
 
                                     config.set(finishedPath+"material", finishedData.get("material"));
 
-                                    String[] crafting = finishedData.get("crafting").split(";");
+                                    String rawCrafting = finishedData.get("crafting");
 
-                                    int line = 1;
+                                    if(!rawCrafting.equals("disabled")) {
+                                        String[] crafting = rawCrafting.split(";");
 
-                                    for(String craftingLine : crafting) {
-                                        config.set(finishedPath+"crafting."+line, craftingLine);
+                                        int line = 1;
 
-                                        line++;
-                                    }
+                                        for(String craftingLine : crafting) {
+                                            config.set(finishedPath+"crafting."+line, craftingLine);
 
-                                    String[] finishedMaterials = finishedData.get("materials").split(";");
+                                            line++;
+                                        }
 
-                                    for(String materialLine : finishedMaterials) {
-                                        String[] parts = materialLine.split(":");
+                                        String[] finishedMaterials = finishedData.get("materials").split(";");
 
-                                        config.set(finishedPath+"crafting.materials."+(parts[0]),
-                                                parts[1]);
+                                        for(String materialLine : finishedMaterials) {
+                                            String[] parts = materialLine.split(":");
+
+                                            config.set(finishedPath+"crafting.materials."+(parts[0]),
+                                                    parts[1]);
+                                        }
+
+                                    } else {
+                                        config.set(finishedPath+"crafting.enabled", false);
                                     }
 
                                     int number = 1;
@@ -534,41 +552,53 @@ public class Create implements CommandExecutor {
 
                             missingHere.remove("material");
 
-                            String[] crafting = finishedData.get("crafting").split(";");
+                            String rawCrafting = finishedData.get("crafting");
 
-                            missingHere.remove("crafting");
+                            if(!rawCrafting.equals("disabled")) {
+                                String[] crafting = rawCrafting.split(";");
 
-                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                    messages.getString(path+"steps.preview.crafting.title")));
-
-                            int line = 1;
-
-                            for(String craftingLine : crafting) {
-                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                        messages.getString(path+"steps.preview.crafting.line")
-                                                .replaceAll("%lineNumber%", String.valueOf(line))
-                                                .replaceAll("%content%", craftingLine)));
-
-                                line++;
-                            }
-
-                            String[] finishedMaterials = finishedData.get("materials").split(";");
-
-                            missingHere.remove("materials");
-
-                            sender.sendMessage(prefix);
-
-                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                    messages.getString(path+"steps.preview.crafting.materials.title")));
-
-                            for(String materialLine : finishedMaterials) {
-                                String[] parts = materialLine.split(":");
+                                missingHere.remove("crafting");
 
                                 sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                        messages.getString(path+"steps.preview.crafting.materials.line")
-                                                .replaceAll("%line%", parts[0])
-                                                .replaceAll("%material%", parts[1])));
+                                        messages.getString(path+"steps.preview.crafting.title")));
 
+                                int line = 1;
+
+                                for(String craftingLine : crafting) {
+                                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                            messages.getString(path+"steps.preview.crafting.line")
+                                                    .replaceAll("%lineNumber%", String.valueOf(line))
+                                                    .replaceAll("%content%", craftingLine)));
+
+                                    line++;
+                                }
+
+                                String[] finishedMaterials = finishedData.get("materials").split(";");
+
+                                missingHere.remove("materials");
+
+                                sender.sendMessage(prefix);
+
+                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString(path+"steps.preview.crafting.materials.title")));
+
+                                for(String materialLine : finishedMaterials) {
+                                    String[] parts = materialLine.split(":");
+
+                                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                            messages.getString(path+"steps.preview.crafting.materials.line")
+                                                    .replaceAll("%line%", parts[0])
+                                                    .replaceAll("%material%", parts[1])));
+
+                                }
+
+                            } else {
+                                missingHere.remove("crafting");
+                                missingHere.remove("materials");
+
+                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString(path+"steps.preview.crafting.title")+
+                                                " &c"+rawCrafting));
                             }
 
                             String type = finishedData.get("type");

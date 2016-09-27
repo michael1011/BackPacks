@@ -70,6 +70,7 @@ Help:
         1: "&eSet the &6crafting recipce &ewith &6/bpc crafting <crafting recipe>"
         2: "&eA &6crafting recipe &emust have 3 lines und has to look like this: &6C+R+C;R+W+R;C+R+C"
         3: "&eCreate a new line with &6;"
+        4: "&eDisable the crafting recipe with &6/bpc crafting disabled"
 
       craftingNotValid: "&cThis crafting recipe &4is not valid"
 
@@ -137,7 +138,7 @@ Help:
 
       finishTrue:
         1: "&eSaved backpack &6%backpack%"
-        2: "&cReload the server &eto enable it"
+        2: "&cReload the server &eor use &c/bpr &eto enable it"
 
       finishFalse: "&cRemoved new backpack &4%backpack%"
 

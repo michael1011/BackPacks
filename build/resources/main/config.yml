@@ -130,4 +130,11 @@ BackPacks:
     material: "FURNACE"
 
     crafting:
-      enabled: false
+      1: "C+B+C"
+      2: "B+F+B"
+      3: "C+B+C"
+
+      materials:
+        C: "COAL"
+        B: "COAL_BLOCK"
+        F: "FURNACE"
