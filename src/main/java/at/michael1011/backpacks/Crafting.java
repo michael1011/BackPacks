@@ -54,7 +54,9 @@ public class Crafting {
                             available = available+","+backPack;
                         }
 
-                        Bukkit.getServer().addRecipe(createShapedRecipe(item, backPackPath, backPack));
+                        if(config.getBoolean(backPackPath+"crafting.enabled")) {
+                            Bukkit.getServer().addRecipe(createShapedRecipe(item, backPackPath, backPack));
+                        }
 
                         Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                                 messages.getString("BackPacks.enabled").replaceAll("%backpack%", backPack)));

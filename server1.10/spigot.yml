@@ -59,7 +59,6 @@ stats:
 world-settings:
   default:
     verbose: true
-    mob-spawn-range: 4
     growth:
       cactus-modifier: 100
       cane-modifier: 100
@@ -75,6 +74,7 @@ world-settings:
       animals: 32
       monsters: 32
       misc: 16
+    mob-spawn-range: 4
     entity-tracking-range:
       players: 48
       animals: 48
@@ -100,12 +100,12 @@ world-settings:
     max-tick-time:
       tile: 50
       entity: 50
-    enable-zombie-pigmen-portal-spawns: true
     item-despawn-rate: 6000
     merge-radius:
       item: 2.5
       exp: 3.0
     arrow-despawn-rate: 1200
+    enable-zombie-pigmen-portal-spawns: true
     wither-spawn-sound-radius: 0
     view-distance: 10
     hanging-tick-frequency: 100
