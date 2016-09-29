@@ -101,8 +101,8 @@ class Updater {
                             downloadInput.close();
                             fileOutput.close();
 
-                            File old = new File(Main.class.getProtectionDomain().getCodeSource().getLocation()
-                                    .toURI().getPath());
+                            File old = new File(Main.class.getProtectionDomain().getCodeSource().
+                                    getLocation().toURI().getPath());
 
                             if(old.delete()) {
                                 sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',

@@ -12,7 +12,7 @@ Updater:
 
   newVersionAvailable: "&cA new version is available: &4%newVersion%&c (you are using version: &4%oldVersion%&c)"
 
-  # only if Updater.autoUpdate is disabled in the config
+  # only if Updater.autoUpdate in the config is disabled
   newVersionAvailableDownload: "&cDownload version &4%newVersion% &chere: &4%downloadLink%"
 
   # messages for the automatic updater

@@ -17,6 +17,8 @@ public class Join implements Listener {
         main.getServer().getPluginManager().registerEvents(this, main);
     }
 
+    // fixme: send update message to all players with the permission 'backpacks.update'
+
     @EventHandler(priority = EventPriority.HIGH)
     public void joinEvent(PlayerJoinEvent e) {
         final Player p = e.getPlayer();
