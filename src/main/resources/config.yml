@@ -4,7 +4,7 @@
 #
 
 # Don't touch this variable! It would destroy your config files!
-configVersion: 0
+configVersion: 1
 
 # Setup your MySQL connection here
 MySQL:
@@ -17,6 +17,20 @@ MySQL:
 
 # If a player dies with a backpack in his inventory should the content of backpack get dropped too?
 dropOnDeath: true
+
+# fixme: better translation for updater
+
+# the updater will get the files from here: http://bit.ly/2cXN1dD
+# and only files with the type 'release'
+Updater:
+  enabled: true
+
+  # in hours
+  interval: 24
+
+  # if this is true the plugin will download the latest version and reload the server after the download automatically
+  # if it's false it will send every player with the permission 'backpacks.update' a message that a new version is available
+  autoUpdate: false
 
 
 # Delete the defaults and create your own backpacks here

@@ -7,6 +7,21 @@ MySQL:
   failedToConnectCheck: "&4Check your credentials in the plugins/BackPacks/config.yml file"
   closedConnection: "&eClosed MySQL connection"
 
+Updater:
+  failedToReachServer: "&4Failed to reach update server. &cPlease check your internet connection"
+
+  newVersionAvailable: "&cA new version is available: &4%newVersion%&c (you are using version: &4%oldVersion%&c)"
+
+  # only if Updater.autoUpdate is disabled in the config
+  newVersionAvailableDownload: "&cDownload version &4%newVersion% &chere: &4%downloadLink%"
+
+  # messages for the automatic updater
+  autoUpdate:
+    downloading: "&cDownloading update: &4%percent%% &cof &4%fileSize%"
+    deletedOldVersion: "&cDeleted old file: &4%oldVersion%"
+    successful: "&eUpdate &6successful&e. Reloading server..."
+
+
 Help:
   onlyPlayers: "&4Only players &ccan use this command"
   noPermission: "&cYou &4don't &chave enough permissions"
@@ -148,7 +163,7 @@ Help:
       2: "&eOther available functions are: &6displayname&e, &6description&e, &6material&e, &6crafting&e, &6materials&e, &6type&e, &6slots&e, &6gui&e, &6preview&e, &6finish&e, &6item"
 
   bpreload:
-    successful: "&eReload successful"
+    successful: "&eReloaded the config files successful"
 
 
 BackPacks:

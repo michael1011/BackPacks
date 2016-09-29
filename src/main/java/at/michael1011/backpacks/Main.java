@@ -19,6 +19,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static at.michael1011.backpacks.Updater.checkUpdates;
+
 public class Main extends JavaPlugin {
 
     public static String version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
@@ -30,8 +32,6 @@ public class Main extends JavaPlugin {
     public static List<String> availablePlayers = new ArrayList<>();
 
     private static Main main;
-
-    // todo: updater
 
     // fixme: translations
     // fixme: add aliases here: https://github.com/michael1011/BackPacks/wiki/Permissions-and-commands
@@ -80,8 +80,6 @@ public class Main extends JavaPlugin {
 
                                             Crafting.initCrafting(Bukkit.getConsoleSender());
 
-                                            new Reconnect(main);
-
                                             new Join(main);
                                             new RightClick(main);
                                             new InventoryClose(main);
@@ -95,6 +93,15 @@ public class Main extends JavaPlugin {
                                             new Open(main);
                                             new Create(main);
                                             new Reload(main);
+
+                                            new Reconnect(main);
+
+                                            if(config.getBoolean("Updater.enabled")) {
+                                                new Updater(main);
+
+                                                checkUpdates(main, Bukkit.getConsoleSender());
+                                            }
+
                                         }
 
                                         @Override
@@ -141,6 +148,8 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        Bukkit.getScheduler().cancelTasks(this);
+
         if(SQL.checkCon()) {
             try {
                 SQL.closeCon();
@@ -186,6 +195,8 @@ public class Main extends JavaPlugin {
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
+
+        // fixme: config updater
 
     }
 
