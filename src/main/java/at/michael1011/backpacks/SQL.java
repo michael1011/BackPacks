@@ -26,7 +26,7 @@ public class SQL {
             @Override
             public void run() {
                 try {
-                    final ResultSet rs = con.prepareStatement(query).executeQuery();
+                    final ResultSet rs = getResult(query);
 
                     scheduler.runTask(main, new Runnable() {
                         @Override
@@ -51,14 +51,17 @@ public class SQL {
         });
 
     }
-
+    
+    static ResultSet getResult(String query) throws SQLException {
+        return con.prepareStatement(query).executeQuery();
+    }
 
     public static void query(final String query, final Callback<Boolean> callback) {
         scheduler.runTaskAsynchronously(main, new Runnable() {
             @Override
             public void run() {
                 try {
-                    con.prepareStatement(query).executeUpdate();
+                    query(query);
 
                     scheduler.runTask(main, new Runnable() {
                         @Override
@@ -84,6 +87,10 @@ public class SQL {
 
     }
 
+    static void query(String query) throws SQLException {
+        con.prepareStatement(query).execute();
+    }
+
     public static void createCon(String host, String port, String database,
                                  String username, String password) throws SQLException {
         con = DriverManager.getConnection("jdbc:mysql://"+host+":"+port+"/"+database,
@@ -98,7 +105,17 @@ public class SQL {
     }
 
     public static boolean checkCon() {
-        return con != null;
+        if(con != null) {
+            try {
+                if(!con.isClosed()) {
+                    return true;
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return false;
     }
 
     public static void checkTable(final String table, final Callback<Boolean> callback) {
@@ -106,45 +123,39 @@ public class SQL {
             @Override
             public void run() {
                 try {
-                    DatabaseMetaData dmb = con.getMetaData();
-
-                    final ResultSet rs = dmb.getTables(null, null, table, null);
+                    final Boolean call = checkTable(table);
 
                     scheduler.runTask(main, new Runnable() {
                         @Override
                         public void run() {
-                            try {
-                                callback.onSuccess(rs.next());
-
-                                rs.close();
-                            } catch (final SQLException e) {
-                                e.printStackTrace();
-
-                                scheduler.runTask(main, new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        callback.onFailure(e);
-                                    }
-                                });
-
-                            }
+                            callback.onSuccess(call);
                         }
                     });
 
                 } catch (final SQLException e) {
-                    e.printStackTrace();
-
                     scheduler.runTask(main, new Runnable() {
                         @Override
                         public void run() {
                             callback.onFailure(e);
                         }
                     });
-
                 }
+
             }
         });
 
+    }
+
+    static Boolean checkTable(String table) throws SQLException {
+        DatabaseMetaData dmb = con.getMetaData();
+
+        final ResultSet rs = dmb.getTables(null, null, table, null);
+
+        Boolean bool = rs.next();
+
+        rs.close();
+
+        return bool;
     }
 
 }
