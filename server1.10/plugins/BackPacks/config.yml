@@ -28,7 +28,7 @@ Updater:
 
   # if this is true the plugin will download the latest version automatically
   # if it's false it will send every player with the permission 'backpacks.update' a message that a new version is available
-  autoUpdate: true
+  autoUpdate: false
 
 
 # Delete the defaults and create your own backpacks here

@@ -16,7 +16,7 @@ import java.net.URL;
 
 import static at.michael1011.backpacks.Main.*;
 
-class Updater {
+public class Updater {
 
     // fixme: check md5 before deleting old file
 
@@ -32,6 +32,10 @@ class Updater {
         }, interval, interval);
     }
 
+    public static Boolean updateAvailable = false;
+
+    public static String newVersion;
+    public static String newVersionDownload;
 
     static void checkUpdates(Main main, CommandSender sender) {
         try {
@@ -60,10 +64,14 @@ class Updater {
                     if(Integer.valueOf(installedVersionNumber.replaceAll("\\.", "")) <
                             Integer.valueOf(latestVersionNumber.replaceAll("\\.", ""))) {
 
-                        sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                        updateAvailable = true;
+
+                        newVersion = prefix+ChatColor.translateAlternateColorCodes('&',
                                 messages.getString("Updater.newVersionAvailable")
                                         .replaceAll("%newVersion%", latestVersionNumber)
-                                        .replaceAll("%oldVersion%", installedVersionNumber)));
+                                        .replaceAll("%oldVersion%", installedVersionNumber));
+
+                        sender.sendMessage(newVersion);
 
                         if(config.getBoolean("Updater.autoUpdate")) {
                             String messagesPath = "Updater.autoUpdate.";
@@ -118,10 +126,12 @@ class Updater {
                             Bukkit.dispatchCommand(sender, "reload");
 
                         } else {
-                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                            newVersionDownload = prefix+ChatColor.translateAlternateColorCodes('&',
                                     messages.getString("Updater.newVersionAvailableDownload")
                                             .replaceAll("%newVersion%", latestVersionNumber)
-                                            .replaceAll("%downloadLink%", downloadUrl)));
+                                            .replaceAll("%downloadLink%", downloadUrl));
+
+                            sender.sendMessage(newVersionDownload);
                         }
 
                     }

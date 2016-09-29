@@ -2,6 +2,7 @@ package at.michael1011.backpacks.listeners;
 
 import at.michael1011.backpacks.Main;
 import at.michael1011.backpacks.SQL;
+import at.michael1011.backpacks.Updater;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -11,13 +12,13 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import static at.michael1011.backpacks.Main.config;
+
 public class Join implements Listener {
 
     public Join(Main main) {
         main.getServer().getPluginManager().registerEvents(this, main);
     }
-
-    // fixme: send update message to all players with the permission 'backpacks.update'
 
     @EventHandler(priority = EventPriority.HIGH)
     public void joinEvent(PlayerJoinEvent e) {
@@ -56,6 +57,13 @@ public class Join implements Listener {
                                 public void onFailure(Throwable e) {}
 
                             });
+                        }
+
+                        if(Updater.updateAvailable) {
+                            if(p.hasPermission("backpacks.update") && !config.getBoolean("Updater.autoUpdate")) {
+                                p.sendMessage(Updater.newVersion);
+                                p.sendMessage(Updater.newVersionDownload);
+                            }
                         }
 
                         rs.close();
