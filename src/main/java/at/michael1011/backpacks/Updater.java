@@ -19,6 +19,7 @@ import static at.michael1011.backpacks.Main.*;
 class Updater {
 
     // fixme: check md5 before deleting old file
+    // fixme: check if release type is release
 
     Updater(final Main main) {
         int interval = config.getInt("Updater.interval")*72000;

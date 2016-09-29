@@ -29,7 +29,9 @@ public class Reload implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(sender.hasPermission("backpacks.reload")) {
             try {
-                SQL.closeCon();
+                if(SQL.checkCon()) {
+                    SQL.closeCon();
+                }
 
                 sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                         messages.getString("MySQL.closedConnection")));
