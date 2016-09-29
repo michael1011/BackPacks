@@ -1,6 +1,7 @@
 package at.michael1011.backpacks.listeners;
 
 import at.michael1011.backpacks.Crafting;
+import at.michael1011.backpacks.EnchantGlow;
 import at.michael1011.backpacks.Main;
 import at.michael1011.backpacks.SQL;
 import org.bukkit.Bukkit;
@@ -228,16 +229,18 @@ public class RightClick implements Listener {
                     }
 
                     if(!enchantment.equals("")) {
-                        String[] enchantments = enchantment.substring(0, enchantment.length()-1).split("/");
+                        if(!enchantment.equals("MobSpawnerEgg/")) {
+                            String[] enchantments = enchantment.substring(0, enchantment.length()-1).split("/");
 
-                        for(String enchant : enchantments) {
-                            String[] parts = enchant.split(":");
+                            for(String enchant : enchantments) {
+                                String[] parts = enchant.split(":");
 
-                            Enchantment ench = Enchantment.getByName(parts[0]);
-                            int enchLvl = Integer.valueOf(parts[1]);
+                                Enchantment ench = Enchantment.getByName(parts[0]);
+                                int enchLvl = Integer.valueOf(parts[1]);
 
-                            item.addUnsafeEnchantment(ench, enchLvl);
-                            meta.addEnchant(ench, enchLvl, true);
+                                item.addUnsafeEnchantment(ench, enchLvl);
+                                meta.addEnchant(ench, enchLvl, true);
+                            }
                         }
                     }
 
@@ -263,13 +266,26 @@ public class RightClick implements Listener {
                                     nmsCompound = Class.forName("net.minecraft.server."+version+".NBTTagCompound").getConstructor().newInstance();
                                 }
 
-                                Object nmsTag = nmsCompound.getClass().getConstructor().newInstance();
+                                Object compound = nmsCompound.getClass().getConstructor().newInstance();
 
-                                nmsTag.getClass().getMethod("setString", String.class, String.class).invoke(nmsTag, "id", potion);
-                                nmsCompound.getClass().getMethod("set", String.class, Class.forName("net.minecraft.server."+version+".NBTBase")).invoke(nmsCompound, "EntityTag", nmsTag);
+                                compound.getClass().getMethod("setString", String.class, String.class).invoke(compound, "id", potion);
+                                nmsCompound.getClass().getMethod("set", String.class, Class.forName("net.minecraft.server."+version+".NBTBase"))
+                                        .invoke(nmsCompound, "EntityTag", compound);
+
+                                Boolean mobSpawnerEgg = enchantment.equals("MobSpawnerEgg/");
+
+                                if(mobSpawnerEgg) {
+                                    nmsCompound.getClass().getMethod("setString", String.class, String.class)
+                                            .invoke(nmsCompound, "MobSpawnerEgg", "MobSpawnerEgg");
+                                }
+
                                 nmsStack.getClass().getMethod("setTag", nmsCompound.getClass()).invoke(nmsStack, nmsCompound);
 
                                 item = ((ItemStack) Class.forName("org.bukkit.craftbukkit."+version+".inventory.CraftItemStack").getMethod("asBukkitCopy", nmsStack.getClass()).invoke(null, nmsStack));
+
+                                if(mobSpawnerEgg) {
+                                    EnchantGlow.addGlow(item);
+                                }
 
                             } catch(InstantiationException | InvocationTargetException | ClassNotFoundException | IllegalAccessException | NoSuchMethodException exception) {
                                 exception.printStackTrace();

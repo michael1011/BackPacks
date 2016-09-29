@@ -74,6 +74,10 @@ public class Main extends JavaPlugin {
                                             "autoFill VARCHAR(100), coal VARCHAR(100))", new SQL.Callback<Boolean>() {
                                         @Override
                                         public void onSuccess(Boolean rs) {
+                                            try {
+                                                EnchantGlow.getGlow();
+                                            } catch (IllegalArgumentException | IllegalStateException ignored) {}
+
                                             Crafting.initCrafting(Bukkit.getConsoleSender());
 
                                             new Reconnect(main);

@@ -126,20 +126,29 @@ public class InventoryClose implements Listener {
 
                         } else if(material.equals("MONSTER_EGG")) {
                             try {
-                                Object nmsStack = Class.forName("org.bukkit.craftbukkit."+version+".inventory.CraftItemStack").getMethod("asNMSCopy", ItemStack.class).invoke(null, item);
+                                Object nmsStack = Class.forName("org.bukkit.craftbukkit."+version+".inventory.CraftItemStack").getMethod("asNMSCopy", ItemStack.class)
+                                        .invoke(null, item);
+
                                 Object nmsCompound = nmsStack.getClass().getMethod("getTag").invoke(nmsStack);
 
                                 if(nmsCompound == null) {
                                     nmsCompound = Class.forName("net.minecraft.server."+version+".NBTTagCompound").getConstructor().newInstance();
                                 }
 
-                                Object getCompound = nmsCompound.getClass().getMethod("getCompound", String.class).invoke(nmsCompound, "EntityTag");
+                                Object getEntityTag = nmsCompound.getClass().getMethod("getCompound", String.class).invoke(nmsCompound, "EntityTag");
+                                Method getEntityString = getEntityTag.getClass().getMethod("getString", String.class);
 
-                                Method method = getCompound.getClass().getMethod("getString", String.class);
+                                potion = String.valueOf(getEntityString.invoke(getEntityTag, "id"));
 
-                                potion = String.valueOf(method.invoke(getCompound, "id"));
+                                Object getMobSpawnerEgg = nmsCompound.getClass().getMethod("getString", String.class).invoke(nmsCompound, "MobSpawnerEgg");
 
-                            } catch(InstantiationException | InvocationTargetException | ClassNotFoundException | IllegalAccessException | NoSuchMethodException exception) {
+                                if(getMobSpawnerEgg.equals("MobSpawnerEgg")) {
+                                    enchantments.setLength(0);
+
+                                    enchantments.append(getMobSpawnerEgg).append("/");
+                                }
+
+                            } catch(InvocationTargetException | ClassNotFoundException | IllegalAccessException | NoSuchMethodException | InstantiationException exception) {
                                 exception.printStackTrace();
                             }
 
