@@ -72,7 +72,7 @@ public class BlockBreak implements Listener {
                                                          ExperienceOrb exp = location.getWorld().spawn(location, ExperienceOrb.class);
                                                          exp.setExperience(1);
 
-                                                         SQL.query("UPDATE bp_furnaces SET coal="+String.valueOf(amount+random(1, 3))+" WHERE uuid='"+trimmedID+"'",
+                                                         SQL.query("UPDATE bp_furnaces SET coal="+String.valueOf(amount+random())+" WHERE uuid='"+trimmedID+"'",
                                                                  new SQL.Callback<Boolean>() {
                                                                      @Override
                                                                      public void onSuccess(Boolean rs) {}
@@ -86,14 +86,14 @@ public class BlockBreak implements Listener {
                                                          ExperienceOrb exp = location.getWorld().spawn(location, ExperienceOrb.class);
                                                          exp.setExperience(1);
 
-                                                         world.dropItem(location, new ItemStack(Material.COAL, random(1, 3)));
+                                                         world.dropItem(location, new ItemStack(Material.COAL, random()));
                                                      }
 
                                                  } else {
                                                      ExperienceOrb exp = location.getWorld().spawn(location, ExperienceOrb.class);
                                                      exp.setExperience(1);
 
-                                                     world.dropItem(location, new ItemStack(Material.COAL, random(1, 3)));
+                                                     world.dropItem(location, new ItemStack(Material.COAL, random()));
                                                  }
 
                                              } else if(material.equals(Material.POTATO)) {
@@ -101,7 +101,7 @@ public class BlockBreak implements Listener {
                                                      drop(amount, trimmedID, e, finalCrops, material, world, location, p);
 
                                                  } else {
-                                                     world.dropItem(location, new ItemStack(Material.POTATO_ITEM, random(1, 3)));
+                                                     world.dropItem(location, new ItemStack(Material.POTATO_ITEM, random()));
                                                  }
 
                                              } else if(Boolean.valueOf(rs.getString("ores"))) {
@@ -173,7 +173,7 @@ public class BlockBreak implements Listener {
                 world.dropItem(location, new ItemStack(material));
 
             } else {
-                world.dropItem(location, new ItemStack(Material.POTATO_ITEM, random(1, 3)));
+                world.dropItem(location, new ItemStack(Material.POTATO_ITEM, random()));
             }
 
             p.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
@@ -199,7 +199,7 @@ public class BlockBreak implements Listener {
 
             case POTATO:
                 if(crops.getState().equals(CropState.RIPE)) {
-                    drop(Material.BAKED_POTATO, random(1, 3), location);
+                    drop(Material.BAKED_POTATO, random(), location);
                     drop(Material.POTATO_ITEM, 1, location);
 
                 } else {
@@ -219,10 +219,10 @@ public class BlockBreak implements Listener {
         exp.setExperience(1);
     }
 
-    private int random(int min, int max) {
+    private int random() {
         Random rand = new Random();
 
-        return rand.nextInt((max-min)+1)+min;
+        return rand.nextInt((3 - 1)+1)+ 1;
     }
 
 }

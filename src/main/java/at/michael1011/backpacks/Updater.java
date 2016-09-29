@@ -19,7 +19,6 @@ import static at.michael1011.backpacks.Main.*;
 class Updater {
 
     // fixme: check md5 before deleting old file
-    // fixme: check if release type is release
 
     Updater(final Main main) {
         int interval = config.getInt("Updater.interval")*72000;
@@ -57,71 +56,74 @@ class Updater {
                 String latestVersionNumber = String.valueOf(latestVersion.get("name"));
                 String installedVersionNumber = main.getDescription().getVersion();
 
-                if(Integer.valueOf(installedVersionNumber.replaceAll("\\.", "")) <
-                        Integer.valueOf(latestVersionNumber.replaceAll("\\.", ""))) {
-
-                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                            messages.getString("Updater.newVersionAvailable")
-                                    .replaceAll("%newVersion%", latestVersionNumber)
-                                    .replaceAll("%oldVersion%", installedVersionNumber)));
-
-                    if(config.getBoolean("Updater.autoUpdate")) {
-                        String messagesPath = "Updater.autoUpdate.";
-
-                        URL download = followRedirects(downloadUrl);
-
-                        int fileSize = download.openConnection().getContentLength();
-
-                        BufferedInputStream downloadInput = new BufferedInputStream(download.openStream());
-
-                        FileOutputStream fileOutput = new FileOutputStream(new File("plugins",
-                                downloadUrl.substring(downloadUrl.lastIndexOf('/')+1, downloadUrl.length())));
-
-                        int byteSize = 1024;
-
-                        final byte[] data = new byte[byteSize];
-                        long downloaded = 0;
-                        int count;
-
-                        while((count = downloadInput.read(data, 0, byteSize)) != -1) {
-                            downloaded += count;
-
-                            fileOutput.write(data, 0, count);
-
-                            int percent = (int) ((downloaded * 100) / fileSize);
-
-                            if((percent % 10) == 0) {
-                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                        messages.getString(messagesPath+"downloading")
-                                                .replaceAll("%percent%", String.valueOf(percent))
-                                                .replaceAll("%fileSize%", readableByteCount(fileSize, false))));
-                            }
-                        }
-
-                        downloadInput.close();
-                        fileOutput.close();
-
-                        File old = new File(Main.class.getProtectionDomain().getCodeSource().getLocation()
-                                .toURI().getPath());
-
-                        if(old.delete()) {
-                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                    messages.getString(messagesPath+"deletedOldVersion")
-                                            .replaceAll("%oldVersion%", old.getName())));
-                        }
+                if(String.valueOf(latestVersion.get("releaseType")).equals("release")) {
+                    if(Integer.valueOf(installedVersionNumber.replaceAll("\\.", "")) <
+                            Integer.valueOf(latestVersionNumber.replaceAll("\\.", ""))) {
 
                         sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                messages.getString(messagesPath+"successful")));
-
-                        Bukkit.getScheduler().cancelTasks(main);
-
-                        Bukkit.dispatchCommand(sender, "reload");
-
-                    } else {
-                        sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                messages.getString("Updater.newVersionAvailableDownload")
+                                messages.getString("Updater.newVersionAvailable")
                                         .replaceAll("%newVersion%", latestVersionNumber)
-                                        .replaceAll("%downloadLink%", downloadUrl)));
+                                        .replaceAll("%oldVersion%", installedVersionNumber)));
+
+                        if(config.getBoolean("Updater.autoUpdate")) {
+                            String messagesPath = "Updater.autoUpdate.";
+
+                            URL download = followRedirects(downloadUrl);
+
+                            int fileSize = download.openConnection().getContentLength();
+
+                            BufferedInputStream downloadInput = new BufferedInputStream(download.openStream());
+
+                            FileOutputStream fileOutput = new FileOutputStream(new File("plugins",
+                                    downloadUrl.substring(downloadUrl.lastIndexOf('/')+1, downloadUrl.length())));
+
+                            int byteSize = 1024;
+
+                            final byte[] data = new byte[byteSize];
+                            long downloaded = 0;
+                            int count;
+
+                            while((count = downloadInput.read(data, 0, byteSize)) != -1) {
+                                downloaded += count;
+
+                                fileOutput.write(data, 0, count);
+
+                                int percent = (int) ((downloaded * 100) / fileSize);
+
+                                if((percent % 10) == 0) {
+                                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                            messages.getString(messagesPath+"downloading")
+                                                    .replaceAll("%percent%", String.valueOf(percent))
+                                                    .replaceAll("%fileSize%", readableByteCount(fileSize))));
+                                }
+                            }
+
+                            downloadInput.close();
+                            fileOutput.close();
+
+                            File old = new File(Main.class.getProtectionDomain().getCodeSource().getLocation()
+                                    .toURI().getPath());
+
+                            if(old.delete()) {
+                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString(messagesPath+"deletedOldVersion")
+                                                .replaceAll("%oldVersion%", old.getName())));
+                            }
+
+                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                    messages.getString(messagesPath+"successful")));
+
+                            Bukkit.getScheduler().cancelTasks(main);
+
+                            Bukkit.dispatchCommand(sender, "reload");
+
+                        } else {
+                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                    messages.getString("Updater.newVersionAvailableDownload")
+                                            .replaceAll("%newVersion%", latestVersionNumber)
+                                            .replaceAll("%downloadLink%", downloadUrl)));
+                        }
+
                     }
 
                 }
@@ -145,15 +147,15 @@ class Updater {
                 messages.getString("Updater.failedToReachServer")));
     }
 
-    private static String readableByteCount(long bytes, boolean si) {
-        int unit = si ? 1000 : 1024;
+    private static String readableByteCount(long bytes) {
+        int unit = 1024;
 
         if (bytes < unit) {
             return bytes + " B";
         }
 
         int exp = (int) (Math.log(bytes) / Math.log(unit));
-        String pre = (si ? "kMGTPE" : "KMGTPE").charAt(exp-1) + (si ? "" : "i");
+        String pre = ("KMGTPE").charAt(exp-1) + ("i");
 
         return String.format("%.1f %sB", bytes / Math.pow(unit, exp), pre);
     }

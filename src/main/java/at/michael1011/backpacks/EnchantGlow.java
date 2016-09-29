@@ -11,8 +11,8 @@ public class EnchantGlow extends EnchantmentWrapper {
 
     private static Enchantment glow;
 
-    private EnchantGlow(int id) {
-        super(id);
+    private EnchantGlow() {
+        super(255);
     }
 
     @Override
@@ -59,7 +59,7 @@ public class EnchantGlow extends EnchantmentWrapper {
             e.printStackTrace();
         }
 
-        glow = new EnchantGlow(255);
+        glow = new EnchantGlow();
 
         Enchantment.registerEnchantment(glow);
         Enchantment.stopAcceptingRegistrations();
