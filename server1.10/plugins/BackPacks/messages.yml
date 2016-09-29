@@ -1,0 +1,179 @@
+# The prefix of the plugin
+prefix: "&7[&4BackPacks&7]&r "
+
+MySQL:
+  connected: "&eConnected to MySQL database"
+  failedToConnect: "&4Could not connect to MySQL database"
+  failedToConnectCheck: "&4Check your credentials in the plugins/BackPacks/config.yml file"
+  closedConnection: "&eClosed MySQL connection"
+
+Help:
+  onlyPlayers: "&4Only players &ccan use this command"
+  noPermission: "&cYou &4don't &chave enough permissions"
+
+  # When you want to interact with a player that isn't online (%target% is the offline player)
+  playerNotFound: "&cThe player &4%target% &ccouldn't be foubd"
+
+  backPackNotFound: "&cThe backpack &4%backpack% &ccouldn't be found"
+  backPackNotFoundAvailable: "&cThe available backpacks are &4%backpacks%"
+
+  materialNotValid: "&cThe material &4%material% &cin backpack &4%backpack% &cis not valid"
+
+  bpgive:
+    # When the console wants to give itself a backpacks it gets the 'onlyPlayers' message and this message
+    onlyPlayersAlternative: "&cUse '&4/bpgive <backpack> <player>&c' to give a backpack to a player"
+
+    # When you gave a backpack to a other player this message comes
+    # %backpack% is the backpack and %target% is the player you gave it
+    gaveBackPack: "&eYou gave &6%backpack% &eto &6%target%"
+
+    # If someone uses /bpgive wrong
+    syntaxError:
+      1: "&6/bpgive <backpack>: &egive yourself the backpack '<backpack>'"
+      2: "&6/bpgive <backpack> <player>: &e give the backpack '<backpack>' to '<player>'"
+
+  bpopen:
+    # When you want to see a backpack of a player that hasn't used it yet
+    # %player% is the player and %backpack% is the backpack
+    hasNotUsedYet: "&cThe player &4%player% &chasn't used the &4%backpack% &cyet"
+
+    # open a empty crafting table doesn't make sense
+    craftingBackPack: "&cOpen a empty crafting table doesn't make sense"
+
+    # When the console wants to open a backpack with the type normal or ender
+    onlyPlayers: "&cOnly players can open backpack of the type &4%type%"
+
+    # If someone uses /bpopen wrong
+    syntaxError:
+      1: "&6/bpopen <backpack> <player>: &eopens '<backpack>' of '<player>'"
+
+  bpcreate:
+    steps:
+      name:
+        noSpaces: "&cThe name &4can't contain spaces&c!"
+
+      displayName:
+        1: "&eSet the &6displayname &ewith &6/bpc displayname <displayname>"
+        2: "&eThe &6displayname &eis the name of the item and &6can contain spaces"
+
+      description:
+        1: "&eSet the &6description &ewith &6/bpc desc <description>"
+        2: "&eCreate a new line with &6;"
+
+      material:
+        1: "&eSet the &6material &ewith &6/bpc material <material>"
+        2: "&eYou can find a list of materials here: &6http://bit.ly/21vbetj"
+
+      materialNotValid: "&cThe material &4%material% &cis &4not valid"
+
+      crafting:
+        1: "&eSet the &6crafting recipce &ewith &6/bpc crafting <crafting recipe>"
+        2: "&eA &6crafting recipe &emust have 3 lines und has to look like this: &6C+R+C;R+W+R;C+R+C"
+        3: "&eCreate a new line with &6;"
+        4: "&eDisable the crafting recipe with &6/bpc crafting disabled"
+
+      craftingNotValid: "&cThis crafting recipe &4is not valid"
+
+      materials:
+        1: "&eSet the &6materials &eof the crafting recipe with &6/bpc materials <materials>"
+        2: "&eYou have to set every material of the crafting recipe"
+        3: "&eMaterials have to look like this: &6C:coal;R:redstone;W:watch"
+
+      materialsNotValid: "&cThis materials are &4not valid"
+
+      materialsMissing: "&cThese materials are missing: &4%missing%"
+
+      type:
+        1: "&eSet the &6type &eof the backpack with &6/bpc type <type>"
+        2: "&eThe available backpacks are: &6normal&e, &6ender&e, &6crafting&e, &6furnace"
+
+      typeNotFound: "&cThe the type &4%type% &cis not available"
+
+      slots:
+        1: "&eSet the &6slots &eof the backpack with &6/bpc slots <slots>"
+        2: "&eThe slots &6must be a number &eand &6divisible by 9"
+
+      slotsError: "&eThe slots &6must be a number &eand &6divisible by 9"
+
+      gui:
+        1: "&6Enable &ethe gui of the FurnaceBackPack with &6/bpc gui true"
+        2: "&6Disable &ethe gui of the FurnaceBackPack with &6/bpc gui false"
+
+      preview:
+        name: "&eName: &r%name%"
+        displayname: "&eDisplayname: &r%name%"
+        type: "&eType: &r%type%"
+
+        description:
+          title: "&eDescription:"
+          line: "&e  %lineNumber%: &r%content%"
+
+        slots: "&eSlots: &r%slots%"
+        gui: "&eGUI: &r%gui%"
+        material: "&eMaterial: &r%material%"
+
+        crafting:
+          title: "&eCrafting recipe:"
+          line: "&e  %lineNumber%: &r%content%"
+
+          materials:
+            title: "&e  Materials:"
+            line: "&e    %line%: &r%material%"
+
+        notSet: "&cYou have to &4set all values &cbefore you can see a preview"
+        missing: "&cThis values are missing: &4%values%"
+
+      item:
+        extraDescription: "&eThis is just a &4preview item&e. &cIt does not work."
+
+        notSet: "&cYou have to &4set a few values &cbefore you can get a preview item"
+        missing: "&cThis values are missing: &4%values%"
+
+      finish:
+        1: "&6Save and enable &ethe backpack with &6/bpc finish true"
+        2: "&6Discard &eit with &6/bpc finish false"
+        3: "&eYou can see a preview with &6/bpc preview"
+
+      finishNotSet: "&cYou have to &4set all values &cbefore you can finish"
+
+      finishTrue:
+        1: "&eSaved backpack &6%backpack%"
+        2: "&cReload the server &eor use &c/bpr &eto enable it"
+
+      finishFalse: "&cRemoved new backpack &4%backpack%"
+
+    # If someone uses /bpcreate wrong
+    syntaxError:
+      1: "&6/bpc name <value>: &eto start creating a backpack"
+      2: "&eOther available functions are: &6displayname&e, &6description&e, &6material&e, &6crafting&e, &6materials&e, &6type&e, &6slots&e, &6gui&e, &6preview&e, &6finish&e, &6item"
+
+  bpreload:
+    successful: "&eReload successful"
+
+
+BackPacks:
+  # When you enable a backpack that doesn't exist (%backpack% is the backpack that couldn't be found)
+  couldNotFindConfig: "&cCould &4not &cfind BackPack &4%backpack%"
+
+  # %backpack% is the backpack that couldn't be enabled
+  slotsNotDivisibleBy9: "&cBackPack &4%backpack% &ccouldn't be loaded because the slots &4aren't divisible by 9"
+
+  # When a server starts/reloads this message comes for every backpack that is enabled
+  # (%backpack% is the enabled backpack)
+  enabled: "&eEnabled backpack &6%backpack%"
+
+  furnaceBackPack:
+    # When a player wants to smelt something with the FurnaceBackPack but there is no coal in it
+    noCoal: "&cYour FurnaceBackPack &4is empty&c. Fill it with coal to smelt things automatically"
+
+    # When someone wants to open a FurnaceBackpack with /bpopen
+    open:
+      # %backpack% is the backpack and %target% the owner of the backpack
+      title: "&6%backpack% &eof &6%target%&e:"
+
+      # %value% is the value
+      ores: "&7Ores: &r%value%"
+      food: "&6Food: &r%value%"
+      autoFill: "&0AutoFill: &r%value%"
+
+      coal: "&8Coal: &r%value%"

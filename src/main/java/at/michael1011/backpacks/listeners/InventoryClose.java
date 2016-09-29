@@ -12,6 +12,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.PotionMeta;
+import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.potion.PotionData;
 
 import java.lang.reflect.InvocationTargetException;
@@ -152,6 +153,12 @@ public class InventoryClose implements Listener {
                                 exception.printStackTrace();
                             }
 
+                        } else if(material.equals("SKULL_ITEM")) {
+                            SkullMeta skull = (SkullMeta) item.getItemMeta();
+
+                            if(skull.hasOwner()) {
+                                potion = skull.getOwner();
+                            }
                         }
 
                         SQL.query("INSERT INTO bp_"+backPack+"_"+trimmedID+" (position, material, durability, amount, "+

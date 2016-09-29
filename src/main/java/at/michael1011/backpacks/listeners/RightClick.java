@@ -18,6 +18,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.PotionMeta;
+import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.potion.PotionData;
 import org.bukkit.potion.PotionType;
 
@@ -257,7 +258,7 @@ public class RightClick implements Listener {
 
                             item.setItemMeta(potionM);
 
-                        } else if(material.equals("MONSTER_EGG")){
+                        } else if(material.equals("MONSTER_EGG")) {
                             try {
                                 Object nmsStack = Class.forName("org.bukkit.craftbukkit."+version+".inventory.CraftItemStack").getMethod("asNMSCopy", ItemStack.class).invoke(null, item);
                                 Object nmsCompound = nmsStack.getClass().getMethod("getTag").invoke(nmsStack);
@@ -290,7 +291,15 @@ public class RightClick implements Listener {
                             } catch(InstantiationException | InvocationTargetException | ClassNotFoundException | IllegalAccessException | NoSuchMethodException exception) {
                                 exception.printStackTrace();
                             }
+
+                        } else if(material.equals("SKULL_ITEM")) {
+                            SkullMeta skull = (SkullMeta) item.getItemMeta();
+
+                            skull.setOwner(potion);
+
+                            item.setItemMeta(skull);
                         }
+
                     }
 
                     inv.setItem(rs.getInt("position"), item);
