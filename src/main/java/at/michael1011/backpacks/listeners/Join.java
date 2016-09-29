@@ -12,8 +12,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static at.michael1011.backpacks.Main.config;
-
 public class Join implements Listener {
 
     public Join(Main main) {
@@ -60,7 +58,7 @@ public class Join implements Listener {
                         }
 
                         if(Updater.updateAvailable) {
-                            if(p.hasPermission("backpacks.update") && !config.getBoolean("Updater.autoUpdate")) {
+                            if(p.hasPermission("backpacks.update")) {
                                 p.sendMessage(Updater.newVersion);
                                 p.sendMessage(Updater.newVersionDownload);
                             }

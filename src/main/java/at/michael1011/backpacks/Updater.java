@@ -9,16 +9,19 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import javax.net.ssl.HttpsURLConnection;
+import javax.xml.bind.DatatypeConverter;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import static at.michael1011.backpacks.Main.*;
 
 public class Updater {
-
-    // fixme: check md5 before deleting old file
 
     Updater(final Main main) {
         int interval = config.getInt("Updater.interval")*72000;
@@ -64,8 +67,6 @@ public class Updater {
                     if(Integer.valueOf(installedVersionNumber.replaceAll("\\.", "")) <
                             Integer.valueOf(latestVersionNumber.replaceAll("\\.", ""))) {
 
-                        updateAvailable = true;
-
                         newVersion = prefix+ChatColor.translateAlternateColorCodes('&',
                                 messages.getString("Updater.newVersionAvailable")
                                         .replaceAll("%newVersion%", latestVersionNumber)
@@ -79,11 +80,14 @@ public class Updater {
                             URL download = followRedirects(downloadUrl);
 
                             int fileSize = download.openConnection().getContentLength();
+                            String fileName = downloadUrl.substring(downloadUrl.lastIndexOf('/')+1,
+                                    downloadUrl.length());
 
                             BufferedInputStream downloadInput = new BufferedInputStream(download.openStream());
 
-                            FileOutputStream fileOutput = new FileOutputStream(new File("plugins",
-                                    downloadUrl.substring(downloadUrl.lastIndexOf('/')+1, downloadUrl.length())));
+                            File downloadedFile = new File("plugins", fileName);
+
+                            FileOutputStream fileOutput = new FileOutputStream(downloadedFile);
 
                             int byteSize = 1024;
 
@@ -109,23 +113,50 @@ public class Updater {
                             downloadInput.close();
                             fileOutput.close();
 
-                            File old = new File(Main.class.getProtectionDomain().getCodeSource().
-                                    getLocation().toURI().getPath());
+                            MessageDigest md = MessageDigest.getInstance("MD5");
 
-                            if(old.delete()) {
+                            String path = "plugins/"+fileName;
+
+                            md.update(Files.readAllBytes(Paths.get(path)));
+                            byte[] digest = md.digest();
+
+                            String digestInHex = DatatypeConverter.printHexBinary(digest).toLowerCase();
+
+                            if(digestInHex.equalsIgnoreCase(String.valueOf(latestVersion.get("md5")))) {
+                                File old = new File(Main.class.getProtectionDomain().getCodeSource().
+                                        getLocation().toURI().getPath());
+
+                                if(old.delete()) {
+                                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                            messages.getString(messagesPath+"deletedOldVersion")
+                                                    .replaceAll("%oldVersion%", old.getName())));
+                                }
+
                                 sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                        messages.getString(messagesPath+"deletedOldVersion")
-                                                .replaceAll("%oldVersion%", old.getName())));
+                                        messages.getString(messagesPath+"successful")));
+
+                                Bukkit.getScheduler().cancelTasks(main);
+
+                                Bukkit.dispatchCommand(sender, "reload");
+
+                            } else {
+                                if(downloadedFile.delete()) {
+                                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                            messages.getString(messagesPath+"downloadFailed")
+                                                    .replaceAll("%downloadLink%", downloadUrl)));
+
+                                    updateAvailable = true;
+
+                                    newVersionDownload = prefix+ChatColor.translateAlternateColorCodes('&',
+                                            messages.getString("Updater.newVersionAvailableDownload")
+                                                    .replaceAll("%newVersion%", latestVersionNumber)
+                                                    .replaceAll("%downloadLink%", downloadUrl));
+                                }
                             }
 
-                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                    messages.getString(messagesPath+"successful")));
-
-                            Bukkit.getScheduler().cancelTasks(main);
-
-                            Bukkit.dispatchCommand(sender, "reload");
-
                         } else {
+                            updateAvailable = true;
+
                             newVersionDownload = prefix+ChatColor.translateAlternateColorCodes('&',
                                     messages.getString("Updater.newVersionAvailableDownload")
                                             .replaceAll("%newVersion%", latestVersionNumber)
@@ -142,7 +173,7 @@ public class Updater {
                 sendConnectionError(sender);
             }
 
-        } catch (IOException | ParseException | URISyntaxException e) {
+        } catch (IOException | ParseException | URISyntaxException | NoSuchAlgorithmException e) {
             // todo: more error codes
 
             e.printStackTrace();
@@ -193,6 +224,7 @@ public class Updater {
                     location = next.toExternalForm();
                     continue;
             }
+
             break;
         }
 
