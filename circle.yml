@@ -11,7 +11,7 @@ general:
 dependencies:
   pre:
     - mysql -u ubuntu -e 'CREATE DATABASE IF NOT EXISTS bpTest'
-    - mysql -u ubuntu -e 'CREATE USER 'bpTest'@'localhost' IDENTIFIED BY 'bpTest''
+    - mysql -u ubuntu -e 'CREATE USER 'bpTest'@'localhost' IDENTIFIED BY "bpTest"'
     - mysql -u ubuntu -e 'GRANT ALL ON bpTest.* TO 'bpTest'@'localhost''
     - mysql -u ubuntu -e 'FLUSH PRIVILEGES'
   override:
