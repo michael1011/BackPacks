@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Crafting.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BackPacks</a> &gt; <a href="index.source.html" class="el_package">at.michael1011.backpacks</a> &gt; <span class="el_source">Crafting.java</span></div><h1>Crafting.java</h1><pre class="source lang-java linenums">package at.michael1011.backpacks;
+
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.command.CommandSender;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.ShapedRecipe;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static at.michael1011.backpacks.Main.*;
+
+<span class="nc" id="L18">public class Crafting {</span>
+
+<span class="fc" id="L20">    public static HashMap&lt;ItemStack, String&gt; items = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L21">    public static HashMap&lt;String, ItemStack&gt; itemsInverted = new HashMap&lt;&gt;();</span>
+
+<span class="fc" id="L23">    public static HashMap&lt;String, String&gt; type = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L24">    public static HashMap&lt;String, Integer&gt; slots = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L25">    public static HashMap&lt;String, String&gt; furnaceGui = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L26">    public static HashMap&lt;List&lt;String&gt;, String&gt; loreMap = new HashMap&lt;&gt;();</span>
+
+<span class="fc" id="L28">    public static String available = &quot;&quot;;</span>
+    public static List&lt;String&gt; availableList;
+
+<span class="fc" id="L31">    static Boolean slotsDivisible = true;</span>
+
+    public static void initCrafting(CommandSender sender) {
+<span class="nc" id="L34">        String path = &quot;BackPacks.&quot;;</span>
+
+<span class="nc" id="L36">        Map&lt;String, Object&gt; enabled = config.getConfigurationSection(path+&quot;enabled&quot;).getValues(true);</span>
+
+<span class="nc bnc" id="L38" title="All 2 branches missed.">        for(Map.Entry&lt;String, Object&gt; entry : enabled.entrySet()) {</span>
+<span class="nc" id="L39">            String backPack = entry.getValue().toString();</span>
+<span class="nc" id="L40">            String backPackPath = path+backPack+&quot;.&quot;;</span>
+
+<span class="nc bnc" id="L42" title="All 2 branches missed.">            if(config.contains(backPackPath)) {</span>
+<span class="nc" id="L43">                ItemStack item = getItemStack(sender, backPackPath, backPack, true);</span>
+
+<span class="nc bnc" id="L45" title="All 2 branches missed.">                if(item != null) {</span>
+<span class="nc bnc" id="L46" title="All 2 branches missed.">                    if(slotsDivisible) {</span>
+<span class="nc" id="L47">                        items.put(item, backPack);</span>
+<span class="nc" id="L48">                        itemsInverted.put(backPack, item);</span>
+
+<span class="nc bnc" id="L50" title="All 2 branches missed.">                        if(available.equals(&quot;&quot;)) {</span>
+<span class="nc" id="L51">                            available = backPack;</span>
+
+                        } else {
+<span class="nc" id="L54">                            available = available+&quot;,&quot;+backPack;</span>
+                        }
+
+<span class="nc bnc" id="L57" title="All 2 branches missed.">                        if(config.getBoolean(backPackPath+&quot;crafting.enabled&quot;)) {</span>
+<span class="nc" id="L58">                            Bukkit.getServer().addRecipe(createShapedRecipe(sender, item, backPackPath, backPack));</span>
+                        }
+
+<span class="nc" id="L61">                        sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                messages.getString(&quot;BackPacks.enabled&quot;).replaceAll(&quot;%backpack%&quot;, backPack)));
+
+                    } else {
+<span class="nc" id="L65">                        sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                messages.getString(&quot;BackPacks.slotsNotDivisibleBy9&quot;).replaceAll(&quot;%backpack%&quot;, backPack)));
+
+<span class="nc" id="L68">                        slotsDivisible = true;</span>
+                    }
+
+                }
+
+<span class="nc" id="L73">            } else {</span>
+<span class="nc" id="L74">                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                        messages.getString(&quot;BackPacks.couldNotFindConfig&quot;).replaceAll(&quot;%backpack%&quot;, backPack)));
+            }
+
+<span class="nc" id="L78">        }</span>
+
+<span class="nc" id="L80">        availableList = Arrays.asList(Crafting.available.split(&quot;,&quot;));</span>
+<span class="nc" id="L81">    }</span>
+
+    static ItemStack getItemStack(CommandSender sender, String backPackPath, String backPack, Boolean itemMeta) {
+        // todo: check if type is normal here and line 122
+
+<span class="fc" id="L86">        int itemSlots = config.getInt(backPackPath+&quot;slots&quot;);</span>
+
+<span class="fc" id="L88">        String materialString = config.getString(backPackPath+&quot;material&quot;).toUpperCase();</span>
+
+<span class="fc bfc" id="L90" title="All 2 branches covered.">        if(itemSlots % 9 == 0) {</span>
+            try {
+<span class="fc" id="L92">                Material material = Material.valueOf(materialString);</span>
+
+<span class="fc" id="L94">                ItemStack craft = new ItemStack(material, 1);</span>
+
+<span class="fc" id="L96">                String name = ChatColor.translateAlternateColorCodes('&amp;', config.getString(backPackPath+&quot;name&quot;));</span>
+
+<span class="fc" id="L98">                String lore = &quot;&quot;;</span>
+
+<span class="fc" id="L100">                Map&lt;String, Object&gt; loreSec = config.getConfigurationSection(backPackPath+&quot;description&quot;).getValues(true);</span>
+
+<span class="fc bfc" id="L102" title="All 2 branches covered.">                for(Map.Entry&lt;String, Object&gt; ent : loreSec.entrySet()) {</span>
+<span class="fc" id="L103">                    lore = lore+&quot;,&quot;+ChatColor.translateAlternateColorCodes('&amp;', ent.getValue().toString());</span>
+<span class="fc" id="L104">                }</span>
+
+<span class="pc bpc" id="L106" title="1 of 2 branches missed.">                if(itemMeta) {</span>
+<span class="nc" id="L107">                    ItemMeta craftM = craft.getItemMeta();</span>
+
+<span class="nc" id="L109">                    craftM.setDisplayName(name);</span>
+
+<span class="nc bnc" id="L111" title="All 2 branches missed.">                    if(!lore.equals(&quot;&quot;)) {</span>
+<span class="nc" id="L112">                        List&lt;String&gt; loreList = Arrays.asList(lore.split(&quot;\\s*,\\s*&quot;));</span>
+
+<span class="nc" id="L114">                        craftM.setLore(loreList);</span>
+
+<span class="nc" id="L116">                        loreMap.put(loreList, backPack);</span>
+                    }
+
+<span class="nc" id="L119">                    craft.setItemMeta(craftM);</span>
+                }
+
+<span class="fc" id="L122">                slots.put(backPack, itemSlots);</span>
+
+<span class="fc" id="L124">                String rawType = config.getString(backPackPath+&quot;type&quot;);</span>
+
+<span class="fc" id="L126">                type.put(backPack, rawType);</span>
+
+                // todo: add furnace test
+<span class="fc bfc" id="L129" title="All 2 branches covered.">                if(rawType.equals(&quot;furnace&quot;)) {</span>
+<span class="fc" id="L130">                    furnaceGui.put(backPack, config.getString(backPackPath+&quot;gui.enabled&quot;));</span>
+                }
+
+<span class="fc" id="L133">                return craft;</span>
+
+<span class="fc" id="L135">            } catch (IllegalArgumentException e) {</span>
+<span class="fc" id="L136">                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                        messages.getString(&quot;Help.materialNotValid&quot;)
+                                .replaceAll(&quot;%material%&quot;, materialString).replaceAll(&quot;%backpack%&quot;, backPack)));
+
+            }
+
+<span class="fc" id="L142">            return null;</span>
+
+        } else {
+<span class="fc" id="L145">            slotsDivisible = false;</span>
+
+<span class="fc" id="L147">            return null;</span>
+        }
+
+    }
+
+    private static ShapedRecipe createShapedRecipe(CommandSender sender, ItemStack item, String backPackPath,
+                                                   String backPack) {
+
+<span class="nc" id="L155">        ShapedRecipe recipe = new ShapedRecipe(item);</span>
+
+<span class="nc" id="L157">        recipe.shape(</span>
+                config.getString(backPackPath+&quot;crafting.1&quot;).replaceAll(&quot;\\+&quot;, &quot;&quot;),
+                config.getString(backPackPath+&quot;crafting.2&quot;).replaceAll(&quot;\\+&quot;, &quot;&quot;),
+                config.getString(backPackPath+&quot;crafting.3&quot;).replaceAll(&quot;\\+&quot;, &quot;&quot;));
+
+<span class="nc" id="L162">        Map&lt;String, Object&gt; ingredients = config.getConfigurationSection(backPackPath+</span>
+                &quot;crafting.materials&quot;).getValues(true);
+
+<span class="nc bnc" id="L165" title="All 2 branches missed.">        for(Map.Entry&lt;String, Object&gt; ing : ingredients.entrySet()) {</span>
+<span class="nc" id="L166">            String material = ing.getValue().toString();</span>
+
+            try {
+<span class="nc" id="L169">                recipe.setIngredient(ing.getKey().charAt(0), Material.valueOf(material));</span>
+
+<span class="nc" id="L171">            } catch (IllegalArgumentException e) {</span>
+<span class="nc" id="L172">                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;', messages.getString(&quot;Help.materialNotValid&quot;)</span>
+                        .replaceAll(&quot;%material%&quot;, material).replaceAll(&quot;%backpack%&quot;, backPack)));
+
+<span class="nc" id="L175">                return null;</span>
+<span class="nc" id="L176">            }</span>
+<span class="nc" id="L177">        }</span>
+
+<span class="nc" id="L179">        return recipe;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

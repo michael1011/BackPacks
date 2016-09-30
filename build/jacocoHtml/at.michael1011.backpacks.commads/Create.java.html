@@ -1,0 +1,726 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Create.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BackPacks</a> &gt; <a href="index.source.html" class="el_package">at.michael1011.backpacks.commads</a> &gt; <span class="el_source">Create.java</span></div><h1>Create.java</h1><pre class="source lang-java linenums">package at.michael1011.backpacks.commads;
+
+import at.michael1011.backpacks.Main;
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.command.PluginCommand;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
+
+import static at.michael1011.backpacks.Main.*;
+
+public class Create implements CommandExecutor {
+
+    private static final String path = &quot;Help.bpcreate.&quot;;
+
+    private Main main;
+
+<span class="nc" id="L26">    private static HashMap&lt;CommandSender, HashMap&lt;String, String&gt;&gt; data = new HashMap&lt;&gt;();</span>
+
+<span class="nc" id="L28">    public Create(Main main) {</span>
+<span class="nc" id="L29">        this.main = main;</span>
+
+<span class="nc" id="L31">        PluginCommand command = main.getCommand(&quot;bpcreate&quot;);</span>
+
+<span class="nc" id="L33">        command.setExecutor(this);</span>
+<span class="nc" id="L34">        command.setTabCompleter(new CreateCompleter());</span>
+<span class="nc" id="L35">    }</span>
+
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+<span class="nc bnc" id="L39" title="All 2 branches missed.">        if(sender.hasPermission(&quot;backpacks.create&quot;)) {</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">            if(args.length &gt;= 2) {</span>
+<span class="nc" id="L41">                String arg = args[0].toLowerCase();</span>
+
+<span class="nc bnc" id="L43" title="All 2 branches missed.">                if(data.get(sender) == null) {</span>
+<span class="nc" id="L44">                    data.put(sender, new HashMap&lt;String, String&gt;());</span>
+                }
+
+<span class="nc bnc" id="L47" title="All 42 branches missed.">                switch (arg) {</span>
+                    case &quot;name&quot;:
+<span class="nc" id="L49">                        String name = argsToString(args);</span>
+
+<span class="nc bnc" id="L51" title="All 2 branches missed.">                        if(!name.contains(&quot; &quot;)) {</span>
+<span class="nc" id="L52">                            data.get(sender).put(&quot;name&quot;, args[1]);</span>
+
+<span class="nc" id="L54">                            sendMap(sender, &quot;steps.displayName&quot;);</span>
+
+                        } else {
+<span class="nc" id="L57">                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                    messages.getString(path+&quot;steps.name.noSpaces&quot;)));
+                        }
+
+<span class="nc" id="L61">                        break;</span>
+
+                    case &quot;displayname&quot;:
+<span class="nc" id="L64">                        data.get(sender).put(&quot;displayname&quot;, argsToString(args));</span>
+
+<span class="nc" id="L66">                        sendMap(sender, &quot;steps.description&quot;);</span>
+
+<span class="nc" id="L68">                        break;</span>
+
+                    case &quot;description&quot;:
+<span class="nc" id="L71">                        data.get(sender).put(&quot;description&quot;, argsToString(args));</span>
+
+<span class="nc" id="L73">                        sendMap(sender, &quot;steps.material&quot;);</span>
+
+<span class="nc" id="L75">                        break;</span>
+
+                    case &quot;material&quot;:
+<span class="nc" id="L78">                        String material = argsToString(args).toUpperCase();</span>
+
+                        try {
+<span class="nc" id="L81">                            Material.valueOf(material);</span>
+
+<span class="nc" id="L83">                            data.get(sender).put(&quot;material&quot;, material);</span>
+
+<span class="nc" id="L85">                            sendMap(sender, &quot;steps.crafting&quot;);</span>
+
+<span class="nc" id="L87">                        } catch (IllegalArgumentException e1) {</span>
+<span class="nc" id="L88">                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                    messages.getString(path+&quot;steps.materialNotValid&quot;)
+                                            .replaceAll(&quot;%material%&quot;, material)));
+<span class="nc" id="L91">                        }</span>
+
+<span class="nc" id="L93">                        break;</span>
+
+                    case &quot;crafting&quot;:
+<span class="nc" id="L96">                        String rawRecipe = argsToString(args);</span>
+
+<span class="nc bnc" id="L98" title="All 2 branches missed.">                        if(!rawRecipe.equals(&quot;disabled&quot;)) {</span>
+<span class="nc" id="L99">                            String recipe = rawRecipe.toUpperCase();</span>
+<span class="nc" id="L100">                            String[] recipeSplit = recipe.split(&quot;;&quot;);</span>
+
+<span class="nc bnc" id="L102" title="All 2 branches missed.">                            if(recipeSplit.length == 3) {</span>
+<span class="nc" id="L103">                                Boolean validCrafting = true;</span>
+
+<span class="nc bnc" id="L105" title="All 2 branches missed.">                                for(String recipeLine : recipeSplit) {</span>
+<span class="nc bnc" id="L106" title="All 2 branches missed.">                                    if(recipeLine.length() != 5) {</span>
+<span class="nc" id="L107">                                        validCrafting = false;</span>
+                                    }
+                                }
+
+<span class="nc bnc" id="L111" title="All 2 branches missed.">                                if(validCrafting) {</span>
+<span class="nc" id="L112">                                    data.get(sender).put(&quot;crafting&quot;, recipe);</span>
+
+<span class="nc" id="L114">                                    sendMap(sender, &quot;steps.materials&quot;);</span>
+
+                                } else {
+<span class="nc" id="L117">                                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                            messages.getString(path+&quot;steps.craftingNotValid&quot;)));
+
+<span class="nc" id="L120">                                    sender.sendMessage(prefix+&quot;&quot;);</span>
+
+<span class="nc" id="L122">                                    sendMap(sender, &quot;steps.crafting&quot;);</span>
+                                }
+
+<span class="nc" id="L125">                            } else {</span>
+<span class="nc" id="L126">                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                        messages.getString(path+&quot;steps.craftingNotValid&quot;)));
+
+<span class="nc" id="L129">                                sender.sendMessage(prefix+&quot;&quot;);</span>
+
+<span class="nc" id="L131">                                sendMap(sender, &quot;steps.crafting&quot;);</span>
+                            }
+
+<span class="nc" id="L134">                        } else {</span>
+<span class="nc" id="L135">                            data.get(sender).put(&quot;crafting&quot;, rawRecipe);</span>
+
+<span class="nc" id="L137">                            sendMap(sender, &quot;steps.type&quot;);</span>
+                        }
+
+<span class="nc" id="L140">                        break;</span>
+
+                    case &quot;materials&quot;:
+<span class="nc" id="L143">                        String materials = argsToString(args).toUpperCase();</span>
+<span class="nc" id="L144">                        String[] materialsSplit = materials.split(&quot;;&quot;);</span>
+
+<span class="nc" id="L146">                        ArrayList&lt;String&gt; missingMaterials = new ArrayList&lt;&gt;();</span>
+
+<span class="nc" id="L148">                        Boolean validMaterial = true;</span>
+<span class="nc" id="L149">                        Boolean validMaterials = true;</span>
+
+<span class="nc bnc" id="L151" title="All 2 branches missed.">                        for(String materialPart : materialsSplit) {</span>
+<span class="nc bnc" id="L152" title="All 2 branches missed.">                            if(materialPart.contains(&quot;:&quot;)) {</span>
+<span class="nc" id="L153">                                String[] parts = materialPart.split(&quot;:&quot;);</span>
+
+<span class="nc" id="L155">                                String part = parts[1];</span>
+
+                                try {
+<span class="nc" id="L158">                                    Material.valueOf(part);</span>
+
+<span class="nc" id="L160">                                } catch (IllegalArgumentException e) {</span>
+<span class="nc" id="L161">                                    validMaterial = false;</span>
+
+<span class="nc" id="L163">                                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                            messages.getString(path+&quot;steps.materialNotValid&quot;)
+                                                    .replaceAll(&quot;%material%&quot;, part)));
+
+<span class="nc" id="L167">                                    break;</span>
+<span class="nc" id="L168">                                }</span>
+
+<span class="nc" id="L170">                            } else {</span>
+<span class="nc" id="L171">                                validMaterials = false;</span>
+                            }
+                        }
+
+<span class="nc bnc" id="L175" title="All 6 branches missed.">                        if(data.get(sender).get(&quot;crafting&quot;) != null &amp;&amp; validMaterial &amp;&amp; validMaterials) {</span>
+<span class="nc" id="L176">                            Boolean contains = false;</span>
+
+<span class="nc" id="L178">                            String crafting = data.get(sender).get(&quot;crafting&quot;)</span>
+                                    .replaceAll(&quot;\\+&quot;, &quot;&quot;).replaceAll(&quot;;&quot;, &quot;&quot;);
+
+<span class="nc bnc" id="L181" title="All 2 branches missed.">                            for(char c : crafting.toCharArray()) {</span>
+<span class="nc bnc" id="L182" title="All 2 branches missed.">                                for(String materialPart : materialsSplit) {</span>
+<span class="nc" id="L183">                                    String[] parts = materialPart.split(&quot;:&quot;);</span>
+
+<span class="nc bnc" id="L185" title="All 2 branches missed.">                                    if(parts[0].charAt(0) == c) {</span>
+<span class="nc" id="L186">                                        contains = true;</span>
+
+<span class="nc" id="L188">                                        break;</span>
+                                    }
+                                }
+
+<span class="nc bnc" id="L192" title="All 2 branches missed.">                                if(!contains) {</span>
+<span class="nc" id="L193">                                    String add = String.valueOf(c).toUpperCase();</span>
+
+<span class="nc bnc" id="L195" title="All 2 branches missed.">                                    if(!missingMaterials.contains(add)) {</span>
+<span class="nc" id="L196">                                        missingMaterials.add(add);</span>
+                                    }
+
+<span class="nc" id="L199">                                } else {</span>
+<span class="nc" id="L200">                                    contains = false;</span>
+                                }
+
+                            }
+
+                        }
+
+<span class="nc bnc" id="L207" title="All 2 branches missed.">                        if(missingMaterials.size() &gt; 0) {</span>
+<span class="nc" id="L208">                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                    messages.getString(path+&quot;steps.materialsMissing&quot;)
+                                            .replaceAll(&quot;%missing%&quot;, arrayListToString(missingMaterials))));
+
+<span class="nc" id="L212">                            sender.sendMessage(prefix);</span>
+
+<span class="nc" id="L214">                            sendMap(sender, &quot;steps.materials&quot;);</span>
+
+<span class="nc" id="L216">                            break;</span>
+                        }
+
+<span class="nc bnc" id="L219" title="All 4 branches missed.">                        if(validMaterials &amp;&amp; validMaterial) {</span>
+<span class="nc" id="L220">                            data.get(sender).put(&quot;materials&quot;, materials);</span>
+
+<span class="nc" id="L222">                            sendMap(sender, &quot;steps.type&quot;);</span>
+
+                        } else {
+<span class="nc bnc" id="L225" title="All 2 branches missed.">                            if(validMaterial) {</span>
+<span class="nc" id="L226">                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                        messages.getString(path+&quot;steps.materialsNotValid&quot;)));
+
+<span class="nc" id="L229">                                sender.sendMessage(prefix);</span>
+
+<span class="nc" id="L231">                                sendMap(sender, &quot;steps.materials&quot;);</span>
+                            }
+                        }
+
+                        break;
+
+                    case &quot;type&quot;:
+<span class="nc" id="L238">                        String type = argsToString(args);</span>
+
+<span class="nc bnc" id="L240" title="All 17 branches missed.">                        switch (type) {</span>
+                            case &quot;ender&quot;:
+                            case &quot;crafting&quot;:
+<span class="nc" id="L243">                                data.get(sender).put(&quot;type&quot;, type);</span>
+
+<span class="nc" id="L245">                                sendMap(sender, &quot;steps.finish&quot;);</span>
+
+<span class="nc" id="L247">                                break;</span>
+
+                            case &quot;normal&quot;:
+<span class="nc" id="L250">                                data.get(sender).put(&quot;type&quot;, type);</span>
+
+<span class="nc" id="L252">                                sendMap(sender, &quot;steps.slots&quot;);</span>
+
+<span class="nc" id="L254">                                break;</span>
+
+                            case &quot;furnace&quot;:
+<span class="nc" id="L257">                                data.get(sender).put(&quot;type&quot;, type);</span>
+
+<span class="nc" id="L259">                                sendMap(sender, &quot;steps.gui&quot;);</span>
+
+<span class="nc" id="L261">                                break;</span>
+
+                            default:
+<span class="nc" id="L264">                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                        messages.getString(path+&quot;steps.typeNotFound&quot;).replaceAll(&quot;%type%&quot;, type)));
+
+<span class="nc" id="L267">                                sender.sendMessage(prefix+&quot;&quot;);</span>
+
+<span class="nc" id="L269">                                sendMap(sender, &quot;steps.type&quot;);</span>
+
+                                break;
+                        }
+
+<span class="nc" id="L274">                        break;</span>
+
+                    case &quot;slots&quot;:
+                        try {
+<span class="nc" id="L278">                            int slots = Integer.valueOf(argsToString(args));</span>
+
+<span class="nc bnc" id="L280" title="All 2 branches missed.">                            if(slots % 9 == 0) {</span>
+<span class="nc" id="L281">                                data.get(sender).put(&quot;slots&quot;, String.valueOf(slots));</span>
+
+<span class="nc" id="L283">                                sendMap(sender, &quot;steps.finish&quot;);</span>
+
+                            } else {
+<span class="nc" id="L286">                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                        messages.getString(path+&quot;steps.slotsError&quot;)));
+                            }
+
+<span class="nc" id="L290">                        } catch (NumberFormatException e) {</span>
+<span class="nc" id="L291">                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                    messages.getString(path+&quot;steps.slotsError&quot;)));
+<span class="nc" id="L293">                        }</span>
+
+<span class="nc" id="L295">                        break;</span>
+
+                    case &quot;gui&quot;:
+<span class="nc" id="L298">                        String value = argsToString(args);</span>
+
+<span class="nc bnc" id="L300" title="All 9 branches missed.">                        switch (value) {</span>
+                            case &quot;true&quot;:
+                            case &quot;false&quot;:
+<span class="nc" id="L303">                                data.get(sender).put(&quot;gui&quot;, value);</span>
+
+<span class="nc" id="L305">                                sendMap(sender, &quot;steps.finish&quot;);</span>
+
+<span class="nc" id="L307">                                break;</span>
+
+                            default:
+<span class="nc" id="L310">                                sendMap(sender, &quot;steps.gui&quot;);</span>
+
+                                break;
+                        }
+
+<span class="nc" id="L315">                        break;</span>
+
+                    case &quot;finish&quot;:
+                        try {
+<span class="nc bnc" id="L319" title="All 10 branches missed.">                            switch (args[1]) {</span>
+                                case &quot;true&quot;:
+<span class="nc" id="L321">                                    HashMap&lt;String, String&gt; finishedData = data.get(sender);</span>
+
+<span class="nc" id="L323">                                    String finishedName = finishedData.get(&quot;name&quot;);</span>
+<span class="nc" id="L324">                                    String finishedPath = &quot;BackPacks.&quot;+finishedName+&quot;.&quot;;</span>
+
+<span class="nc" id="L326">                                    String finishedType = finishedData.get(&quot;type&quot;);</span>
+
+<span class="nc" id="L328">                                    config.set(finishedPath+&quot;name&quot;, finishedData.get(&quot;displayname&quot;));</span>
+<span class="nc" id="L329">                                    config.set(finishedPath+&quot;type&quot;, finishedType);</span>
+
+<span class="nc" id="L331">                                    String[] description = finishedData.get(&quot;description&quot;).split(&quot;;&quot;);</span>
+
+<span class="nc" id="L333">                                    int descLine = 1;</span>
+
+<span class="nc bnc" id="L335" title="All 2 branches missed.">                                    for(String descriptionLine : description) {</span>
+<span class="nc" id="L336">                                        config.set(finishedPath+&quot;description.&quot;+descLine, descriptionLine);</span>
+
+<span class="nc" id="L338">                                        descLine++;</span>
+                                    }
+
+<span class="nc bnc" id="L341" title="All 10 branches missed.">                                    switch (finishedType) {</span>
+                                        case &quot;normal&quot;:
+<span class="nc" id="L343">                                            config.set(finishedPath+&quot;slots&quot;, Integer.valueOf(finishedData.get(&quot;slots&quot;)));</span>
+
+<span class="nc" id="L345">                                            break;</span>
+
+                                        case &quot;furnace&quot;:
+<span class="nc" id="L348">                                            config.set(finishedPath+&quot;gui.enabled&quot;, finishedData.get(&quot;gui&quot;));</span>
+
+                                            break;
+                                    }
+
+<span class="nc" id="L353">                                    config.set(finishedPath+&quot;material&quot;, finishedData.get(&quot;material&quot;));</span>
+
+<span class="nc" id="L355">                                    String rawCrafting = finishedData.get(&quot;crafting&quot;);</span>
+
+<span class="nc bnc" id="L357" title="All 2 branches missed.">                                    if(!rawCrafting.equals(&quot;disabled&quot;)) {</span>
+<span class="nc" id="L358">                                        String[] crafting = rawCrafting.split(&quot;;&quot;);</span>
+
+<span class="nc" id="L360">                                        int line = 1;</span>
+
+<span class="nc bnc" id="L362" title="All 2 branches missed.">                                        for(String craftingLine : crafting) {</span>
+<span class="nc" id="L363">                                            config.set(finishedPath+&quot;crafting.&quot;+line, craftingLine);</span>
+
+<span class="nc" id="L365">                                            line++;</span>
+                                        }
+
+<span class="nc" id="L368">                                        String[] finishedMaterials = finishedData.get(&quot;materials&quot;).split(&quot;;&quot;);</span>
+
+<span class="nc bnc" id="L370" title="All 2 branches missed.">                                        for(String materialLine : finishedMaterials) {</span>
+<span class="nc" id="L371">                                            String[] parts = materialLine.split(&quot;:&quot;);</span>
+
+<span class="nc" id="L373">                                            config.set(finishedPath+&quot;crafting.materials.&quot;+(parts[0]),</span>
+                                                    parts[1]);
+                                        }
+
+<span class="nc" id="L377">                                    } else {</span>
+<span class="nc" id="L378">                                        config.set(finishedPath+&quot;crafting.enabled&quot;, false);</span>
+                                    }
+
+<span class="nc" id="L381">                                    int number = 1;</span>
+
+                                    try {
+<span class="nc bnc" id="L384" title="All 2 branches missed.">                                        while(!config.getString(&quot;BackPacks.enabled.&quot;+number).equals(&quot;&quot;)) {</span>
+<span class="nc" id="L385">                                            number++;</span>
+                                        }
+
+<span class="nc" id="L388">                                    } catch (NullPointerException e) {</span>
+<span class="nc" id="L389">                                        config.set(&quot;BackPacks.enabled.&quot;+number, finishedName);</span>
+<span class="nc" id="L390">                                    }</span>
+
+                                    try {
+<span class="nc" id="L393">                                        config.save(new File(main.getDataFolder(), &quot;config.yml&quot;));</span>
+
+<span class="nc" id="L395">                                        Map&lt;String, Object&gt; syntaxError = messages.getConfigurationSection(path+&quot;steps.finishTrue&quot;)</span>
+                                                .getValues(true);
+
+<span class="nc bnc" id="L398" title="All 2 branches missed.">                                        for(Map.Entry&lt;String, Object&gt; error : syntaxError.entrySet()) {</span>
+<span class="nc" id="L399">                                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                                    String.valueOf(error.getValue()).replaceAll(&quot;%backpack%&quot;, finishedName)));
+<span class="nc" id="L401">                                        }</span>
+
+<span class="nc" id="L403">                                    } catch (IOException e) {</span>
+<span class="nc" id="L404">                                        e.printStackTrace();</span>
+<span class="nc" id="L405">                                    }</span>
+
+<span class="nc" id="L407">                                    break;</span>
+
+                                case &quot;false&quot;:
+<span class="nc" id="L410">                                    String backpack = data.get(sender).get(&quot;name&quot;);</span>
+
+<span class="nc" id="L412">                                    data.remove(sender);</span>
+
+<span class="nc" id="L414">                                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                            messages.getString(path+&quot;steps.finishFalse&quot;)
+                                                    .replaceAll(&quot;%backpack%&quot;, backpack)));
+
+<span class="nc" id="L418">                                    break;</span>
+
+                                default:
+<span class="nc" id="L421">                                    sendMap(sender, &quot;steps.finish&quot;);</span>
+
+                                    break;
+                            }
+
+<span class="nc" id="L426">                        } catch (NullPointerException e) {</span>
+<span class="nc" id="L427">                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                    messages.getString(path+&quot;steps.finishNotSet&quot;)));
+<span class="nc" id="L429">                        }</span>
+
+<span class="nc" id="L431">                        break;</span>
+
+                    default:
+<span class="nc" id="L434">                        sendMap(sender, &quot;syntaxError&quot;);</span>
+
+                        break;
+                }
+
+<span class="nc bnc" id="L439" title="All 2 branches missed.">            }  else if(args.length == 1) {</span>
+<span class="nc" id="L440">                String arg = args[0].toLowerCase();</span>
+
+<span class="nc bnc" id="L442" title="All 39 branches missed.">                switch (arg) {</span>
+                    case &quot;displayname&quot;:
+<span class="nc" id="L444">                        sendMap(sender, &quot;steps.displayName&quot;);</span>
+
+<span class="nc" id="L446">                        break;</span>
+
+                    case &quot;description&quot;:
+                    case &quot;material&quot;:
+                    case &quot;crafting&quot;:
+                    case &quot;materials&quot;:
+                    case &quot;type&quot;:
+                    case &quot;slots&quot;:
+                    case &quot;gui&quot;:
+                    case &quot;finish&quot;:
+<span class="nc" id="L456">                        sendMap(sender, &quot;steps.&quot;+arg);</span>
+
+<span class="nc" id="L458">                        break;</span>
+
+                    case &quot;item&quot;:
+<span class="nc bnc" id="L461" title="All 2 branches missed.">                        if(sender instanceof Player) {</span>
+<span class="nc" id="L462">                            Player p = (Player) sender;</span>
+
+<span class="nc" id="L464">                            ArrayList&lt;String&gt; missingHere = new ArrayList&lt;&gt;(Arrays.asList(&quot;displayname&quot;,</span>
+                                    &quot;description&quot;, &quot;material&quot;));
+
+                            try {
+<span class="nc" id="L468">                                HashMap&lt;String, String&gt; finishedData = data.get(sender);</span>
+
+<span class="nc" id="L470">                                String displayname = ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                        finishedData.get(&quot;displayname&quot;));
+
+<span class="nc" id="L473">                                missingHere.remove(&quot;displayname&quot;);</span>
+
+<span class="nc" id="L475">                                String description = ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                        finishedData.get(&quot;description&quot;)+&quot;;;&quot;+messages.getString(path+&quot;steps.item.extraDescription&quot;));
+
+<span class="nc" id="L478">                                missingHere.remove(&quot;description&quot;);</span>
+
+<span class="nc" id="L480">                                ItemStack item = new ItemStack(Material.valueOf(finishedData.get(&quot;material&quot;)), 1);</span>
+
+<span class="nc" id="L482">                                missingHere.remove(&quot;material&quot;);</span>
+
+<span class="nc" id="L484">                                ItemMeta meta = item.getItemMeta();</span>
+
+<span class="nc" id="L486">                                meta.setDisplayName(displayname);</span>
+
+<span class="nc" id="L488">                                meta.setLore(Arrays.asList(description.split(&quot;;&quot;)));</span>
+
+<span class="nc" id="L490">                                item.setItemMeta(meta);</span>
+
+<span class="nc" id="L492">                                p.getInventory().addItem(item);</span>
+
+<span class="nc" id="L494">                            } catch (NullPointerException e) {</span>
+<span class="nc" id="L495">                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                        messages.getString(path+&quot;steps.item.notSet&quot;)));
+
+<span class="nc" id="L498">                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                        messages.getString(path+&quot;steps.item.missing&quot;)
+                                                .replaceAll(&quot;%values%&quot;, arrayListToString(missingHere))));
+<span class="nc" id="L501">                            }</span>
+
+<span class="nc" id="L503">                        } else {</span>
+<span class="nc" id="L504">                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                    messages.getString(&quot;Help.onlyPlayers&quot;)));
+                        }
+<span class="nc" id="L507">                        break;</span>
+
+                    case &quot;preview&quot;:
+<span class="nc" id="L510">                        ArrayList&lt;String&gt; missingHere = new ArrayList&lt;&gt;(Arrays.asList(&quot;name&quot;, &quot;displayname&quot;,</span>
+                                &quot;description&quot;, &quot;material&quot;, &quot;crafting&quot;, &quot;materials&quot;, &quot;type&quot;));
+
+                        try {
+<span class="nc" id="L514">                            HashMap&lt;String, String&gt; finishedData = data.get(sender);</span>
+
+<span class="nc" id="L516">                            String name = finishedData.get(&quot;name&quot;);</span>
+
+<span class="nc" id="L518">                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                    messages.getString(path+&quot;steps.preview.name&quot;).replaceAll(&quot;%name%&quot;, name)));
+
+<span class="nc" id="L521">                            missingHere.remove(&quot;name&quot;);</span>
+
+<span class="nc" id="L523">                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                    messages.getString(path+&quot;steps.preview.displayname&quot;).replaceAll(&quot;%name%&quot;,
+                                            finishedData.get(&quot;displayname&quot;))));
+
+<span class="nc" id="L527">                            missingHere.remove(&quot;displayname&quot;);</span>
+
+<span class="nc" id="L529">                            String[] description = finishedData.get(&quot;description&quot;).split(&quot;;&quot;);</span>
+
+<span class="nc" id="L531">                            missingHere.remove(&quot;description&quot;);</span>
+
+<span class="nc" id="L533">                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                    messages.getString(path+&quot;steps.preview.description.title&quot;)));
+
+<span class="nc" id="L536">                            int descLine = 1;</span>
+
+<span class="nc bnc" id="L538" title="All 2 branches missed.">                            for(String descriptionLine : description) {</span>
+<span class="nc" id="L539">                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                        messages.getString(path+&quot;steps.preview.description.line&quot;)
+                                                .replaceAll(&quot;%lineNumber%&quot;, String.valueOf(descLine))
+                                                .replaceAll(&quot;%content%&quot;,descriptionLine)));
+
+<span class="nc" id="L544">                                descLine++;</span>
+                            }
+
+<span class="nc" id="L547">                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                    messages.getString(path+&quot;steps.preview.material&quot;)
+                                            .replaceAll(&quot;%material%&quot;, finishedData.get(&quot;material&quot;))));
+
+<span class="nc" id="L551">                            missingHere.remove(&quot;material&quot;);</span>
+
+<span class="nc" id="L553">                            String rawCrafting = finishedData.get(&quot;crafting&quot;);</span>
+
+<span class="nc bnc" id="L555" title="All 2 branches missed.">                            if(!rawCrafting.equals(&quot;disabled&quot;)) {</span>
+<span class="nc" id="L556">                                String[] crafting = rawCrafting.split(&quot;;&quot;);</span>
+
+<span class="nc" id="L558">                                missingHere.remove(&quot;crafting&quot;);</span>
+
+<span class="nc" id="L560">                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                        messages.getString(path+&quot;steps.preview.crafting.title&quot;)));
+
+<span class="nc" id="L563">                                int line = 1;</span>
+
+<span class="nc bnc" id="L565" title="All 2 branches missed.">                                for(String craftingLine : crafting) {</span>
+<span class="nc" id="L566">                                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                            messages.getString(path+&quot;steps.preview.crafting.line&quot;)
+                                                    .replaceAll(&quot;%lineNumber%&quot;, String.valueOf(line))
+                                                    .replaceAll(&quot;%content%&quot;, craftingLine)));
+
+<span class="nc" id="L571">                                    line++;</span>
+                                }
+
+<span class="nc" id="L574">                                String[] finishedMaterials = finishedData.get(&quot;materials&quot;).split(&quot;;&quot;);</span>
+
+<span class="nc" id="L576">                                missingHere.remove(&quot;materials&quot;);</span>
+
+<span class="nc" id="L578">                                sender.sendMessage(prefix);</span>
+
+<span class="nc" id="L580">                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                        messages.getString(path+&quot;steps.preview.crafting.materials.title&quot;)));
+
+<span class="nc bnc" id="L583" title="All 2 branches missed.">                                for(String materialLine : finishedMaterials) {</span>
+<span class="nc" id="L584">                                    String[] parts = materialLine.split(&quot;:&quot;);</span>
+
+<span class="nc" id="L586">                                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                            messages.getString(path+&quot;steps.preview.crafting.materials.line&quot;)
+                                                    .replaceAll(&quot;%line%&quot;, parts[0])
+                                                    .replaceAll(&quot;%material%&quot;, parts[1])));
+
+                                }
+
+<span class="nc" id="L593">                            } else {</span>
+<span class="nc" id="L594">                                missingHere.remove(&quot;crafting&quot;);</span>
+<span class="nc" id="L595">                                missingHere.remove(&quot;materials&quot;);</span>
+
+<span class="nc" id="L597">                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                        messages.getString(path+&quot;steps.preview.crafting.title&quot;)+
+                                                &quot; &amp;c&quot;+rawCrafting));
+                            }
+
+<span class="nc" id="L602">                            String type = finishedData.get(&quot;type&quot;);</span>
+
+<span class="nc" id="L604">                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                    messages.getString(path+&quot;steps.preview.type&quot;).replaceAll(&quot;%type%&quot;,
+                                            getBackPackColor(type)+type)));
+
+<span class="nc" id="L608">                            missingHere.remove(&quot;type&quot;);</span>
+
+<span class="nc bnc" id="L610" title="All 10 branches missed.">                            switch (type) {</span>
+                                case &quot;normal&quot;:
+<span class="nc" id="L612">                                    missingHere.add(&quot;slots&quot;);</span>
+
+<span class="nc" id="L614">                                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                            messages.getString(path+&quot;steps.preview.slots&quot;)
+                                                    .replaceAll(&quot;%slots%&quot;, finishedData.get(&quot;slots&quot;))));
+
+<span class="nc" id="L618">                                    break;</span>
+
+                                case &quot;furnace&quot;:
+<span class="nc" id="L621">                                    missingHere.add(&quot;slots&quot;);</span>
+
+<span class="nc" id="L623">                                    Boolean gui = Boolean.valueOf(finishedData.get(&quot;gui&quot;));</span>
+
+<span class="nc" id="L625">                                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                            messages.getString(path+&quot;steps.preview.gui&quot;)
+                                                    .replaceAll(&quot;%gui%&quot;, getColor(gui)+String.valueOf(gui))));
+
+                                    break;
+                            }
+
+<span class="nc" id="L632">                        } catch (NullPointerException e) {</span>
+<span class="nc" id="L633">                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                    messages.getString(path+&quot;steps.preview.notSet&quot;)));
+
+<span class="nc" id="L636">                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                    messages.getString(path+&quot;steps.preview.missing&quot;)
+                                            .replaceAll(&quot;%values%&quot;, arrayListToString(missingHere))));
+<span class="nc" id="L639">                        }</span>
+
+<span class="nc" id="L641">                        break;</span>
+
+                    default:
+<span class="nc" id="L644">                        sendMap(sender, &quot;syntaxError&quot;);</span>
+
+                        break;
+                }
+
+<span class="nc" id="L649">            } else {</span>
+<span class="nc" id="L650">                sendMap(sender, &quot;syntaxError&quot;);</span>
+            }
+
+        } else {
+<span class="nc" id="L654">            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                    messages.getString(&quot;Help.noPermission&quot;)));
+        }
+
+<span class="nc" id="L658">        return true;</span>
+    }
+
+    private String getBackPackColor(String type) {
+<span class="nc bnc" id="L662" title="All 18 branches missed.">        switch (type) {</span>
+            case &quot;normal&quot;:
+<span class="nc" id="L664">                return &quot;&amp;a&quot;;</span>
+
+            case &quot;ender&quot;:
+<span class="nc" id="L667">                return &quot;&amp;d&quot;;</span>
+
+            case &quot;crafting&quot;:
+<span class="nc" id="L670">                return &quot;&amp;c&quot;;</span>
+
+            case &quot;furnace&quot;:
+<span class="nc" id="L673">                return &quot;&amp;8&quot;;</span>
+        }
+
+<span class="nc" id="L676">        return &quot;&quot;;</span>
+    }
+
+    private String getColor(Boolean bool) {
+<span class="nc bnc" id="L680" title="All 2 branches missed.">        if(bool) {</span>
+<span class="nc" id="L681">            return &quot;&amp;a&quot;;</span>
+        }
+
+<span class="nc" id="L684">        return &quot;&amp;c&quot;;</span>
+    }
+
+    private String argsToString(String[] args) {
+<span class="nc" id="L688">        StringBuilder builder = new StringBuilder();</span>
+
+<span class="nc bnc" id="L690" title="All 2 branches missed.">        for(int i = 0; i &lt; args.length; i++) {</span>
+<span class="nc bnc" id="L691" title="All 2 branches missed.">            if(i == 1) {</span>
+<span class="nc" id="L692">                builder.append(args[i]);</span>
+
+<span class="nc bnc" id="L694" title="All 2 branches missed.">            } else if(i &gt; 1) {</span>
+<span class="nc" id="L695">                builder.append(&quot; &quot;).append(args[i]);</span>
+            }
+        }
+
+<span class="nc" id="L699">        return builder.toString();</span>
+    }
+
+    private String arrayListToString(ArrayList&lt;String&gt; list) {
+<span class="nc" id="L703">        StringBuilder builder = new StringBuilder();</span>
+
+<span class="nc bnc" id="L705" title="All 2 branches missed.">        for(int i = 0; i &lt; list.size(); i++) {</span>
+<span class="nc bnc" id="L706" title="All 2 branches missed.">            if(i == 0) {</span>
+<span class="nc" id="L707">                builder.append(list.get(i));</span>
+
+            } else {
+<span class="nc" id="L710">                builder.append(&quot;, &quot;).append(list.get(i));</span>
+            }
+        }
+
+<span class="nc" id="L714">        return builder.toString();</span>
+    }
+
+    private void sendMap(CommandSender sender, String specificPath) {
+<span class="nc" id="L718">        Map&lt;String, Object&gt; syntaxError = messages.getConfigurationSection(path+specificPath).getValues(true);</span>
+
+<span class="nc bnc" id="L720" title="All 2 branches missed.">        for(Map.Entry&lt;String, Object&gt; error : syntaxError.entrySet()) {</span>
+<span class="nc" id="L721">            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;', (String) error.getValue()));</span>
+<span class="nc" id="L722">        }</span>
+<span class="nc" id="L723">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EnchantGlow.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BackPacks</a> &gt; <a href="index.source.html" class="el_package">at.michael1011.backpacks</a> &gt; <span class="el_source">EnchantGlow.java</span></div><h1>EnchantGlow.java</h1><pre class="source lang-java linenums">package at.michael1011.backpacks;
+
+import java.lang.reflect.Field;
+
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.enchantments.EnchantmentTarget;
+import org.bukkit.enchantments.EnchantmentWrapper;
+import org.bukkit.inventory.ItemStack;
+
+public class EnchantGlow extends EnchantmentWrapper {
+
+    static Enchantment glow;
+    static Boolean createdNew;
+
+    EnchantGlow() {
+<span class="fc" id="L16">        super(255);</span>
+<span class="fc" id="L17">    }</span>
+
+    @Override
+    public boolean canEnchantItem(ItemStack item) {
+<span class="fc" id="L21">        return true;</span>
+    }
+
+    @Override
+    public boolean conflictsWith(Enchantment other) {
+<span class="fc" id="L26">        return false;</span>
+    }
+
+    @Override
+    public EnchantmentTarget getItemTarget() {
+<span class="fc" id="L31">        return null;</span>
+    }
+
+    @Override
+    public int getMaxLevel() {
+<span class="fc" id="L36">        return 10;</span>
+    }
+
+    @Override
+    public String getName() {
+<span class="fc" id="L41">        return &quot;Glow&quot;;</span>
+    }
+
+    @Override
+    public int getStartLevel() {
+<span class="fc" id="L46">        return 1;</span>
+    }
+
+    static Enchantment getGlow() {
+<span class="fc bfc" id="L50" title="All 2 branches covered.">        if(glow != null) {</span>
+<span class="fc" id="L51">            createdNew = false;</span>
+
+<span class="fc" id="L53">            return glow;</span>
+        }
+
+        try {
+<span class="fc" id="L57">            Field f = Enchantment.class.getDeclaredField(&quot;acceptingNew&quot;);</span>
+<span class="fc" id="L58">            f.setAccessible(true);</span>
+<span class="fc" id="L59">            f.set(null , true);</span>
+
+<span class="nc" id="L61">        } catch (Exception e) {</span>
+<span class="nc" id="L62">            e.printStackTrace();</span>
+<span class="fc" id="L63">        }</span>
+
+<span class="fc" id="L65">        glow = new EnchantGlow();</span>
+
+<span class="fc" id="L67">        Enchantment.registerEnchantment(glow);</span>
+<span class="fc" id="L68">        Enchantment.stopAcceptingRegistrations();</span>
+
+<span class="fc" id="L70">        createdNew = true;</span>
+
+<span class="fc" id="L72">        return glow;</span>
+    }
+
+    public static void addGlow(ItemStack item) {
+<span class="nc" id="L76">        Enchantment glow = getGlow();</span>
+
+<span class="nc" id="L78">        item.addEnchantment(glow , 1);</span>
+<span class="nc" id="L79">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

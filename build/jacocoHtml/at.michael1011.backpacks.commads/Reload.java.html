@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Reload.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BackPacks</a> &gt; <a href="index.source.html" class="el_package">at.michael1011.backpacks.commads</a> &gt; <span class="el_source">Reload.java</span></div><h1>Reload.java</h1><pre class="source lang-java linenums">package at.michael1011.backpacks.commads;
+
+import at.michael1011.backpacks.Crafting;
+import at.michael1011.backpacks.Main;
+import at.michael1011.backpacks.SQL;
+import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.command.PluginCommand;
+
+import java.sql.SQLException;
+
+import static at.michael1011.backpacks.Main.*;
+
+public class Reload implements CommandExecutor {
+
+    private Main main;
+
+<span class="nc" id="L20">    public Reload(Main main) {</span>
+<span class="nc" id="L21">        this.main = main;</span>
+
+<span class="nc" id="L23">        PluginCommand command = main.getCommand(&quot;bpreload&quot;);</span>
+
+<span class="nc" id="L25">        command.setExecutor(this);</span>
+<span class="nc" id="L26">    }</span>
+
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+<span class="nc bnc" id="L30" title="All 2 branches missed.">        if(sender.hasPermission(&quot;backpacks.reload&quot;)) {</span>
+            try {
+<span class="nc bnc" id="L32" title="All 2 branches missed.">                if(SQL.checkCon()) {</span>
+<span class="nc" id="L33">                    SQL.closeCon();</span>
+                }
+
+<span class="nc" id="L36">                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                        messages.getString(&quot;MySQL.closedConnection&quot;)));
+
+<span class="nc" id="L39">                Main.loadFiles(main);</span>
+
+<span class="nc" id="L41">                SQL.createCon(config.getString(&quot;MySQL.host&quot;), config.getString(&quot;MySQL.port&quot;),</span>
+                        config.getString(&quot;MySQL.database&quot;), config.getString(&quot;MySQL.username&quot;),
+                        config.getString(&quot;MySQL.password&quot;));
+
+<span class="nc bnc" id="L45" title="All 2 branches missed.">                if(SQL.checkCon()) {</span>
+<span class="nc" id="L46">                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                            messages.getString(&quot;MySQL.connected&quot;)));
+
+<span class="nc" id="L49">                    sender.sendMessage(prefix);</span>
+
+<span class="nc" id="L51">                    Crafting.initCrafting(sender);</span>
+
+<span class="nc" id="L53">                    sender.sendMessage(prefix);</span>
+
+<span class="nc" id="L55">                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                            messages.getString(&quot;Help.bpreload.successful&quot;)));
+
+                } else {
+<span class="nc" id="L59">                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                            messages.getString(&quot;MySQL.failedToConnect&quot;)));
+
+<span class="nc" id="L62">                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                            messages.getString(&quot;MySQL.failedToConnectCheck&quot;)));
+                }
+
+<span class="nc" id="L66">            } catch (SQLException e) {</span>
+<span class="nc" id="L67">                e.printStackTrace();</span>
+<span class="nc" id="L68">            }</span>
+
+        } else {
+<span class="nc" id="L71">            sender.sendMessage(prefix+ ChatColor.translateAlternateColorCodes('&amp;',</span>
+                    messages.getString(&quot;Help.noPermission&quot;)));
+        }
+
+<span class="nc" id="L75">        return true;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

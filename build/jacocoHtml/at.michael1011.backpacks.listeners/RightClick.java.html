@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RightClick.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BackPacks</a> &gt; <a href="index.source.html" class="el_package">at.michael1011.backpacks.listeners</a> &gt; <span class="el_source">RightClick.java</span></div><h1>RightClick.java</h1><pre class="source lang-java linenums">package at.michael1011.backpacks.listeners;
+
+import at.michael1011.backpacks.Crafting;
+import at.michael1011.backpacks.EnchantGlow;
+import at.michael1011.backpacks.Main;
+import at.michael1011.backpacks.SQL;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.PotionMeta;
+import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.potion.PotionData;
+import org.bukkit.potion.PotionType;
+
+import java.lang.reflect.InvocationTargetException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static at.michael1011.backpacks.Crafting.slots;
+import static at.michael1011.backpacks.Crafting.type;
+import static at.michael1011.backpacks.Main.*;
+
+public class RightClick implements Listener {
+
+<span class="nc" id="L39">    static final HashMap&lt;Player, String&gt; openInvs = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L40">    static final HashMap&lt;Player, String[]&gt; openInvsCommand = new HashMap&lt;&gt;();</span>
+
+<span class="nc" id="L42">    static final HashMap&lt;Player, String&gt; openFurnaces = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L43">    static final HashMap&lt;Player, Inventory&gt; openFurnacesInvs = new HashMap&lt;&gt;();</span>
+
+<span class="nc" id="L45">    public RightClick(Main main) {</span>
+<span class="nc" id="L46">        main.getServer().getPluginManager().registerEvents(this, main);</span>
+<span class="nc" id="L47">    }</span>
+
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void rightClickEvent(PlayerInteractEvent e) {
+<span class="nc" id="L51">        Action action = e.getAction();</span>
+
+<span class="nc bnc" id="L53" title="All 4 branches missed.">        if(action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK) {</span>
+<span class="nc bnc" id="L54" title="All 2 branches missed.">            if(action == Action.RIGHT_CLICK_BLOCK) {</span>
+<span class="nc" id="L55">                Material block = e.getClickedBlock().getType();</span>
+
+<span class="nc bnc" id="L57" title="All 18 branches missed.">                if(block.equals(Material.WORKBENCH) || block.equals(Material.FURNACE) || block.equals(Material.BURNING_FURNACE) ||</span>
+                        block.equals(Material.CHEST) || block.equals(Material.ENDER_CHEST) || block.equals(Material.ENCHANTMENT_TABLE) ||
+                        block.equals(Material.ANVIL) || block.equals(Material.HOPPER) || block.equals(Material.DISPENSER)) {
+<span class="nc" id="L60">                    return;</span>
+                }
+            }
+
+<span class="nc" id="L64">            final ItemStack item = e.getItem();</span>
+
+<span class="nc bnc" id="L66" title="All 2 branches missed.">            if(item != null) {</span>
+<span class="nc" id="L67">                String backPack = Crafting.loreMap.get(item.getItemMeta().getLore());</span>
+
+<span class="nc bnc" id="L69" title="All 2 branches missed.">                if(backPack != null) {</span>
+<span class="nc" id="L70">                    final Player p = e.getPlayer();</span>
+
+<span class="nc bnc" id="L72" title="All 2 branches missed.">                    if(p.hasPermission(&quot;backpacks.use.&quot;+backPack)) {</span>
+<span class="nc" id="L73">                        final String finalBackPack = backPack;</span>
+
+<span class="nc" id="L75">                        final String trimmedID = p.getUniqueId().toString().replaceAll(&quot;-&quot;, &quot;&quot;);</span>
+
+<span class="nc bnc" id="L77" title="All 18 branches missed.">                        switch (type.get(backPack)) {</span>
+                            case &quot;normal&quot;:
+<span class="nc" id="L79">                                SQL.checkTable(&quot;bp_&quot;+backPack+&quot;_&quot;+trimmedID, new SQL.Callback&lt;Boolean&gt;() {</span>
+                                    @Override
+                                    public void onSuccess(Boolean rs) {
+<span class="nc bnc" id="L82" title="All 2 branches missed.">                                        if(rs) {</span>
+<span class="nc" id="L83">                                            SQL.getResult(&quot;SELECT * FROM bp_&quot;+finalBackPack+&quot;_&quot;+trimmedID, new SQL.Callback&lt;ResultSet&gt;() {</span>
+                                                @Override
+                                                public void onSuccess(ResultSet rs) {
+<span class="nc" id="L86">                                                    p.openInventory(getInv(rs, p, finalBackPack, item.getItemMeta().getDisplayName(), true, null));</span>
+<span class="nc" id="L87">                                                }</span>
+
+                                                @Override
+<span class="nc" id="L90">                                                public void onFailure(Throwable e) {}</span>
+
+                                            });
+
+                                        } else {
+<span class="nc" id="L95">                                            SQL.query(&quot;CREATE TABLE IF NOT EXISTS bp_&quot;+finalBackPack+&quot;_&quot;+trimmedID+&quot;(position INT(100), material VARCHAR(100), &quot;+</span>
+                                                    &quot;durability INT(100), amount INT(100), name VARCHAR(100), lore VARCHAR(1000), enchantments VARCHAR(1000), &quot;+
+<span class="nc" id="L97">                                                    &quot;potion VARCHAR(1000))&quot;, new SQL.Callback&lt;Boolean&gt;() {</span>
+                                                @Override
+                                                public void onSuccess(Boolean rs) {
+<span class="nc" id="L100">                                                    openInvs.put(p, finalBackPack);</span>
+
+<span class="nc" id="L102">                                                    p.openInventory(Bukkit.getServer().createInventory(p, slots.get(finalBackPack),</span>
+                                                            item.getItemMeta().getDisplayName()));
+<span class="nc" id="L104">                                                }</span>
+
+                                                @Override
+<span class="nc" id="L107">                                                public void onFailure(Throwable e) {}</span>
+
+                                            });
+
+                                        }
+
+<span class="nc" id="L113">                                    }</span>
+
+                                    @Override
+<span class="nc" id="L116">                                    public void onFailure(Throwable e) {}</span>
+
+                                });
+
+<span class="nc" id="L120">                                break;</span>
+
+                            case &quot;ender&quot;:
+<span class="nc" id="L123">                                p.openInventory(p.getEnderChest());</span>
+
+<span class="nc" id="L125">                                break;</span>
+
+                            case &quot;crafting&quot;:
+<span class="nc" id="L128">                                p.openWorkbench(p.getLocation(), true);</span>
+
+<span class="nc" id="L130">                                break;</span>
+
+                            case &quot;furnace&quot;:
+<span class="nc bnc" id="L133" title="All 2 branches missed.">                                if(Crafting.furnaceGui.containsKey(finalBackPack)) {</span>
+<span class="nc bnc" id="L134" title="All 2 branches missed.">                                    if(Crafting.furnaceGui.get(finalBackPack).equals(&quot;true&quot;)) {</span>
+<span class="nc" id="L135">                                        SQL.getResult(&quot;SELECT * FROM bp_furnaces WHERE uuid='&quot;+trimmedID+&quot;'&quot;, new SQL.Callback&lt;ResultSet&gt;() {</span>
+                                            @Override
+                                            public void onSuccess(ResultSet rs) {
+                                                try {
+<span class="nc" id="L139">                                                    rs.beforeFirst();</span>
+
+<span class="nc bnc" id="L141" title="All 2 branches missed.">                                                    if(rs.next()) {</span>
+<span class="nc" id="L142">                                                        openFurnace(p, finalBackPack, item.getItemMeta().getDisplayName(), Boolean.valueOf(rs.getString(&quot;ores&quot;)),</span>
+                                                                Boolean.valueOf(rs.getString(&quot;food&quot;)), Boolean.valueOf(rs.getString(&quot;autoFill&quot;)), rs.getInt(&quot;coal&quot;));
+
+                                                    } else {
+<span class="nc" id="L146">                                                        final Boolean ores = furnaceGui.getBoolean(&quot;ores.defaultOption&quot;);</span>
+<span class="nc" id="L147">                                                        final Boolean food = furnaceGui.getBoolean(&quot;food.defaultOption&quot;);</span>
+<span class="nc" id="L148">                                                        final Boolean autoFill = furnaceGui.getBoolean(&quot;autoFill.defaultOption&quot;);</span>
+
+<span class="nc" id="L150">                                                        SQL.query(&quot;INSERT INTO bp_furnaces (uuid, ores, food, autoFill, coal) VALUES ('&quot;+trimmedID+&quot;', '&quot;+</span>
+                                                                String.valueOf(ores)+&quot;', '&quot;+
+                                                                String.valueOf(food)+&quot;', '&quot;+
+<span class="nc" id="L153">                                                                String.valueOf(autoFill)+&quot;', '0')&quot;, new SQL.Callback&lt;Boolean&gt;() {</span>
+                                                            @Override
+                                                            public void onSuccess(Boolean rs) {
+<span class="nc" id="L156">                                                                openFurnace(p, finalBackPack, item.getItemMeta().getDisplayName(), ores, food, autoFill, 0);</span>
+<span class="nc" id="L157">                                                            }</span>
+
+                                                            @Override
+<span class="nc" id="L160">                                                            public void onFailure(Throwable e) {}</span>
+
+                                                        });
+                                                    }
+
+<span class="nc" id="L165">                                                    rs.close();</span>
+
+<span class="nc" id="L167">                                                } catch (SQLException e) {</span>
+<span class="nc" id="L168">                                                    e.printStackTrace();</span>
+<span class="nc" id="L169">                                                }</span>
+<span class="nc" id="L170">                                            }</span>
+
+                                            @Override
+<span class="nc" id="L173">                                            public void onFailure(Throwable e) {}</span>
+
+                                        });
+
+                                    }
+
+                                }
+
+                                break;
+                        }
+
+<span class="nc" id="L184">                    } else {</span>
+<span class="nc" id="L185">                        p.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                messages.getString(&quot;Help.noPermission&quot;)));
+                    }
+
+                }
+
+            }
+
+        }
+
+<span class="nc" id="L195">    }</span>
+
+    public static Inventory getInv(ResultSet rs, Player opener, String backPack, String name,
+                                   Boolean openerIsOwner, String ownerID) {
+<span class="nc bnc" id="L199" title="All 2 branches missed.">        if(rs != null) {</span>
+            try {
+<span class="nc" id="L201">                rs.beforeFirst();</span>
+
+<span class="nc" id="L203">                Inventory inv = Bukkit.getServer().createInventory(opener, slots.get(backPack), name);</span>
+
+<span class="nc bnc" id="L205" title="All 2 branches missed.">                while(rs.next()) {</span>
+<span class="nc" id="L206">                    String material = rs.getString(&quot;material&quot;);</span>
+
+<span class="nc" id="L208">                    ItemStack item = new ItemStack(Material.valueOf(material),</span>
+                            rs.getInt(&quot;amount&quot;));
+
+<span class="nc" id="L211">                    item.setDurability((short) rs.getInt(&quot;durability&quot;));</span>
+
+<span class="nc" id="L213">                    ItemMeta meta = item.getItemMeta();</span>
+
+<span class="nc" id="L215">                    String nameM = rs.getString(&quot;name&quot;);</span>
+<span class="nc" id="L216">                    String loreM = rs.getString(&quot;lore&quot;);</span>
+<span class="nc" id="L217">                    String enchantment = rs.getString(&quot;enchantments&quot;);</span>
+<span class="nc" id="L218">                    String potion = rs.getString(&quot;potion&quot;);</span>
+
+<span class="nc bnc" id="L220" title="All 2 branches missed.">                    if(!nameM.equals(&quot;&quot;)) {</span>
+<span class="nc" id="L221">                        meta.setDisplayName(nameM);</span>
+
+<span class="nc" id="L223">                        item.setItemMeta(meta);</span>
+                    }
+
+<span class="nc bnc" id="L226" title="All 2 branches missed.">                    if(!loreM.equals(&quot;&quot;)) {</span>
+<span class="nc" id="L227">                        meta.setLore(Arrays.asList(rs.getString(&quot;lore&quot;).split(&quot;~&quot;)));</span>
+
+<span class="nc" id="L229">                        item.setItemMeta(meta);</span>
+                    }
+
+<span class="nc bnc" id="L232" title="All 2 branches missed.">                    if(!enchantment.equals(&quot;&quot;)) {</span>
+<span class="nc bnc" id="L233" title="All 2 branches missed.">                        if(!enchantment.equals(&quot;MobSpawnerEgg/&quot;)) {</span>
+<span class="nc" id="L234">                            String[] enchantments = enchantment.substring(0, enchantment.length()-1).split(&quot;/&quot;);</span>
+
+<span class="nc bnc" id="L236" title="All 2 branches missed.">                            for(String enchant : enchantments) {</span>
+<span class="nc" id="L237">                                String[] parts = enchant.split(&quot;:&quot;);</span>
+
+<span class="nc" id="L239">                                Enchantment ench = Enchantment.getByName(parts[0]);</span>
+<span class="nc" id="L240">                                int enchLvl = Integer.valueOf(parts[1]);</span>
+
+<span class="nc" id="L242">                                item.addUnsafeEnchantment(ench, enchLvl);</span>
+<span class="nc" id="L243">                                meta.addEnchant(ench, enchLvl, true);</span>
+                            }
+                        }
+                    }
+
+<span class="nc bnc" id="L248" title="All 2 branches missed.">                    if(!potion.equals(&quot;&quot;)) {</span>
+<span class="nc bnc" id="L249" title="All 2 branches missed.">                        if(material.toLowerCase().contains(&quot;potion&quot;)) {</span>
+<span class="nc" id="L250">                            String[] parts = potion.split(&quot;/&quot;);</span>
+
+<span class="nc" id="L252">                            PotionMeta potionM = (PotionMeta) meta;</span>
+
+<span class="nc" id="L254">                            PotionData potionD = new PotionData(PotionType.valueOf(parts[0]), Boolean.parseBoolean(parts[1]),</span>
+                                    Boolean.parseBoolean(parts[2]));
+
+<span class="nc" id="L257">                            potionM.setBasePotionData(potionD);</span>
+
+<span class="nc" id="L259">                            item.setItemMeta(potionM);</span>
+
+<span class="nc bnc" id="L261" title="All 2 branches missed.">                        } else if(material.equals(&quot;MONSTER_EGG&quot;)) {</span>
+                            try {
+<span class="nc" id="L263">                                Object nmsStack = Class.forName(&quot;org.bukkit.craftbukkit.&quot;+version+&quot;.inventory.CraftItemStack&quot;).getMethod(&quot;asNMSCopy&quot;, ItemStack.class).invoke(null, item);</span>
+<span class="nc" id="L264">                                Object nmsCompound = nmsStack.getClass().getMethod(&quot;getTag&quot;).invoke(nmsStack);</span>
+
+<span class="nc bnc" id="L266" title="All 2 branches missed.">                                if(nmsCompound == null) {</span>
+<span class="nc" id="L267">                                    nmsCompound = Class.forName(&quot;net.minecraft.server.&quot;+version+&quot;.NBTTagCompound&quot;).getConstructor().newInstance();</span>
+                                }
+
+<span class="nc" id="L270">                                Object compound = nmsCompound.getClass().getConstructor().newInstance();</span>
+
+<span class="nc" id="L272">                                compound.getClass().getMethod(&quot;setString&quot;, String.class, String.class).invoke(compound, &quot;id&quot;, potion);</span>
+<span class="nc" id="L273">                                nmsCompound.getClass().getMethod(&quot;set&quot;, String.class, Class.forName(&quot;net.minecraft.server.&quot;+version+&quot;.NBTBase&quot;))</span>
+                                        .invoke(nmsCompound, &quot;EntityTag&quot;, compound);
+
+<span class="nc" id="L276">                                Boolean mobSpawnerEgg = enchantment.equals(&quot;MobSpawnerEgg/&quot;);</span>
+
+<span class="nc bnc" id="L278" title="All 2 branches missed.">                                if(mobSpawnerEgg) {</span>
+<span class="nc" id="L279">                                    nmsCompound.getClass().getMethod(&quot;setString&quot;, String.class, String.class)</span>
+                                            .invoke(nmsCompound, &quot;MobSpawnerEgg&quot;, &quot;MobSpawnerEgg&quot;);
+                                }
+
+<span class="nc" id="L283">                                nmsStack.getClass().getMethod(&quot;setTag&quot;, nmsCompound.getClass()).invoke(nmsStack, nmsCompound);</span>
+
+<span class="nc" id="L285">                                item = ((ItemStack) Class.forName(&quot;org.bukkit.craftbukkit.&quot;+version+&quot;.inventory.CraftItemStack&quot;).getMethod(&quot;asBukkitCopy&quot;, nmsStack.getClass()).invoke(null, nmsStack));</span>
+
+<span class="nc bnc" id="L287" title="All 2 branches missed.">                                if(mobSpawnerEgg) {</span>
+<span class="nc" id="L288">                                    EnchantGlow.addGlow(item);</span>
+                                }
+
+<span class="nc" id="L291">                            } catch(InstantiationException | InvocationTargetException | ClassNotFoundException | IllegalAccessException | NoSuchMethodException exception) {</span>
+<span class="nc" id="L292">                                exception.printStackTrace();</span>
+<span class="nc" id="L293">                            }</span>
+
+<span class="nc bnc" id="L295" title="All 2 branches missed.">                        } else if(material.equals(&quot;SKULL_ITEM&quot;)) {</span>
+<span class="nc" id="L296">                            SkullMeta skull = (SkullMeta) item.getItemMeta();</span>
+
+<span class="nc" id="L298">                            skull.setOwner(potion);</span>
+
+<span class="nc" id="L300">                            item.setItemMeta(skull);</span>
+                        }
+
+                    }
+
+<span class="nc" id="L305">                    inv.setItem(rs.getInt(&quot;position&quot;), item);</span>
+<span class="nc" id="L306">                }</span>
+
+<span class="nc" id="L308">                rs.close();</span>
+
+<span class="nc bnc" id="L310" title="All 2 branches missed.">                if(openerIsOwner) {</span>
+<span class="nc" id="L311">                    openInvs.put(opener, backPack);</span>
+
+                } else {
+<span class="nc" id="L314">                    openInvsCommand.put(opener, new String[]{backPack, ownerID});</span>
+                }
+
+<span class="nc" id="L317">                return inv;</span>
+
+<span class="nc" id="L319">            } catch (SQLException e) {</span>
+<span class="nc" id="L320">                e.printStackTrace();</span>
+            }
+
+        }
+
+<span class="nc" id="L325">        return null;</span>
+    }
+
+    private void openFurnace(final Player opener, String backPack, String name, Boolean oresEnabled, Boolean foodEnabled,
+                             Boolean autoFillEnable, int amountCoal) {
+<span class="nc" id="L330">        ItemStack ores = new ItemStack(Material.IRON_ORE);</span>
+<span class="nc" id="L331">        ItemStack food = new ItemStack(Material.POTATO_ITEM);</span>
+<span class="nc" id="L332">        ItemStack autoFill = new ItemStack(Material.FURNACE);</span>
+
+<span class="nc" id="L334">        setMeta(ores, &quot;ores&quot;);</span>
+<span class="nc" id="L335">        setMeta(food, &quot;food&quot;);</span>
+<span class="nc" id="L336">        setMeta(autoFill, &quot;autoFill&quot;);</span>
+
+<span class="nc" id="L338">        ItemStack oresToggle = new ItemStack(Material.WOOL, 1, (byte) getColor(oresEnabled));</span>
+<span class="nc" id="L339">        ItemStack foodToggle = new ItemStack(Material.WOOL, 1, (byte) getColor(foodEnabled));</span>
+<span class="nc" id="L340">        ItemStack autoFillToggle = new ItemStack(Material.WOOL, 1, (byte) getColor(autoFillEnable));</span>
+
+<span class="nc" id="L342">        setToggleMeta(oresToggle, oresEnabled);</span>
+<span class="nc" id="L343">        setToggleMeta(foodToggle, foodEnabled);</span>
+<span class="nc" id="L344">        setToggleMeta(autoFillToggle, autoFillEnable);</span>
+
+<span class="nc" id="L346">        ItemStack blank = new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte) 7);</span>
+
+<span class="nc" id="L348">        ItemMeta blankM = blank.getItemMeta();</span>
+
+<span class="nc" id="L350">        blankM.setDisplayName(ChatColor.GRAY+&quot;&quot;);</span>
+
+<span class="nc" id="L352">        blank.setItemMeta(blankM);</span>
+
+<span class="nc" id="L354">        Inventory inv = Bukkit.getServer().createInventory(opener, 36, name);</span>
+
+<span class="nc bnc" id="L356" title="All 2 branches missed.">        if(amountCoal != 0) {</span>
+<span class="nc" id="L357">            ItemStack coal = new ItemStack(Material.COAL, amountCoal);</span>
+
+<span class="nc" id="L359">            inv.setItem(35, coal);</span>
+        }
+
+<span class="nc bnc" id="L362" title="All 2 branches missed.">        for(int i = 0; i &lt; 35; i++) {</span>
+<span class="nc" id="L363">            inv.setItem(i, blank);</span>
+        }
+
+<span class="nc" id="L366">        inv.setItem(3, ores);</span>
+<span class="nc" id="L367">        inv.setItem(4, food);</span>
+<span class="nc" id="L368">        inv.setItem(5, autoFill);</span>
+
+<span class="nc" id="L370">        inv.setItem(12, oresToggle);</span>
+<span class="nc" id="L371">        inv.setItem(13, foodToggle);</span>
+<span class="nc" id="L372">        inv.setItem(14, autoFillToggle);</span>
+
+<span class="nc" id="L374">        opener.getOpenInventory().close();</span>
+<span class="nc" id="L375">        opener.openInventory(inv);</span>
+
+<span class="nc" id="L377">        openFurnaces.put(opener, backPack);</span>
+<span class="nc" id="L378">        openFurnacesInvs.put(opener, inv);</span>
+<span class="nc" id="L379">    }</span>
+
+    private void setMeta(ItemStack item, String name) {
+<span class="nc" id="L382">        ItemMeta meta = item.getItemMeta();</span>
+
+<span class="nc" id="L384">        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&amp;', furnaceGui.getString(name+&quot;.name&quot;)));</span>
+<span class="nc" id="L385">        meta.setLore(getLore(name+&quot;.description&quot;));</span>
+
+<span class="nc" id="L387">        item.setItemMeta(meta);</span>
+<span class="nc" id="L388">    }</span>
+
+    static void setToggleMeta(ItemStack item, Boolean toggle) {
+<span class="nc" id="L391">        ItemMeta meta = item.getItemMeta();</span>
+
+        String name;
+
+<span class="nc bnc" id="L395" title="All 2 branches missed.">        if(toggle) {</span>
+<span class="nc" id="L396">            name = ChatColor.translateAlternateColorCodes('&amp;', furnaceGui.getString(&quot;enabled&quot;));</span>
+        } else {
+<span class="nc" id="L398">            name = ChatColor.translateAlternateColorCodes('&amp;', furnaceGui.getString(&quot;disabled&quot;));</span>
+        }
+
+<span class="nc" id="L401">        meta.setDisplayName(name);</span>
+
+<span class="nc" id="L403">        item.setItemMeta(meta);</span>
+<span class="nc" id="L404">    }</span>
+
+    private List&lt;String&gt; getLore(String path) {
+<span class="nc" id="L407">        String lore = &quot;&quot;;</span>
+
+<span class="nc" id="L409">        Map&lt;String, Object&gt; loreSec = furnaceGui.getConfigurationSection(path).getValues(true);</span>
+
+<span class="nc bnc" id="L411" title="All 2 branches missed.">        for(Map.Entry&lt;String, Object&gt; ent : loreSec.entrySet()) {</span>
+<span class="nc" id="L412">            lore = lore+&quot;,&quot;+ChatColor.translateAlternateColorCodes('&amp;', ent.getValue().toString());</span>
+<span class="nc" id="L413">        }</span>
+
+<span class="nc" id="L415">        return Arrays.asList(lore.split(&quot;\\s*,\\s*&quot;));</span>
+    }
+
+    static int getColor(Boolean bool) {
+<span class="nc bnc" id="L419" title="All 2 branches missed.">        if(bool) {</span>
+<span class="nc" id="L420">            return 5;</span>
+        }
+
+<span class="nc" id="L423">        return 14;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

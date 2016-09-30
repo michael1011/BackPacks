@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>InventoryClose.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BackPacks</a> &gt; <a href="index.source.html" class="el_package">at.michael1011.backpacks.listeners</a> &gt; <span class="el_source">InventoryClose.java</span></div><h1>InventoryClose.java</h1><pre class="source lang-java linenums">package at.michael1011.backpacks.listeners;
+
+import at.michael1011.backpacks.Main;
+import at.michael1011.backpacks.SQL;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.PotionMeta;
+import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.potion.PotionData;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.List;
+import java.util.Map;
+
+import static at.michael1011.backpacks.Crafting.slots;
+import static at.michael1011.backpacks.Main.version;
+import static at.michael1011.backpacks.listeners.RightClick.*;
+
+public class InventoryClose implements Listener {
+
+<span class="nc" id="L29">    public InventoryClose(Main main) {</span>
+<span class="nc" id="L30">        main.getServer().getPluginManager().registerEvents(this, main);</span>
+<span class="nc" id="L31">    }</span>
+
+    @EventHandler(priority = EventPriority.HIGH)
+    public void invCloseEvent(final InventoryCloseEvent e) {
+<span class="nc" id="L35">        Player p = (Player) e.getPlayer();</span>
+
+<span class="nc" id="L37">        final String backPack = openInvs.get(p);</span>
+<span class="nc" id="L38">        final String[] backPackCommand = openInvsCommand.get(p);</span>
+<span class="nc" id="L39">        final String furnace = openFurnaces.get(p);</span>
+
+<span class="nc" id="L41">        final String trimmedID = p.getUniqueId().toString().replaceAll(&quot;-&quot;, &quot;&quot;);</span>
+
+<span class="nc bnc" id="L43" title="All 2 branches missed.">        if(backPack != null) {</span>
+<span class="nc" id="L44">            openInvs.remove(p);</span>
+
+<span class="nc" id="L46">            saveBackPack(backPack, trimmedID, e.getInventory());</span>
+
+<span class="nc bnc" id="L48" title="All 2 branches missed.">        } else if(backPackCommand != null) {</span>
+<span class="nc" id="L49">            saveBackPack(backPackCommand[0], backPackCommand[1], e.getInventory());</span>
+
+<span class="nc bnc" id="L51" title="All 2 branches missed.">        } else if(furnace != null) {</span>
+<span class="nc" id="L52">            openFurnaces.remove(p);</span>
+<span class="nc" id="L53">            openFurnacesInvs.remove(p);</span>
+
+<span class="nc" id="L55">            int amount = 0;</span>
+
+<span class="nc" id="L57">            ItemStack coal = e.getInventory().getItem(35);</span>
+
+<span class="nc bnc" id="L59" title="All 2 branches missed.">            if(coal != null) {</span>
+<span class="nc" id="L60">                amount = coal.getAmount();</span>
+            }
+
+<span class="nc" id="L63">            SQL.query(&quot;UPDATE bp_furnaces SET coal=&quot;+amount+&quot; WHERE uuid='&quot;+trimmedID+&quot;'&quot;,</span>
+<span class="nc" id="L64">                    new SQL.Callback&lt;Boolean&gt;() {</span>
+                @Override
+<span class="nc" id="L66">                public void onSuccess(Boolean rs) {}</span>
+
+                @Override
+<span class="nc" id="L69">                public void onFailure(Throwable e) {}</span>
+
+            });
+        }
+
+<span class="nc" id="L74">    }</span>
+
+    private void saveBackPack(final String backPack, final String trimmedID, final Inventory inv) {
+<span class="nc" id="L77">        SQL.query(&quot;DELETE FROM bp_&quot;+backPack+&quot;_&quot;+trimmedID, new SQL.Callback&lt;Boolean&gt;() {</span>
+            @Override
+            public void onSuccess(Boolean bool) {
+<span class="nc bnc" id="L80" title="All 2 branches missed.">                for(int i = 0; i &lt; slots.get(backPack); i++) {</span>
+<span class="nc" id="L81">                    ItemStack item = inv.getItem(i);</span>
+
+<span class="nc bnc" id="L83" title="All 2 branches missed.">                    if(item != null) {</span>
+<span class="nc" id="L84">                        Boolean hasItemMeta = item.hasItemMeta();</span>
+
+<span class="nc" id="L86">                        String name = &quot;&quot;;</span>
+<span class="nc" id="L87">                        String lore = &quot;&quot;;</span>
+<span class="nc" id="L88">                        String potion = &quot;&quot;;</span>
+
+<span class="nc" id="L90">                        String material = item.getType().toString();</span>
+
+<span class="nc bnc" id="L92" title="All 2 branches missed.">                        if(hasItemMeta) {</span>
+<span class="nc" id="L93">                            ItemMeta itemM = item.getItemMeta();</span>
+
+<span class="nc bnc" id="L95" title="All 2 branches missed.">                            if(itemM.hasDisplayName()) {</span>
+<span class="nc" id="L96">                                 name = itemM.getDisplayName();</span>
+                            }
+
+<span class="nc" id="L99">                            List&lt;String&gt; rawLore = itemM.getLore();</span>
+
+<span class="nc" id="L101">                            StringBuilder builder = new StringBuilder();</span>
+
+<span class="nc bnc" id="L103" title="All 2 branches missed.">                            if(itemM.hasLore()) {</span>
+<span class="nc bnc" id="L104" title="All 2 branches missed.">                                for(String loreLine : rawLore) {</span>
+<span class="nc" id="L105">                                    builder.append(loreLine).append(&quot;~&quot;);</span>
+<span class="nc" id="L106">                                }</span>
+
+<span class="nc" id="L108">                                lore = builder.toString();</span>
+                            }
+
+                        }
+
+<span class="nc" id="L113">                        StringBuilder enchantments = new StringBuilder();</span>
+
+<span class="nc bnc" id="L115" title="All 2 branches missed.">                        for(Map.Entry&lt;Enchantment, Integer&gt; enchantment : item.getEnchantments().entrySet()) {</span>
+<span class="nc" id="L116">                            enchantments.append(enchantment.getKey().getName()).append(&quot;:&quot;)</span>
+                                    .append(enchantment.getValue()).append(&quot;/&quot;);
+<span class="nc" id="L118">                        }</span>
+
+<span class="nc bnc" id="L120" title="All 2 branches missed.">                        if(material.toLowerCase().contains(&quot;potion&quot;)) {</span>
+<span class="nc" id="L121">                            PotionMeta potionM = (PotionMeta) item.getItemMeta();</span>
+<span class="nc" id="L122">                            PotionData potionD = potionM.getBasePotionData();</span>
+
+<span class="nc bnc" id="L124" title="All 2 branches missed.">                            if(potionD != null) {</span>
+<span class="nc" id="L125">                                potion = potionD.getType().name()+&quot;/&quot;+potionD.isExtended()+&quot;/&quot;+potionD.isUpgraded();</span>
+                            }
+
+<span class="nc bnc" id="L128" title="All 2 branches missed.">                        } else if(material.equals(&quot;MONSTER_EGG&quot;)) {</span>
+                            try {
+<span class="nc" id="L130">                                Object nmsStack = Class.forName(&quot;org.bukkit.craftbukkit.&quot;+version+&quot;.inventory.CraftItemStack&quot;).getMethod(&quot;asNMSCopy&quot;, ItemStack.class)</span>
+                                        .invoke(null, item);
+
+<span class="nc" id="L133">                                Object nmsCompound = nmsStack.getClass().getMethod(&quot;getTag&quot;).invoke(nmsStack);</span>
+
+<span class="nc bnc" id="L135" title="All 2 branches missed.">                                if(nmsCompound == null) {</span>
+<span class="nc" id="L136">                                    nmsCompound = Class.forName(&quot;net.minecraft.server.&quot;+version+&quot;.NBTTagCompound&quot;).getConstructor().newInstance();</span>
+                                }
+
+<span class="nc" id="L139">                                Object getEntityTag = nmsCompound.getClass().getMethod(&quot;getCompound&quot;, String.class).invoke(nmsCompound, &quot;EntityTag&quot;);</span>
+<span class="nc" id="L140">                                Method getEntityString = getEntityTag.getClass().getMethod(&quot;getString&quot;, String.class);</span>
+
+<span class="nc" id="L142">                                potion = String.valueOf(getEntityString.invoke(getEntityTag, &quot;id&quot;));</span>
+
+<span class="nc" id="L144">                                Object getMobSpawnerEgg = nmsCompound.getClass().getMethod(&quot;getString&quot;, String.class).invoke(nmsCompound, &quot;MobSpawnerEgg&quot;);</span>
+
+<span class="nc bnc" id="L146" title="All 2 branches missed.">                                if(getMobSpawnerEgg.equals(&quot;MobSpawnerEgg&quot;)) {</span>
+<span class="nc" id="L147">                                    enchantments.setLength(0);</span>
+
+<span class="nc" id="L149">                                    enchantments.append(getMobSpawnerEgg).append(&quot;/&quot;);</span>
+                                }
+
+<span class="nc" id="L152">                            } catch(InvocationTargetException | ClassNotFoundException | IllegalAccessException | NoSuchMethodException | InstantiationException exception) {</span>
+<span class="nc" id="L153">                                exception.printStackTrace();</span>
+<span class="nc" id="L154">                            }</span>
+
+<span class="nc bnc" id="L156" title="All 2 branches missed.">                        } else if(material.equals(&quot;SKULL_ITEM&quot;)) {</span>
+<span class="nc" id="L157">                            SkullMeta skull = (SkullMeta) item.getItemMeta();</span>
+
+<span class="nc bnc" id="L159" title="All 2 branches missed.">                            if(skull.hasOwner()) {</span>
+<span class="nc" id="L160">                                potion = skull.getOwner();</span>
+                            }
+                        }
+
+<span class="nc" id="L164">                        SQL.query(&quot;INSERT INTO bp_&quot;+backPack+&quot;_&quot;+trimmedID+&quot; (position, material, durability, amount, &quot;+</span>
+                                &quot;name, lore, enchantments, potion) values ('&quot;+i+&quot;', '&quot;+material+&quot;', '&quot;+item.getDurability()+&quot;', &quot;+
+                                 &quot;'&quot;+item.getAmount()+&quot;', '&quot;+name+&quot;', '&quot;+lore+&quot;', '&quot;+enchantments.toString()+&quot;', '&quot;+potion+&quot;')&quot;,
+<span class="nc" id="L167">                                        new SQL.Callback&lt;Boolean&gt;() {</span>
+
+                                    @Override
+<span class="nc" id="L170">                                    public void onSuccess(Boolean rs) {}</span>
+
+                                    @Override
+<span class="nc" id="L173">                                    public void onFailure(Throwable e) {}</span>
+
+                        });
+
+                    }
+
+                }
+
+<span class="nc" id="L181">            }</span>
+
+            @Override
+<span class="nc" id="L184">            public void onFailure(Throwable e) {}</span>
+
+        });
+
+<span class="nc" id="L188">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

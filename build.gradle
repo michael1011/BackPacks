@@ -11,10 +11,19 @@ group 'at.michael1011'
 version '2.1.0'
 
 apply plugin: 'java'
+apply plugin: "jacoco"
 
 configurations {
     provided
     compile.extendsFrom provided
+}
+
+jacocoTestReport {
+    reports {
+        csv.enabled false
+        xml.enabled true
+        html.destination "${buildDir}/jacocoHtml"
+    }
 }
 
 task wrapper(type: Wrapper) {

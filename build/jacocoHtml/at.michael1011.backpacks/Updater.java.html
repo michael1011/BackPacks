@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Updater.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BackPacks</a> &gt; <a href="index.source.html" class="el_package">at.michael1011.backpacks</a> &gt; <span class="el_source">Updater.java</span></div><h1>Updater.java</h1><pre class="source lang-java linenums">package at.michael1011.backpacks;
+
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import javax.net.ssl.HttpsURLConnection;
+import javax.xml.bind.DatatypeConverter;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+import static at.michael1011.backpacks.Main.*;
+
+public class Updater {
+
+<span class="fc" id="L26">    static String url = &quot;https://api.curseforge.com/servermods/files?projectIds=98508&quot;;</span>
+
+<span class="nc" id="L28">    Updater(final Main main) {</span>
+<span class="nc" id="L29">        int interval = config.getInt(&quot;Updater.interval&quot;)*72000;</span>
+
+<span class="nc" id="L31">        Bukkit.getScheduler().runTaskTimerAsynchronously(main, new Runnable() {</span>
+            @Override
+            public void run() {
+<span class="nc" id="L34">                checkUpdates(main, Bukkit.getConsoleSender());</span>
+<span class="nc" id="L35">            }</span>
+
+        }, interval, interval);
+<span class="nc" id="L38">    }</span>
+
+<span class="fc" id="L40">    public static Boolean updateAvailable = false;</span>
+
+    public static String newVersion;
+    public static String newVersionDownload;
+
+    static void checkUpdates(Main main, CommandSender sender) {
+        try {
+<span class="nc" id="L47">            checkUpdates(main, main.getDescription().getVersion(), url, sender, false);</span>
+<span class="nc" id="L48">        } catch (IOException | NoSuchAlgorithmException | ParseException | URISyntaxException e) {</span>
+<span class="nc" id="L49">            e.printStackTrace();</span>
+<span class="nc" id="L50">        }</span>
+<span class="nc" id="L51">    }</span>
+
+    static void checkUpdates(Main main, String installedVersionNumber, String url,
+                             CommandSender sender, Boolean equalVersionNumber)
+            throws IOException, NoSuchAlgorithmException, URISyntaxException, ParseException {
+
+<span class="fc" id="L57">        HttpsURLConnection con = (HttpsURLConnection)</span>
+                new URL(url).openConnection();
+
+<span class="fc" id="L60">        con.setRequestMethod(&quot;GET&quot;);</span>
+
+<span class="fc" id="L62">        int responseCode = con.getResponseCode();</span>
+
+<span class="pc bpc" id="L64" title="1 of 2 branches missed.">        if(responseCode == 200) {</span>
+<span class="fc" id="L65">            JSONArray array = getJsonArray(con);</span>
+
+<span class="fc" id="L67">            int size = array.size();</span>
+
+<span class="fc bfc" id="L69" title="All 2 branches covered.">            if(size&gt; 0) {</span>
+<span class="fc" id="L70">                JSONObject latestVersion = (JSONObject) array.get(size-1);</span>
+
+<span class="fc" id="L72">                String downloadUrl = String.valueOf(latestVersion.get(&quot;downloadUrl&quot;));</span>
+<span class="fc" id="L73">                String latestVersionNumber = String.valueOf(latestVersion.get(&quot;name&quot;));</span>
+
+<span class="fc bfc" id="L75" title="All 2 branches covered.">                if(equalVersionNumber) {</span>
+<span class="fc" id="L76">                    latestVersionNumber = installedVersionNumber;</span>
+                }
+
+<span class="fc bfc" id="L79" title="All 2 branches covered.">                if(checkForNewVersion(installedVersionNumber, latestVersionNumber)) {</span>
+                    // fixme: check if releaseType is 'release' else take version which is newer and has type release
+
+<span class="fc" id="L82">                    prepareMessages(latestVersionNumber, installedVersionNumber, downloadUrl);</span>
+
+<span class="fc" id="L84">                    sender.sendMessage(newVersion);</span>
+
+<span class="pc bpc" id="L86" title="1 of 2 branches missed.">                    if(config.getBoolean(&quot;Updater.autoUpdate&quot;)) {</span>
+<span class="nc" id="L87">                        String messagesPath = &quot;Updater.autoUpdate.&quot;;</span>
+
+<span class="nc" id="L89">                        URL download = followRedirects(downloadUrl);</span>
+
+<span class="nc" id="L91">                        int fileSize = download.openConnection().getContentLength();</span>
+<span class="nc" id="L92">                        String fileName = downloadUrl.substring(downloadUrl.lastIndexOf('/')+1,</span>
+                                downloadUrl.length());
+
+<span class="nc" id="L95">                        File downloadedFile = downloadFile(fileName, &quot;plugins&quot;, fileSize, download, sender);</span>
+
+<span class="nc bnc" id="L97" title="All 2 branches missed.">                        if(getMD5(&quot;plugins/&quot;+fileName).equalsIgnoreCase(String.valueOf(latestVersion.get(&quot;md5&quot;)))) {</span>
+<span class="nc" id="L98">                            File old = new File(Main.class.getProtectionDomain().getCodeSource()</span>
+                                    .getLocation().toURI().getPath());
+
+<span class="nc bnc" id="L101" title="All 2 branches missed.">                            if(old.delete()) {</span>
+<span class="nc" id="L102">                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                        messages.getString(messagesPath+&quot;deletedOldVersion&quot;)
+                                                .replaceAll(&quot;%oldVersion%&quot;, old.getName())));
+                            }
+
+<span class="nc" id="L107">                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                    messages.getString(messagesPath+&quot;successful&quot;)));
+
+<span class="nc" id="L110">                            Bukkit.getScheduler().cancelTasks(main);</span>
+<span class="nc" id="L111">                            Bukkit.dispatchCommand(sender, &quot;reload&quot;);</span>
+
+<span class="nc" id="L113">                        } else {</span>
+<span class="nc bnc" id="L114" title="All 2 branches missed.">                            if(downloadedFile.delete()) {</span>
+<span class="nc" id="L115">                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                        messages.getString(messagesPath+&quot;downloadFailed&quot;)
+                                                .replaceAll(&quot;%downloadLink%&quot;, downloadUrl)));
+
+<span class="nc" id="L119">                                updateAvailable = true;</span>
+
+<span class="nc" id="L121">                                newVersionDownload = prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                                        messages.getString(&quot;Updater.newVersionAvailableDownload&quot;)
+                                                .replaceAll(&quot;%newVersion%&quot;, latestVersionNumber)
+                                                .replaceAll(&quot;%downloadLink%&quot;, downloadUrl));
+                            }
+                        }
+
+<span class="nc" id="L128">                    } else {</span>
+<span class="fc" id="L129">                        updateAvailable = true;</span>
+
+<span class="fc" id="L131">                        sender.sendMessage(newVersionDownload);</span>
+                    }
+
+                }
+
+<span class="fc" id="L136">            } else {</span>
+<span class="fc" id="L137">                sendConnectionError(sender);</span>
+            }
+
+<span class="fc" id="L140">        } else {</span>
+<span class="nc" id="L141">            sendConnectionError(sender);</span>
+        }
+
+<span class="fc" id="L144">    }</span>
+
+    static File downloadFile(String fileName, String folder, int fileSize, URL download, CommandSender sender)
+            throws IOException {
+
+<span class="fc" id="L149">        File downloadedFile = new File(folder, fileName);</span>
+
+<span class="fc" id="L151">        BufferedInputStream downloadInput = new BufferedInputStream(download.openStream());</span>
+
+<span class="fc" id="L153">        FileOutputStream fileOutput = new FileOutputStream(downloadedFile);</span>
+
+<span class="fc" id="L155">        int byteSize = 1024;</span>
+
+<span class="fc" id="L157">        final byte[] data = new byte[byteSize];</span>
+<span class="fc" id="L158">        long downloaded = 0;</span>
+        int count;
+
+<span class="fc bfc" id="L161" title="All 2 branches covered.">        while((count = downloadInput.read(data, 0, byteSize)) != -1) {</span>
+<span class="fc" id="L162">            downloaded += count;</span>
+
+<span class="fc" id="L164">            fileOutput.write(data, 0, count);</span>
+
+<span class="fc" id="L166">            int percent = (int) ((downloaded * 100) / fileSize);</span>
+
+<span class="fc bfc" id="L168" title="All 2 branches covered.">            if((percent % 10) == 0) {</span>
+<span class="fc" id="L169">                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                        messages.getString(&quot;Updater.autoUpdate.downloading&quot;)
+                                .replaceAll(&quot;%percent%&quot;, String.valueOf(percent))
+                                .replaceAll(&quot;%fileSize%&quot;, readableByteCount(fileSize))));
+            }
+<span class="fc" id="L174">        }</span>
+
+<span class="fc" id="L176">        downloadInput.close();</span>
+<span class="fc" id="L177">        fileOutput.close();</span>
+
+<span class="fc" id="L179">        return downloadedFile;</span>
+    }
+
+    static String getMD5(String fileName) throws NoSuchAlgorithmException, IOException {
+<span class="fc" id="L183">        MessageDigest md = MessageDigest.getInstance(&quot;MD5&quot;);</span>
+
+<span class="fc" id="L185">        md.update(Files.readAllBytes(Paths.get(fileName)));</span>
+<span class="fc" id="L186">        byte[] digest = md.digest();</span>
+
+<span class="fc" id="L188">        return DatatypeConverter.printHexBinary(digest).toLowerCase();</span>
+    }
+
+    static Boolean checkForNewVersion(String thisVersion, String newVersion) {
+<span class="fc bfc" id="L192" title="All 2 branches covered.">        return Integer.valueOf(thisVersion.replaceAll(&quot;\\.&quot;, &quot;&quot;)) &lt; Integer.valueOf(newVersion.replaceAll(&quot;\\.&quot;, &quot;&quot;));</span>
+    }
+
+    static JSONArray getJsonArray(HttpsURLConnection con) throws IOException, ParseException {
+<span class="fc" id="L196">        BufferedReader input = new BufferedReader(new InputStreamReader(con.getInputStream()));</span>
+
+<span class="fc" id="L198">        JSONArray array = (JSONArray) new JSONParser().parse(input);</span>
+
+<span class="fc" id="L200">        input.close();</span>
+
+<span class="fc" id="L202">        return array;</span>
+    }
+
+    static void prepareMessages(String latestVersionNumber, String installedVersionNumber, String downloadUrl) {
+<span class="fc" id="L206">        newVersion = prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                messages.getString(&quot;Updater.newVersionAvailable&quot;)
+                        .replaceAll(&quot;%newVersion%&quot;, latestVersionNumber)
+                        .replaceAll(&quot;%oldVersion%&quot;, installedVersionNumber));
+
+<span class="fc" id="L211">        newVersionDownload = prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                messages.getString(&quot;Updater.newVersionAvailableDownload&quot;)
+                        .replaceAll(&quot;%newVersion%&quot;, latestVersionNumber)
+                        .replaceAll(&quot;%downloadLink%&quot;, downloadUrl));
+<span class="fc" id="L215">    }</span>
+
+    static void sendConnectionError(CommandSender sender) {
+<span class="fc" id="L218">        sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&amp;',</span>
+                messages.getString(&quot;Updater.failedToReachServer&quot;)));
+<span class="fc" id="L220">    }</span>
+
+    static String readableByteCount(long bytes) {
+<span class="fc" id="L223">        int unit = 1024;</span>
+
+<span class="fc bfc" id="L225" title="All 2 branches covered.">        if (bytes &lt; unit) {</span>
+<span class="fc" id="L226">            return bytes + &quot; B&quot;;</span>
+        }
+
+<span class="fc" id="L229">        int exp = (int) (Math.log(bytes) / Math.log(unit));</span>
+<span class="fc" id="L230">        String pre = (&quot;KMGTPE&quot;).charAt(exp-1) + (&quot;i&quot;);</span>
+
+<span class="fc" id="L232">        return String.format(&quot;%.1f %sB&quot;, bytes / Math.pow(unit, exp), pre);</span>
+    }
+
+    static URL followRedirects(String location) throws IOException {
+        URL resourceUrl, base, next;
+        HttpURLConnection conn;
+        String redLoc;
+
+        while (true) {
+<span class="fc" id="L241">            resourceUrl = new URL(location);</span>
+<span class="fc" id="L242">            conn = (HttpURLConnection) resourceUrl.openConnection();</span>
+
+<span class="fc" id="L244">            conn.setConnectTimeout(15000);</span>
+<span class="fc" id="L245">            conn.setReadTimeout(15000);</span>
+<span class="fc" id="L246">            conn.setInstanceFollowRedirects(false);</span>
+<span class="fc" id="L247">            conn.setRequestProperty(&quot;User-Agent&quot;, &quot;Mozilla/5.0...&quot;);</span>
+
+<span class="pc bpc" id="L249" title="1 of 2 branches missed.">            switch (conn.getResponseCode()) {</span>
+                case HttpURLConnection.HTTP_MOVED_PERM:
+                case HttpURLConnection.HTTP_MOVED_TEMP:
+<span class="nc" id="L252">                    redLoc = conn.getHeaderField(&quot;Location&quot;);</span>
+<span class="nc" id="L253">                    base = new URL(location);</span>
+<span class="nc" id="L254">                    next = new URL(base, redLoc);</span>
+<span class="nc" id="L255">                    location = next.toExternalForm();</span>
+<span class="nc" id="L256">                    continue;</span>
+            }
+
+<span class="fc" id="L259">            break;</span>
+        }
+
+<span class="fc" id="L262">        return conn.getURL();</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
