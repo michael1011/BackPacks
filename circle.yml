@@ -14,6 +14,8 @@ dependencies:
     - mysql -u ubuntu -e 'CREATE USER IF NOT EXISTS 'bpTest'@'localhost' IDENTIFIED BY "bpTest"'
     - mysql -u ubuntu -e 'GRANT ALL ON bpTest.* TO 'bpTest'@'localhost''
     - mysql -u ubuntu -e 'FLUSH PRIVILEGES'
+  override:
+    - gradle dependencies
 
 test:
   override:
