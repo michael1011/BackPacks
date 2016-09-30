@@ -6,17 +6,19 @@ machine:
 
 general:
   artifacts:
-    - "build"
+    - "build/libs"
 
 dependencies:
-  pre:
+  override:
+    - chmod +x gradlew
+    - ./gradlew dependencies
+
+database:
+  override:
     - mysql -u ubuntu -e 'CREATE DATABASE IF NOT EXISTS bpTest'
     - mysql -u ubuntu -e 'CREATE USER IF NOT EXISTS 'bpTest'@'localhost' IDENTIFIED BY "bpTest"'
     - mysql -u ubuntu -e 'GRANT ALL ON bpTest.* TO 'bpTest'@'localhost''
     - mysql -u ubuntu -e 'FLUSH PRIVILEGES'
-  override:
-    - chmod +x gradlew
-    - ./gradlew dependencies
 
 test:
   override:
