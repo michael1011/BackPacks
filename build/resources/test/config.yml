@@ -8,9 +8,9 @@ configVersion: 1
 MySQL:
   host: "localhost"
   port: "3306"
-  database: "bp"
-  username: "bp"
-  password: "psswrd"
+  database: "bpTest"
+  username: "bpTest"
+  password: "bpTest"
 
 dropOnDeath: true
 

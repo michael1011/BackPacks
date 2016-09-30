@@ -93,25 +93,22 @@ public class SQL {
 
     public static void createCon(String host, String port, String database,
                                  String username, String password) throws SQLException {
-        createCon(host, port, database, username, password, true);
-    }
-
-    static void createCon(String host, String port, String database,
-                          String username, String password, Boolean useSSL) throws SQLException {
-
-        String ssl = "";
-
-        if(!useSSL) {
-            ssl = "?useSSL=false";
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
 
-        con = DriverManager.getConnection("jdbc:mysql://"+host+":"+port+"/"+database+ssl,
+        con = DriverManager.getConnection("jdbc:mysql://"+host+":"+port+"/"+database,
                 username, password);
+
     }
 
     public static void closeCon() throws SQLException {
         if(con != null) {
-            con.close();
+            if(!con.isClosed()) {
+                con.close();
+            }
         }
 
     }

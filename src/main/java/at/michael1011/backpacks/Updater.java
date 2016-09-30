@@ -26,7 +26,7 @@ public class Updater {
     static String url = "https://api.curseforge.com/servermods/files?projectIds=98508";
 
     Updater(final Main main) {
-        int interval = config.getInt("Updater.interval")*72000;
+        int interval = hoursToTicks(config.getInt("Updater.interval"));
 
         Bukkit.getScheduler().runTaskTimerAsynchronously(main, new Runnable() {
             @Override
@@ -230,6 +230,10 @@ public class Updater {
         String pre = ("KMGTPE").charAt(exp-1) + ("i");
 
         return String.format("%.1f %sB", bytes / Math.pow(unit, exp), pre);
+    }
+
+    static int hoursToTicks(int hours) {
+        return hours*72000;
     }
 
     static URL followRedirects(String location) throws IOException {

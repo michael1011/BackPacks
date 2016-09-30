@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="at.michael1011.backpacks.UpdaterTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2016-09-30T15:16:14" hostname="michael" time="5.204">
+<testsuite name="at.michael1011.backpacks.UpdaterTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2016-09-30T16:18:48" hostname="michael" time="7.526">
   <properties/>
-  <testcase name="followRedirects" classname="at.michael1011.backpacks.UpdaterTest" time="1.361"/>
-  <testcase name="sendConnectionError" classname="at.michael1011.backpacks.UpdaterTest" time="0.604"/>
+  <testcase name="followRedirects" classname="at.michael1011.backpacks.UpdaterTest" time="2.065"/>
+  <testcase name="sendConnectionError" classname="at.michael1011.backpacks.UpdaterTest" time="0.607"/>
   <testcase name="readableByteCount" classname="at.michael1011.backpacks.UpdaterTest" time="0.001"/>
   <testcase name="getMD5" classname="at.michael1011.backpacks.UpdaterTest" time="0.006"/>
-  <testcase name="getJsonArray" classname="at.michael1011.backpacks.UpdaterTest" time="0.708"/>
-  <testcase name="checkUpdates" classname="at.michael1011.backpacks.UpdaterTest" time="0.895"/>
-  <testcase name="prepareMessages" classname="at.michael1011.backpacks.UpdaterTest" time="0.043"/>
-  <testcase name="downloadFile" classname="at.michael1011.backpacks.UpdaterTest" time="1.583"/>
-  <testcase name="checkForNewVersion" classname="at.michael1011.backpacks.UpdaterTest" time="0.001"/>
+  <testcase name="getJsonArray" classname="at.michael1011.backpacks.UpdaterTest" time="0.724"/>
+  <testcase name="checkUpdates" classname="at.michael1011.backpacks.UpdaterTest" time="1.205"/>
+  <testcase name="prepareMessages" classname="at.michael1011.backpacks.UpdaterTest" time="0.041"/>
+  <testcase name="hoursToTicks" classname="at.michael1011.backpacks.UpdaterTest" time="0.0"/>
+  <testcase name="downloadFile" classname="at.michael1011.backpacks.UpdaterTest" time="2.876"/>
+  <testcase name="checkForNewVersion" classname="at.michael1011.backpacks.UpdaterTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

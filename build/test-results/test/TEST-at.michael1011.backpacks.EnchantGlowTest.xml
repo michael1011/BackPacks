@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="at.michael1011.backpacks.EnchantGlowTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2016-09-30T15:16:20" hostname="michael" time="0.086">
+<testsuite name="at.michael1011.backpacks.EnchantGlowTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2016-09-30T16:18:55" hostname="michael" time="0.063">
   <properties/>
-  <testcase name="testReturns" classname="at.michael1011.backpacks.EnchantGlowTest" time="0.086"/>
+  <testcase name="testReturns" classname="at.michael1011.backpacks.EnchantGlowTest" time="0.063"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -78,6 +78,24 @@ public class UpdaterTest {
     }
 
     @Test
+    public void followRedirects() throws Exception {
+        String link = "https://api.curseforge.com/servermods/files?projectIds=98508";
+
+        assertTrue(Updater.followRedirects("https://api.curseforge.com/servermods/files?projectIds=98508")
+                .equals(new URL(link)));
+    }
+
+    @Test
+    public void getJsonArray() throws Exception {
+        HttpsURLConnection con = (HttpsURLConnection)
+                new URL("https://api.curseforge.com/servermods/files?projectIds=98508").openConnection();
+
+        assertTrue(con.getResponseCode() == 200);
+
+        assertFalse(Updater.getJsonArray(con) == null);
+    }
+
+    @Test
     public void getMD5() throws Exception {
         String fileOne = "config.yml";
         String fileTwo = "messages.yml";
@@ -104,21 +122,18 @@ public class UpdaterTest {
     }
 
     @Test
+    public void hoursToTicks() throws Exception {
+        int hours = 123;
+
+        assertTrue(Updater.hoursToTicks(hours) == hours*72000);
+    }
+
+    @Test
     public void checkForNewVersion() throws Exception {
         assertTrue(Updater.checkForNewVersion("2.0.0", "2.0.1"));
 
         assertFalse(Updater.checkForNewVersion("2.0.0", "2.0.0"));
         assertFalse(Updater.checkForNewVersion("2.0.0", "1.9.9"));
-    }
-
-    @Test
-    public void getJsonArray() throws Exception {
-        HttpsURLConnection con = (HttpsURLConnection)
-                new URL("https://api.curseforge.com/servermods/files?projectIds=98508").openConnection();
-
-        assertTrue(con.getResponseCode() == 200);
-
-        assertFalse(Updater.getJsonArray(con) == null);
     }
 
     @Test
@@ -154,14 +169,6 @@ public class UpdaterTest {
 
         Mockito.verify(sender, Mockito.times(1)).sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                 messages.getString("Updater.failedToReachServer")));
-    }
-
-    @Test
-    public void followRedirects() throws Exception {
-        String link = "https://api.curseforge.com/servermods/files?projectIds=98508";
-
-        assertTrue(Updater.followRedirects("https://api.curseforge.com/servermods/files?projectIds=98508")
-                .equals(new URL(link)));
     }
 
 }
