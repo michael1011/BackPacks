@@ -96,11 +96,6 @@ public class UpdaterTest {
     }
 
     @Test
-    public void testReadableByteCount() throws Exception {
-        assertTrue(Updater.readableByteCount(10000).equals("9,8 KiB"));
-    }
-
-    @Test
     public void testFollowRedirects() throws Exception {
         String link = "https://api.curseforge.com/servermods/files?projectIds=98508";
 
