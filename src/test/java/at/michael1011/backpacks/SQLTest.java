@@ -28,6 +28,8 @@ public class SQLTest {
         assertTrue(rs.next());
         assertTrue(Boolean.valueOf(rs.getString("test")));
 
+        // todo: remove table
+
         SQL.closeCon();
 
         assertTrue(!SQL.checkCon());
