@@ -1,4 +1,4 @@
-# BackPacks [![Jenkins](https://michael1011.at/jenkins/buildStatus/icon?job=BackPacks)](https://michael1011.at/jenkins/job/BackPacks) [![CircleCI](https://circleci.com/gh/michael1011/BackPacks.svg?style=svg)](https://circleci.com/gh/michael1011/BackPacks) [![VersionEye](https://www.versioneye.com/user/projects/57de569bbf3e4c0049efe008/badge.svg)](https://www.versioneye.com/user/projects/57de569bbf3e4c0049efe008)
+# BackPacks [![Jenkins](https://michael1011.at/jenkins/buildStatus/icon?job=BackPacks)](https://michael1011.at/jenkins/job/BackPacks) [![CircleCI](https://circleci.com/gh/michael1011/BackPacks.svg?style=shield)](https://circleci.com/gh/michael1011/BackPacks) [![VersionEye](https://www.versioneye.com/user/projects/57de569bbf3e4c0049efe008/badge.svg)](https://www.versioneye.com/user/projects/57de569bbf3e4c0049efe008)
 
 ## A backpack plugin for Bukkit/Spigot 1.10 and 1.9
 
