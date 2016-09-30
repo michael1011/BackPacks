@@ -13,7 +13,7 @@ public class SQLTest {
 
     @Test
     public void testSQL() throws SQLException {
-        createCon("localhost", "3306", "bpTest", "bpTest", "bpTest");
+        createCon("localhost", "3306", "bpTest", "bpTest", "bpTest", false);
 
         assertTrue(SQL.checkCon());
 

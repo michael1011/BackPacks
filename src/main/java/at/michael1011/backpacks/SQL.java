@@ -93,7 +93,19 @@ public class SQL {
 
     public static void createCon(String host, String port, String database,
                                  String username, String password) throws SQLException {
-        con = DriverManager.getConnection("jdbc:mysql://"+host+":"+port+"/"+database,
+        createCon(host, port, database, username, password, true);
+    }
+
+    static void createCon(String host, String port, String database,
+                          String username, String password, Boolean useSSL) throws SQLException {
+
+        String ssl = "";
+
+        if(!useSSL) {
+            ssl = "?useSSL=false";
+        }
+
+        con = DriverManager.getConnection("jdbc:mysql://"+host+":"+port+"/"+database+ssl,
                 username, password);
     }
 

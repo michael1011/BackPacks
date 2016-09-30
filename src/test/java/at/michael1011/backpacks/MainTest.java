@@ -10,7 +10,7 @@ import java.io.IOException;
 public class MainTest {
 
     @Test
-    public void testLoadFiles() throws IOException, InvalidConfigurationException {
+    public void loadFiles() throws IOException, InvalidConfigurationException {
         Main.loadFiles(PowerMockito.mock(Main.class), new File("src/test/resources"), false);
     }
 

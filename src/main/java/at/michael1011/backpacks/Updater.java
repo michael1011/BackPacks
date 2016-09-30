@@ -23,6 +23,8 @@ import static at.michael1011.backpacks.Main.*;
 
 public class Updater {
 
+    static String url = "https://api.curseforge.com/servermods/files?projectIds=98508";
+
     Updater(final Main main) {
         int interval = config.getInt("Updater.interval")*72000;
 
@@ -42,22 +44,37 @@ public class Updater {
 
     static void checkUpdates(Main main, CommandSender sender) {
         try {
-            HttpsURLConnection con = (HttpsURLConnection)
-                    new URL("https://api.curseforge.com/servermods/files?projectIds=98508").openConnection();
+            checkUpdates(main, main.getDescription().getVersion(), url, sender, false);
+        } catch (IOException | NoSuchAlgorithmException | ParseException | URISyntaxException e) {
+            e.printStackTrace();
+        }
+    }
 
-            con.setRequestMethod("GET");
+    static void checkUpdates(Main main, String installedVersionNumber, String url,
+                             CommandSender sender, Boolean equalVersionNumber)
+            throws IOException, NoSuchAlgorithmException, URISyntaxException, ParseException {
 
-            int responseCode = con.getResponseCode();
+        HttpsURLConnection con = (HttpsURLConnection)
+                new URL(url).openConnection();
 
-            if(responseCode == 200) {
-                JSONArray array = getJsonArray(con);
+        con.setRequestMethod("GET");
 
-                JSONObject latestVersion = (JSONObject) array.get(array.size()-1);
+        int responseCode = con.getResponseCode();
 
-                String latestVersionNumber = String.valueOf(latestVersion.get("name"));
-                String installedVersionNumber = main.getDescription().getVersion();
+        if(responseCode == 200) {
+            JSONArray array = getJsonArray(con);
+
+            int size = array.size();
+
+            if(size> 0) {
+                JSONObject latestVersion = (JSONObject) array.get(size-1);
 
                 String downloadUrl = String.valueOf(latestVersion.get("downloadUrl"));
+                String latestVersionNumber = String.valueOf(latestVersion.get("name"));
+
+                if(equalVersionNumber) {
+                    latestVersionNumber = installedVersionNumber;
+                }
 
                 if(checkForNewVersion(installedVersionNumber, latestVersionNumber)) {
                     // fixme: check if releaseType is 'release' else take version which is newer and has type release
@@ -69,46 +86,17 @@ public class Updater {
                     if(config.getBoolean("Updater.autoUpdate")) {
                         String messagesPath = "Updater.autoUpdate.";
 
-                        // fixme: test for file download
                         URL download = followRedirects(downloadUrl);
 
                         int fileSize = download.openConnection().getContentLength();
                         String fileName = downloadUrl.substring(downloadUrl.lastIndexOf('/')+1,
                                 downloadUrl.length());
 
-                        BufferedInputStream downloadInput = new BufferedInputStream(download.openStream());
-
-                        File downloadedFile = new File("plugins", fileName);
-
-                        FileOutputStream fileOutput = new FileOutputStream(downloadedFile);
-
-                        int byteSize = 1024;
-
-                        final byte[] data = new byte[byteSize];
-                        long downloaded = 0;
-                        int count;
-
-                        while((count = downloadInput.read(data, 0, byteSize)) != -1) {
-                            downloaded += count;
-
-                            fileOutput.write(data, 0, count);
-
-                            int percent = (int) ((downloaded * 100) / fileSize);
-
-                            if((percent % 10) == 0) {
-                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                        messages.getString(messagesPath+"downloading")
-                                                .replaceAll("%percent%", String.valueOf(percent))
-                                                .replaceAll("%fileSize%", readableByteCount(fileSize))));
-                            }
-                        }
-
-                        downloadInput.close();
-                        fileOutput.close();
+                        File downloadedFile = downloadFile(fileName, "plugins", fileSize, download, sender);
 
                         if(getMD5("plugins/"+fileName).equalsIgnoreCase(String.valueOf(latestVersion.get("md5")))) {
-                            File old = new File(Main.class.getProtectionDomain().getCodeSource().
-                                    getLocation().toURI().getPath());
+                            File old = new File(Main.class.getProtectionDomain().getCodeSource()
+                                    .getLocation().toURI().getPath());
 
                             if(old.delete()) {
                                 sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
@@ -120,7 +108,6 @@ public class Updater {
                                     messages.getString(messagesPath+"successful")));
 
                             Bukkit.getScheduler().cancelTasks(main);
-
                             Bukkit.dispatchCommand(sender, "reload");
 
                         } else {
@@ -138,30 +125,58 @@ public class Updater {
                             }
                         }
 
-
                     } else {
                         updateAvailable = true;
 
                         sender.sendMessage(newVersionDownload);
                     }
 
-                    sender.sendMessage(newVersion);
-
                 }
-
 
             } else {
                 sendConnectionError(sender);
             }
 
-        } catch (IOException | ParseException | NoSuchAlgorithmException | URISyntaxException  e) {
-            // todo: more error codes
-
-            e.printStackTrace();
-
+        } else {
             sendConnectionError(sender);
         }
 
+    }
+
+    static File downloadFile(String fileName, String folder, int fileSize, URL download, CommandSender sender)
+            throws IOException {
+
+        File downloadedFile = new File(folder, fileName);
+
+        BufferedInputStream downloadInput = new BufferedInputStream(download.openStream());
+
+        FileOutputStream fileOutput = new FileOutputStream(downloadedFile);
+
+        int byteSize = 1024;
+
+        final byte[] data = new byte[byteSize];
+        long downloaded = 0;
+        int count;
+
+        while((count = downloadInput.read(data, 0, byteSize)) != -1) {
+            downloaded += count;
+
+            fileOutput.write(data, 0, count);
+
+            int percent = (int) ((downloaded * 100) / fileSize);
+
+            if((percent % 10) == 0) {
+                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                        messages.getString("Updater.autoUpdate.downloading")
+                                .replaceAll("%percent%", String.valueOf(percent))
+                                .replaceAll("%fileSize%", readableByteCount(fileSize))));
+            }
+        }
+
+        downloadInput.close();
+        fileOutput.close();
+
+        return downloadedFile;
     }
 
     static String getMD5(String fileName) throws NoSuchAlgorithmException, IOException {
@@ -236,7 +251,7 @@ public class Updater {
                 case HttpURLConnection.HTTP_MOVED_TEMP:
                     redLoc = conn.getHeaderField("Location");
                     base = new URL(location);
-                    next = new URL(base, redLoc);  // Deal with relative URLs
+                    next = new URL(base, redLoc);
                     location = next.toExternalForm();
                     continue;
             }

@@ -15,9 +15,9 @@ import static org.junit.Assert.assertTrue;
 public class CraftingTest {
 
     @Test
-    public void testGetItemStack() throws Exception {
+    public void getItemStack() throws Exception {
         MainTest loadFiles = new MainTest();
-        loadFiles.testLoadFiles();
+        loadFiles.loadFiles();
 
         CommandSender sender = PowerMockito.mock(CommandSender.class);
 
@@ -35,16 +35,16 @@ public class CraftingTest {
                 messages.getString("Help.materialNotValid").replaceAll("%material%", "WATC")
                         .replaceAll("%backpack%", "materialNotValid")));
 
-        testWorkingBackPack("works", sender, false);
+        workingBackPack("works", sender, false);
 
         Mockito.verify(sender, Mockito.times(1)).sendMessage(Matchers.anyString());
 
-        testWorkingBackPack("worksFurnace", sender, true);
+        workingBackPack("worksFurnace", sender, true);
 
         Mockito.verify(sender, Mockito.times(1)).sendMessage(Matchers.anyString());
     }
 
-    private void testWorkingBackPack(String backPack, CommandSender sender, Boolean furnace) {
+    private void workingBackPack(String backPack, CommandSender sender, Boolean furnace) {
         assertTrue(Crafting.getItemStack(sender, "BackPacks."+backPack+".", backPack, false) != null);
         assertTrue(Crafting.slots.get(backPack) == Main.config.getInt("BackPacks."+backPack+".slots"));
         assertTrue(Crafting.type.get(backPack).equals(Main.config.getString("BackPacks."+backPack+".type")));
