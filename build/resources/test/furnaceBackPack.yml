@@ -1,0 +1,28 @@
+# configure the gui of every FurnaceBackPack here
+
+enabled: "&aEnabled"
+disabled: "&cDisabled"
+
+ores:
+  defaultOption: true
+
+  name: "&7Ores"
+  description:
+    1: "&7Smelt &8ores &7automatically?"
+    2: "&aEnable &8and &cdisable &8with the item below."
+
+food:
+  defaultOption: true
+
+  name: "&6Food"
+  description:
+    1: "&eSmelt &6food &eautomatically?"
+    2: "&aEnable &8and &cdisable &8with the item below."
+
+autoFill:
+  defaultOption: true
+
+  name: "&7Auto fill"
+  description:
+    1: "&8Fill with &7coal &8automatically?"
+    2: "&aEnable &8and &cdisable &8with the item below."

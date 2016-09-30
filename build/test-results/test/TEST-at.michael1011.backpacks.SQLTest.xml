@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="at.michael1011.backpacks.SQLTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2016-09-30T06:12:35" hostname="michael" time="0.202">
+<testsuite name="at.michael1011.backpacks.SQLTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2016-09-30T11:42:15" hostname="michael" time="0.349">
   <properties/>
-  <testcase name="testSQL" classname="at.michael1011.backpacks.SQLTest" time="0.202"/>
+  <testcase name="testSQL" classname="at.michael1011.backpacks.SQLTest" time="0.349"/>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
+  <system-err><![CDATA[Fri Sep 30 13:42:15 CEST 2016 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+]]></system-err>
 </testsuite>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="at.michael1011.backpacks.MainTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2016-09-30T11:42:15" hostname="michael" time="0.015">
+  <properties/>
+  <testcase name="testLoadFiles" classname="at.michael1011.backpacks.MainTest" time="0.015"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="at.michael1011.backpacks.UpdaterTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2016-09-30T11:42:13" hostname="michael" time="1.964">
+  <properties/>
+  <testcase name="testFollowRedirects" classname="at.michael1011.backpacks.UpdaterTest" time="1.014"/>
+  <testcase name="testPrepareMessages" classname="at.michael1011.backpacks.UpdaterTest" time="0.276"/>
+  <testcase name="testGetJsonArray" classname="at.michael1011.backpacks.UpdaterTest" time="0.605"/>
+  <testcase name="testCheckForNewVersion" classname="at.michael1011.backpacks.UpdaterTest" time="0.0"/>
+  <testcase name="testReadableByteCount" classname="at.michael1011.backpacks.UpdaterTest" time="0.001"/>
+  <testcase name="testSendConnectionError" classname="at.michael1011.backpacks.UpdaterTest" time="0.052"/>
+  <testcase name="testGetMD5" classname="at.michael1011.backpacks.UpdaterTest" time="0.013"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -12,7 +12,7 @@
     <orderEntry type="module" module-name="BackPacks_main" />
     <orderEntry type="library" name="Gradle: org.spigotmc:spigot-api:1.10.2-R0.1-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Gradle: org.bukkit:bukkit:1.10.2-R0.1-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Gradle: mysql:mysql-connector-java:5.1.6" level="project" />
+    <orderEntry type="library" name="Gradle: mysql:mysql-connector-java:5.1.39" level="project" />
     <orderEntry type="library" name="Gradle: junit:junit:4.12" level="project" />
     <orderEntry type="library" name="Gradle: org.mockito:mockito-all:2.0.2-beta" level="project" />
     <orderEntry type="library" name="Gradle: org.powermock:powermock-api-mockito:1.6.5" level="project" />

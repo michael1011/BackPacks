@@ -1,0 +1,117 @@
+#
+# BackPacks 2.1.0
+# By michael1011
+#
+
+configVersion: 1
+
+MySQL:
+  host: "localhost"
+  port: "3306"
+  database: "bp"
+  username: "bp"
+  password: "psswrd"
+
+dropOnDeath: true
+
+Updater:
+  enabled: true
+
+  interval: 24
+
+  autoUpdate: false
+
+
+BackPacks:
+  enabled:
+    1: "works"
+    2: "worksFurnace"
+    3: "notDivisibleNine"
+    4: "materialNotValid"
+
+  works:
+    name: "works"
+    type: "normal"
+
+    description:
+      1: "works"
+      2: "works"
+
+    slots: 9
+
+    material: "COMPASS"
+
+    crafting:
+      1: "I+L+I"
+      2: "L+C+L"
+      3: "I+L+I"
+
+      materials:
+        I: "IRON_INGOT"
+        L: "LEATHER"
+        C: "COMPASS"
+
+  worksFurnace:
+    name: "works"
+    type: "furnace"
+
+    description:
+      1: "works"
+      2: "works"
+
+    gui:
+      enabled: true
+
+    material: "COMPASS"
+
+    crafting:
+      1: "I+L+I"
+      2: "L+C+L"
+      3: "I+L+I"
+
+      materials:
+        I: "IRON_INGOT"
+        L: "LEATHER"
+        C: "COMPASS"
+
+  materialNotValid:
+    name: "materialNotValid"
+    type: "normal"
+
+    description:
+      1: "materialNotValid"
+
+    slots: 9
+
+    material: "WATC"
+
+    crafting:
+      1: "R+G+R"
+      2: "G+W+G"
+      3: "R+G+R"
+
+      materials:
+        R: "REDSTONE_BLOCK"
+        G: "GOLD_BLOCK"
+        W: "WATCH"
+
+  notDivisibleByNine:
+    name: "notDivisibleByNine"
+    type: "normal"
+
+    description:
+      1: "notDivisibleByNine"
+
+    slots: 10
+
+    material: "WATCH"
+
+    crafting:
+      1: "R+G+R"
+      2: "G+W+G"
+      3: "R+G+R"
+
+      materials:
+        R: "REDSTONE_BLOCK"
+        G: "GOLD_BLOCK"
+        W: "WATCH"

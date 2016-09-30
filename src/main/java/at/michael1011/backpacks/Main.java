@@ -23,11 +23,11 @@ import static at.michael1011.backpacks.Updater.checkUpdates;
 
 public class Main extends JavaPlugin {
 
-    public static String version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
+    public static String version;
 
     public static YamlConfiguration config, messages, furnaceGui;
 
-    public static String prefix;
+    public static String prefix = "";
 
     public static List<String> availablePlayers = new ArrayList<>();
 
@@ -81,6 +81,8 @@ public class Main extends JavaPlugin {
                                             } catch (IllegalArgumentException | IllegalStateException ignored) {}
 
                                             Crafting.initCrafting(Bukkit.getConsoleSender());
+
+                                            version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
 
                                             new Join(main);
                                             new RightClick(main);
@@ -165,38 +167,45 @@ public class Main extends JavaPlugin {
 
     }
 
-    @SuppressWarnings("ResultOfMethodCallIgnored")
     public static void loadFiles(Main main) {
-        File configF = new File(main.getDataFolder(), "config.yml");
-        File messagesF = new File(main.getDataFolder(), "messages.yml");
-        File furnacesF = new File(main.getDataFolder(), "furnaceBackPack.yml");
-
-        if(!configF.exists()) {
-            configF.getParentFile().mkdirs();
-            main.saveResource("config.yml", false);
+        try {
+            loadFiles(main, main.getDataFolder(), true);
+        } catch (IOException | InvalidConfigurationException e) {
+            e.printStackTrace();
         }
+    }
 
-        if(!messagesF.exists()) {
-            messagesF.getParentFile().mkdirs();
-            main.saveResource("messages.yml", false);
-        }
+    @SuppressWarnings("ResultOfMethodCallIgnored")
+    static void loadFiles(Main main, File folder, Boolean createNew) throws IOException, InvalidConfigurationException {
+        File configF = new File(folder, "config.yml");
+        File messagesF = new File(folder, "messages.yml");
+        File furnacesF = new File(folder, "furnaceBackPack.yml");
 
-        if(!furnacesF.exists()) {
-            furnacesF.getParentFile().mkdirs();
-            main.saveResource("furnaceBackPack.yml", false);
+        if(createNew) {
+            if(!configF.exists()) {
+                configF.getParentFile().mkdirs();
+                main.saveResource("config.yml", false);
+            }
+
+            if(!messagesF.exists()) {
+                messagesF.getParentFile().mkdirs();
+                main.saveResource("messages.yml", false);
+            }
+
+            if(!furnacesF.exists()) {
+                furnacesF.getParentFile().mkdirs();
+                main.saveResource("furnaceBackPack.yml", false);
+            }
+
         }
 
         config = new YamlConfiguration();
         messages = new YamlConfiguration();
         furnaceGui = new YamlConfiguration();
 
-        try {
-            config.load(configF);
-            messages.load(messagesF);
-            furnaceGui.load(furnacesF);
-        } catch (IOException | InvalidConfigurationException e) {
-            e.printStackTrace();
-        }
+        config.load(configF);
+        messages.load(messagesF);
+        furnaceGui.load(furnacesF);
 
         // fixme: config updater
 

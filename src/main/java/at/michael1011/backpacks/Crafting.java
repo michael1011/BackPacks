@@ -4,7 +4,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -29,7 +28,7 @@ public class Crafting {
     public static String available = "";
     public static List<String> availableList;
 
-    private static Boolean slots9 = true;
+    static Boolean slotsDivisible = true;
 
     public static void initCrafting(CommandSender sender) {
         String path = "BackPacks.";
@@ -41,10 +40,10 @@ public class Crafting {
             String backPackPath = path+backPack+".";
 
             if(config.contains(backPackPath)) {
-                ItemStack item = getItemStack(sender, config, backPackPath, backPack);
+                ItemStack item = getItemStack(sender, backPackPath, backPack, true);
 
                 if(item != null) {
-                    if(slots9) {
+                    if(slotsDivisible) {
                         items.put(item, backPack);
                         itemsInverted.put(backPack, item);
 
@@ -66,7 +65,7 @@ public class Crafting {
                         sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                                 messages.getString("BackPacks.slotsNotDivisibleBy9").replaceAll("%backpack%", backPack)));
 
-                        slots9 = true;
+                        slotsDivisible = true;
                     }
 
                 }
@@ -81,15 +80,16 @@ public class Crafting {
         availableList = Arrays.asList(Crafting.available.split(","));
     }
 
-    private static ItemStack getItemStack(CommandSender sender, YamlConfiguration config, String backPackPath,
-                                          String backPack) {
+    static ItemStack getItemStack(CommandSender sender, String backPackPath, String backPack, Boolean itemMeta) {
+        // todo: check if type is normal here and line 122
+
         int itemSlots = config.getInt(backPackPath+"slots");
 
-        String materialString = config.getString(backPackPath+"material");
+        String materialString = config.getString(backPackPath+"material").toUpperCase();
 
         if(itemSlots % 9 == 0) {
             try {
-                Material material = Material.getMaterial(materialString);
+                Material material = Material.valueOf(materialString);
 
                 ItemStack craft = new ItemStack(material, 1);
 
@@ -103,19 +103,21 @@ public class Crafting {
                     lore = lore+","+ChatColor.translateAlternateColorCodes('&', ent.getValue().toString());
                 }
 
-                ItemMeta craftM = craft.getItemMeta();
+                if(itemMeta) {
+                    ItemMeta craftM = craft.getItemMeta();
 
-                craftM.setDisplayName(name);
+                    craftM.setDisplayName(name);
 
-                if(!lore.equals("")) {
-                    List<String> loreList = Arrays.asList(lore.split("\\s*,\\s*"));
+                    if(!lore.equals("")) {
+                        List<String> loreList = Arrays.asList(lore.split("\\s*,\\s*"));
 
-                    craftM.setLore(loreList);
+                        craftM.setLore(loreList);
 
-                    loreMap.put(loreList, backPack);
+                        loreMap.put(loreList, backPack);
+                    }
+
+                    craft.setItemMeta(craftM);
                 }
-
-                craft.setItemMeta(craftM);
 
                 slots.put(backPack, itemSlots);
 
@@ -123,22 +125,24 @@ public class Crafting {
 
                 type.put(backPack, rawType);
 
+                // todo: add furnace test
                 if(rawType.equals("furnace")) {
                     furnaceGui.put(backPack, config.getString(backPackPath+"gui.enabled"));
                 }
 
                 return craft;
 
-            } catch (IllegalArgumentException | NullPointerException e) {
+            } catch (IllegalArgumentException e) {
                 sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                         messages.getString("Help.materialNotValid")
                                 .replaceAll("%material%", materialString).replaceAll("%backpack%", backPack)));
+
             }
 
             return null;
 
         } else {
-            slots9 = false;
+            slotsDivisible = false;
 
             return null;
         }
@@ -147,6 +151,7 @@ public class Crafting {
 
     private static ShapedRecipe createShapedRecipe(CommandSender sender, ItemStack item, String backPackPath,
                                                    String backPack) {
+
         ShapedRecipe recipe = new ShapedRecipe(item);
 
         recipe.shape(
@@ -166,6 +171,8 @@ public class Crafting {
             } catch (IllegalArgumentException e) {
                 sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', messages.getString("Help.materialNotValid")
                         .replaceAll("%material%", material).replaceAll("%backpack%", backPack)));
+
+                return null;
             }
         }
 
