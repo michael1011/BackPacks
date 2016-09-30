@@ -47,22 +47,19 @@ public class Join implements Listener {
                             }
 
                         } else {
-                            SQL.query("INSERT INTO bp_users (name, uuid) VALUES ('"+playerName+"', '"+uuid+"')", new SQL.Callback<Boolean>() {
+                            SQL.query("INSERT INTO bp_users (name, uuid) VALUES ('" + playerName + "', '" + uuid + "')", new SQL.Callback<Boolean>() {
                                 @Override
-                                public void onSuccess(Boolean rs) {}
+                                public void onSuccess(Boolean rs) {
+                                }
 
                                 @Override
-                                public void onFailure(Throwable e) {}
+                                public void onFailure(Throwable e) {
+                                }
 
                             });
                         }
 
-                        if(Updater.updateAvailable) {
-                            if(p.hasPermission("backpacks.update")) {
-                                p.sendMessage(Updater.newVersion);
-                                p.sendMessage(Updater.newVersionDownload);
-                            }
-                        }
+                        checkForUpdates(p);
 
                         rs.close();
                     }
@@ -78,6 +75,15 @@ public class Join implements Listener {
 
         });
 
+    }
+
+    static void checkForUpdates(Player p) {
+        if(Updater.updateAvailable) {
+            if(p.hasPermission("backpacks.update")) {
+                p.sendMessage(Updater.newVersion);
+                p.sendMessage(Updater.newVersionDownload);
+            }
+        }
     }
 
 }

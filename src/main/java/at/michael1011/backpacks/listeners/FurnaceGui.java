@@ -71,7 +71,7 @@ public class FurnaceGui implements Listener {
 
     }
 
-    private void setBoolean(Boolean toggle, int slot, String uuid) {
+    private void setBoolean(Boolean value, int slot, String uuid) {
         String name = null;
 
         if(slot == 12) {
@@ -84,7 +84,7 @@ public class FurnaceGui implements Listener {
             name = "autoFill";
         }
 
-        SQL.query("UPDATE bp_furnaces SET "+name+"='"+String.valueOf(toggle)+"' WHERE uuid='"+uuid+"'", new SQL.Callback<Boolean>() {
+        SQL.query("UPDATE bp_furnaces SET "+name+"='"+String.valueOf(value)+"' WHERE uuid='"+uuid+"'", new SQL.Callback<Boolean>() {
             @Override
             public void onSuccess(Boolean rs) {}
 

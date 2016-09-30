@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="at.michael1011.backpacks.CraftingTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2016-09-30T16:18:56" hostname="michael" time="0.217">
-  <properties/>
-  <testcase name="getItemStack" classname="at.michael1011.backpacks.CraftingTest" time="0.217"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

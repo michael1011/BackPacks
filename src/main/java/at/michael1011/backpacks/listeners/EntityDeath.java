@@ -121,7 +121,7 @@ public class EntityDeath implements Listener {
 
     }
 
-    private void smelt(List<ItemStack> toSmelt, Location loc) {
+    static void smelt(List<ItemStack> toSmelt, Location loc) {
         World world = loc.getWorld();
 
         for(ItemStack smelt : toSmelt) {
@@ -166,7 +166,7 @@ public class EntityDeath implements Listener {
         for(ItemStack contents : p.getInventory().getContents()) {
             if(contents != null) {
                 if(contents.hasItemMeta()) {
-                    if(contents.getItemMeta().getLore() != null) {
+                    if(contents.getItemMeta().hasLore()) {
                         if(contents.getItemMeta().getLore().equals(item.getKey().getItemMeta().getLore())) {
                             backPack = item.getValue();
                         }

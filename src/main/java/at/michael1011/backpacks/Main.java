@@ -34,6 +34,7 @@ public class Main extends JavaPlugin {
     private static Main main;
 
     // todo: add anvil and enchanting backpack: http://bit.ly/2cDX46w
+    // todo: verify backpack with nbt tags
 
     // fixme: translations
     // fixme: add aliases here: https://github.com/michael1011/BackPacks/wiki/Permissions-and-commands

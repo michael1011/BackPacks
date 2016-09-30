@@ -45,42 +45,52 @@ public class BlockBreak implements Listener {
                  crops = (Crops) block.getState().getData();
              }
 
-             if(material.equals(Material.IRON_ORE) || material.equals(Material.GOLD_ORE) ||
-                     material.equals(Material.POTATO) || material.equals(Material.COAL_ORE)) {
-                 for(Map.Entry<ItemStack, String> item : items.entrySet()) {
-                     String backpack = getBackPack(item, p);
+             switch (material) {
+                 case IRON_ORE:
+                 case GOLD_ORE:
+                 case POTATO:
+                 case COAL_ORE:
+                     for(Map.Entry<ItemStack, String> item : items.entrySet()) {
+                         String backpack = getBackPack(item, p);
 
-                     if(furnaceGui.containsKey(backpack)) {
-                         e.setCancelled(true);
-                         block.setType(Material.AIR);
+                         if(furnaceGui.containsKey(backpack)) {
+                             e.setCancelled(true);
+                             block.setType(Material.AIR);
 
-                         if(furnaceGui.get(item.getValue()).equals("true")) {
-                             final String trimmedID = p.getUniqueId().toString().replaceAll("-", "");
+                             if(furnaceGui.get(item.getValue()).equals("true")) {
+                                 final String trimmedID = p.getUniqueId().toString().replaceAll("-", "");
 
-                             final Crops finalCrops = crops;
+                                 final Crops finalCrops = crops;
 
-                             SQL.getResult("SELECT * FROM bp_furnaces WHERE uuid='"+trimmedID+"'", new SQL.Callback<ResultSet>() {
-                                 @Override
-                                 public void onSuccess(ResultSet rs) {
-                                     try {
-                                         if(rs.first()) {
-                                             int amount = rs.getInt("coal");
+                                 SQL.getResult("SELECT * FROM bp_furnaces WHERE uuid='"+trimmedID+"'", new SQL.Callback<ResultSet>() {
+                                     @Override
+                                     public void onSuccess(ResultSet rs) {
+                                         try {
+                                             if(rs.first()) {
+                                                 int amount = rs.getInt("coal");
 
-                                             if(material.equals(Material.COAL_ORE)) {
-                                                 if(Boolean.valueOf(rs.getString("autoFill"))) {
-                                                     if(amount < 64) {
-                                                         ExperienceOrb exp = location.getWorld().spawn(location, ExperienceOrb.class);
-                                                         exp.setExperience(1);
+                                                 if(material.equals(Material.COAL_ORE)) {
+                                                     if(Boolean.valueOf(rs.getString("autoFill"))) {
+                                                         if(amount < 64) {
+                                                             ExperienceOrb exp = location.getWorld().spawn(location, ExperienceOrb.class);
+                                                             exp.setExperience(1);
 
-                                                         SQL.query("UPDATE bp_furnaces SET coal="+String.valueOf(amount+random())+" WHERE uuid='"+trimmedID+"'",
-                                                                 new SQL.Callback<Boolean>() {
-                                                                     @Override
-                                                                     public void onSuccess(Boolean rs) {}
+                                                             SQL.query("UPDATE bp_furnaces SET coal="+String.valueOf(amount+random())+" WHERE uuid='"+trimmedID+"'",
+                                                                     new SQL.Callback<Boolean>() {
+                                                                         @Override
+                                                                         public void onSuccess(Boolean rs) {}
 
-                                                                     @Override
-                                                                     public void onFailure(Throwable e) {}
+                                                                         @Override
+                                                                         public void onFailure(Throwable e) {}
 
-                                                                 });
+                                                                     });
+
+                                                         } else {
+                                                             ExperienceOrb exp = location.getWorld().spawn(location, ExperienceOrb.class);
+                                                             exp.setExperience(1);
+
+                                                             world.dropItem(location, new ItemStack(Material.COAL, random()));
+                                                         }
 
                                                      } else {
                                                          ExperienceOrb exp = location.getWorld().spawn(location, ExperienceOrb.class);
@@ -89,101 +99,95 @@ public class BlockBreak implements Listener {
                                                          world.dropItem(location, new ItemStack(Material.COAL, random()));
                                                      }
 
-                                                 } else {
-                                                     ExperienceOrb exp = location.getWorld().spawn(location, ExperienceOrb.class);
-                                                     exp.setExperience(1);
+                                                 } else if(material.equals(Material.POTATO)) {
+                                                     if(Boolean.valueOf(rs.getString("food"))) {
+                                                         checkCoal(amount, trimmedID, e, finalCrops, material, location, p);
 
-                                                     world.dropItem(location, new ItemStack(Material.COAL, random()));
-                                                 }
+                                                     } else {
+                                                         world.dropItem(location, new ItemStack(Material.POTATO_ITEM, random()));
+                                                     }
 
-                                             } else if(material.equals(Material.POTATO)) {
-                                                 if(Boolean.valueOf(rs.getString("food"))) {
-                                                     drop(amount, trimmedID, e, finalCrops, material, world, location, p);
-
-                                                 } else {
-                                                     world.dropItem(location, new ItemStack(Material.POTATO_ITEM, random()));
-                                                 }
-
-                                             } else if(Boolean.valueOf(rs.getString("ores"))) {
-                                                 drop(amount, trimmedID, e, finalCrops, material, world, location, p);
-
-                                             } else {
-                                                 world.dropItem(location, new ItemStack(material));
-                                             }
-
-                                         } else {
-                                             if(!material.equals(Material.COAL_ORE)) {
-                                                 if(material.equals(Material.POTATO)) {
-                                                     world.dropItem(location, new ItemStack(Material.POTATO_ITEM));
+                                                 } else if(Boolean.valueOf(rs.getString("ores"))) {
+                                                     checkCoal(amount, trimmedID, e, finalCrops, material, location, p);
 
                                                  } else {
                                                      world.dropItem(location, new ItemStack(material));
                                                  }
 
-                                                 p.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
-                                                         messages.getString("BackPacks.furnaceBackPack.noCoal")));
+                                             } else {
+                                                 if(!material.equals(Material.COAL_ORE)) {
+                                                     if(material.equals(Material.POTATO)) {
+                                                         world.dropItem(location, new ItemStack(Material.POTATO_ITEM));
+
+                                                     } else {
+                                                         world.dropItem(location, new ItemStack(material));
+                                                     }
+
+                                                     p.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                                             messages.getString("BackPacks.furnaceBackPack.noCoal")));
+                                                 }
+
                                              }
 
+                                         } catch (SQLException e1) {
+                                             e1.printStackTrace();
                                          }
 
-                                     } catch (SQLException e1) {
-                                         e1.printStackTrace();
                                      }
 
-                                 }
+                                     @Override
+                                     public void onFailure(Throwable e) {}
 
-                                 @Override
-                                 public void onFailure(Throwable e) {}
+                                 });
 
-                             });
+                             } else {
+                                 smelt(e.getBlock(), crops, material);
+                             }
 
-                         } else {
-                             smelt(e, crops, material);
+                             break;
+
                          }
-
-                         break;
 
                      }
 
-                 }
-
+                     break;
              }
 
          }
 
     }
 
-    private void drop(int amount, String trimmedID, final BlockBreakEvent e, final Crops finalCrops, final Material material,
-                      World world, Location location, Player p) {
+    static void checkCoal(int amount, String trimmedID, final BlockBreakEvent e, final Crops finalCrops,
+                          final Material material, Location location, Player p) {
+
         if(amount > 0) {
             SQL.query("UPDATE bp_furnaces SET coal="+String.valueOf(amount-1)+" WHERE uuid='"+trimmedID+"'",
                     new SQL.Callback<Boolean>() {
                         @Override
                         public void onSuccess(Boolean rs) {
-                            smelt(e, finalCrops, material);
+                            smelt(e.getBlock(), finalCrops, material);
                         }
 
                         @Override
                         public void onFailure(Throwable e) {}
 
-                    });
+            });
 
         } else {
             if(!material.equals(Material.POTATO)) {
-                world.dropItem(location, new ItemStack(material));
+                location.getWorld().dropItem(location, new ItemStack(material));
 
             } else {
-                world.dropItem(location, new ItemStack(Material.POTATO_ITEM, random()));
+                location.getWorld().dropItem(location, new ItemStack(Material.POTATO_ITEM, random()));
             }
 
-            p.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+            p.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                     messages.getString("BackPacks.furnaceBackPack.noCoal")));
 
         }
     }
 
-    private void smelt(BlockBreakEvent e, Crops crops, Material material) {
-        Block block = e.getBlock();
+    static void smelt(Block block, Crops crops, Material material) {
         Location location = block.getLocation();
 
         switch (material) {
@@ -212,14 +216,14 @@ public class BlockBreak implements Listener {
 
     }
 
-    private void drop(Material material, int amount, Location location) {
+    private static void drop(Material material, int amount, Location location) {
         location.getWorld().dropItem(location, new ItemStack(material, amount));
 
         ExperienceOrb exp = location.getWorld().spawn(location, ExperienceOrb.class);
         exp.setExperience(1);
     }
 
-    private int random() {
+    static int random() {
         Random rand = new Random();
 
         return rand.nextInt((3 - 1)+1)+ 1;

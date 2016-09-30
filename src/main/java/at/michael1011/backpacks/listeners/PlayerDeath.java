@@ -61,7 +61,7 @@ public class PlayerDeath implements Listener {
 
                                     openInvs.remove(p);
 
-                                    dropInventory(inv, p);
+                                    dropInventory(inv.getContents(), p);
                                 }
 
                                 @Override
@@ -74,7 +74,7 @@ public class PlayerDeath implements Listener {
                         case "ender":
                             Inventory inv = p.getEnderChest();
 
-                            dropInventory(inv, p);
+                            dropInventory(inv.getContents(), p);
 
                             inv.clear();
 
@@ -88,11 +88,11 @@ public class PlayerDeath implements Listener {
 
     }
 
-    private void dropInventory(Inventory inv, Player p) {
+    static void dropInventory(ItemStack[] content, Player p) {
         Location location = p.getLocation();
         World world = location.getWorld();
 
-        for(ItemStack inBackPack : inv.getContents()) {
+        for(ItemStack inBackPack : content) {
             if(inBackPack != null) {
                 world.dropItemNaturally(location, inBackPack);
             }

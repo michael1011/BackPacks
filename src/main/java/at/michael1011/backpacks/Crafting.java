@@ -149,6 +149,7 @@ public class Crafting {
 
     }
 
+    // fixme: add test for this
     private static ShapedRecipe createShapedRecipe(CommandSender sender, ItemStack item, String backPackPath,
                                                    String backPack) {
 

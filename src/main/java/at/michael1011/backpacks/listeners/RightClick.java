@@ -403,7 +403,7 @@ public class RightClick implements Listener {
         item.setItemMeta(meta);
     }
 
-    private List<String> getLore(String path) {
+    static List<String> getLore(String path) {
         String lore = "";
 
         Map<String, Object> loreSec = furnaceGui.getConfigurationSection(path).getValues(true);
