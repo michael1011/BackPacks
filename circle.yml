@@ -15,8 +15,8 @@ dependencies:
     - mysql -u ubuntu -e 'GRANT ALL ON bpTest.* TO 'bpTest'@'localhost''
     - mysql -u ubuntu -e 'FLUSH PRIVILEGES'
   override:
-    - gradle dependencies
+    - ./gradlew dependencies
 
 test:
   override:
-    - gradle build -Dscan
+    - ./gradlew build -Dscan
