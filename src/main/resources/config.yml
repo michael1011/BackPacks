@@ -48,6 +48,8 @@ BackPacks:
     name: "&bLittle &3BackPack"
     type: "normal"
 
+
+    # Important: every description must be unique!
     description:
       1: "&fThis is the &bLittle &3BackPack&f."
       2: "&8Right click to open it."

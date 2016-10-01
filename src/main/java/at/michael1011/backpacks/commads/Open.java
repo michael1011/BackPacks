@@ -10,6 +10,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.sql.ResultSet;
@@ -63,7 +64,12 @@ public class Open implements CommandExecutor {
                                                             SQL.getResult("SELECT * FROM bp_"+backPack+"_"+trimmedID, new SQL.Callback<ResultSet>() {
                                                                 @Override
                                                                 public void onSuccess(ResultSet rs) {
-                                                                    opener.openInventory(getInv(rs, opener, backPack, item.getItemMeta().getDisplayName(), false, trimmedID));
+                                                                    Inventory open = getInv(rs, opener, backPack, item.getItemMeta().getDisplayName(), false, trimmedID);
+
+                                                                    if(open != null) {
+                                                                        opener.openInventory(open);
+                                                                    }
+
                                                                 }
 
                                                                 @Override

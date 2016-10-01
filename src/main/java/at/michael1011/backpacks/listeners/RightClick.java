@@ -83,7 +83,12 @@ public class RightClick implements Listener {
                                             SQL.getResult("SELECT * FROM bp_"+finalBackPack+"_"+trimmedID, new SQL.Callback<ResultSet>() {
                                                 @Override
                                                 public void onSuccess(ResultSet rs) {
-                                                    p.openInventory(getInv(rs, p, finalBackPack, item.getItemMeta().getDisplayName(), true, null));
+                                                    Inventory open = getInv(rs, p, finalBackPack, item.getItemMeta().getDisplayName(), true, null);
+
+                                                    if(open != null) {
+                                                        p.openInventory(open);
+                                                    }
+
                                                 }
 
                                                 @Override
@@ -196,6 +201,11 @@ public class RightClick implements Listener {
 
     public static Inventory getInv(ResultSet rs, Player opener, String backPack, String name,
                                    Boolean openerIsOwner, String ownerID) {
+
+        if(openInvs.containsKey(opener)) {
+            return null;
+        }
+
         if(rs != null) {
             try {
                 rs.beforeFirst();

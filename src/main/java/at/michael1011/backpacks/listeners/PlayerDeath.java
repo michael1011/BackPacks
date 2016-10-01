@@ -61,7 +61,9 @@ public class PlayerDeath implements Listener {
 
                                     openInvs.remove(p);
 
-                                    dropInventory(inv.getContents(), p);
+                                    if(inv != null) {
+                                        dropInventory(inv.getContents(), p);
+                                    }
                                 }
 
                                 @Override

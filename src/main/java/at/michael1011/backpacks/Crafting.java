@@ -81,8 +81,6 @@ public class Crafting {
     }
 
     static ItemStack getItemStack(CommandSender sender, String backPackPath, String backPack, Boolean itemMeta) {
-        // todo: check if type is normal here and line 122
-
         int itemSlots = config.getInt(backPackPath+"slots");
 
         String materialString = config.getString(backPackPath+"material").toUpperCase();
