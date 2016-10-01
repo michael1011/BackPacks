@@ -6,47 +6,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51551c69-f36d-4497-9d42-5d6b07c19936" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/at/michael1011/backpacks/CraftingTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/at/michael1011/backpacks/EnchantGlowTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/at/michael1011/backpacks/MainTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/at/michael1011/backpacks/SQLTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/at/michael1011/backpacks/UpdaterTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/at/michael1011/backpacks/commads/CreateCompleterTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/at/michael1011/backpacks/commads/GiveCompleterTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/at/michael1011/backpacks/commads/OpenCompleterTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/at/michael1011/backpacks/listeners/BlockBreakTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/at/michael1011/backpacks/listeners/BlockPlaceTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/at/michael1011/backpacks/listeners/EntityDeathTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/at/michael1011/backpacks/listeners/JoinTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/at/michael1011/backpacks/listeners/PlayerDeathTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/at/michael1011/backpacks/listeners/RightClickTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/at/michael1011/backpacks/tasks/ReconnectTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/resources/config.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/resources/furnaceBackPack.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/resources/messages.yml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/plugins/BackPacks-2.1.0.jar" afterPath="$PROJECT_DIR$/server1.10/plugins/BackPacks-2.1.0.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/data/villages.dat" afterPath="$PROJECT_DIR$/server1.10/world/data/villages.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/level.dat" afterPath="$PROJECT_DIR$/server1.10/world/level.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/level.dat_old" afterPath="$PROJECT_DIR$/server1.10/world/level.dat_old" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/playerdata/ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8.dat" afterPath="$PROJECT_DIR$/server1.10/world/playerdata/ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/region/r.-1.0.mca" afterPath="$PROJECT_DIR$/server1.10/world/region/r.-1.0.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/region/r.0.0.mca" afterPath="$PROJECT_DIR$/server1.10/world/region/r.0.0.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/region/r.0.1.mca" afterPath="$PROJECT_DIR$/server1.10/world/region/r.0.1.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/session.lock" afterPath="$PROJECT_DIR$/server1.10/world/session.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.-1.-1.mca" afterPath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.-1.-1.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.-1.0.mca" afterPath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.-1.0.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.0.-1.mca" afterPath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.0.-1.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.0.0.mca" afterPath="$PROJECT_DIR$/server1.10/world_nether/DIM-1/region/r.0.0.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_nether/data/villages_nether.dat" afterPath="$PROJECT_DIR$/server1.10/world_nether/data/villages_nether.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_nether/level.dat" afterPath="$PROJECT_DIR$/server1.10/world_nether/level.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_nether/level.dat_old" afterPath="$PROJECT_DIR$/server1.10/world_nether/level.dat_old" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_nether/session.lock" afterPath="$PROJECT_DIR$/server1.10/world_nether/session.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/DIM1/region/r.-1.-1.mca" afterPath="$PROJECT_DIR$/server1.10/world_the_end/DIM1/region/r.-1.-1.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/DIM1/region/r.-1.0.mca" afterPath="$PROJECT_DIR$/server1.10/world_the_end/DIM1/region/r.-1.0.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/DIM1/region/r.0.-1.mca" afterPath="$PROJECT_DIR$/server1.10/world_the_end/DIM1/region/r.0.-1.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/DIM1/region/r.0.0.mca" afterPath="$PROJECT_DIR$/server1.10/world_the_end/DIM1/region/r.0.0.mca" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/data/villages_end.dat" afterPath="$PROJECT_DIR$/server1.10/world_the_end/data/villages_end.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/level.dat" afterPath="$PROJECT_DIR$/server1.10/world_the_end/level.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/level.dat_old" afterPath="$PROJECT_DIR$/server1.10/world_the_end/level.dat_old" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world_the_end/session.lock" afterPath="$PROJECT_DIR$/server1.10/world_the_end/session.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/logs/latest.log" afterPath="$PROJECT_DIR$/server1.10/logs/latest.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/server.properties" afterPath="$PROJECT_DIR$/server1.10/server.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/spigot.yml" afterPath="$PROJECT_DIR$/server1.10/spigot.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/usercache.json" afterPath="$PROJECT_DIR$/server1.10/usercache.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server1.10/world/stats/ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8.json" afterPath="$PROJECT_DIR$/server1.10/world/stats/ba9c9caa-1f6c-46b1-9c7a-2ada2a844fd8.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Crafting.java" afterPath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Crafting.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Main.java" afterPath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/commads/Open.java" afterPath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/commads/Open.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/PlayerDeath.java" afterPath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/PlayerDeath.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/RightClick.java" afterPath="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/RightClick.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/config.yml" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
     </list>
     <ignored path="BackPacks.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -165,6 +149,9 @@
             <state relative-caret-position="216">
               <caret line="36" column="43" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
               <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#1002#1003#0" expanded="false" />
+                <element signature="e#1080#1081#0" expanded="false" />
                 <marker date="1475134303315" expanded="true" signature="2061:2126" ph="UPDATE bp_fu... " />
                 <marker date="1475134303315" expanded="true" signature="2493:2521" ph="DELETE FROM " />
                 <marker date="1475134303315" expanded="true" signature="6710:7053" ph="INSERT INTO bp_missingValue_missingValue... " />
@@ -176,9 +163,12 @@
       <file leaf-file-name="RightClick.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/RightClick.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
+            <state relative-caret-position="3006">
               <caret line="201" column="28" selection-start-line="201" selection-start-column="28" selection-end-line="201" selection-end-column="28" />
               <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#1598#1599#0" expanded="false" />
+                <element signature="e#1676#1677#0" expanded="false" />
                 <marker date="1475357764919" expanded="true" signature="3406:3441" ph="SELECT * FRO... bp_missingValue_missingValue" />
                 <marker date="1475357764919" expanded="true" signature="4333:4675" ph="CREATE TABLE... IF" />
                 <marker date="1475357764919" expanded="true" signature="6280:6332" ph="SELECT * FRO... bp_furnaces" />
@@ -188,7 +178,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Open.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Open.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/commads/Open.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="241">
@@ -202,13 +192,33 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="SQL.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/SQL.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
+            <state relative-caret-position="558">
               <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding>
-                <element signature="e#980#981#0" expanded="true" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#1213#1214#0" expanded="false" />
+                <element signature="e#1290#1291#0" expanded="false" />
+                <element signature="e#1903#1904#0" expanded="false" />
+                <element signature="e#1983#1984#0" expanded="false" />
+                <element signature="e#2238#2239#0" expanded="false" />
+                <element signature="e#2315#2316#0" expanded="false" />
+                <element signature="e#3864#3865#0" expanded="false" />
+                <element signature="e#3944#3945#0" expanded="false" />
+                <element signature="e#4157#4158#0" expanded="false" />
+                <element signature="e#4234#4235#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -614,7 +624,6 @@
         <option value="$PROJECT_DIR$/src/test/resources/config.yml" />
         <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/Updater.java" />
         <option value="$PROJECT_DIR$/src/test/java/at/michael1011/backpacks/SQLTest.java" />
-        <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/SQL.java" />
         <option value="$PROJECT_DIR$/src/test/java/at/michael1011/backpacks/tasks/ReconnectTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/tasks/Reconnect.java" />
@@ -643,6 +652,7 @@
         <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/RightClick.java" />
         <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/PlayerDeath.java" />
         <option value="$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/commads/Open.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
       </list>
     </option>
   </component>
@@ -785,6 +795,8 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -819,62 +831,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="test" />
               <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BackPacks" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BackPacks" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="backpacks" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BackPacks" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BackPacks" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="backpacks" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="commads" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -957,8 +913,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -989,6 +943,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="966" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="js-jscs-nodeInterpreter" value="/usr/bin/node" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -1475,24 +1430,6 @@
       </ExternalSystemSettings>
       <method />
     </configuration>
-    <configuration default="false" name="jacocoTestReport" type="GradleRunConfiguration" factoryName="Gradle">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="jacocoTestReport" />
-          </list>
-        </option>
-        <option name="vmOptions" value="" />
-      </ExternalSystemSettings>
-      <method />
-    </configuration>
     <configuration default="false" name="assemble" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -1563,41 +1500,13 @@
         <option name="RunConfigurationTask" enabled="true" run_configuration_name="copy" run_configuration_type="GradleRunConfiguration" />
       </method>
     </configuration>
-    <configuration default="false" name="All tests" type="JUnit" factoryName="JUnit">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="at.michael1011.backpacks.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="BackPacks_test" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="at.michael1011.backpacks" />
-      <option name="MAIN_CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <list size="8">
+    <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Gradle.build" />
       <item index="1" class="java.lang.String" itemvalue="Gradle.cleanBuilds" />
-      <item index="2" class="java.lang.String" itemvalue="Gradle.jacocoTestReport" />
-      <item index="3" class="java.lang.String" itemvalue="Gradle.assemble" />
-      <item index="4" class="java.lang.String" itemvalue="Gradle.clean" />
-      <item index="5" class="java.lang.String" itemvalue="Gradle.copy" />
-      <item index="6" class="java.lang.String" itemvalue="JAR Application.Spigot 1.10" />
-      <item index="7" class="java.lang.String" itemvalue="JUnit.All tests" />
+      <item index="2" class="java.lang.String" itemvalue="Gradle.assemble" />
+      <item index="3" class="java.lang.String" itemvalue="Gradle.clean" />
+      <item index="4" class="java.lang.String" itemvalue="Gradle.copy" />
+      <item index="5" class="java.lang.String" itemvalue="JAR Application.Spigot 1.10" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
@@ -1748,6 +1657,7 @@
       <workItem from="1475326362987" duration="307000" />
       <workItem from="1475355053130" duration="386000" />
       <workItem from="1475356007147" duration="1945000" />
+      <workItem from="1475358348294" duration="181000" />
     </task>
     <servers />
   </component>
@@ -1784,7 +1694,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="347356000" />
+    <option name="totallyTimeSpent" value="347537000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1816,8 +1726,8 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3993808" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2" sideWeight="0.505618" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3993808" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1922,13 +1832,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-113">
           <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="62" column="77" selection-start-line="62" selection-start-column="77" selection-end-line="62" selection-end-column="77" />
         </state>
       </provider>
     </entry>
@@ -2111,9 +2014,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="14" column="76" selection-start-line="14" selection-start-column="76" selection-end-line="14" selection-end-column="76" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2128,9 +2028,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
           <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2138,9 +2036,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="67">
           <caret line="18" column="25" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2148,9 +2044,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="139">
           <caret line="33" column="24" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2166,7 +2059,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2174,9 +2066,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-239">
           <caret line="38" column="26" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2184,9 +2073,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="468">
           <caret line="59" column="5" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2206,7 +2093,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
           <caret line="39" column="30" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2217,20 +2103,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/at/michael1011/backpacks/commads/GiveTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/at/michael1011/backpacks/commads/GiveTest.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/SQL.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
+        <state relative-caret-position="558">
           <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding>
-            <element signature="e#980#981#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1213#1214#0" expanded="false" />
+            <element signature="e#1290#1291#0" expanded="false" />
+            <element signature="e#1903#1904#0" expanded="false" />
+            <element signature="e#1983#1984#0" expanded="false" />
+            <element signature="e#2238#2239#0" expanded="false" />
+            <element signature="e#2315#2316#0" expanded="false" />
+            <element signature="e#3864#3865#0" expanded="false" />
+            <element signature="e#3944#3945#0" expanded="false" />
+            <element signature="e#4157#4158#0" expanded="false" />
+            <element signature="e#4234#4235#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2239,7 +2128,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2256,6 +2144,9 @@
         <state relative-caret-position="216">
           <caret line="36" column="43" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
           <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1002#1003#0" expanded="false" />
+            <element signature="e#1080#1081#0" expanded="false" />
             <marker date="1475134303315" expanded="true" signature="2061:2126" ph="UPDATE bp_fu... " />
             <marker date="1475134303315" expanded="true" signature="2493:2521" ph="DELETE FROM " />
             <marker date="1475134303315" expanded="true" signature="6710:7053" ph="INSERT INTO bp_missingValue_missingValue... " />
@@ -2280,7 +2171,6 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2297,9 +2187,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/at/michael1011/backpacks/listeners/RightClick.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
+        <state relative-caret-position="3006">
           <caret line="201" column="28" selection-start-line="201" selection-start-column="28" selection-end-line="201" selection-end-column="28" />
           <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1598#1599#0" expanded="false" />
+            <element signature="e#1676#1677#0" expanded="false" />
             <marker date="1475357764919" expanded="true" signature="3406:3441" ph="SELECT * FRO... bp_missingValue_missingValue" />
             <marker date="1475357764919" expanded="true" signature="4333:4675" ph="CREATE TABLE... IF" />
             <marker date="1475357764919" expanded="true" signature="6280:6332" ph="SELECT * FRO... bp_furnaces" />
@@ -2317,6 +2210,14 @@
             <marker date="1475357937984" expanded="true" signature="2684:2714" ph="SELECT * FRO... bp_missingValue_missingValue" />
             <marker date="1475357937984" expanded="true" signature="6332:6384" ph="SELECT * FRO... bp_furnaces" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
