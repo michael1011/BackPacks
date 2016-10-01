@@ -11,6 +11,13 @@
 # Forums: http://www.spigotmc.org/
 
 config-version: 8
+messages:
+  whitelist: You are not whitelisted on this server!
+  unknown-command: Unknown command. Type "/help" for help.
+  server-full: The server is full!
+  outdated-client: Outdated client! Please use {0}
+  outdated-server: Outdated server! I'm still on {0}
+  restart: Server is restarting
 settings:
   save-user-cache-on-stop-only: false
   bungeecord: false
@@ -46,13 +53,6 @@ commands:
   - summon
   - testforblock
   - tellraw
-messages:
-  whitelist: You are not whitelisted on this server!
-  unknown-command: Unknown command. Type "/help" for help.
-  server-full: The server is full!
-  outdated-client: Outdated client! Please use {0}
-  outdated-server: Outdated server! I'm still on {0}
-  restart: Server is restarting
 stats:
   disable-saving: false
   forced-stats: {}
@@ -74,7 +74,6 @@ world-settings:
       animals: 32
       monsters: 32
       misc: 16
-    mob-spawn-range: 4
     entity-tracking-range:
       players: 48
       animals: 48
@@ -100,6 +99,7 @@ world-settings:
     max-tick-time:
       tile: 50
       entity: 50
+    mob-spawn-range: 4
     item-despawn-rate: 6000
     merge-radius:
       item: 2.5

@@ -21,7 +21,7 @@ class GiveCompleter implements TabCompleter {
         } else if(args.length == 2) {
             List<String> players = new ArrayList<>();
 
-            for (Player p : Bukkit.getOnlinePlayers()) {
+            for(Player p : Bukkit.getOnlinePlayers()) {
                 players.add(p.getName());
             }
 
@@ -35,9 +35,9 @@ class GiveCompleter implements TabCompleter {
         if(!arg.equals("")) {
             List<String> filtered = new ArrayList<>();
 
-            for(String player : rawData) {
-                if(player.toLowerCase().contains(arg.toLowerCase())) {
-                    filtered.add(player);
+            for(String entry : rawData) {
+                if(entry.toLowerCase().contains(arg.toLowerCase())) {
+                    filtered.add(entry);
                 }
             }
 

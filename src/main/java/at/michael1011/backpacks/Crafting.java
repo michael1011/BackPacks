@@ -125,7 +125,6 @@ public class Crafting {
 
                 type.put(backPack, rawType);
 
-                // todo: add furnace test
                 if(rawType.equals("furnace")) {
                     furnaceGui.put(backPack, config.getString(backPackPath+"gui.enabled"));
                 }
