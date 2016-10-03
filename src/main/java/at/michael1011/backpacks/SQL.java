@@ -26,7 +26,7 @@ public class SQL {
             @Override
             public void run() {
                 try {
-                    final ResultSet rs = getResult(query);
+                    final ResultSet rs = con.prepareStatement(query).executeQuery();
 
                     scheduler.runTask(main, new Runnable() {
                         @Override
@@ -51,17 +51,13 @@ public class SQL {
         });
 
     }
-    
-    static ResultSet getResult(String query) throws SQLException {
-        return con.prepareStatement(query).executeQuery();
-    }
 
     public static void query(final String query, final Callback<Boolean> callback) {
         scheduler.runTaskAsynchronously(main, new Runnable() {
             @Override
             public void run() {
                 try {
-                    query(query);
+                    con.prepareStatement(query).execute();
 
                     scheduler.runTask(main, new Runnable() {
                         @Override
@@ -85,10 +81,6 @@ public class SQL {
             }
         });
 
-    }
-
-    static void query(String query) throws SQLException {
-        con.prepareStatement(query).execute();
     }
 
     public static void createCon(String host, String port, String database,
@@ -132,7 +124,13 @@ public class SQL {
             @Override
             public void run() {
                 try {
-                    final Boolean call = checkTable(table);
+                    DatabaseMetaData dmb = con.getMetaData();
+
+                    final ResultSet rs = dmb.getTables(null, null, table, null);
+
+                    rs.close();
+
+                    final Boolean call = rs.next();
 
                     scheduler.runTask(main, new Runnable() {
                         @Override
@@ -153,18 +151,6 @@ public class SQL {
             }
         });
 
-    }
-
-    static Boolean checkTable(String table) throws SQLException {
-        DatabaseMetaData dmb = con.getMetaData();
-
-        final ResultSet rs = dmb.getTables(null, null, table, null);
-
-        Boolean bool = rs.next();
-
-        rs.close();
-
-        return bool;
     }
 
 }

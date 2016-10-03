@@ -121,7 +121,7 @@ public class EntityDeath implements Listener {
 
     }
 
-    static void smelt(List<ItemStack> toSmelt, Location loc) {
+    private static void smelt(List<ItemStack> toSmelt, Location loc) {
         World world = loc.getWorld();
 
         for(ItemStack smelt : toSmelt) {

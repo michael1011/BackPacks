@@ -59,7 +59,12 @@ public class Join implements Listener {
                             });
                         }
 
-                        checkForUpdates(p);
+                        if(Updater.updateAvailable) {
+                            if(p.hasPermission("backpacks.update")) {
+                                p.sendMessage(Updater.newVersion);
+                                p.sendMessage(Updater.newVersionDownload);
+                            }
+                        }
 
                         rs.close();
                     }
@@ -75,15 +80,6 @@ public class Join implements Listener {
 
         });
 
-    }
-
-    static void checkForUpdates(Player p) {
-        if(Updater.updateAvailable) {
-            if(p.hasPermission("backpacks.update")) {
-                p.sendMessage(Updater.newVersion);
-                p.sendMessage(Updater.newVersionDownload);
-            }
-        }
     }
 
 }

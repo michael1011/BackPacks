@@ -90,7 +90,7 @@ public class PlayerDeath implements Listener {
 
     }
 
-    static void dropInventory(ItemStack[] content, Player p) {
+    private static void dropInventory(ItemStack[] content, Player p) {
         Location location = p.getLocation();
         World world = location.getWorld();
 

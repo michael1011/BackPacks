@@ -34,7 +34,7 @@ public class Main extends JavaPlugin {
     private static Main main;
 
     // todo: add anvil and enchanting backpack: http://bit.ly/2cDX46w
-    // todo: verify backpack with nbt tags
+    // todo: verify backpacks with nbt tags
 
     // todo: translations
     // fixme: add aliases here: https://github.com/michael1011/BackPacks/wiki/Permissions-and-commands
@@ -177,7 +177,7 @@ public class Main extends JavaPlugin {
     }
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
-    static void loadFiles(Main main, File folder, Boolean createNew) throws IOException, InvalidConfigurationException {
+    private static void loadFiles(Main main, File folder, Boolean createNew) throws IOException, InvalidConfigurationException {
         File configF = new File(folder, "config.yml");
         File messagesF = new File(folder, "messages.yml");
         File furnacesF = new File(folder, "furnaceBackPack.yml");

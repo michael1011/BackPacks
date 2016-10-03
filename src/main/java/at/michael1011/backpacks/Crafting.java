@@ -28,7 +28,7 @@ public class Crafting {
     public static String available = "";
     public static List<String> availableList;
 
-    static Boolean slotsDivisible = true;
+    private static Boolean slotsDivisible = true;
 
     public static void initCrafting(CommandSender sender) {
         String path = "BackPacks.";
@@ -80,7 +80,7 @@ public class Crafting {
         availableList = Arrays.asList(Crafting.available.split(","));
     }
 
-    static ItemStack getItemStack(CommandSender sender, String backPackPath, String backPack, Boolean itemMeta) {
+    private static ItemStack getItemStack(CommandSender sender, String backPackPath, String backPack, Boolean itemMeta) {
         int itemSlots = config.getInt(backPackPath+"slots");
 
         String materialString = config.getString(backPackPath+"material").toUpperCase();
@@ -146,7 +146,6 @@ public class Crafting {
 
     }
 
-    // fixme: add test for this
     private static ShapedRecipe createShapedRecipe(CommandSender sender, ItemStack item, String backPackPath,
                                                    String backPack) {
 

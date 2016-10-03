@@ -23,10 +23,8 @@ import static at.michael1011.backpacks.Main.*;
 
 public class Updater {
 
-    static String url = "https://api.curseforge.com/servermods/files?projectIds=98508";
-
     Updater(final Main main) {
-        int interval = hoursToTicks(config.getInt("Updater.interval"));
+        int interval = config.getInt("Updater.interval")*72000;
 
         Bukkit.getScheduler().runTaskTimerAsynchronously(main, new Runnable() {
             @Override
@@ -43,107 +41,109 @@ public class Updater {
     public static String newVersionDownload;
 
     static void checkUpdates(Main main, CommandSender sender) {
+
         try {
-            checkUpdates(main, main.getDescription().getVersion(), url, sender, false);
-        } catch (IOException | NoSuchAlgorithmException | ParseException | URISyntaxException e) {
-            e.printStackTrace();
-        }
-    }
+            HttpsURLConnection con = (HttpsURLConnection)
+                    new URL("https://api.curseforge.com/servermods/files?projectIds=98508").openConnection();
 
-    static void checkUpdates(Main main, String installedVersionNumber, String url,
-                             CommandSender sender, Boolean equalVersionNumber)
-            throws IOException, NoSuchAlgorithmException, URISyntaxException, ParseException {
+            con.setRequestMethod("GET");
 
-        HttpsURLConnection con = (HttpsURLConnection)
-                new URL(url).openConnection();
+            int responseCode = con.getResponseCode();
 
-        con.setRequestMethod("GET");
+            if(responseCode == 200) {
+                JSONArray array = getJsonArray(con);
 
-        int responseCode = con.getResponseCode();
+                int size = array.size();
 
-        if(responseCode == 200) {
-            JSONArray array = getJsonArray(con);
+                if(size> 0) {
+                    JSONObject latestVersion = (JSONObject) array.get(size-1);
 
-            int size = array.size();
+                    String downloadUrl = String.valueOf(latestVersion.get("downloadUrl"));
+                    String latestVersionNumber = String.valueOf(latestVersion.get("name"));
 
-            if(size> 0) {
-                JSONObject latestVersion = (JSONObject) array.get(size-1);
+                    String installedVersionNumber = main.getDescription().getVersion();
 
-                String downloadUrl = String.valueOf(latestVersion.get("downloadUrl"));
-                String latestVersionNumber = String.valueOf(latestVersion.get("name"));
+                    if(Integer.valueOf(installedVersionNumber.replaceAll("\\.", "")) <
+                            Integer.valueOf(newVersion.replaceAll("\\.", ""))) {
+                        // fixme: check if releaseType is 'release' else take version which is newer and has type release
 
-                if(equalVersionNumber) {
-                    latestVersionNumber = installedVersionNumber;
-                }
+                        newVersion = prefix+ChatColor.translateAlternateColorCodes('&',
+                                messages.getString("Updater.newVersionAvailable")
+                                        .replaceAll("%newVersion%", latestVersionNumber)
+                                        .replaceAll("%oldVersion%", installedVersionNumber));
 
-                if(checkForNewVersion(installedVersionNumber, latestVersionNumber)) {
-                    // fixme: check if releaseType is 'release' else take version which is newer and has type release
+                        newVersionDownload = prefix+ChatColor.translateAlternateColorCodes('&',
+                                messages.getString("Updater.newVersionAvailableDownload")
+                                        .replaceAll("%newVersion%", latestVersionNumber)
+                                        .replaceAll("%downloadLink%", downloadUrl));
 
-                    prepareMessages(latestVersionNumber, installedVersionNumber, downloadUrl);
+                        sender.sendMessage(newVersion);
 
-                    sender.sendMessage(newVersion);
+                        if(config.getBoolean("Updater.autoUpdate")) {
+                            String messagesPath = "Updater.autoUpdate.";
 
-                    if(config.getBoolean("Updater.autoUpdate")) {
-                        String messagesPath = "Updater.autoUpdate.";
+                            URL download = followRedirects(downloadUrl);
 
-                        URL download = followRedirects(downloadUrl);
+                            int fileSize = download.openConnection().getContentLength();
+                            String fileName = downloadUrl.substring(downloadUrl.lastIndexOf('/')+1,
+                                    downloadUrl.length());
 
-                        int fileSize = download.openConnection().getContentLength();
-                        String fileName = downloadUrl.substring(downloadUrl.lastIndexOf('/')+1,
-                                downloadUrl.length());
+                            File downloadedFile = downloadFile(fileName, "plugins", fileSize, download, sender);
 
-                        File downloadedFile = downloadFile(fileName, "plugins", fileSize, download, sender);
+                            if(getMD5("plugins/"+fileName).equalsIgnoreCase(String.valueOf(latestVersion.get("md5")))) {
+                                File old = new File(Main.class.getProtectionDomain().getCodeSource()
+                                        .getLocation().toURI().getPath());
 
-                        if(getMD5("plugins/"+fileName).equalsIgnoreCase(String.valueOf(latestVersion.get("md5")))) {
-                            File old = new File(Main.class.getProtectionDomain().getCodeSource()
-                                    .getLocation().toURI().getPath());
+                                if(old.delete()) {
+                                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                            messages.getString(messagesPath+"deletedOldVersion")
+                                                    .replaceAll("%oldVersion%", old.getName())));
+                                }
 
-                            if(old.delete()) {
                                 sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                        messages.getString(messagesPath+"deletedOldVersion")
-                                                .replaceAll("%oldVersion%", old.getName())));
+                                        messages.getString(messagesPath+"successful")));
+
+                                Bukkit.getScheduler().cancelTasks(main);
+                                Bukkit.dispatchCommand(sender, "reload");
+
+                            } else {
+                                if(downloadedFile.delete()) {
+                                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                            messages.getString(messagesPath+"downloadFailed")
+                                                    .replaceAll("%downloadLink%", downloadUrl)));
+
+                                    updateAvailable = true;
+
+                                    newVersionDownload = prefix+ChatColor.translateAlternateColorCodes('&',
+                                            messages.getString("Updater.newVersionAvailableDownload")
+                                                    .replaceAll("%newVersion%", latestVersionNumber)
+                                                    .replaceAll("%downloadLink%", downloadUrl));
+                                }
                             }
-
-                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                    messages.getString(messagesPath+"successful")));
-
-                            Bukkit.getScheduler().cancelTasks(main);
-                            Bukkit.dispatchCommand(sender, "reload");
 
                         } else {
-                            if(downloadedFile.delete()) {
-                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                        messages.getString(messagesPath+"downloadFailed")
-                                                .replaceAll("%downloadLink%", downloadUrl)));
+                            updateAvailable = true;
 
-                                updateAvailable = true;
-
-                                newVersionDownload = prefix+ChatColor.translateAlternateColorCodes('&',
-                                        messages.getString("Updater.newVersionAvailableDownload")
-                                                .replaceAll("%newVersion%", latestVersionNumber)
-                                                .replaceAll("%downloadLink%", downloadUrl));
-                            }
+                            sender.sendMessage(newVersionDownload);
                         }
 
-                    } else {
-                        updateAvailable = true;
-
-                        sender.sendMessage(newVersionDownload);
                     }
 
+                } else {
+                    sendConnectionError(sender);
                 }
 
             } else {
                 sendConnectionError(sender);
             }
 
-        } else {
-            sendConnectionError(sender);
+        } catch (IOException | ParseException | URISyntaxException | NoSuchAlgorithmException e) {
+            e.printStackTrace();
         }
 
     }
 
-    static File downloadFile(String fileName, String folder, int fileSize, URL download, CommandSender sender)
+    private static File downloadFile(String fileName, String folder, int fileSize, URL download, CommandSender sender)
             throws IOException {
 
         File downloadedFile = new File(folder, fileName);
@@ -179,7 +179,7 @@ public class Updater {
         return downloadedFile;
     }
 
-    static String getMD5(String fileName) throws NoSuchAlgorithmException, IOException {
+    private static String getMD5(String fileName) throws NoSuchAlgorithmException, IOException {
         MessageDigest md = MessageDigest.getInstance("MD5");
 
         md.update(Files.readAllBytes(Paths.get(fileName)));
@@ -188,11 +188,7 @@ public class Updater {
         return DatatypeConverter.printHexBinary(digest).toLowerCase();
     }
 
-    static Boolean checkForNewVersion(String thisVersion, String newVersion) {
-        return Integer.valueOf(thisVersion.replaceAll("\\.", "")) < Integer.valueOf(newVersion.replaceAll("\\.", ""));
-    }
-
-    static JSONArray getJsonArray(HttpsURLConnection con) throws IOException, ParseException {
+    private static JSONArray getJsonArray(HttpsURLConnection con) throws IOException, ParseException {
         BufferedReader input = new BufferedReader(new InputStreamReader(con.getInputStream()));
 
         JSONArray array = (JSONArray) new JSONParser().parse(input);
@@ -202,24 +198,12 @@ public class Updater {
         return array;
     }
 
-    static void prepareMessages(String latestVersionNumber, String installedVersionNumber, String downloadUrl) {
-        newVersion = prefix+ChatColor.translateAlternateColorCodes('&',
-                messages.getString("Updater.newVersionAvailable")
-                        .replaceAll("%newVersion%", latestVersionNumber)
-                        .replaceAll("%oldVersion%", installedVersionNumber));
-
-        newVersionDownload = prefix+ChatColor.translateAlternateColorCodes('&',
-                messages.getString("Updater.newVersionAvailableDownload")
-                        .replaceAll("%newVersion%", latestVersionNumber)
-                        .replaceAll("%downloadLink%", downloadUrl));
-    }
-
-    static void sendConnectionError(CommandSender sender) {
+    private static void sendConnectionError(CommandSender sender) {
         sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                 messages.getString("Updater.failedToReachServer")));
     }
 
-    static String readableByteCount(long bytes) {
+    private static String readableByteCount(long bytes) {
         int unit = 1024;
 
         if (bytes < unit) {
@@ -232,11 +216,7 @@ public class Updater {
         return String.format("%.1f %sB", bytes / Math.pow(unit, exp), pre);
     }
 
-    static int hoursToTicks(int hours) {
-        return hours*72000;
-    }
-
-    static URL followRedirects(String location) throws IOException {
+    private static URL followRedirects(String location) throws IOException {
         URL resourceUrl, base, next;
         HttpURLConnection conn;
         String redLoc;

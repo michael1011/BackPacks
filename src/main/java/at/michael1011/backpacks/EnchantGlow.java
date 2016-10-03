@@ -9,10 +9,9 @@ import org.bukkit.inventory.ItemStack;
 
 public class EnchantGlow extends EnchantmentWrapper {
 
-    static Enchantment glow;
-    static Boolean createdNew;
+    private static Enchantment glow;
 
-    EnchantGlow() {
+    private EnchantGlow() {
         super(255);
     }
 
@@ -48,8 +47,6 @@ public class EnchantGlow extends EnchantmentWrapper {
 
     static Enchantment getGlow() {
         if(glow != null) {
-            createdNew = false;
-
             return glow;
         }
 
@@ -66,8 +63,6 @@ public class EnchantGlow extends EnchantmentWrapper {
 
         Enchantment.registerEnchantment(glow);
         Enchantment.stopAcceptingRegistrations();
-
-        createdNew = true;
 
         return glow;
     }

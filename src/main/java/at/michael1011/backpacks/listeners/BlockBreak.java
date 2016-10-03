@@ -157,8 +157,8 @@ public class BlockBreak implements Listener {
 
     }
 
-    static void checkCoal(int amount, String trimmedID, final BlockBreakEvent e, final Crops finalCrops,
-                          final Material material, Location location, Player p) {
+    private static void checkCoal(int amount, String trimmedID, final BlockBreakEvent e, final Crops finalCrops,
+                                  final Material material, Location location, Player p) {
 
         if(amount > 0) {
             SQL.query("UPDATE bp_furnaces SET coal="+String.valueOf(amount-1)+" WHERE uuid='"+trimmedID+"'",
@@ -187,7 +187,7 @@ public class BlockBreak implements Listener {
         }
     }
 
-    static void smelt(Block block, Crops crops, Material material) {
+    private static void smelt(Block block, Crops crops, Material material) {
         Location location = block.getLocation();
 
         switch (material) {
@@ -223,7 +223,7 @@ public class BlockBreak implements Listener {
         exp.setExperience(1);
     }
 
-    static int random() {
+    private static int random() {
         Random rand = new Random();
 
         return rand.nextInt((3 - 1)+1)+ 1;
