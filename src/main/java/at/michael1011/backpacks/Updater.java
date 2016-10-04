@@ -41,7 +41,10 @@ public class Updater {
     public static String newVersionDownload;
 
     static void checkUpdates(Main main, CommandSender sender) {
+        checkUpdates(main, sender, 1);
+    }
 
+    private static void checkUpdates(Main main, CommandSender sender, int version) {
         try {
             HttpsURLConnection con = (HttpsURLConnection)
                     new URL("https://api.curseforge.com/servermods/files?projectIds=98508").openConnection();
@@ -55,76 +58,25 @@ public class Updater {
 
                 int size = array.size();
 
-                if(size> 0) {
-                    JSONObject latestVersion = (JSONObject) array.get(size-1);
+                if(size > 0) {
+                    JSONObject latestVersion = (JSONObject) array.get(size-version);
 
                     String downloadUrl = String.valueOf(latestVersion.get("downloadUrl"));
-                    String latestVersionNumber = String.valueOf(latestVersion.get("name"));
+                    String latestVersionNumber = String.valueOf(latestVersion.get("name"))
+                            .replaceAll("-", "").replaceAll("beta", "");
 
                     String installedVersionNumber = main.getDescription().getVersion();
 
                     if(Integer.valueOf(installedVersionNumber.replaceAll("\\.", "")) <
-                            Integer.valueOf(newVersion.replaceAll("\\.", ""))) {
-                        // fixme: check if releaseType is 'release' else take version which is newer and has type release
+                            Integer.valueOf(latestVersionNumber.replaceAll("\\.", ""))) {
 
-                        newVersion = prefix+ChatColor.translateAlternateColorCodes('&',
-                                messages.getString("Updater.newVersionAvailable")
-                                        .replaceAll("%newVersion%", latestVersionNumber)
-                                        .replaceAll("%oldVersion%", installedVersionNumber));
-
-                        newVersionDownload = prefix+ChatColor.translateAlternateColorCodes('&',
-                                messages.getString("Updater.newVersionAvailableDownload")
-                                        .replaceAll("%newVersion%", latestVersionNumber)
-                                        .replaceAll("%downloadLink%", downloadUrl));
-
-                        sender.sendMessage(newVersion);
-
-                        if(config.getBoolean("Updater.autoUpdate")) {
-                            String messagesPath = "Updater.autoUpdate.";
-
-                            URL download = followRedirects(downloadUrl);
-
-                            int fileSize = download.openConnection().getContentLength();
-                            String fileName = downloadUrl.substring(downloadUrl.lastIndexOf('/')+1,
-                                    downloadUrl.length());
-
-                            File downloadedFile = downloadFile(fileName, "plugins", fileSize, download, sender);
-
-                            if(getMD5("plugins/"+fileName).equalsIgnoreCase(String.valueOf(latestVersion.get("md5")))) {
-                                File old = new File(Main.class.getProtectionDomain().getCodeSource()
-                                        .getLocation().toURI().getPath());
-
-                                if(old.delete()) {
-                                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                            messages.getString(messagesPath+"deletedOldVersion")
-                                                    .replaceAll("%oldVersion%", old.getName())));
-                                }
-
-                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                        messages.getString(messagesPath+"successful")));
-
-                                Bukkit.getScheduler().cancelTasks(main);
-                                Bukkit.dispatchCommand(sender, "reload");
-
-                            } else {
-                                if(downloadedFile.delete()) {
-                                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                            messages.getString(messagesPath+"downloadFailed")
-                                                    .replaceAll("%downloadLink%", downloadUrl)));
-
-                                    updateAvailable = true;
-
-                                    newVersionDownload = prefix+ChatColor.translateAlternateColorCodes('&',
-                                            messages.getString("Updater.newVersionAvailableDownload")
-                                                    .replaceAll("%newVersion%", latestVersionNumber)
-                                                    .replaceAll("%downloadLink%", downloadUrl));
-                                }
-                            }
+                        if(String.valueOf(latestVersion.get("releaseType")).equals("release")) {
+                            downloadUpdate(installedVersionNumber, latestVersionNumber, downloadUrl, latestVersion, sender, main);
 
                         } else {
-                            updateAvailable = true;
+                            // todo: do this without accessing the api again
 
-                            sender.sendMessage(newVersionDownload);
+                            checkUpdates(main, sender, version+1);
                         }
 
                     }
@@ -139,6 +91,80 @@ public class Updater {
 
         } catch (IOException | ParseException | URISyntaxException | NoSuchAlgorithmException e) {
             e.printStackTrace();
+        }
+
+    }
+
+    private static void downloadUpdate(String installedVersionNumber, String latestVersionNumber, String downloadUrl,
+                                       JSONObject latestVersion, CommandSender sender, Main main)
+            throws URISyntaxException, IOException, NoSuchAlgorithmException {
+
+        newVersion = prefix+ChatColor.translateAlternateColorCodes('&',
+                    messages.getString("Updater.newVersionAvailable")
+                            .replaceAll("%newVersion%", latestVersionNumber)
+                            .replaceAll("%oldVersion%", installedVersionNumber));
+
+        newVersionDownload = prefix+ChatColor.translateAlternateColorCodes('&',
+                    messages.getString("Updater.newVersionAvailableDownload")
+                            .replaceAll("%newVersion%", latestVersionNumber)
+                            .replaceAll("%downloadLink%", downloadUrl));
+
+        sender.sendMessage(newVersion);
+
+        if(config.getBoolean("Updater.autoUpdate")) {
+            String messagesPath = "Updater.autoUpdate.";
+
+            URL download = followRedirects(downloadUrl);
+
+            int fileSize = download.openConnection().getContentLength();
+            String fileName = downloadUrl.substring(downloadUrl.lastIndexOf('/')+1,
+                    downloadUrl.length());
+
+            File downloadedFile = downloadFile(fileName, "plugins", fileSize, download, sender);
+
+            MessageDigest md = MessageDigest.getInstance("MD5");
+
+            md.update(Files.readAllBytes(Paths.get("plugins/"+fileName)));
+            byte[] digest = md.digest();
+
+            if(DatatypeConverter.printHexBinary(digest).toLowerCase()
+                    .equalsIgnoreCase(String.valueOf(latestVersion.get("md5")))) {
+
+                File old = new File(Main.class.getProtectionDomain().getCodeSource()
+                        .getLocation().toURI().getPath());
+
+                if(old.delete()) {
+                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                            messages.getString(messagesPath+"deletedOldVersion")
+                                    .replaceAll("%oldVersion%", old.getName())));
+                }
+
+                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                        messages.getString(messagesPath+"successful")));
+
+                Bukkit.getScheduler().cancelTasks(main);
+                Bukkit.dispatchCommand(sender, "reload");
+
+            } else {
+                if(downloadedFile.delete()) {
+                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                            messages.getString(messagesPath+"downloadFailed")
+                                    .replaceAll("%downloadLink%", downloadUrl)));
+
+                    updateAvailable = true;
+
+                    newVersionDownload = prefix+ChatColor.translateAlternateColorCodes('&',
+                            messages.getString("Updater.newVersionAvailableDownload")
+                                    .replaceAll("%newVersion%", latestVersionNumber)
+                                    .replaceAll("%downloadLink%", downloadUrl));
+                }
+
+            }
+
+        } else {
+            updateAvailable = true;
+
+            sender.sendMessage(newVersionDownload);
         }
 
     }
@@ -177,15 +203,6 @@ public class Updater {
         fileOutput.close();
 
         return downloadedFile;
-    }
-
-    private static String getMD5(String fileName) throws NoSuchAlgorithmException, IOException {
-        MessageDigest md = MessageDigest.getInstance("MD5");
-
-        md.update(Files.readAllBytes(Paths.get(fileName)));
-        byte[] digest = md.digest();
-
-        return DatatypeConverter.printHexBinary(digest).toLowerCase();
     }
 
     private static JSONArray getJsonArray(HttpsURLConnection con) throws IOException, ParseException {

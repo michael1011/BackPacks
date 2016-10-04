@@ -102,9 +102,9 @@ public class Main extends JavaPlugin {
                                             new Reconnect(main);
 
                                             if(config.getBoolean("Updater.enabled")) {
-                                                new Updater(main);
-
                                                 checkUpdates(main, Bukkit.getConsoleSender());
+
+                                                new Updater(main);
                                             }
 
                                         }
