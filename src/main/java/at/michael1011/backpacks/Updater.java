@@ -29,7 +29,7 @@ public class Updater {
         Bukkit.getScheduler().runTaskTimerAsynchronously(main, new Runnable() {
             @Override
             public void run() {
-                checkUpdates(main, Bukkit.getConsoleSender());
+                update(main, Bukkit.getConsoleSender());
             }
 
         }, interval, interval);
@@ -40,11 +40,7 @@ public class Updater {
     public static String newVersion;
     public static String newVersionDownload;
 
-    static void checkUpdates(Main main, CommandSender sender) {
-        checkUpdates(main, sender, 1);
-    }
-
-    private static void checkUpdates(Main main, CommandSender sender, int version) {
+    static void update(Main main, CommandSender sender) {
         try {
             HttpsURLConnection con = (HttpsURLConnection)
                     new URL("https://api.curseforge.com/servermods/files?projectIds=98508").openConnection();
@@ -59,27 +55,7 @@ public class Updater {
                 int size = array.size();
 
                 if(size > 0) {
-                    JSONObject latestVersion = (JSONObject) array.get(size-version);
-
-                    String downloadUrl = String.valueOf(latestVersion.get("downloadUrl"));
-                    String latestVersionNumber = String.valueOf(latestVersion.get("name"))
-                            .replaceAll("-", "").replaceAll("beta", "");
-
-                    String installedVersionNumber = main.getDescription().getVersion();
-
-                    if(Integer.valueOf(installedVersionNumber.replaceAll("\\.", "")) <
-                            Integer.valueOf(latestVersionNumber.replaceAll("\\.", ""))) {
-
-                        if(String.valueOf(latestVersion.get("releaseType")).equals("release")) {
-                            downloadUpdate(installedVersionNumber, latestVersionNumber, downloadUrl, latestVersion, sender, main);
-
-                        } else {
-                            // todo: do this without accessing the api again
-
-                            checkUpdates(main, sender, version+1);
-                        }
-
-                    }
+                    checkVersion(array, size, 1, sender, main);
 
                 } else {
                     sendConnectionError(sender);
@@ -95,8 +71,33 @@ public class Updater {
 
     }
 
-    private static void downloadUpdate(String installedVersionNumber, String latestVersionNumber, String downloadUrl,
-                                       JSONObject latestVersion, CommandSender sender, Main main)
+    private static void checkVersion(JSONArray array, int size, int version, CommandSender sender, Main main)
+            throws NoSuchAlgorithmException, IOException, URISyntaxException {
+
+        JSONObject latestVersion = (JSONObject) array.get(size-version);
+
+        String downloadUrl = String.valueOf(latestVersion.get("downloadUrl"));
+        String latestVersionNumber = String.valueOf(latestVersion.get("name"))
+                .replaceAll("-", "").replaceAll("beta", "").replaceAll("alpha", "");
+
+        String installedVersionNumber = main.getDescription().getVersion();
+
+        if(Integer.valueOf(installedVersionNumber.replaceAll("\\.", "")) <
+                Integer.valueOf(latestVersionNumber.replaceAll("\\.", ""))) {
+
+            if(String.valueOf(latestVersion.get("releaseType")).equals("release")) {
+                updateFound(installedVersionNumber, latestVersionNumber, downloadUrl, latestVersion, sender, main);
+
+            } else {
+                checkVersion(array, size, version+1, sender, main);
+            }
+
+        }
+
+    }
+
+    private static void updateFound(String installedVersionNumber, String latestVersionNumber, String downloadUrl,
+                                    JSONObject latestVersion, CommandSender sender, Main main)
             throws URISyntaxException, IOException, NoSuchAlgorithmException {
 
         newVersion = prefix+ChatColor.translateAlternateColorCodes('&',

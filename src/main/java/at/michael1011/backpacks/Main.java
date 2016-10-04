@@ -19,7 +19,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static at.michael1011.backpacks.Updater.checkUpdates;
+import static at.michael1011.backpacks.Updater.update;
 
 public class Main extends JavaPlugin {
 
@@ -102,7 +102,7 @@ public class Main extends JavaPlugin {
                                             new Reconnect(main);
 
                                             if(config.getBoolean("Updater.enabled")) {
-                                                checkUpdates(main, Bukkit.getConsoleSender());
+                                                update(main, Bukkit.getConsoleSender());
 
                                                 new Updater(main);
                                             }
