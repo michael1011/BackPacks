@@ -13,15 +13,9 @@ dependencies:
     - chmod +x gradlew
     - ./gradlew dependencies -Dorg.gradle.daemon=false
 
-database:
-  override:
-    - mysql -u ubuntu -e 'CREATE DATABASE IF NOT EXISTS bpTest'
-    - mysql -u ubuntu -e 'CREATE USER IF NOT EXISTS 'bpTest'@'localhost' IDENTIFIED BY "bpTest"'
-    - mysql -u ubuntu -e 'GRANT ALL ON bpTest.* TO 'bpTest'@'localhost''
-    - mysql -u ubuntu -e 'FLUSH PRIVILEGES'
-
 test:
   override:
+    - ./gradlew clean -Dorg.gradle.daemon=false
     - ./gradlew build -Dscan -Dorg.gradle.daemon=false
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
