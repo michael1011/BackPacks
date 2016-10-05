@@ -110,7 +110,7 @@ Help:
         1: "&eSet the &6slots &eof the backpack with &6/bpc slots <slots>"
         2: "&eThe slots &6must be a number &eand &6divisible by 9"
 
-      slotsError: "&eThe slots &6must be a number &eand &6divisible by 9"
+      slotsError: "&cThe slots &4must be a number &cand &4divisible by 9"
 
       gui:
         1: "&6Enable &ethe gui of the FurnaceBackPack with &6/bpc gui true"

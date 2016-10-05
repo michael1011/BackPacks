@@ -4,7 +4,7 @@
 
 **Requirements:**
 * Bukkit/Spigot 1.9 or 1.10 (older versions *might* work too)
-* Java 8 or 7
+* Java 7 or higher
 * A MySQL database
 
 

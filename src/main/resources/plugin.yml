@@ -14,7 +14,7 @@ commands:
 
   bpopen:
     aliases: [bpo]
-    description: "see the backpacks of all players"
+    description: "see the backpack of a player"
     usage: /bpopen <backpack> <player>
     
   bpcreate:
