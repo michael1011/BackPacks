@@ -31,10 +31,11 @@ public class Reload implements CommandExecutor {
             try {
                 if(SQL.checkCon()) {
                     SQL.closeCon();
+
+                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                            messages.getString("MySQL.closedConnection")));
                 }
 
-                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                        messages.getString("MySQL.closedConnection")));
 
                 Main.loadFiles(main);
 

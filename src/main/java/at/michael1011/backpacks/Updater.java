@@ -76,7 +76,6 @@ public class Updater {
 
         JSONObject latestVersion = (JSONObject) array.get(size-version);
 
-        String downloadUrl = String.valueOf(latestVersion.get("downloadUrl"));
         String latestVersionNumber = String.valueOf(latestVersion.get("name"))
                 .replaceAll("-", "").replaceAll("beta", "").replaceAll("alpha", "");
 
@@ -86,7 +85,8 @@ public class Updater {
                 Integer.valueOf(latestVersionNumber.replaceAll("\\.", ""))) {
 
             if(String.valueOf(latestVersion.get("releaseType")).equals("release")) {
-                updateFound(installedVersionNumber, latestVersionNumber, downloadUrl, latestVersion, sender, main);
+                updateFound(installedVersionNumber, latestVersionNumber, String.valueOf(latestVersion.get("downloadUrl")),
+                        latestVersion, sender, main);
 
             } else {
                 checkVersion(array, size, version+1, sender, main);

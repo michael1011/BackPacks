@@ -40,7 +40,7 @@ public class Crafting {
             String backPackPath = path+backPack+".";
 
             if(config.contains(backPackPath)) {
-                ItemStack item = getItemStack(sender, backPackPath, backPack, true);
+                ItemStack item = getItemStack(sender, backPackPath, backPack);
 
                 if(item != null) {
                     if(slotsDivisible) {
@@ -80,7 +80,7 @@ public class Crafting {
         availableList = Arrays.asList(Crafting.available.split(","));
     }
 
-    private static ItemStack getItemStack(CommandSender sender, String backPackPath, String backPack, Boolean itemMeta) {
+    private static ItemStack getItemStack(CommandSender sender, String backPackPath, String backPack) {
         int itemSlots = config.getInt(backPackPath+"slots");
 
         String materialString = config.getString(backPackPath+"material").toUpperCase();
@@ -101,21 +101,19 @@ public class Crafting {
                     lore = lore+","+ChatColor.translateAlternateColorCodes('&', ent.getValue().toString());
                 }
 
-                if(itemMeta) {
-                    ItemMeta craftM = craft.getItemMeta();
+                ItemMeta craftM = craft.getItemMeta();
 
-                    craftM.setDisplayName(name);
+                craftM.setDisplayName(name);
 
-                    if(!lore.equals("")) {
-                        List<String> loreList = Arrays.asList(lore.split("\\s*,\\s*"));
+                if(!lore.equals("")) {
+                    List<String> loreList = Arrays.asList(lore.split("\\s*,\\s*"));
 
-                        craftM.setLore(loreList);
+                    craftM.setLore(loreList);
 
-                        loreMap.put(loreList, backPack);
-                    }
-
-                    craft.setItemMeta(craftM);
+                    loreMap.put(loreList, backPack);
                 }
+
+                craft.setItemMeta(craftM);
 
                 slots.put(backPack, itemSlots);
 

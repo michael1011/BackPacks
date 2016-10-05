@@ -54,11 +54,19 @@ public class RightClick implements Listener {
             if(action == Action.RIGHT_CLICK_BLOCK) {
                 Material block = e.getClickedBlock().getType();
 
-                if(block.equals(Material.WORKBENCH) || block.equals(Material.FURNACE) || block.equals(Material.BURNING_FURNACE) ||
-                        block.equals(Material.CHEST) || block.equals(Material.ENDER_CHEST) || block.equals(Material.ENCHANTMENT_TABLE) ||
-                        block.equals(Material.ANVIL) || block.equals(Material.HOPPER) || block.equals(Material.DISPENSER)) {
-                    return;
+                switch (block) {
+                    case WORKBENCH:
+                    case FURNACE:
+                    case BURNING_FURNACE:
+                    case CHEST:
+                    case ENDER_CHEST:
+                    case ENCHANTMENT_TABLE:
+                    case ANVIL:
+                    case HOPPER:
+                    case DISPENSER:
+                        return;
                 }
+
             }
 
             final ItemStack item = e.getItem();

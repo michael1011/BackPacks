@@ -128,9 +128,9 @@ public class SQL {
 
                     final ResultSet rs = dmb.getTables(null, null, table, null);
 
-                    rs.close();
-
                     final Boolean call = rs.next();
+
+                    rs.close();
 
                     scheduler.runTask(main, new Runnable() {
                         @Override
