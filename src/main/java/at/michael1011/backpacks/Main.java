@@ -37,7 +37,6 @@ public class Main extends JavaPlugin {
     // todo: verify backpacks with nbt tags
 
     // todo: translations
-    // fixme: add aliases here: https://github.com/michael1011/BackPacks/wiki/Permissions-and-commands
 
     @Override
     public void onEnable() {

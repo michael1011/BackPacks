@@ -35,6 +35,7 @@ permissions:
       backpacks.open: true
       backpacks.create: true
       backpacks.reload: true
+      backpacks.update: true
 
   backpacks.give:
     description: to use /bpgive
