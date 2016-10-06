@@ -27,6 +27,7 @@ commands:
     description: "reload the configuration files"
     usage: /bpr
 
+
 permissions:
   backpacks.*:
     description: all access

@@ -187,6 +187,8 @@ public class Main extends JavaPlugin {
 
                     config.save(new File(folder, "config.yml"));
 
+                    loadFiles(main);
+
                     Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                             "&cUpdated config files. &4Your old messages.yml file was renamed to messages.old.yml"));
 

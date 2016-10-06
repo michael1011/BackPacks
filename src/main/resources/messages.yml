@@ -4,13 +4,13 @@ prefix: "&7[&4BackPacks&7]&r "
 MySQL:
   connected: "&eConnected to MySQL database"
   failedToConnect: "&4Could not connect to MySQL database"
-  failedToConnectCheck: "&4Check your credentials in the plugins/BackPacks/config.yml file"
+  failedToConnectCheck: "&4Check your credentials in the plugins/BackPacks/config.yml file then reload or restart the server"
   closedConnection: "&eClosed MySQL connection"
 
 Updater:
-  failedToReachServer: "&4Failed <to reach update server. &cPlease check your internet connection"
+  failedToReachServer: "&4Failed to reach update server. &cPlease check your internet connection"
 
-  newVersionAvailable: "&cA new version is available: &4%newVersion%&c (you are running version: &4%oldVersion%&c)"
+  newVersionAvailable: "&cA new BackPacks version is available: &4%newVersion%&c (you are running version: &4%oldVersion%&c)"
 
   # only if Updater.autoUpdate in the config is disabled
   newVersionAvailableDownload: "&cDownload version &4%newVersion% &chere: &4%downloadLink%"
@@ -95,6 +95,8 @@ Help:
         1: "&eSet the &6materials &eof the crafting recipe with &6/bpc materials <materials>"
         2: "&eYou have to set every material of the crafting recipe"
         3: "&eMaterials have to look like this: &6C:coal;R:redstone;W:watch"
+        4: "&eYou can find a list of materials here: &6http://bit.ly/21vbetj"
+
 
       materialsNotValid: "&cThis materials are &4not valid"
 
