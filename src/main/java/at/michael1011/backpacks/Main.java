@@ -33,6 +33,8 @@ public class Main extends JavaPlugin {
 
     private static Main main;
 
+    // fixme: save backpacks onDisable
+
     // todo: add anvil and enchanting backpack: http://bit.ly/2cDX46w
     // todo: verify backpacks with nbt tags
 

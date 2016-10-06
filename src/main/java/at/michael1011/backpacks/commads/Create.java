@@ -375,7 +375,7 @@ public class Create implements CommandExecutor {
                                         }
 
                                     } else {
-                                        config.set(finishedPath+"crafting.enabled", false);
+                                        config.set(finishedPath+"crafting.disabled", true);
                                     }
 
                                     int number = 1;

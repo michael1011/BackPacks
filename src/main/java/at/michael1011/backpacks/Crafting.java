@@ -54,7 +54,7 @@ public class Crafting {
                             available = available+","+backPack;
                         }
 
-                        if(config.getBoolean(backPackPath+"crafting.enabled")) {
+                        if(!config.getBoolean(backPackPath+"crafting.disabled")) {
                             Bukkit.getServer().addRecipe(createShapedRecipe(sender, item, backPackPath, backPack));
                         }
 
