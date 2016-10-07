@@ -1,5 +1,6 @@
 package at.michael1011.backpacks.listeners;
 
+import at.michael1011.backpacks.Crafting;
 import at.michael1011.backpacks.Main;
 import at.michael1011.backpacks.SQL;
 import net.md_5.bungee.api.ChatColor;
@@ -11,13 +12,14 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import static at.michael1011.backpacks.Main.furnaceGui;
 import static at.michael1011.backpacks.listeners.RightClick.*;
 
-public class FurnaceGui implements Listener {
+public class InventoryClick implements Listener {
 
-    public FurnaceGui(Main main) {
+    public InventoryClick(Main main) {
         main.getServer().getPluginManager().registerEvents(this, main);
     }
 
@@ -25,14 +27,14 @@ public class FurnaceGui implements Listener {
     public void inventoryClick(InventoryClickEvent e) {
         Player p = (Player) e.getWhoClicked();
 
-        Inventory inv = openFurnacesInvs.get(p);
+        if(openFurnacesInvs.containsKey(p)) {
+            Inventory inv = openFurnacesInvs.get(p);
 
-        if(inv != null) {
             if(e.getInventory().equals(inv)) {
-                ItemStack currentItem = e.getCurrentItem();
+                ItemStack item = e.getCurrentItem();
 
-                if(currentItem.hasItemMeta()) {
-                    String name = currentItem.getItemMeta().getDisplayName();
+                if(item.hasItemMeta()) {
+                    String name = item.getItemMeta().getDisplayName();
 
                     if(name.equals(ChatColor.translateAlternateColorCodes('&', furnaceGui.getString("enabled")))) {
                         ItemStack disabled = new ItemStack(Material.WOOL, 1, (byte) getColor(false));
@@ -56,7 +58,7 @@ public class FurnaceGui implements Listener {
                     e.setCancelled(true);
 
                 } else {
-                    if(currentItem.getType().equals(Material.COAL) ||
+                    if(item.getType().equals(Material.COAL) ||
                             e.getCursor().getType().equals(Material.COAL)) {
                         e.setCancelled(false);
 
@@ -67,6 +69,22 @@ public class FurnaceGui implements Listener {
                 }
 
             }
+
+        } else if(!Main.backPackInBackPack) {
+            if(openInvs.containsKey(p)) {
+                ItemStack item = e.getCurrentItem();
+
+                if(item.hasItemMeta()) {
+                    ItemMeta meta = item.getItemMeta();
+
+                    if(meta.hasLore()) {
+                        if(Crafting.loreMap.containsKey(meta.getLore())) {
+                            e.setCancelled(true);
+                        }
+                    }
+                }
+            }
+
         }
 
     }

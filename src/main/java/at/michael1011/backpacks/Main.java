@@ -30,6 +30,8 @@ public class Main extends JavaPlugin {
 
     public static String prefix = "";
 
+    public static Boolean backPackInBackPack;
+
     public static List<String> availablePlayers = new ArrayList<>();
 
     private static Main main;
@@ -44,8 +46,6 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         loadFiles(this);
-
-        prefix = ChatColor.translateAlternateColorCodes('&', messages.getString("prefix"));
 
         updateConfig(this);
 
@@ -94,7 +94,7 @@ public class Main extends JavaPlugin {
                                             new InventoryClose(main);
                                             new BlockPlace(main);
                                             new PlayerDeath(main);
-                                            new FurnaceGui(main);
+                                            new InventoryClick(main);
                                             new BlockBreak(main);
                                             new EntityDeath(main);
 
@@ -203,7 +203,8 @@ public class Main extends JavaPlugin {
             if(config.getInt("configVersion") == 1) {
                 YamlConfiguration messagesJar = new YamlConfiguration();
 
-                InputStreamReader reader = new InputStreamReader(getClass().getClassLoader().getResourceAsStream("messages.yml"));
+                InputStreamReader reader = new InputStreamReader(getClass().getClassLoader()
+                        .getResourceAsStream("messages.yml"));
 
                 messagesJar.load(reader);
 
@@ -221,7 +222,9 @@ public class Main extends JavaPlugin {
 
                 messages.save(new File(folder, "messages.yml"));
 
+                config.set("BackPackInBackPack", false);
                 config.set("configVersion", 2);
+
                 config.save(new File(folder, "config.yml"));
 
                 Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
@@ -261,6 +264,11 @@ public class Main extends JavaPlugin {
             config.load(configF);
             messages.load(messagesF);
             furnaceGui.load(furnacesF);
+
+
+            backPackInBackPack = config.getBoolean("BackPackInBackPack");
+
+            prefix = ChatColor.translateAlternateColorCodes('&', messages.getString("prefix"));
 
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
