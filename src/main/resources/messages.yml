@@ -66,6 +66,7 @@ Help:
 
   bpcreate:
     steps:
+      # fixme: add comments to every step
       name:
         noSpaces: "&cThe name &4can't contain spaces&c!"
 
@@ -76,6 +77,11 @@ Help:
       description:
         1: "&eSet the &6description &ewith &6/bpc desc <description>"
         2: "&eCreate a new line with &6;"
+
+      inventorytitle:
+        1: "&eSet the &6title of the inventory &ewith &6/bpc inventorytitle <title>"
+        2: "&eIf you skip this the name of the item will be the name of the inventory"
+        3: "&eYou can get information about the next step with &6/bpc description"
 
       material:
         1: "&eSet the &6material &ewith &6/bpc material <material>"
@@ -96,7 +102,6 @@ Help:
         2: "&eYou have to set every material of the crafting recipe"
         3: "&eMaterials have to look like this: &6C:coal;R:redstone;W:watch"
         4: "&eYou can find a list of materials here: &6http://bit.ly/21vbetj"
-
 
       materialsNotValid: "&cThis materials are &4not valid"
 
@@ -121,14 +126,13 @@ Help:
       preview:
         name: "&eName: &r%name%"
         displayname: "&eDisplayname: &r%name%"
-        type: "&eType: &r%type%"
+
+        inventoryTitle: "&eInventorytitle: &r%title%"
 
         description:
           title: "&eDescription:"
           line: "&e  %lineNumber%: &r%content%"
 
-        slots: "&eSlots: &r%slots%"
-        gui: "&eGUI: &r%gui%"
         material: "&eMaterial: &r%material%"
 
         crafting:
@@ -138,6 +142,12 @@ Help:
           materials:
             title: "&e  Materials:"
             line: "&e    %line%: &r%material%"
+
+        type: "&eType: &r%type%"
+
+        slots: "&eSlots: &r%slots%"
+        gui: "&eGUI: &r%gui%"
+
 
         notSet: "&cYou have to &4set all values &cbefore you can see a preview"
         missing: "&cThis values are missing: &4%values%"
@@ -164,7 +174,7 @@ Help:
     # If someone uses /bpcreate wrong
     syntaxError:
       1: "&6/bpc name <value>: &eto start creating a backpack"
-      2: "&eOther available functions are: &6displayname&e, &6description&e, &6material&e, &6crafting&e, &6materials&e, &6type&e, &6slots&e, &6gui&e, &6preview&e, &6finish&e, &6item"
+      2: "&eOther available functions are: &6displayname&e, &6description&e, &6inventorytitle, &e&6material&e, &6crafting&e, &6materials&e, &6type&e, &6slots&e, &6gui&e, &6preview&e, &6finish&e, &6item"
 
   bpreload:
     successful: "&eReloaded the config files successful"

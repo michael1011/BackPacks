@@ -63,6 +63,13 @@ public class Create implements CommandExecutor {
                     case "displayname":
                         data.get(sender).put("displayname", argsToString(args));
 
+                        sendMap(sender, "steps.inventorytitle");
+
+                        break;
+
+                    case "inventorytitle":
+                        data.get(sender).put("inventoryTitle", argsToString(args));
+
                         sendMap(sender, "steps.description");
 
                         break;
@@ -328,6 +335,10 @@ public class Create implements CommandExecutor {
                                     config.set(finishedPath+"name", finishedData.get("displayname"));
                                     config.set(finishedPath+"type", finishedType);
 
+                                    if(finishedData.get("inventoryTitle") != null) {
+                                        config.set(finishedPath+"inventoryTitle", finishedData.get("inventoryTitle"));
+                                    }
+
                                     String[] description = finishedData.get("description").split(";");
 
                                     int descLine = 1;
@@ -446,6 +457,7 @@ public class Create implements CommandExecutor {
                         break;
 
                     case "description":
+                    case "inventorytitle":
                     case "material":
                     case "crafting":
                     case "materials":
@@ -504,6 +516,7 @@ public class Create implements CommandExecutor {
                             sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                                     messages.getString("Help.onlyPlayers")));
                         }
+
                         break;
 
                     case "preview":
@@ -525,6 +538,12 @@ public class Create implements CommandExecutor {
                                             finishedData.get("displayname"))));
 
                             missingHere.remove("displayname");
+
+                            if(finishedData.get("inventoryTitle") != null) {
+                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString(path+"steps.preview.inventoryTitle").replaceAll("%title%",
+                                                finishedData.get("inventoryTitle"))));
+                            }
 
                             String[] description = finishedData.get("description").split(";");
 

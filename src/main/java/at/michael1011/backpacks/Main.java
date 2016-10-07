@@ -192,10 +192,33 @@ public class Main extends JavaPlugin {
                     loadFiles(main);
 
                     Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                            "&cUpdated config files. &4Your old messages.yml file was renamed to messages.old.yml"));
+                            "&cUpdated config files to version 1. "+
+                                    "&4Your old messages.yml file was renamed to messages.old.yml"));
 
                 }
 
+            }
+
+            if(config.getInt("configVersion") == 1) {
+                // fixme: get values from messages.yml in classpath
+
+                String path = "Help.bpcreate.steps.";
+
+                messages.set("Help.bpcreate.syntaxError.2", "&eOther available functions are: &6displayname&e, &6description&e, &6inventorytitle, &e&6material&e, &6crafting&e, &6materials&e, &6type&e, &6slots&e, &6gui&e, &6preview&e, &6finish&e, &6item");
+
+                messages.set(path+"inventorytitle.1", "&eSet the &6title of the inventory &ewith &6/bpc inventorytitle <title>");
+                messages.set(path+"inventorytitle.2", "&eIf you skip this the name of the item will be the name of the inventory");
+                messages.set(path+"inventorytitle.3", "&eYou can get information about the next step with &6/bpc description");
+
+                messages.set(path+"preview.inventoryTitle", "&eInventorytitle: &r%title%");
+
+                messages.save(new File(folder, "messages.yml"));
+
+                config.set("configVersion", 2);
+                config.save(new File(folder, "config.yml"));
+
+                Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                        "&cUpdated config files to version 2"));
             }
 
         } catch (IOException e) {
