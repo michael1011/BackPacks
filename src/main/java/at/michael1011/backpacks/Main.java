@@ -14,6 +14,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -200,17 +201,23 @@ public class Main extends JavaPlugin {
             }
 
             if(config.getInt("configVersion") == 1) {
-                // fixme: get values from messages.yml in classpath
+                YamlConfiguration messagesJar = new YamlConfiguration();
+
+                InputStreamReader reader = new InputStreamReader(getClass().getClassLoader().getResourceAsStream("messages.yml"));
+
+                messagesJar.load(reader);
+
+                reader.close();
 
                 String path = "Help.bpcreate.steps.";
 
-                messages.set("Help.bpcreate.syntaxError.2", "&eOther available functions are: &6displayname&e, &6description&e, &6inventorytitle, &e&6material&e, &6crafting&e, &6materials&e, &6type&e, &6slots&e, &6gui&e, &6preview&e, &6finish&e, &6item");
+                messages.set("Help.bpcreate.syntaxError.2", messagesJar.getString("Help.bpcreate.syntaxError.2"));
 
-                messages.set(path+"inventorytitle.1", "&eSet the &6title of the inventory &ewith &6/bpc inventorytitle <title>");
-                messages.set(path+"inventorytitle.2", "&eIf you skip this the name of the item will be the name of the inventory");
-                messages.set(path+"inventorytitle.3", "&eYou can get information about the next step with &6/bpc description");
+                messages.set(path+"inventorytitle.1", messagesJar.getString(path+"inventorytitle.1"));
+                messages.set(path+"inventorytitle.2", messagesJar.getString(path+"inventorytitle.2"));
+                messages.set(path+"inventorytitle.3", messagesJar.getString(path+"inventorytitle.3"));
 
-                messages.set(path+"preview.inventoryTitle", "&eInventorytitle: &r%title%");
+                messages.set(path+"preview.inventoryTitle", messagesJar.getString(path+"preview.inventoryTitle"));
 
                 messages.save(new File(folder, "messages.yml"));
 
@@ -221,7 +228,7 @@ public class Main extends JavaPlugin {
                         "&cUpdated config files to version 2"));
             }
 
-        } catch (IOException e) {
+        } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
 
