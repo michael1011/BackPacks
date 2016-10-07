@@ -27,8 +27,6 @@ import static at.michael1011.backpacks.listeners.RightClick.*;
 
 public class InventoryClose implements Listener {
 
-    // fixme: ender and craftingBackpack close sound
-
     public InventoryClose(Main main) {
         main.getServer().getPluginManager().registerEvents(this, main);
     }

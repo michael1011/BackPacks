@@ -34,6 +34,8 @@ public class Create implements CommandExecutor {
         command.setTabCompleter(new CreateCompleter());
     }
 
+    // todo: add option to set sound
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(sender.hasPermission("backpacks.create")) {
