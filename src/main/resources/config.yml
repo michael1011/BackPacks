@@ -49,7 +49,6 @@ BackPacks:
     name: "&bLittle &3BackPack"
     type: "normal"
 
-
     # Important: every description must be unique!
     description:
       1: ""

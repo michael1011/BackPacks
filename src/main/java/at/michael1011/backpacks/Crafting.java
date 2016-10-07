@@ -19,6 +19,7 @@ public class Crafting {
 
     public static HashMap<String, String> type = new HashMap<>();
     public static HashMap<String, Integer> slots = new HashMap<>();
+    public static HashMap<String, String> inventoryTitle = new HashMap<>();
     public static HashMap<String, String> furnaceGui = new HashMap<>();
     public static HashMap<List<String>, String> loreMap = new HashMap<>();
 
@@ -115,6 +116,12 @@ public class Crafting {
                 String rawType = config.getString(backPackPath+"type");
 
                 type.put(backPack, rawType);
+
+                String title = config.getString(backPackPath+"inventoryTitle");
+
+                if(title != null) {
+                    inventoryTitle.put(backPack, ChatColor.translateAlternateColorCodes('&', title));
+                }
 
                 if(rawType.equals("furnace")) {
                     furnaceGui.put(backPack, config.getString(backPackPath+"gui.enabled"));

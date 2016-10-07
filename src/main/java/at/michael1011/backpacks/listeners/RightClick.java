@@ -218,6 +218,10 @@ public class RightClick implements Listener {
             try {
                 rs.beforeFirst();
 
+                if(Crafting.inventoryTitle.containsKey(backPack)) {
+                    name = Crafting.inventoryTitle.get(backPack);
+                }
+
                 Inventory inv = Bukkit.getServer().createInventory(opener, slots.get(backPack), name);
 
                 while(rs.next()) {
@@ -345,6 +349,7 @@ public class RightClick implements Listener {
 
     private void openFurnace(final Player opener, String backPack, String name, Boolean oresEnabled, Boolean foodEnabled,
                              Boolean autoFillEnable, int amountCoal) {
+
         ItemStack ores = new ItemStack(Material.IRON_ORE);
         ItemStack food = new ItemStack(Material.POTATO_ITEM);
         ItemStack autoFill = new ItemStack(Material.FURNACE);
@@ -368,6 +373,10 @@ public class RightClick implements Listener {
         blankM.setDisplayName(ChatColor.GRAY+"");
 
         blank.setItemMeta(blankM);
+
+        if(Crafting.inventoryTitle.containsKey(backPack)) {
+            name = Crafting.inventoryTitle.get(backPack);
+        }
 
         Inventory inv = Bukkit.getServer().createInventory(opener, 36, name);
 
