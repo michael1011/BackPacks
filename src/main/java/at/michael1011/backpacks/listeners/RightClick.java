@@ -42,6 +42,9 @@ public class RightClick implements Listener {
     static final HashMap<Player, String> openFurnaces = new HashMap<>();
     static final HashMap<Player, Inventory> openFurnacesInvs = new HashMap<>();
 
+    static final HashMap<Player, String> openEnder = new HashMap<>();
+    static final HashMap<Player, String> openCrafting = new HashMap<>();
+
     public RightClick(Main main) {
         main.getServer().getPluginManager().registerEvents(this, main);
     }
@@ -72,15 +75,15 @@ public class RightClick implements Listener {
             final ItemStack item = e.getItem();
 
             if(item != null) {
-                String backPack = Crafting.loreMap.get(item.getItemMeta().getLore());
+                final String backPack = Crafting.loreMap.get(item.getItemMeta().getLore());
 
                 if(backPack != null) {
                     final Player p = e.getPlayer();
 
                     if(p.hasPermission("backpacks.use."+backPack)) {
-                        final String finalBackPack = backPack;
-
                         final String trimmedID = p.getUniqueId().toString().replaceAll("-", "");
+
+                        playOpenSound(p, backPack);
 
                         switch (type.get(backPack)) {
                             case "normal":
@@ -88,10 +91,10 @@ public class RightClick implements Listener {
                                     @Override
                                     public void onSuccess(Boolean rs) {
                                         if(rs) {
-                                            SQL.getResult("SELECT * FROM bp_"+finalBackPack+"_"+trimmedID, new SQL.Callback<ResultSet>() {
+                                            SQL.getResult("SELECT * FROM bp_"+ backPack +"_"+trimmedID, new SQL.Callback<ResultSet>() {
                                                 @Override
                                                 public void onSuccess(ResultSet rs) {
-                                                    Inventory open = getInv(rs, p, finalBackPack, item.getItemMeta().getDisplayName(), true, null);
+                                                    Inventory open = getInv(rs, p, backPack, item.getItemMeta().getDisplayName(), true, null);
 
                                                     if(open != null) {
                                                         p.openInventory(open);
@@ -105,14 +108,14 @@ public class RightClick implements Listener {
                                             });
 
                                         } else {
-                                            SQL.query("CREATE TABLE IF NOT EXISTS bp_"+finalBackPack+"_"+trimmedID+"(position INT(100), material VARCHAR(100), "+
+                                            SQL.query("CREATE TABLE IF NOT EXISTS bp_"+ backPack +"_"+trimmedID+"(position INT(100), material VARCHAR(100), "+
                                                     "durability INT(100), amount INT(100), name VARCHAR(100), lore VARCHAR(1000), enchantments VARCHAR(1000), "+
                                                     "potion VARCHAR(1000))", new SQL.Callback<Boolean>() {
                                                 @Override
                                                 public void onSuccess(Boolean rs) {
-                                                    openInvs.put(p, finalBackPack);
+                                                    openInvs.put(p, backPack);
 
-                                                    p.openInventory(Bukkit.getServer().createInventory(p, slots.get(finalBackPack),
+                                                    p.openInventory(Bukkit.getServer().createInventory(p, slots.get(backPack),
                                                             item.getItemMeta().getDisplayName()));
                                                 }
 
@@ -133,18 +136,22 @@ public class RightClick implements Listener {
                                 break;
 
                             case "ender":
+                                openEnder.put(p, backPack);
+
                                 p.openInventory(p.getEnderChest());
 
                                 break;
 
                             case "crafting":
+                                openCrafting.put(p, backPack);
+
                                 p.openWorkbench(p.getLocation(), true);
 
                                 break;
 
                             case "furnace":
-                                if(Crafting.furnaceGui.containsKey(finalBackPack)) {
-                                    if(Crafting.furnaceGui.get(finalBackPack).equals("true")) {
+                                if(Crafting.furnaceGui.containsKey(backPack)) {
+                                    if(Crafting.furnaceGui.get(backPack).equals("true")) {
                                         SQL.getResult("SELECT * FROM bp_furnaces WHERE uuid='"+trimmedID+"'", new SQL.Callback<ResultSet>() {
                                             @Override
                                             public void onSuccess(ResultSet rs) {
@@ -152,7 +159,7 @@ public class RightClick implements Listener {
                                                     rs.beforeFirst();
 
                                                     if(rs.next()) {
-                                                        openFurnace(p, finalBackPack, item.getItemMeta().getDisplayName(), Boolean.valueOf(rs.getString("ores")),
+                                                        openFurnace(p, backPack, item.getItemMeta().getDisplayName(), Boolean.valueOf(rs.getString("ores")),
                                                                 Boolean.valueOf(rs.getString("food")), Boolean.valueOf(rs.getString("autoFill")), rs.getInt("coal"));
 
                                                     } else {
@@ -164,9 +171,10 @@ public class RightClick implements Listener {
                                                                 String.valueOf(ores)+"', '"+
                                                                 String.valueOf(food)+"', '"+
                                                                 String.valueOf(autoFill)+"', '0')", new SQL.Callback<Boolean>() {
+
                                                             @Override
                                                             public void onSuccess(Boolean rs) {
-                                                                openFurnace(p, finalBackPack, item.getItemMeta().getDisplayName(), ores, food, autoFill, 0);
+                                                                openFurnace(p, backPack, item.getItemMeta().getDisplayName(), ores, food, autoFill, 0);
                                                             }
 
                                                             @Override
@@ -448,6 +456,18 @@ public class RightClick implements Listener {
         }
 
         return 14;
+    }
+
+    public static void playOpenSound(Player p, String backPack) {
+        if(Crafting.openSounds.containsKey(backPack)) {
+            p.playSound(p.getLocation(), Crafting.openSounds.get(backPack), 10, 1);
+        }
+    }
+
+    static void playCloseSound(Player p, String backPack) {
+        if(Crafting.closeSounds.containsKey(backPack)) {
+            p.playSound(p.getLocation(), Crafting.closeSounds.get(backPack), 10, 1);
+        }
     }
 
 }

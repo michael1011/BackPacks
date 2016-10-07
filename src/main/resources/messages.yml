@@ -34,7 +34,8 @@ Help:
   backPackNotFound: "&cThe backpack &4%backpack% &ccouldn't be found"
   backPackNotFoundAvailable: "&cThe available backpacks are &4%backpacks%"
 
-  materialNotValid: "&cThe material &4%material% &cin backpack &4%backpack% &cis not valid"
+  soundNotValid: "&cThe sound &4%sound% &cin the backpack &4%backpack% &cis not valid"
+  materialNotValid: "&cThe material &4%material% &cin the backpack &4%backpack% &cis not valid"
 
   bpgive:
     # When the console wants to give itself a backpacks it gets the 'onlyPlayers' message and this message
@@ -177,7 +178,7 @@ Help:
       2: "&eOther available functions are: &6displayname&e, &6description&e, &6inventorytitle, &e&6material&e, &6crafting&e, &6materials&e, &6type&e, &6slots&e, &6gui&e, &6preview&e, &6finish&e, &6item"
 
   bpreload:
-    successful: "&eReloaded the config files successful"
+    successful: "&eReloaded the config files"
 
 
 BackPacks:

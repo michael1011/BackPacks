@@ -27,28 +27,39 @@ import static at.michael1011.backpacks.listeners.RightClick.*;
 
 public class InventoryClose implements Listener {
 
+    // fixme: ender and craftingBackpack close sound
+
     public InventoryClose(Main main) {
         main.getServer().getPluginManager().registerEvents(this, main);
     }
 
     @EventHandler(priority = EventPriority.HIGH)
     public void invCloseEvent(final InventoryCloseEvent e) {
-        saveBackPack((Player) e.getPlayer(), e.getView(), true);
+        saveBackPack((Player) e.getPlayer(), e.getView(), true, true);
     }
 
-    public static void saveBackPack(Player p, InventoryView inv, Boolean async) {
+    public static void saveBackPack(Player p, InventoryView inv, Boolean async, Boolean playSound) {
         final String backPack = openInvs.get(p);
-        final String[] backPackCommand = openInvsCommand.get(p);
         final String furnace = openFurnaces.get(p);
+
+        final String[] backPackCommand = openInvsCommand.get(p);
 
         final String trimmedID = p.getUniqueId().toString().replaceAll("-", "");
 
         if(backPack != null) {
             openInvs.remove(p);
 
+            if(playSound) {
+                playCloseSound(p, backPack);
+            }
+
             saveBackPack(backPack, trimmedID, inv, async);
 
         } else if(backPackCommand != null) {
+            if(playSound) {
+                playCloseSound(p, backPackCommand[0]);
+            }
+
             saveBackPack(backPackCommand[0], backPackCommand[1], inv, async);
 
         } else if(furnace != null) {
@@ -63,6 +74,10 @@ public class InventoryClose implements Listener {
                 amount = coal.getAmount();
             }
 
+            if(playSound) {
+                playCloseSound(p, furnace);
+            }
+
             SQL.query("UPDATE bp_furnaces SET coal="+amount+" WHERE uuid='"+trimmedID+"'",
                     new SQL.Callback<Boolean>() {
                         @Override
@@ -71,7 +86,21 @@ public class InventoryClose implements Listener {
                         @Override
                         public void onFailure(Throwable e) {}
 
-                    });
+            });
+
+        } else if(openEnder.containsKey(p)) {
+            if(playSound) {
+                playCloseSound(p, openEnder.get(p));
+            }
+
+            openEnder.remove(p);
+
+        } else if(openCrafting.containsKey(p)) {
+            if(playSound) {
+                playCloseSound(p, openCrafting.get(p));
+            }
+
+            openCrafting.remove(p);
 
         }
 

@@ -157,7 +157,7 @@ public class Main extends JavaPlugin {
     @Override
     public void onDisable() {
         for(Player p : Bukkit.getOnlinePlayers()) {
-            InventoryClose.saveBackPack(p, p.getOpenInventory(), false);
+            InventoryClose.saveBackPack(p, p.getOpenInventory(), false, false);
         }
 
         Bukkit.getScheduler().cancelTasks(this);
@@ -222,6 +222,8 @@ public class Main extends JavaPlugin {
                 messages.set(path+"inventorytitle.3", messagesJar.getString(path+"inventorytitle.3"));
 
                 messages.set(path+"preview.inventoryTitle", messagesJar.getString(path+"preview.inventoryTitle"));
+
+                messages.set("Help.soundNotValid", messagesJar.getString("Help.soundNotValid"));
 
                 messages.save(new File(folder, "messages.yml"));
 

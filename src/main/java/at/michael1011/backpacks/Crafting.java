@@ -3,6 +3,7 @@ package at.michael1011.backpacks;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.command.CommandSender;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
@@ -19,9 +20,12 @@ public class Crafting {
 
     public static HashMap<String, String> type = new HashMap<>();
     public static HashMap<String, Integer> slots = new HashMap<>();
-    public static HashMap<String, String> inventoryTitle = new HashMap<>();
     public static HashMap<String, String> furnaceGui = new HashMap<>();
     public static HashMap<List<String>, String> loreMap = new HashMap<>();
+    public static HashMap<String, String> inventoryTitle = new HashMap<>();
+
+    public static HashMap<String, Sound> openSounds = new HashMap<>();
+    public static HashMap<String, Sound> closeSounds = new HashMap<>();
 
     public static String available = "";
     public static List<String> availableList;
@@ -29,6 +33,8 @@ public class Crafting {
     private static Boolean slotsDivisible = true;
 
     public static void initCrafting(CommandSender sender) {
+        available = "";
+
         String path = "BackPacks.";
 
         Map<String, Object> enabled = config.getConfigurationSection(path+"enabled").getValues(true);
@@ -84,65 +90,90 @@ public class Crafting {
         String materialString = config.getString(backPackPath+"material").toUpperCase();
 
         if(itemSlots % 9 == 0) {
+            Material material;
+
             try {
-                Material material = Material.valueOf(materialString);
-
-                ItemStack craft = new ItemStack(material, 1);
-
-                String name = ChatColor.translateAlternateColorCodes('&', config.getString(backPackPath+"name"));
-
-                List<String> lore = new ArrayList<>();
-
-                Map<String, Object> loreSec = config.getConfigurationSection(backPackPath+"description").getValues(true);
-
-                for(Map.Entry<String, Object> ent : loreSec.entrySet()) {
-                    lore.add(ChatColor.translateAlternateColorCodes('&', ent.getValue().toString()));
-                }
-
-                ItemMeta craftM = craft.getItemMeta();
-
-                craftM.setDisplayName(name);
-
-                if(lore.size() > 0) {
-                    craftM.setLore(lore);
-
-                    loreMap.put(lore, backPack);
-                }
-
-                craft.setItemMeta(craftM);
-
-                slots.put(backPack, itemSlots);
-
-                String rawType = config.getString(backPackPath+"type");
-
-                type.put(backPack, rawType);
-
-                String title = config.getString(backPackPath+"inventoryTitle");
-
-                if(title != null) {
-                    inventoryTitle.put(backPack, ChatColor.translateAlternateColorCodes('&', title));
-                }
-
-                if(rawType.equals("furnace")) {
-                    furnaceGui.put(backPack, config.getString(backPackPath+"gui.enabled"));
-                }
-
-                return craft;
+                material = Material.valueOf(materialString);
 
             } catch (IllegalArgumentException e) {
                 sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                         messages.getString("Help.materialNotValid")
                                 .replaceAll("%material%", materialString).replaceAll("%backpack%", backPack)));
 
+                return null;
             }
 
-            return null;
+            ItemStack craft = new ItemStack(material, 1);
+
+            String name = ChatColor.translateAlternateColorCodes('&', config.getString(backPackPath+"name"));
+
+            List<String> lore = new ArrayList<>();
+
+            Map<String, Object> loreSec = config.getConfigurationSection(backPackPath+"description").getValues(true);
+
+            for(Map.Entry<String, Object> ent : loreSec.entrySet()) {
+                lore.add(ChatColor.translateAlternateColorCodes('&', ent.getValue().toString()));
+            }
+
+            ItemMeta craftM = craft.getItemMeta();
+
+            craftM.setDisplayName(name);
+
+            if(lore.size() > 0) {
+                craftM.setLore(lore);
+
+                loreMap.put(lore, backPack);
+            }
+
+            craft.setItemMeta(craftM);
+
+            slots.put(backPack, itemSlots);
+
+            String rawType = config.getString(backPackPath+"type");
+
+            type.put(backPack, rawType);
+
+            String title = config.getString(backPackPath+"inventoryTitle");
+
+            if(title != null) {
+                inventoryTitle.put(backPack, ChatColor.translateAlternateColorCodes('&', title));
+            }
+
+            String errorSound = config.getString(backPackPath+"sounds.open");
+
+            try {
+                if(errorSound != null) {
+                    openSounds.put(backPack, Sound.valueOf(errorSound.toUpperCase()));
+                }
+
+                errorSound = config.getString(backPackPath+"sounds.close");
+
+                if(errorSound != null) {
+                    closeSounds.put(backPack, Sound.valueOf(errorSound.toUpperCase()));
+                }
+
+            } catch (IllegalArgumentException e) {
+                assert errorSound != null;
+
+                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                        messages.getString("Help.soundNotValid")
+                                .replaceAll("%sound%", errorSound.toUpperCase())
+                                .replaceAll("%backpack%", backPack)));
+
+                return null;
+            }
+
+            if(rawType.equals("furnace")) {
+                furnaceGui.put(backPack, config.getString(backPackPath+"gui.enabled"));
+            }
+
+            return craft;
 
         } else {
             slotsDivisible = false;
-
-            return null;
         }
+
+        return null;
 
     }
 
@@ -160,14 +191,15 @@ public class Crafting {
                 "crafting.materials").getValues(true);
 
         for(Map.Entry<String, Object> ing : ingredients.entrySet()) {
-            String material = ing.getValue().toString();
+            String material = ing.getValue().toString().toUpperCase();
 
             try {
                 recipe.setIngredient(ing.getKey().charAt(0), Material.valueOf(material));
 
             } catch (IllegalArgumentException e) {
-                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', messages.getString("Help.materialNotValid")
-                        .replaceAll("%material%", material).replaceAll("%backpack%", backPack)));
+                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                        messages.getString("Help.materialNotValid")
+                                .replaceAll("%material%", material).replaceAll("%backpack%", backPack)));
 
                 return null;
             }

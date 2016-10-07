@@ -22,6 +22,7 @@ import static at.michael1011.backpacks.Crafting.type;
 import static at.michael1011.backpacks.Main.messages;
 import static at.michael1011.backpacks.Main.prefix;
 import static at.michael1011.backpacks.listeners.RightClick.getInv;
+import static at.michael1011.backpacks.listeners.RightClick.playOpenSound;
 
 public class Open implements CommandExecutor {
 
@@ -67,6 +68,8 @@ public class Open implements CommandExecutor {
                                                                     Inventory open = getInv(rs, opener, backPack, item.getItemMeta().getDisplayName(), false, trimmedID);
 
                                                                     if(open != null) {
+                                                                        playOpenSound(opener, backPack);
+
                                                                         opener.openInventory(open);
                                                                     }
 
