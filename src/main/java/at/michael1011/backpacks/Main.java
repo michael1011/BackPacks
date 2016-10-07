@@ -10,6 +10,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -35,8 +36,6 @@ public class Main extends JavaPlugin {
     public static List<String> availablePlayers = new ArrayList<>();
 
     private static Main main;
-
-    // fixme: save backpacks onDisable
 
     // todo: add anvil and enchanting backpack: http://bit.ly/2cDX46w
     // todo: verify backpacks with nbt tags
@@ -157,6 +156,10 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        for(Player p : Bukkit.getOnlinePlayers()) {
+            InventoryClose.saveBackPack(p, p.getOpenInventory(), false);
+        }
+
         Bukkit.getScheduler().cancelTasks(this);
 
         if(SQL.checkCon()) {

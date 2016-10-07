@@ -52,6 +52,26 @@ public class SQL {
 
     }
 
+    public static void query(String query, Callback<Boolean> callback, Boolean async) {
+        if(async) {
+            query(query, callback);
+
+        } else {
+            try {
+                con.prepareStatement(query).execute();
+
+                callback.onSuccess(true);
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+
+                callback.onFailure(e);
+            }
+
+        }
+
+    }
+
     public static void query(final String query, final Callback<Boolean> callback) {
         scheduler.runTaskAsynchronously(main, new Runnable() {
             @Override

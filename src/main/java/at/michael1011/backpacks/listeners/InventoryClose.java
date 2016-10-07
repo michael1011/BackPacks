@@ -2,13 +2,14 @@ package at.michael1011.backpacks.listeners;
 
 import at.michael1011.backpacks.Main;
 import at.michael1011.backpacks.SQL;
+import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryCloseEvent;
-import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.PotionMeta;
@@ -32,8 +33,10 @@ public class InventoryClose implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
     public void invCloseEvent(final InventoryCloseEvent e) {
-        Player p = (Player) e.getPlayer();
+        saveBackPack((Player) e.getPlayer(), e.getView(), true);
+    }
 
+    public static void saveBackPack(Player p, InventoryView inv, Boolean async) {
         final String backPack = openInvs.get(p);
         final String[] backPackCommand = openInvsCommand.get(p);
         final String furnace = openFurnaces.get(p);
@@ -43,10 +46,10 @@ public class InventoryClose implements Listener {
         if(backPack != null) {
             openInvs.remove(p);
 
-            saveBackPack(backPack, trimmedID, e.getInventory());
+            saveBackPack(backPack, trimmedID, inv, async);
 
         } else if(backPackCommand != null) {
-            saveBackPack(backPackCommand[0], backPackCommand[1], e.getInventory());
+            saveBackPack(backPackCommand[0], backPackCommand[1], inv, async);
 
         } else if(furnace != null) {
             openFurnaces.remove(p);
@@ -54,7 +57,7 @@ public class InventoryClose implements Listener {
 
             int amount = 0;
 
-            ItemStack coal = e.getInventory().getItem(35);
+            ItemStack coal = inv.getItem(35);
 
             if(coal != null) {
                 amount = coal.getAmount();
@@ -62,18 +65,21 @@ public class InventoryClose implements Listener {
 
             SQL.query("UPDATE bp_furnaces SET coal="+amount+" WHERE uuid='"+trimmedID+"'",
                     new SQL.Callback<Boolean>() {
-                @Override
-                public void onSuccess(Boolean rs) {}
+                        @Override
+                        public void onSuccess(Boolean rs) {}
 
-                @Override
-                public void onFailure(Throwable e) {}
+                        @Override
+                        public void onFailure(Throwable e) {}
 
-            });
+                    });
+
         }
 
     }
 
-    private void saveBackPack(final String backPack, final String trimmedID, final Inventory inv) {
+    private static void saveBackPack(final String backPack, final String trimmedID, final InventoryView inv,
+                                     final Boolean async) {
+
         SQL.query("DELETE FROM bp_"+backPack+"_"+trimmedID, new SQL.Callback<Boolean>() {
             @Override
             public void onSuccess(Boolean bool) {
@@ -81,98 +87,101 @@ public class InventoryClose implements Listener {
                     ItemStack item = inv.getItem(i);
 
                     if(item != null) {
-                        Boolean hasItemMeta = item.hasItemMeta();
+                        if(!item.getType().equals(Material.AIR)) {
+                            Boolean hasItemMeta = item.hasItemMeta();
 
-                        String name = "";
-                        String lore = "";
-                        String potion = "";
+                            String name = "";
+                            String lore = "";
+                            String potion = "";
 
-                        String material = item.getType().toString();
+                            String material = item.getType().toString();
 
-                        if(hasItemMeta) {
-                            ItemMeta itemM = item.getItemMeta();
+                            if(hasItemMeta) {
+                                ItemMeta itemM = item.getItemMeta();
 
-                            if(itemM.hasDisplayName()) {
-                                 name = itemM.getDisplayName();
-                            }
-
-                            List<String> rawLore = itemM.getLore();
-
-                            StringBuilder builder = new StringBuilder();
-
-                            if(itemM.hasLore()) {
-                                for(String loreLine : rawLore) {
-                                    builder.append(loreLine).append("~");
+                                if(itemM.hasDisplayName()) {
+                                    name = itemM.getDisplayName();
                                 }
 
-                                lore = builder.toString();
-                            }
+                                List<String> rawLore = itemM.getLore();
 
-                        }
+                                StringBuilder builder = new StringBuilder();
 
-                        StringBuilder enchantments = new StringBuilder();
+                                if(itemM.hasLore()) {
+                                    for(String loreLine : rawLore) {
+                                        builder.append(loreLine).append("~");
+                                    }
 
-                        for(Map.Entry<Enchantment, Integer> enchantment : item.getEnchantments().entrySet()) {
-                            enchantments.append(enchantment.getKey().getName()).append(":")
-                                    .append(enchantment.getValue()).append("/");
-                        }
-
-                        if(material.toLowerCase().contains("potion")) {
-                            PotionMeta potionM = (PotionMeta) item.getItemMeta();
-                            PotionData potionD = potionM.getBasePotionData();
-
-                            if(potionD != null) {
-                                potion = potionD.getType().name()+"/"+potionD.isExtended()+"/"+potionD.isUpgraded();
-                            }
-
-                        } else if(material.equals("MONSTER_EGG")) {
-                            try {
-                                Object nmsStack = Class.forName("org.bukkit.craftbukkit."+version+".inventory.CraftItemStack").getMethod("asNMSCopy", ItemStack.class)
-                                        .invoke(null, item);
-
-                                Object nmsCompound = nmsStack.getClass().getMethod("getTag").invoke(nmsStack);
-
-                                if(nmsCompound == null) {
-                                    nmsCompound = Class.forName("net.minecraft.server."+version+".NBTTagCompound").getConstructor().newInstance();
+                                    lore = builder.toString();
                                 }
 
-                                Object getEntityTag = nmsCompound.getClass().getMethod("getCompound", String.class).invoke(nmsCompound, "EntityTag");
-                                Method getEntityString = getEntityTag.getClass().getMethod("getString", String.class);
+                            }
 
-                                potion = String.valueOf(getEntityString.invoke(getEntityTag, "id"));
+                            StringBuilder enchantments = new StringBuilder();
 
-                                Object getMobSpawnerEgg = nmsCompound.getClass().getMethod("getString", String.class).invoke(nmsCompound, "MobSpawnerEgg");
+                            for(Map.Entry<Enchantment, Integer> enchantment : item.getEnchantments().entrySet()) {
+                                enchantments.append(enchantment.getKey().getName()).append(":")
+                                        .append(enchantment.getValue()).append("/");
+                            }
 
-                                if(getMobSpawnerEgg.equals("MobSpawnerEgg")) {
-                                    enchantments.setLength(0);
+                            if(material.toLowerCase().contains("potion")) {
+                                PotionMeta potionM = (PotionMeta) item.getItemMeta();
+                                PotionData potionD = potionM.getBasePotionData();
 
-                                    enchantments.append(getMobSpawnerEgg).append("/");
+                                if(potionD != null) {
+                                    potion = potionD.getType().name()+"/"+potionD.isExtended()+"/"+potionD.isUpgraded();
                                 }
 
-                            } catch(InvocationTargetException | ClassNotFoundException | IllegalAccessException | NoSuchMethodException | InstantiationException exception) {
-                                exception.printStackTrace();
+                            } else if(material.equals("MONSTER_EGG")) {
+                                try {
+                                    Object nmsStack = Class.forName("org.bukkit.craftbukkit."+version+".inventory.CraftItemStack").getMethod("asNMSCopy", ItemStack.class)
+                                            .invoke(null, item);
+
+                                    Object nmsCompound = nmsStack.getClass().getMethod("getTag").invoke(nmsStack);
+
+                                    if(nmsCompound == null) {
+                                        nmsCompound = Class.forName("net.minecraft.server."+version+".NBTTagCompound").getConstructor().newInstance();
+                                    }
+
+                                    Object getEntityTag = nmsCompound.getClass().getMethod("getCompound", String.class).invoke(nmsCompound, "EntityTag");
+                                    Method getEntityString = getEntityTag.getClass().getMethod("getString", String.class);
+
+                                    potion = String.valueOf(getEntityString.invoke(getEntityTag, "id"));
+
+                                    Object getMobSpawnerEgg = nmsCompound.getClass().getMethod("getString", String.class).invoke(nmsCompound, "MobSpawnerEgg");
+
+                                    if(getMobSpawnerEgg.equals("MobSpawnerEgg")) {
+                                        enchantments.setLength(0);
+
+                                        enchantments.append(getMobSpawnerEgg).append("/");
+                                    }
+
+                                } catch(InvocationTargetException | ClassNotFoundException | IllegalAccessException | NoSuchMethodException | InstantiationException exception) {
+                                    exception.printStackTrace();
+                                }
+
+                            } else if(material.equals("SKULL_ITEM")) {
+                                SkullMeta skull = (SkullMeta) item.getItemMeta();
+
+                                if(skull.hasOwner()) {
+                                    potion = skull.getOwner();
+                                }
                             }
 
-                        } else if(material.equals("SKULL_ITEM")) {
-                            SkullMeta skull = (SkullMeta) item.getItemMeta();
+                            SQL.query("INSERT INTO bp_"+backPack+"_"+trimmedID+" (position, material, durability, amount, "+
+                                            "name, lore, enchantments, potion) values ('"+i+"', '"+material+"', '"+item.getDurability()+"', "+
+                                            "'"+item.getAmount()+"', '"+name+"', '"+lore+"', '"+enchantments.toString()+"', '"+potion+"')",
+                                    new SQL.Callback<Boolean>() {
 
-                            if(skull.hasOwner()) {
-                                potion = skull.getOwner();
-                            }
+                                        @Override
+                                        public void onSuccess(Boolean rs) {}
+
+                                        @Override
+                                        public void onFailure(Throwable e) {}
+
+                                    }, async);
+
                         }
-
-                        SQL.query("INSERT INTO bp_"+backPack+"_"+trimmedID+" (position, material, durability, amount, "+
-                                "name, lore, enchantments, potion) values ('"+i+"', '"+material+"', '"+item.getDurability()+"', "+
-                                 "'"+item.getAmount()+"', '"+name+"', '"+lore+"', '"+enchantments.toString()+"', '"+potion+"')",
-                                        new SQL.Callback<Boolean>() {
-
-                                    @Override
-                                    public void onSuccess(Boolean rs) {}
-
-                                    @Override
-                                    public void onFailure(Throwable e) {}
-
-                        });
 
                     }
 
@@ -183,7 +192,7 @@ public class InventoryClose implements Listener {
             @Override
             public void onFailure(Throwable e) {}
 
-        });
+        }, async);
 
     }
 
