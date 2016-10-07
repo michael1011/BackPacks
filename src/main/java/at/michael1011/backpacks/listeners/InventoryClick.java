@@ -74,15 +74,18 @@ public class InventoryClick implements Listener {
             if(openInvs.containsKey(p)) {
                 ItemStack item = e.getCurrentItem();
 
-                if(item.hasItemMeta()) {
-                    ItemMeta meta = item.getItemMeta();
+                if(item != null) {
+                    if(item.hasItemMeta()) {
+                        ItemMeta meta = item.getItemMeta();
 
-                    if(meta.hasLore()) {
-                        if(Crafting.loreMap.containsKey(meta.getLore())) {
-                            e.setCancelled(true);
+                        if(meta.hasLore()) {
+                            if(Crafting.loreMap.containsKey(meta.getLore())) {
+                                e.setCancelled(true);
+                            }
                         }
                     }
                 }
+
             }
 
         }
