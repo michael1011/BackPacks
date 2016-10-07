@@ -8,10 +8,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static at.michael1011.backpacks.Main.*;
 
@@ -93,24 +90,22 @@ public class Crafting {
 
                 String name = ChatColor.translateAlternateColorCodes('&', config.getString(backPackPath+"name"));
 
-                String lore = "";
+                List<String> lore = new ArrayList<>();
 
                 Map<String, Object> loreSec = config.getConfigurationSection(backPackPath+"description").getValues(true);
 
                 for(Map.Entry<String, Object> ent : loreSec.entrySet()) {
-                    lore = lore+","+ChatColor.translateAlternateColorCodes('&', ent.getValue().toString());
+                    lore.add(ChatColor.translateAlternateColorCodes('&', ent.getValue().toString()));
                 }
 
                 ItemMeta craftM = craft.getItemMeta();
 
                 craftM.setDisplayName(name);
 
-                if(!lore.equals("")) {
-                    List<String> loreList = Arrays.asList(lore.split("\\s*,\\s*"));
+                if(lore.size() > 0) {
+                    craftM.setLore(lore);
 
-                    craftM.setLore(loreList);
-
-                    loreMap.put(loreList, backPack);
+                    loreMap.put(lore, backPack);
                 }
 
                 craft.setItemMeta(craftM);

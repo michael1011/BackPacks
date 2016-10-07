@@ -42,8 +42,8 @@ BackPacks:
     1: "littleBackPack"
     2: "normalBackPack"
     3: "enderBackPack"
-    5: "craftingBackPack"
-    4: "furnaceBackPack"
+    4: "craftingBackPack"
+    5: "furnaceBackPack"
 
   littleBackPack:
     name: "&bLittle &3BackPack"
@@ -52,8 +52,9 @@ BackPacks:
 
     # Important: every description must be unique!
     description:
-      1: "&fThis is the &bLittle &3BackPack&f."
-      2: "&8Right click to open it."
+      1: ""
+      2: "&fThis is the &bLittle &3BackPack&f."
+      3: "&8Right click to open it."
 
     # Must be divisible by 9
     slots: 9
@@ -75,8 +76,9 @@ BackPacks:
     type: "normal"
 
     description:
-      1: "&fThis is the &eNormal &6BackPack&f."
-      2: "&8Right click to open it."
+      1: ""
+      2: "&fThis is the &eNormal &6BackPack&f."
+      3: "&8Right click to open it."
 
     slots: 27
 
@@ -97,8 +99,9 @@ BackPacks:
     type: "ender"
 
     description:
-      1: "&fThis is the &5Ender &dBackPack&f."
-      2: "&8Right click to open it."
+      1: ""
+      2: "&fThis is the &5Ender &dBackPack&f."
+      3: "&8Right click to open it."
 
     material: "ENDER_CHEST"
 
@@ -117,8 +120,9 @@ BackPacks:
     type: "crafting"
 
     description:
-      1: "&fThis is the &7Crafting &8BackPack&f."
-      2: "&8Right click to open it."
+      1: ""
+      2: "&fThis is the &7Crafting &8BackPack&f."
+      3: "&8Right click to open it."
 
     material: "WORKBENCH"
 
@@ -136,7 +140,8 @@ BackPacks:
     type: "furnace"
 
     description:
-      1: "&fThis is the &cFurnace &4BackPack&f."
+      1: ""
+      2: "&fThis is the &cFurnace &4BackPack&f."
       2: "&8Right click to open it."
 
     gui:
