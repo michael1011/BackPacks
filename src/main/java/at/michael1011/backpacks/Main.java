@@ -223,7 +223,20 @@ public class Main extends JavaPlugin {
 
                 messages.set(path+"preview.inventoryTitle", messagesJar.getString(path+"preview.inventoryTitle"));
 
+                messages.set(path+"preview.sound.title", messagesJar.getString(path+"preview.sound.title"));
+                messages.set(path+"preview.sound.line", messagesJar.getString(path+"preview.sound.line"));
+
                 messages.set("Help.soundNotValid", messagesJar.getString("Help.soundNotValid"));
+
+                messages.set("Help.bpcreate.steps.sound.1", messagesJar.getString("Help.bpcreate.steps.sound.1"));
+                messages.set("Help.bpcreate.steps.sound.2", messagesJar.getString("Help.bpcreate.steps.sound.2"));
+                messages.set("Help.bpcreate.steps.sound.3", messagesJar.getString("Help.bpcreate.steps.sound.3"));
+                messages.set("Help.bpcreate.steps.sound.4", messagesJar.getString("Help.bpcreate.steps.sound.4"));
+
+                messages.set("Help.bpcreate.steps.soundOther.1", messagesJar.getString("Help.bpcreate.steps.soundOther.1"));
+                messages.set("Help.bpcreate.steps.soundOther.2", messagesJar.getString("Help.bpcreate.steps.soundOther.2"));
+
+                messages.set("Help.bpcreate.steps.soundNotValid", messagesJar.getString("Help.bpcreate.steps.soundNotValid"));
 
                 messages.save(new File(folder, "messages.yml"));
 

@@ -75,14 +75,26 @@ Help:
         1: "&eSet the &6displayname &ewith &6/bpc displayname <displayname>"
         2: "&eThe &6displayname &eis the name of the item and &6can contain spaces"
 
+      inventorytitle:
+        1: "&6This is optional! &eIf you skip this the name of the item will be the name of the inventory"
+        2: "&eYou can get information about the next step with &6/bpc sound"
+        3: "&eSet the &6title of the inventory &ewith &6/bpc inventorytitle <title>"
+
+      sound:
+        1: "&6This is optional! &eGet to the next step with &6/bpc description"
+        2: "&eSet the &6sound &ewhen the backpack &6opens &ewith &6/bpc sound open <sound>"
+        3: "&eSet the &6sound &ewhen the backpack &6closes &ewith &6/bpc sound close <sound>"
+        4: "&eYou can get a list of all available sounds here: &6http://bit.ly/1F8lxso"
+
+      soundOther:
+        1: "&eSet the %otherSound% sound with &6/bpc sound %otherSound% <sound>"
+        2: "&eGet to the next step with &6/bpc description"
+
+      soundNotValid: "&cThe sound &4%sound% &cis &4not valid"
+
       description:
         1: "&eSet the &6description &ewith &6/bpc desc <description>"
         2: "&eCreate a new line with &6;"
-
-      inventorytitle:
-        1: "&eSet the &6title of the inventory &ewith &6/bpc inventorytitle <title>"
-        2: "&eIf you skip this the name of the item will be the name of the inventory"
-        3: "&eYou can get information about the next step with &6/bpc description"
 
       material:
         1: "&eSet the &6material &ewith &6/bpc material <material>"
@@ -130,6 +142,10 @@ Help:
 
         inventoryTitle: "&eInventorytitle: &r%title%"
 
+        sound:
+          title: "&eSound:"
+          line: "&e  %soundType%: &6%sound%"
+
         description:
           title: "&eDescription:"
           line: "&e  %lineNumber%: &r%content%"
@@ -175,7 +191,7 @@ Help:
     # If someone uses /bpcreate wrong
     syntaxError:
       1: "&6/bpc name <value>: &eto start creating a backpack"
-      2: "&eOther available functions are: &6displayname&e, &6description&e, &6inventorytitle, &e&6material&e, &6crafting&e, &6materials&e, &6type&e, &6slots&e, &6gui&e, &6preview&e, &6finish&e, &6item"
+      2: "&eOther available functions are: &6displayname&e, &6description&e, &6inventorytitle&e, &6sound&e, &6material&e, &6crafting&e, &6materials&e, &6type&e, &6slots&e, &6gui&e, &6preview&e, &6finish&e, &6item"
 
   bpreload:
     successful: "&eReloaded the config files"

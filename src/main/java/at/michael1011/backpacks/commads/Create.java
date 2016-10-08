@@ -3,6 +3,7 @@ package at.michael1011.backpacks.commads;
 import at.michael1011.backpacks.Main;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -13,7 +14,10 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 import static at.michael1011.backpacks.Main.*;
 
@@ -34,7 +38,7 @@ public class Create implements CommandExecutor {
         command.setTabCompleter(new CreateCompleter());
     }
 
-    // todo: add option to set sound
+    // fixme: tab completion for second args (sound and finish)
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -72,7 +76,41 @@ public class Create implements CommandExecutor {
                     case "inventorytitle":
                         data.get(sender).put("inventoryTitle", argsToString(args));
 
-                        sendMap(sender, "steps.description");
+                        sendMap(sender, "steps.sound");
+
+                        break;
+
+                    case "sound":
+                        String soundType = args[1].toLowerCase();
+
+                        if(soundType.equals("open") || soundType.equals("close")) {
+                            String sound = args[2].toUpperCase();
+
+                            try {
+                                Sound.valueOf(sound);
+
+                            } catch (IllegalArgumentException e) {
+                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString(path+"steps.soundNotValid")
+                                                .replaceAll("%sound%", sound)));
+
+                                break;
+                            }
+
+                            data.get(sender).put("sound"+soundType, sound);
+
+                            String otherSound = getOtherSound(soundType);
+
+                            if(data.get(sender).get("sound"+otherSound) != null) {
+                                sendMap(sender, "steps.description");
+
+                            } else {
+                                sendMap(sender, "steps.soundOther", "%otherSound%", otherSound);
+                            }
+
+                        } else {
+                            sendMap(sender, "steps.sound");
+                        }
 
                         break;
 
@@ -460,6 +498,7 @@ public class Create implements CommandExecutor {
 
                     case "description":
                     case "inventorytitle":
+                    case "sound":
                     case "material":
                     case "crafting":
                     case "materials":
@@ -541,10 +580,32 @@ public class Create implements CommandExecutor {
 
                             missingHere.remove("displayname");
 
-                            if(finishedData.get("inventoryTitle") != null) {
+                            if(finishedData.containsKey("inventoryTitle")) {
                                 sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                                         messages.getString(path+"steps.preview.inventoryTitle").replaceAll("%title%",
                                                 finishedData.get("inventoryTitle"))));
+                            }
+
+                            Boolean soundOpen = finishedData.containsKey("soundopen");
+                            Boolean soundClose = finishedData.containsKey("soundclose");
+
+                            if(soundOpen || soundClose) {
+                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString(path+"steps.preview.sound.title")));
+                            }
+
+                            if(soundOpen) {
+                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString(path+"steps.preview.sound.line")
+                                                .replaceAll("%soundType%", "open")
+                                                .replaceAll("%sound%", finishedData.get("soundopen"))));
+                            }
+
+                            if(soundClose) {
+                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString(path+"steps.preview.sound.line")
+                                                .replaceAll("%soundType%", "close")
+                                                .replaceAll("%sound%", finishedData.get("soundclose"))));
                             }
 
                             String[] description = finishedData.get("description").split(";");
@@ -735,12 +796,34 @@ public class Create implements CommandExecutor {
         return builder.toString();
     }
 
-    private void sendMap(CommandSender sender, String specificPath) {
-        Map<String, Object> syntaxError = messages.getConfigurationSection(path+specificPath).getValues(true);
+    private void sendMap(CommandSender sender, String specificPath, String replace, String value) {
+        Map<String, Object> entryValues = messages.getConfigurationSection(path+specificPath).getValues(true);
 
-        for(Map.Entry<String, Object> error : syntaxError.entrySet()) {
-            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', (String) error.getValue()));
+        for(Map.Entry<String, Object> entry : entryValues.entrySet()) {
+            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', String.valueOf(entry.getValue())
+                    .replaceAll(replace, value)));
         }
+
+    }
+
+    private void sendMap(CommandSender sender, String specificPath) {
+        Map<String, Object> entryValues = messages.getConfigurationSection(path+specificPath).getValues(true);
+
+        for(Map.Entry<String, Object> entry : entryValues.entrySet()) {
+            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', (String) entry.getValue()));
+        }
+    }
+
+    private String getOtherSound(String sound) {
+        switch (sound) {
+            case "open":
+                return "close";
+
+            case "close":
+                return "open";
+        }
+
+        return null;
     }
 
 }

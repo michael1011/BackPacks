@@ -11,7 +11,7 @@ import static at.michael1011.backpacks.commads.GiveCompleter.filterList;
 
 class CreateCompleter implements TabCompleter {
 
-    private List<String> functions = Arrays.asList("name", "displayname", "description", "inventorytitle",
+    private List<String> functions = Arrays.asList("name", "displayname", "description", "inventorytitle", "sound",
             "material", "crafting", "materials", "type", "slots", "gui", "preview", "finish", "item");
 
     @Override
