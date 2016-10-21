@@ -60,7 +60,7 @@ public class Join implements Listener {
                         }
 
                         if(Updater.updateAvailable) {
-                            if(p.hasPermission("backpacks.update")) {
+                            if(p.hasPermission("backpacks.update") || p.hasPermission("backpacks.*")) {
                                 p.sendMessage(Updater.newVersion);
                                 p.sendMessage(Updater.newVersionDownload);
                             }

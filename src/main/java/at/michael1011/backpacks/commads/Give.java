@@ -29,7 +29,7 @@ public class Give implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(sender.hasPermission("backpacks.give")) {
+        if(sender.hasPermission("backpacks.give") || sender.hasPermission("backpacks.*")) {
             if(args.length == 1) {
                 if(sender instanceof Player) {
                     giveBackPack(sender, (Player) sender, args[0]);

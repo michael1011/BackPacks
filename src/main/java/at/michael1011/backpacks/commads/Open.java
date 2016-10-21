@@ -35,7 +35,7 @@ public class Open implements CommandExecutor {
 
     @Override
     public boolean onCommand(final CommandSender sender, Command command, String label, final String[] args) {
-        if(sender.hasPermission("backpacks.open")) {
+        if(sender.hasPermission("backpacks.open") || sender.hasPermission("backpacks.*")) {
             if(args.length == 2) {
                 final String backPack = args[0];
                 final String finalType = type.get(backPack);

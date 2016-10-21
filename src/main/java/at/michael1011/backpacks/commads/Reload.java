@@ -27,7 +27,7 @@ public class Reload implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(sender.hasPermission("backpacks.reload")) {
+        if(sender.hasPermission("backpacks.reload") || sender.hasPermission("backpacks.*")) {
             try {
                 if(SQL.checkCon()) {
                     SQL.closeCon();

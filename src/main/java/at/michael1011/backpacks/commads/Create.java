@@ -42,7 +42,7 @@ public class Create implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(sender.hasPermission("backpacks.create")) {
+        if(sender.hasPermission("backpacks.create") || sender.hasPermission("backpacks.*")) {
             if(args.length > 1) {
                 String arg = args[0].toLowerCase();
 

@@ -81,7 +81,7 @@ public class RightClick implements Listener {
                 if(backPack != null) {
                     final Player p = e.getPlayer();
 
-                    if(p.hasPermission("backpacks.use."+backPack)) {
+                    if(p.hasPermission("backpacks.use."+backPack) || p.hasPermission("backpacks.*")) {
                         final String trimmedID = p.getUniqueId().toString().replaceAll("-", "");
 
                         playOpenSound(p, backPack);
