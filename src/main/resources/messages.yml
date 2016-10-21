@@ -29,7 +29,7 @@ Help:
   noPermission: "&cYou &4don't &chave enough permissions"
 
   # When you want to interact with a player that isn't online (%target% is the offline player)
-  playerNotFound: "&cThe player &4%target% &ccouldn't be foubd"
+  playerNotFound: "&cThe player &4%target% &ccouldn't be found"
 
   backPackNotFound: "&cThe backpack &4%backpack% &ccouldn't be found"
   backPackNotFoundAvailable: "&cThe available backpacks are &4%backpacks%"

@@ -42,6 +42,7 @@ public class RightClick implements Listener {
     static final HashMap<Player, String> openFurnaces = new HashMap<>();
     static final HashMap<Player, Inventory> openFurnacesInvs = new HashMap<>();
 
+    // fixme: only one
     static final HashMap<Player, String> openEnder = new HashMap<>();
     static final HashMap<Player, String> openCrafting = new HashMap<>();
 
