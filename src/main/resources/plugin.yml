@@ -27,6 +27,11 @@ commands:
     description: "reload the configuration files"
     usage: /bpr
 
+  bplist:
+    aliases: [bpl]
+    description: "list all backpacks"
+    usage: /bpl
+
 
 permissions:
   backpacks.*:
@@ -37,6 +42,7 @@ permissions:
       backpacks.create: true
       backpacks.reload: true
       backpacks.update: true
+      backpacks.list: true
 
   backpacks.give:
     description: to use /bpgive
@@ -52,4 +58,7 @@ permissions:
     default: op
   backpacks.update:
     description: to get a message when a new version is available
+    default: op
+  backpacks.list:
+    description: to list all backpacks
     default: op

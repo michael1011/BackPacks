@@ -1,9 +1,6 @@
 package at.michael1011.backpacks;
 
-import at.michael1011.backpacks.commads.Create;
-import at.michael1011.backpacks.commads.Give;
-import at.michael1011.backpacks.commads.Open;
-import at.michael1011.backpacks.commads.Reload;
+import at.michael1011.backpacks.commads.*;
 import at.michael1011.backpacks.listeners.*;
 import at.michael1011.backpacks.tasks.Reconnect;
 import org.bukkit.Bukkit;
@@ -101,6 +98,7 @@ public class Main extends JavaPlugin {
                                             new Open(main);
                                             new Create(main);
                                             new Reload(main);
+                                            new ListBackPacks(main);
 
                                             new Reconnect(main);
 
@@ -237,6 +235,8 @@ public class Main extends JavaPlugin {
                 messages.set("Help.bpcreate.steps.soundOther.2", messagesJar.getString("Help.bpcreate.steps.soundOther.2"));
 
                 messages.set("Help.bpcreate.steps.soundNotValid", messagesJar.getString("Help.bpcreate.steps.soundNotValid"));
+
+                messages.set("Help.bplist.list", messagesJar.getString("Help.bplist.list"));
 
                 messages.save(new File(folder, "messages.yml"));
 

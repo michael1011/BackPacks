@@ -196,6 +196,10 @@ Help:
   bpreload:
     successful: "&eReloaded the config files"
 
+  bplist:
+    # %backpacks% are the backpacks
+    list: "&eThe available backpacks are: &6%backpacks%"
+
 
 BackPacks:
   # When you enable a backpack that doesn't exist (%backpack% is the backpack that couldn't be found)

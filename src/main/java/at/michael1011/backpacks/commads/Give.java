@@ -18,14 +18,14 @@ import static at.michael1011.backpacks.Main.prefix;
 
 public class Give implements CommandExecutor {
 
+    private static final String path = "Help.bpgive.";
+
     public Give(Main main) {
         PluginCommand command = main.getCommand("bpgive");
 
         command.setExecutor(this);
         command.setTabCompleter(new GiveCompleter());
     }
-
-    private static final String path = "Help.bpgive.";
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
