@@ -86,19 +86,19 @@ public class InventoryClose implements Listener {
 
             });
 
-        } else if(openEnder.containsKey(p)) {
+        } else if(openInvsOther.containsKey(p)) {
             if(playSound) {
-                playCloseSound(p, openEnder.get(p));
+                playCloseSound(p, openInvsOther.get(p));
             }
 
-            openEnder.remove(p);
+            openInvsOther.remove(p);
 
-        } else if(openCrafting.containsKey(p)) {
+        } else if(openInvsOther.containsKey(p)) {
             if(playSound) {
-                playCloseSound(p, openCrafting.get(p));
+                playCloseSound(p, openInvsOther.get(p));
             }
 
-            openCrafting.remove(p);
+            openInvsOther.remove(p);
 
         }
 

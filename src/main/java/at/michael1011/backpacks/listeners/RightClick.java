@@ -42,9 +42,7 @@ public class RightClick implements Listener {
     static final HashMap<Player, String> openFurnaces = new HashMap<>();
     static final HashMap<Player, Inventory> openFurnacesInvs = new HashMap<>();
 
-    // fixme: only one
-    static final HashMap<Player, String> openEnder = new HashMap<>();
-    static final HashMap<Player, String> openCrafting = new HashMap<>();
+    static final HashMap<Player, String> openInvsOther = new HashMap<>();
 
     public RightClick(Main main) {
         main.getServer().getPluginManager().registerEvents(this, main);
@@ -137,14 +135,14 @@ public class RightClick implements Listener {
                                 break;
 
                             case "ender":
-                                openEnder.put(p, backPack);
+                                openInvsOther.put(p, backPack);
 
                                 p.openInventory(p.getEnderChest());
 
                                 break;
 
                             case "crafting":
-                                openCrafting.put(p, backPack);
+                                openInvsOther.put(p, backPack);
 
                                 p.openWorkbench(p.getLocation(), true);
 

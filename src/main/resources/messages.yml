@@ -67,7 +67,6 @@ Help:
 
   bpcreate:
     steps:
-      # fixme: add comments for every step
       name:
         noSpaces: "&cThe name &4can't contain spaces&c!"
 
