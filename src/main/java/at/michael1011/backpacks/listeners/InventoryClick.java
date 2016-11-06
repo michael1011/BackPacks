@@ -3,7 +3,7 @@ package at.michael1011.backpacks.listeners;
 import at.michael1011.backpacks.Crafting;
 import at.michael1011.backpacks.Main;
 import at.michael1011.backpacks.SQL;
-import net.md_5.bungee.api.ChatColor;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
