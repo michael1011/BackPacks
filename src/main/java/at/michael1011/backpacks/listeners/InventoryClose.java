@@ -11,6 +11,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.inventory.meta.SkullMeta;
@@ -193,6 +194,15 @@ public class InventoryClose implements Listener {
                                 if(skull.hasOwner()) {
                                     potion = skull.getOwner();
                                 }
+
+                            } else if(material.equals("ENCHANTED_BOOK")){
+                                EnchantmentStorageMeta storage = (EnchantmentStorageMeta) item.getItemMeta();
+
+                                for(Map.Entry<Enchantment, Integer> enchantment : storage.getStoredEnchants().entrySet()) {
+                                    enchantments.append(enchantment.getKey().getName()).append(":")
+                                            .append(enchantment.getValue()).append("/");
+                                }
+
                             }
 
                             SQL.query("INSERT INTO bp_"+backPack+"_"+trimmedID+" (position, material, durability, amount, "+

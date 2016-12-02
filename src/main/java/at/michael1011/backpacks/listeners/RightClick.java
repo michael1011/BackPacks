@@ -16,6 +16,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.inventory.meta.SkullMeta;
@@ -260,18 +261,36 @@ public class RightClick implements Listener {
 
                     if(!enchantment.equals("")) {
                         if(!enchantment.equals("MobSpawnerEgg/")) {
-                            String[] enchantments = enchantment.substring(0, enchantment.length()-1).split("/");
+                            String[] enchantments = enchantment.substring(0, enchantment.length() - 1).split("/");
 
-                            for(String enchant : enchantments) {
-                                String[] parts = enchant.split(":");
+                            if (!material.equals("ENCHANTED_BOOK")) {
+                                for (String enchant : enchantments) {
+                                    String[] parts = enchant.split(":");
 
-                                Enchantment ench = Enchantment.getByName(parts[0]);
-                                int enchLvl = Integer.valueOf(parts[1]);
+                                    Enchantment ench = Enchantment.getByName(parts[0]);
+                                    int enchLvl = Integer.valueOf(parts[1]);
 
-                                item.addUnsafeEnchantment(ench, enchLvl);
-                                meta.addEnchant(ench, enchLvl, true);
+                                    item.addUnsafeEnchantment(ench, enchLvl);
+                                    meta.addEnchant(ench, enchLvl, true);
+                                }
+
+                            } else {
+                                EnchantmentStorageMeta storage = (EnchantmentStorageMeta) meta;
+
+                                for (String enchant : enchantments) {
+                                    String[] parts = enchant.split(":");
+
+                                    Enchantment ench = Enchantment.getByName(parts[0]);
+                                    int enchLvl = Integer.valueOf(parts[1]);
+
+                                    storage.addStoredEnchant(ench, enchLvl, true);
+                                }
+
+                                item.setItemMeta(storage);
                             }
+
                         }
+
                     }
 
                     if(!potion.equals("")) {
