@@ -34,38 +34,38 @@ public class InventoryClick implements Listener {
                 ItemStack item = e.getCurrentItem();
 
                 if(item.hasItemMeta()) {
-                    String name = item.getItemMeta().getDisplayName();
+                    ItemMeta meta = item.getItemMeta();
 
-                    if(name.equals(ChatColor.translateAlternateColorCodes('&', furnaceGui.getString("enabled")))) {
-                        ItemStack disabled = new ItemStack(Material.WOOL, 1, (byte) getColor(false));
+                    if (meta.hasDisplayName()) {
+                        String name = meta.getDisplayName();
 
-                        setToggleMeta(disabled, false);
+                        if(name.equals(ChatColor.translateAlternateColorCodes('&', furnaceGui.getString("enabled")))) {
+                            ItemStack disabled = new ItemStack(Material.WOOL, 1, (byte) getColor(false));
 
-                        inv.setItem(e.getSlot(), disabled);
+                            setToggleMeta(disabled, false);
 
-                        setBoolean(false, e.getSlot(), p.getUniqueId().toString().replaceAll("-", ""));
+                            inv.setItem(e.getSlot(), disabled);
 
-                    } else if(name.equals(ChatColor.translateAlternateColorCodes('&', furnaceGui.getString("disabled")))) {
-                        ItemStack enabled = new ItemStack(Material.WOOL, 1, (byte) getColor(true));
+                            setBoolean(false, e.getSlot(), p.getUniqueId().toString().replaceAll("-", ""));
 
-                        setToggleMeta(enabled, true);
+                        } else if(name.equals(ChatColor.translateAlternateColorCodes('&', furnaceGui.getString("disabled")))) {
+                            ItemStack enabled = new ItemStack(Material.WOOL, 1, (byte) getColor(true));
 
-                        inv.setItem(e.getSlot(), enabled);
+                            setToggleMeta(enabled, true);
 
-                        setBoolean(true, e.getSlot(), p.getUniqueId().toString().replaceAll("-", ""));
+                            inv.setItem(e.getSlot(), enabled);
+
+                            setBoolean(true, e.getSlot(), p.getUniqueId().toString().replaceAll("-", ""));
+                        }
+
+                        e.setCancelled(true);
+
+                    } else {
+                        checkCoal(item, e);
                     }
-
-                    e.setCancelled(true);
 
                 } else {
-                    if(item.getType().equals(Material.COAL) ||
-                            e.getCursor().getType().equals(Material.COAL)) {
-                        e.setCancelled(false);
-
-                        return;
-                    }
-
-                    e.setCancelled(true);
+                    checkCoal(item, e);
                 }
 
             }
@@ -90,6 +90,17 @@ public class InventoryClick implements Listener {
 
         }
 
+    }
+
+    private void checkCoal(ItemStack item, InventoryClickEvent e) {
+        if(item.getType().equals(Material.COAL) ||
+                e.getCursor().getType().equals(Material.COAL)) {
+            e.setCancelled(false);
+
+            return;
+        }
+
+        e.setCancelled(true);
     }
 
     private void setBoolean(Boolean value, int slot, String uuid) {

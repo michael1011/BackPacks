@@ -2,6 +2,7 @@ package at.michael1011.backpacks.listeners;
 
 import at.michael1011.backpacks.Main;
 import at.michael1011.backpacks.SQL;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -69,8 +70,16 @@ public class InventoryClose implements Listener {
 
             ItemStack coal = inv.getItem(35);
 
-            if(coal != null) {
-                amount = coal.getAmount();
+            if (coal != null) {
+                if (coal.getType().equals(Material.COAL)) {
+                    amount = coal.getAmount();
+
+                } else if (!coal.getType().equals(Material.AIR)) {
+                    Location location = p.getLocation();
+
+                    location.getWorld().dropItemNaturally(location, coal);
+                }
+
             }
 
             if(playSound) {
