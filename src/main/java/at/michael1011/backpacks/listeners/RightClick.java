@@ -62,6 +62,7 @@ public class RightClick implements Listener {
                     case FURNACE:
                     case BURNING_FURNACE:
                     case CHEST:
+                    case TRAPPED_CHEST:
                     case ENDER_CHEST:
                     case ENCHANTMENT_TABLE:
                     case ANVIL:
