@@ -1,12 +1,10 @@
 package at.michael1011.backpacks.listeners;
 
-import at.michael1011.backpacks.Crafting;
-import at.michael1011.backpacks.EnchantGlow;
-import at.michael1011.backpacks.Main;
-import at.michael1011.backpacks.SQL;
+import at.michael1011.backpacks.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -31,19 +29,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static at.michael1011.backpacks.Crafting.slots;
-import static at.michael1011.backpacks.Crafting.type;
 import static at.michael1011.backpacks.Main.*;
 
 public class RightClick implements Listener {
 
-    static final HashMap<Player, String> openInvs = new HashMap<>();
-    static final HashMap<Player, String[]> openInvsCommand = new HashMap<>();
+    static final HashMap<Player, BackPack> openInvs = new HashMap<>();
+    static final HashMap<Player, BackPack> openInvsOther = new HashMap<>();
 
-    static final HashMap<Player, String> openFurnaces = new HashMap<>();
+    static final HashMap<Player, BackPack> openFurnaces = new HashMap<>();
     static final HashMap<Player, Inventory> openFurnacesInvs = new HashMap<>();
 
-    static final HashMap<Player, String> openInvsOther = new HashMap<>();
+    static final HashMap<Player, String> openInvsOwners = new HashMap<>();
 
     public RightClick(Main main) {
         main.getServer().getPluginManager().registerEvents(this, main);
@@ -53,8 +49,8 @@ public class RightClick implements Listener {
     public void rightClickEvent(PlayerInteractEvent e) {
         Action action = e.getAction();
 
-        if(action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK) {
-            if(action == Action.RIGHT_CLICK_BLOCK) {
+        if (action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK) {
+            if (action == Action.RIGHT_CLICK_BLOCK) {
                 Material block = e.getClickedBlock().getType();
 
                 switch (block) {
@@ -75,49 +71,130 @@ public class RightClick implements Listener {
 
             final ItemStack item = e.getItem();
 
-            if(item != null) {
-                final String backPack = Crafting.loreMap.get(item.getItemMeta().getLore());
+            if (item != null) {
+                for (final BackPack backPack : Crafting.backPacks) {
+                    final ItemMeta meta = item.getItemMeta();
 
-                if(backPack != null) {
-                    final Player p = e.getPlayer();
+                    if (backPack.getLore().equals(meta.getLore())) {
+                        final Player p = e.getPlayer();
 
-                    if(p.hasPermission("backpacks.use."+backPack) || p.hasPermission("backpacks.*")) {
-                        final String trimmedID = p.getUniqueId().toString().replaceAll("-", "");
+                        if (p.hasPermission("backpacks.use." + backPack) || p.hasPermission("backpacks.*")) {
+                            final String trimmedID = getTrimmedId(p);
 
-                        playOpenSound(p, backPack);
+                            playOpenSound(p, backPack);
 
-                        switch (type.get(backPack)) {
-                            case "normal":
-                                SQL.checkTable("bp_"+backPack+"_"+trimmedID, new SQL.Callback<Boolean>() {
-                                    @Override
-                                    public void onSuccess(Boolean rs) {
-                                        if(rs) {
-                                            SQL.getResult("SELECT * FROM bp_"+ backPack +"_"+trimmedID, new SQL.Callback<ResultSet>() {
-                                                @Override
-                                                public void onSuccess(ResultSet rs) {
-                                                    Inventory open = getInv(rs, p, backPack, item.getItemMeta().getDisplayName(), true, null);
+                            switch (backPack.getType().toString()) {
+                                case "normal":
+                                    SQL.checkTable("bp_" + backPack + "_" + trimmedID, new SQL.Callback<Boolean>() {
 
-                                                    if(open != null) {
-                                                        p.openInventory(open);
+                                        @Override
+                                        public void onSuccess(Boolean rs) {
+                                            if (rs) {
+                                                SQL.getResult("SELECT * FROM bp_" + backPack.getName() + "_" + trimmedID,
+                                                        new SQL.Callback<ResultSet>() {
+
+                                                    @Override
+                                                    public void onSuccess(ResultSet rs) {
+                                                        Inventory open = getInv(rs, p, backPack,
+                                                                getInventoryTitle(backPack, meta.getDisplayName()),
+                                                                true, null);
+
+                                                        if (open != null) {
+                                                            p.openInventory(open);
+                                                        }
+
                                                     }
 
-                                                }
+                                                    @Override
+                                                    public void onFailure(Throwable e) {}
 
-                                                @Override
-                                                public void onFailure(Throwable e) {}
+                                                });
 
-                                            });
+                                            } else {
+                                                SQL.query("CREATE TABLE IF NOT EXISTS bp_"+ backPack + "_" + trimmedID + "(position INT(100), material VARCHAR(100), " +
+                                                        "durability INT(100), amount INT(100), name VARCHAR(100), lore VARCHAR(1000), enchantments VARCHAR(1000), " +
+                                                        "potion VARCHAR(1000))", new SQL.Callback<Boolean>() {
 
-                                        } else {
-                                            SQL.query("CREATE TABLE IF NOT EXISTS bp_"+ backPack +"_"+trimmedID+"(position INT(100), material VARCHAR(100), "+
-                                                    "durability INT(100), amount INT(100), name VARCHAR(100), lore VARCHAR(1000), enchantments VARCHAR(1000), "+
-                                                    "potion VARCHAR(1000))", new SQL.Callback<Boolean>() {
-                                                @Override
-                                                public void onSuccess(Boolean rs) {
-                                                    openInvs.put(p, backPack);
+                                                    @Override
+                                                    public void onSuccess(Boolean rs) {
+                                                        openInvs.put(p, backPack);
 
-                                                    p.openInventory(Bukkit.getServer().createInventory(p, slots.get(backPack),
-                                                            item.getItemMeta().getDisplayName()));
+                                                        p.openInventory(Bukkit.getServer().createInventory(p, backPack.getSlots(), backPack.getInventoryTitle()));
+                                                    }
+
+                                                    @Override
+                                                    public void onFailure(Throwable e) {}
+
+                                                });
+
+                                            }
+
+                                        }
+
+                                        @Override
+                                        public void onFailure(Throwable e) {}
+
+                                    });
+
+                                    break;
+
+                                case "ender":
+                                    openInvsOther.put(p, backPack);
+
+                                    p.openInventory(p.getEnderChest());
+
+                                    break;
+
+                                case "crafting":
+                                    openInvsOther.put(p, backPack);
+
+                                    p.openWorkbench(p.getLocation(), true);
+
+                                    break;
+
+                                case "furnace":
+                                    Boolean guiEnabled = backPack.getFurnaceGui();
+
+                                    if (guiEnabled) {
+                                        SQL.getResult("SELECT * FROM bp_furnaces WHERE uuid='" + trimmedID + "'", new SQL.Callback<ResultSet>() {
+
+                                            @Override
+                                            public void onSuccess(ResultSet rs) {
+                                                try {
+                                                    rs.beforeFirst();
+
+                                                    if (rs.next()) {
+                                                            openFurnace(p, backPack, getInventoryTitle(backPack, meta.getDisplayName()),
+                                                                    Boolean.valueOf(rs.getString("ores")), Boolean.valueOf(rs.getString("food")),
+                                                                    Boolean.valueOf(rs.getString("autoFill")), rs.getInt("coal"));
+
+                                                        } else {
+                                                            final Boolean ores = furnaceGui.getBoolean("ores.defaultOption");
+                                                            final Boolean food = furnaceGui.getBoolean("food.defaultOption");
+                                                            final Boolean autoFill = furnaceGui.getBoolean("autoFill.defaultOption");
+
+                                                            SQL.query("INSERT INTO bp_furnaces (uuid, ores, food, autoFill, coal) VALUES ('"+trimmedID+"', '"+
+                                                                    String.valueOf(ores) + "', '" +
+                                                                    String.valueOf(food) + "', '" +
+                                                                    String.valueOf(autoFill) + "', '0')", new SQL.Callback<Boolean>() {
+
+                                                                @Override
+                                                                public void onSuccess(Boolean rs) {
+                                                                    openFurnace(p, backPack, item.getItemMeta().getDisplayName(), ores, food, autoFill, 0);
+                                                                }
+
+                                                                @Override
+                                                                public void onFailure(Throwable e) {}
+
+                                                            });
+                                                        }
+
+                                                        rs.close();
+
+                                                    } catch (SQLException e) {
+                                                        e.printStackTrace();
+                                                    }
+
                                                 }
 
                                                 @Override
@@ -127,85 +204,15 @@ public class RightClick implements Listener {
 
                                         }
 
-                                    }
+                                    break;
+                            }
 
-                                    @Override
-                                    public void onFailure(Throwable e) {}
-
-                                });
-
-                                break;
-
-                            case "ender":
-                                openInvsOther.put(p, backPack);
-
-                                p.openInventory(p.getEnderChest());
-
-                                break;
-
-                            case "crafting":
-                                openInvsOther.put(p, backPack);
-
-                                p.openWorkbench(p.getLocation(), true);
-
-                                break;
-
-                            case "furnace":
-                                if(Crafting.furnaceGui.containsKey(backPack)) {
-                                    if(Crafting.furnaceGui.get(backPack).equals("true")) {
-                                        SQL.getResult("SELECT * FROM bp_furnaces WHERE uuid='"+trimmedID+"'", new SQL.Callback<ResultSet>() {
-                                            @Override
-                                            public void onSuccess(ResultSet rs) {
-                                                try {
-                                                    rs.beforeFirst();
-
-                                                    if(rs.next()) {
-                                                        openFurnace(p, backPack, item.getItemMeta().getDisplayName(), Boolean.valueOf(rs.getString("ores")),
-                                                                Boolean.valueOf(rs.getString("food")), Boolean.valueOf(rs.getString("autoFill")), rs.getInt("coal"));
-
-                                                    } else {
-                                                        final Boolean ores = furnaceGui.getBoolean("ores.defaultOption");
-                                                        final Boolean food = furnaceGui.getBoolean("food.defaultOption");
-                                                        final Boolean autoFill = furnaceGui.getBoolean("autoFill.defaultOption");
-
-                                                        SQL.query("INSERT INTO bp_furnaces (uuid, ores, food, autoFill, coal) VALUES ('"+trimmedID+"', '"+
-                                                                String.valueOf(ores)+"', '"+
-                                                                String.valueOf(food)+"', '"+
-                                                                String.valueOf(autoFill)+"', '0')", new SQL.Callback<Boolean>() {
-
-                                                            @Override
-                                                            public void onSuccess(Boolean rs) {
-                                                                openFurnace(p, backPack, item.getItemMeta().getDisplayName(), ores, food, autoFill, 0);
-                                                            }
-
-                                                            @Override
-                                                            public void onFailure(Throwable e) {}
-
-                                                        });
-                                                    }
-
-                                                    rs.close();
-
-                                                } catch (SQLException e) {
-                                                    e.printStackTrace();
-                                                }
-                                            }
-
-                                            @Override
-                                            public void onFailure(Throwable e) {}
-
-                                        });
-
-                                    }
-
-                                }
-
-                                break;
+                        } else {
+                            p.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                    messages.getString("Help.noPermission")));
                         }
 
-                    } else {
-                        p.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                messages.getString("Help.noPermission")));
+                        break;
                     }
 
                 }
@@ -216,66 +223,48 @@ public class RightClick implements Listener {
 
     }
 
-    public static Inventory getInv(ResultSet rs, Player opener, String backPack, String name,
-                                   Boolean openerIsOwner, String ownerID) {
-
-        if(openInvs.containsKey(opener)) {
+    public static Inventory getInv(ResultSet rs, Player opener, BackPack backPack, String inventoryTitle, Boolean openerIsOwner, String ownerId) {
+        if (openInvs.containsKey(opener)) {
             return null;
         }
 
-        if(rs != null) {
+        if (rs != null) {
             try {
                 rs.beforeFirst();
 
-                if(Crafting.inventoryTitle.containsKey(backPack)) {
-                    name = Crafting.inventoryTitle.get(backPack);
-                }
+                Inventory inv = Bukkit.getServer().createInventory(opener, backPack.getSlots(), inventoryTitle);
 
-                Inventory inv = Bukkit.getServer().createInventory(opener, slots.get(backPack), name);
-
-                while(rs.next()) {
+                while (rs.next()) {
                     String material = rs.getString("material");
 
-                    ItemStack item = new ItemStack(Material.valueOf(material),
-                            rs.getInt("amount"));
+                    ItemStack item = new ItemStack(Material.valueOf(material), rs.getInt("amount"));
 
                     item.setDurability((short) rs.getInt("durability"));
 
                     ItemMeta meta = item.getItemMeta();
 
-                    String nameM = rs.getString("name");
-                    String loreM = rs.getString("lore");
+                    String name = rs.getString("name");
+                    String lore = rs.getString("lore");
                     String enchantment = rs.getString("enchantments");
                     String potion = rs.getString("potion");
 
-                    if(!nameM.equals("")) {
-                        meta.setDisplayName(nameM);
+                    if (!name.equals("")) {
+                        meta.setDisplayName(name);
 
                         item.setItemMeta(meta);
                     }
 
-                    if(!loreM.equals("")) {
+                    if (!lore.equals("")) {
                         meta.setLore(Arrays.asList(rs.getString("lore").split("~")));
 
                         item.setItemMeta(meta);
                     }
 
-                    if(!enchantment.equals("")) {
-                        if(!enchantment.equals("MobSpawnerEgg/")) {
+                    if (!enchantment.equals("")) {
+                        if (!enchantment.equals("MobSpawnerEgg/")) {
                             String[] enchantments = enchantment.substring(0, enchantment.length() - 1).split("/");
 
-                            if (!material.equals("ENCHANTED_BOOK")) {
-                                for (String enchant : enchantments) {
-                                    String[] parts = enchant.split(":");
-
-                                    Enchantment ench = Enchantment.getByName(parts[0]);
-                                    int enchLvl = Integer.valueOf(parts[1]);
-
-                                    item.addUnsafeEnchantment(ench, enchLvl);
-                                    meta.addEnchant(ench, enchLvl, true);
-                                }
-
-                            } else {
+                            if (material.equals("ENCHANTED_BOOK")) {
                                 EnchantmentStorageMeta storage = (EnchantmentStorageMeta) meta;
 
                                 for (String enchant : enchantments) {
@@ -288,56 +277,66 @@ public class RightClick implements Listener {
                                 }
 
                                 item.setItemMeta(storage);
+
+                            } else {
+                                for (String enchant : enchantments) {
+                                    String[] parts = enchant.split(":");
+
+                                    Enchantment ench = Enchantment.getByName(parts[0]);
+                                    int enchLvl = Integer.valueOf(parts[1]);
+
+                                    item.addUnsafeEnchantment(ench, enchLvl);
+                                    meta.addEnchant(ench, enchLvl, true);
+                                }
                             }
 
                         }
 
                     }
 
-                    if(!potion.equals("")) {
-                        if(material.toLowerCase().contains("potion")) {
+                    if (!potion.equals("")) {
+                        if (material.toLowerCase().contains("potion")) {
                             String[] parts = potion.split("/");
 
-                            PotionMeta potionM = (PotionMeta) meta;
+                            PotionMeta potionMeta = (PotionMeta) meta;
 
-                            PotionData potionD = new PotionData(PotionType.valueOf(parts[0]), Boolean.parseBoolean(parts[1]),
+                            PotionData potionData = new PotionData(PotionType.valueOf(parts[0]), Boolean.parseBoolean(parts[1]),
                                     Boolean.parseBoolean(parts[2]));
 
-                            potionM.setBasePotionData(potionD);
+                            potionMeta.setBasePotionData(potionData);
+                            item.setItemMeta(potionMeta);
 
-                            item.setItemMeta(potionM);
-
-                        } else if(material.equals("MONSTER_EGG")) {
+                        } else if (material.equals("MONSTER_EGG")) {
                             try {
-                                Object nmsStack = Class.forName("org.bukkit.craftbukkit."+version+".inventory.CraftItemStack").getMethod("asNMSCopy", ItemStack.class).invoke(null, item);
+                                Object nmsStack = Class.forName("org.bukkit.craftbukkit." + version + ".inventory.CraftItemStack").getMethod("asNMSCopy", ItemStack.class).invoke(null, item);
                                 Object nmsCompound = nmsStack.getClass().getMethod("getTag").invoke(nmsStack);
 
-                                if(nmsCompound == null) {
-                                    nmsCompound = Class.forName("net.minecraft.server."+version+".NBTTagCompound").getConstructor().newInstance();
+                                if (nmsCompound == null) {
+                                    nmsCompound = Class.forName("net.minecraft.server." + version + ".NBTTagCompound").getConstructor().newInstance();
                                 }
 
                                 Object compound = nmsCompound.getClass().getConstructor().newInstance();
 
                                 compound.getClass().getMethod("setString", String.class, String.class).invoke(compound, "id", potion);
-                                nmsCompound.getClass().getMethod("set", String.class, Class.forName("net.minecraft.server."+version+".NBTBase"))
+                                nmsCompound.getClass().getMethod("set", String.class, Class.forName("net.minecraft.server." + version + ".NBTBase"))
                                         .invoke(nmsCompound, "EntityTag", compound);
 
                                 Boolean mobSpawnerEgg = enchantment.equals("MobSpawnerEgg/");
 
-                                if(mobSpawnerEgg) {
+                                if (mobSpawnerEgg) {
                                     nmsCompound.getClass().getMethod("setString", String.class, String.class)
                                             .invoke(nmsCompound, "MobSpawnerEgg", "MobSpawnerEgg");
                                 }
 
                                 nmsStack.getClass().getMethod("setTag", nmsCompound.getClass()).invoke(nmsStack, nmsCompound);
 
-                                item = ((ItemStack) Class.forName("org.bukkit.craftbukkit."+version+".inventory.CraftItemStack").getMethod("asBukkitCopy", nmsStack.getClass()).invoke(null, nmsStack));
+                                item = ((ItemStack) Class.forName("org.bukkit.craftbukkit." + version + ".inventory.CraftItemStack").getMethod("asBukkitCopy", nmsStack.getClass()).invoke(null, nmsStack));
 
-                                if(mobSpawnerEgg) {
+                                if (mobSpawnerEgg) {
                                     EnchantGlow.addGlow(item);
                                 }
 
-                            } catch(InstantiationException | InvocationTargetException | ClassNotFoundException | IllegalAccessException | NoSuchMethodException exception) {
+                            } catch (InstantiationException | InvocationTargetException | ClassNotFoundException | IllegalAccessException | NoSuchMethodException exception) {
                                 exception.printStackTrace();
                             }
 
@@ -356,11 +355,10 @@ public class RightClick implements Listener {
 
                 rs.close();
 
-                if(openerIsOwner) {
-                    openInvs.put(opener, backPack);
+                openInvs.put(opener, backPack);
 
-                } else {
-                    openInvsCommand.put(opener, new String[]{backPack, ownerID});
+                if (!openerIsOwner) {
+                    openInvsOwners.put(opener, ownerId);
                 }
 
                 return inv;
@@ -374,7 +372,7 @@ public class RightClick implements Listener {
         return null;
     }
 
-    private void openFurnace(final Player opener, String backPack, String name, Boolean oresEnabled, Boolean foodEnabled,
+    private void openFurnace(final Player opener, BackPack backPack, String inventoryTitle, Boolean oresEnabled, Boolean foodEnabled,
                              Boolean autoFillEnable, int amountCoal) {
 
         ItemStack ores = new ItemStack(Material.IRON_ORE);
@@ -395,25 +393,21 @@ public class RightClick implements Listener {
 
         ItemStack blank = new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte) 7);
 
-        ItemMeta blankM = blank.getItemMeta();
+        ItemMeta blankMeta = blank.getItemMeta();
 
-        blankM.setDisplayName(ChatColor.GRAY+"");
+        blankMeta.setDisplayName(ChatColor.GRAY + "");
 
-        blank.setItemMeta(blankM);
+        blank.setItemMeta(blankMeta);
 
-        if(Crafting.inventoryTitle.containsKey(backPack)) {
-            name = Crafting.inventoryTitle.get(backPack);
-        }
+        Inventory inv = Bukkit.getServer().createInventory(opener, 36, inventoryTitle);
 
-        Inventory inv = Bukkit.getServer().createInventory(opener, 36, name);
-
-        if(amountCoal != 0) {
+        if (amountCoal != 0) {
             ItemStack coal = new ItemStack(Material.COAL, amountCoal);
 
             inv.setItem(35, coal);
         }
 
-        for(int i = 0; i < 35; i++) {
+        for (int i = 0; i < 35; i++) {
             inv.setItem(i, blank);
         }
 
@@ -425,11 +419,21 @@ public class RightClick implements Listener {
         inv.setItem(13, foodToggle);
         inv.setItem(14, autoFillToggle);
 
-        opener.getOpenInventory().close();
-        opener.openInventory(inv);
-
         openFurnaces.put(opener, backPack);
         openFurnacesInvs.put(opener, inv);
+
+        opener.getOpenInventory().close();
+        opener.openInventory(inv);
+    }
+
+    public static String getInventoryTitle(BackPack backPack, String displayName) {
+        String inventoryTitle = backPack.getInventoryTitle();
+
+        if (inventoryTitle == null) {
+            return displayName;
+        }
+
+        return inventoryTitle;
     }
 
     private void setMeta(ItemStack item, String name) {
@@ -446,7 +450,7 @@ public class RightClick implements Listener {
 
         String name;
 
-        if(toggle) {
+        if (toggle) {
             name = ChatColor.translateAlternateColorCodes('&', furnaceGui.getString("enabled"));
         } else {
             name = ChatColor.translateAlternateColorCodes('&', furnaceGui.getString("disabled"));
@@ -462,7 +466,7 @@ public class RightClick implements Listener {
 
         Map<String, Object> loreSec = furnaceGui.getConfigurationSection(path).getValues(true);
 
-        for(Map.Entry<String, Object> ent : loreSec.entrySet()) {
+        for (Map.Entry<String, Object> ent : loreSec.entrySet()) {
             lore = lore+","+ChatColor.translateAlternateColorCodes('&', ent.getValue().toString());
         }
 
@@ -470,22 +474,26 @@ public class RightClick implements Listener {
     }
 
     static int getColor(Boolean bool) {
-        if(bool) {
+        if (bool) {
             return 5;
         }
 
         return 14;
     }
 
-    public static void playOpenSound(Player p, String backPack) {
-        if(Crafting.openSounds.containsKey(backPack)) {
-            p.playSound(p.getLocation(), Crafting.openSounds.get(backPack), 10, 1);
+    public static void playOpenSound(Player p, BackPack backPack) {
+        Sound open = backPack.getOpenSound();
+
+        if (open != null) {
+            p.playSound(p.getLocation(), open, 10, 1);
         }
     }
 
-    static void playCloseSound(Player p, String backPack) {
-        if(Crafting.closeSounds.containsKey(backPack)) {
-            p.playSound(p.getLocation(), Crafting.closeSounds.get(backPack), 10, 1);
+    static void playCloseSound(Player p, BackPack backPack) {
+        Sound close = backPack.getCloseSound();
+
+        if (close != null) {
+            p.playSound(p.getLocation(), close, 10, 1);
         }
     }
 

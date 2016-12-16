@@ -14,10 +14,11 @@ public class Reconnect {
 
     public Reconnect(Main main) {
         Bukkit.getScheduler().runTaskTimerAsynchronously(main, new Runnable() {
+
             @Override
             public void run() {
                 try {
-                    if(SQL.checkCon()) {
+                    if (SQL.checkCon()) {
                         SQL.closeCon();
                     }
 

@@ -9,19 +9,19 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-import static at.michael1011.backpacks.Crafting.availableList;
+import static at.michael1011.backpacks.Crafting.backPackNames;
 
 class GiveCompleter implements TabCompleter {
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-        if(args.length <= 1) {
-            return filterList(args[0], availableList);
+        if (args.length <= 1) {
+            return filterList(args[0], backPackNames);
 
-        } else if(args.length == 2) {
+        } else if (args.length == 2) {
             List<String> players = new ArrayList<>();
 
-            for(Player p : Bukkit.getOnlinePlayers()) {
+            for (Player p : Bukkit.getOnlinePlayers()) {
                 players.add(p.getName());
             }
 
@@ -32,11 +32,11 @@ class GiveCompleter implements TabCompleter {
     }
 
     static List<String> filterList(String arg, List<String> rawData) {
-        if(!arg.equals("")) {
+        if (!arg.equals("")) {
             List<String> filtered = new ArrayList<>();
 
-            for(String entry : rawData) {
-                if(entry.toLowerCase().contains(arg.toLowerCase())) {
+            for (String entry : rawData) {
+                if (entry.toLowerCase().contains(arg.toLowerCase())) {
                     filtered.add(entry);
                 }
             }

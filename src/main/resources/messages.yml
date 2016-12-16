@@ -202,7 +202,7 @@ Help:
 
 BackPacks:
   # When you enable a backpack that doesn't exist (%backpack% is the backpack that couldn't be found)
-  couldNotFindConfig: "&cCould &4not &cfind BackPack &4%backpack%"
+  couldNotFindConfig: "&cCould &4not &cfind at.michael1011.backpacks.BackPack &4%backpack%"
 
   # %backpack% is the backpack that couldn't be enabled
   slotsNotDivisibleBy9: "&cBackPack &4%backpack% &ccouldn't be loaded because the slots &4aren't divisible by 9"

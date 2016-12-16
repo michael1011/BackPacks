@@ -27,12 +27,12 @@ public class Reload implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(sender.hasPermission("backpacks.reload") || sender.hasPermission("backpacks.*")) {
+        if (sender.hasPermission("backpacks.reload") || sender.hasPermission("backpacks.*")) {
             try {
-                if(SQL.checkCon()) {
+                if (SQL.checkCon()) {
                     SQL.closeCon();
 
-                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                    sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
                             messages.getString("MySQL.closedConnection")));
                 }
 
@@ -43,8 +43,8 @@ public class Reload implements CommandExecutor {
                         config.getString("MySQL.database"), config.getString("MySQL.username"),
                         config.getString("MySQL.password"));
 
-                if(SQL.checkCon()) {
-                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                if (SQL.checkCon()) {
+                    sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
                             messages.getString("MySQL.connected")));
 
                     sender.sendMessage(prefix);
@@ -53,14 +53,14 @@ public class Reload implements CommandExecutor {
 
                     sender.sendMessage(prefix);
 
-                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                    sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
                             messages.getString("Help.bpreload.successful")));
 
                 } else {
-                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                    sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
                             messages.getString("MySQL.failedToConnect")));
 
-                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                    sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
                             messages.getString("MySQL.failedToConnectCheck")));
                 }
 
@@ -69,7 +69,7 @@ public class Reload implements CommandExecutor {
             }
 
         } else {
-            sender.sendMessage(prefix+ ChatColor.translateAlternateColorCodes('&',
+            sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
                     messages.getString("Help.noPermission")));
         }
 

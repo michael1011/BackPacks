@@ -11,62 +11,41 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.*;
 
+import static at.michael1011.backpacks.BackPack.Type.furnace;
 import static at.michael1011.backpacks.Main.*;
 
 public class Crafting {
 
-    public static HashMap<ItemStack, String> items = new HashMap<>();
-    public static HashMap<String, ItemStack> itemsInverted = new HashMap<>();
+    public static List<BackPack> backPacks = Collections.emptyList();
+    public static HashMap<BackPack, ItemStack> backPacksItems = new HashMap<>();
 
-    public static HashMap<String, String> type = new HashMap<>();
-    public static HashMap<String, Integer> slots = new HashMap<>();
-    public static HashMap<String, String> furnaceGui = new HashMap<>();
-    public static HashMap<List<String>, String> loreMap = new HashMap<>();
-    public static HashMap<String, String> inventoryTitle = new HashMap<>();
+    public static List<String> backPackNames = Collections.emptyList();
 
-    public static HashMap<String, Sound> openSounds = new HashMap<>();
-    public static HashMap<String, Sound> closeSounds = new HashMap<>();
-
-    public static String available = "";
-    public static List<String> availableList;
+    private static final String path = "BackPacks.";
 
     private static Boolean slotsDivisible = true;
 
     public static void initCrafting(CommandSender sender) {
-        available = "";
-
-        String path = "BackPacks.";
-
         Map<String, Object> enabled = config.getConfigurationSection(path+"enabled").getValues(true);
 
-        for(Map.Entry<String, Object> entry : enabled.entrySet()) {
+        for (Map.Entry<String, Object> entry : enabled.entrySet()) {
             String backPack = entry.getValue().toString();
-            String backPackPath = path+backPack+".";
+            String backPackPath = path + backPack+".";
 
-            if(config.contains(backPackPath)) {
+            if (config.contains(backPackPath)) {
                 ItemStack item = getItemStack(sender, backPackPath, backPack);
 
-                if(item != null) {
-                    if(slotsDivisible) {
-                        items.put(item, backPack);
-                        itemsInverted.put(backPack, item);
-
-                        if(available.equals("")) {
-                            available = backPack;
-
-                        } else {
-                            available = available+","+backPack;
-                        }
-
-                        if(!config.getBoolean(backPackPath+"crafting.disabled")) {
+                if (item != null) {
+                    if (slotsDivisible) {
+                        if (!config.getBoolean(backPackPath + "crafting.disabled")) {
                             Bukkit.getServer().addRecipe(createShapedRecipe(sender, item, backPackPath, backPack));
                         }
 
-                        sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                        sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
                                 messages.getString("BackPacks.enabled").replaceAll("%backpack%", backPack)));
 
                     } else {
-                        sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                        sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
                                 messages.getString("BackPacks.slotsNotDivisibleBy9").replaceAll("%backpack%", backPack)));
 
                         slotsDivisible = true;
@@ -81,19 +60,84 @@ public class Crafting {
 
         }
 
-        availableList = Arrays.asList(Crafting.available.split(","));
+        for (BackPack backPack : backPacks) {
+            backPackNames.add(backPack.getName());
+        }
+
     }
 
     private static ItemStack getItemStack(CommandSender sender, String backPackPath, String backPack) {
-        int itemSlots = config.getInt(backPackPath+"slots");
+        int slots = config.getInt(backPackPath + "slots");
 
-        String materialString = config.getString(backPackPath+"material").toUpperCase();
+        String materialString = config.getString(backPackPath + "material").toUpperCase();
 
-        if(itemSlots % 9 == 0) {
-            Material material;
-
+        if(slots % 9 == 0) {
             try {
-                material = Material.valueOf(materialString);
+                ItemStack item = new ItemStack(Material.valueOf(materialString), 1);
+
+                String name = ChatColor.translateAlternateColorCodes('&',
+                        config.getString(backPackPath + "name"));
+
+                List<String> lore = new ArrayList<>();
+
+                for(Map.Entry<String, Object> entry :
+                        config.getConfigurationSection(backPackPath + "description").getValues(true).entrySet()) {
+
+                    lore.add(ChatColor.translateAlternateColorCodes('&', entry.getValue().toString()));
+                }
+
+                ItemMeta meta = item.getItemMeta();
+
+                meta.setDisplayName(name);
+
+                if(lore.size() > 0) {
+                    meta.setLore(lore);
+                }
+
+                item.setItemMeta(meta);
+
+                Sound open = null;
+                Sound close = null;
+
+                String sound = config.getString(backPackPath + "sounds.open");
+
+                try {
+                    if(sound != null) {
+                        open = Sound.valueOf(sound.toUpperCase());
+                    }
+
+                    sound = config.getString(backPackPath + "sounds.close");
+
+                    if(sound != null) {
+                        close = Sound.valueOf(sound.toUpperCase());
+                    }
+
+                } catch (IllegalArgumentException e) {
+                    assert sound != null;
+
+                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                            messages.getString("Help.soundNotValid")
+                                    .replaceAll("%sound%", sound.toUpperCase())
+                                    .replaceAll("%backpack%", backPack)));
+
+                    return null;
+                }
+
+                BackPack.Type type = new BackPack.Type(config.getString(backPackPath + "type"));
+
+                Boolean furnaceGui = false;
+
+                if (type.equals(furnace)) {
+                    furnaceGui = config.getBoolean(backPackPath + "gui.enabled");
+                }
+
+                BackPack finishedBackPack = new BackPack(backPack, type, slots, furnaceGui, lore,
+                        config.getString(backPackPath + "inventoryTitle"), open, close);
+
+                backPacks.add(finishedBackPack);
+                backPacksItems.put(finishedBackPack, item);
+
+                return item;
 
             } catch (IllegalArgumentException e) {
                 sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
@@ -102,72 +146,6 @@ public class Crafting {
 
                 return null;
             }
-
-            ItemStack craft = new ItemStack(material, 1);
-
-            String name = ChatColor.translateAlternateColorCodes('&', config.getString(backPackPath+"name"));
-
-            List<String> lore = new ArrayList<>();
-
-            Map<String, Object> loreSec = config.getConfigurationSection(backPackPath+"description").getValues(true);
-
-            for(Map.Entry<String, Object> ent : loreSec.entrySet()) {
-                lore.add(ChatColor.translateAlternateColorCodes('&', ent.getValue().toString()));
-            }
-
-            ItemMeta craftM = craft.getItemMeta();
-
-            craftM.setDisplayName(name);
-
-            if(lore.size() > 0) {
-                craftM.setLore(lore);
-
-                loreMap.put(lore, backPack);
-            }
-
-            craft.setItemMeta(craftM);
-
-            slots.put(backPack, itemSlots);
-
-            String rawType = config.getString(backPackPath+"type");
-
-            type.put(backPack, rawType);
-
-            String title = config.getString(backPackPath+"inventoryTitle");
-
-            if(title != null) {
-                inventoryTitle.put(backPack, ChatColor.translateAlternateColorCodes('&', title));
-            }
-
-            String errorSound = config.getString(backPackPath+"sounds.open");
-
-            try {
-                if(errorSound != null) {
-                    openSounds.put(backPack, Sound.valueOf(errorSound.toUpperCase()));
-                }
-
-                errorSound = config.getString(backPackPath+"sounds.close");
-
-                if(errorSound != null) {
-                    closeSounds.put(backPack, Sound.valueOf(errorSound.toUpperCase()));
-                }
-
-            } catch (IllegalArgumentException e) {
-                assert errorSound != null;
-
-                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                        messages.getString("Help.soundNotValid")
-                                .replaceAll("%sound%", errorSound.toUpperCase())
-                                .replaceAll("%backpack%", backPack)));
-
-                return null;
-            }
-
-            if(rawType.equals("furnace")) {
-                furnaceGui.put(backPack, config.getString(backPackPath+"gui.enabled"));
-            }
-
-            return craft;
 
         } else {
             slotsDivisible = false;
@@ -183,18 +161,18 @@ public class Crafting {
         ShapedRecipe recipe = new ShapedRecipe(item);
 
         recipe.shape(
-                config.getString(backPackPath+"crafting.1").replaceAll("\\+", ""),
-                config.getString(backPackPath+"crafting.2").replaceAll("\\+", ""),
-                config.getString(backPackPath+"crafting.3").replaceAll("\\+", ""));
+                config.getString(backPackPath + "crafting.1").replaceAll("\\+", ""),
+                config.getString(backPackPath + "crafting.2").replaceAll("\\+", ""),
+                config.getString(backPackPath + "crafting.3").replaceAll("\\+", ""));
 
-        Map<String, Object> ingredients = config.getConfigurationSection(backPackPath+
+        Map<String, Object> ingredients = config.getConfigurationSection(backPackPath +
                 "crafting.materials").getValues(true);
 
-        for(Map.Entry<String, Object> ing : ingredients.entrySet()) {
-            String material = ing.getValue().toString().toUpperCase();
+        for(Map.Entry<String, Object> entry : ingredients.entrySet()) {
+            String material = entry.getValue().toString().toUpperCase();
 
             try {
-                recipe.setIngredient(ing.getKey().charAt(0), Material.valueOf(material));
+                recipe.setIngredient(entry.getKey().charAt(0), Material.valueOf(material));
 
             } catch (IllegalArgumentException e) {
                 sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',

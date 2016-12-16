@@ -42,11 +42,11 @@ public class Create implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(sender.hasPermission("backpacks.create") || sender.hasPermission("backpacks.*")) {
-            if(args.length > 1) {
+        if (sender.hasPermission("backpacks.create") || sender.hasPermission("backpacks.*")) {
+            if (args.length > 1) {
                 String arg = args[0].toLowerCase();
 
-                if(data.get(sender) == null) {
+                if (data.get(sender) == null) {
                     data.put(sender, new HashMap<String, String>());
                 }
 
@@ -54,14 +54,14 @@ public class Create implements CommandExecutor {
                     case "name":
                         String name = argsToString(args);
 
-                        if(!name.contains(" ")) {
+                        if (!name.contains(" ")) {
                             data.get(sender).put("name", args[1]);
 
                             sendMap(sender, "steps.displayName");
 
                         } else {
-                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                    messages.getString(path+"steps.name.noSpaces")));
+                            sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                    messages.getString(path + "steps.name.noSpaces")));
                         }
 
                         break;
@@ -83,29 +83,29 @@ public class Create implements CommandExecutor {
                     case "sound":
                         String soundType = args[1].toLowerCase();
 
-                        if(soundType.equals("open") || soundType.equals("close")) {
+                        if (soundType.equals("open") || soundType.equals("close")) {
                             String sound = args[2].toUpperCase();
 
                             try {
                                 Sound.valueOf(sound);
 
                             } catch (IllegalArgumentException e) {
-                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                        messages.getString(path+"steps.soundNotValid")
+                                sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString(path + "steps.soundNotValid")
                                                 .replaceAll("%sound%", sound)));
 
                                 break;
                             }
 
-                            data.get(sender).put("sound"+soundType, sound);
+                            data.get(sender).put("sound" + soundType, sound);
 
                             String otherSound = getOtherSound(soundType);
 
-                            if(data.get(sender).get("sound"+otherSound) != null) {
+                            if (data.get(sender).get("sound" + otherSound) != null) {
                                 sendMap(sender, "steps.description");
 
                             } else {
-                                sendMap(sender, "steps.soundOther", "%otherSound%", otherSound);
+                                sendMapCustom(sender, otherSound);
                             }
 
                         } else {
@@ -132,8 +132,8 @@ public class Create implements CommandExecutor {
                             sendMap(sender, "steps.crafting");
 
                         } catch (IllegalArgumentException e1) {
-                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                    messages.getString(path+"steps.materialNotValid")
+                            sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                    messages.getString(path + "steps.materialNotValid")
                                             .replaceAll("%material%", material)));
                         }
 
@@ -142,38 +142,38 @@ public class Create implements CommandExecutor {
                     case "crafting":
                         String rawRecipe = argsToString(args);
 
-                        if(!rawRecipe.equals("disabled")) {
+                        if (!rawRecipe.equals("disabled")) {
                             String recipe = rawRecipe.toUpperCase();
                             String[] recipeSplit = recipe.split(";");
 
-                            if(recipeSplit.length == 3) {
+                             if(recipeSplit.length == 3) {
                                 Boolean validCrafting = true;
 
-                                for(String recipeLine : recipeSplit) {
-                                    if(recipeLine.length() != 5) {
+                                for (String recipeLine : recipeSplit) {
+                                    if (recipeLine.length() != 5) {
                                         validCrafting = false;
                                     }
                                 }
 
-                                if(validCrafting) {
+                                if (validCrafting) {
                                     data.get(sender).put("crafting", recipe);
 
                                     sendMap(sender, "steps.materials");
 
                                 } else {
-                                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                            messages.getString(path+"steps.craftingNotValid")));
+                                    sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                            messages.getString(path + "steps.craftingNotValid")));
 
-                                    sender.sendMessage(prefix+"");
+                                    sender.sendMessage(prefix + "");
 
                                     sendMap(sender, "steps.crafting");
                                 }
 
                             } else {
-                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                        messages.getString(path+"steps.craftingNotValid")));
+                                sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString(path + "steps.craftingNotValid")));
 
-                                sender.sendMessage(prefix+"");
+                                sender.sendMessage(prefix + "");
 
                                 sendMap(sender, "steps.crafting");
                             }
@@ -195,8 +195,8 @@ public class Create implements CommandExecutor {
                         Boolean validMaterial = true;
                         Boolean validMaterials = true;
 
-                        for(String materialPart : materialsSplit) {
-                            if(materialPart.contains(":")) {
+                        for (String materialPart : materialsSplit) {
+                            if (materialPart.contains(":")) {
                                 String[] parts = materialPart.split(":");
 
                                 String part = parts[1];
@@ -207,8 +207,8 @@ public class Create implements CommandExecutor {
                                 } catch (IllegalArgumentException e) {
                                     validMaterial = false;
 
-                                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                            messages.getString(path+"steps.materialNotValid")
+                                    sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                            messages.getString(path + "steps.materialNotValid")
                                                     .replaceAll("%material%", part)));
 
                                     break;
@@ -219,27 +219,28 @@ public class Create implements CommandExecutor {
                             }
                         }
 
-                        if(data.get(sender).get("crafting") != null && validMaterial && validMaterials) {
+                        if (data.get(sender).get("crafting") != null && validMaterial && validMaterials) {
                             Boolean contains = false;
 
                             String crafting = data.get(sender).get("crafting")
                                     .replaceAll("\\+", "").replaceAll(";", "");
 
-                            for(char c : crafting.toCharArray()) {
-                                for(String materialPart : materialsSplit) {
+                            for (char c : crafting.toCharArray()) {
+                                for (String materialPart : materialsSplit) {
                                     String[] parts = materialPart.split(":");
 
-                                    if(parts[0].charAt(0) == c) {
+                                    if (parts[0].charAt(0) == c) {
                                         contains = true;
 
                                         break;
                                     }
+
                                 }
 
-                                if(!contains) {
+                                if (!contains) {
                                     String add = String.valueOf(c).toUpperCase();
 
-                                    if(!missingMaterials.contains(add)) {
+                                    if (!missingMaterials.contains(add)) {
                                         missingMaterials.add(add);
                                     }
 
@@ -251,9 +252,9 @@ public class Create implements CommandExecutor {
 
                         }
 
-                        if(missingMaterials.size() > 0) {
-                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                    messages.getString(path+"steps.materialsMissing")
+                        if (missingMaterials.size() > 0) {
+                            sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                    messages.getString(path + "steps.materialsMissing")
                                             .replaceAll("%missing%", arrayListToString(missingMaterials))));
 
                             sender.sendMessage(prefix);
@@ -263,15 +264,15 @@ public class Create implements CommandExecutor {
                             break;
                         }
 
-                        if(validMaterials && validMaterial) {
+                        if (validMaterials && validMaterial) {
                             data.get(sender).put("materials", materials);
 
                             sendMap(sender, "steps.type");
 
                         } else {
-                            if(validMaterial) {
-                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                        messages.getString(path+"steps.materialsNotValid")));
+                            if (validMaterial) {
+                                sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString(path + "steps.materialsNotValid")));
 
                                 sender.sendMessage(prefix);
 
@@ -308,10 +309,10 @@ public class Create implements CommandExecutor {
                                 break;
 
                             default:
-                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                        messages.getString(path+"steps.typeNotFound").replaceAll("%type%", type)));
+                                sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString(path + "steps.typeNotFound").replaceAll("%type%", type)));
 
-                                sender.sendMessage(prefix+"");
+                                sender.sendMessage(prefix + "");
 
                                 sendMap(sender, "steps.type");
 
@@ -324,19 +325,19 @@ public class Create implements CommandExecutor {
                         try {
                             int slots = Integer.valueOf(argsToString(args));
 
-                            if(slots % 9 == 0) {
+                            if (slots % 9 == 0) {
                                 data.get(sender).put("slots", String.valueOf(slots));
 
                                 sendMap(sender, "steps.finish");
 
                             } else {
-                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                        messages.getString(path+"steps.slotsError")));
+                                sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString(path + "steps.slotsError")));
                             }
 
                         } catch (NumberFormatException e) {
-                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                    messages.getString(path+"steps.slotsError")));
+                            sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                    messages.getString(path + "steps.slotsError")));
                         }
 
                         break;
@@ -372,82 +373,81 @@ public class Create implements CommandExecutor {
 
                                     String finishedType = finishedData.get("type");
 
-                                    config.set(finishedPath+"name", finishedData.get("displayname"));
-                                    config.set(finishedPath+"type", finishedType);
+                                    config.set(finishedPath + "name", finishedData.get("displayname"));
+                                    config.set(finishedPath + "type", finishedType);
 
-                                    if(finishedData.get("inventoryTitle") != null) {
-                                        config.set(finishedPath+"inventoryTitle", finishedData.get("inventoryTitle"));
+                                    if (finishedData.get("inventoryTitle") != null) {
+                                        config.set(finishedPath + "inventoryTitle", finishedData.get("inventoryTitle"));
                                     }
 
                                     String[] description = finishedData.get("description").split(";");
 
                                     int descLine = 1;
 
-                                    for(String descriptionLine : description) {
-                                        config.set(finishedPath+"description."+descLine, descriptionLine);
+                                    for (String descriptionLine : description) {
+                                        config.set(finishedPath + "description."+descLine, descriptionLine);
 
                                         descLine++;
                                     }
 
                                     switch (finishedType) {
                                         case "normal":
-                                            config.set(finishedPath+"slots", Integer.valueOf(finishedData.get("slots")));
+                                            config.set(finishedPath + "slots", Integer.valueOf(finishedData.get("slots")));
 
                                             break;
 
                                         case "furnace":
-                                            config.set(finishedPath+"gui.enabled", finishedData.get("gui"));
+                                            config.set(finishedPath + "gui.enabled", finishedData.get("gui"));
 
                                             break;
                                     }
 
-                                    config.set(finishedPath+"material", finishedData.get("material"));
+                                    config.set(finishedPath + "material", finishedData.get("material"));
 
                                     String rawCrafting = finishedData.get("crafting");
 
-                                    if(!rawCrafting.equals("disabled")) {
+                                    if (!rawCrafting.equals("disabled")) {
                                         String[] crafting = rawCrafting.split(";");
 
                                         int line = 1;
 
                                         for(String craftingLine : crafting) {
-                                            config.set(finishedPath+"crafting."+line, craftingLine);
+                                            config.set(finishedPath + "crafting." + line, craftingLine);
 
                                             line++;
                                         }
 
                                         String[] finishedMaterials = finishedData.get("materials").split(";");
 
-                                        for(String materialLine : finishedMaterials) {
+                                        for (String materialLine : finishedMaterials) {
                                             String[] parts = materialLine.split(":");
 
-                                            config.set(finishedPath+"crafting.materials."+(parts[0]),
-                                                    parts[1]);
+                                            config.set(finishedPath + "crafting.materials." + (parts[0]), parts[1]);
                                         }
 
                                     } else {
-                                        config.set(finishedPath+"crafting.disabled", true);
+                                        config.set(finishedPath + "crafting.disabled", true);
                                     }
 
                                     int number = 1;
 
                                     try {
-                                        while(!config.getString("BackPacks.enabled."+number).equals("")) {
+                                        while (!config.getString("BackPacks.enabled." + number).equals("")) {
                                             number++;
                                         }
 
                                     } catch (NullPointerException e) {
-                                        config.set("BackPacks.enabled."+number, finishedName);
+                                        config.set("BackPacks.enabled." + number, finishedName);
                                     }
 
                                     try {
                                         config.save(new File(main.getDataFolder(), "config.yml"));
 
-                                        Map<String, Object> syntaxError = messages.getConfigurationSection(path+"steps.finishTrue")
-                                                .getValues(true);
+                                        Map<String, Object> syntaxError = messages.getConfigurationSection(path +
+                                                "steps.finishTrue").getValues(true);
 
-                                        for(Map.Entry<String, Object> error : syntaxError.entrySet()) {
-                                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                        for (Map.Entry<String, Object> error : syntaxError.entrySet()) {
+                                            sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
                                                     String.valueOf(error.getValue()).replaceAll("%backpack%", finishedName)));
                                         }
 
@@ -462,8 +462,8 @@ public class Create implements CommandExecutor {
 
                                     data.remove(sender);
 
-                                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                            messages.getString(path+"steps.finishFalse")
+                                    sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                            messages.getString(path + "steps.finishFalse")
                                                     .replaceAll("%backpack%", backpack)));
 
                                     break;
@@ -475,8 +475,8 @@ public class Create implements CommandExecutor {
                             }
 
                         } catch (NullPointerException e) {
-                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                    messages.getString(path+"steps.finishNotSet")));
+                            sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                    messages.getString(path + "steps.finishNotSet")));
                         }
 
                         break;
@@ -487,7 +487,7 @@ public class Create implements CommandExecutor {
                         break;
                 }
 
-            }  else if(args.length == 1) {
+            }  else if (args.length == 1) {
                 String arg = args[0].toLowerCase();
 
                 switch (arg) {
@@ -511,7 +511,7 @@ public class Create implements CommandExecutor {
                         break;
 
                     case "item":
-                        if(sender instanceof Player) {
+                        if (sender instanceof Player) {
                             Player p = (Player) sender;
 
                             ArrayList<String> missingHere = new ArrayList<>(Arrays.asList("displayname",
@@ -526,7 +526,7 @@ public class Create implements CommandExecutor {
                                 missingHere.remove("displayname");
 
                                 String description = ChatColor.translateAlternateColorCodes('&',
-                                        finishedData.get("description")+";;"+messages.getString(path+"steps.item.extraDescription"));
+                                        finishedData.get("description")+";;" + messages.getString(path+"steps.item.extraDescription"));
 
                                 missingHere.remove("description");
 
@@ -545,16 +545,16 @@ public class Create implements CommandExecutor {
                                 p.getInventory().addItem(item);
 
                             } catch (NullPointerException e) {
-                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                        messages.getString(path+"steps.item.notSet")));
+                                sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString(path + "steps.item.notSet")));
 
-                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                        messages.getString(path+"steps.item.missing")
+                                sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString(path + "steps.item.missing")
                                                 .replaceAll("%values%", arrayListToString(missingHere))));
                             }
 
                         } else {
-                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                            sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
                                     messages.getString("Help.onlyPlayers")));
                         }
 
@@ -569,41 +569,41 @@ public class Create implements CommandExecutor {
 
                             String name = finishedData.get("name");
 
-                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                    messages.getString(path+"steps.preview.name").replaceAll("%name%", name)));
+                            sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                    messages.getString(path + "steps.preview.name").replaceAll("%name%", name)));
 
                             missingHere.remove("name");
 
-                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                    messages.getString(path+"steps.preview.displayname").replaceAll("%name%",
+                            sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                    messages.getString(path + "steps.preview.displayname").replaceAll("%name%",
                                             finishedData.get("displayname"))));
 
                             missingHere.remove("displayname");
 
-                            if(finishedData.containsKey("inventoryTitle")) {
-                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                        messages.getString(path+"steps.preview.inventoryTitle").replaceAll("%title%",
+                            if (finishedData.containsKey("inventoryTitle")) {
+                                sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString(path + "steps.preview.inventoryTitle").replaceAll("%title%",
                                                 finishedData.get("inventoryTitle"))));
                             }
 
                             Boolean soundOpen = finishedData.containsKey("soundopen");
                             Boolean soundClose = finishedData.containsKey("soundclose");
 
-                            if(soundOpen || soundClose) {
-                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                        messages.getString(path+"steps.preview.sound.title")));
+                            if (soundOpen || soundClose) {
+                                sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString(path + "steps.preview.sound.title")));
                             }
 
-                            if(soundOpen) {
-                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                        messages.getString(path+"steps.preview.sound.line")
+                            if (soundOpen) {
+                                sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString(path + "steps.preview.sound.line")
                                                 .replaceAll("%soundType%", "open")
                                                 .replaceAll("%sound%", finishedData.get("soundopen"))));
                             }
 
-                            if(soundClose) {
-                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                        messages.getString(path+"steps.preview.sound.line")
+                            if (soundClose) {
+                                sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString(path + "steps.preview.sound.line")
                                                 .replaceAll("%soundType%", "close")
                                                 .replaceAll("%sound%", finishedData.get("soundclose"))));
                             }
@@ -612,41 +612,41 @@ public class Create implements CommandExecutor {
 
                             missingHere.remove("description");
 
-                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                    messages.getString(path+"steps.preview.description.title")));
+                            sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                    messages.getString(path + "steps.preview.description.title")));
 
                             int descLine = 1;
 
-                            for(String descriptionLine : description) {
-                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                        messages.getString(path+"steps.preview.description.line")
+                            for (String descriptionLine : description) {
+                                sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString(path + "steps.preview.description.line")
                                                 .replaceAll("%lineNumber%", String.valueOf(descLine))
                                                 .replaceAll("%content%",descriptionLine)));
 
                                 descLine++;
                             }
 
-                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                    messages.getString(path+"steps.preview.material")
+                            sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                    messages.getString(path + "steps.preview.material")
                                             .replaceAll("%material%", finishedData.get("material"))));
 
                             missingHere.remove("material");
 
                             String rawCrafting = finishedData.get("crafting");
 
-                            if(!rawCrafting.equals("disabled")) {
+                            if (!rawCrafting.equals("disabled")) {
                                 String[] crafting = rawCrafting.split(";");
 
                                 missingHere.remove("crafting");
 
-                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                        messages.getString(path+"steps.preview.crafting.title")));
+                                sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString(path + "steps.preview.crafting.title")));
 
                                 int line = 1;
 
-                                for(String craftingLine : crafting) {
-                                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                            messages.getString(path+"steps.preview.crafting.line")
+                                for (String craftingLine : crafting) {
+                                    sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                            messages.getString(path + "steps.preview.crafting.line")
                                                     .replaceAll("%lineNumber%", String.valueOf(line))
                                                     .replaceAll("%content%", craftingLine)));
 
@@ -659,14 +659,14 @@ public class Create implements CommandExecutor {
 
                                 sender.sendMessage(prefix);
 
-                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                        messages.getString(path+"steps.preview.crafting.materials.title")));
+                                sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString(path + "steps.preview.crafting.materials.title")));
 
-                                for(String materialLine : finishedMaterials) {
+                                for (String materialLine : finishedMaterials) {
                                     String[] parts = materialLine.split(":");
 
-                                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                            messages.getString(path+"steps.preview.crafting.materials.line")
+                                    sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                            messages.getString(path + "steps.preview.crafting.materials.line")
                                                     .replaceAll("%line%", parts[0])
                                                     .replaceAll("%material%", parts[1])));
 
@@ -676,15 +676,15 @@ public class Create implements CommandExecutor {
                                 missingHere.remove("crafting");
                                 missingHere.remove("materials");
 
-                                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                        messages.getString(path+"steps.preview.crafting.title")+
+                                sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString(path + "steps.preview.crafting.title")+
                                                 " &c"+rawCrafting));
                             }
 
                             String type = finishedData.get("type");
 
-                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                    messages.getString(path+"steps.preview.type").replaceAll("%type%",
+                            sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                    messages.getString(path + "steps.preview.type").replaceAll("%type%",
                                             getBackPackColor(type)+type)));
 
                             missingHere.remove("type");
@@ -693,8 +693,8 @@ public class Create implements CommandExecutor {
                                 case "normal":
                                     missingHere.add("slots");
 
-                                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                            messages.getString(path+"steps.preview.slots")
+                                    sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                            messages.getString(path + "steps.preview.slots")
                                                     .replaceAll("%slots%", finishedData.get("slots"))));
 
                                     break;
@@ -704,19 +704,19 @@ public class Create implements CommandExecutor {
 
                                     Boolean gui = Boolean.valueOf(finishedData.get("gui"));
 
-                                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                            messages.getString(path+"steps.preview.gui")
+                                    sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                            messages.getString(path + "steps.preview.gui")
                                                     .replaceAll("%gui%", getColor(gui)+String.valueOf(gui))));
 
                                     break;
                             }
 
                         } catch (NullPointerException e) {
-                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                    messages.getString(path+"steps.preview.notSet")));
+                            sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                    messages.getString(path + "steps.preview.notSet")));
 
-                            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                    messages.getString(path+"steps.preview.missing")
+                            sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                    messages.getString(path + "steps.preview.missing")
                                             .replaceAll("%values%", arrayListToString(missingHere))));
                         }
 
@@ -733,7 +733,7 @@ public class Create implements CommandExecutor {
             }
 
         } else {
-            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+            sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
                     messages.getString("Help.noPermission")));
         }
 
@@ -759,7 +759,7 @@ public class Create implements CommandExecutor {
     }
 
     private String getColor(Boolean bool) {
-        if(bool) {
+        if (bool) {
             return "&a";
         }
 
@@ -769,11 +769,11 @@ public class Create implements CommandExecutor {
     private String argsToString(String[] args) {
         StringBuilder builder = new StringBuilder();
 
-        for(int i = 0; i < args.length; i++) {
-            if(i == 1) {
+        for (int i = 0; i < args.length; i++) {
+            if (i == 1) {
                 builder.append(args[i]);
 
-            } else if(i > 1) {
+            } else if (i > 1) {
                 builder.append(" ").append(args[i]);
             }
         }
@@ -784,8 +784,8 @@ public class Create implements CommandExecutor {
     private String arrayListToString(ArrayList<String> list) {
         StringBuilder builder = new StringBuilder();
 
-        for(int i = 0; i < list.size(); i++) {
-            if(i == 0) {
+        for (int i = 0; i < list.size(); i++) {
+            if (i == 0) {
                 builder.append(list.get(i));
 
             } else {
@@ -796,21 +796,21 @@ public class Create implements CommandExecutor {
         return builder.toString();
     }
 
-    private void sendMap(CommandSender sender, String specificPath, String replace, String value) {
-        Map<String, Object> entryValues = messages.getConfigurationSection(path+specificPath).getValues(true);
+    private void sendMapCustom(CommandSender sender, String value) {
+        Map<String, Object> entryValues = messages.getConfigurationSection(path + "steps.soundOther").getValues(true);
 
-        for(Map.Entry<String, Object> entry : entryValues.entrySet()) {
-            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', String.valueOf(entry.getValue())
-                    .replaceAll(replace, value)));
+        for (Map.Entry<String, Object> entry : entryValues.entrySet()) {
+            sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', String.valueOf(entry.getValue())
+                    .replaceAll("%otherSound%", value)));
         }
 
     }
 
     private void sendMap(CommandSender sender, String specificPath) {
-        Map<String, Object> entryValues = messages.getConfigurationSection(path+specificPath).getValues(true);
+        Map<String, Object> entryValues = messages.getConfigurationSection(path + specificPath).getValues(true);
 
-        for(Map.Entry<String, Object> entry : entryValues.entrySet()) {
-            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', (String) entry.getValue()));
+        for (Map.Entry<String, Object> entry : entryValues.entrySet()) {
+            sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', (String) entry.getValue()));
         }
     }
 

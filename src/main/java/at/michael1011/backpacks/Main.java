@@ -52,22 +52,24 @@ public class Main extends JavaPlugin {
                     config.getString("MySQL.database"), config.getString("MySQL.username"),
                     config.getString("MySQL.password"));
 
-            if(SQL.checkCon()) {
+            if (SQL.checkCon()) {
                 Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                         messages.getString("MySQL.connected")));
 
                 main = this;
 
                 SQL.query("CREATE TABLE IF NOT EXISTS bp_users(name VARCHAR(100), uuid VARCHAR(100))", new SQL.Callback<Boolean>() {
+
                     @Override
                     public void onSuccess(Boolean rs) {
                         SQL.getResult("SELECT * FROM bp_users", new SQL.Callback<ResultSet>() {
+
                             @Override
                             public void onSuccess(ResultSet rs) {
                                 try {
                                     rs.beforeFirst();
 
-                                    while(rs.next()) {
+                                    while (rs.next()) {
                                         availablePlayers.add(rs.getString("name"));
                                     }
 
@@ -75,6 +77,7 @@ public class Main extends JavaPlugin {
 
                                     SQL.query("CREATE TABLE IF NOT EXISTS bp_furnaces(uuid VARCHAR(100), ores VARCHAR(100), food VARCHAR(100), " +
                                             "autoFill VARCHAR(100), coal VARCHAR(100))", new SQL.Callback<Boolean>() {
+
                                         @Override
                                         public void onSuccess(Boolean rs) {
                                             try {
@@ -102,7 +105,7 @@ public class Main extends JavaPlugin {
 
                                             new Reconnect(main);
 
-                                            if(config.getBoolean("Updater.enabled")) {
+                                            if (config.getBoolean("Updater.enabled")) {
                                                 update(main, Bukkit.getConsoleSender());
 
                                                 new Updater(main);
@@ -133,20 +136,20 @@ public class Main extends JavaPlugin {
                 });
 
             } else {
-                Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                Bukkit.getConsoleSender().sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
                         messages.getString("MySQL.failedToConnect")));
 
-                Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                Bukkit.getConsoleSender().sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
                         messages.getString("MySQL.failedToConnectCheck")));
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
 
-            Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+            Bukkit.getConsoleSender().sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
                     messages.getString("MySQL.failedToConnect")));
 
-            Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+            Bukkit.getConsoleSender().sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
                     messages.getString("MySQL.failedToConnectCheck")));
         }
 
@@ -154,20 +157,20 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        for(Player p : Bukkit.getOnlinePlayers()) {
+        for (Player p : Bukkit.getOnlinePlayers()) {
             InventoryClose.saveBackPack(p, p.getOpenInventory(), false, false);
         }
 
         Bukkit.getScheduler().cancelTasks(this);
 
-        if(SQL.checkCon()) {
+        if (SQL.checkCon()) {
             try {
                 SQL.closeCon();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
 
-            Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+            Bukkit.getConsoleSender().sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
                     messages.getString("MySQL.closedConnection")));
         }
 
@@ -177,8 +180,8 @@ public class Main extends JavaPlugin {
         try {
             File folder = main.getDataFolder();
 
-            if(config.getInt("configVersion") == 0) {
-                if(new File(folder, "messages.yml").renameTo(new File(folder, "messages.old.yml"))) {
+            if (config.getInt("configVersion") == 0) {
+                if (new File(folder, "messages.yml").renameTo(new File(folder, "messages.old.yml"))) {
                     main.saveResource("messages.yml", false);
 
                     String updater = "Updater.";
@@ -201,7 +204,7 @@ public class Main extends JavaPlugin {
 
             }
 
-            if(config.getInt("configVersion") == 1) {
+            if (config.getInt("configVersion") == 1) {
                 YamlConfiguration messagesJar = new YamlConfiguration();
 
                 InputStreamReader reader = new InputStreamReader(getClass().getClassLoader()
@@ -263,15 +266,15 @@ public class Main extends JavaPlugin {
             File messagesF = new File(folder, "messages.yml");
             File furnacesF = new File(folder, "furnaceBackPack.yml");
 
-            if(!configF.exists()) {
+            if (!configF.exists()) {
                 main.saveResource("config.yml", false);
             }
 
-            if(!messagesF.exists()) {
+            if (!messagesF.exists()) {
                 main.saveResource("messages.yml", false);
             }
 
-            if(!furnacesF.exists()) {
+            if (!furnacesF.exists()) {
                 main.saveResource("furnaceBackPack.yml", false);
             }
 
@@ -292,6 +295,10 @@ public class Main extends JavaPlugin {
             e.printStackTrace();
         }
 
+    }
+
+    public static String getTrimmedId(Player player) {
+        return player.getUniqueId().toString().replaceAll("-", "");
     }
 
 }

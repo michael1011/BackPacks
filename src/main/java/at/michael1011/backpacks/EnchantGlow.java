@@ -1,11 +1,11 @@
 package at.michael1011.backpacks;
 
-import java.lang.reflect.Field;
-
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.enchantments.EnchantmentWrapper;
 import org.bukkit.inventory.ItemStack;
+
+import java.lang.reflect.Field;
 
 public class EnchantGlow extends EnchantmentWrapper {
 
@@ -46,7 +46,7 @@ public class EnchantGlow extends EnchantmentWrapper {
     }
 
     static Enchantment getGlow() {
-        if(glow != null) {
+        if (glow != null) {
             return glow;
         }
 

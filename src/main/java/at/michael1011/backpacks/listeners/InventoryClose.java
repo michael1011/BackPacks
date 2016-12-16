@@ -1,5 +1,6 @@
 package at.michael1011.backpacks.listeners;
 
+import at.michael1011.backpacks.BackPack;
 import at.michael1011.backpacks.Main;
 import at.michael1011.backpacks.SQL;
 import org.bukkit.Location;
@@ -23,7 +24,7 @@ import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
 
-import static at.michael1011.backpacks.Crafting.slots;
+import static at.michael1011.backpacks.Main.getTrimmedId;
 import static at.michael1011.backpacks.Main.version;
 import static at.michael1011.backpacks.listeners.RightClick.*;
 
@@ -39,14 +40,25 @@ public class InventoryClose implements Listener {
     }
 
     public static void saveBackPack(Player p, InventoryView inv, Boolean async, Boolean playSound) {
-        final String backPack = openInvs.get(p);
-        final String furnace = openFurnaces.get(p);
+        final BackPack backPack = openInvs.get(p);
+        final BackPack furnace = openFurnaces.get(p);
 
-        final String[] backPackCommand = openInvsCommand.get(p);
+        final String backPackCommand = openInvsOwners.get(p);
 
-        final String trimmedID = p.getUniqueId().toString().replaceAll("-", "");
+        final String trimmedID = getTrimmedId(p);
 
-        if(backPack != null) {
+        if (backPackCommand != null) {
+            openInvs.remove(p);
+            openInvsOwners.remove(p);
+
+            if (playSound) {
+                playCloseSound(p, backPack);
+            }
+
+            saveBackPack(backPack, backPackCommand, inv, async);
+
+
+        } else if (backPack != null) {
             openInvs.remove(p);
 
             if(playSound) {
@@ -55,14 +67,8 @@ public class InventoryClose implements Listener {
 
             saveBackPack(backPack, trimmedID, inv, async);
 
-        } else if(backPackCommand != null) {
-            if(playSound) {
-                playCloseSound(p, backPackCommand[0]);
-            }
 
-            saveBackPack(backPackCommand[0], backPackCommand[1], inv, async);
-
-        } else if(furnace != null) {
+        } else if (furnace != null) {
             openFurnaces.remove(p);
             openFurnacesInvs.remove(p);
 
@@ -82,12 +88,13 @@ public class InventoryClose implements Listener {
 
             }
 
-            if(playSound) {
+            if (playSound) {
                 playCloseSound(p, furnace);
             }
 
-            SQL.query("UPDATE bp_furnaces SET coal="+amount+" WHERE uuid='"+trimmedID+"'",
+            SQL.query("UPDATE bp_furnaces SET coal=" + amount + " WHERE uuid='" + trimmedID + "'",
                     new SQL.Callback<Boolean>() {
+
                         @Override
                         public void onSuccess(Boolean rs) {}
 
@@ -96,15 +103,8 @@ public class InventoryClose implements Listener {
 
             });
 
-        } else if(openInvsOther.containsKey(p)) {
-            if(playSound) {
-                playCloseSound(p, openInvsOther.get(p));
-            }
-
-            openInvsOther.remove(p);
-
-        } else if(openInvsOther.containsKey(p)) {
-            if(playSound) {
+        } else if (openInvsOther.containsKey(p)) {
+            if (playSound) {
                 playCloseSound(p, openInvsOther.get(p));
             }
 
@@ -114,17 +114,18 @@ public class InventoryClose implements Listener {
 
     }
 
-    private static void saveBackPack(final String backPack, final String trimmedID, final InventoryView inv,
+    private static void saveBackPack(final BackPack backPack, final String trimmedID, final InventoryView inv,
                                      final Boolean async) {
 
-        SQL.query("DELETE FROM bp_"+backPack+"_"+trimmedID, new SQL.Callback<Boolean>() {
+        SQL.query("DELETE FROM bp_" + backPack.getName() + "_" + trimmedID, new SQL.Callback<Boolean>() {
+
             @Override
             public void onSuccess(Boolean bool) {
-                for(int i = 0; i < slots.get(backPack); i++) {
+                for (int i = 0; i < inv.countSlots(); i++) {
                     ItemStack item = inv.getItem(i);
 
-                    if(item != null) {
-                        if(!item.getType().equals(Material.AIR)) {
+                    if (item != null) {
+                        if (!item.getType().equals(Material.AIR)) {
                             Boolean hasItemMeta = item.hasItemMeta();
 
                             String name = "";
@@ -133,10 +134,10 @@ public class InventoryClose implements Listener {
 
                             String material = item.getType().toString();
 
-                            if(hasItemMeta) {
+                            if (hasItemMeta) {
                                 ItemMeta itemM = item.getItemMeta();
 
-                                if(itemM.hasDisplayName()) {
+                                if (itemM.hasDisplayName()) {
                                     name = itemM.getDisplayName();
                                 }
 
@@ -144,8 +145,8 @@ public class InventoryClose implements Listener {
 
                                 StringBuilder builder = new StringBuilder();
 
-                                if(itemM.hasLore()) {
-                                    for(String loreLine : rawLore) {
+                                if (itemM.hasLore()) {
+                                    for (String loreLine : rawLore) {
                                         builder.append(loreLine).append("~");
                                     }
 
@@ -156,67 +157,67 @@ public class InventoryClose implements Listener {
 
                             StringBuilder enchantments = new StringBuilder();
 
-                            for(Map.Entry<Enchantment, Integer> enchantment : item.getEnchantments().entrySet()) {
+                            for (Map.Entry<Enchantment, Integer> enchantment : item.getEnchantments().entrySet()) {
                                 enchantments.append(enchantment.getKey().getName()).append(":")
                                         .append(enchantment.getValue()).append("/");
                             }
 
-                            if(material.toLowerCase().contains("potion")) {
-                                PotionMeta potionM = (PotionMeta) item.getItemMeta();
-                                PotionData potionD = potionM.getBasePotionData();
+                            if (material.toLowerCase().contains("potion")) {
+                                PotionMeta potionMeta = (PotionMeta) item.getItemMeta();
+                                PotionData potionData = potionMeta.getBasePotionData();
 
-                                if(potionD != null) {
-                                    potion = potionD.getType().name()+"/"+potionD.isExtended()+"/"+potionD.isUpgraded();
+                                if (potionData != null) {
+                                    potion = potionData.getType().name()+"/"+potionData.isExtended()+"/"+potionData.isUpgraded();
                                 }
 
-                            } else if(material.equals("MONSTER_EGG")) {
+                            } else if (material.equals("MONSTER_EGG")) {
                                 try {
-                                    Object nmsStack = Class.forName("org.bukkit.craftbukkit."+version+".inventory.CraftItemStack").getMethod("asNMSCopy", ItemStack.class)
+                                    Object nmsStack = Class.forName("org.bukkit.craftbukkit." + version + ".inventory.CraftItemStack").getMethod("asNMSCopy", ItemStack.class)
                                             .invoke(null, item);
 
                                     Object nmsCompound = nmsStack.getClass().getMethod("getTag").invoke(nmsStack);
 
-                                    if(nmsCompound == null) {
-                                        nmsCompound = Class.forName("net.minecraft.server."+version+".NBTTagCompound").getConstructor().newInstance();
+                                    if (nmsCompound == null) {
+                                        nmsCompound = Class.forName("net.minecraft.server." + version + ".NBTTagCompound").getConstructor().newInstance();
                                     }
 
                                     Object getEntityTag = nmsCompound.getClass().getMethod("getCompound", String.class).invoke(nmsCompound, "EntityTag");
-                                    Method getEntityString = getEntityTag.getClass().getMethod("getString", String.class);
+                                    Method getEntityString = getEntityTag.getClass().getMethod("toString", String.class);
 
                                     potion = String.valueOf(getEntityString.invoke(getEntityTag, "id"));
 
-                                    Object getMobSpawnerEgg = nmsCompound.getClass().getMethod("getString", String.class).invoke(nmsCompound, "MobSpawnerEgg");
+                                    Object getMobSpawnerEgg = nmsCompound.getClass().getMethod("toString", String.class).invoke(nmsCompound, "MobSpawnerEgg");
 
-                                    if(getMobSpawnerEgg.equals("MobSpawnerEgg")) {
+                                    if (getMobSpawnerEgg.equals("MobSpawnerEgg")) {
                                         enchantments.setLength(0);
 
                                         enchantments.append(getMobSpawnerEgg).append("/");
                                     }
 
-                                } catch(InvocationTargetException | ClassNotFoundException | IllegalAccessException | NoSuchMethodException | InstantiationException exception) {
+                                } catch (InvocationTargetException | ClassNotFoundException | IllegalAccessException | NoSuchMethodException | InstantiationException exception) {
                                     exception.printStackTrace();
                                 }
 
-                            } else if(material.equals("SKULL_ITEM")) {
+                            } else if (material.equals("SKULL_ITEM")) {
                                 SkullMeta skull = (SkullMeta) item.getItemMeta();
 
-                                if(skull.hasOwner()) {
+                                if (skull.hasOwner()) {
                                     potion = skull.getOwner();
                                 }
 
-                            } else if(material.equals("ENCHANTED_BOOK")){
+                            } else if (material.equals("ENCHANTED_BOOK")){
                                 EnchantmentStorageMeta storage = (EnchantmentStorageMeta) item.getItemMeta();
 
-                                for(Map.Entry<Enchantment, Integer> enchantment : storage.getStoredEnchants().entrySet()) {
+                                for (Map.Entry<Enchantment, Integer> enchantment : storage.getStoredEnchants().entrySet()) {
                                     enchantments.append(enchantment.getKey().getName()).append(":")
                                             .append(enchantment.getValue()).append("/");
                                 }
 
                             }
 
-                            SQL.query("INSERT INTO bp_"+backPack+"_"+trimmedID+" (position, material, durability, amount, "+
-                                            "name, lore, enchantments, potion) values ('"+i+"', '"+material+"', '"+item.getDurability()+"', "+
-                                            "'"+item.getAmount()+"', '"+name+"', '"+lore+"', '"+enchantments.toString()+"', '"+potion+"')",
+                            SQL.query("INSERT INTO bp_" + backPack.getName() + "_" + trimmedID + " (position, material, durability, amount, " +
+                                            "name, lore, enchantments, potion) values ('" + i + "', '" + material + "', '" + item.getDurability() + "', " +
+                                            "'" + item.getAmount() + "', '" + name + "', '" + lore + "', '" + enchantments.toString() + "', '" + potion + "')",
                                     new SQL.Callback<Boolean>() {
 
                                         @Override
@@ -225,7 +226,7 @@ public class InventoryClose implements Listener {
                                         @Override
                                         public void onFailure(Throwable e) {}
 
-                                    }, async);
+                            }, async);
 
                         }
 

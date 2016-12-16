@@ -12,6 +12,8 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import static at.michael1011.backpacks.Main.getTrimmedId;
+
 public class Join implements Listener {
 
     public Join(Main main) {
@@ -23,20 +25,23 @@ public class Join implements Listener {
         final Player p = e.getPlayer();
         final String playerName = p.getName();
 
-        if(!Main.availablePlayers.contains(playerName)) {
+        if (!Main.availablePlayers.contains(playerName)) {
             Main.availablePlayers.add(playerName);
         }
 
-        final String uuid = p.getUniqueId().toString().replaceAll("-", "");
+        final String uuid = getTrimmedId(p);
 
         SQL.getResult("SELECT * FROM bp_users WHERE uuid='"+uuid+"'", new SQL.Callback<ResultSet>() {
+
             @Override
             public void onSuccess(ResultSet rs) {
                 try {
                     if (rs != null) {
-                        if(rs.first()) {
-                            if(!rs.getString("name").equals(playerName)) {
-                                SQL.query("UPDATE bp_users SET name='"+playerName+"' WHERE uuid='"+uuid+"'", new SQL.Callback<Boolean>() {
+                        if (rs.first()) {
+                            if (!rs.getString("name").equals(playerName)) {
+                                SQL.query("UPDATE bp_users SET name='" + playerName + "' WHERE uuid='" + uuid + "'",
+                                        new SQL.Callback<Boolean>() {
+
                                     @Override
                                     public void onSuccess(Boolean rs) {}
 
@@ -47,20 +52,20 @@ public class Join implements Listener {
                             }
 
                         } else {
-                            SQL.query("INSERT INTO bp_users (name, uuid) VALUES ('" + playerName + "', '" + uuid + "')", new SQL.Callback<Boolean>() {
-                                @Override
-                                public void onSuccess(Boolean rs) {
-                                }
+                            SQL.query("INSERT INTO bp_users (name, uuid) VALUES ('" + playerName + "', '" + uuid + "')",
+                                    new SQL.Callback<Boolean>() {
 
                                 @Override
-                                public void onFailure(Throwable e) {
-                                }
+                                public void onSuccess(Boolean rs) {}
+
+                                @Override
+                                public void onFailure(Throwable e) {}
 
                             });
                         }
 
-                        if(Updater.updateAvailable) {
-                            if(p.hasPermission("backpacks.update") || p.hasPermission("backpacks.*")) {
+                        if (Updater.updateAvailable) {
+                            if (p.hasPermission("backpacks.update") || p.hasPermission("backpacks.*")) {
                                 p.sendMessage(Updater.newVersion);
                                 p.sendMessage(Updater.newVersionDownload);
                             }

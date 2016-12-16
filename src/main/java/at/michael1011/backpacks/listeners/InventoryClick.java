@@ -1,6 +1,6 @@
 package at.michael1011.backpacks.listeners;
 
-import at.michael1011.backpacks.Crafting;
+import at.michael1011.backpacks.BackPack;
 import at.michael1011.backpacks.Main;
 import at.michael1011.backpacks.SQL;
 import org.bukkit.ChatColor;
@@ -14,7 +14,9 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import static at.michael1011.backpacks.Crafting.backPacks;
 import static at.michael1011.backpacks.Main.furnaceGui;
+import static at.michael1011.backpacks.Main.getTrimmedId;
 import static at.michael1011.backpacks.listeners.RightClick.*;
 
 public class InventoryClick implements Listener {
@@ -27,35 +29,36 @@ public class InventoryClick implements Listener {
     public void inventoryClick(InventoryClickEvent e) {
         Player p = (Player) e.getWhoClicked();
 
-        if(openFurnacesInvs.containsKey(p)) {
+        if (openFurnacesInvs.containsKey(p)) {
             Inventory inv = openFurnacesInvs.get(p);
 
-            if(e.getInventory().equals(inv)) {
+            if (e.getInventory().equals(inv)) {
                 ItemStack item = e.getCurrentItem();
 
-                if(item.hasItemMeta()) {
+                if (item.hasItemMeta()) {
                     ItemMeta meta = item.getItemMeta();
 
                     if (meta.hasDisplayName()) {
                         String name = meta.getDisplayName();
+                        String trimmedId = getTrimmedId(p);
 
-                        if(name.equals(ChatColor.translateAlternateColorCodes('&', furnaceGui.getString("enabled")))) {
+                        if (name.equals(ChatColor.translateAlternateColorCodes('&', furnaceGui.getString("enabled")))) {
                             ItemStack disabled = new ItemStack(Material.WOOL, 1, (byte) getColor(false));
 
                             setToggleMeta(disabled, false);
 
                             inv.setItem(e.getSlot(), disabled);
 
-                            setBoolean(false, e.getSlot(), p.getUniqueId().toString().replaceAll("-", ""));
+                            setBoolean(false, e.getSlot(), trimmedId);
 
-                        } else if(name.equals(ChatColor.translateAlternateColorCodes('&', furnaceGui.getString("disabled")))) {
+                        } else if (name.equals(ChatColor.translateAlternateColorCodes('&', furnaceGui.getString("disabled")))) {
                             ItemStack enabled = new ItemStack(Material.WOOL, 1, (byte) getColor(true));
 
                             setToggleMeta(enabled, true);
 
                             inv.setItem(e.getSlot(), enabled);
 
-                            setBoolean(true, e.getSlot(), p.getUniqueId().toString().replaceAll("-", ""));
+                            setBoolean(true, e.getSlot(), trimmedId);
                         }
 
                         e.setCancelled(true);
@@ -70,20 +73,28 @@ public class InventoryClick implements Listener {
 
             }
 
-        } else if(!Main.backPackInBackPack) {
-            if(openInvs.containsKey(p)) {
+        } else if (!Main.backPackInBackPack) {
+            if (openInvs.containsKey(p)) {
                 ItemStack item = e.getCurrentItem();
 
-                if(item != null) {
-                    if(item.hasItemMeta()) {
+                if (item != null) {
+                    if (item.hasItemMeta()) {
                         ItemMeta meta = item.getItemMeta();
 
-                        if(meta.hasLore()) {
-                            if(Crafting.loreMap.containsKey(meta.getLore())) {
-                                e.setCancelled(true);
+                        if (meta.hasLore()) {
+                            for (BackPack backPack : backPacks) {
+                                if (backPack.getLore().equals(meta.getLore())) {
+                                    e.setCancelled(true);
+
+                                    break;
+                                }
+
                             }
+
                         }
+
                     }
+
                 }
 
             }
@@ -93,8 +104,9 @@ public class InventoryClick implements Listener {
     }
 
     private void checkCoal(ItemStack item, InventoryClickEvent e) {
-        if(item.getType().equals(Material.COAL) ||
+        if (item.getType().equals(Material.COAL) ||
                 e.getCursor().getType().equals(Material.COAL)) {
+
             e.setCancelled(false);
 
             return;
@@ -106,17 +118,19 @@ public class InventoryClick implements Listener {
     private void setBoolean(Boolean value, int slot, String uuid) {
         String name = null;
 
-        if(slot == 12) {
+        if (slot == 12) {
             name = "ores";
 
-        } else if(slot == 13) {
+        } else if (slot == 13) {
             name = "food";
 
-        } else if(slot == 14) {
+        } else if (slot == 14) {
             name = "autoFill";
         }
 
-        SQL.query("UPDATE bp_furnaces SET "+name+"='"+String.valueOf(value)+"' WHERE uuid='"+uuid+"'", new SQL.Callback<Boolean>() {
+        SQL.query("UPDATE bp_furnaces SET "+name+"='"+String.valueOf(value)+"' WHERE uuid='"+uuid+"'",
+                new SQL.Callback<Boolean>() {
+
             @Override
             public void onSuccess(Boolean rs) {}
 

@@ -1,6 +1,6 @@
 package at.michael1011.backpacks.commads;
 
-import at.michael1011.backpacks.Crafting;
+import at.michael1011.backpacks.BackPack;
 import at.michael1011.backpacks.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -13,8 +13,10 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.Map;
 
+import static at.michael1011.backpacks.Crafting.backPacksItems;
 import static at.michael1011.backpacks.Main.messages;
 import static at.michael1011.backpacks.Main.prefix;
+import static at.michael1011.backpacks.commads.ListBackPacks.getBackPacks;
 
 public class Give implements CommandExecutor {
 
@@ -73,27 +75,32 @@ public class Give implements CommandExecutor {
     }
 
     private static void giveBackPack(CommandSender sender, Player target, String backpack) {
-        ItemStack item = Crafting.itemsInverted.get(backpack);
+        ItemStack item = null;
+
+        for (Map.Entry<BackPack, ItemStack> entry : backPacksItems.entrySet()) {
+            if (entry.getKey().getName().equals(backpack)) {
+                item = entry.getValue();
+            }
+        }
 
         if(item != null) {
             target.getInventory().addItem(item);
 
             String targetName = target.getName();
 
-            if(!sender.getName().equals(targetName)) {
-                sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                        messages.getString(path+"gaveBackPack").replaceAll("%backpack%", backpack)
+            if (!sender.getName().equals(targetName)) {
+                sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                        messages.getString(path + "gaveBackPack").replaceAll("%backpack%", backpack)
                                 .replaceAll("%target%", targetName)));
             }
 
         } else {
-            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+            sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
                     messages.getString("Help.backPackNotFound").replaceAll("%backpack%", backpack)));
 
-            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+            sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
                     messages.getString("Help.backPackNotFoundAvailable")
-                            .replaceAll("%backpacks%", Crafting.available.replaceAll(",", ", "))));
-
+                            .replaceAll("%backpacks%", getBackPacks())));
         }
 
     }

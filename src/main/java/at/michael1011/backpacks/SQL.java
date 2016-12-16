@@ -53,7 +53,7 @@ public class SQL {
     }
 
     public static void query(String query, Callback<Boolean> callback, Boolean async) {
-        if(async) {
+        if (async) {
             query(query, callback);
 
         } else {
@@ -74,6 +74,7 @@ public class SQL {
 
     public static void query(final String query, final Callback<Boolean> callback) {
         scheduler.runTaskAsynchronously(main, new Runnable() {
+
             @Override
             public void run() {
                 try {
@@ -99,12 +100,14 @@ public class SQL {
                 }
 
             }
+
         });
 
     }
 
     public static void createCon(String host, String port, String database,
                                  String username, String password) throws SQLException {
+
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
@@ -113,12 +116,11 @@ public class SQL {
 
         con = DriverManager.getConnection("jdbc:mysql://"+host+":"+port+"/"+database,
                 username, password);
-
     }
 
     public static void closeCon() throws SQLException {
-        if(con != null) {
-            if(!con.isClosed()) {
+        if (con != null) {
+            if (!con.isClosed()) {
                 con.close();
             }
         }
@@ -126,11 +128,12 @@ public class SQL {
     }
 
     public static boolean checkCon() {
-        if(con != null) {
+        if (con != null) {
             try {
-                if(!con.isClosed()) {
+                if (!con.isClosed()) {
                     return true;
                 }
+
             } catch (SQLException e) {
                 e.printStackTrace();
             }

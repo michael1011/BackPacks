@@ -7,7 +7,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.PluginCommand;
 
-import static at.michael1011.backpacks.Crafting.availableList;
+import static at.michael1011.backpacks.Crafting.backPackNames;
 import static at.michael1011.backpacks.Main.messages;
 import static at.michael1011.backpacks.Main.prefix;
 
@@ -22,22 +22,23 @@ public class ListBackPacks implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(sender.hasPermission("backpacks.list") || sender.hasPermission("backpacks.*")) {
-            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', messages.getString("Help.bplist.list").replaceAll("%backpacks%", getBackPacks())));
+        if (sender.hasPermission("backpacks.list") || sender.hasPermission("backpacks.*")) {
+            sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                    messages.getString("Help.bplist.list").replaceAll("%backpacks%", getBackPacks())));
 
         } else {
-            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+            sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
                     messages.getString("Help.noPermission")));
         }
 
         return true;
     }
 
-    private String getBackPacks() {
+    static String getBackPacks() {
         StringBuilder backpacks = new StringBuilder("");
 
-        for (String backpack : availableList) {
-            if(backpacks.length() == 0) {
+        for (String backpack : backPackNames) {
+            if (backpacks.length() == 0) {
                 backpacks.append(backpack);
 
             } else {

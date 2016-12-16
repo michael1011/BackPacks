@@ -24,7 +24,7 @@ import static at.michael1011.backpacks.Main.*;
 public class Updater {
 
     Updater(final Main main) {
-        int interval = config.getInt("Updater.interval")*72000;
+        int interval = config.getInt("Updater.interval") * 72000;
 
         Bukkit.getScheduler().runTaskTimerAsynchronously(main, new Runnable() {
             @Override
@@ -49,12 +49,12 @@ public class Updater {
 
             int responseCode = con.getResponseCode();
 
-            if(responseCode == 200) {
+            if (responseCode == 200) {
                 JSONArray array = getJsonArray(con);
 
                 int size = array.size();
 
-                if(size > 0) {
+                if (size > 0) {
                     checkVersion(array, size, 1, sender, main);
 
                 } else {
@@ -81,10 +81,10 @@ public class Updater {
 
         String installedVersionNumber = main.getDescription().getVersion();
 
-        if(Integer.valueOf(installedVersionNumber.replaceAll("\\.", "")) <
+        if (Integer.valueOf(installedVersionNumber.replaceAll("\\.", "")) <
                 Integer.valueOf(latestVersionNumber.replaceAll("\\.", ""))) {
 
-            if(String.valueOf(latestVersion.get("releaseType")).equals("release")) {
+            if (String.valueOf(latestVersion.get("releaseType")).equals("release")) {
                 updateFound(installedVersionNumber, latestVersionNumber, String.valueOf(latestVersion.get("downloadUrl")),
                         latestVersion, sender, main);
 
@@ -112,7 +112,7 @@ public class Updater {
 
         sender.sendMessage(newVersion);
 
-        if(config.getBoolean("Updater.autoUpdate")) {
+        if (config.getBoolean("Updater.autoUpdate")) {
             String messagesPath = "Updater.autoUpdate.";
 
             URL download = followRedirects(downloadUrl);
@@ -121,20 +121,20 @@ public class Updater {
             String fileName = downloadUrl.substring(downloadUrl.lastIndexOf('/')+1,
                     downloadUrl.length());
 
-            File downloadedFile = downloadFile(fileName, "plugins", fileSize, download, sender);
+            File downloadedFile = downloadFile(fileName, fileSize, download, sender);
 
             MessageDigest md = MessageDigest.getInstance("MD5");
 
             md.update(Files.readAllBytes(Paths.get("plugins/"+fileName)));
             byte[] digest = md.digest();
 
-            if(DatatypeConverter.printHexBinary(digest).toLowerCase()
+            if (DatatypeConverter.printHexBinary(digest).toLowerCase()
                     .equalsIgnoreCase(String.valueOf(latestVersion.get("md5")))) {
 
                 File old = new File(Main.class.getProtectionDomain().getCodeSource()
                         .getLocation().toURI().getPath());
 
-                if(old.delete()) {
+                if (old.delete()) {
                     sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                             messages.getString(messagesPath+"deletedOldVersion")
                                     .replaceAll("%oldVersion%", old.getName())));
@@ -147,7 +147,7 @@ public class Updater {
                 Bukkit.dispatchCommand(sender, "reload");
 
             } else {
-                if(downloadedFile.delete()) {
+                if (downloadedFile.delete()) {
                     sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                             messages.getString(messagesPath+"downloadFailed")
                                     .replaceAll("%downloadLink%", downloadUrl)));
@@ -170,10 +170,10 @@ public class Updater {
 
     }
 
-    private static File downloadFile(String fileName, String folder, int fileSize, URL download, CommandSender sender)
+    private static File downloadFile(String fileName, int fileSize, URL download, CommandSender sender)
             throws IOException {
 
-        File downloadedFile = new File(folder, fileName);
+        File downloadedFile = new File("plugins", fileName);
 
         BufferedInputStream downloadInput = new BufferedInputStream(download.openStream());
 
@@ -185,7 +185,7 @@ public class Updater {
         long downloaded = 0;
         int count;
 
-        while((count = downloadInput.read(data, 0, byteSize)) != -1) {
+        while ((count = downloadInput.read(data, 0, byteSize)) != -1) {
             downloaded += count;
 
             fileOutput.write(data, 0, count);
