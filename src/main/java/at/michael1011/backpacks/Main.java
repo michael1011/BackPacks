@@ -53,7 +53,7 @@ public class Main extends JavaPlugin {
                     config.getString("MySQL.password"));
 
             if (SQL.checkCon()) {
-                Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                Bukkit.getConsoleSender().sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
                         messages.getString("MySQL.connected")));
 
                 main = this;
@@ -178,33 +178,11 @@ public class Main extends JavaPlugin {
 
     private void updateConfig(Main main) {
         try {
-            File folder = main.getDataFolder();
+            int configVersion = config.getInt("configVersion");
 
-            if (config.getInt("configVersion") == 0) {
-                if (new File(folder, "messages.yml").renameTo(new File(folder, "messages.old.yml"))) {
-                    main.saveResource("messages.yml", false);
+            if (configVersion < 3) {
+                File folder = main.getDataFolder();
 
-                    String updater = "Updater.";
-
-                    config.set(updater+"enabled", true);
-                    config.set(updater+"interval", 24);
-                    config.set(updater+"autoUpdate", false);
-
-                    config.set("configVersion", 1);
-
-                    config.save(new File(folder, "config.yml"));
-
-                    loadFiles(main);
-
-                    Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                            "&cUpdated config files to version 1. "+
-                                    "&4Your old messages.yml file was renamed to messages.old.yml"));
-
-                }
-
-            }
-
-            if (config.getInt("configVersion") == 1) {
                 YamlConfiguration messagesJar = new YamlConfiguration();
 
                 InputStreamReader reader = new InputStreamReader(getClass().getClassLoader()
@@ -214,42 +192,74 @@ public class Main extends JavaPlugin {
 
                 reader.close();
 
-                String path = "Help.bpcreate.steps.";
+                if (configVersion == 0) {
+                    if (new File(folder, "messages.yml").renameTo(new File(folder, "messages.old.yml"))) {
+                        main.saveResource("messages.yml", false);
 
-                messages.set("Help.bpcreate.syntaxError.2", messagesJar.getString("Help.bpcreate.syntaxError.2"));
+                        String updater = "Updater.";
 
-                messages.set(path+"inventorytitle.1", messagesJar.getString(path+"inventorytitle.1"));
-                messages.set(path+"inventorytitle.2", messagesJar.getString(path+"inventorytitle.2"));
-                messages.set(path+"inventorytitle.3", messagesJar.getString(path+"inventorytitle.3"));
+                        config.set(updater + "enabled", true);
+                        config.set(updater + "interval", 24);
+                        config.set(updater + "autoUpdate", false);
 
-                messages.set(path+"preview.inventoryTitle", messagesJar.getString(path+"preview.inventoryTitle"));
+                        config.set("configVersion", 1);
 
-                messages.set(path+"preview.sound.title", messagesJar.getString(path+"preview.sound.title"));
-                messages.set(path+"preview.sound.line", messagesJar.getString(path+"preview.sound.line"));
+                        Bukkit.getConsoleSender().sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                "&cUpdated config files to version 1. " +
+                                        "&4Your old messages.yml file was renamed to messages.old.yml"));
 
-                messages.set("Help.soundNotValid", messagesJar.getString("Help.soundNotValid"));
+                    }
 
-                messages.set("Help.bpcreate.steps.sound.1", messagesJar.getString("Help.bpcreate.steps.sound.1"));
-                messages.set("Help.bpcreate.steps.sound.2", messagesJar.getString("Help.bpcreate.steps.sound.2"));
-                messages.set("Help.bpcreate.steps.sound.3", messagesJar.getString("Help.bpcreate.steps.sound.3"));
-                messages.set("Help.bpcreate.steps.sound.4", messagesJar.getString("Help.bpcreate.steps.sound.4"));
+                }
 
-                messages.set("Help.bpcreate.steps.soundOther.1", messagesJar.getString("Help.bpcreate.steps.soundOther.1"));
-                messages.set("Help.bpcreate.steps.soundOther.2", messagesJar.getString("Help.bpcreate.steps.soundOther.2"));
+                if (configVersion== 1) {
+                    String path = "Help.bpcreate.steps.";
 
-                messages.set("Help.bpcreate.steps.soundNotValid", messagesJar.getString("Help.bpcreate.steps.soundNotValid"));
+                    messages.set("Help.bpcreate.syntaxError.2", messagesJar.getString("Help.bpcreate.syntaxError.2"));
 
-                messages.set("Help.bplist.list", messagesJar.getString("Help.bplist.list"));
+                    messages.set(path + "inventorytitle.1", messagesJar.getString(path + "inventorytitle.1"));
+                    messages.set(path + "inventorytitle.2", messagesJar.getString(path + "inventorytitle.2"));
+                    messages.set(path + "inventorytitle.3", messagesJar.getString(path + "inventorytitle.3"));
 
-                messages.save(new File(folder, "messages.yml"));
+                    messages.set(path + "preview.inventoryTitle", messagesJar.getString(path + "preview.inventoryTitle"));
 
-                config.set("BackPackInBackPack", false);
-                config.set("configVersion", 2);
+                    messages.set(path + "preview.sound.title", messagesJar.getString(path + "preview.sound.title"));
+                    messages.set(path + "preview.sound.line", messagesJar.getString(path + "preview.sound.line"));
+
+                    messages.set("Help.soundNotValid", messagesJar.getString("Help.soundNotValid"));
+
+                    messages.set("Help.bpcreate.steps.sound.1", messagesJar.getString("Help.bpcreate.steps.sound.1"));
+                    messages.set("Help.bpcreate.steps.sound.2", messagesJar.getString("Help.bpcreate.steps.sound.2"));
+                    messages.set("Help.bpcreate.steps.sound.3", messagesJar.getString("Help.bpcreate.steps.sound.3"));
+                    messages.set("Help.bpcreate.steps.sound.4", messagesJar.getString("Help.bpcreate.steps.sound.4"));
+
+                    messages.set("Help.bpcreate.steps.soundOther.1", messagesJar.getString("Help.bpcreate.steps.soundOther.1"));
+                    messages.set("Help.bpcreate.steps.soundOther.2", messagesJar.getString("Help.bpcreate.steps.soundOther.2"));
+
+                    messages.set("Help.bpcreate.steps.soundNotValid", messagesJar.getString("Help.bpcreate.steps.soundNotValid"));
+
+                    messages.set("Help.bplist.list", messagesJar.getString("Help.bplist.list"));
+
+                    config.set("BackPackInBackPack", false);
+                    config.set("configVersion", 2);
+
+                    Bukkit.getConsoleSender().sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                            "&cUpdated config files to version 2"));
+                }
+
+                if (configVersion == 2) {
+                    messages.set("Help.bpopen.error", messagesJar.getString("Help.bpopen.error"));
+
+                    config.set("configVersion", 3);
+
+                    Bukkit.getConsoleSender().sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                            "&cUpdated config files to version 3"));
+                }
 
                 config.save(new File(folder, "config.yml"));
+                messages.save(new File(folder, "messages.yml"));
 
-                Bukkit.getConsoleSender().sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                        "&cUpdated config files to version 2"));
+                loadFiles(main);
             }
 
         } catch (IOException | InvalidConfigurationException e) {

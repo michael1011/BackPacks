@@ -119,7 +119,8 @@ public class RightClick implements Listener {
                                                     public void onSuccess(Boolean rs) {
                                                         openInvs.put(p, backPack);
 
-                                                        p.openInventory(Bukkit.getServer().createInventory(p, backPack.getSlots(), getInventoryTitle(backPack, meta.getDisplayName())));
+                                                        p.openInventory(Bukkit.getServer().createInventory(p, backPack.getSlots(),
+                                                                getInventoryTitle(backPack, meta.getDisplayName())));
                                                     }
 
                                                     @Override
@@ -151,6 +152,12 @@ public class RightClick implements Listener {
                                     p.openWorkbench(p.getLocation(), true);
 
                                     break;
+
+                                case "trash":
+                                    openInvsOther.put(p, backPack);
+
+                                    p.openInventory(Bukkit.getServer().createInventory(p, backPack.getSlots(),
+                                            getInventoryTitle(backPack, meta.getDisplayName())));
 
                                 case "furnace":
                                     Boolean guiEnabled = backPack.getFurnaceGui();
@@ -433,7 +440,7 @@ public class RightClick implements Listener {
             return displayName;
         }
 
-        return inventoryTitle;
+        return ChatColor.translateAlternateColorCodes('&', inventoryTitle);
     }
 
     private void setMeta(ItemStack item, String name) {

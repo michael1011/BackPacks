@@ -55,8 +55,8 @@ Help:
     # %player% is the player and %backpack% is the backpack
     hasNotUsedYet: "&cThe player &4%player% &chasn't used the &4%backpack% &cyet"
 
-    # open a empty crafting table doesn't make sense
-    craftingBackPack: "&cOpen a empty crafting table doesn't make sense"
+    # When a player wants to open a crafting or a trash backpack
+    error: "&cOpen a %backpack% backpack doesn't make sense"
 
     # When the console wants to open a backpack with the type normal or ender
     onlyPlayers: "&cOnly players can open backpack of the type &4%type%"

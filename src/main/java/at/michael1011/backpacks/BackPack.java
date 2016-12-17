@@ -10,6 +10,7 @@ public class BackPack {
         public static final Type normal = new Type("normal");
         public static final Type ender = new Type("ender");
         public static final Type crafting = new Type("crafting");
+        public static final Type trash = new Type("trash");
         public static final Type furnace = new Type("furnace");
 
         private String type;

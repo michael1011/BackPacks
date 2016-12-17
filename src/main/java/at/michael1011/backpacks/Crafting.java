@@ -37,7 +37,9 @@ public class Crafting {
 
                 if (item != null) {
                     if (slotsDivisible) {
-                        if (!config.getBoolean(backPackPath + "crafting.disabled")) {
+                        if (!config.getBoolean(backPackPath + "crafting.disabled")
+                                && config.get(backPackPath + "crafting.1") != null) {
+
                             Bukkit.getServer().addRecipe(createShapedRecipe(sender, item, backPackPath, backPack));
                         }
 

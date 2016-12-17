@@ -4,7 +4,7 @@
 #
 
 # Don't touch this variable! It would destroy your config files!
-configVersion: 2
+configVersion: 3
 
 # Setup your MySQL connection here
 MySQL:

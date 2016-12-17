@@ -107,7 +107,6 @@ public class InventoryClose implements Listener {
             }
 
             openInvsOther.remove(p);
-
         }
 
     }

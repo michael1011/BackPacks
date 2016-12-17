@@ -198,8 +198,10 @@ public class Open implements CommandExecutor {
                                             break;
 
                                         case "crafting":
+                                        case "trash":
                                             sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
-                                                    messages.getString("Help.bpopen.craftingBackPack")));
+                                                    messages.getString("Help.bpopen.error")
+                                                            .replaceAll("%backpack%", finalBackPack.getType().toString())));
 
                                             break;
                                     }
