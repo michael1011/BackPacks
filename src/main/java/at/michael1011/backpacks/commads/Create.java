@@ -295,6 +295,7 @@ public class Create implements CommandExecutor {
                                 break;
 
                             case "normal":
+                            case "trash":
                                 data.get(sender).put("type", type);
 
                                 sendMap(sender, "steps.slots");
@@ -392,6 +393,7 @@ public class Create implements CommandExecutor {
 
                                     switch (finishedType) {
                                         case "normal":
+                                        case "trash":
                                             config.set(finishedPath + "slots", Integer.valueOf(finishedData.get("slots")));
 
                                             break;
@@ -691,6 +693,7 @@ public class Create implements CommandExecutor {
 
                             switch (type) {
                                 case "normal":
+                                case "trash":
                                     missingHere.add("slots");
 
                                     sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
@@ -750,6 +753,9 @@ public class Create implements CommandExecutor {
 
             case "crafting":
                 return "&c";
+
+            case "trash":
+                return "&4";
 
             case "furnace":
                 return "&8";
