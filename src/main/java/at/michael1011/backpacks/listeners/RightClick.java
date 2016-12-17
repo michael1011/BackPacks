@@ -85,7 +85,7 @@ public class RightClick implements Listener {
 
                             switch (backPack.getType().toString()) {
                                 case "normal":
-                                    SQL.checkTable("bp_" + backPack + "_" + trimmedID, new SQL.Callback<Boolean>() {
+                                    SQL.checkTable("bp_" + backPack.getName() + "_" + trimmedID, new SQL.Callback<Boolean>() {
 
                                         @Override
                                         public void onSuccess(Boolean rs) {
@@ -111,7 +111,7 @@ public class RightClick implements Listener {
                                                 });
 
                                             } else {
-                                                SQL.query("CREATE TABLE IF NOT EXISTS bp_"+ backPack + "_" + trimmedID + "(position INT(100), material VARCHAR(100), " +
+                                                SQL.query("CREATE TABLE IF NOT EXISTS bp_"+ backPack.getName() + "_" + trimmedID + "(position INT(100), material VARCHAR(100), " +
                                                         "durability INT(100), amount INT(100), name VARCHAR(100), lore VARCHAR(1000), enchantments VARCHAR(1000), " +
                                                         "potion VARCHAR(1000))", new SQL.Callback<Boolean>() {
 
@@ -119,7 +119,7 @@ public class RightClick implements Listener {
                                                     public void onSuccess(Boolean rs) {
                                                         openInvs.put(p, backPack);
 
-                                                        p.openInventory(Bukkit.getServer().createInventory(p, backPack.getSlots(), backPack.getInventoryTitle()));
+                                                        p.openInventory(Bukkit.getServer().createInventory(p, backPack.getSlots(), getInventoryTitle(backPack, meta.getDisplayName())));
                                                     }
 
                                                     @Override

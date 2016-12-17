@@ -28,62 +28,62 @@ public class BackPack {
 
     }
 
-    private static String name;
+    private String name;
 
-    private static Type type;
-    private static int slots = 0;
-    private static Boolean furnaceGui = false;
+    private Type type;
+    private int slots = 0;
+    private Boolean furnaceGui = false;
 
-    private static List<String> lore;
-    private static String inventoryTitle;
-    private static Sound openSound;
-    private static Sound closeSound;
+    private List<String> lore;
+    private String inventoryTitle;
+    private Sound openSound;
+    private Sound closeSound;
 
-    public BackPack(String name, Type type, int slots, Boolean furnaceGui, List<String> lore, String inventoryTitle,
+    BackPack(String name, Type type, int slots, Boolean furnaceGui, List<String> lore, String inventoryTitle,
                     Sound openSound, Sound closeSound) {
 
-        BackPack.name = name;
+        this.name = name;
 
-        BackPack.type = type;
-        BackPack.slots = slots;
-        BackPack.furnaceGui = furnaceGui;
+        this.type = type;
+        this.slots = slots;
+        this.furnaceGui = furnaceGui;
 
-        BackPack.lore = lore;
-        BackPack.inventoryTitle = inventoryTitle;
-        BackPack.openSound = openSound;
-        BackPack.closeSound = closeSound;
+        this.lore = lore;
+        this.inventoryTitle = inventoryTitle;
+        this.openSound = openSound;
+        this.closeSound = closeSound;
     }
 
     public void setName(String name) {
-        BackPack.name = name;
+        this.name = name;
     }
 
     public void setType(Type type) {
-        BackPack.type = type;
+        this.type = type;
     }
 
     public void setSlots(int slots) {
-        BackPack.slots = slots;
+        this.slots = slots;
     }
 
     public void setFurnaceGui(Boolean furnaceGui) {
-        BackPack.furnaceGui = furnaceGui;
+        this.furnaceGui = furnaceGui;
     }
 
     public void setLore(List<String> lore) {
-        BackPack.lore = lore;
+        this.lore = lore;
     }
 
     public void setInventoryTitle(String inventoryTitle) {
-        BackPack.inventoryTitle = inventoryTitle;
+        this.inventoryTitle = inventoryTitle;
     }
 
     public void setOpenSound(Sound openSound) {
-        BackPack.openSound = openSound;
+        this.openSound = openSound;
     }
 
     public void setCloseSound(Sound closeSound) {
-        BackPack.closeSound = closeSound;
+        this.closeSound = closeSound;
     }
 
 

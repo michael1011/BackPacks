@@ -16,10 +16,10 @@ import static at.michael1011.backpacks.Main.*;
 
 public class Crafting {
 
-    public static List<BackPack> backPacks = Collections.emptyList();
+    public static List<BackPack> backPacks = new ArrayList<>();
     public static HashMap<BackPack, ItemStack> backPacksItems = new HashMap<>();
 
-    public static List<String> backPackNames = Collections.emptyList();
+    public static List<String> backPackNames = new ArrayList<>();
 
     private static final String path = "BackPacks.";
 

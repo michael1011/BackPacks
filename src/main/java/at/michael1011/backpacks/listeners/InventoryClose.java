@@ -57,7 +57,6 @@ public class InventoryClose implements Listener {
 
             saveBackPack(backPack, backPackCommand, inv, async);
 
-
         } else if (backPack != null) {
             openInvs.remove(p);
 
@@ -66,7 +65,6 @@ public class InventoryClose implements Listener {
             }
 
             saveBackPack(backPack, trimmedID, inv, async);
-
 
         } else if (furnace != null) {
             openFurnaces.remove(p);
@@ -121,7 +119,7 @@ public class InventoryClose implements Listener {
 
             @Override
             public void onSuccess(Boolean bool) {
-                for (int i = 0; i < inv.countSlots(); i++) {
+                for (int i = 0; i < backPack.getSlots(); i++) {
                     ItemStack item = inv.getItem(i);
 
                     if (item != null) {
