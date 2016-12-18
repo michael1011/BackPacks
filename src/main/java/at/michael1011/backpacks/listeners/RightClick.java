@@ -171,47 +171,48 @@ public class RightClick implements Listener {
                                                     rs.beforeFirst();
 
                                                     if (rs.next()) {
-                                                            openFurnace(p, backPack, getInventoryTitle(backPack, meta.getDisplayName()),
+                                                        openFurnace(p, backPack, getInventoryTitle(backPack, meta.getDisplayName()),
                                                                     Boolean.valueOf(rs.getString("ores")), Boolean.valueOf(rs.getString("food")),
                                                                     Boolean.valueOf(rs.getString("autoFill")), rs.getInt("coal"));
 
-                                                        } else {
-                                                            final Boolean ores = furnaceGui.getBoolean("ores.defaultOption");
-                                                            final Boolean food = furnaceGui.getBoolean("food.defaultOption");
-                                                            final Boolean autoFill = furnaceGui.getBoolean("autoFill.defaultOption");
+                                                    } else {
+                                                        final Boolean ores = furnaceGui.getBoolean("ores.defaultOption");
+                                                        final Boolean food = furnaceGui.getBoolean("food.defaultOption");
+                                                        final Boolean autoFill = furnaceGui.getBoolean("autoFill.defaultOption");
 
-                                                            SQL.query("INSERT INTO bp_furnaces (uuid, ores, food, autoFill, coal) VALUES ('"+trimmedID+"', '"+
-                                                                    String.valueOf(ores) + "', '" +
-                                                                    String.valueOf(food) + "', '" +
-                                                                    String.valueOf(autoFill) + "', '0')", new SQL.Callback<Boolean>() {
+                                                        SQL.query("INSERT INTO bp_furnaces (uuid, ores, food, autoFill, coal) VALUES ('"+trimmedID+"', '"+
+                                                                String.valueOf(ores) + "', '" +
+                                                                String.valueOf(food) + "', '" +
+                                                                String.valueOf(autoFill) + "', '0')", new SQL.Callback<Boolean>() {
 
-                                                                @Override
-                                                                public void onSuccess(Boolean rs) {
-                                                                    openFurnace(p, backPack, item.getItemMeta().getDisplayName(), ores, food, autoFill, 0);
-                                                                }
+                                                            @Override
+                                                            public void onSuccess(Boolean rs) {
+                                                                openFurnace(p, backPack, item.getItemMeta().getDisplayName(), ores, food, autoFill, 0);
+                                                            }
 
-                                                                @Override
-                                                                public void onFailure(Throwable e) {}
+                                                            @Override
+                                                            public void onFailure(Throwable e) {}
 
-                                                            });
-                                                        }
-
-                                                        rs.close();
-
-                                                    } catch (SQLException e) {
-                                                        e.printStackTrace();
+                                                        });
                                                     }
 
+                                                    rs.close();
+
+                                                } catch (SQLException e) {
+                                                    e.printStackTrace();
                                                 }
 
-                                                @Override
-                                                public void onFailure(Throwable e) {}
+                                            }
 
-                                            });
+                                            @Override
+                                            public void onFailure(Throwable e) {}
 
-                                        }
+                                        });
+
+                                    }
 
                                     break;
+
                             }
 
                         } else {
@@ -429,7 +430,6 @@ public class RightClick implements Listener {
         openFurnaces.put(opener, backPack);
         openFurnacesInvs.put(opener, inv);
 
-        opener.getOpenInventory().close();
         opener.openInventory(inv);
     }
 
