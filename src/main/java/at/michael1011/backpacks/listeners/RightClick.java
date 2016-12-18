@@ -75,131 +75,60 @@ public class RightClick implements Listener {
                 for (final BackPack backPack : Crafting.backPacks) {
                     final ItemMeta meta = item.getItemMeta();
 
-                    if (backPack.getLore().equals(meta.getLore())) {
-                        final Player p = e.getPlayer();
+                    if (meta.hasLore()) {
+                        if (backPack.getLore().equals(meta.getLore())) {
+                            final Player p = e.getPlayer();
 
-                        if (p.hasPermission("backpacks.use." + backPack) || p.hasPermission("backpacks.*")) {
-                            final String trimmedID = getTrimmedId(p);
+                            if (p.hasPermission("backpacks.use." + backPack) || p.hasPermission("backpacks.*")) {
+                                final String trimmedID = getTrimmedId(p);
 
-                            playOpenSound(p, backPack);
+                                playOpenSound(p, backPack);
 
-                            switch (backPack.getType().toString()) {
-                                case "normal":
-                                    SQL.checkTable("bp_" + backPack.getName() + "_" + trimmedID, new SQL.Callback<Boolean>() {
-
-                                        @Override
-                                        public void onSuccess(Boolean rs) {
-                                            if (rs) {
-                                                SQL.getResult("SELECT * FROM bp_" + backPack.getName() + "_" + trimmedID,
-                                                        new SQL.Callback<ResultSet>() {
-
-                                                    @Override
-                                                    public void onSuccess(ResultSet rs) {
-                                                        Inventory open = getInv(rs, p, backPack,
-                                                                getInventoryTitle(backPack, meta.getDisplayName()),
-                                                                true, null);
-
-                                                        if (open != null) {
-                                                            p.openInventory(open);
-                                                        }
-
-                                                    }
-
-                                                    @Override
-                                                    public void onFailure(Throwable e) {}
-
-                                                });
-
-                                            } else {
-                                                SQL.query("CREATE TABLE IF NOT EXISTS bp_"+ backPack.getName() + "_" + trimmedID + "(position INT(100), material VARCHAR(100), " +
-                                                        "durability INT(100), amount INT(100), name VARCHAR(100), lore VARCHAR(1000), enchantments VARCHAR(1000), " +
-                                                        "potion VARCHAR(1000))", new SQL.Callback<Boolean>() {
-
-                                                    @Override
-                                                    public void onSuccess(Boolean rs) {
-                                                        openInvs.put(p, backPack);
-
-                                                        p.openInventory(Bukkit.getServer().createInventory(p, backPack.getSlots(),
-                                                                getInventoryTitle(backPack, meta.getDisplayName())));
-                                                    }
-
-                                                    @Override
-                                                    public void onFailure(Throwable e) {}
-
-                                                });
-
-                                            }
-
-                                        }
-
-                                        @Override
-                                        public void onFailure(Throwable e) {}
-
-                                    });
-
-                                    break;
-
-                                case "ender":
-                                    openInvsOther.put(p, backPack);
-
-                                    p.openInventory(p.getEnderChest());
-
-                                    break;
-
-                                case "crafting":
-                                    openInvsOther.put(p, backPack);
-
-                                    p.openWorkbench(p.getLocation(), true);
-
-                                    break;
-
-                                case "trash":
-                                    openInvsOther.put(p, backPack);
-
-                                    p.openInventory(Bukkit.getServer().createInventory(p, backPack.getSlots(),
-                                            getInventoryTitle(backPack, meta.getDisplayName())));
-
-                                case "furnace":
-                                    Boolean guiEnabled = backPack.getFurnaceGui();
-
-                                    if (guiEnabled) {
-                                        SQL.getResult("SELECT * FROM bp_furnaces WHERE uuid='" + trimmedID + "'", new SQL.Callback<ResultSet>() {
+                                switch (backPack.getType().toString()) {
+                                    case "normal":
+                                        SQL.checkTable("bp_" + backPack.getName() + "_" + trimmedID, new SQL.Callback<Boolean>() {
 
                                             @Override
-                                            public void onSuccess(ResultSet rs) {
-                                                try {
-                                                    rs.beforeFirst();
+                                            public void onSuccess(Boolean rs) {
+                                                if (rs) {
+                                                    SQL.getResult("SELECT * FROM bp_" + backPack.getName() + "_" + trimmedID,
+                                                            new SQL.Callback<ResultSet>() {
 
-                                                    if (rs.next()) {
-                                                        openFurnace(p, backPack, getInventoryTitle(backPack, meta.getDisplayName()),
-                                                                    Boolean.valueOf(rs.getString("ores")), Boolean.valueOf(rs.getString("food")),
-                                                                    Boolean.valueOf(rs.getString("autoFill")), rs.getInt("coal"));
+                                                                @Override
+                                                                public void onSuccess(ResultSet rs) {
+                                                                    Inventory open = getInv(rs, p, backPack,
+                                                                            getInventoryTitle(backPack, meta.getDisplayName()),
+                                                                            true, null);
 
-                                                    } else {
-                                                        final Boolean ores = furnaceGui.getBoolean("ores.defaultOption");
-                                                        final Boolean food = furnaceGui.getBoolean("food.defaultOption");
-                                                        final Boolean autoFill = furnaceGui.getBoolean("autoFill.defaultOption");
+                                                                    if (open != null) {
+                                                                        p.openInventory(open);
+                                                                    }
 
-                                                        SQL.query("INSERT INTO bp_furnaces (uuid, ores, food, autoFill, coal) VALUES ('"+trimmedID+"', '"+
-                                                                String.valueOf(ores) + "', '" +
-                                                                String.valueOf(food) + "', '" +
-                                                                String.valueOf(autoFill) + "', '0')", new SQL.Callback<Boolean>() {
+                                                                }
 
-                                                            @Override
-                                                            public void onSuccess(Boolean rs) {
-                                                                openFurnace(p, backPack, item.getItemMeta().getDisplayName(), ores, food, autoFill, 0);
-                                                            }
+                                                                @Override
+                                                                public void onFailure(Throwable e) {}
 
-                                                            @Override
-                                                            public void onFailure(Throwable e) {}
+                                                            });
 
-                                                        });
-                                                    }
+                                                } else {
+                                                    SQL.query("CREATE TABLE IF NOT EXISTS bp_"+ backPack.getName() + "_" + trimmedID + "(position INT(100), material VARCHAR(100), " +
+                                                            "durability INT(100), amount INT(100), name VARCHAR(100), lore VARCHAR(1000), enchantments VARCHAR(1000), " +
+                                                            "potion VARCHAR(1000))", new SQL.Callback<Boolean>() {
 
-                                                    rs.close();
+                                                        @Override
+                                                        public void onSuccess(Boolean rs) {
+                                                            openInvs.put(p, backPack);
 
-                                                } catch (SQLException e) {
-                                                    e.printStackTrace();
+                                                            p.openInventory(Bukkit.getServer().createInventory(p, backPack.getSlots(),
+                                                                    getInventoryTitle(backPack, meta.getDisplayName())));
+                                                        }
+
+                                                        @Override
+                                                        public void onFailure(Throwable e) {}
+
+                                                    });
+
                                                 }
 
                                             }
@@ -209,18 +138,92 @@ public class RightClick implements Listener {
 
                                         });
 
-                                    }
+                                        break;
 
-                                    break;
+                                    case "ender":
+                                        openInvsOther.put(p, backPack);
 
+                                        p.openInventory(p.getEnderChest());
+
+                                        break;
+
+                                    case "crafting":
+                                        openInvsOther.put(p, backPack);
+
+                                        p.openWorkbench(p.getLocation(), true);
+
+                                        break;
+
+                                    case "trash":
+                                        openInvsOther.put(p, backPack);
+
+                                        p.openInventory(Bukkit.getServer().createInventory(p, backPack.getSlots(),
+                                                getInventoryTitle(backPack, meta.getDisplayName())));
+
+                                    case "furnace":
+                                        Boolean guiEnabled = backPack.getFurnaceGui();
+
+                                        if (guiEnabled) {
+                                            SQL.getResult("SELECT * FROM bp_furnaces WHERE uuid='" + trimmedID + "'", new SQL.Callback<ResultSet>() {
+
+                                                @Override
+                                                public void onSuccess(ResultSet rs) {
+                                                    try {
+                                                        rs.beforeFirst();
+
+                                                        if (rs.next()) {
+                                                            openFurnace(p, backPack, getInventoryTitle(backPack, meta.getDisplayName()),
+                                                                    Boolean.valueOf(rs.getString("ores")), Boolean.valueOf(rs.getString("food")),
+                                                                    Boolean.valueOf(rs.getString("autoFill")), rs.getInt("coal"));
+
+                                                        } else {
+                                                            final Boolean ores = furnaceGui.getBoolean("ores.defaultOption");
+                                                            final Boolean food = furnaceGui.getBoolean("food.defaultOption");
+                                                            final Boolean autoFill = furnaceGui.getBoolean("autoFill.defaultOption");
+
+                                                            SQL.query("INSERT INTO bp_furnaces (uuid, ores, food, autoFill, coal) VALUES ('"+trimmedID+"', '"+
+                                                                    String.valueOf(ores) + "', '" +
+                                                                    String.valueOf(food) + "', '" +
+                                                                    String.valueOf(autoFill) + "', '0')", new SQL.Callback<Boolean>() {
+
+                                                                @Override
+                                                                public void onSuccess(Boolean rs) {
+                                                                    openFurnace(p, backPack, item.getItemMeta().getDisplayName(), ores, food, autoFill, 0);
+                                                                }
+
+                                                                @Override
+                                                                public void onFailure(Throwable e) {}
+
+                                                            });
+                                                        }
+
+                                                        rs.close();
+
+                                                    } catch (SQLException e) {
+                                                        e.printStackTrace();
+                                                    }
+
+                                                }
+
+                                                @Override
+                                                public void onFailure(Throwable e) {}
+
+                                            });
+
+                                        }
+
+                                        break;
+
+                                }
+
+                            } else {
+                                p.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                        messages.getString("Help.noPermission")));
                             }
 
-                        } else {
-                            p.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                    messages.getString("Help.noPermission")));
+                            break;
                         }
 
-                        break;
                     }
 
                 }

@@ -117,7 +117,7 @@ public class Crafting {
                 } catch (IllegalArgumentException e) {
                     assert sound != null;
 
-                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                    sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
                             messages.getString("Help.soundNotValid")
                                     .replaceAll("%sound%", sound.toUpperCase())
                                     .replaceAll("%backpack%", backPack)));

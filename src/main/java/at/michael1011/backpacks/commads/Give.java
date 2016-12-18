@@ -37,10 +37,10 @@ public class Give implements CommandExecutor {
                     giveBackPack(sender, (Player) sender, args[0]);
 
                 } else {
-                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                    sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
                             messages.getString("Help.onlyPlayers")));
 
-                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                    sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
                             messages.getString(path+"onlyPlayersAlternative")));
                 }
 
@@ -53,7 +53,7 @@ public class Give implements CommandExecutor {
                     giveBackPack(sender, target, args[0]);
 
                 } else {
-                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                    sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
                             messages.getString("Help.playerNotFound").replaceAll("%target%", targetName)));
                 }
 
@@ -61,13 +61,13 @@ public class Give implements CommandExecutor {
                 Map<String, Object> syntaxError = messages.getConfigurationSection(path+"syntaxError").getValues(true);
 
                 for(Map.Entry<String, Object> error : syntaxError.entrySet()) {
-                    sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&', (String) error.getValue()));
+                    sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', (String) error.getValue()));
                 }
 
             }
 
         } else {
-            sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+            sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
                     messages.getString("Help.noPermission")));
         }
 
