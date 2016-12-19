@@ -92,7 +92,7 @@ Help:
       soundNotValid: "&cThe sound &4%sound% &cis &4not valid"
 
       description:
-        1: "&eSet the &6description &ewith &6/bpc desc <description>"
+        1: "&eSet the &6description &ewith &6/bpc description <description>"
         2: "&eCreate a new line with &6;"
 
       material:
@@ -121,7 +121,7 @@ Help:
 
       type:
         1: "&eSet the &6type &eof the backpack with &6/bpc type <type>"
-        2: "&eThe available backpacks are: &6normal&e, &6ender&e, &6crafting&e, &6furnace"
+        2: "&eThe available backpacks are: &6normal&e, &6ender&e, &6crafting&e, &6furnace&e, &6trash"
 
       typeNotFound: "&cThe the type &4%type% &cis not available"
 
