@@ -73,24 +73,30 @@ public class InventoryClick implements Listener {
             }
 
         } else if (!config.getBoolean("BackPackInBackPack")) {
-            if (e.getClick().isKeyboardClick()) {
-                Inventory inv = p.getInventory();
-                int hotBarSlot = e.getHotbarButton();
+            if (openInvs.containsKey(p)) {
+                if (e.getClick().isKeyboardClick()) {
+                    Inventory inv = p.getInventory();
+                    int hotBarSlot = e.getHotbarButton();
 
-                ItemStack item = inv.getItem(hotBarSlot);
+                    try {
+                        ItemStack item = inv.getItem(hotBarSlot);
 
-                if (itemIsBackPack(item)) {
-                    e.setCancelled(true);
-                }
+                        if (itemIsBackPack(item)) {
+                            e.setCancelled(true);
+                        }
 
-            } else if (openInvs.containsKey(p)) {
-                ItemStack[] items = {e.getCurrentItem(), e.getCursor()};
+                    } catch (ArrayIndexOutOfBoundsException ignored) {}
 
-                for (ItemStack item : items) {
-                    if (itemIsBackPack(item)) {
-                        e.setCancelled(true);
+                } else {
+                    ItemStack[] items = {e.getCurrentItem(), e.getCursor()};
 
-                        break;
+                    for (ItemStack item : items) {
+                        if (itemIsBackPack(item)) {
+                            e.setCancelled(true);
+
+                            break;
+                        }
+
                     }
 
                 }
