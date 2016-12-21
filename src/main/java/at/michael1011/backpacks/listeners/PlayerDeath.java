@@ -12,11 +12,11 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.sql.ResultSet;
-import java.util.Map;
 
-import static at.michael1011.backpacks.Crafting.backPacksItems;
+import static at.michael1011.backpacks.Crafting.backPacks;
 import static at.michael1011.backpacks.Main.config;
 import static at.michael1011.backpacks.Main.getTrimmedId;
 import static at.michael1011.backpacks.listeners.RightClick.getInv;
@@ -25,66 +25,85 @@ import static at.michael1011.backpacks.listeners.RightClick.openInvs;
 public class PlayerDeath implements Listener {
 
     public PlayerDeath(Main main) {
-        if (config.getBoolean("dropOnDeath")) {
-            main.getServer().getPluginManager().registerEvents(this, main);
-        }
+        main.getServer().getPluginManager().registerEvents(this, main);
     }
 
     @EventHandler(priority = EventPriority.NORMAL)
     public void playerDeath(final PlayerDeathEvent e) {
-        if (!e.getKeepInventory()) {
-            final Player p = e.getEntity();
+        if (config.getBoolean("dropOnDeath")) {
+            if (!e.getKeepInventory()) {
+                final Player p = e.getEntity();
 
-            for (Map.Entry<BackPack, ItemStack> entry : backPacksItems.entrySet()) {
-                final ItemStack item = entry.getValue();
+                for (final BackPack backPack : backPacks) {
+                    ItemStack item = null;
+                    Boolean contains = false;
 
-                if (p.getInventory().contains(item)) {
-                    final BackPack backPack = entry.getKey();
+                    for (ItemStack invItem : p.getInventory().getContents()) {
+                        if (invItem != null) {
+                            if (invItem.hasItemMeta()) {
+                                ItemMeta meta = invItem.getItemMeta();
 
-                    switch (backPack.getType().toString()) {
-                        case "normal":
-                            final String trimmedID = getTrimmedId(p);
+                                if (meta.hasLore()) {
+                                    if (meta.getLore().equals(backPack.getLore())) {
+                                        item = invItem;
+                                        contains = true;
 
-                            SQL.getResult("SELECT * FROM bp_" + backPack.getName() + "_" + trimmedID,
-                                    new SQL.Callback<ResultSet>() {
-
-                                @Override
-                                public void onSuccess(ResultSet rs) {
-                                    Inventory inv = getInv(rs, p, backPack, item.getItemMeta().getDisplayName(), true, null);
-
-                                    openInvs.remove(p);
-
-                                    if (inv != null) {
-                                        dropInventory(inv.getContents(), p);
+                                        break;
                                     }
-
-                                    SQL.query("DELETE FROM bp_" + backPack.getName() + "_" + trimmedID, new SQL.Callback<Boolean>() {
-
-                                        @Override
-                                        public void onSuccess(Boolean rs) {}
-
-                                        @Override
-                                        public void onFailure(Throwable e) {}
-
-                                    });
-
                                 }
+                            }
+                        }
 
-                                @Override
-                                public void onFailure(Throwable e) {}
+                    }
 
-                            });
+                    if (contains) {
+                        switch (backPack.getType().toString()) {
+                            case "normal":
+                                final String trimmedID = getTrimmedId(p);
+                                final ItemStack finalItem = item;
 
-                            break;
+                                SQL.getResult("SELECT * FROM bp_" + backPack.getName() + "_" + trimmedID,
+                                        new SQL.Callback<ResultSet>() {
 
-                        case "ender":
-                            Inventory inv = p.getEnderChest();
+                                            @Override
+                                            public void onSuccess(ResultSet rs) {
+                                                final Inventory inv = getInv(rs, p, backPack, finalItem.getItemMeta().getDisplayName(), true, null);
 
-                            dropInventory(inv.getContents(), p);
+                                                openInvs.remove(p);
 
-                            inv.clear();
+                                                SQL.query("DELETE FROM bp_" + backPack.getName() + "_" + trimmedID, new SQL.Callback<Boolean>() {
 
-                            break;
+                                                    @Override
+                                                    public void onSuccess(Boolean rs) {
+                                                        if (inv != null) {
+                                                            dropInventory(inv.getContents(), p);
+                                                        }
+                                                    }
+
+                                                    @Override
+                                                    public void onFailure(Throwable e) {}
+
+                                                });
+
+                                            }
+
+                                            @Override
+                                            public void onFailure(Throwable e) {}
+
+                                        });
+
+                                break;
+
+                            case "ender":
+                                Inventory inv = p.getEnderChest();
+
+                                dropInventory(inv.getContents(), p);
+
+                                inv.clear();
+
+                                break;
+                        }
+
                     }
 
                 }

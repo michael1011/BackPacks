@@ -15,8 +15,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import static at.michael1011.backpacks.Crafting.backPacks;
-import static at.michael1011.backpacks.Main.furnaceGui;
-import static at.michael1011.backpacks.Main.getTrimmedId;
+import static at.michael1011.backpacks.Main.*;
 import static at.michael1011.backpacks.listeners.RightClick.*;
 
 public class InventoryClick implements Listener {
@@ -73,24 +72,44 @@ public class InventoryClick implements Listener {
 
             }
 
-        } else if (!Main.backPackInBackPack) {
-            if (openInvs.containsKey(p)) {
-                ItemStack item = e.getCurrentItem();
+        } else if (!config.getBoolean("BackPackInBackPack")) {
+            if (e.getClick().isKeyboardClick()) {
+                Inventory inv = p.getInventory();
+                int hotBarSlot = e.getHotbarButton();
 
-                if (item != null) {
-                    if (item.hasItemMeta()) {
-                        ItemMeta meta = item.getItemMeta();
+                ItemStack item = inv.getItem(hotBarSlot);
 
-                        if (meta.hasLore()) {
-                            for (BackPack backPack : backPacks) {
-                                if (backPack.getLore().equals(meta.getLore())) {
-                                    e.setCancelled(true);
+                if (itemIsBackPack(item)) {
+                    e.setCancelled(true);
+                }
 
-                                    break;
-                                }
+            } else if (openInvs.containsKey(p)) {
+                ItemStack[] items = {e.getCurrentItem(), e.getCursor()};
 
-                            }
+                for (ItemStack item : items) {
+                    if (itemIsBackPack(item)) {
+                        e.setCancelled(true);
 
+                        break;
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+    private boolean itemIsBackPack(ItemStack item) {
+        if (item != null) {
+            if (item.hasItemMeta()) {
+                ItemMeta meta = item.getItemMeta();
+
+                if (meta.hasLore()) {
+                    for (BackPack backPack : backPacks) {
+                        if (backPack.getLore().equals(meta.getLore())) {
+                            return true;
                         }
 
                     }
@@ -101,6 +120,7 @@ public class InventoryClick implements Listener {
 
         }
 
+        return false;
     }
 
     private void checkCoal(ItemStack item, InventoryClickEvent e) {

@@ -28,8 +28,6 @@ public class Main extends JavaPlugin {
 
     public static String prefix = "";
 
-    public static Boolean backPackInBackPack;
-
     public static List<String> availablePlayers = new ArrayList<>();
 
     private static Main main;
@@ -295,9 +293,6 @@ public class Main extends JavaPlugin {
             config.load(configF);
             messages.load(messagesF);
             furnaceGui.load(furnacesF);
-
-
-            backPackInBackPack = config.getBoolean("BackPackInBackPack");
 
             prefix = ChatColor.translateAlternateColorCodes('&', messages.getString("prefix"));
 

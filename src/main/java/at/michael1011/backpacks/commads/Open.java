@@ -11,17 +11,17 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
 
-import static at.michael1011.backpacks.Crafting.backPacksItems;
+import static at.michael1011.backpacks.Crafting.backPacks;
 import static at.michael1011.backpacks.Main.messages;
 import static at.michael1011.backpacks.Main.prefix;
 import static at.michael1011.backpacks.commads.ListBackPacks.getBackPacks;
-import static at.michael1011.backpacks.listeners.RightClick.*;
+import static at.michael1011.backpacks.listeners.RightClick.getInv;
+import static at.michael1011.backpacks.listeners.RightClick.playOpenSound;
 
 public class Open implements CommandExecutor {
 
@@ -39,19 +39,16 @@ public class Open implements CommandExecutor {
                 final String target = args[1];
 
                 BackPack backPack = null;
-                ItemStack item = null;
 
-                for (Map.Entry<BackPack, ItemStack> entry : backPacksItems.entrySet()) {
-                    if (entry.getKey().getName().equals(args[0])) {
-                        backPack = entry.getKey();
-                        item = entry.getValue();
+                for (BackPack compare : backPacks) {
+                    if (compare.getName().equals(args[0])) {
+                        backPack = compare;
                     }
 
                 }
 
                 if (backPack != null) {
                     final BackPack finalBackPack = backPack;
-                    final ItemStack finalItem = item;
 
                     SQL.getResult("SELECT * FROM bp_users WHERE name='" + target + "'",
                             new SQL.Callback<ResultSet>() {
@@ -80,7 +77,8 @@ public class Open implements CommandExecutor {
 
                                                                 @Override
                                                                 public void onSuccess(ResultSet rs) {
-                                                                    Inventory open = getInv(rs, opener, finalBackPack, getInventoryTitle(finalBackPack, finalItem.getItemMeta().getDisplayName()),
+                                                                    Inventory open = getInv(rs, opener, finalBackPack,
+                                                                            finalBackPack.getName() + " of " + target,
                                                                             false, trimmedID);
 
                                                                     if(open != null) {
