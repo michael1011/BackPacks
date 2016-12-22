@@ -155,7 +155,7 @@ public class RightClick implements Listener {
                                         break;
 
                                     case "trash":
-                                        openInvsOther.put(p, backPack);
+                                        openInvs.put(p, backPack);
 
                                         p.openInventory(Bukkit.getServer().createInventory(p, backPack.getSlots(),
                                                 getInventoryTitle(backPack, meta.getDisplayName())));
