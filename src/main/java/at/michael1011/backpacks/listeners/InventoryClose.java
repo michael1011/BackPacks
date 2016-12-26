@@ -109,7 +109,7 @@ public class InventoryClose implements Listener {
             if (playSound) {
                 playCloseSound(p, openInvsOther.get(p));
             }
-            
+
         }
 
     }
@@ -216,7 +216,7 @@ public class InventoryClose implements Listener {
                             }
 
                             SQL.query("INSERT INTO bp_" + backPack.getName() + "_" + trimmedID + " (position, material, durability, amount, " +
-                                            "name, lore, enchantments, potion) values ('" + i + "', '" + material + "', '" + item.getDurability() + "', " +
+                                            "name, lore, enchantments, potion) VALUES ('" + i + "', '" + material + "', '" + item.getDurability() + "', " +
                                             "'" + item.getAmount() + "', '" + name + "', '" + lore + "', '" + enchantments.toString() + "', '" + potion + "')",
                                     new SQL.Callback<Boolean>() {
 

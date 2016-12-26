@@ -18,6 +18,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static at.michael1011.backpacks.Crafting.backPacks;
 import static at.michael1011.backpacks.Updater.update;
 
 public class Main extends JavaPlugin {
@@ -30,7 +31,7 @@ public class Main extends JavaPlugin {
 
     public static List<String> availablePlayers = new ArrayList<>();
 
-    private static Main main;
+    private static Boolean syncConfig = false;
 
     // todo: add anvil and enchanting backpack: http://bit.ly/2cDX46w
     // todo: verify backpacks with nbt tags
@@ -43,6 +44,8 @@ public class Main extends JavaPlugin {
 
         updateConfig(this);
 
+        syncConfig = config.getBoolean("MySQL.syncConfig");
+
         try {
             new SQL(this);
 
@@ -53,8 +56,6 @@ public class Main extends JavaPlugin {
             if (SQL.checkCon()) {
                 Bukkit.getConsoleSender().sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
                         messages.getString("MySQL.connected")));
-
-                main = this;
 
                 SQL.query("CREATE TABLE IF NOT EXISTS bp_users(name VARCHAR(100), uuid VARCHAR(100))", new SQL.Callback<Boolean>() {
 
@@ -82,31 +83,79 @@ public class Main extends JavaPlugin {
                                                 EnchantGlow.getGlow();
                                             } catch (IllegalArgumentException | IllegalStateException ignored) {}
 
-                                            Crafting.initCrafting(Bukkit.getConsoleSender());
+                                            if (syncConfig) {
+                                                SQL.checkTable("bp", new SQL.Callback<Boolean>() {
 
-                                            version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
+                                                    @Override
+                                                    public void onSuccess(Boolean rs) {
+                                                        if (rs) {
+                                                            // todo: load from database
 
-                                            new Join(main);
-                                            new RightClick(main);
-                                            new InventoryClose(main);
-                                            new BlockPlace(main);
-                                            new PlayerDeath(main);
-                                            new InventoryClick(main);
-                                            new BlockBreak(main);
-                                            new EntityDeath(main);
+                                                            init();
 
-                                            new Give(main);
-                                            new Open(main);
-                                            new Create(main);
-                                            new Reload(main);
-                                            new ListBackPacks(main);
+                                                        } else {
+                                                            init();
 
-                                            new Reconnect(main);
+                                                            SQL.query("CREATE TABLE bp(name VARCHAR(100), type VARCHAR(100), slots INT(100), " +
+                                                                            "furnaceGui VARCHAR(100), lore VARCHAR(100), inventoryTitle VARCHAR(100), " +
+                                                                            "craftingRecipe VARCHAR(100), materials VARCHAR(100), openSound VARCHAR(100), closeSound VARCHAR(100))",
+                                                                    new SQL.Callback<Boolean>() {
 
-                                            if (config.getBoolean("Updater.enabled")) {
-                                                update(main, Bukkit.getConsoleSender());
+                                                                        @Override
+                                                                        public void onSuccess(Boolean rs) {
+                                                                            for (BackPack bp : backPacks) {
+                                                                                String openSound = "";
+                                                                                String closeSound = "";
 
-                                                new Updater(main);
+                                                                                if (bp.getOpenSound() != null) {
+                                                                                    openSound = bp.getOpenSound().name();
+                                                                                }
+
+                                                                                if (bp.getCloseSound() != null) {
+                                                                                    closeSound = bp.getCloseSound().name();
+                                                                                }
+
+                                                                                SQL.query("INSERT INTO bp (name, type, slots, furnaceGui, lore, inventoryTitle, craftingRecipe, materials, openSound, closeSound) VALUES " +
+                                                                                        "('" + bp.getName() + "', '" + bp.getType().toString() + "', '" + bp.getSlots() + "', '" + String.valueOf(bp.getFurnaceGui()) + "', " +
+                                                                                        "'" + bp.getLoreString() + "', '" + bp.getInventoryTitle() + "', '" + bp.getCraftingRecipe() + "', '" + bp.getMaterials() + "', " +
+                                                                                        "'" + openSound + "', '" + closeSound + "')", new SQL.Callback<Boolean>() {
+
+                                                                                    @Override
+                                                                                    public void onSuccess(Boolean rs) {}
+
+                                                                                    @Override
+                                                                                    public void onFailure(Throwable e) {}
+
+                                                                                });
+
+                                                                            }
+
+                                                                            config.set("BackPacks", null);
+
+                                                                            try {
+                                                                                config.save(new File(getDataFolder(), "config.yml"));
+                                                                            } catch (IOException e) {
+                                                                                e.printStackTrace();
+                                                                            }
+
+                                                                        }
+
+                                                                        @Override
+                                                                        public void onFailure(Throwable e) {}
+
+                                                            });
+
+                                                        }
+
+                                                    }
+
+                                                    @Override
+                                                    public void onFailure(Throwable e) {}
+
+                                                });
+
+                                            } else {
+                                                init();
                                             }
 
                                         }
@@ -172,6 +221,38 @@ public class Main extends JavaPlugin {
                     messages.getString("MySQL.closedConnection")));
         }
 
+    }
+
+    private void init() {
+        Crafting.initCrafting(Bukkit.getConsoleSender());
+
+        version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
+
+        new Join(this);
+        new RightClick(this);
+        new InventoryClose(this);
+        new BlockPlace(this);
+        new PlayerDeath(this);
+        new InventoryClick(this);
+        new BlockBreak(this);
+        new EntityDeath(this);
+
+        new Give(this);
+        new Open(this);
+        new Reload(this);
+        new ListBackPacks(this);
+
+        new Reconnect(this);
+
+        if (!syncConfig) {
+            new Create(this);
+        }
+
+        if (config.getBoolean("Updater.enabled")) {
+            update(this, Bukkit.getConsoleSender());
+
+            new Updater(this);
+        }
     }
 
     private void updateConfig(Main main) {
@@ -248,6 +329,7 @@ public class Main extends JavaPlugin {
                 if (configVersion == 2) {
                     messages.set("Help.bpopen.error", messagesJar.getString("Help.bpopen.error"));
 
+                    config.set("MySQL.syncConfig", false);
                     config.set("configVersion", 3);
 
                     Bukkit.getConsoleSender().sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',

@@ -2,6 +2,7 @@ package at.michael1011.backpacks;
 
 import org.bukkit.Sound;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BackPack {
@@ -31,17 +32,21 @@ public class BackPack {
 
     private String name;
 
-    private Type type;
+    private Type type = Type.normal;
     private int slots = 0;
     private Boolean furnaceGui = false;
 
-    private List<String> lore;
-    private String inventoryTitle;
-    private Sound openSound;
-    private Sound closeSound;
+    private List<String> lore = new ArrayList<>();
+    private String inventoryTitle = "";
+
+    private String craftingRecipe = "";
+    private String materials = "";
+
+    private Sound openSound = null;
+    private Sound closeSound = null;
 
     BackPack(String name, Type type, int slots, Boolean furnaceGui, List<String> lore, String inventoryTitle,
-                    Sound openSound, Sound closeSound) {
+             Sound openSound, Sound closeSound) {
 
         this.name = name;
 
@@ -51,6 +56,25 @@ public class BackPack {
 
         this.lore = lore;
         this.inventoryTitle = inventoryTitle;
+        this.openSound = openSound;
+        this.closeSound = closeSound;
+    }
+
+    BackPack(String name, Type type, int slots, Boolean furnaceGui, List<String> lore, String inventoryTitle,
+             String craftingRecipe, String materials, Sound openSound, Sound closeSound) {
+
+        this.name = name;
+
+        this.type = type;
+        this.slots = slots;
+        this.furnaceGui = furnaceGui;
+
+        this.lore = lore;
+        this.inventoryTitle = inventoryTitle;
+
+        this.craftingRecipe = craftingRecipe;
+        this.materials = materials;
+
         this.openSound = openSound;
         this.closeSound = closeSound;
     }
@@ -77,6 +101,14 @@ public class BackPack {
 
     public void setInventoryTitle(String inventoryTitle) {
         this.inventoryTitle = inventoryTitle;
+    }
+
+    public void setCraftingRecipe(String craftingRecipe) {
+        this.craftingRecipe = craftingRecipe;
+    }
+
+    public void setMaterials(String materials) {
+        this.materials = materials;
     }
 
     public void setOpenSound(Sound openSound) {
@@ -108,8 +140,31 @@ public class BackPack {
         return lore;
     }
 
+    public String getLoreString() {
+        StringBuilder builder = new StringBuilder();
+
+        for (String entry : lore) {
+            if (builder.length() > 0) {
+                builder.append("\n");
+            }
+
+            builder.append(entry);
+
+        }
+
+        return builder.toString();
+    }
+
     public String getInventoryTitle() {
         return inventoryTitle;
+    }
+
+    public String getCraftingRecipe() {
+        return craftingRecipe;
+    }
+
+    public String getMaterials() {
+        return materials;
     }
 
     public Sound getOpenSound() {

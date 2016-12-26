@@ -26,9 +26,9 @@ public class Crafting {
     private static Boolean slotsDivisible = true;
 
     public static void initCrafting(CommandSender sender) {
-        Map<String, Object> enabled = config.getConfigurationSection(path+"enabled").getValues(true);
+        for (Map.Entry<String, Object> entry : config.getConfigurationSection(path+"enabled")
+                .getValues(true).entrySet()) {
 
-        for (Map.Entry<String, Object> entry : enabled.entrySet()) {
             String backPack = entry.getValue().toString();
             String backPackPath = path + backPack+".";
 
@@ -40,7 +40,7 @@ public class Crafting {
                         if (!config.getBoolean(backPackPath + "crafting.disabled")
                                 && config.get(backPackPath + "crafting.1") != null) {
 
-                            Bukkit.getServer().addRecipe(createShapedRecipe(sender, item, backPackPath, backPack));
+                            Bukkit.getServer().addRecipe(createShapedRecipe(sender, item, backPacks.get(backPacks.size() - 1), backPackPath));
                         }
 
                         sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
@@ -133,8 +133,14 @@ public class Crafting {
                     furnaceGui = config.getBoolean(backPackPath + "gui.enabled");
                 }
 
-                BackPack finishedBackPack = new BackPack(backPack, type, slots, furnaceGui, lore,
-                        config.getString(backPackPath + "inventoryTitle"), open, close);
+                String inventoryTitle = "";
+                String inventoryTitleConfig = config.getString(backPackPath + "inventoryTitle");
+
+                if (inventoryTitleConfig != null) {
+                    inventoryTitle = inventoryTitleConfig;
+                }
+
+                BackPack finishedBackPack = new BackPack(backPack, type, slots, furnaceGui, lore, inventoryTitle, open, close)  ;
 
                 backPacks.add(finishedBackPack);
                 backPacksItems.put(finishedBackPack, item);
@@ -157,32 +163,47 @@ public class Crafting {
 
     }
 
-    private static ShapedRecipe createShapedRecipe(CommandSender sender, ItemStack item, String backPackPath,
-                                                   String backPack) {
+    private static ShapedRecipe createShapedRecipe(CommandSender sender, ItemStack item, BackPack backPack, String backPackPath) {
 
         ShapedRecipe recipe = new ShapedRecipe(item);
 
+        String crafting1 = config.getString(backPackPath + "crafting.1");
+        String crafting2 = config.getString(backPackPath + "crafting.2");
+        String crafting3 = config.getString(backPackPath + "crafting.3");
+
         recipe.shape(
-                config.getString(backPackPath + "crafting.1").replaceAll("\\+", ""),
-                config.getString(backPackPath + "crafting.2").replaceAll("\\+", ""),
-                config.getString(backPackPath + "crafting.3").replaceAll("\\+", ""));
+                crafting1.replaceAll("\\+", ""),
+                crafting2.replaceAll("\\+", ""),
+                crafting3.replaceAll("\\+", ""));
+
+        backPack.setCraftingRecipe(crafting1 + "/" + crafting2 + "/" + crafting3);
 
         Map<String, Object> ingredients = config.getConfigurationSection(backPackPath +
                 "crafting.materials").getValues(true);
 
-        for(Map.Entry<String, Object> entry : ingredients.entrySet()) {
+        for (Map.Entry<String, Object> entry : ingredients.entrySet()) {
+            char ingredient = entry.getKey().charAt(0);
             String material = entry.getValue().toString().toUpperCase();
 
+            backPack.setMaterials(backPack.getMaterials() + ingredient + ":" + material + "/");
+
             try {
-                recipe.setIngredient(entry.getKey().charAt(0), Material.valueOf(material));
+                recipe.setIngredient(ingredient, Material.valueOf(material));
 
             } catch (IllegalArgumentException e) {
                 sender.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
                         messages.getString("Help.materialNotValid")
-                                .replaceAll("%material%", material).replaceAll("%backpack%", backPack)));
+                                .replaceAll("%material%", material).replaceAll("%backpack%", backPack.getName())));
 
                 return null;
             }
+
+        }
+
+        String materials = backPack.getMaterials();
+
+        if (!materials.equals("")) {
+            backPack.setMaterials(materials.substring(0, materials.length() - 1));
         }
 
         return recipe;
