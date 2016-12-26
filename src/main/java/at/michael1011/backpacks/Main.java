@@ -46,7 +46,7 @@ public class Main extends JavaPlugin {
 
         updateConfig(this);
 
-        syncConfig = config.getBoolean("MySQL.syncConfig");
+        syncConfig = config.getBoolean("MySQL.syncBackPacks");
 
         try {
             new SQL(this);
@@ -352,7 +352,7 @@ public class Main extends JavaPlugin {
                 if (configVersion == 2) {
                     messages.set("Help.bpopen.error", messagesJar.getString("Help.bpopen.error"));
 
-                    config.set("MySQL.syncConfig", false);
+                    config.set("MySQL.syncBackPacks", false);
                     config.set("configVersion", 3);
 
                     Bukkit.getConsoleSender().sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',

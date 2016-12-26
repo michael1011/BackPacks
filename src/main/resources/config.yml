@@ -15,7 +15,7 @@ MySQL:
   password: "psswrd"
 
   # Only useful for NamelessMC (https://github.com/NamelessMC/Nameless)
-  syncConfig: false
+  syncBackPacks: false
 
 
 # If a player dies with a backpack in his inventory should the content of backpack get dropped too?
