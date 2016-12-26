@@ -1,5 +1,6 @@
 package at.michael1011.backpacks;
 
+import org.bukkit.Material;
 import org.bukkit.Sound;
 
 import java.util.ArrayList;
@@ -33,9 +34,11 @@ public class BackPack {
     private String name;
 
     private Type type = Type.normal;
+    private Material material = null;
     private int slots = 0;
     private Boolean furnaceGui = false;
 
+    private String itemTitle = "";
     private List<String> lore = new ArrayList<>();
     private String inventoryTitle = "";
 
@@ -45,30 +48,35 @@ public class BackPack {
     private Sound openSound = null;
     private Sound closeSound = null;
 
-    BackPack(String name, Type type, int slots, Boolean furnaceGui, List<String> lore, String inventoryTitle,
+    BackPack(String name, Type type, Material material, int slots, Boolean furnaceGui, String itemTitle, List<String> lore, String inventoryTitle,
              Sound openSound, Sound closeSound) {
 
         this.name = name;
 
+        this.material = material;
         this.type = type;
         this.slots = slots;
         this.furnaceGui = furnaceGui;
 
+        this.itemTitle = itemTitle;
         this.lore = lore;
         this.inventoryTitle = inventoryTitle;
+
         this.openSound = openSound;
         this.closeSound = closeSound;
     }
 
-    BackPack(String name, Type type, int slots, Boolean furnaceGui, List<String> lore, String inventoryTitle,
+    BackPack(String name, Type type, Material material, int slots, Boolean furnaceGui, String itemTitle, List<String> lore, String inventoryTitle,
              String craftingRecipe, String materials, Sound openSound, Sound closeSound) {
 
         this.name = name;
 
+        this.material = material;
         this.type = type;
         this.slots = slots;
         this.furnaceGui = furnaceGui;
 
+        this.itemTitle = itemTitle;
         this.lore = lore;
         this.inventoryTitle = inventoryTitle;
 
@@ -87,12 +95,20 @@ public class BackPack {
         this.type = type;
     }
 
+    public void setMaterial(Material material) {
+        this.material = material;
+    }
+
     public void setSlots(int slots) {
         this.slots = slots;
     }
 
     public void setFurnaceGui(Boolean furnaceGui) {
         this.furnaceGui = furnaceGui;
+    }
+
+    public void setItemTitle(String itemTitle) {
+        this.itemTitle = itemTitle;
     }
 
     public void setLore(List<String> lore) {
@@ -128,12 +144,20 @@ public class BackPack {
         return type;
     }
 
+    public Material getMaterial() {
+        return material;
+    }
+
     public int getSlots() {
         return slots;
     }
 
     public Boolean getFurnaceGui() {
         return furnaceGui;
+    }
+
+    public String getItemTitle() {
+        return itemTitle;
     }
 
     public List<String> getLore() {

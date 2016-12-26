@@ -52,6 +52,24 @@ public class SQL {
 
     }
 
+    public static void getResult(final String query, final Callback<ResultSet> callback, Boolean async) {
+        if (async) {
+            getResult(query, callback);
+
+        } else {
+            try {
+                callback.onSuccess(con.prepareStatement(query).executeQuery());
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+
+                callback.onFailure(e);
+            }
+
+        }
+
+    }
+
     public static void query(String query, Callback<Boolean> callback, Boolean async) {
         if (async) {
             query(query, callback);

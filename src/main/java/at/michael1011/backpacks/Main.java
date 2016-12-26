@@ -17,21 +17,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static at.michael1011.backpacks.Crafting.backPacks;
+import static at.michael1011.backpacks.Crafting.initConfig;
 import static at.michael1011.backpacks.Updater.update;
 
 public class Main extends JavaPlugin {
 
     public static String version;
 
+    public static List<String> availablePlayers = new ArrayList<>();
+
     public static YamlConfiguration config, messages, furnaceGui;
 
     public static String prefix = "";
 
-    public static List<String> availablePlayers = new ArrayList<>();
-
-    private static Boolean syncConfig = false;
+    static Boolean syncConfig = false;
 
     // todo: add anvil and enchanting backpack: http://bit.ly/2cDX46w
     // todo: verify backpacks with nbt tags
@@ -89,20 +91,37 @@ public class Main extends JavaPlugin {
                                                     @Override
                                                     public void onSuccess(Boolean rs) {
                                                         if (rs) {
-                                                            // todo: load from database
-
                                                             init();
 
                                                         } else {
-                                                            init();
-
-                                                            SQL.query("CREATE TABLE bp(name VARCHAR(100), type VARCHAR(100), slots INT(100), " +
-                                                                            "furnaceGui VARCHAR(100), lore VARCHAR(100), inventoryTitle VARCHAR(100), " +
+                                                            SQL.query("CREATE TABLE bp(enabled VARCHAR(100), name VARCHAR(100), type VARCHAR(100), material VARCHAR(100), slots INT(100), " +
+                                                                            "furnaceGui VARCHAR(100), itemTitle VARCHAR(100), lore VARCHAR(100), inventoryTitle VARCHAR(100), " +
                                                                             "craftingRecipe VARCHAR(100), materials VARCHAR(100), openSound VARCHAR(100), closeSound VARCHAR(100))",
                                                                     new SQL.Callback<Boolean>() {
 
                                                                         @Override
                                                                         public void onSuccess(Boolean rs) {
+                                                                            List<String> enabled = new ArrayList<>();
+
+                                                                            for (Map.Entry<String, Object> entry : config.getConfigurationSection("BackPacks.enabled")
+                                                                                    .getValues(true).entrySet()) {
+
+                                                                                enabled.add(entry.getValue().toString());
+                                                                            }
+
+                                                                            List<String> toLoad = new ArrayList<>();
+
+                                                                            for (Map.Entry<String, Object> entry : config.getConfigurationSection("BackPacks")
+                                                                                    .getValues(false).entrySet()) {
+
+                                                                                if (!entry.getKey().equals("enabled")) {
+                                                                                    toLoad.add(entry.getKey());
+                                                                                }
+
+                                                                            }
+
+                                                                            initConfig(toLoad, null, false);
+
                                                                             for (BackPack bp : backPacks) {
                                                                                 String openSound = "";
                                                                                 String closeSound = "";
@@ -115,9 +134,9 @@ public class Main extends JavaPlugin {
                                                                                     closeSound = bp.getCloseSound().name();
                                                                                 }
 
-                                                                                SQL.query("INSERT INTO bp (name, type, slots, furnaceGui, lore, inventoryTitle, craftingRecipe, materials, openSound, closeSound) VALUES " +
-                                                                                        "('" + bp.getName() + "', '" + bp.getType().toString() + "', '" + bp.getSlots() + "', '" + String.valueOf(bp.getFurnaceGui()) + "', " +
-                                                                                        "'" + bp.getLoreString() + "', '" + bp.getInventoryTitle() + "', '" + bp.getCraftingRecipe() + "', '" + bp.getMaterials() + "', " +
+                                                                                SQL.query("INSERT INTO bp (enabled, name, type, material, slots, furnaceGui, itemTitle, lore, inventoryTitle, craftingRecipe, materials, openSound, closeSound) VALUES " +
+                                                                                        "('" + String.valueOf(enabled.contains(bp.getName())) + "', '" + bp.getName() + "', '" + bp.getType().toString() + "', '" + bp.getMaterial().name() + "', '" + bp.getSlots() + "', '" + String.valueOf(bp.getFurnaceGui()) + "', " +
+                                                                                        "'" + bp.getItemTitle() + "', '" + bp.getLoreString().replaceAll("§", "&") + "', '" + bp.getInventoryTitle().replaceAll("§", "&") + "', '" + bp.getCraftingRecipe() + "', '" + bp.getMaterials() + "', " +
                                                                                         "'" + openSound + "', '" + closeSound + "')", new SQL.Callback<Boolean>() {
 
                                                                                     @Override
@@ -137,6 +156,10 @@ public class Main extends JavaPlugin {
                                                                             } catch (IOException e) {
                                                                                 e.printStackTrace();
                                                                             }
+
+                                                                            Bukkit.getServer().resetRecipes();
+
+                                                                            onEnable();
 
                                                                         }
 
