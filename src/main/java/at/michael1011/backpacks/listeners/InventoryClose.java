@@ -21,6 +21,7 @@ import org.bukkit.potion.PotionData;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -29,6 +30,8 @@ import static at.michael1011.backpacks.Main.version;
 import static at.michael1011.backpacks.listeners.RightClick.*;
 
 public class InventoryClose implements Listener {
+
+    public static List<Player> savingBackPacks = new ArrayList<>();
 
     public InventoryClose(Main main) {
         main.getServer().getPluginManager().registerEvents(this, main);
@@ -51,21 +54,25 @@ public class InventoryClose implements Listener {
             openInvs.remove(p);
             openInvsOwners.remove(p);
 
+            savingBackPacks.add(p);
+
             if (playSound) {
                 playCloseSound(p, backPack);
             }
 
-            saveBackPack(backPack, backPackCommand, inv, async);
+            saveBackPack(backPack, p, backPackCommand, inv, async);
 
         } else if (backPack != null) {
             openInvs.remove(p);
+
+            savingBackPacks.add(p);
 
             if(playSound) {
                 playCloseSound(p, backPack);
             }
 
             if (!backPack.getType().equals(BackPack.Type.trash)) {
-                saveBackPack(backPack, trimmedID, inv, async);
+                saveBackPack(backPack, p, trimmedID, inv, async);
             }
 
         } else if (furnace != null) {
@@ -114,7 +121,7 @@ public class InventoryClose implements Listener {
 
     }
 
-    private static void saveBackPack(final BackPack backPack, final String trimmedID, final InventoryView inv,
+    private static void saveBackPack(final BackPack backPack, final Player p, final String trimmedID, final InventoryView inv,
                                      final Boolean async) {
 
         SQL.query("DELETE FROM bp_" + backPack.getName() + "_" + trimmedID, new SQL.Callback<Boolean>() {
@@ -233,6 +240,8 @@ public class InventoryClose implements Listener {
                     }
 
                 }
+
+                savingBackPacks.remove(p);
 
             }
 

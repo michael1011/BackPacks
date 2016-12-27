@@ -360,6 +360,7 @@ public class Main extends JavaPlugin {
 
                 if (configVersion == 2) {
                     messages.set("Help.bpopen.error", messagesJar.getString("Help.bpopen.error"));
+                    messages.set("Help.backPackSaving", messagesJar.get("Help.backPackSaving"));
 
                     config.set("MySQL.syncBackPacks", false);
                     config.set("configVersion", 3);

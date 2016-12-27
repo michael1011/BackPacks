@@ -28,6 +28,8 @@ Help:
   onlyPlayers: "&4Only players &ccan use this command"
   noPermission: "&cYou &4don't &chave enough permissions"
 
+  backPackSaving: "&cYour BackPacks are still saving. &ePlease try again in a few seconds."
+
   # When you want to interact with a player that isn't online (%target% is the offline player)
   playerNotFound: "&cThe player &4%target% &ccouldn't be found"
 
