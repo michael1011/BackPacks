@@ -126,6 +126,12 @@ public class SQL {
     public static void createCon(String host, String port, String database,
                                  String username, String password) throws SQLException {
 
+        if (con != null) {
+            if (!con.isClosed()) {
+                con.close();
+            }
+        }
+
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {

@@ -101,65 +101,74 @@ public class Main extends JavaPlugin {
 
                                                                         @Override
                                                                         public void onSuccess(Boolean rs) {
-                                                                            List<String> enabled = new ArrayList<>();
+                                                                            SQL.query("ALTER TABLE bp ADD UNIQUE (`name`)", new SQL.Callback<Boolean>() {
+                                                                                @Override
+                                                                                public void onSuccess(Boolean rs) {
+                                                                                    List<String> enabled = new ArrayList<>();
 
-                                                                            for (Map.Entry<String, Object> entry : config.getConfigurationSection("BackPacks.enabled")
-                                                                                    .getValues(true).entrySet()) {
+                                                                                    for (Map.Entry<String, Object> entry : config.getConfigurationSection("BackPacks.enabled")
+                                                                                            .getValues(true).entrySet()) {
 
-                                                                                enabled.add(entry.getValue().toString());
-                                                                            }
+                                                                                        enabled.add(entry.getValue().toString());
+                                                                                    }
 
-                                                                            List<String> toLoad = new ArrayList<>();
+                                                                                    List<String> toLoad = new ArrayList<>();
 
-                                                                            for (Map.Entry<String, Object> entry : config.getConfigurationSection("BackPacks")
-                                                                                    .getValues(false).entrySet()) {
+                                                                                    for (Map.Entry<String, Object> entry : config.getConfigurationSection("BackPacks")
+                                                                                            .getValues(false).entrySet()) {
 
-                                                                                if (!entry.getKey().equals("enabled")) {
-                                                                                    toLoad.add(entry.getKey());
+                                                                                        if (!entry.getKey().equals("enabled")) {
+                                                                                            toLoad.add(entry.getKey());
+                                                                                        }
+
+                                                                                    }
+
+                                                                                    initConfig(toLoad, null, false);
+
+                                                                                    for (BackPack bp : backPacks) {
+                                                                                        String openSound = "";
+                                                                                        String closeSound = "";
+
+                                                                                        if (bp.getOpenSound() != null) {
+                                                                                            openSound = bp.getOpenSound().name();
+                                                                                        }
+
+                                                                                        if (bp.getCloseSound() != null) {
+                                                                                            closeSound = bp.getCloseSound().name();
+                                                                                        }
+
+                                                                                        SQL.query("INSERT INTO bp (enabled, name, type, material, slots, furnaceGui, itemTitle, lore, inventoryTitle, craftingRecipe, materials, openSound, closeSound) VALUES " +
+                                                                                                "('" + String.valueOf(enabled.contains(bp.getName())) + "', '" + bp.getName() + "', '" + bp.getType().toString() + "', '" + bp.getMaterial().name() + "', '" + bp.getSlots() + "', '" + String.valueOf(bp.getFurnaceGui()) + "', " +
+                                                                                                "'" + bp.getItemTitle() + "', '" + bp.getLoreString().replaceAll("§", "&") + "', '" + bp.getInventoryTitle().replaceAll("§", "&") + "', '" + bp.getCraftingRecipe() + "', '" + bp.getMaterials() + "', " +
+                                                                                                "'" + openSound + "', '" + closeSound + "')", new SQL.Callback<Boolean>() {
+
+                                                                                            @Override
+                                                                                            public void onSuccess(Boolean rs) {}
+
+                                                                                            @Override
+                                                                                            public void onFailure(Throwable e) {}
+
+                                                                                        });
+
+                                                                                    }
+
+                                                                                    config.set("BackPacks", null);
+
+                                                                                    try {
+                                                                                        config.save(new File(getDataFolder(), "config.yml"));
+                                                                                    } catch (IOException e) {
+                                                                                        e.printStackTrace();
+                                                                                    }
+
+                                                                                    Bukkit.getServer().resetRecipes();
+
+                                                                                    onEnable();
                                                                                 }
 
-                                                                            }
+                                                                                @Override
+                                                                                public void onFailure(Throwable e) {}
 
-                                                                            initConfig(toLoad, null, false);
-
-                                                                            for (BackPack bp : backPacks) {
-                                                                                String openSound = "";
-                                                                                String closeSound = "";
-
-                                                                                if (bp.getOpenSound() != null) {
-                                                                                    openSound = bp.getOpenSound().name();
-                                                                                }
-
-                                                                                if (bp.getCloseSound() != null) {
-                                                                                    closeSound = bp.getCloseSound().name();
-                                                                                }
-
-                                                                                SQL.query("INSERT INTO bp (enabled, name, type, material, slots, furnaceGui, itemTitle, lore, inventoryTitle, craftingRecipe, materials, openSound, closeSound) VALUES " +
-                                                                                        "('" + String.valueOf(enabled.contains(bp.getName())) + "', '" + bp.getName() + "', '" + bp.getType().toString() + "', '" + bp.getMaterial().name() + "', '" + bp.getSlots() + "', '" + String.valueOf(bp.getFurnaceGui()) + "', " +
-                                                                                        "'" + bp.getItemTitle() + "', '" + bp.getLoreString().replaceAll("§", "&") + "', '" + bp.getInventoryTitle().replaceAll("§", "&") + "', '" + bp.getCraftingRecipe() + "', '" + bp.getMaterials() + "', " +
-                                                                                        "'" + openSound + "', '" + closeSound + "')", new SQL.Callback<Boolean>() {
-
-                                                                                    @Override
-                                                                                    public void onSuccess(Boolean rs) {}
-
-                                                                                    @Override
-                                                                                    public void onFailure(Throwable e) {}
-
-                                                                                });
-
-                                                                            }
-
-                                                                            config.set("BackPacks", null);
-
-                                                                            try {
-                                                                                config.save(new File(getDataFolder(), "config.yml"));
-                                                                            } catch (IOException e) {
-                                                                                e.printStackTrace();
-                                                                            }
-
-                                                                            Bukkit.getServer().resetRecipes();
-
-                                                                            onEnable();
+                                                                            });
 
                                                                         }
 
