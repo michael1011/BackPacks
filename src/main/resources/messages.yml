@@ -68,6 +68,8 @@ Help:
       1: "&6/bpopen <backpack> <player>: &eopens '<backpack>' of '<player>'"
 
   bpcreate:
+    disabled: "&cThis command is disabled when the config is synced"
+
     steps:
       name:
         noSpaces: "&cThe name &4can't contain spaces&c!"

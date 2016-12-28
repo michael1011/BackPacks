@@ -33,7 +33,7 @@ public class Main extends JavaPlugin {
 
     public static String prefix = "";
 
-    static Boolean syncConfig = false;
+    public static Boolean syncConfig = false;
 
     // todo: add anvil and enchanting backpack: http://bit.ly/2cDX46w
     // todo: verify backpacks with nbt tags
@@ -269,16 +269,13 @@ public class Main extends JavaPlugin {
         new BlockBreak(this);
         new EntityDeath(this);
 
+        new Create(this);
         new Give(this);
         new Open(this);
         new Reload(this);
         new ListBackPacks(this);
 
         new Reconnect(this);
-
-        if (!syncConfig) {
-            new Create(this);
-        }
 
         if (config.getBoolean("Updater.enabled")) {
             update(this, Bukkit.getConsoleSender());
