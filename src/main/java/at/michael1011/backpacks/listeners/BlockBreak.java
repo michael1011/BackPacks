@@ -82,7 +82,7 @@ public class BlockBreak implements Listener {
                                                                                      ExperienceOrb exp = location.getWorld().spawn(location, ExperienceOrb.class);
                                                                                      exp.setExperience(1);
 
-                                                                                     SQL.query("UPDATE bp_furnaces SET coal=" + String.valueOf(amount+random()) + " WHERE uuid='" + trimmedID + "'",
+                                                                                     SQL.query("UPDATE bp_furnaces SET coal=" + String.valueOf(amount + random()) + " WHERE uuid='" + trimmedID + "'",
                                                                                              new SQL.Callback<Boolean>() {
 
                                                                                                  @Override

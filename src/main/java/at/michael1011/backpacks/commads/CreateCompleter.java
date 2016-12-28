@@ -18,6 +18,16 @@ class CreateCompleter implements TabCompleter {
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if (args.length <= 1) {
             return filterList(args[0], functions);
+
+        } else if (args.length == 2) {
+            switch (args[0]) {
+                case "sound":
+                    return filterList(args[1], Arrays.asList("open", "close"));
+
+                case "finish":
+                    return filterList(args[1], Arrays.asList("true", "false"));
+            }
+
         }
 
         return null;
