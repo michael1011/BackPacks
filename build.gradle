@@ -11,6 +11,8 @@ buildScan {
 group 'at.michael1011'
 version '2.3.0'
 
+compileJava.options.encoding = 'UTF-8'
+
 configurations {
     provided
     compile.extendsFrom provided
