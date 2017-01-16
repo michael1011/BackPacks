@@ -42,7 +42,13 @@ public class RightClick implements Listener {
 
     static final HashMap<Player, String> openInvsOwners = new HashMap<>();
 
+    private static Boolean is1_11 = false;
+
     public RightClick(Main main) {
+        if (Bukkit.getVersion().contains("1.11")) {
+            is1_11 = true;
+        }
+
         main.getServer().getPluginManager().registerEvents(this, main);
     }
 
@@ -69,6 +75,12 @@ public class RightClick implements Listener {
                         case HOPPER:
                         case DISPENSER:
                             return;
+                    }
+
+                    if (is1_11) {
+                        if (block.toString().endsWith("SHULKER_BOX")) {
+                            return;
+                        }
                     }
 
                 }
