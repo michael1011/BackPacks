@@ -93,7 +93,7 @@ public class RightClick implements Listener {
 
                         if (meta.hasLore()) {
                             if (backPack.getLore().equals(meta.getLore())) {
-                                if (p.hasPermission("backpacks.use." + backPack) || p.hasPermission("backpacks.*")) {
+                                if (p.hasPermission("backpacks.use." + backPack.getName()) || p.hasPermission("backpacks.*")) {
                                     final String trimmedID = getTrimmedId(p);
 
                                     playOpenSound(p, backPack);
