@@ -3,10 +3,7 @@ package at.michael1011.backpacks.listeners;
 import at.michael1011.backpacks.BackPack;
 import at.michael1011.backpacks.Main;
 import at.michael1011.backpacks.SQL;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -58,9 +55,7 @@ public class EntityDeath implements Listener {
 
                                             final List<ItemStack> toDrop = new ArrayList<>();
 
-                                            for (ItemStack add : e.getDrops()) {
-                                                toDrop.add(add);
-                                            }
+                                            toDrop.addAll(e.getDrops());
 
                                             e.getDrops().clear();
 
@@ -183,7 +178,7 @@ public class EntityDeath implements Listener {
                     break;
 
                 default:
-                    world.dropItem(loc, new ItemStack(smelt.getType(), smelt.getAmount()));
+                    world.dropItem(loc, smelt);
 
                     break;
             }
