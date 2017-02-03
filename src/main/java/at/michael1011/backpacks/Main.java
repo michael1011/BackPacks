@@ -44,10 +44,6 @@ public class Main extends JavaPlugin {
     public void onEnable() {
         loadFiles(this);
 
-        updateConfig(this);
-
-        syncConfig = config.getBoolean("MySQL.syncBackPacks");
-
         try {
             new SQL(this);
 
@@ -58,6 +54,10 @@ public class Main extends JavaPlugin {
             if (SQL.checkCon()) {
                 Bukkit.getConsoleSender().sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
                         messages.getString("MySQL.connected")));
+
+                updateConfig(this);
+
+                syncConfig = config.getBoolean("MySQL.syncBackPacks");
 
                 SQL.query("CREATE TABLE IF NOT EXISTS bp_users(name VARCHAR(100), uuid VARCHAR(100))", new SQL.Callback<Boolean>() {
 
@@ -320,7 +320,7 @@ public class Main extends JavaPlugin {
 
                 }
 
-                if (configVersion== 1) {
+                if (configVersion == 1) {
                     String path = "Help.bpcreate.steps.";
 
                     messages.set("Help.bpcreate.syntaxError.2", messagesJar.getString("Help.bpcreate.syntaxError.2"));
@@ -361,6 +361,47 @@ public class Main extends JavaPlugin {
 
                     config.set("MySQL.syncBackPacks", false);
                     config.set("configVersion", 3);
+
+                    SQL.getResult("SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES", new SQL.Callback<ResultSet>() {
+
+                        @Override
+                        public void onSuccess(ResultSet rs) {
+                            ArrayList<String> tables = new ArrayList<>();
+
+                            try {
+                                while (rs.next()) {
+                                    String tableName = rs.getString("TABLE_NAME");
+
+                                    if (tableName.startsWith("bp_")) {
+                                        if (getTimesInString(tableName, "_") >= 2) {
+                                            tables.add(tableName);
+
+                                        }
+                                    }
+
+                                }
+
+                                for (String table : tables) {
+                                    SQL.query("ALTER TABLE " + table + " ADD nbt VARCHAR(1000)", new SQL.Callback<Boolean>() {
+
+                                        @Override
+                                        public void onSuccess(Boolean rs) {}
+
+                                        @Override
+                                        public void onFailure(Throwable e) {}
+
+                                    }, false);
+                                }
+
+                            } catch (SQLException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Throwable e) {}
+
+                    }, false);
 
                     Bukkit.getConsoleSender().sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
                             "&cUpdated config files to version 3"));
@@ -416,6 +457,12 @@ public class Main extends JavaPlugin {
 
     public static String getTrimmedId(Player player) {
         return player.getUniqueId().toString().replaceAll("-", "");
+    }
+
+    public static int getTimesInString(String toCheck, String toFind) {
+        String replacedString = toCheck.replaceAll(toFind, "");
+
+        return toCheck.length() - (replacedString.length() / toFind.length());
     }
 
 }

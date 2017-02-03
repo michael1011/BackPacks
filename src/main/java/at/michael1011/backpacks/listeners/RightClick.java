@@ -128,7 +128,7 @@ public class RightClick implements Listener {
                                                     } else {
                                                         SQL.query("CREATE TABLE IF NOT EXISTS bp_"+ backPack.getName() + "_" + trimmedID + "(position INT(100), material VARCHAR(100), " +
                                                                 "durability INT(100), amount INT(100), name VARCHAR(100), lore VARCHAR(1000), enchantments VARCHAR(1000), " +
-                                                                "potion VARCHAR(1000))", new SQL.Callback<Boolean>() {
+                                                                "potion VARCHAR(1000), nbt VARCHAR(1000))", new SQL.Callback<Boolean>() {
 
                                                             @Override
                                                             public void onSuccess(Boolean rs) {

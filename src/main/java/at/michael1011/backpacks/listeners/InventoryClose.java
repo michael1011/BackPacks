@@ -20,7 +20,6 @@ import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.potion.PotionData;
 
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -28,10 +27,13 @@ import java.util.Map;
 import static at.michael1011.backpacks.Main.getTrimmedId;
 import static at.michael1011.backpacks.Main.version;
 import static at.michael1011.backpacks.listeners.RightClick.*;
+import static at.michael1011.backpacks.nbt.NbtEncoder.encodeNbt;
 
+// fixme: add saved nbt values
+@SuppressWarnings("unchecked")
 public class InventoryClose implements Listener {
 
-    public static List<Player> savingBackPacks = new ArrayList<>();
+    static List<Player> savingBackPacks = new ArrayList<>();
 
     public InventoryClose(Main main) {
         main.getServer().getPluginManager().registerEvents(this, main);
@@ -138,6 +140,21 @@ public class InventoryClose implements Listener {
                             String name = "";
                             String lore = "";
                             String potion = "";
+                            String nbt = "";
+
+                            try {
+                                Object nbtItemStack = Class.forName("org.bukkit.craftbukkit." + version + ".inventory.CraftItemStack").getMethod("asNMSCopy", ItemStack.class)
+                                        .invoke(null, item);
+
+                                Object nbtCompound = nbtItemStack.getClass().getMethod("getTag").invoke(nbtItemStack);
+
+                                if (nbtCompound != null) {
+                                    nbt = encodeNbt(nbtCompound);
+                                }
+
+                            } catch (IllegalAccessException | InvocationTargetException | ClassNotFoundException | NoSuchMethodException e) {
+                                e.printStackTrace();
+                            }
 
                             String material = item.getType().toString();
 
@@ -177,34 +194,6 @@ public class InventoryClose implements Listener {
                                     potion = potionData.getType().name()+"/"+potionData.isExtended()+"/"+potionData.isUpgraded();
                                 }
 
-                            } else if (material.equals("MONSTER_EGG")) {
-                                try {
-                                    Object nmsStack = Class.forName("org.bukkit.craftbukkit." + version + ".inventory.CraftItemStack").getMethod("asNMSCopy", ItemStack.class)
-                                            .invoke(null, item);
-
-                                    Object nmsCompound = nmsStack.getClass().getMethod("getTag").invoke(nmsStack);
-
-                                    if (nmsCompound == null) {
-                                        nmsCompound = Class.forName("net.minecraft.server." + version + ".NBTTagCompound").getConstructor().newInstance();
-                                    }
-
-                                    Object getEntityTag = nmsCompound.getClass().getMethod("getCompound", String.class).invoke(nmsCompound, "EntityTag");
-                                    Method getEntityString = getEntityTag.getClass().getMethod("toString", String.class);
-
-                                    potion = String.valueOf(getEntityString.invoke(getEntityTag, "id"));
-
-                                    Object getMobSpawnerEgg = nmsCompound.getClass().getMethod("toString", String.class).invoke(nmsCompound, "MobSpawnerEgg");
-
-                                    if (getMobSpawnerEgg.equals("MobSpawnerEgg")) {
-                                        enchantments.setLength(0);
-
-                                        enchantments.append(getMobSpawnerEgg).append("/");
-                                    }
-
-                                } catch (InvocationTargetException | ClassNotFoundException | IllegalAccessException | NoSuchMethodException | InstantiationException exception) {
-                                    exception.printStackTrace();
-                                }
-
                             } else if (material.equals("SKULL_ITEM")) {
                                 SkullMeta skull = (SkullMeta) item.getItemMeta();
 
@@ -223,8 +212,8 @@ public class InventoryClose implements Listener {
                             }
 
                             SQL.query("INSERT INTO bp_" + backPack.getName() + "_" + trimmedID + " (position, material, durability, amount, " +
-                                            "name, lore, enchantments, potion) VALUES ('" + i + "', '" + material + "', '" + item.getDurability() + "', " +
-                                            "'" + item.getAmount() + "', '" + name + "', '" + lore + "', '" + enchantments.toString() + "', '" + potion + "')",
+                                            "name, lore, enchantments, potion, nbt) VALUES ('" + i + "', '" + material + "', '" + item.getDurability() + "', " +
+                                            "'" + item.getAmount() + "', '" + name + "', '" + lore + "', '" + enchantments.toString() + "', '" + potion + "', '" + nbt + "')",
                                     new SQL.Callback<Boolean>() {
 
                                         @Override
