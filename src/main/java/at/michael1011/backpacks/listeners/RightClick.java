@@ -31,6 +31,7 @@ import java.util.Map;
 
 import static at.michael1011.backpacks.Main.*;
 import static at.michael1011.backpacks.listeners.InventoryClose.savingBackPacks;
+import static at.michael1011.backpacks.nbt.NbtDecoder.decodeNbt;
 
 public class RightClick implements Listener {
 
@@ -276,6 +277,17 @@ public class RightClick implements Listener {
                     String lore = rs.getString("lore");
                     String enchantment = rs.getString("enchantments");
                     String potion = rs.getString("potion");
+                    String nbt = rs.getString("nbt");
+
+                    if (nbt != null) {
+                        if (!nbt.equals("")) {
+                            try {
+                                item = decodeNbt(nbt, item);
+                            } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
 
                     if (!name.equals("")) {
                         meta.setDisplayName(name);

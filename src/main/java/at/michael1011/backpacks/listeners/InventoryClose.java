@@ -29,7 +29,6 @@ import static at.michael1011.backpacks.Main.version;
 import static at.michael1011.backpacks.listeners.RightClick.*;
 import static at.michael1011.backpacks.nbt.NbtEncoder.encodeNbt;
 
-// fixme: add saved nbt values
 @SuppressWarnings("unchecked")
 public class InventoryClose implements Listener {
 

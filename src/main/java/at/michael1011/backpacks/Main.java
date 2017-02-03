@@ -35,9 +35,9 @@ public class Main extends JavaPlugin {
 
     public static Boolean syncConfig = false;
 
-    // todo: add anvil and enchanting backpack: http://bit.ly/2cDX46w
-    // todo: verify backpacks with nbt tags
+    // fixme: verify backpacks with nbt tags
 
+    // todo: add anvil and enchanting backpack: http://bit.ly/2cDX46w
     // todo: translations
 
     @Override

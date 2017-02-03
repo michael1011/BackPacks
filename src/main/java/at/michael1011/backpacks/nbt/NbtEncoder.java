@@ -4,7 +4,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Set;
 
-// todo: improve array and list handling
 @SuppressWarnings("unchecked")
 public class NbtEncoder {
 
@@ -41,7 +40,7 @@ public class NbtEncoder {
 
         StringBuilder encoded = new StringBuilder();
 
-        encoded.append("[");
+        encoded.append("{");
 
         for (int i = 0; i < size; i++) {
             Object nbtBase = getEntry.invoke(nbtTagList, i);
@@ -53,7 +52,7 @@ public class NbtEncoder {
             encoded.append(encodeNbtBase(nbtBase));
         }
 
-        encoded.append("]");
+        encoded.append("}");
 
         return encoded.toString();
     }
@@ -70,67 +69,112 @@ public class NbtEncoder {
 
         switch (id) {
             case 1:
-                type = "byte";
+                // Byte
+                type = "1";
                 value = defaultValue(nbtBase);
 
                 break;
 
             case 2:
-                type = "short";
+                // Short
+                type = "2";
                 value = defaultValue(nbtBase);
 
                 break;
 
             case 3:
-                type = "int";
+                // Int
+                type = "3";
                 value = defaultValue(nbtBase);
 
                 break;
 
             case 4:
-                type = "long";
+                // Long
+                type = "4";
                 value = defaultValue(nbtBase);
 
                 break;
 
             case 5:
-                type = "float";
+                // Float
+                type = "5";
                 value = defaultValue(nbtBase);
 
                 break;
 
             case 6:
-                type = "double";
+                // Double
+                type = "6";
                 value = defaultValue(nbtBase);
 
                 break;
 
             case 8:
-                type = "string";
-                value = "(" + nbtBase.toString() + ")";
+                // String
+                type = "8";
+                value = "(" + nbtBase.toString().replaceAll("\"", "") + ")";
 
                 break;
 
             case 7:
-                type = "byteArray";
-                value = arrayValue(nbtBase);
+                // Byte-Array
+                type = "7";
+
+                StringBuilder byteBuilder = new StringBuilder();
+
+                byteBuilder.append("[");
+
+                byte[] byteData = (byte[]) nbtBase.getClass().getMethod("c").invoke(nbtBase);
+
+                for (byte b : byteData) {
+                    if (byteBuilder.length() > 1) {
+                        byteBuilder.append(",");
+                    }
+
+                    byteBuilder.append(b);
+                }
+
+                byteBuilder.append("]");
+
+                value = byteBuilder.toString();
 
                 break;
 
             case 11:
-                type = "intArray";
-                value = arrayValue(nbtBase);
+                // Int-Array
+                type = "11";
+
+                StringBuilder intBuilder = new StringBuilder();
+
+                intBuilder.append("[");
+
+                int[] intData = (int[]) nbtBase.getClass().getMethod("d").invoke(nbtBase);
+
+                for (int b : intData) {
+                    if (intBuilder.length() > 1) {
+                        intBuilder.append(",");
+                    }
+
+                    intBuilder.append(b);
+                }
+
+                intBuilder.append("]");
+
+                value = intBuilder.toString();
 
                 break;
 
             case 9:
-                type = "list";
+                // List
+                type = "9";
                 value = encodeNbtList(nbtBase);
 
                 break;
 
             case 10:
-                type = "compound";
+                // Compound
+                type = "10";
                 value = "{" + encodeNbt(nbtBase) + "}";
 
                 break;
@@ -143,16 +187,6 @@ public class NbtEncoder {
         String value = nbtBase.toString();
 
         return "(" + value.substring(0, value.length()-1) + ")";
-    }
-
-    private static String arrayValue(Object nbtBase) {
-        String value = nbtBase.toString();
-
-        if (!value.startsWith("[")) {
-            value = "[" + value + "]";
-        }
-
-        return value;
     }
 
 }
