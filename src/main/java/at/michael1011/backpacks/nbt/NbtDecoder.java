@@ -46,8 +46,10 @@ public class NbtDecoder {
 
             Object nbtBase = decodeNbtBase(keyValue[1]);
 
-            compound.getClass().getMethod("set", String.class, nbtBaseClass)
-                    .invoke(compound, keyValue[0], nbtBase);
+            if (nbtBase != null) {
+                compound.getClass().getMethod("set", String.class, nbtBaseClass)
+                        .invoke(compound, keyValue[0], nbtBase);
+            }
         }
     }
 
@@ -65,109 +67,114 @@ public class NbtDecoder {
         int type = Integer.valueOf(value.substring(0, typeLength));
         value = value.substring(typeLength+1, value.length()-1);
 
-        switch (type) {
-            case 1:
-                toReturn = Class.forName(serverPackage + "NBTTagByte")
-                        .getConstructor(byte.class).newInstance(Byte.parseByte(value));
+        if (!value.equals("")) {
+            switch (type) {
+                case 1:
+                    toReturn = Class.forName(serverPackage + "NBTTagByte")
+                            .getConstructor(byte.class).newInstance(Byte.parseByte(value));
 
-                break;
+                    break;
 
-            case 2:
-                toReturn = Class.forName(serverPackage + "NBTTagShort")
-                        .getConstructor(short.class).newInstance(Short.parseShort(value));
+                case 2:
+                    toReturn = Class.forName(serverPackage + "NBTTagShort")
+                            .getConstructor(short.class).newInstance(Short.parseShort(value));
 
-                break;
+                    break;
 
-            case 3:
-                toReturn = Class.forName(serverPackage + "NBTTagInt")
-                        .getConstructor(int.class).newInstance(Integer.parseInt(value));
+                case 3:
+                    toReturn = Class.forName(serverPackage + "NBTTagInt")
+                            .getConstructor(int.class).newInstance(Integer.parseInt(value));
 
-                break;
+                    break;
 
-            case 4:
-                toReturn = Class.forName(serverPackage + "NBTTagLong")
-                        .getConstructor(long.class).newInstance(Long.parseLong(value));
+                case 4:
+                    toReturn = Class.forName(serverPackage + "NBTTagLong")
+                            .getConstructor(long.class).newInstance(Long.parseLong(value));
 
-                break;
+                    break;
 
-            case 5:
-                toReturn = Class.forName(serverPackage + "NBTTagFloat")
-                        .getConstructor(float.class).newInstance(Float.parseFloat(value));
+                case 5:
+                    toReturn = Class.forName(serverPackage + "NBTTagFloat")
+                            .getConstructor(float.class).newInstance(Float.parseFloat(value));
 
-                break;
+                    break;
 
-            case 6:
-                toReturn = Class.forName(serverPackage + "NBTTagDouble")
-                        .getConstructor(double.class).newInstance(Double.parseDouble(value));
+                case 6:
+                    toReturn = Class.forName(serverPackage + "NBTTagDouble")
+                            .getConstructor(double.class).newInstance(Double.parseDouble(value));
 
-                break;
+                    break;
 
-            case 8:
-                toReturn = Class.forName(serverPackage + "NBTTagString")
-                        .getConstructor(String.class).newInstance(value);
+                case 8:
+                    toReturn = Class.forName(serverPackage + "NBTTagString")
+                            .getConstructor(String.class).newInstance(value);
 
-                break;
+                    break;
 
-            case 7:
-                String[] rawBytes = value.split(",");
+                case 7:
+                    String[] rawBytes = value.split(",");
 
-                byte[] bytes = new byte[]{};
+                    byte[] bytes = new byte[]{};
 
-                int i = 0;
+                    int i = 0;
 
-                for (String singleByte : rawBytes) {
-                    bytes[i] = Byte.parseByte(singleByte);
+                    for (String singleByte : rawBytes) {
+                        bytes[i] = Byte.parseByte(singleByte);
 
-                    i++;
-                }
+                        i++;
+                    }
 
-                toReturn = Class.forName(serverPackage + "NBTTagByteArray")
-                        .getConstructor(byte[].class).newInstance(bytes);
+                    toReturn = Class.forName(serverPackage + "NBTTagByteArray")
+                            .getConstructor(byte[].class).newInstance(bytes);
 
-                break;
+                    break;
 
-            case 11:
-                String[] rawInts = value.split(",");
+                case 11:
+                    String[] rawInts = value.split(",");
 
-                int[] ints = new int[]{};
+                    int[] ints = new int[]{};
 
-                i = 0;
+                    i = 0;
 
-                for (String singleInt : rawInts) {
-                    ints[i] = Integer.parseInt(singleInt);
+                    for (String singleInt : rawInts) {
+                        ints[i] = Integer.parseInt(singleInt);
 
-                    i++;
-                }
+                        i++;
+                    }
 
-                toReturn = Class.forName(serverPackage + "NBTTagIntArray")
-                        .getConstructor(int[].class).newInstance(ints);
+                    toReturn = Class.forName(serverPackage + "NBTTagIntArray")
+                            .getConstructor(int[].class).newInstance(ints);
 
-                break;
+                    break;
 
-            case 9:
-                Object list = Class.forName(serverPackage + "NBTTagList").getConstructor().newInstance();
+                case 9:
+                    Object list = Class.forName(serverPackage + "NBTTagList").getConstructor().newInstance();
 
-                List<String> split = Arrays.asList(value.split("/+(?![^{]*})"));
+                    List<String> split = Arrays.asList(value.split("/+(?![^{]*})"));
 
-                for (String part : split) {
-                    Object nbtBase = decodeNbtBase(part);
+                    for (String part : split) {
+                        Object nbtBase = decodeNbtBase(part);
 
-                    list.getClass().getMethod("add", nbtBaseClass)
-                            .invoke(list, nbtBase);
-                }
+                        if (nbtBase != null) {
+                            list.getClass().getMethod("add", nbtBaseClass)
+                                    .invoke(list, nbtBase);
+                        }
+                    }
 
-                toReturn = list;
+                    toReturn = list;
 
-                break;
+                    break;
 
-            case 10:
-                Object compound = Class.forName(serverPackage + "NBTTagCompound").getConstructor().newInstance();
+                case 10:
+                    Object compound = Class.forName(serverPackage + "NBTTagCompound").getConstructor().newInstance();
 
-                decodeCompound(value, compound);
+                    decodeCompound(value, compound);
 
-                toReturn = compound;
+                    toReturn = compound;
 
-                break;
+                    break;
+            }
+
         }
 
         return toReturn;

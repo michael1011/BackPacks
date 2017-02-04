@@ -85,7 +85,7 @@ public class NbtEncoder {
             case 3:
                 // Int
                 type = "3";
-                value = defaultValue(nbtBase);
+                value = "(" + nbtBase.toString() + ")";
 
                 break;
 
@@ -113,7 +113,9 @@ public class NbtEncoder {
             case 8:
                 // String
                 type = "8";
-                value = "(" + nbtBase.toString().replaceAll("\"", "") + ")";
+
+                value = nbtBase.toString();
+                value = "(" + value.substring(1, value.length()-1) + ")";
 
                 break;
 
