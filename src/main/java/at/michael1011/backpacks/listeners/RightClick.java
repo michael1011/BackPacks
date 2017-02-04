@@ -279,16 +279,6 @@ public class RightClick implements Listener {
                     String potion = rs.getString("potion");
                     String nbt = rs.getString("nbt");
 
-                    if (nbt != null) {
-                        if (!nbt.equals("")) {
-                            try {
-                                item = decodeNbt(nbt, item);
-                            } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-
                     if (!name.equals("")) {
                         meta.setDisplayName(name);
 
@@ -389,6 +379,16 @@ public class RightClick implements Listener {
                             item.setItemMeta(skull);
                         }
 
+                    }
+
+                    if (nbt != null) {
+                        if (!nbt.equals("")) {
+                            try {
+                                item = decodeNbt(nbt, item);
+                            } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
+                                e.printStackTrace();
+                            }
+                        }
                     }
 
                     inv.setItem(rs.getInt("position"), item);

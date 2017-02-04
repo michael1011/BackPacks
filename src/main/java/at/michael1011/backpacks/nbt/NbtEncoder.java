@@ -18,13 +18,15 @@ public class NbtEncoder {
         Set<String> nbtKeys = (Set<String>) getNbtKeys.invoke(nbtTag);
 
         for (String key : nbtKeys) {
-            Object nbtBase = getNbtBase.invoke(nbtTag, key);
+            if (!key.equals("display")) {
+                Object nbtBase = getNbtBase.invoke(nbtTag, key);
 
-            if (encoded.length() != 0) {
-                encoded.append("/");
+                if (encoded.length() != 0) {
+                    encoded.append("/");
+                }
+
+                encoded.append(key).append(":").append(encodeNbtBase(nbtBase));
             }
-
-            encoded.append(key).append(":").append(encodeNbtBase(nbtBase));
         }
 
         return encoded.toString();
