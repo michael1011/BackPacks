@@ -1,6 +1,5 @@
 package at.michael1011.backpacks.listeners;
 
-import at.michael1011.backpacks.BackPack;
 import at.michael1011.backpacks.Main;
 import at.michael1011.backpacks.SQL;
 import org.bukkit.ChatColor;
@@ -14,9 +13,10 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import static at.michael1011.backpacks.Crafting.backPacks;
+import static at.michael1011.backpacks.Crafting.backPacksMap;
 import static at.michael1011.backpacks.Main.*;
 import static at.michael1011.backpacks.listeners.RightClick.*;
+import static at.michael1011.backpacks.nbt.CheckItem.checkItem;
 
 public class InventoryClick implements Listener {
 
@@ -109,30 +109,16 @@ public class InventoryClick implements Listener {
 
     private boolean itemIsBackPack(ItemStack item) {
         if (item != null) {
-            if (item.hasItemMeta()) {
-                ItemMeta meta = item.getItemMeta();
+            String backPack = checkItem(item);
 
-                if (meta.hasLore()) {
-                    for (BackPack backPack : backPacks) {
-                        if (backPack.getLore().equals(meta.getLore())) {
-                            return true;
-                        }
-
-                    }
-
-                }
-
-            }
-
+            return backPacksMap.containsKey(backPack);
         }
 
         return false;
     }
 
     private void checkCoal(ItemStack item, InventoryClickEvent e) {
-        if (item.getType().equals(Material.COAL) ||
-                e.getCursor().getType().equals(Material.COAL)) {
-
+        if (item.getType().equals(Material.COAL)) {
             e.setCancelled(false);
 
             return;

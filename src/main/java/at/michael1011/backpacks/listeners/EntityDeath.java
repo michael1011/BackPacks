@@ -3,22 +3,25 @@ package at.michael1011.backpacks.listeners;
 import at.michael1011.backpacks.BackPack;
 import at.michael1011.backpacks.Main;
 import at.michael1011.backpacks.SQL;
-import org.bukkit.*;
+import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static at.michael1011.backpacks.Crafting.backPacks;
+import static at.michael1011.backpacks.Crafting.backPacksMap;
 import static at.michael1011.backpacks.Main.*;
+import static at.michael1011.backpacks.nbt.CheckItem.checkItem;
 
 public class EntityDeath implements Listener {
 
@@ -42,86 +45,84 @@ public class EntityDeath implements Listener {
                 case RABBIT:
                     ItemStack[] inv = p.getInventory().getContents();
 
-                    for (BackPack backPack : backPacks) {
-                        if (backPack.getType().equals(BackPack.Type.furnace)) {
+                    for (ItemStack item : inv) {
+                        if (item != null) {
+                            String backPackString = checkItem(item);
 
-                            for (ItemStack item : inv) {
-                                if (item != null) {
-                                    ItemMeta meta = item.getItemMeta();
+                            if (backPackString != null) {
+                                BackPack backPack = backPacksMap.get(backPackString);
 
-                                    if (meta.hasLore()) {
-                                        if (backPack.getLore().equals(meta.getLore())) {
-                                            final Location loc = e.getEntity().getLocation();
+                                if (backPack != null) {
+                                    if (backPack.getType().equals(BackPack.Type.furnace)) {
+                                        final Location loc = e.getEntity().getLocation();
 
-                                            final List<ItemStack> toDrop = new ArrayList<>();
+                                        final List<ItemStack> toDrop = new ArrayList<>();
 
-                                            toDrop.addAll(e.getDrops());
+                                        toDrop.addAll(e.getDrops());
 
-                                            e.getDrops().clear();
+                                        e.getDrops().clear();
 
-                                            if (backPack.getFurnaceGui()) {
-                                                final String trimmedID = getTrimmedId(p);
+                                        if (backPack.getFurnaceGui()) {
+                                            final String trimmedID = getTrimmedId(p);
 
-                                                SQL.getResult("SELECT * FROM bp_furnaces WHERE uuid='" + trimmedID + "'",
-                                                        new SQL.Callback<ResultSet>() {
+                                            SQL.getResult("SELECT * FROM bp_furnaces WHERE uuid='" + trimmedID + "'",
+                                                    new SQL.Callback<ResultSet>() {
 
-                                                            @Override
-                                                            public void onSuccess(ResultSet rs) {
-                                                                try {
-                                                                    if (rs.first()) {
-                                                                        if (Boolean.valueOf(rs.getString("food"))) {
-                                                                            int amount = rs.getInt("coal");
+                                                        @Override
+                                                        public void onSuccess(ResultSet rs) {
+                                                            try {
+                                                                if (rs.first()) {
+                                                                    if (Boolean.valueOf(rs.getString("food"))) {
+                                                                        int amount = rs.getInt("coal");
 
-                                                                            if (amount > 0) {
-                                                                                SQL.query("UPDATE bp_furnaces SET coal=" + String.valueOf(amount-1) + " WHERE uuid='" + trimmedID + "'",
-                                                                                        new SQL.Callback<Boolean>() {
+                                                                        if (amount > 0) {
+                                                                            SQL.query("UPDATE bp_furnaces SET coal=" + String.valueOf(amount-1) + " WHERE uuid='" + trimmedID + "'",
+                                                                                    new SQL.Callback<Boolean>() {
 
-                                                                                            @Override
-                                                                                            public void onSuccess(Boolean rs) {
-                                                                                                smelt(toDrop, loc);
-                                                                                            }
+                                                                                        @Override
+                                                                                        public void onSuccess(Boolean rs) {
+                                                                                            smelt(toDrop, loc);
+                                                                                        }
 
-                                                                                            @Override
-                                                                                            public void onFailure(Throwable e) {}
+                                                                                        @Override
+                                                                                        public void onFailure(Throwable e) {}
 
-                                                                                        });
-
-                                                                            } else {
-                                                                                drop(toDrop, loc);
-
-                                                                                p.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
-                                                                                        messages.getString("BackPacks.furnaceBackPack.noCoal")));
-                                                                            }
+                                                                                    });
 
                                                                         } else {
                                                                             drop(toDrop, loc);
+
+                                                                            p.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                                                                                    messages.getString("BackPacks.furnaceBackPack.noCoal")));
                                                                         }
 
                                                                     } else {
                                                                         drop(toDrop, loc);
-
-                                                                        p.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
-                                                                                messages.getString("BackPacks.furnaceBackPack.noCoal")));
                                                                     }
 
-                                                                } catch (SQLException e) {
-                                                                    e.printStackTrace();
+                                                                } else {
+                                                                    drop(toDrop, loc);
+
+                                                                    p.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                                                            messages.getString("BackPacks.furnaceBackPack.noCoal")));
                                                                 }
 
+                                                            } catch (SQLException e) {
+                                                                e.printStackTrace();
                                                             }
 
-                                                            @Override
-                                                            public void onFailure(Throwable e) {}
+                                                        }
 
-                                                        });
+                                                        @Override
+                                                        public void onFailure(Throwable e) {}
 
-                                            } else {
-                                                smelt(toDrop, loc);
-                                            }
+                                                    });
 
-                                            break;
+                                        } else {
+                                            smelt(toDrop, loc);
                                         }
 
+                                        break;
                                     }
 
                                 }
@@ -135,7 +136,6 @@ public class EntityDeath implements Listener {
                     break;
 
             }
-
 
         }
 

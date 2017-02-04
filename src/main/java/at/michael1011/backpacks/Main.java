@@ -26,6 +26,7 @@ import static at.michael1011.backpacks.Updater.update;
 public class Main extends JavaPlugin {
 
     public static String version;
+    public static String serverPackage;
 
     public static List<String> availablePlayers = new ArrayList<>();
 
@@ -35,9 +36,8 @@ public class Main extends JavaPlugin {
 
     public static Boolean syncConfig = false;
 
-    // fixme: verify backpacks with nbt tags
+    // fixme: remove 'enchantments' and 'potion' column in backpack tables in next version
 
-    // todo: remove 'enchantments' and 'potion' column in backpack tables in next version
     // todo: add anvil and enchanting backpack: http://bit.ly/2cDX46w
     // todo: translations
 
@@ -257,9 +257,10 @@ public class Main extends JavaPlugin {
     }
 
     private void init() {
-        Crafting.initCrafting(Bukkit.getConsoleSender());
-
         version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
+        serverPackage = "net.minecraft.server." + version + ".";
+
+        Crafting.initCrafting(Bukkit.getConsoleSender());
 
         new Join(this);
         new RightClick(this);

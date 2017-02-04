@@ -9,6 +9,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.lang.reflect.InvocationTargetException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,12 +20,16 @@ import java.util.Map;
 import static at.michael1011.backpacks.BackPack.Type.furnace;
 import static at.michael1011.backpacks.Main.*;
 
+@SuppressWarnings("unchecked")
 public class Crafting {
 
     public static List<BackPack> backPacks = new ArrayList<>();
+    public static HashMap<String, BackPack> backPacksMap = new HashMap<>();
     public static HashMap<BackPack, ItemStack> backPacksItems = new HashMap<>();
 
     public static List<String> backPackNames = new ArrayList<>();
+
+    public static final String nbtKey = "BackPack";
 
     private static final String path = "BackPacks.";
 
@@ -32,6 +37,7 @@ public class Crafting {
 
     public static void initCrafting(final CommandSender sender) {
         backPacks = new ArrayList<>();
+        backPacksMap = new HashMap<>();
         backPacksItems = new HashMap<>();
         backPackNames = new ArrayList<>();
 
@@ -102,6 +108,7 @@ public class Crafting {
 
     static void initConfig(List<String> entries, CommandSender sender, Boolean output) {
         backPacks = new ArrayList<>();
+        backPacksMap = new HashMap<>();
         backPacksItems = new HashMap<>();
         backPackNames = new ArrayList<>();
 
@@ -202,11 +209,13 @@ public class Crafting {
                     return null;
                 }
 
+                item = setNbtTag(item, backPack);
 
                 BackPack finishedBackPack = new BackPack(backPack, new BackPack.Type(rs.getString("type")), material, slots,
                         Boolean.valueOf(rs.getString("furnaceGui")), name, lore, rs.getString("inventoryTitle"), open, close);
 
                 backPacks.add(finishedBackPack);
+                backPacksMap.put(backPack, finishedBackPack);
                 backPacksItems.put(finishedBackPack, item);
 
                 return item;
@@ -303,9 +312,12 @@ public class Crafting {
                     inventoryTitle = inventoryTitleConfig;
                 }
 
+                item = setNbtTag(item, backPack);
+
                 BackPack finishedBackPack = new BackPack(backPack, type, material, slots, furnaceGui, name, lore, inventoryTitle, open, close);
 
                 backPacks.add(finishedBackPack);
+                backPacksMap.put(backPack, finishedBackPack);
                 backPacksItems.put(finishedBackPack, item);
 
                 return item;
@@ -322,6 +334,31 @@ public class Crafting {
 
         } else {
             slotsDivisible = false;
+        }
+
+        return null;
+    }
+
+    private static ItemStack setNbtTag(ItemStack item, String backPack) {
+        try {
+            Class craftItemStack = Class.forName("org.bukkit.craftbukkit." + version + ".inventory.CraftItemStack");
+
+            Object nbtCopy = craftItemStack.getMethod("asNMSCopy", ItemStack.class).invoke(null, item);
+            Object nbtTag = nbtCopy.getClass().getMethod("getTag").invoke(nbtCopy);
+
+            if (nbtTag == null) {
+                nbtTag = Class.forName(serverPackage + "NBTTagCompound").getConstructor().newInstance();
+            }
+
+            nbtTag.getClass().getMethod("setString", String.class, String.class)
+                    .invoke(nbtTag, nbtKey, backPack);
+
+            nbtCopy.getClass().getMethod("setTag", nbtTag.getClass()).invoke(nbtCopy, nbtTag);
+
+            return ((ItemStack) craftItemStack.getMethod("asBukkitCopy", nbtCopy.getClass()).invoke(null, nbtCopy));
+
+        } catch (ClassNotFoundException | InvocationTargetException | IllegalAccessException | NoSuchMethodException | InstantiationException e) {
+            e.printStackTrace();
         }
 
         return null;

@@ -6,12 +6,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.List;
 
+import static at.michael1011.backpacks.Main.serverPackage;
 import static at.michael1011.backpacks.Main.version;
 
 @SuppressWarnings({"unchecked", "PrimitiveArrayArgumentToVarargsMethod", "SameParameterValue"})
 public class NbtDecoder {
-
-    private static String serverPackage = "net.minecraft.server." + version + ".";
 
     private static Class nbtBaseClass;
 

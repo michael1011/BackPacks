@@ -106,12 +106,11 @@ public class InventoryClose implements Listener {
             });
 
         } else if (openInvsOther.containsKey(p)) {
-            openInvsOther.remove(p);
-
             if (playSound) {
                 playCloseSound(p, openInvsOther.get(p));
             }
 
+            openInvsOther.remove(p);
         }
 
     }
