@@ -37,6 +37,7 @@ public class Main extends JavaPlugin {
 
     // fixme: verify backpacks with nbt tags
 
+    // todo: remove 'enchantments' and 'potion' column in backpack tables in next version
     // todo: add anvil and enchanting backpack: http://bit.ly/2cDX46w
     // todo: translations
 
@@ -375,7 +376,6 @@ public class Main extends JavaPlugin {
                                     if (tableName.startsWith("bp_")) {
                                         if (getTimesInString(tableName, "_") >= 2) {
                                             tables.add(tableName);
-
                                         }
                                     }
 

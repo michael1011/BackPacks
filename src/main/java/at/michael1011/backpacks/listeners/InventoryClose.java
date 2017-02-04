@@ -5,7 +5,6 @@ import at.michael1011.backpacks.Main;
 import at.michael1011.backpacks.SQL;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -13,16 +12,11 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.PotionMeta;
-import org.bukkit.inventory.meta.SkullMeta;
-import org.bukkit.potion.PotionData;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import static at.michael1011.backpacks.Main.getTrimmedId;
 import static at.michael1011.backpacks.Main.version;
@@ -138,7 +132,6 @@ public class InventoryClose implements Listener {
 
                             String name = "";
                             String lore = "";
-                            String potion = "";
                             String nbt = "";
 
                             try {
@@ -178,41 +171,9 @@ public class InventoryClose implements Listener {
 
                             }
 
-                            StringBuilder enchantments = new StringBuilder();
-
-                            for (Map.Entry<Enchantment, Integer> enchantment : item.getEnchantments().entrySet()) {
-                                enchantments.append(enchantment.getKey().getName()).append(":")
-                                        .append(enchantment.getValue()).append("/");
-                            }
-
-                            if (material.toLowerCase().contains("potion")) {
-                                PotionMeta potionMeta = (PotionMeta) item.getItemMeta();
-                                PotionData potionData = potionMeta.getBasePotionData();
-
-                                if (potionData != null) {
-                                    potion = potionData.getType().name()+"/"+potionData.isExtended()+"/"+potionData.isUpgraded();
-                                }
-
-                            } else if (material.equals("SKULL_ITEM")) {
-                                SkullMeta skull = (SkullMeta) item.getItemMeta();
-
-                                if (skull.hasOwner()) {
-                                    potion = skull.getOwner();
-                                }
-
-                            } else if (material.equals("ENCHANTED_BOOK")){
-                                EnchantmentStorageMeta storage = (EnchantmentStorageMeta) item.getItemMeta();
-
-                                for (Map.Entry<Enchantment, Integer> enchantment : storage.getStoredEnchants().entrySet()) {
-                                    enchantments.append(enchantment.getKey().getName()).append(":")
-                                            .append(enchantment.getValue()).append("/");
-                                }
-
-                            }
-
                             SQL.query("INSERT INTO bp_" + backPack.getName() + "_" + trimmedID + " (position, material, durability, amount, " +
                                             "name, lore, enchantments, potion, nbt) VALUES ('" + i + "', '" + material + "', '" + item.getDurability() + "', " +
-                                            "'" + item.getAmount() + "', '" + name + "', '" + lore + "', '" + enchantments.toString() + "', '" + potion + "', '" + nbt + "')",
+                                            "'" + item.getAmount() + "', '" + name + "', '" + lore + "', '', '', '" + nbt + "')",
                                     new SQL.Callback<Boolean>() {
 
                                         @Override
