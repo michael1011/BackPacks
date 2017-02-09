@@ -39,6 +39,8 @@ Help:
   soundNotValid: "&cThe sound &4%sound% &cin the backpack &4%backpack% &cis not valid"
   materialNotValid: "&cThe material &4%material% &cin the backpack &4%backpack% &cis not valid"
 
+  materialNotValidDoNotOpen: "&cThe material &4%material% &cin the list &4'doNotOpen' &c in the config is not valid"
+
   bpgive:
     # When the console wants to give itself a backpacks it gets the 'onlyPlayers' message and this message
     onlyPlayersAlternative: "&cUse '&4/bpgive <backpack> <player>&c' to give a backpack to a player"

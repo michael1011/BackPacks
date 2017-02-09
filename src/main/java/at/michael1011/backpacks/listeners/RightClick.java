@@ -24,10 +24,7 @@ import org.bukkit.potion.PotionType;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static at.michael1011.backpacks.Crafting.backPacksMap;
 import static at.michael1011.backpacks.Main.*;
@@ -45,11 +42,33 @@ public class RightClick implements Listener {
 
     static final HashMap<Player, String> openInvsOwners = new HashMap<>();
 
-    private static Boolean is1_11 = false;
+    private static final ArrayList<Material> doNotOpen = new ArrayList<>();
 
     public RightClick(Main main) {
-        if (Bukkit.getVersion().contains("1.11")) {
-            is1_11 = true;
+        List<String> doNotOpenRaw = config.getStringList("doNotOpen");
+
+        for (String material : doNotOpenRaw) {
+            material = material.toUpperCase();
+
+            try {
+                if (!material.contains("*")) {
+                    doNotOpen.add(Material.valueOf(material));
+
+                } else {
+                    material = material.replaceAll("\\*", "");
+
+                    for (Material compare : Material.values()) {
+                        if (compare.name().contains(material)) {
+                            doNotOpen.add(compare);
+                        }
+                    }
+                }
+
+            } catch (IllegalArgumentException e) {
+                Bukkit.getConsoleSender().sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
+                        messages.getString("Help.materialNotValidDoNotOpen")
+                                .replaceAll("%material%", material)));
+            }
         }
 
         main.getServer().getPluginManager().registerEvents(this, main);
@@ -64,26 +83,8 @@ public class RightClick implements Listener {
 
             if (action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK) {
                 if (action == Action.RIGHT_CLICK_BLOCK) {
-                    Material block = e.getClickedBlock().getType();
-
-                    switch (block) {
-                        case WORKBENCH:
-                        case FURNACE:
-                        case BURNING_FURNACE:
-                        case CHEST:
-                        case TRAPPED_CHEST:
-                        case ENDER_CHEST:
-                        case ENCHANTMENT_TABLE:
-                        case ANVIL:
-                        case HOPPER:
-                        case DISPENSER:
-                            return;
-                    }
-
-                    if (is1_11) {
-                        if (block.toString().endsWith("SHULKER_BOX")) {
-                            return;
-                        }
+                    if (doNotOpen.contains(e.getClickedBlock().getType())) {
+                        return;
                     }
 
                 }

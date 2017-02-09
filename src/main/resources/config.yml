@@ -24,6 +24,22 @@ dropOnDeath: true
 # Should players be able to store backpacks in backpacks?
 BackPackInBackPack: false
 
+# When you click on one of these items the BackPack won't open
+# You can find the materials here: http://bit.ly/21vbetj
+# The materials aren't case sensitive
+# A '*' will add any material that matches the characters before to the list
+doNotOpen:
+  - WORKBENCH
+  - FURNACE
+  - BURNING_FURNACE
+  - CHEST
+  - TRAPPED_CHEST
+  - ENDER_CHEST
+  - ENCHANTMENT_TABLE
+  - ANVIL
+  - HOPPER
+  - DISPENSER
+  - SHULKER_BOX*
 
 # the updater will search for updates here: http://bit.ly/2cXN1dD
 # and it will only use versions with the type 'release'
