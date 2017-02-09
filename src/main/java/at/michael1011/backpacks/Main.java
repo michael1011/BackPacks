@@ -293,14 +293,16 @@ public class Main extends JavaPlugin {
             if (configVersion < 3) {
                 File folder = main.getDataFolder();
 
+                YamlConfiguration configJar = new YamlConfiguration();
                 YamlConfiguration messagesJar = new YamlConfiguration();
 
-                InputStreamReader reader = new InputStreamReader(getClass().getClassLoader()
-                        .getResourceAsStream("messages.yml"));
+                InputStreamReader configReader = new InputStreamReader(getClass().getClassLoader().getResourceAsStream("config.yml"));
+                InputStreamReader messagesReader = new InputStreamReader(getClass().getClassLoader().getResourceAsStream("messages.yml"));
 
-                messagesJar.load(reader);
+                configJar.load(configReader);
+                messagesJar.load(messagesReader);
 
-                reader.close();
+                messagesReader.close();
 
                 if (configVersion == 0) {
                     if (new File(folder, "messages.yml").renameTo(new File(folder, "messages.old.yml"))) {
@@ -360,7 +362,9 @@ public class Main extends JavaPlugin {
                 if (configVersion == 2) {
                     messages.set("Help.bpopen.error", messagesJar.getString("Help.bpopen.error"));
                     messages.set("Help.backPackSaving", messagesJar.get("Help.backPackSaving"));
+                    messages.set("Help.materialNotValidDoNotOpen", messagesJar.get("Help.materialNotValidDoNotOpen"));
 
+                    config.set("doNotOpen", configJar.getStringList("doNotOpen"));
                     config.set("MySQL.syncBackPacks", false);
                     config.set("configVersion", 3);
 
