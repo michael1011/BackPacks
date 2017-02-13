@@ -3,6 +3,7 @@ package at.michael1011.backpacks.nbt;
 import org.bukkit.inventory.ItemStack;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -38,7 +39,8 @@ public class NbtDecoder {
     private static void decodeCompound(String value, Object compound) throws ClassNotFoundException,
             NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
 
-        List<String> split = Arrays.asList(value.split("/+(?![^{]*})"));
+        // fixme: things like 'ench:9{10{lvl:2(10000)/id:2(16)}/10{lvl:2(-31072)/id:2(0)}}' do not work (split  )
+        List<String> split = decodeString(value);
 
         for (String part : split) {
             String[] keyValue = part.split(":", 2);
@@ -175,6 +177,54 @@ public class NbtDecoder {
             }
 
         }
+
+        return toReturn;
+    }
+
+    private static List<String> decodeString(String split) {
+        List<String> toReturn = new ArrayList<>();
+        StringBuilder buffer = new StringBuilder();
+
+        int bracesToClose = 0;
+
+        char[] chars = split.toCharArray();
+
+        for (int position = 0; position < chars.length; position++) {
+            char atPosition = chars[position];
+
+            switch (chars[position]) {
+                case '{':
+                    buffer.append(atPosition);
+
+                    bracesToClose++;
+                    break;
+
+                case '}':
+                    buffer.append(atPosition);
+
+                    bracesToClose--;
+                    break;
+
+                case '/':
+                    if (bracesToClose == 0) {
+                        toReturn.add(buffer.toString());
+
+                        buffer.delete(0, buffer.length());
+
+                    } else {
+                        buffer.append(atPosition);
+                    }
+
+                    break;
+
+                default:
+                    buffer.append(atPosition);
+                    break;
+            }
+
+        }
+
+        toReturn.add(buffer.toString());
 
         return toReturn;
     }

@@ -302,6 +302,7 @@ public class Main extends JavaPlugin {
                 configJar.load(configReader);
                 messagesJar.load(messagesReader);
 
+                configReader.close();
                 messagesReader.close();
 
                 if (configVersion == 0) {
