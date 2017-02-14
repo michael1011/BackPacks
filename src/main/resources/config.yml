@@ -18,10 +18,15 @@ MySQL:
   syncBackPacks: false
 
 
-# If a player dies with a backpack in his inventory should the content of backpack get dropped too?
+# If a player dies with a BackPack in his inventory should the content of BackPack get dropped too?
 dropOnDeath: true
 
-# Should players be able to store backpacks in backpacks?
+# todo: add to updater (add when upgrading from configVersion 2 to 3)
+# The same as 'dropOnDeath' but will drop every BackPacks of the player even if they are not in the inventory
+# Only active when 'dropOnDeath' is also true
+dropOnDeathAll: false
+
+# Should players be able to store BackPacks in BackPacks?
 BackPackInBackPack: false
 
 # When you click on one of these items the BackPack won't open
@@ -50,12 +55,12 @@ Updater:
   interval: 24
 
   # if this is true the plugin will download the latest version and reload the server after the download automatically
-  # if it's false it will send every player with the permission 'backpacks.update' a message that a new version is available on join
+  # if it's false it will send every player with the permission 'BackPacks.update' a message that a new version is available on join
   autoUpdate: false
 
 
-# Delete the defaults and create your own backpacks here
-# You can create backpacks with the /bpcreate command too
+# Delete the defaults and create your own BackPacks here
+# You can create BackPacks with the /bpcreate command too
 # Find all materials here: http://bit.ly/21vbetj
 
 # Important: every description must be unique!

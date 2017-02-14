@@ -365,6 +365,7 @@ public class Main extends JavaPlugin {
                     messages.set("Help.backPackSaving", messagesJar.get("Help.backPackSaving"));
                     messages.set("Help.materialNotValidDoNotOpen", messagesJar.get("Help.materialNotValidDoNotOpen"));
 
+                    config.set("dropOnDeathAll", configJar.getBoolean("dropOnDeathAll"));
                     config.set("doNotOpen", configJar.getStringList("doNotOpen"));
                     config.set("MySQL.syncBackPacks", false);
                     config.set("configVersion", 3);
@@ -373,30 +374,26 @@ public class Main extends JavaPlugin {
 
                         @Override
                         public void onSuccess(ResultSet rs) {
-                            ArrayList<String> tables = new ArrayList<>();
-
                             try {
                                 while (rs.next()) {
                                     String tableName = rs.getString("TABLE_NAME");
 
                                     if (tableName.startsWith("bp_")) {
                                         if (getTimesInString(tableName, "_") >= 2) {
-                                            tables.add(tableName);
+                                            SQL.query("ALTER TABLE " + tableName + " ADD nbt VARCHAR(1000)", new SQL.Callback<Boolean>() {
+
+                                                @Override
+                                                public void onSuccess(Boolean rs) {}
+
+                                                @Override
+                                                public void onFailure(Throwable e) {}
+
+                                            }, false);
+
                                         }
+
                                     }
 
-                                }
-
-                                for (String table : tables) {
-                                    SQL.query("ALTER TABLE " + table + " ADD nbt VARCHAR(1000)", new SQL.Callback<Boolean>() {
-
-                                        @Override
-                                        public void onSuccess(Boolean rs) {}
-
-                                        @Override
-                                        public void onFailure(Throwable e) {}
-
-                                    }, false);
                                 }
 
                             } catch (SQLException e) {
