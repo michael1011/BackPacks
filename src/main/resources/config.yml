@@ -68,9 +68,10 @@ BackPacks:
   enabled:
     1: "littleBackPack"
     2: "normalBackPack"
-    3: "enderBackPack"
-    4: "craftingBackPack"
-    5: "furnaceBackPack"
+    3: "trashBackPack"
+    4: "enderBackPack"
+    5: "craftingBackPack"
+    6: "furnaceBackPack"
 
   littleBackPack:
     name: "&bLittle &3BackPack"
@@ -119,6 +120,28 @@ BackPacks:
         R: "REDSTONE_BLOCK"
         G: "GOLD_BLOCK"
         W: "WATCH"
+
+  trashBackPack:
+    name: "&4Trash &cBackPack"
+    type: "trash"
+
+    description:
+      1: ""
+      2: "&fThis is the &4Trash &cBackPack&f."
+      3: "&8Right click to open it."
+
+    slots: 27
+
+    material: "BUCKET"
+
+    crafting:
+      1: "A+A+A"
+      2: "A+B+A"
+      3: "A+A+A"
+
+      materials:
+        B: "BUCKET"
+        A: "AIR"
 
   enderBackPack:
     name: "&5Ender &dBackPack"

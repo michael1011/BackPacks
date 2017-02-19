@@ -175,15 +175,13 @@ public class RightClick implements Listener {
                                         break;
 
                                     case "trash":
-                                        openInvs.put(p, backPack);
+                                        openInvsOther.put(p, backPack);
 
                                         p.openInventory(Bukkit.getServer().createInventory(p, backPack.getSlots(),
                                                 getInventoryTitle(backPack, meta.getDisplayName())));
 
                                     case "furnace":
-                                        Boolean guiEnabled = backPack.getFurnaceGui();
-
-                                        if (guiEnabled) {
+                                        if (backPack.getFurnaceGui()) {
                                             SQL.getResult("SELECT * FROM bp_furnaces WHERE uuid='" + trimmedID + "'", new SQL.Callback<ResultSet>() {
 
                                                 @Override
@@ -201,7 +199,7 @@ public class RightClick implements Listener {
                                                             final Boolean food = furnaceGui.getBoolean("food.defaultOption");
                                                             final Boolean autoFill = furnaceGui.getBoolean("autoFill.defaultOption");
 
-                                                            SQL.query("INSERT INTO bp_furnaces (uuid, ores, food, autoFill, coal) VALUES ('"+trimmedID+"', '"+
+                                                            SQL.query("INSERT INTO bp_furnaces (uuid, ores, food, autoFill, coal) VALUES ('" + trimmedID + "', '"+
                                                                     String.valueOf(ores) + "', '" +
                                                                     String.valueOf(food) + "', '" +
                                                                     String.valueOf(autoFill) + "', '0')", new SQL.Callback<Boolean>() {
@@ -237,7 +235,7 @@ public class RightClick implements Listener {
                                 }
 
                             } else {
-                                p.sendMessage(prefix+ChatColor.translateAlternateColorCodes('&',
+                                p.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&',
                                         messages.getString("Help.noPermission")));
                             }
 
@@ -256,7 +254,7 @@ public class RightClick implements Listener {
     }
 
     public static Inventory getInv(ResultSet rs, Player opener, BackPack backPack, String inventoryTitle, Boolean openerIsOwner, String ownerId) {
-        if (openInvs.containsKey(opener)) {
+        if (openInvs.containsKey(opener) || openFurnaces.containsKey(opener) || openInvsOther.containsKey(opener)) {
             return null;
         }
 
@@ -483,8 +481,8 @@ public class RightClick implements Listener {
     private void setMeta(ItemStack item, String name) {
         ItemMeta meta = item.getItemMeta();
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', furnaceGui.getString(name+".name")));
-        meta.setLore(getLore(name+".description"));
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', furnaceGui.getString(name + ".name")));
+        meta.setLore(getLore(name + ".description"));
 
         item.setItemMeta(meta);
     }
@@ -506,15 +504,15 @@ public class RightClick implements Listener {
     }
 
     private static List<String> getLore(String path) {
-        String lore = "";
-
         Map<String, Object> loreSec = furnaceGui.getConfigurationSection(path).getValues(true);
 
+        ArrayList<String> toReturn = new ArrayList<>();
+
         for (Map.Entry<String, Object> ent : loreSec.entrySet()) {
-            lore = lore+","+ChatColor.translateAlternateColorCodes('&', ent.getValue().toString());
+            toReturn.add(ChatColor.translateAlternateColorCodes('&', ent.getValue().toString()));
         }
 
-        return Arrays.asList(lore.split("\\s*,\\s*"));
+        return toReturn;
     }
 
     static int getColor(Boolean bool) {
