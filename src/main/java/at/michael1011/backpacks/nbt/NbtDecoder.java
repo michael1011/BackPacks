@@ -39,7 +39,6 @@ public class NbtDecoder {
     private static void decodeCompound(String value, Object compound) throws ClassNotFoundException,
             NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
 
-        // fixme: things like 'ench:9{10{lvl:2(10000)/id:2(16)}/10{lvl:2(-31072)/id:2(0)}}' do not work (split  )
         List<String> split = decodeString(value);
 
         for (String part : split) {

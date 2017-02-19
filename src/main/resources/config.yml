@@ -21,7 +21,6 @@ MySQL:
 # If a player dies with a BackPack in his inventory should the content of BackPack get dropped too?
 dropOnDeath: true
 
-# todo: add to updater (add when upgrading from configVersion 2 to 3)
 # The same as 'dropOnDeath' but will drop every BackPacks of the player even if they are not in the inventory
 # Only active when 'dropOnDeath' is also true
 dropOnDeathAll: false
