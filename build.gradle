@@ -6,6 +6,8 @@ plugins {
 buildScan {
     licenseAgreementUrl = 'https://gradle.com/terms-of-service'
     licenseAgree = 'yes'
+
+    allowUntrustedServer = true
 }
 
 group 'at.michael1011'
