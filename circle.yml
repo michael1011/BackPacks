@@ -2,7 +2,7 @@ machine:
   timezone:
     Europe/Vienna
   java:
-    version: openjdk7
+    version: openjdk8
 
 general:
   artifacts:
