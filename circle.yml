@@ -16,7 +16,7 @@ dependencies:
 test:
   override:
     - ./gradlew clean -Dorg.gradle.daemon=false
-    - ./gradlew build -Dscan -Dorg.gradle.daemon=false
+    - ./gradlew build -Dorg.gradle.daemon=false
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
     - find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
