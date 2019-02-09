@@ -17,3 +17,21 @@ mysql:
   database: "backpacks"
   username: "backpacks"
   password: "backpacks"
+
+# This section is for configuring and creating new BackPacks
+#
+# Important:
+#  - all materials can be found here: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
+#  - the slots of a backpack have to be divisible by 9
+backpacks:
+  littlebackpack:
+    name: "&bLittle &3BackPack"
+
+    description:
+      - ""
+      - "&fThis is a &blittle &3BackPack"
+      - "&fRight click to open it"
+
+    slots: 9
+
+    material: "COMPASS"

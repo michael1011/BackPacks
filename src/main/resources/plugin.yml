@@ -3,3 +3,8 @@ author: michael1011
 version: 3.0.0
 
 main: at.michael1011.backpacks.Main
+
+commands:
+  bpgive:
+    description: Give a user a backpack
+    usage: /bpgive <backpack> <user>
