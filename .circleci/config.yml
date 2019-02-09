@@ -1,0 +1,24 @@
+version: 2.0
+
+jobs:
+  build:
+
+    docker:
+      - image: circleci/openjdk:8-jdk
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - gradle-{{ checksum "build.gradle" }}
+
+      - run: ./gradlew dependencies
+
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: gradle-{{ checksum "build.gradle" }}
+
+      - run: ./gradlew compileKotlin
+      - run: ./gradlew jar
