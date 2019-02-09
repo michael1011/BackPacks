@@ -21,6 +21,7 @@ repositories {
 
 dependencies {
     compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jdk8'
+    compile group: 'org.xerial', name: 'sqlite-jdbc', version: '3.7.2'
 
     compileOnly group: 'org.spigotmc', name: 'spigot-api', version: '1.13.2-R0.1-SNAPSHOT'
     compileOnly group: 'org.bukkit', name: 'bukkit', version: '1.13.2-R0.1-SNAPSHOT'

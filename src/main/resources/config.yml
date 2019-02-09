@@ -1,0 +1,19 @@
+#
+# BackPacks 3.0.0
+# By michael1011
+#
+
+# What kind of database should be used
+#
+# Available options: SQLite and MySQL
+# MySQL requires additional configuration therefore a SQLite database which is simply
+# a file in the data directory of BackPacks is used as default and fallback
+database: "sqlite"
+
+# Needed if a MySQL database should be used
+mysql:
+  host: "127.0.0.1"
+  port: 3306
+  database: "backpacks"
+  username: "backpacks"
+  password: "backpacks"

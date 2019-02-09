@@ -4,13 +4,19 @@ import org.bukkit.configuration.file.YamlConfiguration
 import java.io.File
 
 class Config(private val main: Main) {
+    lateinit var config: YamlConfiguration
     lateinit var messages: YamlConfiguration
 
-    fun loadFiles() {
+    init {
+        this.loadFiles()
+    }
+
+    private fun loadFiles() {
+        config = loadFile("config.yml")
         messages = loadFile("messages.yml")
     }
 
-    private fun loadFile(fileName: String) : YamlConfiguration {
+    private fun loadFile(fileName: String): YamlConfiguration {
         val file = File(main.dataFolder, fileName)
 
         if (!file.exists()) {

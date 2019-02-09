@@ -6,7 +6,11 @@ import org.bukkit.ChatColor
 class Logger(private val prefix: String) {
     private val console = Bukkit.getConsoleSender()
 
-    fun sendMessage(message: String) {
+    fun error(message: String) {
+        log("&4$message&r")
+    }
+
+    fun log(message: String) {
         console.sendMessage(
             ChatColor.translateAlternateColorCodes(
                 '&',
