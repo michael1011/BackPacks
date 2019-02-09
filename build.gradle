@@ -1,60 +1,53 @@
 plugins {
-    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.3.20'
 }
 
 group 'at.michael1011'
-version '2.3.0'
+version '3.0.0'
 
 compileJava.options.encoding = 'UTF-8'
 
-configurations {
-    provided
-    compile.extendsFrom provided
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '4.7'
-}
-
-task cleanBuilds(type: Delete) {
-    delete fileTree(dir: "build/libs", exclude: "")
-    delete fileTree(dir: "server1.11/plugins", exclude: "**/config.yml")
-}
-
-task copy {
-    copy {
-        from "build/libs/"
-        into "server1.11/plugins"
-        exclude "*.war"
-    }
-}
-
 repositories {
-    jcenter()
+    mavenCentral()
 
     maven {
-        url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots/"
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
     }
 
     maven {
-        url = "https://oss.sonatype.org/content/repositories/snapshots"
+        url = 'https://oss.sonatype.org/content/repositories/snapshots'
     }
 }
 
 dependencies {
-    provided group: 'org.spigotmc', name: 'spigot-api', version: '1.11.2-R0.1-SNAPSHOT'
-    provided group: 'org.bukkit', name: 'bukkit', version: '1.11.2-R0.1-SNAPSHOT'
+    compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jdk8'
+
+    compileOnly group: 'org.spigotmc', name: 'spigot-api', version: '1.13.2-R0.1-SNAPSHOT'
+    compileOnly group: 'org.bukkit', name: 'bukkit', version: '1.13.2-R0.1-SNAPSHOT'
+}
+
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+compileKotlin {
+    kotlinOptions.jvmTarget = '1.8'
+}
+
+compileTestKotlin {
+    kotlinOptions.jvmTarget = '1.8'
 }
 
 jar {
-    dependsOn configurations.runtime
-    from {
-        (configurations.runtime - configurations.provided).collect {
-            it.isDirectory() ? it : zipTree(it)
-        }
-    } {
-        exclude "META-INF/*.SF"
-        exclude "META-INF/*.DSA"
-        exclude "META-INF/*.RSA"
-    }
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}
+
+task cleanJar(type: Delete) {
+    delete 'server/plugins/backpacks-3.0.0.jar', 'build/libs'
+    followSymlinks = true
+}
+
+task copyJar(type: Copy) {
+    from 'build/libs/backpacks-3.0.0.jar'
+    into 'server/plugins'
 }
