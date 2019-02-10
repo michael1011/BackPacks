@@ -8,6 +8,7 @@ import org.bukkit.inventory.ItemStack
 
 class Crafting(private val logger: Logger, config: YamlConfiguration) {
     val backpacks = HashMap<String, ItemStack>()
+    val backpackConfigs = HashMap<String, BackpackConfig>()
 
     private var section: ConfigurationSection = config.getConfigurationSection("backpacks")
 
@@ -20,6 +21,7 @@ class Crafting(private val logger: Logger, config: YamlConfiguration) {
                 val item = createItemStack(backpack)
 
                 backpacks[it] = item
+                backpackConfigs[it] = backpack
             } catch (exception: IllegalArgumentException) {
                 logger.warn("Could not enable backpack $it: ${exception.message}")
             }

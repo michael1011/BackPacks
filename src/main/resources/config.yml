@@ -35,3 +35,15 @@ backpacks:
     slots: 9
 
     material: "COMPASS"
+
+  normalbackpack:
+    name: "&eNormal &6BackPack"
+
+    description:
+      - ""
+      - "&fThis is a &enormal &6BackPack"
+      - "&fRight click to open it"
+
+    slots: 27
+
+    material: "FEATHER"

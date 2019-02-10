@@ -48,9 +48,19 @@ class Give(
 
         if (backpack != null) {
             player.inventory.addItem(backpack)
+            val message = Logger.replaceVariable(
+                Logger.replaceVariable(
+                    giveMessages.getString("success"),
+                    "%backpack%",
+                    backpackName),
+                "%player%",
+                player.displayName
+            )
+
+            logger.printMessage(sender, message)
         } else {
             val message = Logger.replaceVariable(giveMessages.getString("backpackNotFound"), "%backpack%", backpackName)
-            logger.printFormattedMessage(sender, message)
+            logger.printMessage(sender, message)
         }
     }
 }

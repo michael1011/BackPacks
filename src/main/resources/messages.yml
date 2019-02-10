@@ -11,7 +11,7 @@ help:
   playerNotFound: "Could not find player &4%player%"
 
   bpgive:
-    success: "Gave &6%backpack%&r to &6%target%"
+    success: "Gave &6%backpack%&r to &6%player%"
 
     backpackNotFound: "Could not find backpack &4%backpack%"
 

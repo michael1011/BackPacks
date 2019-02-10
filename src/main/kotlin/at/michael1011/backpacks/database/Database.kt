@@ -20,8 +20,19 @@ class Database(private val main: Main, type: String, mysqlCredentials: MysqlCred
 
     private val scheduler = Bukkit.getScheduler()
 
+    // MySQL and SQLite have different key words for autoincrement
+    private val autoIncrement = if (isMysql) {
+        "AUTO_INCREMENT"
+    } else {
+        "AUTOINCREMENT"
+    }
+
     init {
         connection.prepareStatement("CREATE TABLE IF NOT EXISTS players (uuid VARCHAR(36), name VARCHAR(255) NOT NULL, PRIMARY KEY (`uuid`))").execute()
+        connection.prepareStatement("CREATE TABLE IF NOT EXISTS backpacks (id INTEGER PRIMARY KEY $autoIncrement, uuid VARCHAR(36) NOT NULL, backpack VARCHAR(255), FOREIGN KEY (uuid) REFERENCES players(uuid))").execute()
+        connection.prepareStatement(
+            "CREATE TABLE IF NOT EXISTS items (backpackId INTEGER NOT NULL, position INTEGER NOT NULL, material VARCHAR(255) NOT NULL, amount INTEGER, damage INTEGER, name VARCHAR(100), lore VARCHAR(1000), FOREIGN KEY (backpackId) REFERENCES backpacks(id))"
+        ).execute()
     }
 
     fun executeStatement(statement: PreparedStatement, callback: (Boolean) -> Unit) {
@@ -36,7 +47,7 @@ class Database(private val main: Main, type: String, mysqlCredentials: MysqlCred
         })
     }
 
-    private fun runAsync(task: Runnable) {
+    fun runAsync(task: Runnable) {
         scheduler.runTaskAsynchronously(main, task)
     }
 

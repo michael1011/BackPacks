@@ -11,20 +11,20 @@ class CommandLogger(private val messages: YamlConfiguration) {
     fun printPlayerNotFound(sender: CommandSender, player: String) {
         val message = messages.getString("help.playerNotFound")
 
-        printFormattedMessage(sender, Logger.replaceVariable(message, "%player%", player))
+        printMessage(sender, Logger.replaceVariable(message, "%player%", player))
     }
 
     fun printHelp(sender: CommandSender, messageSection: ConfigurationSection) {
         messageSection.getStringList("help").forEach {
-            printFormattedMessage(sender, it)
+            printMessage(sender, it)
         }
     }
 
     fun printNoPermission(sender: CommandSender) {
-        printFormattedMessage(sender, messages.getString("help.noPermission"))
+        printMessage(sender, messages.getString("help.noPermission"))
     }
 
-    fun printFormattedMessage(sender: CommandSender, message: String) {
+    fun printMessage(sender: CommandSender, message: String) {
         sender.sendMessage(prefix + Logger.formatColorCodes(message))
     }
 }

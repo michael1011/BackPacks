@@ -31,7 +31,7 @@ class Main : JavaPlugin() {
         val crafting = Crafting(logger, config.config)
         logger.log("Enabled backpacks: ${crafting.backpacks.keys}")
 
-        registerListeners(this, database)
+        registerListeners(this, database, crafting.backpacks, crafting.backpackConfigs)
         registerCommands(this, config.messages, crafting.backpacks)
 
         logger.log("Plugin enabled")
