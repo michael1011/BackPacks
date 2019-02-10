@@ -4,6 +4,7 @@ import at.michael1011.backpacks.commands.registerCommands
 import at.michael1011.backpacks.crafting.Crafting
 import at.michael1011.backpacks.database.Database
 import at.michael1011.backpacks.database.MysqlCredentials
+import at.michael1011.backpacks.listeners.registerListeners
 import org.bukkit.plugin.java.JavaPlugin
 import java.lang.Exception
 
@@ -30,6 +31,7 @@ class Main : JavaPlugin() {
         val crafting = Crafting(logger, config.config)
         logger.log("Enabled backpacks: ${crafting.backpacks.keys}")
 
+        registerListeners(this, database)
         registerCommands(this, config.messages, crafting.backpacks)
 
         logger.log("Plugin enabled")
