@@ -1,2 +1,20 @@
-# This will be the prefix for every message
-prefix: "[BackPacks]&r "
+#
+# This allows all messages that are shown to the user to be configured
+#
+
+# This is the prefix for all messages sent by BackPacks
+prefix: "&7[BackPacks]&r "
+
+# Help messages
+help:
+  noPermission: "&cYou don't have enough permissions"
+  playerNotFound: "Could not find player &4%player%"
+
+  bpgive:
+    success: "Gave &6%backpack%&r to &6%target%"
+
+    backpackNotFound: "Could not find backpack &4%backpack%"
+
+    help:
+      - "&f/bpgive <backpack>&r: to give yourself the backpack <backpack>"
+      - "&f/bpgive <backpack> <player>&r: to give the backpack <backpack> to <player>"

@@ -21,6 +21,10 @@ class Logger(private val prefix: String) {
     }
 
     companion object {
+        fun replaceVariable(message: String, oldValue: String, newValue: String): String {
+            return message.replace(oldValue, newValue, true)
+        }
+
         fun formatColorCodes(message: String): String {
             return ChatColor.translateAlternateColorCodes('&', message)
         }

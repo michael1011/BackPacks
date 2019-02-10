@@ -4,10 +4,9 @@ import at.michael1011.backpacks.commands.registerCommands
 import at.michael1011.backpacks.crafting.Crafting
 import at.michael1011.backpacks.database.Database
 import at.michael1011.backpacks.database.MysqlCredentials
-import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.plugin.java.JavaPlugin
 import java.lang.Exception
 
-// TODO: add permission for bpgive command
 @Suppress("unused")
 class Main : JavaPlugin() {
     private lateinit var database: Database
@@ -31,7 +30,7 @@ class Main : JavaPlugin() {
         val crafting = Crafting(logger, config.config)
         logger.log("Enabled backpacks: ${crafting.backpacks.keys}")
 
-        registerCommands(this, crafting.backpacks)
+        registerCommands(this, config.messages, crafting.backpacks)
 
         logger.log("Plugin enabled")
     }

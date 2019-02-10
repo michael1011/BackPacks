@@ -6,5 +6,16 @@ main: at.michael1011.backpacks.Main
 
 commands:
   bpgive:
-    description: Give a user a backpack
-    usage: /bpgive <backpack> <user>
+    description: Give a player a backpack
+    usage: /bpgive <backpack> [player]
+    aliases: [bpg]
+
+permissions:
+  backpacks.*:
+    description: all permissions of the plugin
+    default: op
+    children:
+      backpacks.give: true
+
+  backpacks.give:
+    description: to use the command /bpgive

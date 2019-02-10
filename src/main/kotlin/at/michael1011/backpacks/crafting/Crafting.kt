@@ -5,7 +5,6 @@ import org.bukkit.Material
 import org.bukkit.configuration.ConfigurationSection
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.inventory.ItemStack
-import java.lang.IllegalArgumentException
 
 class Crafting(private val logger: Logger, config: YamlConfiguration) {
     val backpacks = HashMap<String, ItemStack>()
