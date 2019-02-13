@@ -1,15 +1,13 @@
 package at.michael1011.backpacks.items
 
-import at.michael1011.backpacks.database.Database
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.Damageable
+import java.sql.PreparedStatement
 import java.sql.ResultSet
 import java.sql.Types
 
-fun serializeItem(database: Database, backpackId: Int, position: Int, item: ItemStack): Boolean {
-    val insert = database.connection.prepareStatement("INSERT INTO items VALUES (?, ?, ?, ?, ?, ?, ?)")
-
+fun serializeItem(insert: PreparedStatement, backpackId: Int, position: Int, item: ItemStack) {
     insert.setInt(1, backpackId)
     insert.setInt(2, position)
 
@@ -33,8 +31,6 @@ fun serializeItem(database: Database, backpackId: Int, position: Int, item: Item
         insert.setNull(6, Types.VARCHAR)
         insert.setNull(7, Types.VARCHAR)
     }
-
-    return insert.execute()
 }
 
 fun parseItem(result: ResultSet): ItemStack {

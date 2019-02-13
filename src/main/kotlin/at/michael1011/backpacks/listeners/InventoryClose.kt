@@ -2,7 +2,6 @@ package at.michael1011.backpacks.listeners
 
 import at.michael1011.backpacks.database.Database
 import at.michael1011.backpacks.items.serializeItem
-import org.bukkit.Bukkit
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
@@ -22,14 +21,18 @@ class InventoryClose(private val database: Database) : Listener {
 
     private fun saveInventory(uuid: String, backpackId: Int, inventory: Inventory) {
         database.runAsync(Runnable {
+            val insert = database.connection.prepareStatement("INSERT INTO items VALUES (?, ?, ?, ?, ?, ?, ?)")
 
             for (i in 0 until inventory.size) {
                 val item = inventory.getItem(i)
 
                 if (item != null) {
-                    serializeItem(database, backpackId, i, item)
+                    serializeItem(insert, backpackId, i, item)
+                    insert.addBatch()
                 }
             }
+
+            insert.executeBatch()
 
             RightClick.openBackpacks.remove(uuid)
         })
